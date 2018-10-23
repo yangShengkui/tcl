@@ -1,0 +1,268 @@
+{
+  "type": "absolute",
+  "setting": {
+    "viewTitle": "青岛展厅视图1516",
+    "description": "青岛展厅视图1516",
+    "cls": "qingdao1516"
+  },
+  "data": [
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 407774594970041
+      },
+      "position": {
+        "top": 1001,
+        "left": "9.192708333333334%",
+        "width": "16.744791666666668%",
+        "height": 100
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 1002,
+        "left": "25.755208333333336%",
+        "width": "3.28125%",
+        "height": 100
+      },
+      "attributes": {
+        "width": 200,
+        "height": 50,
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "format": "MM-dd",
+        "real": "false",
+        "paddingZero": "true",
+        "MMpoor": 0
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 407774594970041
+      },
+      "position": {
+        "top": 542,
+        "left": "29.817708333333332%",
+        "width": "17.291666666666668%",
+        "height": 102
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 543,
+        "left": "46.40625%",
+        "width": "2.604166666666667%",
+        "height": 100
+      },
+      "attributes": {
+        "width": 200,
+        "height": 50,
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "format": "MM-dd",
+        "real": "false",
+        "paddingZero": "true",
+        "MMpoor": 0
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 407774594970041
+      },
+      "position": {
+        "top": 993,
+        "left": "52.526041666666664%",
+        "width": "17.734375%",
+        "height": 100
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 995,
+        "left": "70.52083333333333%",
+        "width": "4.088541666666667%",
+        "height": 100
+      },
+      "attributes": {
+        "width": 200,
+        "height": 50,
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "format": "MM-dd",
+        "real": "false",
+        "paddingZero": "true",
+        "MMpoor": 0
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 412394838270189
+      },
+      "position": {
+        "top": 544,
+        "left": "10.651041666666666%",
+        "width": "6.458333333333334%",
+        "height": 100
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 544,
+        "left": "16.927083333333336%",
+        "width": "2.604166666666667%",
+        "height": 100
+      },
+      "attributes": {
+        "width": "50",
+        "height": 50,
+        "fontSize": "12px",
+        "color": "#FFFFFF",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "format": "MM-dd",
+        "real": "false",
+        "paddingZero": "false",
+        "MMpoor": 0
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 412394838270189
+      },
+      "position": {
+        "top": 546,
+        "left": "19.53125%",
+        "width": "6.692708333333333%",
+        "height": 100
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 547,
+        "left": "26.223958333333336%",
+        "width": "2.604166666666667%",
+        "height": 100
+      },
+      "attributes": {
+        "width": "50",
+        "height": 50,
+        "fontSize": "12px",
+        "color": "#FFFFFF",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "format": "MM-dd",
+        "real": "false",
+        "paddingZero": "false",
+        "MMpoor": 0
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 412394838270204
+      },
+      "position": {
+        "top": 1004,
+        "left": "31.71875%",
+        "width": "14.583333333333334%",
+        "height": 100
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 1007,
+        "left": "46.041666666666664%",
+        "width": "4.348958333333333%",
+        "height": 100
+      },
+      "attributes": {
+        "width": "80",
+        "height": 50,
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "MMpoor": "",
+        "format": "MM",
+        "real": "false",
+        "paddingZero": "false"
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 412394838270189
+      },
+      "position": {
+        "top": 402,
+        "left": "89.47916666666667%",
+        "width": "10%",
+        "height": 200
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 412394838270189
+      },
+      "position": {
+        "top": 403,
+        "left": "77.13541666666667%",
+        "width": "10%",
+        "height": 200
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 412394838270189
+      },
+      "position": {
+        "top": 1012,
+        "left": "77.08333333333334%",
+        "width": "10%",
+        "height": 200
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 412394838270189
+      },
+      "position": {
+        "top": 709,
+        "left": "89.53125%",
+        "width": "10%",
+        "height": 200
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 412394838270189
+      },
+      "position": {
+        "top": 710,
+        "left": "77.109375%",
+        "width": "10%",
+        "height": 200
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 412394838270189
+      },
+      "position": {
+        "top": 1014,
+        "left": "89.50520833333333%",
+        "width": "10%",
+        "height": 200
+      }}
+  ]
+}

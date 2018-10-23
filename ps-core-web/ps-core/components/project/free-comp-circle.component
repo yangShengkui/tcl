@@ -1,0 +1,227 @@
+<config injector="$q,$timeout,viewFlexService,kpiDataService,$interval"
+></config>
+<properties>
+    <script type="text/javascript">
+    function properties () {
+      return [{
+        label: "基本设定",
+        attributes: {
+          height: ["高度", "input", 200],
+          colors: ["颜色", "input", ''],
+          percent: ["占比", 'input', '']
+        }
+      }, {
+        label: "数据",
+        attributes: {
+          outer: ["外环数据", "input", 'OEM,12h'],
+          inner: ["内环数据", "input", 'OEM,0次']
+        }
+      }];
+    }
+
+    export {properties}
+    </script>
+</properties>
+<template>
+    <div style="width: 100%;position:relative;">
+        <canvas class="cvs">
+            浏览器不支持canvas
+        </canvas>
+        <div class="text-wrap">
+            <p>
+                <span style="color: {{outerColor}};">{{text.outerLabel}}</span>
+                <span style="color: #fff;">{{text.outerText}}</span>
+            </p>
+            <p>
+                <span style="color: {{innerColor}};">{{text.innerLabel}}</span>
+                <span style="color: #fff;">{{text.innerText}}</span>
+            </p>
+        </div>
+    </div>
+</template>
+<script type="text/javascript">
+export default function (q, timeout, viewFlexService, kpiDataService, $interval) {
+  return {
+    scope: {
+      option: "="
+    },
+    link (scope, element, attr, ngModel) {
+      scope.text = {};
+      scope.outerColor = '';
+      scope.innerColor = '';
+
+      let getValue = (resourceId, kpiId) => {
+        let defer = q.defer();
+        let resourceIds = Array.isArray(resourceId) ? resourceId : [resourceId];
+        let kpiIds = Array.isArray(kpiId) ? kpiId : [kpiId];
+        kpiDataService.getRealTimeKpiData(resourceIds, kpiIds, ret => {
+          if (ret.code == '0') {
+            defer.resolve(ret.data);
+          }
+        });
+        return defer.promise;
+      }
+
+      function render (n) {
+        let outers = n.outer.split(','),
+          inners = n.inner.split(',');
+        getValue([outers[2] * 1, inners[2] * 1], [outers[3] * 1, inners[3] * 1]).then(d => {
+          let outerText = d.find(item => {
+            return item.nodeId == outers[2] && item.kpiCode == outers[3]
+          }).value;
+          let innetText = d.find(item => {
+            return item.nodeId == inners[2] && item.kpiCode == inners[3]
+          }).value;
+          scope.text = {
+            outerLabel: outers[0],
+            outerText: (outerText || 0) + outers[1],
+            innerLabel: inners[0],
+            innerText: (innetText || 0) + inners[1]
+          };
+        })
+      }
+
+      function renderAll (n) {
+        let colors = n.colors.split(','),
+          percents = n.percent ? n.percent.split(',') : [50, 0];
+        let ngArr = [{
+          r: 0.5,
+          barColor: colors[1] || '#51d8bd',
+          text: 'OEM1',
+          minValue: 0,
+          maxValue: 100,
+          value: percents[1] * 1
+        }, {
+          r: 0.6,
+          barColor: colors[0] || '#27c3fe',
+          text: 'OEM2',
+          minValue: 0,
+          maxValue: 100,
+          value: percents[0] * 1
+        }];
+        scope.outerColor = colors[0] || '#a8c0fb';
+        scope.innerColor = colors[1] || '#5bbee4';
+        timeout(() => {
+          var cvsWidth = element[0].clientWidth,
+            cvsHeight = element[0].clientHeight,
+            canvas = element[0].children[0],
+            context = canvas.getContext('2d');
+          canvas.width = cvsWidth;
+          canvas.height = cvsHeight;
+          var centerX = canvas.width / 2,
+            centerY = canvas.height / 2,
+            rad = Math.PI * 2 / 100, //将360度分成100份，那么每一份就是rad度
+            per = [],
+            defaultConfig = {
+              bgColor: '#37373E',
+              lineWidth: 15,
+              fontStyle: '30px Arial',
+              lineStyle: 'round'
+            };
+          scope.config = $.extend({}, defaultConfig, scope.config || {});
+          for (var i = 0; i < ngArr.length; i++) {
+            if (typeof ngArr[i].value == 'number') {
+              per.push(parseInt(ngArr[i].value / (ngArr[i].maxValue - ngArr[i].minValue) * 100));
+            }
+          }
+
+          //绘制15像素bar进度
+          function barCircle (color, lineWidth, lineStyle, r, per) {
+            context.strokeStyle = color; //设置描边样式
+            context.lineWidth = lineWidth; //设置线宽
+            context.lineCap = lineStyle;
+            context.beginPath(); //路径开始
+            context.arc(centerX, centerY, r, -Math.PI / 2, -Math.PI / 2 + per * rad, false); //用于绘制圆弧context.arc(x坐标，y坐标，半径，起始角度，终止角度，顺时针/逆时针)
+            context.stroke(); //绘制
+            context.closePath(); //路径结束
+          }
+
+          //绘制背景外圈
+          function bgCircle (bgColor, bgWidth, r) {
+            context.beginPath();
+            context.lineWidth = bgWidth; //设置线宽
+            context.strokeStyle = bgColor;
+            context.arc(centerX, centerY, r, 0, Math.PI * 2, false);
+            context.stroke();
+            context.closePath();
+          }
+
+          //百分比文字绘制
+          function text (per, txt, barColor, i, step, min) {
+            i++;
+            context.fillStyle = barColor;
+            context.font = scope.config.fontStyle;
+            context.textAlign = 'center';
+            context.textBaseline = 'middle';
+            context.fillText(txt, centerX - 0.55 * min, 40 + step * i + (centerY + scope.config.lineWidth / 2 - min))//名
+            context.fillStyle = "#fff"; //设置描边样式
+            context.fillText(per + '%', centerX + 0.2 * min, 40 + step * i + (centerY + scope.config.lineWidth / 2 - min));//值
+          }
+
+          //求出最小半径
+          function minR () {
+            var minr = ngArr[0].r;
+            for (var i = 0; i < ngArr.length; i++) {
+              if (minr > ngArr[i].r) {
+                minr = ngArr[i].r;
+              }
+            }
+            return minr * centerX;
+          }
+
+          // //动画循环
+          function drawFrame () {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            // var min = scope.config.r[scope.config.r.length-1];
+            var min = minR();
+            var step = min * 1.3 / (ngArr.length + 1);
+            for (var i = 0; i < ngArr.length; i++) {
+              bgCircle(scope.config.bgColor, scope.config.lineWidth, ngArr[i].r * centerY * 1.5, per[i]);
+              barCircle(ngArr[i].barColor, scope.config.lineWidth, scope.config.lineStyle, ngArr[i].r * centerY * 1.5, per[i]);
+              //text(per[i], ngArr[i].text, ngArr[i].barColor, i, step, min);
+            }
+          }
+
+          drawFrame();
+        });
+      }
+
+      scope.$watch(`option`, (n, o, s) => {
+        if (typeof n !== "undefined") {
+          element[0].style.height = n.attributes.height + "px";
+          renderAll(n.attributes);
+          render(n.attributes);
+          $interval(function () {
+            render(n.attributes);
+          }, 3 * 60 * 1000);
+        }
+      })
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+.text-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    p {
+        text-align: center;
+        &:first-child {
+            margin-top: 100px;
+            color: #27c3fe;
+        }
+        &:last-child {
+            color: #51d8bd;
+        }
+        span {
+            &:first-child {
+                margin-right: 20px;
+            }
+        }
+    }
+}
+</style>

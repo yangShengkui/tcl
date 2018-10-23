@@ -1,0 +1,54 @@
+<!--创建文档模态框-->
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">文档信息</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal" name="docForm">
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h"><span
+                class="text-danger ng-binding">*</span> <span class="ng-binding">文档名称：</span></label>
+              <div class="col-sm-6 padding-left-5">
+                <input type="text" maxlength="32" autocomplete="off" class="form-control dialog-inp-text input-sm" ng-change="nameChange();" ng-model="uploadParam.name" name="Name"
+                       required="required">
+                <span ng-show="docError.name == 'name'" style="font-size: 12px;"  ng-bind="docError.conter" class="help-block text-danger text-muted" ng-cloak></span>
+              </div>
+            </div>
+          </div>
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h"><span
+                class="text-danger ng-binding">*</span> <span class="ng-binding">选择文件：</span></label>
+              <div class="col-sm-6 padding-left-5">
+                <input id="fileName" style="display:none" class="form-control" type="file" nv-file-select="" uploader="uploader" multiple  accept="application/msword,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                <!--<input type="file" style="display: none;" id="fileName"  name="fileName" class="form-control dialog-inp-text input-sm"  nv-file-select uploader="uploader"   multiple accept="application/msword,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />-->
+                <input type="text" readonly="readonly" class="form-control dialog-inp-text padding-right-20 input-sm" title="{{uploadParam.url}}" ng-model="uploadParam.url" required="required">
+                <span onclick="$('#fileName').click()" style="position: absolute;top: 10%;right: 36%;"><i class="proudsmart ps-add"></i></span>
+                <span ng-show="docError.name == 'error'" style="font-size: 12px;"  ng-bind="docError.conter" class="help-block text-danger text-muted" ng-cloak></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h"> <span class="ng-binding">文档描述：</span></label>
+              <div class="col-sm-6 padding-left-5">
+                <textarea  ng-model="uploadParam.description"  style="height:50px;" maxlength="200" rows="3" class="form-control dialog-inp-text input-sm " name="Name"></textarea>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="docForm.$invalid || docError.conter || isLoading" data-ng-click="UploadFile()" disabled="disabled">
+          确定
+        </button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+  </div>

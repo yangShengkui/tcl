@@ -1,0 +1,158 @@
+<config injector="$scope,ajax,$location,psDialog,$routeParams" params="/:id?">
+</config>
+<template>
+  <proudsmart-base>
+    <ps-layout data-option="layout"></ps-layout>
+  </proudsmart-base>
+</template>
+<script type="text/javascript">
+  export default function (scope, ajax, location,psDialog,routeParams) {
+    scope.layout = {
+      label : "数据项",
+      children : [{
+        label : "数据项",
+        type : "panel",
+        children : [{
+          type: "tabs",
+          children: [{
+            type: "tab",
+            label: "整体",
+            children: [{
+                type: "tabs",
+                children: [{
+                    type: "tab",
+                    label: "数据模板一",
+                    children: [{
+                        type : "table",
+                        config : {
+                            attributes: {
+                                "label": ["数据项名称", "text"],
+                                "name": {
+                                    label: "显示名称",
+                                    type: "text"
+                                },
+                                "unit": ["单位","text"],
+                                "dataType": ["数据分类","text"],
+                                "isNum": ["是否数值","text"],
+                                "range": ["取值范围","text"]
+                            },
+                            grid: {
+                                body: ["label", "name","unit","dataType","isNum","range"],
+                                config: {
+                                    url: "sparePartUIService.getAllSpareParts",
+                                    parameter: 0,
+                                    showIndex: false,
+                                    showSelector: false,
+                                    showSearch: false
+                                },
+                                options: []
+                            }
+                        }
+                    }]
+                },{
+                    type: "tab",
+                    label: "数据模板一",
+                    children: [{
+                        type : "table",
+                        config : {
+                            attributes: {
+                                "label": ["数据项名称", "text"],
+                                "name": {
+                                    label: "显示名称",
+                                    type: "text"
+                                },
+                                "unit": ["单位","text"],
+                                "dataType": ["数据分类","text"],
+                                "isNum": ["是否数值","text"],
+                                "range": ["取值范围","text"]
+                            },
+                            grid: {
+                                body: ["label", "name","unit","dataType","isNum","range"],
+                                config: {
+                                    url: "sparePartUIService.getAllSpareParts",
+                                    parameter: 0,
+                                    showIndex: false,
+                                    showSelector: false,
+                                    showSearch: false
+                                },
+                                options: []
+                            }
+                        }
+                    }]
+                }],
+            }]
+          },{
+              type: "tab",
+              label: "多联机部位",
+              children: [{
+                  type: "tabs",
+                  children: [{
+                      type: "tab",
+                      label: "数据模板三",
+                      children: [{
+                          type : "table",
+                          config : {
+                              attributes: {
+                                  "label": ["数据项名称", "text"],
+                                  "name": {
+                                      label: "显示名称",
+                                      type: "text"
+                                  },
+                                  "unit": ["单位","text"],
+                                  "dataType": ["数据分类","text"],
+                                  "isNum": ["是否数值","text"],
+                                  "range": ["取值范围","text"]
+                              },
+                              grid: {
+                                  body: ["label", "name","unit","dataType","isNum","range"],
+                                  config: {
+                                      url: "sparePartUIService.getAllSpareParts",
+                                      parameter: 0,
+                                      showIndex: false,
+                                      showSelector: false,
+                                      showSearch: false
+                                  },
+                                  options: []
+                              }
+                          }
+                      }]
+                  },{
+                      type: "tab",
+                      label: "数据模板四",
+                      children: [{
+                          type : "table",
+                          config : {
+                              attributes: {
+                                  "label": ["数据项名称", "text"],
+                                  "name": {
+                                      label: "显示名称",
+                                      type: "text"
+                                  },
+                                  "unit": ["单位","text"],
+                                  "dataType": ["数据分类","text"],
+                                  "isNum": ["是否数值","text"],
+                                  "range": ["取值范围","text"]
+                              },
+                              grid: {
+                                  body: ["label", "name","unit","dataType","isNum","range"],
+                                  config: {
+                                      url: "sparePartUIService.getAllSpareParts",
+                                      parameter: 0,
+                                      showIndex: false,
+                                      showSelector: false,
+                                      showSearch: false
+                                  },
+                                  options: []
+                              }
+                          }
+                      }]
+                  }],
+              }]
+          }]
+        }]
+      }]
+    }
+  };
+</script>
+<style type="less">
+</style>

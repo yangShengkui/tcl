@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>普奥云平台</title>
+    <link rel="shortcut icon" href="../images/proudsmart_logo100.png" type="image/vnd.microsoft.icon">
+    <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <!--<link rel="stylesheet" href="css/common.css">-->
+    <!--<link rel="stylesheet" href="css/index.css">-->
+    <link rel="stylesheet" href="css/global.css">
+
+    <link rel="stylesheet" href="css/register.css">
+
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
+    <!-- Bootstrap 样式-->
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/admin-lte/AdminLTE.css">
+    <link rel="stylesheet" href="css/login.css">
+    <!-- Bootstrap dialog响应样式 -->
+    <link href="../node_modules/bootstrap3-dialog/dist/css/bootstrap-dialog.css" rel="stylesheet">
+    <style type="text/css">
+      @charset "UTF-8";
+      [ng\:cloak],
+      [ng-cloak],
+      [data-ng-cloak],
+      [x-ng-cloak],
+      .ng-cloak,
+      .x-ng-cloak,
+      .ng-hide {
+        display: none !important;
+      }
+      
+      ng\:form {
+        display: block;
+      }
+      
+      .ng-animate-start {
+        clip: rect(0, auto, auto, 0);
+        -ms-zoom: 1.0001;
+      }
+      
+      .ng-animate-active {
+        clip: rect(-1px, auto, auto, 0);
+        -ms-zoom: 1;
+      }
+      
+      #header_wrapper {
+        margin: 0 auto;
+        border-bottom: 1px solid #454545;
+        background-color: #226193;
+        height: 60px;
+      }
+      
+      .top_logo {
+        margin: 15px 0;
+        float: left;
+        width: 50%;
+      }
+      
+      .pos-r {
+        position: relative !important;
+      }
+    </style>
+  </head>
+
+  <body ng-controller="registerCtrl">
+    <div id="header">
+      <div class="header-layout" style="padding-left: 20px;padding-right: 20px;">
+        <a class="logo"><img src="images/logo.svg"></a>
+        <label class="logo-title">注册账号</label>
+        <div class="header-nav">
+          <span style="margin-top: 18px;"><a style="color: #444;" href="login.html">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a style="color: #444;" href="http://www.proudsmart.com">公司首页</a></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="page" style="padding-top: 0%;">
+      <div class="reg-main" style="padding-bottom: 30px;">
+        <div class="steps">
+          <span class="vader" id="barvader"></span>
+          <ol>
+            <li class="active"><em><i>1</i></em><span class="tsl" data-phase-id="r_p_createAccount">填写登录信息</span></li>
+            <li><em><i>2</i></em><span class="tsl" data-phase-id="r_p_fillUserInfo">完善账户信息</span></li>
+            <li><em><i class="iconfont">3</i></em><span class="tsl" data-phase-id="r_p_regSuc">注册成功</span></li>
+          </ol>
+        </div>
+        <div class="content" style="background-color:#ffffff;min-height:0px;">
+          <!--<form method="post" id="InfoForm">-->
+          <form role="form" name="formname" id="form">
+            <div id="one-step" ng-cloak ng-show="regShow == 1" class="box-body col-sm-9" style="margin-left: 15%;margin-top: 30px;">
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">手机号/邮箱</label>
+                <div class="col-sm-7">
+                  <input type="text" id="phone" name="phone" ng-class="{1:'error-boder',11:'error-boder',111:'error-boder',1003:'error-boder'}[emailOnly]" ng-model="formData.emailAddress" class="form-control" ng-change="modeCheck()" id="inputEmail3" placeholder="请输入手机号/邮箱">
+                  <div class="msg-cnt msg-type-error error-class" ng-cloak style="margin-top: 5px;" ng-show="emailOnly == 1003">输入的手机号/邮箱格式不对
+                  </div>
+                  <div class="msg-cnt msg-type-error error-class" ng-cloak style="margin-top: 5px;" ng-show="emailOnly == 11">手机号/邮箱不能为空</div>
+                  <div class="msg-cnt msg-type-error error-class" ng-cloak style="margin-top: 5px;" ng-show="emailOnly == 1">登录名已存在
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">登录密码</label>
+                <div class="col-sm-7">
+                  <input class="form-control" s-s="{{emailOnly}}" maxlength="20" ng-class="{'pass10':'error-boder','pass11':'error-boder'}[emailOnly]" ng-pattern="/^(?![\d]+$)(?![a-zA-Z]+$)(?![&lt@&#41!_+`~#&#40$%^&*&gt]+$)[\da-zA-Z&lt!&#41#_+`~&#40@$%^&&gt*]{6,20}$/" type="password" placeholder="6到20位 数字/字母/特殊字符两种以上组成" ng-blur="passCheck($event)" ng-model="formData.password" autocomplete="off" id="password" name="password" />
+                  <!-- 6到20位 由数字 字母 或特殊字符组成-->
+                  <div class="msg-cnt msg-type-error error-class" ng-cloak style="margin-top: 5px;" ng-show="emailOnly == 'pass10' ">密码不能为空</div>
+                  <div class="msg-cnt msg-type-error error-class" ng-cloak style="margin-top: 5px;" ng-show="formname.password.$error.pattern">
+                    6到20位 数字/字母/特殊字符两种以上组成
+                    <p></p>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">验证码</label>
+                <div class="col-sm-4">
+                  <input type="text" ng-model="identifyName" ng-class="{2:'error-boder','30001':'error-boder'}[emailOnly]" ng-blur="identCheck($event)" class="form-control" id="inputEmail3" placeholder="请输入验证码" />
+                  <div class="msg-type-error" ng-cloak ng-show="emailOnly == 2">
+                    验证码输入错误
+                  </div>
+                  <div class="msg-type-error" ng-cloak ng-show="emailOnly == 30001">
+                    验证码不能为空
+                  </div>
+                </div>
+                <button ng-show="phoneEmail == 1001" type="button" class="btn" style="background-color:#009FE9;border-color: #009FE9;color: #fff;" id="phoneCode" name="phoneCode" ng-click="phoneCode();">发送验证码</button>
+                <div ng-show="phoneEmail == 1002" style="padding: 0;" class="col-sm-5">
+                  <image style="height: 36px;cursor: pointer;" ng-click="blindClick();" ng-src="data:image/png;base64,{{imgCode}}" />
+                  <label style="cursor: pointer;" class="lab-txt" ng-click="blindClick();">换一张 </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" style="padding-right: 0;text-align: right;" class="col-sm-3 control-label"></label>
+                <div class="col-sm-7">
+                  <input ng-click="checkClick();" class="form-checkbox check-btn" id="regCheck" name="regCheck" type="checkbox" checked="checked" />
+                  <p class="p-txt">我同意并已阅读<label style="cursor: pointer;color: #009fe9;font-size: 15px;font-weight: 700;">《普奥云用户协议》 </label></p>
+                  <div class="msg-cnt msg-type-error " ng-cloak ng-show="emailOnly == 2099">
+                    您还未接受普奥云用户协议
+                  </div>
+                  <button ng-click="nextStep(2);" class="btn btn-block btn-primary btn-lg" style="background-color: #009fe9;border-color: #009fe9;margin-bottom: 20px;">下一步</button>
+                </div>
+              </div>
+              <!-- <div class="form-group">
+                            <label class="col-sm-3 control-label"></label>
+                            <div class="col-sm-7"><button  ng-click="nextStep(2);" class="btn btn-block btn-primary btn-lg" style="background-color: #009fe9;">下一步</button></div>
+                        </div> -->
+              <!-- <div class="form-group" style=" margin-top: -15px;">
+                            <div   ng-click="nextStep(2);" class="login-btn">
+                                <label style="margin-left: 30%;font-size: 18px;">下一步</label>
+                            </div>
+                        </div> -->
+            </div>
+            <div ng-cloak ng-show="regShow == 2" class="box-body col-sm-9" style="margin-left: 15%;margin-top: 20px;">
+              <div class="email-sent">
+                <div class="msg-hr">
+                  <h2><span class="tsl-tit" data-phase-id="r_2_mailSentTip">验证邮箱，完成注册</h2>
+                  <p class="txt-remark" data-phase-id="r_2_gotoMailTip">请登录<em class="msg-arr">{{formData.emailAddress}}</em>，点击激活链接完成注册，24小时内有效！</p>
+                  <div class="col-md-6" style="padding-left:0px !important;"><button ng-click="emailHref(formData.emailAddress);" class=" btn btn-block btn-primary">查收激活邮件</button></div>
+                </div>
+                <div class="email-sent-op" style="margin-left: 0%;">
+                  <div class="tsl-tit-email">没有收到邮件？</div>
+                  <div>是否在邮箱的垃圾邮件、广告邮件目录里 ？</div>
+                  <div>等几分钟还未收到验证邮件？
+                    <a id="emailBtn" name="emailBtn" ng-click="noEmail();" style="cursor: pointer;">重新发送邮件</a>
+                  </div>
+                  <div>邮箱填写错误？
+                    <a ng-click="renewal();" style="cursor: pointer;">更换邮箱</a>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div id="one-step" ng-cloak ng-show="regShow == 20000" class="box-body col-sm-9" style="margin-left: 15%;margin-top: 30px;">
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">用户名称</label>
+                <div class="col-sm-7">
+                  <input type="text" ng-blur="userCheck($event)" ng-class="{'01012':'error-boder'}[emailOnly]" ng-pattern="/^\d*([\u4e00-\u9fa5]|[a-zA-Z])+\d*$/" ng-model="formData.userName" maxlength="100" name="firstname" class="form-control" placeholder="请输入用户名称">
+                  <div class="msg-cnt msg-type-error error-class" ng-cloak style="margin-top: 5px;" ng-show="emailOnly == 01012">
+                    用户名称不能为空
+                  </div>
+                  <div class="msg-cnt msg-type-error error-class" ng-cloak style="margin-top: 5px;" ng-show="formname.firstname.$error.pattern">
+                    用户名称输入格式不对（例如：普奥2015、proudsamrt2015）
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">公司名称</label>
+                <div class="col-sm-7">
+                  <input name="companyName" maxlength="50" ng-model="formData.business" type="text" placeholder="请输入公司名称(选填)" class="form-control ">
+
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">联系地址</label>
+                <div class="col-sm-7">
+                  <input ng-model="formData.address" maxlength="100" name="city" value="" class="form-control" placeholder="请输入联系地址(选填)">
+
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label"></label>
+                <div class="col-sm-7" style="margin-bottom: 20px;"><button ng-click="phoneSumbit();" class="btn btn-block btn-primary btn-lg" style="background-color: #009fe9;">完成注册</button></div>
+              </div>
+              <!--   <div class="form-group">
+                            <div   ng-click="phoneSumbit();" class="login-btn">
+                                <label style="margin-left: 30%;font-size: 18px;">完成注册</label>
+                            </div>
+                        </div> -->
+            </div>
+            <!--  <div id="four-step" ng-cloak   ng-show="regShow == 4" style="background-color: #fff; width: 700px;  margin: 60px auto;" >
+                        <div class="msg-tit">
+                            <span class="msg-img"><img  src="img/register/success.png"/></span>
+                            <div  class="msg-content">
+                                <span class="msg-tit-weg">恭喜注册成功，您的账号为:</span>
+                                <span class="msg-tit-site">用户名称名称:<em  ng-bind="formData.emailAddress" class="msg-arr"></em>（登录之后显示的名称）</span>
+                                <span class="msg-tit-site">手机号/邮箱:<em  ng-bind="formData.userName"  class="msg-arr"></em>（可登录和使用以下网站：普奥云官网等）</span>
+                                <span class="msg-tit-site">5秒后返回原页面:<a  href="app/index.html" style="cursor: pointer;color: #009fe9;font-weight: 800;">返回首页</a></span>
+                            </div>
+                        </div>
+                    </div> -->
+            <div id="four-step" ng-cloak ng-show="regShow == 4" style="background-color: #fff; width: 700px;   margin: 60px auto;">
+              <div class="msg-tit">
+                <span class="msg-img"><img  src="images/success.png"/></span>
+                <div class="msg-content" style="padding-top:20px;">
+                  <span class="msg-tit-weg">您的用户账户已注册完成！</span>
+                  <span class="msg-tit-site">
+                                  <a href="index.html"  style="cursor: pointer;color: #009fe9;font-weight: 800;">欢迎使用普奥云</a><em id="sec" name="sec">5</em>秒后自动登录</span>
+                </div>
+              </div>
+            </div>
+            <div ng-cloak ng-show="regShow == 5" style="background-color: #fff; width: 700px;  margin: auto;">
+              <div>
+                <i class="fa fa-times-circle msg-type-error msg-error"></i> 激活链接已过期
+              </div>
+            </div>
+            <div ng-cloak ng-show="regShow == 6" style="background-color: #fff;">
+              <div style="text-align: center;">
+                <i class="fa fa-info-circle msg-success" style="font-size: 20px;"></i>
+                <span style="font-size: 15px;">对不起，该链接已失效</span>
+              </div>
+              <div style="margin-left: 42%;margin-top: 20px;">
+                <a class="btn btn-block btn-info btn-lg col-md-2" style=" color: #ffffff !important;width: 200px;" href="login.html">登录</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+    <div class="copyright-100">
+      <div class="y-row copyright" style="padding: 5% 0 40px;">
+        <p class="big">联系我们：<em style="margin-left: 15px;" class="copy-em">010 - 8414 8078</em>（北京）<em style=" margin-left: 20px;" class="copy-em">021 - 6882 8631</em>（上海）</p>
+        <p class="fine">© 2015 proudsmart.com 版权所有 鲁ICP备15033683号</p>
+      </div>
+    </div>
+
+    <script src="../node_modules/requirejs/require.js" data-main="js/main"></script>
+
+  </body>
+
+</html>

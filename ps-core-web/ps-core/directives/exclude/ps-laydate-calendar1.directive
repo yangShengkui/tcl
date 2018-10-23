@@ -1,0 +1,95 @@
+<config injector="$filter"
+></config>
+<template>
+    <div>
+      <input type="text"/>
+      <span style="color: red;font-size: 12px; margin-left: 10px;"></span>
+    </div>,
+</template>
+<script type="text/javascript">
+  "use strict";
+  import laydate from "layui-laydate";
+  export default function($filter){
+    return {
+      scope : {
+          ngModel: '=?',
+          config: '=?',
+
+      },
+      require : '?ngModel',
+      link(scope, element, attr, ngModel) {
+          //需要手动传入 path 不然找不到css路径
+          laydate.path = '../../node_modules/layui-laydate/dist/';
+          var $dom = element.find('input'),
+                  dom = $dom[0],
+                  $spa = element.find('span'),
+                  //格式转化
+                  formatDate = function (dates) {
+                      if(dates){
+                          return $filter('date')(new Date(dates[0].trim()), 'yyyy-MM-dd HH:mm:ss')+" - "+$filter('date')(new Date(dates[1].trim()), 'yyyy-MM-dd HH:mm:ss');//转为日期字符串
+                      }else {
+                          return '';
+                      }
+                  },
+                  defaultConfig = {
+                      placeholder: '---请选择---',
+                      // elem: dom,
+                      type: 'datetime',
+                      range: '-',
+                      format: 'yyyy-MM-dd HH:mm:ss',
+                      //value: '2018-08-02 00:00:00 ~ 2018-09-06 00:00:00',
+                      width: '320px',
+                      height: '30px',
+                      pos: 'center',
+                      trigger: 'click',//click触发
+                      done: function(value, date){
+                          if(!value) {
+                              return;
+                          }else {
+                              renderDom(value);
+//                                var arrDate = value.split(' - ');
+//                                if(new Date(arrDate[0]).getTime()>new Date(arrDate[1]).getTime()){
+//                                    $spa.text('*开始日期超出了结束日期，请重新选择');
+//                                    return;
+//                                }else {
+//                                    renderDom(value);
+//                                }
+                          }
+                      }
+                  };
+          scope.config = $.extend({},defaultConfig,scope.config || {});
+          dom.placeholder = scope.config.placeholder;
+          $dom.css({'width':scope.config.width,'height':scope.config.height,'text-align':scope.config.pos || 'center'});
+          scope.config["value"] = formatDate(scope.ngModel);
+          function renderDom(value) {
+              ngModel.$setViewValue(value);
+          };
+          laydate.render($.extend({},scope.config,{elem:dom}));//必须传入{elem:dom}
+          Array.prototype.push.call(ngModel.$parsers, function (n,o) {
+              if(!n){
+                  return;
+              }
+              var vals = n.split(" - ");
+              var arr = [];
+              arr.push(new Date(vals[0]));
+              arr.push(new Date(vals[1]));
+              return arr;
+          });
+          ngModel.$render = function (e) {//如果modelvalue改变 两条管道都走完 自动触发$render 因为默认$render空函数 则需要手动赋值
+              //最后渲染页面对文本输入框赋值
+              dom.value = ngModel.$viewValue || '';
+          }
+          
+      }
+    }
+  }
+</script>
+<style type="less" scoped="">
+    /*.wrap{*/
+        /*margin : 5px;*/
+        /*padding : 10px;*/
+        /*color : #333;*/
+        /*background-color : #eee;*/
+        /*border : 1px solid #ddd;*/
+    /*}*/
+</style>

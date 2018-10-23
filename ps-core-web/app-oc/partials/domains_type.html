@@ -1,0 +1,58 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+
+<!-- Main content -->
+<section class="content domain-type">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Application buttons -->
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active">
+                <a>管理域配置</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-footer">
+          <form class="form-inline margin-bottom-10">
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputAmount">请输入...</label>
+              <div class="input-group">
+                <div class="input-group-addon" style="border: none;">域名称 : </div>
+                <input type="text" class="form-control input-sm" ng-model="query" id="exampleInputAmount" style="width : 300px;" placeholder="请输入...">
+              </div>
+            </div>
+            <button class="btn btn-sm btn-primary" ng-click="startSearch();"><span class="glyphicon glyphicon-search"></span> 查询</button>
+          </form>
+          <!--<div class="col-md-12">
+            <form class="form-inline">
+              <div class="form-group">
+                <label class="control-label">域名称 : </label>
+              </div>
+              <div class="form-group">
+                <input class="form-control input-sm" maxlength="200" ng-model="query" placeholder="请输入..." style="width : 300px;">
+              </div>
+              <button class="btn btn-sm btn-primary" ng-click="startSearch();"><span class="glyphicon glyphicon-search"></span> 查询</button>
+            </form>
+          </div>-->
+          <div class="col-md-12" ng-if="!key">
+            <div class="tree">
+              <div tree-data class="tree-wrap" ng-model="treeData" data-add="add(event)" data-edit="edit(event)" data-user="user(event)" data-delete="delete(event)">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</section>
+<!-- /.content -->

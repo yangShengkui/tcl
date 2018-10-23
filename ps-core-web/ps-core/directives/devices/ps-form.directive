@@ -1,0 +1,58 @@
+<config injector="$timeout, psScope, ajax, $routeParams, psUltility"
+></config>
+<template>
+  <div>
+    <form ng-class="formcls(option)">
+      <ps-form-content data-option="op" ng-repeat="op in option.children">
+      </ps-form-content>
+    </form>
+  </div>
+</template>
+<script type="text/javascript">
+  import { each, attribute } from "ps-ultility";
+  export default function(timeout, psScope, ajax, routeParams, psUltility){
+    return {
+      restrict: 'E',
+      scope: {
+        option : "="
+      },
+      replace: true,
+      link: function (scope, element) {
+        let url, data;
+        psScope(scope);
+        if(url = scope.option.url){
+          ajax.post(url, routeParams["id"]).then(function(d){
+            each(scope.option.children, (n)=>{
+              n[psUltility.keyPattern(n["key"])] = attribute(d, n["key"]);
+            })
+          })
+        } else if(data = scope.option.data) {
+          each(scope.option.children, (n)=>{
+            n[psUltility.keyPattern(n["key"])] = attribute(data, n["key"]);
+          })
+        }
+        each(scope.option.children, (n)=>{
+          if(n.type === "input"){
+            n.config = n.config || {};
+            n.config.class = "bk-form-input"
+          }
+        })
+        scope.formcls = function(option){
+          return option.class || "";
+        }
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+  form {
+    width : 500px;
+  }
+  .form-center{
+    width : 60%;
+    margin : auto;
+  }
+  .bk-form-input{
+    width : ~'calc(100% - 12px)';
+  }
+</style>

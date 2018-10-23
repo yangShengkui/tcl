@@ -1,0 +1,56 @@
+{
+  "type": "relative",
+  "setting": {
+    "viewTitle": "六个竖着的人物title"
+  },
+  "data": [
+    {
+      "type": "title",
+      "attributes": {
+        "text": "张某某",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "蔡某某",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "刘某某",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "张某某",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "李某某",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "李某某",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    }
+  ]
+}

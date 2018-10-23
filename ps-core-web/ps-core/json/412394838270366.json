@@ -1,0 +1,40 @@
+{
+  "type": "relative",
+  "setting": {
+    "viewTitle": "产线"
+  },
+  "data": [
+    {
+      "type": "title",
+      "attributes": {
+        "text": "装配",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "差壳",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "减壳",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "齿轮",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    }
+  ]
+}

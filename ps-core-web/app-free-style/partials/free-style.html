@@ -1,0 +1,27 @@
+<section class="content" style="height: 100vh; overflow: auto; overflow-y: scroll;">
+  <!--
+  <div class="box-header">
+    <button class="btn btn-primary btn-sm" ng-click="exportImage();">保存图片</button>
+  </div>-->
+  <div id="export" class="row" style="position:relative;height : 100%;">
+    <div class="col-xs-12" style="height:100%">
+      <div ng-show="setting.showNavi">
+        <ul class="nav nav-tabs" role="tablist">
+          <li ng-repeat="nav in navigation" ng-class="{true:'active'}[$index == navigation.length - 1]">
+            <a ng-bind="nav.label" ng-click="naviClick(nav.link, nav.param)" style="cursor : pointer; font-weight:bold;"></a>
+          </li>
+        </ul>
+      </div>
+      <div id="free-board" class="whole row" ng-if="error==undefined" style="width:auto;">
+        <div class="col-md-12"
+             ng-class="setting.theme"
+             ng-style="setting.style"
+             instance = "$parent.instance"
+             f-board></div>
+      </div>
+      <div ng-if="error" style="padding:60px 30px; text-align: center;">
+        <span class="glyphicon glyphicon-warning-sign" style="color:orange;margin-right:30px;"></span><span ng-bind="error"></span>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,2960 @@
+{
+  "layout": {
+    "type": "column",
+    "children": [
+      {
+        "type": "row",
+        "children": [
+          {
+            "type": "column",
+            "col": 3,
+            "children": [
+              {
+                "label": "数据统计标签",
+                "type": "totalItem",
+                "source": "TOTALITEM",
+                "data": {
+                  "applied": true,
+                  "kpi": [
+                    3001
+                  ],
+                  "modelType": 300,
+                  "resfilltype": "parameter",
+                  "resource": [],
+                  "multipleCi": false,
+                  "multipleKpi": false,
+                  "series": {
+                    "manual": [
+                      {
+                        "data": [
+                          {
+                            "name": "模拟数据",
+                            "unit": "个",
+                            "value": "10"
+                          }
+                        ]
+                      }
+                    ],
+                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n  }\n  return source.ci.getSeries(formatter);\n})"
+                  },
+                  "modelDisable": true
+                },
+                "parameters": {
+                  "icon": {
+                    "id": "1",
+                    "perfix": "fa",
+                    "css": "fa-connectdevelop"
+                  }
+                },
+                "advance": {
+                  "getfunction": "kpiDataService.getValueList",
+                  "category": "ci",
+                  "condition": [
+                    "kpi",
+                    "{object:kpiQueryModel}"
+                  ],
+                  "expression": "{\n  on : {\n    click : function(event){\n      console.log(event);\n      event.tools.location.href='../../app-oc/index.html#/facility';\n    }\n  }\n}\n"
+                },
+                "style": {
+                  "color": "#fff",
+                  "background-color": "#25bce7",
+                  "margin": "5px"
+                },
+                "$index": [
+                  0,
+                  0
+                ],
+                "id": "MrGGiXda55KxraiykhnrdNs4fWPi7bbb"
+              }
+            ],
+            "id": "n2Fae5NRzbMZKEc7QEQ3nwximdaDRnez"
+          },
+          {
+            "type": "column",
+            "col": 3,
+            "children": [
+              {
+                "label": "数据统计标签",
+                "type": "totalItem",
+                "source": "TOTALITEM",
+                "data": {
+                  "applied": true,
+                  "resource": [],
+                  "modelDisable": true,
+                  "series": {
+                    "manual": [
+                      {
+                        "data": [
+                          {
+                            "name": "模拟数据",
+                            "unit": "个",
+                            "value": "10"
+                          }
+                        ]
+                      }
+                    ],
+                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                  },
+                  "model": {
+                    "id": 204
+                  },
+                  "kpi": [
+                    3002
+                  ],
+                  "multipleCi": false,
+                  "multipleKpi": false,
+                  "modelType": 300,
+                  "resfilltype": "parameter"
+                },
+                "parameters": {
+                  "icon": {
+                    "id": "3",
+                    "perfix": "fa",
+                    "css": "fa-edit"
+                  }
+                },
+                "advance": {
+                  "getfunction": "kpiDataService.getValueList",
+                  "category": "ci",
+                  "condition": [
+                    "kpi",
+                    "{object:kpiQueryModel}"
+                  ],
+                  "expression": "{\n  on : {\n    click : function(event){\n      console.log(event);\n      event.tools.location.href='../../app-oc/index.html#/gateways2';\n    }\n  }\n}"
+                },
+                "style": {
+                  "color": "#fff",
+                  "background-color": "#00b9b2",
+                  "margin": "5px"
+                },
+                "$index": [
+                  0,
+                  0
+                ],
+                "id": "kdhMxeX2CtkrwZtsbAm6dQKiR3KYP2sb"
+              }
+            ],
+            "id": "sZKyn6e2dh7EWRwGJErRMdQkYrG4ernn"
+          },
+          {
+            "type": "column",
+            "col": 3,
+            "children": [
+              {
+                "label": "数据统计标签",
+                "type": "totalItem",
+                "source": "TOTALITEM",
+                "data": {
+                  "applied": true,
+                  "resource": [],
+                  "modelDisable": true,
+                  "series": {
+                    "manual": [
+                      {
+                        "data": [
+                          {
+                            "name": "模拟数据",
+                            "unit": "条",
+                            "value": "10"
+                          }
+                        ]
+                      }
+                    ],
+                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                  },
+                  "model": {
+                    "id": 204
+                  },
+                  "kpi": [
+                    3003
+                  ],
+                  "multipleCi": false,
+                  "multipleKpi": false,
+                  "modelType": 300,
+                  "resfilltype": "parameter"
+                },
+                "parameters": {
+                  "icon": {
+                    "id": "2",
+                    "perfix": "fa",
+                    "css": "fa-warning"
+                  }
+                },
+                "advance": {
+                  "getfunction": "kpiDataService.getValueList",
+                  "category": "ci",
+                  "condition": [
+                    "kpi",
+                    "{object:kpiQueryModel}"
+                  ],
+                  "expression": "{\n  on : {\n    click : function(event){\n      console.log(event);\n      event.tools.location.href='../../app-oc/index.html#/configAlert/0/1,0,0,0';\n    }\n  }\n}"
+                },
+                "style": {
+                  "color": "#fff",
+                  "background-color": "#e7675d",
+                  "margin": "5px"
+                },
+                "$index": [
+                  0,
+                  0
+                ],
+                "id": "FaXWP7b7dAsknasCEJDtr4z8y6mFHryF"
+              }
+            ],
+            "id": "jz5K22rYMPkSXJW3aBHXHyipRGpi7TPf"
+          },
+          {
+            "type": "column",
+            "col": 3,
+            "children": [
+              {
+                "label": "数据统计标签",
+                "type": "totalItem",
+                "source": "TOTALITEM",
+                "data": {
+                  "applied": true,
+                  "resource": [],
+                  "modelDisable": true,
+                  "series": {
+                    "manual": [
+                      {
+                        "data": [
+                          {
+                            "name": "模拟数据",
+                            "unit": "%",
+                            "value": "10"
+                          }
+                        ]
+                      }
+                    ],
+                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                  },
+                  "model": {
+                    "id": 204
+                  },
+                  "kpi": [
+                    3004
+                  ],
+                  "multipleCi": false,
+                  "multipleKpi": false,
+                  "modelType": 300,
+                  "resfilltype": "parameter"
+                },
+                "parameters": {
+                  "icon": {
+                    "id": "5",
+                    "perfix": "fa",
+                    "css": "fa-user"
+                  }
+                },
+                "advance": {
+                  "getfunction": "kpiDataService.getValueList",
+                  "category": "ci",
+                  "condition": [
+                    "kpi",
+                    "{object:kpiQueryModel}"
+                  ],
+                  "expression": "{\n  on : {\n    click : function(event){\n      console.log(event);\n      event.tools.location.href='../../app-oc/index.html#/workorder';\n    }\n  }\n}"
+                },
+                "style": {
+                  "color": "#fff",
+                  "background-color": "#ebae0b",
+                  "margin": "5px"
+                },
+                "$index": [
+                  0,
+                  0
+                ],
+                "id": "ArJdJMkybFH87r562X2s8AJscSzTWKnT"
+              }
+            ],
+            "id": "ZYTXb6WNtcfbB7rnQxKTWSYnp3SYxsdm"
+          }
+        ],
+        "source": "ROW",
+        "parameters": {
+          "alignment": "bootstrap"
+        },
+        "style": {},
+        "id": "WHcfhFT66cYjj8i3H5QKt2ZSQyfnwtf4"
+      },
+      {
+        "type": "box",
+        "source": "BOX",
+        "label": "控制板2",
+        "class": "box box-info",
+        "children": [
+          {
+            "type": "box-body",
+            "children": [
+              {
+                "type": "column",
+                "col": 8,
+                "children": [
+                  {
+                    "label": "线图",
+                    "type": "echart",
+                    "source": "LINECHART",
+                    "data": {
+                      "applied": true,
+                      "model": {
+                        "id": 204
+                      },
+                      "kpi": [
+                        3006,
+                        3007,
+                        3008,
+                        3009
+                      ],
+                      "resource": [],
+                      "timespan": {
+                        "value": 168,
+                        "unit": "hour"
+                      },
+                      "format": "年月日",
+                      "frequency": {
+                        "value": 86400,
+                        "unit": "second"
+                      },
+                      "legend": {
+                        "manual": [
+                          "第一组",
+                          "第二组",
+                          "第三组"
+                        ],
+                        "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+                      },
+                      "xAxis": {
+                        "manual": [
+                          [
+                            "2016/6/1",
+                            "2016/6/2",
+                            "2016/6/3",
+                            "2016/6/4",
+                            "2016/6/5",
+                            "2016/6/6",
+                            "2016/6/7"
+                          ]
+                        ],
+                        "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+                      },
+                      "xAxisType": "category",
+                      "yAxis": {
+                        "manual": [
+                          [
+                            "第一个数据",
+                            "第二个数据",
+                            "第三个数据",
+                            "第四个数据",
+                            "第五个数据",
+                            "第六个数据"
+                          ]
+                        ],
+                        "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+                      },
+                      "yAxisType": "value",
+                      "series": {
+                        "manual": {
+                          "0": {
+                            "name": "设备-指标0",
+                            "data": [
+                              "22",
+                              "10",
+                              "5",
+                              "10",
+                              "4",
+                              "8",
+                              "3"
+                            ]
+                          }
+                        },
+                        "bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+                      },
+                      "modelDisable": true,
+                      "aggregate_instance": [],
+                      "aggregate_period": 15,
+                      "aggregate_type": [
+                        1
+                      ],
+                      "modelType": 300,
+                      "resfilltype": "parameter",
+                      "aggregate_rule": 0,
+                      "autoFillBlank": true,
+                      "grid": [
+                        {}
+                      ]
+                    },
+                    "advance": {
+                      "getfunction": "kpiDataService.getValueList",
+                      "category": "time",
+                      "condition": [
+                        "kpi",
+                        "{object:kpiQueryModel}"
+                      ],
+                      "variable": "",
+                      "custom_category": "",
+                      "expression": {}
+                    },
+                    "parameters": {
+                      "title": "",
+                      "subtitle": ""
+                    },
+                    "style": {
+                      "margin": "auto",
+                      "width": "100%",
+                      "height": "300px"
+                    },
+                    "echart": {
+                      "general": {},
+                      "title": {
+                        "textStyle": {
+                          "fontWeight": "bold",
+                          "fontSize": 16
+                        },
+                        "padding": 30
+                      },
+                      "tooltip": {
+                        "trigger": "axis"
+                      },
+                      "legend": {
+                        "data": [
+                          "数据1",
+                          "数据2",
+                          "数据3"
+                        ]
+                      },
+                      "grid": [
+                        {}
+                      ],
+                      "xAxis": [
+                        {
+                          "boundaryGap": false,
+                          "axisLine": {
+                            "lineStyle": {
+                              "color": "#b0b0b0"
+                            }
+                          }
+                        }
+                      ],
+                      "yAxis": [
+                        {
+                          "boundaryGap": false,
+                          "axisLine": {
+                            "lineStyle": {
+                              "color": "#b0b0b0"
+                            }
+                          }
+                        }
+                      ],
+                      "series": [
+                        {
+                          "type": "line",
+                          "name": "数据1",
+                          "lineStyle": {
+                            "normal": {
+                              "color": ""
+                            }
+                          },
+                          "markPoint": {
+                            "data": []
+                          }
+                        },
+                        {
+                          "type": "line",
+                          "name": "数据2",
+                          "markPoint": {
+                            "data": [
+                              {
+                                "name": "最大值",
+                                "type": "max"
+                              },
+                              {
+                                "name": "最小值",
+                                "type": "min"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "type": "line",
+                          "name": "数据3",
+                          "markPoint": {
+                            "data": [
+                              {
+                                "name": "最大值",
+                                "type": "max"
+                              },
+                              {
+                                "name": "最小值",
+                                "type": "min"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    "$index": [
+                      4,
+                      5
+                    ],
+                    "help": "../app-free-style/index.html#/help/index%7Cechart/%5B%220%22,%7B%7D%5D",
+                    "template": [
+                      {
+                        "label": "基础线图",
+                        "type": "image",
+                        "url": "images/line/line1.png",
+                        "style": {
+                          "margin": "auto",
+                          "width": "100%",
+                          "height": "300px"
+                        },
+                        "echart": {
+                          "general": {},
+                          "title": {
+                            "padding": 30,
+                            "text": "草莓大棚温度变化",
+                            "textStyle": {
+                              "fontWeight": "bold",
+                              "fontSize": 16
+                            }
+                          },
+                          "toolbox": {},
+                          "legend": {
+                            "data": [
+                              "数据1",
+                              "数据2",
+                              "数据3"
+                            ]
+                          },
+                          "grid": [
+                            {}
+                          ],
+                          "tooltip": {
+                            "trigger": "axis"
+                          },
+                          "xAxis": [
+                            {
+                              "type": "category",
+                              "boundaryGap": false,
+                              "axisLine": {
+                                "lineStyle": {
+                                  "color": "#b0b0b0",
+                                  "width": 1
+                                }
+                              },
+                              "splitLine": {
+                                "lineStyle": {
+                                  "color": "rgb(239, 239, 239)",
+                                  "width": 1
+                                }
+                              }
+                            }
+                          ],
+                          "yAxis": [
+                            {
+                              "show": true,
+                              "max": "auto",
+                              "min": "auto",
+                              "type": "value",
+                              "boundaryGap": false,
+                              "axisLine": {
+                                "lineStyle": {
+                                  "color": "#b0b0b0",
+                                  "width": 1
+                                }
+                              },
+                              "splitLine": {
+                                "lineStyle": {
+                                  "color": "rgb(239, 239, 239)",
+                                  "width": 1
+                                }
+                              },
+                              "axisLabel": {
+                                "show": true,
+                                "textStyle": {}
+                              },
+                              "axisTick": {
+                                "show": true,
+                                "lineStyle": {}
+                              }
+                            }
+                          ],
+                          "series": [
+                            {
+                              "name": "数据1",
+                              "type": "line",
+                              "markPoint": {
+                                "data": [
+                                  {
+                                    "name": "最大值",
+                                    "type": "max"
+                                  },
+                                  {
+                                    "name": "最小值",
+                                    "type": "min"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "name": "数据2",
+                              "type": "line",
+                              "markPoint": {
+                                "data": [
+                                  {
+                                    "name": "最大值",
+                                    "type": "max"
+                                  },
+                                  {
+                                    "name": "最小值",
+                                    "type": "min"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "name": "数据3",
+                              "type": "line",
+                              "markPoint": {
+                                "data": [
+                                  {
+                                    "name": "最大值",
+                                    "type": "max"
+                                  },
+                                  {
+                                    "name": "最小值",
+                                    "type": "min"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "label": "堆积线图",
+                        "type": "image",
+                        "url": "images/line/line2.png",
+                        "style": {
+                          "margin": "auto",
+                          "width": "100%",
+                          "height": "300px"
+                        },
+                        "echart": {
+                          "general": {},
+                          "title": {},
+                          "legend": {
+                            "data": [
+                              "数据1",
+                              "数据2",
+                              "数据3"
+                            ]
+                          },
+                          "grid": [
+                            {}
+                          ],
+                          "xAxis": [
+                            {
+                              "boundaryGap": false,
+                              "type": "category"
+                            }
+                          ],
+                          "yAxis": [
+                            {
+                              "type": "value"
+                            }
+                          ],
+                          "series": [
+                            {
+                              "stack": "总量",
+                              "name": "数据1",
+                              "type": "line"
+                            },
+                            {
+                              "stack": "总量",
+                              "name": "数据2",
+                              "type": "line"
+                            }
+                          ],
+                          "toolbox": {},
+                          "tooltip": {}
+                        }
+                      },
+                      {
+                        "label": "对数轴",
+                        "type": "image",
+                        "url": "images/line/line3.png",
+                        "style": {
+                          "margin": "auto",
+                          "width": "100%",
+                          "height": "300px"
+                        },
+                        "echart": {
+                          "general": {},
+                          "title": {},
+                          "legend": {
+                            "data": [
+                              "数据1",
+                              "数据2",
+                              "数据3"
+                            ]
+                          },
+                          "grid": [
+                            {}
+                          ],
+                          "xAxis": [
+                            {
+                              "boundaryGap": false,
+                              "type": "category"
+                            }
+                          ],
+                          "yAxis": [
+                            {
+                              "type": "log"
+                            }
+                          ],
+                          "series": [
+                            {
+                              "name": "数据1",
+                              "type": "line"
+                            },
+                            {
+                              "name": "数据2",
+                              "type": "line"
+                            },
+                            {
+                              "name": "数据3",
+                              "type": "line"
+                            }
+                          ],
+                          "toolbox": {},
+                          "tooltip": {}
+                        }
+                      },
+                      {
+                        "label": "面积线图",
+                        "type": "image",
+                        "url": "images/line/line4.png",
+                        "style": {
+                          "margin": "auto",
+                          "width": "100%",
+                          "height": "300px"
+                        },
+                        "echart": {
+                          "general": {},
+                          "title": {
+                            "padding": 30,
+                            "text": "草莓大棚温度变化",
+                            "textStyle": {
+                              "fontWeight": "bold",
+                              "fontSize": 16
+                            }
+                          },
+                          "toolbox": {},
+                          "tooltip": {
+                            "trigger": "axis"
+                          },
+                          "legend": {
+                            "data": [
+                              "数据1",
+                              "数据2",
+                              "数据3"
+                            ]
+                          },
+                          "xAxis": [
+                            {
+                              "type": "category",
+                              "boundaryGap": false,
+                              "axisLine": {
+                                "lineStyle": {
+                                  "color": "#b0b0b0",
+                                  "width": 1
+                                }
+                              },
+                              "splitLine": {
+                                "lineStyle": {
+                                  "color": "rgb(239, 239, 239)",
+                                  "width": 1
+                                }
+                              }
+                            }
+                          ],
+                          "yAxis": [
+                            {
+                              "show": true,
+                              "max": "auto",
+                              "min": "auto",
+                              "type": "value",
+                              "boundaryGap": false,
+                              "axisLine": {
+                                "lineStyle": {
+                                  "color": "#b0b0b0",
+                                  "width": 1
+                                }
+                              },
+                              "splitLine": {
+                                "lineStyle": {
+                                  "color": "rgb(239, 239, 239)",
+                                  "width": 1
+                                }
+                              },
+                              "axisLabel": {
+                                "show": true,
+                                "textStyle": {}
+                              },
+                              "axisTick": {
+                                "show": true,
+                                "lineStyle": {}
+                              }
+                            }
+                          ],
+                          "series": [
+                            {
+                              "name": "数据1",
+                              "type": "line",
+                              "areaStyle": {
+                                "normal": {
+                                  "show": true
+                                }
+                              }
+                            },
+                            {
+                              "name": "数据2",
+                              "type": "line",
+                              "areaStyle": {
+                                "normal": {
+                                  "show": true
+                                }
+                              }
+                            },
+                            {
+                              "name": "数据3",
+                              "type": "line",
+                              "areaStyle": {
+                                "normal": {
+                                  "show": true
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "label": "面堆积线图",
+                        "type": "image",
+                        "url": "images/line/line5.png",
+                        "style": {
+                          "margin": "auto",
+                          "width": "100%",
+                          "height": "300px"
+                        },
+                        "echart": {
+                          "general": {},
+                          "title": {
+                            "padding": 30,
+                            "text": "草莓大棚温度变化",
+                            "textStyle": {
+                              "fontWeight": "bold",
+                              "fontSize": 16
+                            }
+                          },
+                          "toolbox": {},
+                          "tooltip": {
+                            "trigger": "axis"
+                          },
+                          "legend": {
+                            "data": [
+                              "数据1",
+                              "数据2",
+                              "数据3"
+                            ]
+                          },
+                          "grid": [
+                            {}
+                          ],
+                          "xAxis": [
+                            {
+                              "type": "category",
+                              "boundaryGap": false,
+                              "axisLine": {
+                                "lineStyle": {
+                                  "color": "#b0b0b0",
+                                  "width": 1
+                                }
+                              },
+                              "splitLine": {
+                                "lineStyle": {
+                                  "color": "rgb(239, 239, 239)",
+                                  "width": 1
+                                }
+                              }
+                            }
+                          ],
+                          "yAxis": [
+                            {
+                              "show": true,
+                              "max": "auto",
+                              "min": "auto",
+                              "type": "value",
+                              "boundaryGap": false,
+                              "axisLine": {
+                                "lineStyle": {
+                                  "color": "#b0b0b0",
+                                  "width": 1
+                                }
+                              },
+                              "splitLine": {
+                                "lineStyle": {
+                                  "color": "rgb(239, 239, 239)",
+                                  "width": 1
+                                }
+                              },
+                              "axisLabel": {
+                                "show": true,
+                                "textStyle": {}
+                              },
+                              "axisTick": {
+                                "show": true,
+                                "lineStyle": {}
+                              }
+                            }
+                          ],
+                          "series": [
+                            {
+                              "stack": "总量",
+                              "name": "数据1",
+                              "type": "line",
+                              "areaStyle": {
+                                "normal": {
+                                  "show": true
+                                }
+                              }
+                            },
+                            {
+                              "stack": "总量",
+                              "name": "数据2",
+                              "type": "line",
+                              "areaStyle": {
+                                "normal": {
+                                  "show": true
+                                }
+                              }
+                            },
+                            {
+                              "stack": "总量",
+                              "name": "数据3",
+                              "type": "line",
+                              "areaStyle": {
+                                "normal": {
+                                  "show": true
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "label": "双坐标轴图",
+                        "type": "image",
+                        "url": "images/line/line6.png",
+                        "style": {
+                          "margin": "auto",
+                          "width": "100%",
+                          "height": "600px"
+                        },
+                        "echart": {
+                          "general": {},
+                          "title": {
+                            "padding": 30,
+                            "text": "草莓大棚温度变化",
+                            "textStyle": {
+                              "fontWeight": "bold",
+                              "fontSize": 16
+                            }
+                          },
+                          "legend": {
+                            "data": [
+                              "数据1",
+                              "数据2",
+                              "数据3"
+                            ]
+                          },
+                          "grid": [
+                            {
+                              "left": 50,
+                              "right": 50,
+                              "height": "35%"
+                            },
+                            {
+                              "left": 50,
+                              "right": 50,
+                              "top": "55%",
+                              "height": "35%"
+                            }
+                          ],
+                          "toolbox": {},
+                          "tooltip": {
+                            "trigger": "axis"
+                          },
+                          "xAxis": [
+                            {
+                              "type": "category",
+                              "boundaryGap": false
+                            },
+                            {
+                              "gridIndex": 1,
+                              "type": "category",
+                              "boundaryGap": false,
+                              "position": "top"
+                            }
+                          ],
+                          "yAxis": [
+                            {
+                              "name": "流量(m^3/s)",
+                              "type": "value"
+                            },
+                            {
+                              "gridIndex": 1,
+                              "name": "降雨量(mm)",
+                              "type": "value",
+                              "inverse": true
+                            }
+                          ],
+                          "series": [
+                            {
+                              "name": "数据1",
+                              "type": "line",
+                              "symbolSize": 16
+                            },
+                            {
+                              "name": "数据2",
+                              "type": "line",
+                              "xAxisIndex": 1,
+                              "yAxisIndex": 1,
+                              "symbolSize": 16
+                            },
+                            {
+                              "name": "数据3",
+                              "type": "line",
+                              "xAxisIndex": 1,
+                              "yAxisIndex": 1,
+                              "symbolSize": 16
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "id": "68pn8S5z2Thyn3QM7tCFJJiMjDmr4Gzy",
+                    "resource_time": {}
+                  }
+                ],
+                "id": "8bn7esCPfxDGmxWAYKCTnRJDMtyT7FiK"
+              },
+              {
+                "type": "column",
+                "col": 4,
+                "children": [
+                  {
+                    "type": "row",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "文字",
+                            "type": "text",
+                            "source": "TEXT",
+                            "data": {
+                              "applied": false,
+                              "model": {
+                                "id": 204
+                              },
+                              "resource": [],
+                              "modelDisable": false,
+                              "series": {
+                                "manual": "处理情况",
+                                "bind": "(function (source){\n  return source.getSeries();\n})"
+                              },
+                              "multipleCi": false,
+                              "multipleKpi": false,
+                              "modelType": 300,
+                              "resfilltype": "parameter"
+                            },
+                            "style": {
+                              "margin": "5px auto",
+                              "padding": "0",
+                              "font-size": "14px",
+                              "font-weight": "bold",
+                              "border-width": "0px",
+                              "color": "#333",
+                              "text-align": "center"
+                            },
+                            "advance": {
+                              "getfunction": "kpiDataService.getValueList",
+                              "category": "ci",
+                              "condition": [
+                                "kpi",
+                                "{object:kpiQueryModel}"
+                              ],
+                              "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"新建文字\")\n        }\n    }\n}"
+                            },
+                            "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                            "template": [
+                              {
+                                "type": "text",
+                                "style": {
+                                  "margin": "auto",
+                                  "padding": "0",
+                                  "font-size": "10px",
+                                  "font-weight": "bold",
+                                  "color": "#333"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "style": {
+                                  "margin": "auto",
+                                  "padding": "0",
+                                  "font-size": "16px",
+                                  "font-weight": "bold",
+                                  "color": "#666",
+                                  "text-align": "center"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "style": {
+                                  "width": "60px",
+                                  "height": "60px",
+                                  "margin": "auto",
+                                  "padding": "0",
+                                  "font-size": "12px",
+                                  "line-height": "60px",
+                                  "font-weight": "bold",
+                                  "color": "#fff",
+                                  "text-align": "center",
+                                  "border-radius": "50%",
+                                  "background-color": "#3c8dbc"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "style": {
+                                  "width": "140px",
+                                  "height": "60px",
+                                  "margin": "auto",
+                                  "padding": "0",
+                                  "font-size": "12px",
+                                  "line-height": "60px",
+                                  "font-weight": "bold",
+                                  "color": "#fff",
+                                  "text-align": "center",
+                                  "border-radius": "4px",
+                                  "background-color": "#3c8dbc"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "style": {
+                                  "width": "140px",
+                                  "height": "60px",
+                                  "margin": "auto",
+                                  "padding": "0",
+                                  "font-size": "12px",
+                                  "line-height": "60px",
+                                  "font-weight": "bold",
+                                  "color": "#444",
+                                  "text-align": "center",
+                                  "border-radius": "4px",
+                                  "background-color": "#eee"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "style": {
+                                  "margin": "auto",
+                                  "padding": "5px",
+                                  "font-size": "18px",
+                                  "font-weight": "bold",
+                                  "color": "#444",
+                                  "text-align": "center",
+                                  "border-radius": "0px",
+                                  "background-color": "#eee"
+                                }
+                              }
+                            ],
+                            "id": "bnwNZ8kbTdnjKtjdSH3MEFarKyfQTHR7"
+                          },
+                          {
+                            "label": "百分比状态条",
+                            "type": "progress",
+                            "source": "PROGRESS",
+                            "data": {
+                              "applied": true,
+                              "kpi": [
+                                100002
+                              ],
+                              "modelType": 300,
+                              "resfilltype": "parameter",
+                              "resource": [],
+                              "multipleCi": false,
+                              "multipleKpi": false,
+                              "series": {
+                                "manual": [
+                                  {
+                                    "data": [
+                                      {
+                                        "name": "(模拟数据)",
+                                        "value": 20
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                              },
+                              "modelDisable": true
+                            },
+                            "advance": {
+                              "category": "ci",
+                              "condition": [
+                                "kpi",
+                                "{object:kpiQueryModel}"
+                              ],
+                              "getfunction": "kpiDataService.getValueList",
+                              "expression": ""
+                            },
+                            "$index": [
+                              1,
+                              0
+                            ],
+                            "id": "fR8HHBF6DNK5RGYXF7EEBjtrtQQYizsT"
+                          },
+                          {
+                            "label": "百分比状态条",
+                            "type": "progress",
+                            "source": "PROGRESS",
+                            "data": {
+                              "applied": true,
+                              "resource": [],
+                              "modelDisable": true,
+                              "series": {
+                                "manual": [
+                                  {
+                                    "data": [
+                                      {
+                                        "name": "(模拟数据)",
+                                        "value": 20
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                              },
+                              "model": {
+                                "id": 204
+                              },
+                              "maxKpi": 1,
+                              "kpi": [
+                                3020
+                              ],
+                              "multipleCi": false,
+                              "multipleKpi": false,
+                              "modelType": 300,
+                              "resfilltype": "parameter"
+                            },
+                            "advance": {
+                              "category": "ci",
+                              "condition": [
+                                "kpi",
+                                "{object:kpiQueryModel}"
+                              ],
+                              "getfunction": "kpiDataService.getValueList",
+                              "expression": ""
+                            },
+                            "id": "C2xGff6KZi5rYSZZZs5Php2HYCX6DdA4"
+                          }
+                        ],
+                        "id": "xRb4AHXQp8fjXkihW2bkfjhkGRJhmeWN"
+                      }
+                    ],
+                    "source": "ROW",
+                    "parameters": {
+                      "alignment": "bootstrap"
+                    },
+                    "style": {},
+                    "id": "QdePtPajrDACmd43JkWAHZwMEkDjDpDx"
+                  }
+                ],
+                "id": "YSjWENt7NQbawxKphk2JhdAxidYSJrND"
+              }
+            ],
+            "class": "box-body",
+            "id": "GiKfQzxbKEAwcFtZRhrrnPMNCcd6ka3r"
+          },
+          {
+            "type": "box-footer",
+            "children": [
+              {
+                "type": "column",
+                "col": 3,
+                "children": [
+                  {
+                    "type": "row",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "环比标签",
+                            "type": "downTab",
+                            "source": "DOWNTAB",
+                            "data": {
+                              "applied": true,
+                              "model": {
+                                "id": 300
+                              },
+                              "kpi": [
+                                2005
+                              ],
+                              "resource": [],
+                              "multipleCi": false,
+                              "multipleKpi": false,
+                              "series": {
+                                "manual": [
+                                  {
+                                    "name": "指标",
+                                    "data": [
+                                      60,
+                                      70,
+                                      80,
+                                      90,
+                                      100
+                                    ]
+                                  }
+                                ],
+                                "bind": "(function (source){\n  return source.time.getSeries();\n})"
+                              },
+                              "modelDisable": true,
+                              "modelType": 0,
+                              "resfilltype": "manual"
+                            },
+                            "$index": [
+                              0,
+                              0
+                            ],
+                            "id": "EMM6KeG3xxQ3jdXC734ZZN67bS8ssd3Q"
+                          }
+                        ],
+                        "id": "3bt4KG3kmEQF7B3ce2mz3jzGmNjtFwwW"
+                      }
+                    ],
+                    "source": "ROW",
+                    "parameters": {
+                      "alignment": "bootstrap"
+                    },
+                    "style": {},
+                    "id": "7pJZDARPer6JZZhey25Kt7rhFPzT2Ci3"
+                  }
+                ],
+                "id": "spcFBP53T7z2nQ7cPZ2iGZfW43hw8i4J"
+              },
+              {
+                "type": "column",
+                "col": 3,
+                "children": [
+                  {
+                    "type": "row",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "环比标签",
+                            "type": "downTab",
+                            "source": "DOWNTAB",
+                            "data": {
+                              "applied": true,
+                              "model": {
+                                "id": 300
+                              },
+                              "kpi": [
+                                2006
+                              ],
+                              "resource": [],
+                              "multipleCi": false,
+                              "multipleKpi": false,
+                              "series": {
+                                "manual": [
+                                  {
+                                    "name": "指标",
+                                    "data": [
+                                      60,
+                                      70,
+                                      80,
+                                      90,
+                                      100
+                                    ]
+                                  }
+                                ],
+                                "bind": "(function (source){\n  return source.time.getSeries();\n})"
+                              },
+                              "modelDisable": true,
+                              "modelType": 0,
+                              "resfilltype": "manual"
+                            },
+                            "$index": [
+                              0,
+                              0
+                            ],
+                            "id": "pD6N8wZciNzCA4YSJKDGc3R3sxJNrkr8"
+                          }
+                        ],
+                        "id": "kEdNmphRFsKPf2kEfD2P8WYAmWbxGDc8"
+                      }
+                    ],
+                    "source": "ROW",
+                    "parameters": {
+                      "alignment": "bootstrap"
+                    },
+                    "style": {},
+                    "id": "aQKZaayfBkySSZyAFkFAdGnh6w8TmrTD"
+                  }
+                ],
+                "id": "HH6b2SnhZpKeTYZzcTmySKePSaD8PKyi"
+              },
+              {
+                "type": "column",
+                "col": 3,
+                "children": [
+                  {
+                    "type": "row",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "环比标签",
+                            "type": "downTab",
+                            "source": "DOWNTAB",
+                            "data": {
+                              "applied": true,
+                              "model": {
+                                "id": 300
+                              },
+                              "kpi": [
+                                2007
+                              ],
+                              "resource": [],
+                              "multipleCi": false,
+                              "multipleKpi": false,
+                              "series": {
+                                "manual": [
+                                  {
+                                    "name": "指标",
+                                    "data": [
+                                      60,
+                                      70,
+                                      80,
+                                      90,
+                                      100
+                                    ]
+                                  }
+                                ],
+                                "bind": "(function (source){\n  return source.time.getSeries();\n})"
+                              },
+                              "modelDisable": true,
+                              "modelType": 0,
+                              "resfilltype": "manual"
+                            },
+                            "$index": [
+                              0,
+                              0
+                            ],
+                            "id": "PTjYf4hXkkR4YXnNJSnCahdQyBK8iZfp"
+                          }
+                        ],
+                        "id": "Nb3zYpxyyEbMDC7aJtCjJ4PpcTHz7pFT"
+                      }
+                    ],
+                    "source": "ROW",
+                    "parameters": {
+                      "alignment": "bootstrap"
+                    },
+                    "style": {},
+                    "id": "Q2QTpPMhpa4x2wzYk5SSxJTBBR8WjSjX"
+                  }
+                ],
+                "id": "AeZW2JNw6C2ceS4tAGEM5zsRBYscn5Ab"
+              },
+              {
+                "type": "column",
+                "col": 3,
+                "children": [
+                  {
+                    "type": "row",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "环比标签",
+                            "type": "downTab",
+                            "source": "DOWNTAB",
+                            "data": {
+                              "applied": true,
+                              "model": {
+                                "id": 300
+                              },
+                              "kpi": [
+                                2007
+                              ],
+                              "resource": [],
+                              "multipleCi": false,
+                              "multipleKpi": false,
+                              "series": {
+                                "manual": [
+                                  {
+                                    "name": "指标",
+                                    "data": [
+                                      60,
+                                      70,
+                                      80,
+                                      90,
+                                      100
+                                    ]
+                                  }
+                                ],
+                                "bind": "(function (source){\n  return source.time.getSeries();\n})"
+                              },
+                              "modelDisable": true,
+                              "modelType": 0,
+                              "resfilltype": "manual"
+                            },
+                            "$index": [
+                              0,
+                              0
+                            ],
+                            "id": "2jpfNdrB4YTKFQASKEJFb3ZNGHC3PMim"
+                          }
+                        ],
+                        "id": "fFw3xXpnHPpdtRRix7nhijyt4F2H6GQE"
+                      }
+                    ],
+                    "source": "ROW",
+                    "parameters": {
+                      "alignment": "bootstrap"
+                    },
+                    "style": {},
+                    "id": "w3zrxeBjDfM2RNwzCeSejyE8G7nSdKTT"
+                  }
+                ],
+                "id": "MkyWh7B3XBmfGAZrnNzwQ757GizQnxwN"
+              }
+            ],
+            "class": "box-footer",
+            "id": "4w5nEpCTwjrJbCnJSZ7RNbGnTjbwXz5e"
+          }
+        ],
+        "parameters": {
+          "title": "最近一周告警情况"
+        },
+        "style": {
+          "font-size": "12px",
+          "font-weight": "bold",
+          "text-align": "left",
+          "margin": "5px"
+        }
+      },
+      {
+        "type": "row",
+        "children": [
+          {
+            "type": "column",
+            "children": [
+              {
+                "type": "box",
+                "class": "box box-info",
+                "source": "BOX",
+                "label": "控制板2",
+                "children": [
+                  {
+                    "type": "box-body",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 8,
+                        "children": [
+                          {
+                            "type": "echart",
+                            "source": "BMAP",
+                            "data": {
+                              "applied": true,
+                              "resource": [],
+                              "modelDisable": true,
+                              "series": {
+                                "bind": "(function (source){\n  return source.scatter.getSeries();\n})",
+                                "manual": []
+                              },
+                              "modelType": 0,
+                              "resfilltype": "manual"
+                            },
+                            "children": [],
+                            "label": "地图分布1",
+                            "advance": {
+                              "getfunction": "resourceUIService.statDeviceByStandardAddress",
+                              "category": "scatter",
+                              "condition": [],
+                              "expression": "{}"
+                            },
+                            "parameters": {
+                              "title": "",
+                              "subtitle": ""
+                            },
+                            "style": {
+                              "margin": "auto",
+                              "width": "100%",
+                              "height": "450px"
+                            },
+                            "echart": {
+                              "general": {},
+                              "title": {
+                                "padding": 30,
+                                "text": "地图",
+                                "textStyle": {
+                                  "fontWeight": "bold",
+                                  "fontSize": 16
+                                }
+                              },
+                              "tooltip": {
+                                "trigger": "item"
+                              },
+                              "grid": [
+                                {}
+                              ],
+                              "series": [
+                                {
+                                  "type": "scatter",
+                                  "name": "设备分布",
+                                  "itemStyle": {
+                                    "normal": {
+                                      "color": "#ffcc00",
+                                      "opacity": 1
+                                    }
+                                  },
+                                  "symbol": "circle",
+                                  "symbolSize": "(function(value){\n var val = 10 + value[2];\n return val > 30 ? 30 : val;\n})",
+                                  "coordinateSystem": "bmap",
+                                  "label": {
+                                    "normal": {
+                                      "formatter": "(function(value){\n return 'asd'; \n})"
+                                    }
+                                  }
+                                }
+                              ],
+                              "bmap": {
+                                "center": [
+                                  107.114129,
+                                  34.550339
+                                ],
+                                "zoom": 5,
+                                "roam": true,
+                                "mapStyle": {
+                                  "styleJson": [
+                                    {
+                                      "featureType": "water",
+                                      "elementType": "all",
+                                      "stylers": {
+                                        "color": "#044161"
+                                      }
+                                    },
+                                    {
+                                      "featureType": "land",
+                                      "elementType": "all",
+                                      "stylers": {
+                                        "color": "#004981"
+                                      }
+                                    },
+                                    {
+                                      "featureType": "boundary",
+                                      "elementType": "geometry",
+                                      "stylers": {
+                                        "color": "#064f85"
+                                      }
+                                    },
+                                    {
+                                      "featureType": "railway",
+                                      "elementType": "all",
+                                      "stylers": {
+                                        "visibility": "off"
+                                      }
+                                    },
+                                    {
+                                      "featureType": "highway",
+                                      "elementType": "geometry",
+                                      "stylers": {
+                                        "color": "#004981"
+                                      }
+                                    },
+                                    {
+                                      "featureType": "highway",
+                                      "elementType": "geometry.fill",
+                                      "stylers": {
+                                        "color": "#005b96",
+                                        "lightness": 1
+                                      }
+                                    },
+                                    {
+                                      "featureType": "highway",
+                                      "elementType": "labels",
+                                      "stylers": {
+                                        "visibility": "off"
+                                      }
+                                    },
+                                    {
+                                      "featureType": "arterial",
+                                      "elementType": "geometry",
+                                      "stylers": {
+                                        "color": "#004981"
+                                      }
+                                    },
+                                    {
+                                      "featureType": "arterial",
+                                      "elementType": "geometry.fill",
+                                      "stylers": {
+                                        "color": "#00508b"
+                                      }
+                                    },
+                                    {
+                                      "featureType": "poi",
+                                      "elementType": "all",
+                                      "stylers": {
+                                        "visibility": "off"
+                                      }
+                                    },
+                                    {
+                                      "featureType": "green",
+                                      "elementType": "all",
+                                      "stylers": {
+                                        "color": "#056197",
+                                        "visibility": "off"
+                                      }
+                                    },
+                                    {
+                                      "featureType": "subway",
+                                      "elementType": "all",
+                                      "stylers": {
+                                        "visibility": "off"
+                                      }
+                                    },
+                                    {
+                                      "featureType": "manmade",
+                                      "elementType": "all",
+                                      "stylers": {
+                                        "visibility": "off"
+                                      }
+                                    },
+                                    {
+                                      "featureType": "local",
+                                      "elementType": "all",
+                                      "stylers": {
+                                        "visibility": "off"
+                                      }
+                                    },
+                                    {
+                                      "featureType": "arterial",
+                                      "elementType": "labels",
+                                      "stylers": {
+                                        "visibility": "off"
+                                      }
+                                    },
+                                    {
+                                      "featureType": "boundary",
+                                      "elementType": "geometry.fill",
+                                      "stylers": {
+                                        "color": "#029fd4"
+                                      }
+                                    },
+                                    {
+                                      "featureType": "building",
+                                      "elementType": "all",
+                                      "stylers": {
+                                        "color": "#1a5787"
+                                      }
+                                    },
+                                    {
+                                      "featureType": "label",
+                                      "elementType": "all",
+                                      "stylers": {
+                                        "visibility": "off"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            "category": [
+                              "scatter"
+                            ],
+                            "applied": true,
+                            "id": "3w3QXP7nS5YF8dB24Aj8mjaQtarJGwDj",
+                            "resource_time": {}
+                          }
+                        ],
+                        "id": "j3eQmyBxM5GNdtEncZAiFBT5rXJdrn7B"
+                      },
+                      {
+                        "type": "column",
+                        "col": 4,
+                        "children": [
+                          {
+                            "label": "控制板1",
+                            "type": "block",
+                            "source": "BLOCK",
+                            "children": [
+                              {
+                                "type": "column",
+                                "col": 12,
+                                "children": [
+                                  {
+                                    "label": "迷你柱图",
+                                    "type": "sparkline",
+                                    "source": "SPARKLINE",
+                                    "data": {
+                                      "applied": true,
+                                      "model": {
+                                        "id": 204
+                                      },
+                                      "resource": [],
+                                      "modelDisable": true,
+                                      "timespan": {
+                                        "value": 7,
+                                        "unit": "day"
+                                      },
+                                      "frequency": {
+                                        "value": 1,
+                                        "unit": "day"
+                                      },
+                                      "format": "年月日",
+                                      "legend": {
+                                        "manual": [
+                                          "第一组"
+                                        ],
+                                        "bind": "(function (source){\n  return source.time.getLegend();\n})"
+                                      },
+                                      "series": {
+                                        "bind": "(function (source){\n  return source.time.getSeries();\n})"
+                                      },
+                                      "maxKpi": 1,
+                                      "kpi": [
+                                        3005
+                                      ],
+                                      "modelType": 300,
+                                      "resfilltype": "parameter"
+                                    },
+                                    "parameters": {
+                                      "barcolor": "#fff"
+                                    },
+                                    "advance": {
+                                      "getfunction": "kpiDataService.getValueList",
+                                      "category": "time",
+                                      "condition": [
+                                        "kpi",
+                                        "{object:kpiQueryModel}"
+                                      ]
+                                    },
+                                    "style": {
+                                      "margin": "auto",
+                                      "width": "100%",
+                                      "height": "150px"
+                                    },
+                                    "id": "ZPb4kNsMhdawa3RmZAZ4wrET6i458eMM"
+                                  },
+                                  {
+                                    "label": "迷你柱图",
+                                    "type": "sparkline",
+                                    "source": "SPARKLINE",
+                                    "data": {
+                                      "applied": true,
+                                      "model": {
+                                        "id": 204
+                                      },
+                                      "resource": [],
+                                      "modelDisable": true,
+                                      "timespan": {
+                                        "value": 7,
+                                        "unit": "day"
+                                      },
+                                      "frequency": {
+                                        "value": 1,
+                                        "unit": "day"
+                                      },
+                                      "format": "年月日",
+                                      "legend": {
+                                        "manual": [
+                                          "第一组"
+                                        ],
+                                        "bind": "(function (source){\n  return source.time.getLegend();\n})"
+                                      },
+                                      "series": {
+                                        "bind": "(function (source){\n  return source.time.getSeries();\n})"
+                                      },
+                                      "maxKpi": 1,
+                                      "kpi": [
+                                        3012
+                                      ],
+                                      "modelType": 300,
+                                      "resfilltype": "parameter"
+                                    },
+                                    "parameters": {
+                                      "barcolor": "#fff"
+                                    },
+                                    "advance": {
+                                      "getfunction": "kpiDataService.getValueList",
+                                      "category": "time",
+                                      "condition": [
+                                        "kpi",
+                                        "{object:kpiQueryModel}"
+                                      ]
+                                    },
+                                    "style": {
+                                      "margin": "auto",
+                                      "width": "100%",
+                                      "height": "150px"
+                                    },
+                                    "id": "kMkrSYfr6KiZdrDRzPpK87wEwrx6Kcsd"
+                                  },
+                                  {
+                                    "label": "迷你柱图",
+                                    "type": "sparkline",
+                                    "source": "SPARKLINE",
+                                    "data": {
+                                      "applied": true,
+                                      "model": {
+                                        "id": 204
+                                      },
+                                      "resource": [],
+                                      "modelDisable": true,
+                                      "timespan": {
+                                        "value": 7,
+                                        "unit": "day"
+                                      },
+                                      "frequency": {
+                                        "value": 1,
+                                        "unit": "day"
+                                      },
+                                      "format": "年月日",
+                                      "legend": {
+                                        "manual": [
+                                          "第一组"
+                                        ],
+                                        "bind": "(function (source){\n  return source.time.getLegend();\n})"
+                                      },
+                                      "series": {
+                                        "bind": "(function (source){\n  return source.time.getSeries();\n})"
+                                      },
+                                      "maxKpi": 1,
+                                      "kpi": [
+                                        100005
+                                      ],
+                                      "modelType": 300,
+                                      "resfilltype": "parameter"
+                                    },
+                                    "parameters": {
+                                      "barcolor": "#fff"
+                                    },
+                                    "advance": {
+                                      "getfunction": "kpiDataService.getValueList",
+                                      "category": "time",
+                                      "condition": [
+                                        "kpi",
+                                        "{object:kpiQueryModel}"
+                                      ]
+                                    },
+                                    "style": {
+                                      "margin": "auto",
+                                      "width": "100%",
+                                      "height": "150px"
+                                    },
+                                    "id": "4RSQSNk2PR5726f5MY7tai2RypimWKSY"
+                                  }
+                                ],
+                                "id": "p7rsK8DsQHfGcWjdjxJwAXz77x8jsktb"
+                              }
+                            ],
+                            "style": {
+                              "margin": 0,
+                              "border": "1px solid #aaa",
+                              "background-color": "##00b9b2",
+                              "border-color": "#93C47D",
+                              "border-width": 0
+                            },
+                            "data": {
+                              "series": {}
+                            },
+                            "advance": {
+                              "expression": {}
+                            },
+                            "template": [
+                              {
+                                "type": "css",
+                                "style": {
+                                  "padding": "10px",
+                                  "margin": "5px",
+                                  "border": "1px solid #ccc",
+                                  "background-color": "#fff"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "padding": "5px",
+                                  "margin": "5px",
+                                  "border": "1px solid #ccc",
+                                  "background-color": "#fff",
+                                  "border-top": "0"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "5px",
+                                  "background-color": "#efdcaf",
+                                  "border": "1px solid #c2ad7a"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "5px",
+                                  "background-color": "#f0c0a4",
+                                  "border": "1px solid #e5671b"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "5px",
+                                  "background-color": "#ffb3b3",
+                                  "border": "1px solid #db2222"
+                                }
+                              }
+                            ],
+                            "id": "YEsC3dJXrBaeBPjP6YiYNwW7zkYR77AN"
+                          }
+                        ],
+                        "id": "yHwnC5YwzsKX27MxwdxRFiJDnmpnxjH5"
+                      }
+                    ],
+                    "class": "box-body",
+                    "id": "CawZcNMAQNTc44YDjkW6W3CdDsYW8WES"
+                  },
+                  {
+                    "type": "box-footer",
+                    "children": [
+                      {
+                        "type": "row",
+                        "children": [],
+                        "id": "6WFab6ZEZyhiwpMcycrcQ484GCZJDHHS"
+                      }
+                    ],
+                    "class": "box-footer",
+                    "id": "SNsWfb4f7jGRXe7AcYNZDS32DdRC2ksG"
+                  }
+                ],
+                "parameters": {
+                  "title": "设备分布"
+                },
+                "style": {
+                  "font-size": "12px",
+                  "font-weight": "bold",
+                  "text-align": "left",
+                  "margin": "5px"
+                },
+                "data": {
+                  "series": {}
+                },
+                "$index": [
+                  0,
+                  0
+                ],
+                "id": "thfhNtHPmAj7BeFY8YRxY4Pnd3TePSJM"
+              },
+              {
+                "type": "box",
+                "source": "BOX",
+                "class": "box box-info",
+                "label": "控制板2",
+                "children": [
+                  {
+                    "type": "box-body",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "列表",
+                            "type": "listTable",
+                            "source": "LISTTABLE",
+                            "advance": {
+                              "getfunction": "ticketTaskService.getTicketsByStatus",
+                              "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      var ticketNo = event.data.values.ticketNo;\n      event.tools.location.href='../../app-oc/index.html#/workOrderTimeLine/'+ ticketNo;\n     }\n  },  \n  \"format\" : [\n    {\n      \"name\": \"工单号\",\n      \"value\": \"{item:ticketNo}\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"内容\",\n      \"value\": \"{item:message}\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"紧急度\",\n      \"value\": \"{item:priorityCode}\",\n      \"type\": \"priority\"\n    }\n  ]\n}",
+                              "condition": "[100]",
+                              "getListTable": "workorder",
+                              "variable": ""
+                            },
+                            "$index": [
+                              1,
+                              0
+                            ],
+                            "style": {
+                              "margin": "5px",
+                              "font-size": "12px"
+                            },
+                            "id": "xs83neZSbbcrX5WJwDyWmdTSwsa6DzTW"
+                          }
+                        ],
+                        "id": "BzwyfHBH8zeiTmKrShjDFyTcRDnzZTYE"
+                      }
+                    ],
+                    "class": "box-body",
+                    "id": "PcxbXd5ZHzfA7zzpkhEknk2D32QXapje"
+                  },
+                  {
+                    "type": "box-footer",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "文字",
+                            "type": "text",
+                            "source": "TEXT",
+                            "data": {
+                              "applied": false,
+                              "model": {
+                                "id": 204
+                              },
+                              "resource": [],
+                              "modelDisable": false,
+                              "series": {
+                                "manual": "查看更多",
+                                "bind": "(function (source){\n  return source.getSeries();\n})"
+                              },
+                              "multipleCi": false,
+                              "multipleKpi": false,
+                              "modelType": 300,
+                              "resfilltype": "parameter"
+                            },
+                            "style": {
+                              "margin": "5px auto",
+                              "padding": "0",
+                              "font-size": "14px",
+                              "font-weight": "bold",
+                              "border-width": "0px",
+                              "color": "#333",
+                              "text-align": "right"
+                            },
+                            "advance": {
+                              "getfunction": "kpiDataService.getValueList",
+                              "category": "ci",
+                              "condition": [
+                                "kpi",
+                                "{object:kpiQueryModel}"
+                              ],
+                              "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"新建文字\")\n        }\n    }\n}"
+                            },
+                            "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                            "template": [
+                              {
+                                "type": "text",
+                                "style": {
+                                  "margin": "auto",
+                                  "padding": "0",
+                                  "font-size": "10px",
+                                  "font-weight": "bold",
+                                  "color": "#333"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "style": {
+                                  "margin": "auto",
+                                  "padding": "0",
+                                  "font-size": "16px",
+                                  "font-weight": "bold",
+                                  "color": "#666",
+                                  "text-align": "center"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "style": {
+                                  "width": "60px",
+                                  "height": "60px",
+                                  "margin": "auto",
+                                  "padding": "0",
+                                  "font-size": "12px",
+                                  "line-height": "60px",
+                                  "font-weight": "bold",
+                                  "color": "#fff",
+                                  "text-align": "center",
+                                  "border-radius": "50%",
+                                  "background-color": "#3c8dbc"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "style": {
+                                  "width": "140px",
+                                  "height": "60px",
+                                  "margin": "auto",
+                                  "padding": "0",
+                                  "font-size": "12px",
+                                  "line-height": "60px",
+                                  "font-weight": "bold",
+                                  "color": "#fff",
+                                  "text-align": "center",
+                                  "border-radius": "4px",
+                                  "background-color": "#3c8dbc"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "style": {
+                                  "width": "140px",
+                                  "height": "60px",
+                                  "margin": "auto",
+                                  "padding": "0",
+                                  "font-size": "12px",
+                                  "line-height": "60px",
+                                  "font-weight": "bold",
+                                  "color": "#444",
+                                  "text-align": "center",
+                                  "border-radius": "4px",
+                                  "background-color": "#eee"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "style": {
+                                  "margin": "auto",
+                                  "padding": "5px",
+                                  "font-size": "18px",
+                                  "font-weight": "bold",
+                                  "color": "#444",
+                                  "text-align": "center",
+                                  "border-radius": "0px",
+                                  "background-color": "#eee"
+                                }
+                              }
+                            ],
+                            "id": "pGFPaXJRCQEabrt6A2ze62nEN8S7daSt"
+                          }
+                        ],
+                        "id": "mea2TGrHxfXjRkBQwKBHWfE7Q3seJBsT"
+                      }
+                    ],
+                    "class": "box-footer",
+                    "id": "bdy2CDhwSFk26BfFPH6npYPKwNmj5jM8"
+                  }
+                ],
+                "parameters": {
+                  "title": "工单列表"
+                },
+                "style": {
+                  "font-size": "12px",
+                  "font-weight": "bold",
+                  "text-align": "left",
+                  "margin": "5px"
+                },
+                "data": {
+                  "series": {}
+                },
+                "id": "hX3zS7mXHaEtswymHTpTChWxbdYrfW8p"
+              }
+            ],
+            "col": 7,
+            "id": "8XS7mJ3cApRh4ziRizyePrQ3Zmatzckz"
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "type": "box",
+                "source": "BOX",
+                "class": "box box-info",
+                "label": "控制板2",
+                "children": [
+                  {
+                    "type": "box-body",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "饼图",
+                            "type": "echart",
+                            "source": "PIECHART",
+                            "advance": {
+                              "getfunction": "kpiDataService.getKpiHierarchyValueList",
+                              "category": "alert",
+                              "condition": [
+                                "alert",
+                                {
+                                  "category": "ci",
+                                  "isRealTimeData": true,
+                                  "kpiCodes": [
+                                    "alert_code_count"
+                                  ],
+                                  "timePeriod": 0
+                                }
+                              ],
+                              "variable": "",
+                              "custom_category": "",
+                              "expression": ""
+                            },
+                            "data": {
+                              "applied": true,
+                              "model": {
+                                "id": 204
+                              },
+                              "resource": [],
+                              "legend": {
+                                "manual": [
+                                  "A车间",
+                                  "B车间",
+                                  "C车间",
+                                  "A车间－零件1",
+                                  "A车间－零件2",
+                                  "A车间－零件3",
+                                  "B车间－零件1",
+                                  "B车间－零件2",
+                                  "C车间－零件1",
+                                  "C车间－零件2",
+                                  "C车间－零件3",
+                                  "C车间－零件4"
+                                ],
+                                "bind": "(function (source){\n  return source.alert.getLegend();\n})"
+                              },
+                              "series": {
+                                "bind": "(function (source){\n  return source.alert.getSeries();\n})",
+                                "manual": []
+                              },
+                              "modelDisable": true,
+                              "timeSpan": 3600,
+                              "category": [
+                                "ci"
+                              ],
+                              "aggregate_instance": [],
+                              "aggregate_type": [
+                                1
+                              ],
+                              "aggregate_rule": 0,
+                              "autoFillBlank": true,
+                              "modelType": 300,
+                              "resfilltype": "parameter"
+                            },
+                            "parameters": {
+                              "title": "基础饼图",
+                              "subtitle": ""
+                            },
+                            "style": {
+                              "margin": "auto",
+                              "width": "100%",
+                              "height": "400px"
+                            },
+                            "echart": {
+                              "general": {},
+                              "title": {
+                                "show": false,
+                                "textStyle": {
+                                  "fontWeight": "bold",
+                                  "fontSize": 16
+                                },
+                                "textAlign": "middle",
+                                "padding": 30,
+                                "left": "50%",
+                                "text": "基础饼图",
+                                "subtext": ""
+                              },
+                              "tooltip": {
+                                "trigger": "item"
+                              },
+                              "legend": {
+                                "left": "1%",
+                                "top": "2%",
+                                "orient": "vertical"
+                              },
+                              "series": [
+                                {
+                                  "name": "数据1",
+                                  "center": [
+                                    "50%",
+                                    "50%"
+                                  ],
+                                  "radius": [
+                                    0,
+                                    "65%"
+                                  ],
+                                  "type": "pie"
+                                },
+                                {
+                                  "name": "数据2",
+                                  "center": [
+                                    "70%",
+                                    "50%"
+                                  ],
+                                  "radius": [
+                                    0,
+                                    "75%"
+                                  ],
+                                  "type": "pie"
+                                }
+                              ]
+                            },
+                            "help": "../pdf/pie.pdf",
+                            "template": [
+                              {
+                                "label": "基础饼图",
+                                "type": "image",
+                                "url": "images/pie/pie1.png",
+                                "style": {
+                                  "margin": "auto",
+                                  "width": "100%",
+                                  "height": "400px"
+                                },
+                                "echart": {
+                                  "general": {},
+                                  "title": {
+                                    "show": false,
+                                    "textStyle": {
+                                      "fontWeight": "bold",
+                                      "fontSize": 16
+                                    },
+                                    "textAlign": "middle",
+                                    "padding": 30,
+                                    "left": "50%",
+                                    "text": "基础饼图",
+                                    "subtext": ""
+                                  },
+                                  "tooltip": {
+                                    "trigger": "axis"
+                                  },
+                                  "legend": {
+                                    "left": "1%",
+                                    "top": "2%",
+                                    "orient": "vertical"
+                                  },
+                                  "series": [
+                                    {
+                                      "name": "数据1",
+                                      "center": [
+                                        "30%",
+                                        "50%"
+                                      ],
+                                      "radius": [
+                                        0,
+                                        "75%"
+                                      ],
+                                      "type": "pie"
+                                    },
+                                    {
+                                      "name": "数据2",
+                                      "center": [
+                                        "70%",
+                                        "50%"
+                                      ],
+                                      "radius": [
+                                        0,
+                                        "75%"
+                                      ],
+                                      "type": "pie"
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "label": "基础饼图",
+                                "type": "image",
+                                "url": "images/pie/pie3.png",
+                                "style": {
+                                  "margin": "auto",
+                                  "width": "100%",
+                                  "height": "400px"
+                                },
+                                "echart": {
+                                  "general": {},
+                                  "title": {
+                                    "show": false,
+                                    "textStyle": {
+                                      "fontWeight": "bold",
+                                      "fontSize": 16
+                                    },
+                                    "textAlign": "middle",
+                                    "padding": 30,
+                                    "left": "50%",
+                                    "text": "基础饼图",
+                                    "subtext": ""
+                                  },
+                                  "toolbox": {},
+                                  "tooltip": {
+                                    "trigger": "item"
+                                  },
+                                  "legend": {
+                                    "left": "1%",
+                                    "top": "2%",
+                                    "orient": "vertical"
+                                  },
+                                  "series": [
+                                    {
+                                      "name": "数据1",
+                                      "center": [
+                                        "50%",
+                                        "50%"
+                                      ],
+                                      "radius": [
+                                        0,
+                                        "35%"
+                                      ],
+                                      "label": {
+                                        "normal": {
+                                          "position": "inside"
+                                        }
+                                      },
+                                      "type": "pie"
+                                    },
+                                    {
+                                      "name": "数据2",
+                                      "center": [
+                                        "50%",
+                                        "50%"
+                                      ],
+                                      "radius": [
+                                        "45%",
+                                        "75%"
+                                      ],
+                                      "type": "pie"
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "label": "基础饼图",
+                                "type": "image",
+                                "url": "images/pie/pie2.png",
+                                "style": {
+                                  "margin": "auto",
+                                  "width": "100%",
+                                  "height": "400px"
+                                },
+                                "echart": {
+                                  "general": {},
+                                  "title": {
+                                    "show": false,
+                                    "textStyle": {
+                                      "fontWeight": "bold",
+                                      "fontSize": 16
+                                    },
+                                    "textAlign": "middle",
+                                    "padding": 30,
+                                    "left": "50%",
+                                    "text": "基础饼图",
+                                    "subtext": ""
+                                  },
+                                  "toolbox": {},
+                                  "tooltip": {
+                                    "trigger": "item"
+                                  },
+                                  "legend": {
+                                    "left": "1%",
+                                    "top": "2%",
+                                    "orient": "vertical"
+                                  },
+                                  "series": [
+                                    {
+                                      "name": "数据1",
+                                      "avoidLabelOverlap": false,
+                                      "center": [
+                                        "30%",
+                                        "50%"
+                                      ],
+                                      "radius": [
+                                        "45%",
+                                        "75%"
+                                      ],
+                                      "label": {
+                                        "normal": {
+                                          "show": false,
+                                          "position": "center"
+                                        },
+                                        "emphasis": {
+                                          "show": true,
+                                          "textStyle": {
+                                            "fontSize": 30,
+                                            "fontWeight": "bold"
+                                          }
+                                        }
+                                      },
+                                      "type": "pie"
+                                    },
+                                    {
+                                      "name": "数据2",
+                                      "avoidLabelOverlap": false,
+                                      "center": [
+                                        "70%",
+                                        "50%"
+                                      ],
+                                      "radius": [
+                                        "45%",
+                                        "75%"
+                                      ],
+                                      "label": {
+                                        "normal": {
+                                          "show": false,
+                                          "position": "center"
+                                        },
+                                        "emphasis": {
+                                          "show": true,
+                                          "textStyle": {
+                                            "fontSize": 30,
+                                            "fontWeight": "bold"
+                                          }
+                                        }
+                                      },
+                                      "type": "pie"
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "label": "南丁格尔图",
+                                "type": "image",
+                                "url": "images/pie/pie4.png",
+                                "style": {
+                                  "margin": "auto",
+                                  "width": "100%",
+                                  "height": "400px"
+                                },
+                                "echart": {
+                                  "general": {},
+                                  "title": {
+                                    "show": false,
+                                    "textStyle": {
+                                      "fontWeight": "bold",
+                                      "fontSize": 16
+                                    },
+                                    "textAlign": "middle",
+                                    "padding": 30,
+                                    "left": "50%",
+                                    "text": "基础饼图",
+                                    "subtext": ""
+                                  },
+                                  "toolbox": {},
+                                  "tooltip": {
+                                    "trigger": "item"
+                                  },
+                                  "legend": {
+                                    "left": "1%",
+                                    "top": "2%",
+                                    "orient": "vertical"
+                                  },
+                                  "series": [
+                                    {
+                                      "name": "数据1",
+                                      "avoidLabelOverlap": false,
+                                      "center": [
+                                        "30%",
+                                        "50%"
+                                      ],
+                                      "radius": [
+                                        "20%",
+                                        "75%"
+                                      ],
+                                      "roseType": "radius",
+                                      "type": "pie"
+                                    },
+                                    {
+                                      "name": "数据2",
+                                      "avoidLabelOverlap": false,
+                                      "center": [
+                                        "70%",
+                                        "50%"
+                                      ],
+                                      "radius": [
+                                        "20%",
+                                        "75%"
+                                      ],
+                                      "roseType": "radius",
+                                      "type": "pie"
+                                    }
+                                  ]
+                                }
+                              }
+                            ],
+                            "id": "MCnfWBDbQHxK3BYmxhTZtehJkGJdyBsb",
+                            "resource_time": {}
+                          }
+                        ],
+                        "id": "jXtAr4rRmfTDSpfTRZYMbWdSFkQCSfkW"
+                      }
+                    ],
+                    "class": "box-body",
+                    "id": "bKB637XWd6dpnnwJaFdiMkmmKNM67RkY"
+                  },
+                  {
+                    "type": "box-footer",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "type": "alertcount",
+                            "children": [],
+                            "id": "JHExst4eYhYAx5NcYFm8KGkPe8nnnTMr"
+                          }
+                        ],
+                        "id": "hsFeTp5xBSFZmWKwpt8mwdyRBd7MiAXT"
+                      }
+                    ],
+                    "class": "box-footer",
+                    "id": "YRKDZd5DR23m6w7ajJXicWjHyTHXGaD8"
+                  }
+                ],
+                "parameters": {
+                  "title": "告警趋势"
+                },
+                "style": {
+                  "font-size": "12px",
+                  "font-weight": "bold",
+                  "text-align": "left",
+                  "margin": "5px"
+                },
+                "data": {
+                  "series": {}
+                },
+                "id": "5BWepynWkHNnkBTPcpyBiYa2p8ASdNMz"
+              },
+              {
+                "type": "box",
+                "source": "BOX",
+                "class": "box box-info",
+                "label": "控制板2",
+                "children": [
+                  {
+                    "type": "box-body",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "列表",
+                            "type": "listTable",
+                            "source": "LISTTABLE",
+                            "advance": {
+                              "getfunction": "resourceUIService.getLatestDevices",
+                              "expression": "{\n  \"on\" : {\n    \"click\" : function(event){\n      console.log(event);\n      console.log(event.data.modelId, event.data.id);\n     \tevent.tools.location.href='../../app-oc/index.html#/facility_panel/'+ event.data.modelId + '/' + event.data.id;\n   }\n  },\n  format : [\n    {\n      \"name\": \"创建日期\",\n      \"value\": \"{item:createTime}\",\n      \"type\": \"date\",\n      \"style\": {\n        \"color\" : \"#FFF\",\n        \"background-color\" : \"#3c8dbc\",\n        \"padding\" : \"2px 10px\",\n        \"border-radius\" : \"3px\"\n      }\n    },\n    {\n      \"name\": \"名称\",\n      \"value\": \"{item:label}\",\n      \"type\": \"text\"\n    }\n  ]\n}",
+                              "condition": "[]",
+                              "getListTable": "newdevice",
+                              "variable": ""
+                            },
+                            "$index": [
+                              1,
+                              0
+                            ],
+                            "style": {
+                              "margin": "5px",
+                              "font-size": "12px"
+                            },
+                            "id": "F3fTrir2ds22XaPHZAYbFbbFz2zHrQMy"
+                          }
+                        ],
+                        "id": "cESKdfCbbfbDAXDWcWZ2aJEHiFecstmG"
+                      }
+                    ],
+                    "class": "box-body",
+                    "id": "WzaPrRC57xK2ZcJwDnGptXG6b2zDTabF"
+                  },
+                  {
+                    "type": "box-footer",
+                    "children": [
+                      {
+                        "type": "row",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "文字",
+                            "type": "text",
+                            "source": "TEXT",
+                            "data": {
+                              "applied": false,
+                              "model": {
+                                "id": 204
+                              },
+                              "resource": [],
+                              "modelDisable": false,
+                              "series": {
+                                "manual": "查看更多",
+                                "bind": "(function (source){\n  return source.getSeries();\n})"
+                              },
+                              "multipleCi": false,
+                              "multipleKpi": false,
+                              "modelType": 300,
+                              "resfilltype": "parameter"
+                            },
+                            "style": {
+                              "margin": "5px auto",
+                              "padding": "0",
+                              "font-size": "14px",
+                              "font-weight": "bold",
+                              "border-width": "0px",
+                              "color": "#333",
+                              "text-align": "right"
+                            },
+                            "advance": {
+                              "getfunction": "kpiDataService.getValueList",
+                              "category": "ci",
+                              "condition": [
+                                "kpi",
+                                "{object:kpiQueryModel}"
+                              ],
+                              "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"新建文字\")\n        }\n    }\n}"
+                            },
+                            "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                            "template": [
+                              {
+                                "type": "text",
+                                "style": {
+                                  "margin": "auto",
+                                  "padding": "0",
+                                  "font-size": "10px",
+                                  "font-weight": "bold",
+                                  "color": "#333"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "style": {
+                                  "margin": "auto",
+                                  "padding": "0",
+                                  "font-size": "16px",
+                                  "font-weight": "bold",
+                                  "color": "#666",
+                                  "text-align": "center"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "style": {
+                                  "width": "60px",
+                                  "height": "60px",
+                                  "margin": "auto",
+                                  "padding": "0",
+                                  "font-size": "12px",
+                                  "line-height": "60px",
+                                  "font-weight": "bold",
+                                  "color": "#fff",
+                                  "text-align": "center",
+                                  "border-radius": "50%",
+                                  "background-color": "#3c8dbc"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "style": {
+                                  "width": "140px",
+                                  "height": "60px",
+                                  "margin": "auto",
+                                  "padding": "0",
+                                  "font-size": "12px",
+                                  "line-height": "60px",
+                                  "font-weight": "bold",
+                                  "color": "#fff",
+                                  "text-align": "center",
+                                  "border-radius": "4px",
+                                  "background-color": "#3c8dbc"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "style": {
+                                  "width": "140px",
+                                  "height": "60px",
+                                  "margin": "auto",
+                                  "padding": "0",
+                                  "font-size": "12px",
+                                  "line-height": "60px",
+                                  "font-weight": "bold",
+                                  "color": "#444",
+                                  "text-align": "center",
+                                  "border-radius": "4px",
+                                  "background-color": "#eee"
+                                }
+                              },
+                              {
+                                "type": "text",
+                                "style": {
+                                  "margin": "auto",
+                                  "padding": "5px",
+                                  "font-size": "18px",
+                                  "font-weight": "bold",
+                                  "color": "#444",
+                                  "text-align": "center",
+                                  "border-radius": "0px",
+                                  "background-color": "#eee"
+                                }
+                              }
+                            ],
+                            "id": "RxiW7Fwe36SWKfdBCx6QHb7hT56ADxkZ"
+                          }
+                        ],
+                        "id": "aTW45TYDxsbthmfjfB8TW6ps44FKsKtf"
+                      }
+                    ],
+                    "class": "box-footer",
+                    "id": "Wzfp5KAziXn8JndRcTJi6zWH5PWEh46z"
+                  }
+                ],
+                "parameters": {
+                  "title": "最新上线设备"
+                },
+                "style": {
+                  "font-size": "12px",
+                  "font-weight": "bold",
+                  "text-align": "left",
+                  "margin": "5px"
+                },
+                "data": {
+                  "series": {}
+                },
+                "id": "fFyHD665QZQhCtRxMXcGSRe6KPPSTJ2M"
+              }
+            ],
+            "col": 5,
+            "id": "w6wW85Ne32Jr8E4aNBFATzG66ennARzW"
+          }
+        ],
+        "source": "ROW",
+        "parameters": {
+          "alignment": "bootstrap"
+        },
+        "style": {},
+        "id": "Hh48E2kzmfrGYAZBJct8cNiB5w3HQpfE"
+      }
+    ],
+    "col": 12,
+    "id": "Y6fdtcjXW6sXEynT6BPEGfhw67JdjWJT"
+  }
+}

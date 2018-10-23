@@ -1,0 +1,253 @@
+.tograph_wrap {
+	margin: 0;
+	&::before {
+		content: '';
+		display: block;
+		height: 1px;
+		width: 100%;
+	}
+	&::after {
+		content: '';
+		display: block;
+		height: 1px;
+		width: 100%;
+	}
+	.closeBtn {
+		float: right;
+	}
+	.topograph {
+	    margin: 0 auto;
+	    width:960px;
+		height: 540px;
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center;
+//		background-image: url(../../images/topo/topo_bg1.svg);
+//      background-image: url(../../images/topo/topo_bg.png);
+		position: relative;
+		.popup {
+			width: 400px;
+			height: 100px;
+			background-color: #fff;
+			box-shadow: 2px 2px 6px #999;
+			position: absolute;
+			&::after {
+				content: '';
+				display: block;
+				height: 1px;
+				clear: both;
+			}
+			.eleLeft {
+				width: 150px;
+				height: 100px;
+				float: left;
+				.icon {
+					width: 40px;
+					height: 40px;
+					background-color: #2ea599;
+					border-radius: 50%;
+					position: absolute;
+					top: 20px;
+					left: 30px;
+				}
+				.text {
+					top: 70px;
+					left: 30px;
+					position: absolute;
+				}
+			}
+			.eleRight {
+				width: 250px;
+				height: 100px;
+				float: left;
+				position: relative;
+				.report {
+					cursor: pointer;
+					top: 10px;
+					left: 10px;
+					position: absolute;
+					color: #888;
+					.reportIcon {
+						display: inline-block;
+						width: 20px;
+						height: 20px;
+						background-color: #666666;
+						background-repeat: no-repeat;
+						background-poistion: center;
+						border-radius: 50%;
+						background-image: url(../../images/icons/icon_linechart.svg);
+					}
+				}
+				.value {
+					cursor: pointer;
+					top: 10px;
+					left: 100px;
+					position: absolute;
+					color: #888;
+					.valueIcon {
+						display: inline-block;
+						width: 20px;
+						height: 20px;
+						background-color: #666666;
+						background-repeat: no-repeat;
+						background-poistion: center;
+						border-radius: 50%;
+						background-image: url(../../images/icons/icon_dashboard.svg);
+					}
+				}
+				.closeBtn {
+					width: 20px;
+					height: 20px;
+					position: absolute;
+					right: 10px;
+					top: 10px;
+					cursor: pointer;
+				}
+			}
+		}
+		.elemWrap {
+			width: auto;
+		  	padding-right : 10px;
+			height: 40px;
+			border-radius: 20px;
+			border: 1px solid #2ea599;
+			position: absolute;
+			background-color: #fff;
+			cursor: pointer;
+			overflow: hidden;
+			.icon {
+				float: left;
+				width: 40px;
+				height: 40px;
+				background-size: 80%;
+				background-position: 80%;
+				background-repeat: no-repeat;
+			}
+			.title {
+				color: #333;
+				padding-left: 42px;
+				font-size: 14px;
+				line-height: 40px;
+			}
+		}
+	}
+}
+@media (max-width: 1365px) {
+  .tograph_wrap {
+    .topograph {
+        width:720px;
+        height: 405px;
+     }
+    .topo_right {
+         margin: 0 auto 0 0;
+         left:-10px;
+    }
+    .topo_left {
+         margin: 0 0 0 auto;
+         left:10px;
+    }
+   }
+}
+@media (min-width: 1366px) {
+  .tograph_wrap {
+    .topograph {
+        width:850px;
+        height: 480px;
+     }
+   }
+}
+@media (min-width: 1600px) {
+  .tograph_wrap {
+    .topograph {
+        width:1054px;
+        height: 596px;
+     }
+   }
+}
+@media (min-width: 1920px) {
+  .tograph_wrap {
+    .topograph {
+        width:1280px;
+        height: 720px;
+     }
+   }
+}
+.wrapView {
+	width: 1000px;
+	margin: 30px auto;
+	.topoview {
+		overflow: hidden;
+		box-shadow: 2px 2px 2px #999;
+		border-radius: 4px;
+		background-color: #fff;
+		width: 460px;
+		height: 200px;
+		margin: 20px;
+		float: left;
+		cursor: pointer;
+		.dashline {
+			display: block;
+			width: 448px;
+			height: 188px;
+			border: 1px dashed #999;
+			margin: 5px;
+		}
+		.addIcon {
+			width: 30px;
+			height: 30px;
+			margin: 80px auto;
+			span {
+				width: 30px;
+				height: 30px;
+				font-size: 30px;
+				color: #aaa;
+			}
+		}
+		.topline {
+			width: 100%;
+			height: 5px;
+			background-color: #009cff;
+		}
+		.middlePart {
+			width: 100%;
+			&::after {
+				content: '';
+				display: block;
+				height: 1px;
+				width: 100%;
+				clear: both;
+			}
+			.innerIcon {
+				margin: 30px 10px 30px 20px;
+				float: left;
+			}
+			.text {
+				margin: 30px 10px;
+				float: left;
+				color: #333;
+			}
+		}
+		.topPart {
+			border-bottom: 1px solid #aaa;
+			.title {
+				padding: 8px;
+				float: left;
+				font-size: 20px;
+			}
+			.tool {
+				padding: 12px;
+				float: right;
+				background-color: transparent;
+				border: 0;
+				color: #666;
+			}
+			&::after {
+				content: '';
+				display: block;
+				height: 1px;
+				width: 100%;
+				clear: both;
+			}
+		}
+	}
+}

@@ -1,0 +1,113 @@
+<config injector="$q,viewFlexService"
+></config>
+<properties>
+  <script type="text/javascript">
+    function properties(){
+      return [{
+        label : "基本设定",
+        attributes : {
+          text : ["文字", "input", "标题文字"],
+        }
+      }];
+    }
+    export { properties }
+  </script>
+</properties>
+<template>
+  <div>
+    <div class="top-bar">
+      <div class="logo">
+        <img src="../../images/ps_logo.svg" alt="">
+      </div>
+      <div class="middle-span">
+        <span class="title" ng-bind="title"></span>
+      </div>
+    </div>
+  </div>
+</template>
+<script type="text/javascript">
+  export default function(q,viewFlexService){
+    return {
+      scope : {
+        option : "="
+      },
+      link(scope, element, attr, ngModel) {
+        scope.$watch("option", (n, o, s) => {
+          if(n !== undefined){
+            scope.title = n.attributes.text
+          }
+        })
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+  .top-bar{
+    overflow : hidden;
+    position : relative;
+    .middle-span{
+      padding : 20px 0;
+      position : relative;
+      .title {
+        font-size : 80px;
+      }
+      &:before{
+        content : "";
+        position : absolute;
+        display : block;
+        height : 300px;
+        width : 250px;
+        left : -130px;
+        transform:rotate(45deg);
+        -ms-transform:rotate(45deg); 	/* IE 9 */
+        -moz-transform:rotate(45deg); 	/* Firefox */
+        -webkit-transform:rotate(45deg); /* Safari 和 Chrome */
+        -o-transform:rotate(45deg);
+        background: -webkit-linear-gradient(135deg, #0e818f, #1e649a); /* Safari 5.1 - 6.0 */
+        background: -o-linear-gradient(135deg, #0e818f, #1e649a); /* Opera 11.6 - 12.0 */
+        background: -moz-linear-gradient(135deg, #0e818f, #1e649a); /* Firefox 3.6 - 15 */
+        background: linear-gradient(135deg, #0e818f, #1e649a); /* 标准的语法 */
+      }
+      &:after{
+        content : "";
+        position : absolute;
+        display : block;
+        height : 300px;
+        width : 250px;
+        top : 0;
+        right : -130px;
+        transform:rotate(-45deg);
+        -ms-transform:rotate(-45deg); 	/* IE 9 */
+        -moz-transform:rotate(-45deg); 	/* Firefox */
+        -webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
+        -o-transform:rotate(-45deg);
+        background: -webkit-linear-gradient(-135deg, #0e818f, #1e649a); /* Safari 5.1 - 6.0 */
+        background: -o-linear-gradient(-135deg,#0e818f, #1e649a); /* Opera 11.6 - 12.0 */
+        background: -moz-linear-gradient(-135deg,#0e818f, #1e649a); /* Firefox 3.6 - 15 */
+        background: linear-gradient(-135deg,#0e818f, #1e649a); /* 标准的语法 */
+      }
+      width : 30%;
+      margin : auto;
+      background: -webkit-linear-gradient(#0e818f, #1e649a); /* Safari 5.1 - 6.0 */
+      background: -o-linear-gradient(#0e818f, #1e649a); /* Opera 11.6 - 12.0 */
+      background: -moz-linear-gradient(#0e818f, #1e649a); /* Firefox 3.6 - 15 */
+      background: linear-gradient(#0e818f, #1e649a); /* 标准的语法 */
+      test-shadow : 1px 1px 10px 1px rgba(0,0,0,.3);
+    }
+    color : #fff;
+    text-align : center;
+    background: -webkit-radial-gradient(#144178, #1a023e); /* Safari 5.1 - 6.0 */
+    background: -o-radial-gradient(#144178, #1a023e); /* Opera 11.6 - 12.0 */
+    background: -moz-radial-gradient(#144178, #1a023e); /* Firefox 3.6 - 15 */
+    background: radial-gradient(#144178, #1a023e); /* 标准的语法 */
+    .logo {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      margin-top: -50px;
+      img {
+        height: 100px;
+      }
+    }
+  }
+</style>

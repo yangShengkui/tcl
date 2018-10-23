@@ -1,0 +1,43 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+
+<!-- Main content -->
+<section class="content" style="padding : 0;" auto-height-adjustment>
+  <div class="rappid" ng-controller="RappidBaseCtrl">
+    <div class="paper-container paper-container-full">
+    </div>
+    <div class="paper-echart-container paper-container-full">
+      <div class="paper-echart" style="height: {{data.height}}px;width: {{data.width}}px;">
+        <div class="nav-tabs-custom " ng-repeat="item in data.groupAry" style="pointer-events: auto;position: absolute !important;top:{{item.y}}px;left:{{item.x}}px">
+          <ul class="nav nav-tabs nav-echart">
+            <li ng-class="{true:'active'}[$index == 0]" ng-repeat="view in item.echartAry">
+              <a href="#{{view.id}}" data-toggle="tab">{{view.attrs.text.text}}</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div ng-repeat="view in item.echartAry" class="chart tab-pane" ng-class="{true:'active'}[$index == 0]" id="{{view.id}}">
+              <div style="height: {{view.size.height}}px;width:{{item.width}}px;" ng-controller="ConfigureChartsCtrl" echarts3-dom></div>
+            </div>
+          </div>
+        </div>
+        <!-- 单个不存在tab的时候-->
+        <div class="echart-content" style="pointer-events: auto;position: absolute !important;height: {{view.size.height}}px;width:{{view.size.width}}px;top:{{view.position.y}}px;left:{{view.position.x}}px" ng-repeat="view in data.echartAry" ng-controller="ConfigureChartsCtrl" echarts3-dom></div>
+
+      </div>
+    </div>
+    <!--
+    <div class="toolbar-container">
+      <ol class="breadcrumb">
+        <li>
+          <a href="../app-oc/index.html#/configureview">视图中心</a>
+        </li>
+        <li ng-repeat="view in data.viewRoutes">
+          <a ng-click="data.viewChange(view)">{{view.viewTitle}}</a>
+        </li>
+        <li class="active">{{data.viewTitle}}</li>
+      </ol>
+    </div>
+    -->
+  </div>
+</section>
+<!-- /.content -->

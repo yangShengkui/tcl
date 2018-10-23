@@ -1,0 +1,79 @@
+<config router="prod_pslaydatecalendar2"
+        injector="$scope,$q,$timeout,$filter,resourceUIService,viewFlexService,apiService"
+></config>
+<template>
+    <!--可以套用模板-->
+    <!--<asd>-->
+        <div class="wrap">
+            <h1>ps-laydate-calendar2指令封装</h1>
+            <h2>技术：laydate，2个输入框选日期范围 1个输入框只选日期</h2>
+            <ol>
+                <li>日期范围加了校验，起始时间不能大于终止时间 网址:https://www.layui.com/laydate/</li>
+            </ol>
+            只选日期1：{{cal0}}<br>
+            <ps-laydate-calendar2 ng-model="cal0"
+                         data-config="config">
+            </ps-laydate-calendar2><br><br>
+            日期范围1：{{cal1}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{cal2}}<br>
+            <ps-laydate-calendar2 ng-model="cal1"
+                         data-config="config1">
+            </ps-laydate-calendar2>
+            &nbsp;&nbsp;到&nbsp;&nbsp;
+            <ps-laydate-calendar2 ng-model="cal2"
+                         data-config="config2">
+            </ps-laydate-calendar2><br><br>
+            日期范围2：{{cal3}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{cal4}}<br>
+            <ps-laydate-calendar2 ng-model="cal3"
+                         data-config="config3">
+            </ps-laydate-calendar2>
+            &nbsp;&nbsp;到&nbsp;&nbsp;
+            <ps-laydate-calendar2 ng-model="cal4"
+                         data-config="config4">
+            </ps-laydate-calendar2><br><br>
+            只选日期2：{{cal5}}<br>
+            <ps-laydate-calendar2 ng-model="cal5"
+                         data-config="config">
+            </ps-laydate-calendar2><br>
+        </div>
+    <!--</asd>-->
+</template>
+
+
+<script type="text/javascript">
+    export default function($scope,q,$timeout,$filter,resourceUIService,viewFlexService,api){
+        $scope.cal0 = '2017-08-17T03:27:12.000Z';
+        //传入config  成对的必须传入modeFlag 和tagFlag
+
+        $scope.cal1 = '2017-08-16T03:27:12.000Z';
+        //传入config  成对的必须传入modeFlag 和tagFlag
+        $scope.config1= {
+            modeFlag:'ceshi',
+            tagFlag : 'start'
+        };
+        $scope.cal2 = '2018-08-17T03:27:12.000Z';
+        $scope.config2 = {
+            modeFlag:'ceshi',
+            tagFlag : 'end'
+        };
+        $scope.cal3 = '2018-08-18T03:27:12.000Z';
+        $scope.config3= {
+            modeFlag:'ceshi1',
+            tagFlag : 'start'
+        };
+        $scope.cal4= '2018-08-19T03:27:12.000Z';
+        $scope.config4 = {
+            modeFlag:'ceshi1',
+            tagFlag : 'end'
+        };
+    };
+
+</script>
+<style type="less" scoped="true">
+    .wrap{
+        margin : 5px;
+        padding : 10px;
+        color : #333;
+        background-color : #eee;
+        border : 1px solid #ddd;
+    }
+</style>

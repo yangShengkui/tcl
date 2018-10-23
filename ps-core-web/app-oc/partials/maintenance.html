@@ -1,0 +1,82 @@
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active">
+                <a>维保计划</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body">
+          <button ng-show="menuitems['A02_S47']" type="button" ng-click="addMain(0);" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i><span class="hidden-sm"> 添加计划</span></button>
+          <!--<button type="button" ng-click="selectedDelete();" ng-disabled="selectTaskList.length == 0" class="btn btn-default btn-sm"><i class="fa fa-trash"></i><span class="hidden-sm"> 删除计划</span></button>-->
+          <button ng-show="menuitems['A03_S47']" type="button" ng-click="modifyStatus(0);" ng-disabled="selectStatusList.disableList.length == 0" class="btn btn-default btn-sm"><i class="fa fa-play"></i><span class="hidden-sm"> 启用</span></button>
+          <button ng-show="menuitems['A04_S47']" type="button" ng-click="modifyStatus(1);" ng-disabled="selectStatusList.startList.length == 0" class="btn btn-default btn-sm"><i class="fa fa-stop"></i><span class="hidden-sm"> 停用</span></button>
+
+          <div class="combined-query pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                {{queryDitem.statelabel?queryDitem.statelabel:'查询条件'}} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+
+                <li>
+                  <a role="button" ng-click="queryDitem.state=1;queryDitem.statelabel='计划名称';loaderValue='';queryDitem.attributeName='name'">计划名称</a>
+                </li>
+                <li>
+                  <a role="button" ng-click="queryDitem.state=2;queryDitem.statelabel='维保类型';loaderValue='';queryDitem.attributeName='ticketCategoryId'">维保类型</a>
+                </li>
+                <li>
+                  <a role="button" ng-click="queryDitem.state=3;queryDitem.statelabel='客户';loaderValue='';queryDitem.attributeName='customerId'">客户</a>
+                </li>
+                <li>
+                  <a role="button" ng-click="queryDitem.state=4;queryDitem.statelabel='项目';loaderValue='';queryDitem.attributeName='projectId'">项目</a>
+                </li>
+                <li>
+                  <a role="button" ng-click="queryDitem.state=5;queryDitem.statelabel='维保设备';loaderValue='';queryDitem.attributeName='deviceId'">维保设备</a>
+                </li>
+                <!--<li>
+                  <a role="button" ng-click="queryDitem.state=6;queryDitem.statelabel='执行时间';queryDitem.attributeName='nextExecutionTime'">执行时间</a>
+                </li>-->
+                <li>
+                  <a role="button" ng-click="queryDitem.state=7;queryDitem.statelabel='执行人';queryDitem.attributeName='nextExecutioner'">执行人</a>
+                </li>
+              </ul>
+            </div>
+            <input class="form-control input-sm"  ng-model="loaderValue"  ng-show="!queryDitem.state || queryDitem.state == 1" maxlength="40" type="text" />
+
+            <select class="form-control input-sm" ng-model="loaderValue"  ng-show="queryDitem.state == 2" ng-options="x.id as x.name  for x in processType" placeholder="请选择..."  required="required">
+              <option value="">请选择</option>
+            </select>
+            <select class="form-control input-sm" ng-model="loaderValue"  ng-show="queryDitem.state == 3"  ng-options="value.id as value.text for value in customersList " placeholder="请选择..."  required="required">
+              <option value="">请选择</option>
+            </select>
+            <select class="form-control input-sm" ng-model="loaderValue"  ng-show="queryDitem.state == 4"  ng-options="value.id as value.text for value in projectsList" placeholder="请选择..."  required="required">
+              <option value="">请选择</option>
+            </select>
+            <select class="form-control input-sm" ng-model="loaderValue"  ng-show="queryDitem.state == 5"  ng-options="value.id as value.label for value in devicesList" placeholder="请选择..."  required="required">
+              <option value="">请选择</option>
+            </select>
+            <!--<input type="text" ng-model="loaderValue" ng-show="queryDitem.state == 6" class="form-control input-sm" style="background-color: #fff;" readonly='readonly' autocomplete="off" ng-model="loaderValue" date-time-picker >-->
+
+            <select class="form-control input-sm" ng-model="loaderValue"  ng-show="queryDitem.state == 7"  ng-options="x.userID  as x.userName for x in enterpriseList" placeholder="请选择..."  required="required">
+              <option value="">请选择</option>
+            </select>
+            <button class="btn btn-primary btn-sm" ng-click="goSearch('s')" type="button"><i class="fa fa-search"></i><span class="hidden-sm"> 查询</span></button>
+          </div>
+        </div>
+        <div class="box-footer margin-bottom-10 ">
+          <table width="100%" class="table table-hover" maintenance-task-dom></table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

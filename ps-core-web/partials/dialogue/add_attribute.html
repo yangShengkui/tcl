@@ -1,0 +1,171 @@
+<!--添加属性模态框-->
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div ng-show="addAttributeType == 'attr'" class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">属性信息</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal" name="attrForm">
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">属性名称：</span>
+            </label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="text" class="form-control input-sm" ng-disabled="addAttributeObj.canEdit == false" maxlength="32" autocomplete="off" ng-model="addAttributeObj.name" name="Name" required="required">
+              <span ng-show="attrError.name == 'name'" style="font-size: 12px;" ng-bind="attrError.prompt" class="help-block text-danger text-muted"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">显示名称：</span>
+            </label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="text" class="form-control input-sm" ng-disabled="addAttributeObj.canEdit == false" maxlength="32" autocomplete="off" ng-model="addAttributeObj.label" name="Name" required="required">
+              <span ng-show="attrError.name == 'label'" style="font-size: 12px;" ng-bind="attrError.prompt" class="help-block text-danger text-muted"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">数据类型：</span>
+            </label>
+            <div class="col-sm-4 padding-left-5">
+              <select class="form-control input-sm" required ng-disabled="addAttributeObj.canEdit == false" ng-change="addAttributeObj.sourceValue = ''" name="dataType" ng-model="addAttributeObj.dataType" placeholder="请选择..." ng-options="value.valueCode as value.label for value in myDicts['DataType']">
+                <option value="">请选择...</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">属性值：</span>
+            </label>
+            <div class="col-sm-4 padding-left-5" ng-show="addAttributeObj.dataType == '' || addAttributeObj.dataType == 'string' || addAttributeObj.dataType == 'icon' || addAttributeObj.dataType == 'dict' ">
+              <input type="text" ng-model="addAttributeObj.sourceValue" class="form-control  input-sm" name="Name">
+            </div>
+            <div class="col-sm-4 padding-left-5" ng-show="addAttributeObj.dataType == 'datetime'">
+              <input class="form-control input-sm" readonly ng-model="addAttributeObj.sourceValue" drops="down" timepicker="true" date-time-picker>
+            </div>
+            <div class="col-sm-4 padding-left-5" ng-show="addAttributeObj.dataType == 'date'">
+              <input class="form-control input-sm" readonly ng-model="addAttributeObj.sourceValue" drops="down" date-time-picker>
+            </div>
+            <div class="col-sm-4 padding-left-5" ng-show="addAttributeObj.dataType == 'numberic'">
+              <input type="number" string-to-number class="form-control input-sm" ng-model="addAttributeObj.sourceValue">
+            </div>
+            <div class="col-sm-5 padding-left-5" ng-show="addAttributeObj.dataType == 'standardAddress'">
+              <select class="col-sm-3 input-sm margin-right-5 no-padding input-sm" ng-options="value.id as value.label for value in provinces" ng-model="cityChang.province">
+                <option value="">请选择...</option>
+              </select>
+              <select class="col-sm-3 input-sm margin-right-5 no-padding input-sm" ng-options="value.id as value.label for value in cityDics[cityChang.province]" ng-model="cityChang.city">
+                <option value="">请选择...</option>
+              </select>
+              <select class="col-sm-3 input-sm margin-right-5 no-padding input-sm" ng-options="value.id as value.label for value in districtDics[cityChang.city]" ng-model="cityChang.district">
+                <option value="">请选择...</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">敏感信息：</span>
+            </label>
+            <div class="col-sm-4 padding-left-5">
+              <select class="form-control input-sm" ng-model="addAttributeObj.values.sensitive">
+                <option value="">请选择...</option>
+                <option value="0">否</option>
+                <option value="1">是</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">显示为台账：</span>
+            </label>
+            <div class="col-sm-4 padding-left-5">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="1" ng-model="addAttributeObj.account"/>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">显示设置：</span>
+            </label>
+            <div class="col-sm-4 padding-left-5">
+              <select class="col-sm-5 input-sm margin-right-5 no-padding input-sm"  ng-model="addAttributeObj.values.fontsize">
+                <option value="">字体大小</option>
+                <option value="12px">12px</option>
+                <option value="13px">13px</option>
+                <option value="14px">14px</option>
+                <option value="15px">15px</option>
+                <option value="16px">16px</option>
+                <option value="17px">17px</option>
+                <option value="18px">18px</option>
+                <option value="19px">19px</option>
+                <option value="20px">20px</option>
+              </select>
+              <input type="color" class="col-sm-3 input-sm margin-right-5 no-padding input-sm color" ng-model="addAttributeObj.values.color">
+            </div>
+          </div>
+          <div class="form-group" ng-show="addAttributeObj.dataType == 'numberic'">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">是否统计：</span>
+            </label>
+            <div class="col-sm-4 padding-left-5">
+              <select class="form-control input-sm" ng-model="addAttributeObj.values.calculate">
+                <option value="">请选择...</option>
+                <option value="0">否</option>
+                <option value="1">是</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="attrForm.$invalid" ng-click="saveAttrs()" disabled="disabled">
+          确定
+        </button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <!--添加属性模态框-->
+  <div ng-show="addAttributeType == 'type'" class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">分类信息</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal" name="typeForm">
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">分类名称：</span>
+            </label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="text" class="form-control input-sm" maxlength="32" ng-model="addAttributeObj.attrTypeName" name="Name" required="required">
+              <span ng-show="attrError.name == 'type'" style="font-size: 12px;" ng-bind="attrError.prompt" class="help-block text-danger text-muted"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">分类顺序：</span>
+            </label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="number" class="form-control input-sm" min="1" max="999" oninput="if( !/^[0-9]*$/.test(this.value)){this.value='';}else if(this.value > 999){this.value=999;}"  placeholder="输入1~999,不能大于999" ng-model="addAttributeObj.attrTypeSort" name="Name" required="required">
+              <!--<span ng-show="attrError.name == 'type'" style="font-size: 12px;" ng-bind="attrError.prompt" class="help-block text-danger text-muted"></span>-->
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="typeForm.$invalid" ng-click="saveType()" disabled="disabled">
+          确定
+        </button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

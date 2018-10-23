@@ -1,0 +1,53 @@
+<config injector="psScope"
+></config>
+<template>
+  <div>
+    <button class="btn btn-sm"
+        ng-class="setClass(config.class)"
+            ng-click="onclick($event)">
+      <i ng-class="config.icon"></i>
+      <span ng-bind="config.label"></span>
+    </button>
+  </div>
+</template>
+<script type="text/javascript">
+  export default function(psScope){
+    return {
+      scope : {
+        config : "="
+      },
+      link(scope, element, attr, ngModel) {
+        console.log(scope.config);
+        function getScope(scope){
+          let parent = scope;
+          while(!parent.$$customParentScope){
+            parent = parent.$parent;
+          };
+          return parent ? parent.$$customParentScope : null;
+        }
+        scope.onclick = function(e){
+          let fn = scope.config.click || scope.config.on && scope.config.on.click;
+          e.$scope = getScope(scope);
+          e.$config = scope.config;
+          fn && fn(e);
+        }
+        scope.setClass = function(cls){
+          if(cls){
+            if(typeof cls === "function"){
+              return cls(scope.config);
+            } else {
+              return cls;
+            }
+          } else {
+            return "btn-default"
+          }
+        }
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+  .btn {
+    margin : 0;
+  }
+</style>

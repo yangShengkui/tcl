@@ -1,0 +1,119 @@
+<div class="openNewFile" ng-if="kpiSelect">
+    <div class="wrap">
+        <button ng-click="kpiSelectclose()" class="closeBtn">
+            <span class="glyphicon glyphicon-remove"></span>
+        </button>
+        <p>请绑定一个KPI指标：</p>
+        <div ng-repeat="kpi in kpiSelect" class="viewItem" ng-click="selectKpi(kpi.id)">
+            <div class="iconpart" ng-style="renderImage(kpi.id, kpiSelect)"></div>
+            <span ng-bind="kpi.label"></span>
+        </div>
+    </div>
+</div>
+<div class="bgcover" ng-if="kpiSelect"></div>
+<div class="svloading_wrap" ng-if="saveloading">
+    <table>
+        <tr>
+            <td>
+                <div class="loading_inner loading">
+                    <div class="loadingIcon"></div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="bgcover" ng-if="saveloading"></div>
+<div class="callbackmsg_wrap" ng-if="callbackmsg" ng-bind="callbackmsg"></div>
+<div class="msg_wrap" ng-if="msg">
+    <table>
+        <tr>
+            <td>
+                <div class="loading_inner">
+                    <div class="wrap">
+                        <div class="title" ng-bind="msg.title"></div>
+                        <div class="content" ng-bind="msg.content"></div>
+                    </div>
+                    <div class="buttonWrap">
+                        <button class="btn btn-default" ng-bind="btn.text" ng-click="btn.fn()" ng-repeat="btn in msg.btnlist"></button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="bgcover" ng-if="msg">
+</div>
+<div class="topInfo">
+	<div class="logoColor">
+		<img class="proudLogo"   ng-src="{{userInfo.enterprise.enterpriseLogo}}" width="94" height="32" type="image/svg+xml"/>
+		<span>拓扑视图</span>
+	</div>
+    <div class="userInfo">
+        <div class="title" ng-bind="userInfo.userName"></div><div class="icon"></div>
+    </div>
+</div>
+<div class="toposhow">
+    <div style="width : 100%; height : 50px;"></div>
+    <div class="wrapView" ng-show="selectView==undefined">
+        <div ng-repeat = "view in viewList" class="topoview" ng-click="viewClick(view)">
+            <div class="topline"></div>
+            <div class="topPart">
+                <div class="title" ng-bind="view.viewTitle"></div>
+                <button class="tool">
+                    <span class="glyphicon glyphicon-remove" ng-click="deleteChart(view.viewId, view.content.gatewayId, view.content.externalDevId)"></span>
+                </button>
+                <!--
+                <button class="tool">
+                    <span class="glyphicon glyphicon-minus"></span>
+                </button>
+                -->
+            </div>
+            <div class="middlePart">
+                <div class="innerIcon">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </div>
+                <div class="text">
+                    已启动的设备
+                </div>
+            </div>
+        </div>
+        <div class="topoview" ng-click="addNewTopo()">
+            <div class="dashline">
+                <div class="addIcon">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tograph_wrap" ng-show="selectView!=undefined">
+        <button ng-click="backTolist()" class="closeBtn"><span class="glyphicon glyphicon-remove"></span></button>
+        <div class="topograph">
+            <div ng-if="selectedElement!=undefined" class="popup" ng-style="popPos(selectedElement.top, selectedElement.left)">
+                <div class="eleLeft">
+                    <div class="icon" ng-style="renderImage(selectedElement.unit)"></div>
+                    <div class="text" ng-bind="selectedElement.name"></div>
+                </div>
+                <div class="eleRight">
+                    <div class="report">
+                        <span class="reportIcon"></span><span>报表</span>
+                    </div>
+                    <div class="value">
+                        <span class="valueIcon"></span><span>域值</span>
+                    </div>
+                    <div class="innerText">
+
+                    </div>
+                    <div class="closeBtn" ng-click="popClose()">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </div>
+                </div>
+            </div>
+            <div ng-repeat = "elem in selectView" class="elemWrap"
+                 ng-style="elePos(elem.top, elem.left)"
+                    ng-click="elemCLick(elem)">
+                <div class="icon" ng-style="renderImage(elem.unit)"></div>
+                <div class="title" ng-bind="elem.name"></div>
+            </div>
+        </div>
+    </div>
+</div>

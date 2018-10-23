@@ -1,0 +1,111 @@
+<div class="bridge-row">
+  <div class="bridge-view">
+    <div class="bridge-image" ng-model="imgMode"></div>
+    <div class="bridge-image-td" ng-model="imgMode"></div>
+    <div class="wind"></div>
+    <div class="switchBtn" ng-click="switchBtn()" ng-style="{'background-image':{true:'url(../../app-bridge/images/2dbtn.png)',false:'url(../../app-bridge/images/3dbtn.png)'}[imgMode]}"></div>
+    <div class="bridge-wrap">
+      <div class="bridge-barview" ng-click="chartClick();">
+        <div class="bridge-top">
+          <span class="title">指标名称</span>
+          <span class="pull-right text" ng-style="{color:bridgeBarOption.series[1].group[0].borderColor[0]}">p1mesap2</span>
+          <span class="icon pull-right" ng-style="{'background-color':bridgeBarOption.series[1].group[0].borderColor[0]}"></span>
+          <span class="pull-right text" ng-style="{color:bridgeBarOption.series[0].group[0].borderColor[0]}">p1mesap1</span>
+          <span class="icon pull-right" ng-style="{'background-color':bridgeBarOption.series[0].group[0].borderColor[0]}"></span>
+        </div>
+        <div class="bridge-inner">
+          <svg svg-chart ng-model="bridgeBarOption"></svg>
+        </div>
+      </div>
+    </div>
+    <div class="index-list">
+      <div class="item"
+           ng-style="itemStyle($index, list.alert)"
+           ng-repeat="list in indexList">
+        <div ng-bind="list.label" class="label"></div>
+        <div ng-model="list" class="change-num"></div>
+      </div>
+    </div>
+  </div>
+  <div class="bridge-right">
+    <div class="map">
+    </div>
+    <div class="warning level0" ng-repeat="item in bridgeWarning" ng-class="'level' + item.level" ng-click="listClick();">
+      <div class="block"></div>
+      <div class="text" ng-bind="item.label"></div>
+    </div>
+  </div>
+</div>
+<div class="bridge-charts">
+  <div class="column" style="width:25%">
+    <div class="wrap">
+      <div class="column-top">
+        <span class="title">指标名称</span>
+        <span class="pull-right text" ng-style="{color:bridgeChart1.series[0].group[1].borderColor[0]}">map2</span>
+        <span class="icon pull-right" ng-style="{'background-color':bridgeChart1.series[0].group[1].borderColor[0]}"></span>
+        <span class="pull-right text" ng-style="{color:bridgeChart1.series[0].group[0].borderColor[0]}">map1</span>
+        <span class="icon pull-right" ng-style="{'background-color':bridgeChart1.series[0].group[0].borderColor[0]}"></span>
+      </div>
+      <div class="svgWrap">
+        <svg svg-chart ng-model="bridgeChart1"></svg>
+      </div>
+    </div>
+  </div>
+  <div class="column" style="width:15%">
+    <div class="wrap">
+      <div class="column-top">
+        <span class="title">指标名称</span>
+        <span class="pull-right text" ng-style="{color:bridgeChart2.series[0].group[0].borderColor[0]}">map1</span>
+        <span class="icon pull-right" ng-style="{'background-color':bridgeChart2.series[0].group[0].borderColor[0]}"></span>
+      </div>
+      <div class="svgWrap">
+        <div class="numTxt">36.04</div>
+        <div style="height : 125px; width : 100%; position : relative;">
+          <svg svg-chart ng-model="bridgeChart2"></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column" style="width:20%">
+    <div class="wrap">
+      <div class="column-top">
+        <span class="title">指标名称</span>
+        <span class="pull-right text" ng-style="{color:bridgeChart3.series[0].group[1].borderColor[0]}">map2</span>
+        <span class="icon pull-right" ng-style="{'background-color':bridgeChart3.series[0].group[1].borderColor[0]}"></span>
+        <span class="pull-right text" ng-style="{color:bridgeChart3.series[0].group[0].borderColor[0]}">map1</span>
+        <span class="icon pull-right" ng-style="{'background-color':bridgeChart3.series[0].group[0].borderColor[0]}"></span>
+      </div>
+      <div class="svgWrap">
+        <svg svg-chart ng-model="bridgeChart3"></svg>
+      </div>
+    </div>
+  </div>
+  <div class="column" style="width:20%">
+    <div class="wrap">
+      <div class="column-top">
+        <span class="title">指标名称</span>
+        <span class="pull-right text" ng-style="{color:bridgeChart4.series[0].group[1].borderColor[0]}">map2</span>
+        <span class="icon pull-right" ng-style="{'background-color':bridgeChart4.series[0].group[1].borderColor[0]}"></span>
+        <span class="pull-right text" ng-style="{color:bridgeChart4.series[0].group[0].borderColor[0]}">map1</span>
+        <span class="icon pull-right" ng-style="{'background-color':bridgeChart4.series[0].group[0].borderColor[0]}"></span>
+      </div>
+      <div class="svgWrap">
+        <svg svg-chart ng-model="bridgeChart4"></svg>
+      </div>
+    </div>
+  </div>
+  <div class="column" style="width:20%">
+    <div class="wrap">
+      <div class="column-top">
+        <span class="title">指标名称</span>
+        <span class="pull-right text" ng-style="{color:bridgeChart5.series[0].group[1].borderColor[0]}">map2</span>
+        <span class="icon pull-right" ng-style="{'background-color':bridgeChart5.series[0].group[1].borderColor[0]}"></span>
+        <span class="pull-right text" ng-style="{color:bridgeChart5.series[0].group[0].borderColor[0]}">map1</span>
+        <span class="icon pull-right" ng-style="{'background-color':bridgeChart5.series[0].group[0].borderColor[0]}"></span>
+      </div>
+      <div class="svgWrap">
+        <svg svg-chart ng-model="bridgeChart5"></svg>
+      </div>
+    </div>
+  </div>
+</div>

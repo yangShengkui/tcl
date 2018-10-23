@@ -1,0 +1,50 @@
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Application buttons -->
+      <div class="box">
+        <div class="box-header">
+
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active" name="tab1">
+                <a role="button" data-toggle="tab">我的服务</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+
+        <div class="box-body">
+          <button type="button" ng-click="addSolution()" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i><span class="hidden-sm"> 新建解决方案</span></button>
+          <div class="combined-query pull-right">
+            <input class="form-control input-sm"  ng-model="solutionQuery"  maxlength="40" type="text" placeholder="名称过滤..."/>
+          </div>
+        </div>
+        <div class="box-footer margin-bottom-10">
+          <ul class="necessary list-unstyled">
+            <li class="col-sm-12 col-sm-6 col-md-4" ng-repeat="app in placeList | filter:{label:solutionQuery}:false">
+              <a>
+                <p class="biaoti">{{app.label}}</p>
+                <p class="tupian"><img ng-src="images/appcenter/{{app.icon}}.png" /></p>
+                <p class="tupian1"><img ng-src="images/appcenter/{{app.icon}}_hover.png" /></p>
+                <p class="remark">{{app.desc}}</p>
+                <div class="text-center">
+                  <button class="btn btn-default btn-sm" ng-click="solutionEdit(app)">编辑</button>
+                  <button class="btn btn-default btn-sm" ng-click="solutionDesgin(app)">模板管理</button>
+                  <button class="btn btn-default btn-sm" ng-click="dashboardEdit(app)">视图管理</button>
+                  <button class="btn btn-default btn-sm" ng-click="solutionDelete(app)">删除</button>
+                  <button class="btn btn-default btn-sm" ng-class="{true:'disabled'}[app.status  > 0]" ng-click="solutionPublish(app)">发布</button>
+                </div>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    <!-- /.col -->
+</section>

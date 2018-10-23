@@ -1,0 +1,524 @@
+{
+  "version": "V_2",
+  "groups": [
+    {
+      "id": "0",
+      "label": "客户项目总览",
+      "path": "index",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "type": "row",
+            "source": "ROW",
+            "parameters": {
+              "alignment": "bootstrap"
+            },
+            "style": {},
+            "children": [
+              {
+                "type": "column",
+                "col": 12,
+                "children": [
+                  {
+                    "label": "最新上线设备",
+                    "type": "listTable",
+                    "source": "LISTTABLE",
+                    "advance": {
+                      "getfunction": "projectUIService.findProjectsByCondition",
+                      "expression": "{\n  \"event\": true,\n  \"on\" : {\n    \"click\" : function(event){\n      var id = event.data.id;\n      if(id){\n        var resource = {\n          projectId : id,\n          tabLabel : event.data.customerName\n        }\n        event.ui.navigateTo(\"\",\"topo\", resource, \"home\");\n      } else {\n        var values = event.data.value\n        event.target.zoomTo(values);\n      }\n    }\n  },\n  format : [\n    {\n      \"name\": \"项目名称\",\n      \"value\": \"{item:projectName}\",\n      \"type\": \"text\"\n    },{\n      \"name\": \"项目建立日期\",\n      \"value\": \"{item:risingTime}\",\n      \"type\": \"date\",\n      \"style\": {\n        \"color\" : \"#FFF\",\n        \"background-color\" : \"#3c8dbc\",\n        \"padding\" : \"2px 10px\",\n        \"border-radius\" : \"3px\"\n      }\n    }\n  ]\n}",
+                      "condition": "{}",
+                      "getListTable": "newdevice",
+                      "variable": ""
+                    },
+                    "$index": [
+                      1,
+                      0
+                    ],
+                    "style": {
+                      "margin": "5px",
+                      "font-size": "12px"
+                    }
+                  },
+                  {
+                    "type": "row",
+                    "children": [],
+                    "source": "ROW",
+                    "parameters": {
+                      "alignment": "bootstrap"
+                    },
+                    "style": {}
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "col": 12
+      },
+      "$$hashKey": "object:674"
+    },
+    {
+      "label": "系统",
+      "path": "topo",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "控制板1",
+            "type": "tab",
+            "source": "TAB",
+            "parameters": {
+              "align": "horizental"
+            },
+            "style": {
+              "margin": "5px"
+            },
+            "children": [
+              {
+                "tabName": "工程视图",
+                "tabId": "0",
+                "display": "none",
+                "type": "tabItem",
+                "children": [
+                  {
+                    "type": "row",
+                    "source": "ROW",
+                    "parameters": {
+                      "alignment": "bootstrap"
+                    },
+                    "style": {},
+                    "children": [
+                      {
+                        "type": "column",
+                        "children": [
+                          {
+                            "label": "拓扑视图",
+                            "type": "topo",
+                            "source": "TOPO",
+                            "style": {
+                              "margin": "5px",
+                              "height": "calc(100vh - 210px)",
+                              "font-size": "12px",
+                              "background-repeat": "no-repeat",
+                              "background-color": "rgb(243, 243, 243)",
+                              "border": "1px solid #ddd"
+                            },
+                            "viewId": 145395417136086,
+                            "$index": [
+                              0,
+                              0
+                            ],
+                            "advance": {
+                              "expression": "{\n\t\"on\" : {\n    \"init\" : function(event){\n      var param = event.self.getParameter(\"projectId\");\n      event.self.getViewByProjectId(param, function(view){\n        if(view){\n          var json = JSON.parse(view.content);\n        \tevent.self.render(json);\n        } else {\n          event.self.error(\"无对应的项目组态视图，请配置后重试.\");\n        };\n      })\n    },\n    \"click\" : function(event){\n      var modelId = event.ui.modelId;\n      var resourceId = event.ui.resourceId;\n      var subViewId = event.ui.subViewId;\n      console.log(subViewId);\n      event.self.getResourceById(resourceId, function(resource){\n        if(subViewId && subViewId != 0){\n          var param = {\n            type : \"panel\",\n            tabLabel : resource.label,\n            subViewId : subViewId,\n            modelId : modelId,\n            resourceId : resourceId\n          }\n          event.self.navigateTo(\"subview\", param);\n        } else {\n          var param = {\n            tabLabel : resource.label,\n            modelId : modelId,\n            resourceId : resourceId\n          }\n          event.self.navigateTo(\"panel\", param);\n        }\n      });\n    }\n  }\n}",
+                              "variable": ""
+                            }
+                          }
+                        ],
+                        "col": 10
+                      },
+                      {
+                        "type": "column",
+                        "children": [
+                          {
+                            "label": "数据统计标签",
+                            "type": "totalItem",
+                            "source": "TOTALITEM",
+                            "parameters": {
+                              "icon": {
+                                "perfix": "proudsmart",
+                                "css": "ps-video-camera",
+                                "id": "28"
+                              }
+                            },
+                            "advance": {
+                              "getfunction": "kpiDataService.getValueList",
+                              "category": "ci",
+                              "condition": [
+                                "kpi",
+                                "{object:kpiQueryModel}"
+                              ],
+                              "expression": "{\n  init : function(event){\n    console.log(event);\n    var projectId = event.target.getParameter(\"projectId\");\n    if(projectId){\n      event.target.getResourceById(projectId, function(resource){\n        event.self.setResource([resource]);\n        event.self.render();\n      })\n    }\n  },\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+                            },
+                            "style": {
+                              "color": "#fff",
+                              "background-color": "#3c8dbc",
+                              "margin": "5px"
+                            },
+                            "data": {
+                              "applied": true,
+                              "model": {
+                                "id": 302
+                              },
+                              "kpi": [
+                                3001
+                              ],
+                              "resource": [
+                                186085941866111
+                              ],
+                              "multipleCi": false,
+                              "multipleKpi": false,
+                              "series": {
+                                "manual": [
+                                  {
+                                    "name": "工厂A产量",
+                                    "data": [
+                                      {
+                                        "name": "指标",
+                                        "value": 3300,
+                                        "unit": "个"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                              },
+                              "modelDisable": true,
+                              "modelType": 0,
+                              "resfilltype": "manual"
+                            },
+                            "$index": [
+                              1,
+                              0
+                            ]
+                          },
+                          {
+                            "label": "数据统计标签",
+                            "type": "totalItem",
+                            "source": "TOTALITEM",
+                            "parameters": {
+                              "icon": {
+                                "perfix": "fa",
+                                "css": "fa-warning",
+                                "id": "2"
+                              }
+                            },
+                            "advance": {
+                              "getfunction": "kpiDataService.getValueList",
+                              "category": "ci",
+                              "condition": [
+                                "kpi",
+                                "{object:kpiQueryModel}"
+                              ],
+                              "expression": "{\n  init : function(event){\n    console.log(event);\n    var projectId = event.target.getParameter(\"projectId\");\n    if(projectId){\n      event.target.getResourceById(projectId, function(resource){\n        event.self.setResource([resource]);\n        event.self.render();\n      })\n    }\n  },\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+                            },
+                            "style": {
+                              "color": "#fff",
+                              "background-color": "rgb(147, 196, 125)",
+                              "margin": "5px"
+                            },
+                            "data": {
+                              "applied": true,
+                              "model": {
+                                "id": 302
+                              },
+                              "kpi": [
+                                2004
+                              ],
+                              "resource": [
+                                186085941866111
+                              ],
+                              "multipleCi": false,
+                              "multipleKpi": false,
+                              "series": {
+                                "manual": "[\n  {\n    \"name\": \"工厂A产量\",\n    \"data\": [\n      {\n        \"name\": \"告警总数\",\n        \"value\": 3300,\n        \"unit\": \"个\"\n      }\n    ]\n  }\n]",
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                              },
+                              "modelDisable": true,
+                              "modelType": 0,
+                              "resfilltype": "manual"
+                            },
+                            "$index": [
+                              1,
+                              0
+                            ]
+                          },
+                          {
+                            "label": "数据统计标签",
+                            "type": "totalItem",
+                            "source": "TOTALITEM",
+                            "parameters": {
+                              "icon": {
+                                "perfix": "proudsmart",
+                                "css": "ps-task",
+                                "id": "19"
+                              }
+                            },
+                            "advance": {
+                              "getfunction": "kpiDataService.getValueList",
+                              "category": "ci",
+                              "condition": [
+                                "kpi",
+                                "{object:kpiQueryModel}"
+                              ],
+                              "expression": "{\n  init : function(event){\n    console.log(event);\n    var projectId = event.target.getParameter(\"projectId\");\n    if(projectId){\n      event.target.getResourceById(projectId, function(resource){\n        event.self.setResource([resource]);\n        event.self.render();\n      })\n    }\n  },\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+                            },
+                            "style": {
+                              "color": "#fff",
+                              "background-color": "rgb(246, 178, 107)",
+                              "margin": "5px"
+                            },
+                            "data": {
+                              "applied": true,
+                              "model": {
+                                "id": 302
+                              },
+                              "kpi": [
+                                3002
+                              ],
+                              "resource": [
+                                186085941866111
+                              ],
+                              "multipleCi": false,
+                              "multipleKpi": false,
+                              "series": {
+                                "manual": "[\n  {\n    \"name\": \"工厂A产量\",\n    \"data\": [\n      {\n        \"name\": \"工单总数\",\n        \"value\": 3300,\n        \"unit\": \"个\"\n      }\n    ]\n  }\n]",
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                              },
+                              "modelDisable": true,
+                              "modelType": 0,
+                              "resfilltype": "manual"
+                            },
+                            "$index": [
+                              1,
+                              0
+                            ]
+                          }
+                        ],
+                        "col": 2
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tabName": "设备列表",
+                "tabId": "1",
+                "type": "tabItem",
+                "display": "block",
+                "children": [
+                  {
+                    "label": "最新上线设备",
+                    "type": "listTable",
+                    "source": "LISTTABLE",
+                    "advance": {
+                      "getfunction": "",
+                      "expression": "{\n  \"on\" : {\n    \"init\" : function(event){\n      var projectId = event.self.getParameter(\"projectId\");\n      if(projectId){\n        event.self.getResourcesByProjectId(projectId, function(resources){\n          event.self.render(resources);\n        });\n      };\n    },\n    \"click\" : function(event){\n      console.log(event);\n    }\n  },\n  format : [\n    {\n      \"name\": \"创建日期\",\n      \"value\": \"{item:createTime}\",\n      \"type\": \"date\",\n      \"style\": {\n        \"color\" : \"#FFF\",\n        \"background-color\" : \"#3c8dbc\",\n        \"padding\" : \"2px 10px\",\n        \"border-radius\" : \"3px\"\n      }\n    },\n    {\n      \"name\": \"名称\",\n      \"value\": \"{item:label}\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"序列号\",\n      \"value\": \"{item:sn}\",\n      \"type\": \"text\"\n    }\n  ]\n}",
+                      "condition": "[]",
+                      "getListTable": "newdevice",
+                      "variable": ""
+                    },
+                    "$index": [
+                      0,
+                      0
+                    ],
+                    "style": {
+                      "margin": "5px",
+                      "font-size": "12px"
+                    }
+                  }
+                ]
+              },
+              {
+                "tabName": "告警列表",
+                "tabId": "2",
+                "type": "tabItem",
+                "display": "none",
+                "children": [
+                  {
+                    "label": "工单列表",
+                    "type": "listTable",
+                    "source": "LISTTABLE",
+                    "advance": {
+                      "getfunction": "alertService.queryFromDb",
+                      "expression": "{\n\t\"on\" : {\n    \"init\" : function(event){\n      var projectId = event.self.getParameter(\"projectId\");\n      if(projectId){\n        event.self.getWarningsByProjectId(projectId, function(warnings){\n          event.self.render(warnings);\n        });\n      };\n    },\n    \"click\" : function(event){\n      console.log(event);\n    }\n  },  \n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"{item:devName}\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警内容\",\n      \"value\": \"{item:message}\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"紧急度\",\n      \"value\": \"{item:severity}\",\n      \"type\": \"priority\"\n    },\n    {\n      \"name\": \"告警状态\",\n      \"value\": \"{item:state}\",\n      \"type\": \"status\"\n    },{\n      \"name\": \"首次告警时间\",\n      \"value\": \"{item:firstArisingTime}\",\n      \"type\": \"date\"\n    },{\n      \"name\": \"最近告警时间\",\n      \"value\": \"{item:arisingTime}\",\n      \"type\": \"date\"\n    },{\n      \"name\": \"关闭告警时间\",\n      \"value\": \"{item:closeTime}\",\n      \"type\": \"date\"\n    }\n  ]\n}",
+                      "condition": "[{}]",
+                      "getListTable": "newdevice",
+                      "variable": ""
+                    },
+                    "$index": [
+                      0,
+                      0
+                    ],
+                    "style": {
+                      "margin": "5px",
+                      "font-size": "12px"
+                    }
+                  }
+                ]
+              }
+            ],
+            "tabInx": "1"
+          },
+          {
+            "type": "row",
+            "source": "ROW",
+            "parameters": {
+              "alignment": "bootstrap"
+            },
+            "style": {},
+            "children": [
+              {
+                "type": "column",
+                "children": [],
+                "col": 9
+              },
+              {
+                "type": "column",
+                "children": [],
+                "col": 3
+              }
+            ]
+          }
+        ],
+        "col": 12
+      },
+      "id": "1",
+      "$$hashKey": "object:544"
+    },
+    {
+      "label": "设备",
+      "path": "subview",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "控制板1",
+            "type": "tab",
+            "source": "TAB",
+            "parameters": {
+              "align": "horizental"
+            },
+            "style": {
+              "margin": "5px"
+            },
+            "children": [
+              {
+                "tabName": "设备视图",
+                "tabId": "0",
+                "display": "block",
+                "type": "tabItem",
+                "children": [
+                  {
+                    "label": "拓扑视图",
+                    "type": "topo",
+                    "source": "TOPO",
+                    "advance": {
+                      "expression": "{\n\t\"on\" : {\n    \"init\" : function(event){\n      var param = event.self.getParameter(\"subViewId\");\n      if(param){\n        event.self.getViewByViewId(param, function(view){\n          if(view){\n            var json = JSON.parse(view.content);\n          \tevent.self.render(json);\n          } else {\n            event.self.error(\"没有配置正确的组态视图。\")\n          }\n        })\n      }\n    },\n    \"click\" : function(event){\n      var param = {\n        modelId : event.ui.modelId,\n        resourceId : event.ui.resourceId\n      };\n      //event.self.navigateTo(\"panel\", param, 'home');\n    }\n  }\n}",
+                      "variable": ""
+                    },
+                    "style": {
+                      "margin": "5px",
+                      "height": "calc(100vh - 180px)",
+                      "font-size": "12px",
+                      "background-repeat": "no-repeat",
+                      "background-color": "rgb(238, 238, 238)",
+                      "border": "1px solid #ddd"
+                    },
+                    "viewId": 147778235096074,
+                    "$index": [
+                      0,
+                      0
+                    ]
+                  }
+                ]
+              },
+              {
+                "tabName": "设备控制",
+                "tabId": "1",
+                "type": "tabItem",
+                "display": "none",
+                "children": [
+                  {
+                    "label": "最新上线设备",
+                    "type": "listTable",
+                    "source": "LISTTABLE",
+                    "advance": {
+                      "getfunction": "",
+                      "expression": "{\n  \"on\" : {\n    \"init\" : function(event){\n      var modelId = event.self.getParameter(\"modelId\");\n      if(modelId){\n        event.self.getDirectivesByTypeAndRole(\"configure\",\"device\",modelId, function(resources){\n          event.self.render(resources);\n        });\n      };\n    },\n    \"click\" : function(event){\n      if (event.jquery.target.nodeName == 'BUTTON') {\n        var dt = event.data;\n        var inputVal = $(event.jquery.currentTarget.children[1]).children(\"input\").val();\n        dt.value = inputVal\n        event.ui.sendItemDir(dt);\n      }\n    }\n  },\n  format : [\n    {\n      \"name\": \"指令名\",\n      \"value\": \"{item:name}\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"参数\",\n      \"value\": \"{item:value}\",\n      \"type\": \"input\"\n    },\n    {\n      \"name\": \"操作\",\n      \"value\": \"{item:name}\",\n      \"type\": \"button\"\n    }\n  ]\n}",
+                      "condition": "[]",
+                      "getListTable": "newdevice",
+                      "variable": ""
+                    },
+                    "$index": [
+                      1,
+                      0
+                    ],
+                    "style": {
+                      "margin": "5px",
+                      "font-size": "12px"
+                    }
+                  }
+                ]
+              },
+              {
+                "tabName": "设备告警",
+                "tabId": "2",
+                "type": "tabItem",
+                "display": "none",
+                "children": [
+                  {
+                    "label": "工单列表",
+                    "type": "listTable",
+                    "source": "LISTTABLE",
+                    "advance": {
+                      "getfunction": "alertService.queryFromDb",
+                      "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      console.log(event);\n    }\n  },  \n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"{item:devName}\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警内容\",\n      \"value\": \"{item:message}\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"紧急度\",\n      \"value\": \"{item:severity}\",\n      \"type\": \"priority\"\n    },\n    {\n      \"name\": \"告警状态\",\n      \"value\": \"{item:state}\",\n      \"type\": \"status\"\n    },{\n      \"name\": \"首次告警时间\",\n      \"value\": \"{item:firstArisingTime}\",\n      \"type\": \"date\"\n    },{\n      \"name\": \"最近告警时间\",\n      \"value\": \"{item:arisingTime}\",\n      \"type\": \"date\"\n    },{\n      \"name\": \"关闭告警时间\",\n      \"value\": \"{item:closeTime}\",\n      \"type\": \"date\"\n    }\n  ]\n}",
+                      "condition": "[{nodeIds:\"element.getParameter::resourceId\"}]",
+                      "getListTable": "newdevice",
+                      "variable": ""
+                    },
+                    "$index": [
+                      0,
+                      0
+                    ],
+                    "style": {
+                      "margin": "5px",
+                      "font-size": "12px"
+                    }
+                  }
+                ]
+              },
+              {
+                "tabName": "监控数据",
+                "tabId": "3",
+                "type": "tabItem",
+                "display": "none",
+                "children": [
+                  {
+                    "label": "最新上线设备",
+                    "type": "listTable",
+                    "source": "LISTTABLE",
+                    "advance": {
+                      "getfunction": "",
+                      "expression": "{\n  \"on\" : {\n    \n    \"init\" : function(event){\n      var modelId = event.self.getParameter(\"modelId\");\n      if(modelId){\n        event.self.getKpiFromViewByTypeAndRole(\"configure\",\"device\",modelId, function(resources){\n          if(resources){\n            event.self.render(resources);\n          } else {\n            event.self.error(\"没有配置正确的组态视图。\")\n          }\n        })\n      }\n    },\n    \"click\" : function(event){\n      console.log(event);\n    }\n  },\n  format : [\n    {\n      \"name\": \"指标名称\",\n      \"value\": \"{item:kpiName}\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"指标数值\",\n      \"value\": \"{item:value}\",\n      \"type\": \"text\"\n    }\n  ]\n}",
+                      "condition": "[]",
+                      "getListTable": "newdevice",
+                      "variable": ""
+                    },
+                    "$index": [
+                      0,
+                      0
+                    ],
+                    "style": {
+                      "margin": "5px",
+                      "font-size": "12px"
+                    }
+                  }
+                ]
+              }
+            ],
+            "tabInx": "0"
+          }
+        ],
+        "col": 12
+      },
+      "id": "2",
+      "$$hashKey": "object:525"
+    }
+  ],
+  "setting": {
+    "color": "",
+    "padding": 15
+  }
+}

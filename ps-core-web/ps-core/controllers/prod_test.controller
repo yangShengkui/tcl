@@ -1,0 +1,198 @@
+<config injector="$scope,$rootScope,$location,$routeParams,$q,$timeout,ajax, unitTest"
+        params="/:id?"
+></config>
+<template>
+  <proudsmart-base>
+    <button class="btn btn-primary" ng-click="clickMe()">ClickMe1</button>
+  </proudsmart-base>
+</template>
+<script type="text/javascript">
+  export default function(scope,rootScope,location,routeParams,q,timeout, ajax, unitTest) {
+    let models, inx = 1, range = [11, 14];
+    function display(d, attr, label){
+      return d.filter((n)=>{
+        return n.__get__(attr);
+      }).map((n) => {
+        return label ? n.__get__(attr)[label] : n.__get__(attr);
+      }).join(",")
+    }
+    function condition(){
+      let start = range[0],
+        end = range[1] || 1/0,
+        rs = inx >= start && inx < end;
+      return (inx++, rs);
+    }
+
+    unitTest(`case ${inx} : 缓存与不缓存情况`, (next)=>{
+      q.all(models.slice(0,2).map((n) => {
+        return ajax.post("resourceUIService.getModelById", n.id);
+      })).then(function(d){
+        console.log(d);
+        next();
+      })
+    }, condition());
+
+    unitTest(`case ${inx} : 链式调用情况`, (next)=>{
+      ajax.post("sparePartUIService.getAllSpareParts|customer|deviceModel", null)
+        .then(function(d){
+          console.log(display(d, "customer", "customerName"));
+          next();
+        });
+    }, condition());
+
+    unitTest(`case ${inx} : 获取设备客户项目指标管理域及状态`, (next)=>{
+      ajax.post("resourceUIService.getDevicesByCondition|customer|project|model|state|online|domain", {})
+        .then(function(d){
+          console.log(display(d, "domain", "label"));
+          console.log(display(d, "state", "value"));
+          console.log(display(d, "online", "value"));
+          next();
+        });
+    }, condition());
+
+    unitTest(`case ${inx} : pipe和post混用的情况`, (next)=>{
+      ajax.post("resourceUIService.getDevicesByCondition", {})
+        .pipe(ajax.postwith({
+          url : "customerUIService.findCustomersByCondition",
+          before : "customerId",
+          param : {},
+          after : "customer"
+        }))
+        .post("model")
+        .then(function(d){
+          console.log(display(d, "customer", "customerName"));
+          console.log(display(d, "model", "label"));
+          next();
+        });
+    }, condition());
+
+    unitTest(`case ${inx} 有源数据的情况`, (next)=>{
+      ajax.pipeline([307699781220236, 307699781220220].map((n)=>{
+        return {  customerId : n }
+      })).post("customer")
+        .then((d)=>{
+          console.log(display(d, "customer", "customerName"));
+          next();
+        })
+    }, condition());
+
+    unitTest(`case ${inx} : 获取网关，及其客户项目状态管理域信息`, (next)=>{
+      ajax.post("resourceUIService.getAllGatewaysByCondition|customer|project|online|domain", {})
+        .then(function(d){
+          console.log(display(d, "project", "projectName"));
+          console.log(display(d, "online", "value"));
+          next();
+        });
+    }, condition());
+
+    unitTest(`case ${inx} : 工单信息`, (next)=>{
+      ajax.post("ticketTaskService.findTickets", { status : 100 })
+        .then(function(d){
+          console.log(d);
+          next();
+        });
+    }, condition());
+
+    unitTest(`case ${inx} : 禁用缓存的情况(1)`, (next)=>{
+      q.all(models.slice(3,5).map((n) => {
+        return ajax.post("resourceUIService.getModelById", n.id, false)
+      })).then(function(d){
+        console.log(d);
+        console.log(ajax.getCache());
+        next();
+      });
+    }, condition());
+
+    unitTest(`case ${inx} : 禁用缓存的情况(2)`, (next)=>{
+      ajax.pipeline([307699781220236, 307699781220220].map((n)=>{
+        return {  customerId : n }
+      })).pipe(ajax.postwith({
+        url : "customerUIService.findCustomersByCondition",
+        before : "customerId",
+        param : {},
+        after : "id",
+        cache : false
+      })).then(function(d){
+        console.log(d);
+        next();
+      })
+    }, condition());
+
+    unitTest(`case ${inx} : 新接口 1)`, (next)=>{
+      ajax.post("modelDefinition@getByIds", models[0].id)
+        .then(function(d){
+          console.log(d);
+          next();
+        });
+    }, condition());
+
+    unitTest(`case ${inx} : 普通POST情况`, (next)=>{
+      ajax.post("resourceUIService.getModels")
+        .then(function(d){
+          console.log(models = d);
+          console.log(ajax.getCache());
+          next();
+        });
+    }, condition());
+
+    unitTest(`case ${inx} : 新接口 2)`, (next)=>{
+      ajax.post("resourceUIService.getDevicesByCondition", {})
+        .pipe(ajax.postAll({
+          url : "modelDefinition@getByCondition",
+          before : "modelId"
+        }))
+        .then(function(d){
+          console.log(d);
+          next();
+        })
+    }, condition());
+
+    unitTest(`case ${inx} : 新接口 3)`, (next)=>{
+      ajax.post("resourceUIService.getDevicesByCondition", {})
+        .pipe(ajax.postAll({
+          url : "resource@getByCondition",
+          before : "domainPath",
+          param : function(source){
+            return ["resource", {
+              modelId : 300,
+              domainPath : {
+                IN : source
+              }
+            }]
+          },
+          after : "domain:domainPath"
+        }))
+        .pipe(ajax.postAll({
+          url : "kpiDataFlexService.getKpiValueList",
+          before : "id",
+          param : function(source){
+            return ["kpi", {
+              category: "ci",
+              isRealTimeData: true,
+              timePeriod: 0,
+              nodeIds: source,
+              kpiCodes: [999999],
+              startTime: null,
+              endTime: null,
+              timeRange: "",
+              statisticType: "psiot",
+              condList: []
+            }]
+          },
+          after : "state:nodeId"
+        }))
+        .then(function(d){
+          console.log(d.map((n)=>{
+            return n.__get__("domain");
+          }));
+          console.log(d.map((n)=>{
+            return n.__get__("state");
+          }));
+          next();
+        })
+    }, condition());
+  }
+</script>
+<style type="less">
+
+</style>

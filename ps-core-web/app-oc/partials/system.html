@@ -1,0 +1,47 @@
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div ng-show="notice == 'tab'" class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active">
+                <a>系统公告管理</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body">
+          <button type="button" ng-click="addMail(0);" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i><span class="hidden-sm"> 添加公告</span></button>
+          <div class="combined-query pull-right">
+            筛选: <input class="form-control input-sm" ng-model="tableSearchValue" ng-change="publicTableSearch('system-table',tableSearchValue)"/>
+          </div>
+        </div>
+        <div class="box-footer margin-bottom-10">
+          <table width="100%" class="table table-hover "   id="recordtable" name="system-table" system-table></table>
+        </div>
+      </div>
+      <div ng-show="notice == 'preview'" class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active">
+                <a>公告预览</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-click="notice = 'tab'" data-toggle="返回" title="" data-original-title="返回" ><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-footer"  style="padding: 30px;">
+          <span class="ulol-style"  ng-model="previewData.content" ng-bind-html="TrustAsHtml(previewData.content)"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

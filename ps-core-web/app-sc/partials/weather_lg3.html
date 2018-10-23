@@ -1,0 +1,22 @@
+<div class='weather-layout js-weather-layout weather-flip'>
+	<div class='weather-widget'>
+		<div class='weather-widget-main col-lg-12'>
+			<div class='weather-loading' ng-show='loading'>
+				<i class='fa fa-spinner fa-pulse fa-3x'></i>
+			</div>
+			<i class='icn-weather' data-weather-icn='{{item.results[0].weather_data[0].weather}}' ng-repeat='item in weathers'></i>
+			<p class='title-deg' ng-repeat='item in weathers'>
+				{{item.results[0].weather_data[0].temperature}}
+			</p>
+			<p class='title-weather' ng-repeat='item in weathers'>
+				{{item.results[0].weather_data[0].weather}}
+			</p>
+			<p class='title-wind' ng-repeat='item in weathers'>
+				{{item.results[0].weather_data[0].wind}}
+			</p>
+			<p ng-repeat='item in weathers'>
+				{{item.results[0].weather_data[0].date}}
+			</p>
+		</div>
+	</div>
+</div>

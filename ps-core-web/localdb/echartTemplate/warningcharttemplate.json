@@ -1,0 +1,1062 @@
+{
+  "version": "V_2",
+  "src" : "url(images/template1.jpg)",
+  "title" : "华能地图（单页模板）",
+  "layout": {
+	"type": "column",
+	"children": [
+	  {
+		"label": "文字",
+		"type": "text",
+		"source": "TEXT",
+		"data": {
+		  "applied": false,
+		  "text": {
+			"manual": "视图应用范例。",
+			"bind": "(function (source){\n  return source.getLegend();\n})"
+		  },
+		  "model": {
+			"id": 204
+		  },
+		  "resource": [
+			"rootCi"
+		  ],
+		  "modelDisable": false
+		},
+		"style": {
+		  "margin": "5px",
+		  "padding": "0",
+		  "font-size": "22px",
+		  "font-weight": "bold",
+		  "line-height": "60px"
+		},
+		"advance": {
+		  "getfunction": "kpiDataService.getValueList",
+		  "category": "ci",
+		  "condition": [
+			"kpi",
+			"{object:kpiQueryModel}"
+		  ]
+		},
+		"$index": [
+		  2,
+		  0
+		]
+	  },
+	  {
+		"type": "row",
+		"source": "ROW",
+		"parameters": {
+		  "alignment": "bootstrap"
+		},
+		"style": {},
+		"children": [
+		  {
+			"type": "column",
+			"children": [
+			  {
+				"label": "控制板2",
+				"type": "box",
+				"class": "box box-info",
+				"source": "BOX",
+				"parameters": {
+				  "title": "用控制器控制视图"
+				},
+				"style": {
+				  "font-size": "12px",
+				  "font-weight": "bold",
+				  "text-align": "left",
+				  "margin": "5px"
+				},
+				"children": [
+				  {
+					"class": "box-body",
+					"type": "box-body",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": [
+						  {
+							"label": "控制板1",
+							"type": "block",
+							"source": "BLOCK",
+							"style": {
+							  "margin": "5px",
+							  "background-color": "#eeeeee",
+							  "padding": "10px"
+							},
+							"children": [
+							  {
+								"type": "column",
+								"col": 12,
+								"children": [
+								  {
+									"type": "row",
+									"source": "ROW",
+									"parameters": {
+									  "alignment": "float"
+									},
+									"style": {},
+									"children": [
+									  {
+										"type": "column",
+										"children": [
+										  {
+											"label": "文字",
+											"type": "text",
+											"source": "TEXT",
+											"data": {
+											  "applied": false,
+											  "text": {
+												"manual": "模型",
+												"bind": "(function (source){\n  return source.getLegend();\n})"
+											  },
+											  "model": {
+												"id": 204
+											  },
+											  "resource": [
+												"rootCi"
+											  ],
+											  "modelDisable": false
+											},
+											"style": {
+											  "margin": "10px 15px",
+											  "padding": "0",
+											  "font-size": "12px",
+											  "font-weight": "bold"
+											},
+											"advance": {
+											  "getfunction": "kpiDataService.getValueList",
+											  "category": "ci",
+											  "condition": [
+												"kpi",
+												"{object:kpiQueryModel}"
+											  ]
+											},
+											"$index": [
+											  1,
+											  0
+											]
+										  }
+										],
+										"col": 2
+									  },
+									  {
+										"type": "column",
+										"children": [
+										  {
+											"label": "选择器",
+											"type": "multiselect",
+											"source": "MULTISELECT",
+											"advance": {
+											  "getfunction": "serviceCenterService.models.getAll",
+											  "category": "ci",
+											  "condition": [],
+											  "expression": "{\n  \"on\" : {\n    \"init\" : function(event){\n      var resource = event.global.variable(\"resource1\");\n      var kpi = event.global.variable(\"kpi1\");\n      var modelId = event.ui.data.model.id;\n      resource.setCondition([modelId]);\n      resource.renderData();\n      kpi.setCondition([modelId]);\n      kpi.renderData();\n    }\n  },\n  \"formatter\" : {\n    \"label\" : \"{item:label}\",\n    \"value\" : \"{item:id}\"\n  }\n}",
+											  "variable": "model1"
+											},
+											"data": {
+											  "model": {
+												"id": 204
+											  },
+											  "resource": [
+												"rootCi"
+											  ],
+											  "modelDisable": false
+											},
+											"$index": [
+											  1,
+											  0
+											]
+										  }
+										],
+										"col": 2
+									  },
+									  {
+										"type": "column",
+										"children": [
+										  {
+											"label": "文字",
+											"type": "text",
+											"source": "TEXT",
+											"data": {
+											  "applied": false,
+											  "text": {
+												"manual": "设备",
+												"bind": "(function (source){\n  return source.getLegend();\n})"
+											  },
+											  "model": {
+												"id": 204
+											  },
+											  "resource": [
+												"rootCi"
+											  ],
+											  "modelDisable": false
+											},
+											"style": {
+											  "margin": "10px 15px",
+											  "padding": "0",
+											  "font-size": "12px",
+											  "font-weight": "bold"
+											},
+											"advance": {
+											  "getfunction": "kpiDataService.getValueList",
+											  "category": "ci",
+											  "condition": [
+												"kpi",
+												"{object:kpiQueryModel}"
+											  ]
+											},
+											"$index": [
+											  1,
+											  0
+											]
+										  }
+										],
+										"col": 2
+									  },
+									  {
+										"type": "column",
+										"children": [
+										  {
+											"label": "选择器",
+											"type": "multiselect",
+											"source": "MULTISELECT",
+											"advance": {
+											  "variable": "resource1",
+											  "getfunction": "serviceCenterService.resources.getBymodelId",
+											  "category": "ci",
+											  "condition": [],
+											  "expression": "{\n  \"formatter\" : {\n    \"autoload\" : false,\n    \"label\" : \"{item:label}\",\n    \"value\" : \"{item:id}\"\n  }\n}"
+											},
+											"data": {
+											  "model": {
+												"id": 204
+											  },
+											  "resource": [
+												"rootCi"
+											  ],
+											  "modelDisable": false
+											},
+											"$index": [
+											  1,
+											  0
+											]
+										  }
+										],
+										"col": 2
+									  },
+									  {
+										"type": "column",
+										"children": [
+										  {
+											"label": "文字",
+											"type": "text",
+											"source": "TEXT",
+											"data": {
+											  "applied": false,
+											  "text": {
+												"manual": "指标",
+												"bind": "(function (source){\n  return source.getLegend();\n})"
+											  },
+											  "model": {
+												"id": 204
+											  },
+											  "resource": [
+												"rootCi"
+											  ],
+											  "modelDisable": false
+											},
+											"style": {
+											  "margin": "10px 15px",
+											  "padding": "0",
+											  "font-size": "12px",
+											  "font-weight": "bold"
+											},
+											"advance": {
+											  "getfunction": "kpiDataService.getValueList",
+											  "category": "ci",
+											  "condition": [
+												"kpi",
+												"{object:kpiQueryModel}"
+											  ]
+											},
+											"$index": [
+											  1,
+											  0
+											]
+										  }
+										],
+										"col": 2
+									  },
+									  {
+										"type": "column",
+										"children": [
+										  {
+											"label": "选择器",
+											"type": "multiselect",
+											"source": "MULTISELECT",
+											"advance": {
+											  "variable": "kpi1",
+											  "getfunction": "serviceCenterService.kpis.getBymodelId",
+											  "category": "ci",
+											  "condition": [],
+											  "expression": "{\n  \"on\" : {\n    \"change\" : function(event){\n      var kpi = event.ui.values;\n      var resourceDom = event.global.variable(\"resource1\");\n    \tvar resource = resourceDom.getSelect();\n      var echart = event.global.variable(\"echart1\");\n      echart.render(resource, kpi);\n    }\n  },\n  \"formatter\" : {\n    \"autoload\" : false,\n    \"label\" : \"{item:label}\",\n    \"value\" : \"{item:id}\"\n  }\n}"
+											},
+											"data": {
+											  "model": {
+												"id": 204
+											  },
+											  "resource": [
+												"rootCi"
+											  ],
+											  "modelDisable": false
+											},
+											"$index": [
+											  1,
+											  0
+											]
+										  }
+										],
+										"col": 2
+									  }
+									],
+									"$index": [
+									  2,
+									  0
+									]
+								  }
+								]
+							  }
+							],
+							"$index": [
+							  0,
+							  0
+							]
+						  }
+						]
+					  }
+					]
+				  },
+				  {
+					"class": "box-footer",
+					"type": "box-footer",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": [
+						  {
+							"label": "线图",
+							"type": "echart",
+							"source": "LINECHART",
+							"data": {
+							  "applied": true,
+							  "model": {
+								"id": 204
+							  },
+							  "kpi": [
+								3236
+							  ],
+							  "resource": [
+								"rootCi"
+							  ],
+							  "timespan": {
+								"value": 24,
+								"unit": "hour"
+							  },
+							  "format": "年月日",
+							  "frequency": {
+								"value": 30,
+								"unit": "minute"
+							  },
+							  "legend": {
+								"manual": [
+								  "第一组",
+								  "第二组",
+								  "第三组"
+								],
+								"bind": "(function (source){\n  return source.time.getLegend();\n})"
+							  },
+							  "xAxis": {
+								"manual": [
+								  [
+									"第一个数据",
+									"第二个数据",
+									"第三个数据",
+									"第四个数据",
+									"第五个数据",
+									"第六个数据"
+								  ]
+								],
+								"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+							  },
+							  "xAxisType": "category",
+							  "yAxis": {
+								"manual": [
+								  [
+									"第一个数据",
+									"第二个数据",
+									"第三个数据",
+									"第四个数据",
+									"第五个数据",
+									"第六个数据"
+								  ]
+								],
+								"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+							  },
+							  "yAxisType": "value",
+							  "series": {
+								"manual": [
+								  {
+									"name": "第一组",
+									"data": [
+									  120,
+									  85,
+									  64,
+									  130,
+									  152,
+									  87
+									]
+								  },
+								  {
+									"name": "第二组",
+									"data": [
+									  88,
+									  120,
+									  180,
+									  78,
+									  232,
+									  140
+									]
+								  },
+								  {
+									"name": "第三组",
+									"data": [
+									  50,
+									  80,
+									  140,
+									  60,
+									  70,
+									  90
+									]
+								  }
+								],
+								"bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+							  },
+							  "modelDisable": false
+							},
+							"advance": {
+							  "variable": "echart1",
+							  "getfunction": "kpiDataService.getValueList",
+							  "category": "time",
+							  "condition": [
+								"kpi",
+								"{object:kpiQueryModel}"
+							  ],
+							  "expression": {}
+							},
+							"parameters": {
+							  "title": "告警曲线对比",
+							  "subtitle": ""
+							},
+							"style": {
+							  "margin": "auto",
+							  "width": "100%",
+							  "height": "300px"
+							},
+							"echart": {
+							  "general": {},
+							  "title": {
+								"textStyle": {
+								  "fontWeight": "bold",
+								  "fontSize": 16
+								},
+								"padding": 30
+							  },
+							  "tooltip": {
+								"trigger": "axis"
+							  },
+							  "legend": {
+								"data": [
+								  "数据1",
+								  "数据2",
+								  "数据3"
+								]
+							  },
+							  "grid": [
+								{
+								  "top": "80"
+								}
+							  ],
+							  "xAxis": [
+								{
+								  "boundaryGap": false,
+								  "axisLine": {
+									"lineStyle": {
+									  "color": "#b0b0b0"
+									}
+								  }
+								}
+							  ],
+							  "yAxis": [
+								{
+								  "boundaryGap": false,
+								  "axisLine": {
+									"lineStyle": {
+									  "color": "#b0b0b0"
+									}
+								  }
+								}
+							  ],
+							  "series": [
+								{
+								  "type": "line",
+								  "name": "数据1",
+								  "symbol": "circle",
+								  "itemStyle": {
+									"normal": {
+									  "color": "function(){\n  return \"rgb(61, 133, 198)\"\n}"
+									}
+								  },
+								  "lineStyle": {
+									"normal": {
+									  "color": "rgb(61, 133, 198)"
+									}
+								  },
+								  "markPoint": {
+									"data": []
+								  }
+								},
+								{
+								  "type": "line",
+								  "name": "数据2",
+								  "markPoint": {
+									"data": [
+									  {
+										"name": "最大值",
+										"type": "max"
+									  },
+									  {
+										"name": "最小值",
+										"type": "min"
+									  }
+									]
+								  }
+								},
+								{
+								  "type": "line",
+								  "name": "数据3",
+								  "markPoint": {
+									"data": [
+									  {
+										"name": "最大值",
+										"type": "max"
+									  },
+									  {
+										"name": "最小值",
+										"type": "min"
+									  }
+									]
+								  }
+								}
+							  ]
+							},
+							"$index": [
+							  0,
+							  4
+							]
+						  }
+						]
+					  }
+					]
+				  }
+				],
+				"$index": [
+				  0,
+				  0
+				]
+			  }
+			],
+			"col": 6
+		  },
+		  {
+			"type": "column",
+			"children": [
+			  {
+				"label": "控制板2",
+				"type": "box",
+				"class": "box box-info",
+				"source": "BOX",
+				"parameters": {
+				  "title": "曲线区间范围之外的点"
+				},
+				"style": {
+				  "font-size": "12px",
+				  "font-weight": "bold",
+				  "text-align": "left",
+				  "margin": "5px"
+				},
+				"children": [
+				  {
+					"class": "box-body",
+					"type": "box-body",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": [
+						  {
+							"label": "线图",
+							"type": "echart",
+							"source": "LINECHART",
+							"data": {
+							  "applied": false,
+							  "model": {
+								"id": 204
+							  },
+							  "resource": [
+								"rootCi"
+							  ],
+							  "timespan": {
+								"value": 24,
+								"unit": "hour"
+							  },
+							  "format": "年月日",
+							  "frequency": {
+								"value": 30,
+								"unit": "minute"
+							  },
+							  "legend": {
+								"manual": "[\n  \"实际数据\"\n]",
+								"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+							  },
+							  "xAxis": {
+								"manual": "(function(){\n\tvar rs = [];\n  for(var i = 0; i< 30; i++){\n     rs.push(i)\n  }\n  return [rs];\n})",
+								"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+							  },
+							  "xAxisType": "category",
+							  "yAxis": {
+								"manual": [
+								  [
+									"第一个数据",
+									"第二个数据",
+									"第三个数据",
+									"第四个数据",
+									"第五个数据",
+									"第六个数据"
+								  ]
+								],
+								"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+							  },
+							  "yAxisType": "value",
+							  "series": {
+								"manual": "[\n  {\n    \"name\": \"上限\",\n    \"baseline\" : \"below\",\n    \"data\": (function(){\n      var rs = [];\n    \tfor(var i=0; i<30; i++){\n    \t\trs.push(50 + i*i*.2 );\n  \t\t}\n      return rs;\n  \t})()\n  },\n  {\n    \"name\": \"下限\",\n    \"baseline\" : \"over\",\n    \"data\": (function(){\n      var rs = [];\n    \tfor(var i=0; i<30; i++){\n    \t\trs.push(10 + i*i*.1 );\n  \t\t}\n      return rs;\n  \t})()\n  },\n  {\n    \"name\": \"实际数据\",\n    \"data\": (function(){\n      var rs = [];\n    \tfor(var i=0; i<30; i++){\n    \t\trs.push(50 + Math.sin(i / 5) * 30 );\n  \t\t}\n      return rs;\n  \t})()\n  }\n]",
+								"bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+							  },
+							  "modelDisable": false
+							},
+							"advance": {
+							  "variable": "",
+							  "getfunction": "kpiDataService.getValueList",
+							  "category": "time",
+							  "condition": [
+								"kpi",
+								"{object:kpiQueryModel}"
+							  ],
+							  "expression": {}
+							},
+							"parameters": {
+							  "title": "范围之外的点告警",
+							  "subtitle": ""
+							},
+							"style": {
+							  "margin": "auto",
+							  "width": "100%",
+							  "height": "300px"
+							},
+							"echart": {
+							  "general": {},
+							  "title": {
+								"textStyle": {
+								  "fontWeight": "bold",
+								  "fontSize": 16
+								},
+								"padding": 30
+							  },
+							  "tooltip": {
+								"trigger": "axis",
+								"formatter": "function(params){\n  var dt = params[2];\n  return dt.name + \"<br/>\" + dt.seriesName + \" : \" + dt.value;\n}"
+							  },
+							  "legend": {
+								"data": [
+								  "数据1",
+								  "数据2",
+								  "数据3"
+								]
+							  },
+							  "grid": [
+								{
+								  "top": "80"
+								}
+							  ],
+							  "xAxis": [
+								{
+								  "boundaryGap": false,
+								  "axisLine": {
+									"lineStyle": {
+									  "color": "#b0b0b0"
+									}
+								  }
+								}
+							  ],
+							  "yAxis": [
+								{
+								  "boundaryGap": false,
+								  "axisLine": {
+									"lineStyle": {
+									  "color": "#b0b0b0"
+									}
+								  }
+								}
+							  ],
+							  "series": [
+								{
+								  "type": "line",
+								  "name": "数据1",
+								  "symbolSize": "0",
+								  "lineStyle": {
+									"normal": {
+									  "color": "rgb(255, 0, 0)",
+									  "width": "1",
+									  "type": "dashed"
+									}
+								  },
+								  "markLine": {
+									"data": []
+								  },
+								  "markArea": {
+									"data": []
+								  },
+								  "markPoint": {
+									"data": []
+								  }
+								},
+								{
+								  "type": "line",
+								  "name": "数据2",
+								  "symbolSize": "0",
+								  "lineStyle": {
+									"normal": {
+									  "color": "rgb(255, 0, 0)",
+									  "width": "1",
+									  "type": "dashed"
+									}
+								  },
+								  "markLine": {
+									"data": []
+								  },
+								  "markArea": {
+									"data": []
+								  },
+								  "markPoint": {
+									"data": []
+								  }
+								},
+								{
+								  "type": "line",
+								  "name": "数据3",
+								  "symbol": "circle",
+								  "symbolSize": "function(val, params){\n  if(typeof params.data == \"object\"){\n    return 6;\n  } else {\n    return 4;\n  }\n}",
+								  "itemStyle": {
+									"normal": {
+									  "color": "function(params){\n  if(typeof params.data == \"object\"){\n    return \"red\";\n  } else {\n    return \"#1385cd\";\n  }\n}"
+									}
+								  },
+								  "lineStyle": {
+									"normal": {
+									  "color": "rgb(111, 168, 220)"
+									}
+								  },
+								  "markLine": {
+									"data": []
+								  },
+								  "markArea": {
+									"data": []
+								  },
+								  "markPoint": {
+									"data": []
+								  }
+								}
+							  ]
+							},
+							"$index": [
+							  4,
+							  2
+							]
+						  }
+						]
+					  }
+					]
+				  },
+				  {
+					"class": "box-footer",
+					"type": "box-footer",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": []
+					  }
+					]
+				  }
+				],
+				"$index": [
+				  0,
+				  0
+				]
+			  },
+			  {
+				"label": "控制板2",
+				"type": "box",
+				"class": "box box-info",
+				"source": "BOX",
+				"parameters": {
+				  "title": "利用VisualMap绘制区间"
+				},
+				"style": {
+				  "font-size": "12px",
+				  "font-weight": "bold",
+				  "text-align": "left",
+				  "margin": "5px"
+				},
+				"children": [
+				  {
+					"class": "box-body",
+					"type": "box-body",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": [
+						  {
+							"label": "线图",
+							"type": "echart",
+							"source": "LINECHART",
+							"data": {
+							  "applied": false,
+							  "model": {
+								"id": 204
+							  },
+							  "resource": [
+								"rootCi"
+							  ],
+							  "timespan": {
+								"value": 24,
+								"unit": "hour"
+							  },
+							  "format": "年月日",
+							  "frequency": {
+								"value": 30,
+								"unit": "minute"
+							  },
+							  "legend": {
+								"manual": "[\n  \"数据\",\n]",
+								"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+							  },
+							  "xAxis": {
+								"manual": "function(){\n  var rs = [];\n  for(var i=0; i<30; i++){\n    rs.push(i)\n  }\n  return [rs];\n}",
+								"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+							  },
+							  "xAxisType": "category",
+							  "yAxis": {
+								"manual": [
+								  [
+									"第一个数据",
+									"第二个数据",
+									"第三个数据",
+									"第四个数据",
+									"第五个数据",
+									"第六个数据"
+								  ]
+								],
+								"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+							  },
+							  "yAxisType": "value",
+							  "series": {
+								"manual": "[\n  {\n    \"name\": \"数据\",\n    \"data\": (function(){\n      var rs = [];\n      for(var i=0; i<30; i++){\n        rs.push(40 + Math.sin(i / 3) * 10 + i * i * .1);\n      }\n      return rs;\n    })()\n  }\n]",
+								"bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+							  },
+							  "modelDisable": false
+							},
+							"advance": {
+							  "variable": "",
+							  "getfunction": "kpiDataService.getValueList",
+							  "category": "time",
+							  "condition": [
+								"kpi",
+								"{object:kpiQueryModel}"
+							  ],
+							  "expression": {}
+							},
+							"parameters": {
+							  "title": "利用视觉映射分段",
+							  "subtitle": ""
+							},
+							"style": {
+							  "margin": "auto",
+							  "width": "100%",
+							  "height": "300px"
+							},
+							"echart": {
+							  "general": {},
+							  "title": {
+								"textStyle": {
+								  "fontWeight": "bold",
+								  "fontSize": 16
+								},
+								"padding": 30
+							  },
+							  "tooltip": {
+								"trigger": "axis"
+							  },
+							  "legend": {
+								"data": [
+								  "数据1",
+								  "数据2",
+								  "数据3"
+								]
+							  },
+							  "grid": [
+								{
+								  "top": "80"
+								}
+							  ],
+							  "xAxis": [
+								{
+								  "boundaryGap": false,
+								  "axisLine": {
+									"lineStyle": {
+									  "color": "#b0b0b0"
+									}
+								  }
+								}
+							  ],
+							  "yAxis": [
+								{
+								  "boundaryGap": false,
+								  "axisLine": {
+									"lineStyle": {
+									  "color": "#b0b0b0"
+									}
+								  }
+								}
+							  ],
+							  "series": [
+								{
+								  "type": "line",
+								  "name": "数据1",
+								  "markLine": {
+									"data": "[{\n\tyAxis: 50\n}, {\n\tyAxis: 100\n}]"
+								  },
+								  "markArea": {
+									"data": "[\n  [{\n    name : \"最大值\",\n    yAxis : 200\n  },{\n    yAxis : 100\n  }],[{\n    name : \"最小值\",\n    yAxis : 50\n  },{\n    yAxis : 0\n  }]\n]",
+									"itemStyle": {
+									  "normal": {
+										"opacity": ".4"
+									  }
+									}
+								  },
+								  "markPoint": {
+									"data": "[]"
+								  }
+								},
+								{
+								  "type": "line",
+								  "name": "数据2",
+								  "markLine": {
+									"data": []
+								  },
+								  "markArea": {
+									"data": []
+								  },
+								  "markPoint": {
+									"data": [
+									  {
+										"name": "最大值",
+										"type": "max"
+									  },
+									  {
+										"name": "最小值",
+										"type": "min"
+									  }
+									]
+								  }
+								},
+								{
+								  "type": "line",
+								  "name": "数据3",
+								  "markLine": {
+									"data": []
+								  },
+								  "markArea": {
+									"data": []
+								  },
+								  "markPoint": {
+									"data": [
+									  {
+										"name": "最大值",
+										"type": "max"
+									  },
+									  {
+										"name": "最小值",
+										"type": "min"
+									  }
+									]
+								  }
+								}
+							  ],
+							  "visualMap": [
+								{
+								  "type": "piecewise",
+								  "show": false,
+								  "pieces": "[{\n\tgt: 0,\n  lte: 50,\n  color: 'red'\n}, {\n\tgt: 50,\n\tlte: 100,\n\tcolor: '#1385cd'\n}, {\n\tgt: 100,\n\tlte: 150,\n\tcolor: 'red'\n}]"
+								}
+							  ]
+							},
+							"$index": [
+							  0,
+							  0
+							]
+						  }
+						]
+					  }
+					]
+				  },
+				  {
+					"class": "box-footer",
+					"type": "box-footer",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": []
+					  }
+					]
+				  }
+				],
+				"$index": [
+				  0,
+				  0
+				]
+			  }
+			],
+			"col": 6
+		  }
+		]
+	  }
+	],
+	"col": 12
+  }
+}

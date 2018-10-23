@@ -1,0 +1,236 @@
+<config injector="$q, kpiDataService, $interval"></config>
+<template>
+    <div>
+        <echarts-base
+                class="echarts-base-wrap"
+                data-theme="theme"
+                data-height="height"
+                data-option="chartOption">
+        </echarts-base>
+    </div>
+</template>
+<properties>
+    <script type="text/javascript">
+    function properties () {
+      return [{
+        label: "基本设定",
+        attributes: {
+          title: ["标题", "input", "仪表盘标题"],
+          theme: ['主题', "input", "default"],
+          size: ["尺寸", "input", "xsmall"],
+          area: ["面积", "input", ""],
+          grid: ["坐标轴", "input", ""],
+          height: ["高度", "input", "200"],
+          showLegend: ["显示图例", "select", true, [[true, "显示"], [false, "不显示"]]],
+          yAxisUnit: ["单位", "input", "a"],
+          timeTick: ["时间间隔", "input", "24"],
+        }
+      }, {
+        label: "数据",
+        attributes: {
+          nkIds: ["详细指标", 'input', '']
+        }
+      }];
+    }
+
+    export {properties}
+    </script>
+</properties>
+<script type="text/javascript">
+export default function (q, kpiDataService, $interval) {
+  return {
+    scope: {
+      setting: "=",
+      option: '=?'
+    },
+    link (scope, element, attr) {
+      let option = scope.option,
+        themeObj;
+
+      function extend (a, b) {
+        for (var i in b) {
+          a[i] = b[i];
+        }
+        return a;
+      }
+
+      let getCurrentDate = function (date) {
+        return new Date(date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + (date.getDate() + 1) + ' 00:00:00');
+      }
+
+      let getValue = (n) => {
+        let defer = q.defer();
+        try {
+          let nkIds = JSON.parse(n.nkIds),
+            promises = [],
+            now = new Date(),
+            endTime = getCurrentDate(now),
+            startTime = new Date(endTime.getTime() - 7 * 24 * 3600 * 1000);
+
+          nkIds.forEach(nk => {
+            let nkDefer = q.defer();
+            kpiDataService.getValueList(['kpi', {
+              "isRealTimeData": false,
+              "nodeIds": [nk.nodeId * 1],
+              "kpiCodes": [nk.kpiCode * 1],
+              "includeInstance": true,
+              "endTime": endTime,
+              "startTime": startTime
+            }], ret => {
+              if (ret.code == 0) {
+                nkDefer.resolve(ret.data);
+              }
+            });
+            promises.push(nkDefer.promise);
+          });
+          q.all(promises).then(function (ret) {
+            let res = [];
+            ret.forEach(item => {
+              res = res.concat(item);
+            })
+            defer.resolve({
+              data: res,
+              nkIds: nkIds,
+              startTime: startTime,
+              endTime: endTime
+            });
+          });
+        } catch (e) {
+          defer.resolve();
+        }
+        return defer.promise;
+      }
+
+      function render (n) {
+        let areaObj = n.area == "area" ? {
+          "line": {
+            "smooth": true,
+            "symbolSize": "2",
+            "areaStyle": {
+              "opacity": .2
+            }
+          }
+        } : {};
+        scope.theme = [n.theme, extend(themeObj(n.size), areaObj)];
+        getValue(n).then(function (d) {
+          let legend = [],
+            arr = [],
+            series = [],
+            name,
+            category = [],
+            kpiValList = d.data || [],
+            nkIds = d.nkIds || [],
+            startTime = d.startTime,
+            endTime = d.endTime;
+          nkIds.forEach(nk => {
+            legend.push(nk.label);
+            arr = [];
+            kpiValList.forEach(v => {
+              if (v.nodeId == nk.nodeId && v.kpiCode == nk.kpiCode) {
+                arr.push({
+                  name: v.arisingTime,
+                  value: v.value
+                });
+              }
+            });
+            series.push({
+              name: nk.label,
+              data: arr
+            });
+          });
+
+          let i = startTime.getTime(),
+            j = endTime.getTime();
+
+          for (; i < j; i += 24 * 3600 * 1000) {
+            let iDate = new Date(i);
+            category.push((iDate.getMonth() + 1) + '-' + iDate.getDate());
+          }
+          scope.height = n.height;
+          let gridPercents = n.grid.split(',');
+          scope.chartOption = {
+            title: {
+              text: n.title || ''
+            },
+            legend: {
+              show: n.showLegend,
+              right: '5%',
+              selectedMode: false,
+              data: legend.map((n) => {
+                return {
+                  name: n
+                }
+              })
+            },
+            grid: {
+              top: gridPercents[0] || "25%",
+              bottom: gridPercents[2] || "10%",
+              left: gridPercents[3] || "15%",
+              right: gridPercents[1] || "5%"
+            },
+            xAxis: {
+              type: 'category',
+              boundaryGap: n.area === 'area' ? false : true,
+              data: category
+            },
+            yAxis: {
+              type: 'value',
+              axisTick: {
+                show: false
+              },
+              name: n.yAxisUnit || '',
+              nameTextStyle: {
+                color: '#fff',
+                fontSize: 18,
+                padding: 10
+              }
+            },
+            series: series.map((m) => {
+              m.type = 'line';
+              m.symbolSize = n.area ? 5 : 10;
+              m.symbol = 'circle';
+              m.itemStyle = {
+                borderWidth: n.area ? 0 : 3,
+                borderColor: '#fff'
+              }
+              m.emphasis = {
+                label: {
+                  show: true,
+                  color: '#fff',
+                  backgroundColor: '#333',
+                  borderWidth: 2,
+                  borderColor: 'auto',
+                  padding: [4, 6],
+                  borderRadius: 3
+                }
+              };
+              return m;
+            })
+          }
+        });
+
+      }
+
+      scope.$watch(`option`, (n, o, s) => {
+        if (typeof n !== "undefined") {
+          window['require'](['../toolkit/echart-theme/fontsize.js'], (fn) => {
+            scope.$apply(() => {
+              themeObj = fn(s.setting ? s.setting.fontsize || 40 : 35);
+              render(n.attributes);
+              $interval(function () {
+                render(n.attributes);
+              }, 3 * 60 * 1000);
+            });
+          })
+        }
+      })
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+.echarts-base-wrap {
+    width: 100%;
+    height: 100%;
+}
+</style>

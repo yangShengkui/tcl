@@ -1,0 +1,330 @@
+<config injector="ajax, $timeout, psScope, psExplainer">
+</config>
+<template>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <ps-header ng-show="config.title" navigators="navigators"></ps-header>
+                    <ps-search ng-show="config.search && config.search.body.length > 0" option="search"></ps-search>
+                    <div class="box-footer" ng-style="borderTop()">
+                        <ps-grid source="grid"></ps-grid>
+                        <!--<dat-table-dom source="grid"></dat-table-dom>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+<script type="text/javascript">
+export default function (ajax, timeout, psScope, psExplainer) {
+  return {
+    scope: {
+      config: '=?',
+      option: '=?'
+    },
+    link (scope, element, attr, ngModel) {
+      psScope(scope);
+      let attributes = {},
+        searchAttributes = [],
+        gridAttributes = [];
+      let isType = (type, obj) => Object.prototype.toString.call(obj) === `[object ${type}]`;
+
+      let mergeObj = function () {
+        let arr = Array.prototype.slice.call(arguments);
+        let obj = {};
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i]) {
+            for (let key in arr[i]) {
+              obj[key] = arr[i][key];
+            }
+          }
+        }
+        return obj;
+      };
+
+      /****** 默认类型对照 ******/
+      let typeDefaultMap = {
+        date: {
+          gridType: 'date',
+          searchType: 'date'
+        },
+        text: {
+          gridType: 'text',
+          searchType: 'input'
+        },
+        dict: {
+          gridType: 'text',
+          searchType: 'select'
+        }
+      }
+
+      let init = () => {
+        timeout(function () {
+          scope.borderTop = _ => {
+            return {
+              "border-top": !scope.config.title && (!scope.config.search || scope.config.search.body.length < 1) ? "none" : "1px solid #f4f4f4"
+            }
+          }
+
+          /****** 处理标题 ******/
+          scope.navigators = isType('Array', scope.config.title) ? scope.config.title.map(d => {
+            return isType('Array', d) ? {
+              label: d[0],
+              url: d[1],
+              active: !!d[2]
+            } : d;
+          }) : [{
+            label: scope.config.title,
+            active: true
+          }];
+
+          /****** 处理标题结束 ******/
+
+          /****** 处理所有的字段, 将所有的字段，转换为对象格式，放入attributes中 ******/
+          function resolveRelate (from, relate) {
+            let ret;
+            if (isType('Object', relate)) {
+              ret = {};
+              ret['name'] = relate.name;
+              ret['from'] = relate.from || from;
+              ret['to'] = relate.to || 'id';
+              ret['label'] = relate.label || 'label';
+              ret['parameter'] = relate.parameter || void 0;
+            } else if (isType('String', relate)) {
+              ret = {
+                name: relate,
+                from: from,
+                to: "id",
+                label: "label"
+              }
+            }
+            return ret;
+          }
+
+          function setDefaultAttr (o, attrName, value) {
+            if (!(attrName in o) || o[attrName] == null) {
+              o[attrName] = value;
+            }
+          }
+
+          function relateFormat (format) {
+            let ret = {};
+            let StringFlag = isType('String', format);
+            let ObjectFlag = isType('Object', format);
+            if (StringFlag) {
+              let arr = format.split(',');
+              arr.forEach(d => {
+                let tempArr = [d.substring(0, d.indexOf(':')), d.substring(d.indexOf(':') + 1)];
+                ret[tempArr[0]] = tempArr[1];
+              });
+            }
+            if (ObjectFlag) {
+              ret = format;
+            }
+            return ret;
+          }
+
+          function _loopAttributes (key, attr) {
+            attributes[key] = {};
+            if (isType('Array', attr)) {
+              // 如果是数组， 数组顺序为 [ label， type， relate， format ]
+              attributes[key]['label'] = attr[0];
+              attributes[key]['type'] = attr[1];
+              attributes[key]['relate'] = resolveRelate(key, attr[2]);
+              attributes[key]['format'] = relateFormat(attr[3]);
+            } else if (isType('Object', attr)) {
+              /**
+               * {
+               *    label: "",
+               *    type: "",
+               *    relate: ""
+               * }
+               */
+              attributes[key]['label'] = attr['label'];
+              attributes[key]['type'] = attr['type'];
+              attributes[key]['relate'] = resolveRelate(key, attr['relate']);
+              attributes[key]['format'] = relateFormat(attr['format']);
+            }
+          }
+
+          for (let key in scope.config.attributes) {
+            _loopAttributes(key, scope.config.attributes[key]);
+          }
+          /****** 处理所有的字段 ******/
+
+          /****** 处理所有查询字段, 将所有的字段，转换为对象格式，放入searchAttributes中 ******/
+          scope.config.search && scope.config.search.body.length > 0 ?
+            searchAttributes = scope.config.search.body.map(d => {
+              if (isType('Object', d) && attributes[d['name']]) {
+                let obj = mergeObj(attributes[d['name']], d);
+                obj['relate'] = resolveRelate(d['name'], obj['relate']);
+                obj['format'] = relateFormat(obj['format']);
+                return obj;
+              }
+              if (isType('String', d)) {
+                return attributes[d];
+              }
+              if (isType('Object', d) && !attributes[d['name']]) {
+                let obj = d;
+                obj['relate'] = resolveRelate(d['name'], obj['relate']);
+                return obj;
+              }
+            }) : searchAttributes = [];
+          /****** 处理所有查询字段 ******/
+
+          /****** 处理所有表格字段, 将所有的字段，转换为对象格式，放入gridAttributes中 ******/
+          scope.config.grid && scope.config.grid.body.length > 0 ?
+            gridAttributes = scope.config.grid.body.map(d => {
+              if (isType('Object', d) && attributes[d['name']]) {
+                let obj = mergeObj(attributes[d['name']], d);
+                obj['relate'] = resolveRelate(d['name'], obj['relate']);
+                obj['format'] = relateFormat(obj['format']);
+                return obj;
+              }
+              if (isType('String', d)) {
+                let obj = attributes[d];
+                obj['name'] = d;
+                return obj;
+              }
+              if (isType('Object', d) && !attributes[d['name']]) {
+                let obj = d;
+                obj['relate'] = resolveRelate(d['name'], obj['relate']);
+                return obj;
+              }
+            }) : gridAttributes = [];
+          /****** 处理所有表格字段 ******/
+
+
+          /****** 组织查询字段 ******/
+          scope.search = {
+            body: [],
+            buttons: {}
+          };
+          scope.search.body = searchAttributes.map(d => {
+            let obj = {};
+            obj['key'] = d.name;
+            obj['label'] = d.label;
+            obj['searchType'] = d.searchType || typeDefaultMap[d.type].searchType;
+            obj['config'] = d['config'];
+            obj['options'] = d.relate && d.relate.name ? d.relate.name : [];
+            obj['optionsParam'] = d.relate && d.relate.parameter ? d.relate.parameter : {};
+            obj['format'] = d['format'];
+            obj['searchAs'] = d['searchAs'];
+            return obj;
+          });
+          /****** 组织查询字段 ******/
+
+          /****** 处理表格字段 ******/
+          scope.grid = {};
+          let gridBody = {};
+          gridAttributes.forEach(d => {
+            gridBody[d.name] = {
+              label: d.label,
+              inquery: !!d.inquery,
+              gridType: d.gridType || typeDefaultMap[d.type].gridType,
+              format: d['format'],
+              relate: d.relate
+            }
+            if (d.relate || d.bind) {
+              gridBody[d.name]['bind'] = function (row) {
+                let relation;
+                if (d.relate) {
+                  relation = row.__get__(d.relate.name);
+                }
+                let relateStr = '';
+                if (relation) {
+                  if (isType('Array', relation)) {
+                    relateStr += relation.map(i => {
+                      return i[d.relate.label];
+                    }).join();
+                  } else {
+                    relateStr += relation[d.relate.label]
+                  }
+                }
+                return d.bind && typeof d.bind === 'function' ? d.bind(row, relateStr) : relateStr;
+              }
+            }
+          });
+          scope.grid.body = gridBody;
+          // 将config字段的属性，全部组合进来
+          for (let key in scope.config.grid.config) {
+            scope.grid[key] = scope.config.grid.config[key];
+          }
+          scope.grid.buttons = scope.config.grid.buttons && scope.config.grid.buttons.outGrid ? scope.config.grid.buttons.outGrid : [];
+          scope.grid.bodyButtons = scope.config.grid.buttons && scope.config.grid.buttons.inGrid ? scope.config.grid.buttons.inGrid : [];
+          // options中是表格数据，对应处理为grid的data
+          scope.grid.data = scope.config.grid.options;
+          /**** 处理表格字段到此结束 ****/
+
+          /******* 如果配置了URL，则从url中查询数据 *******/
+          let getGridData = (parameter = scope.grid.parameter) => {
+            let promise = ajax.post(scope.grid.url, parameter);
+            gridAttributes.forEach(d => {
+              if (d.relate) {
+                let handler = psExplainer.get(d.relate.name);
+                if (handler) {
+                  promise = promise.pipe(ajax.postAll(handler))
+                } else {
+                  let obj = {
+                    url: d.relate.name + `@${d.relate.to === 'id' ? 'getByIds' : 'getByCondition'}`,
+                    before: d.relate.from
+                  }
+                  if (d.relate.to !== 'id') {
+                    obj['param'] = function (resource) {
+                      let p = mergeObj({}, d.relate.parameter);
+                      p[d.relate.to] = {
+                        IN: resource
+                      }
+                      return [d.relate.name, p];
+                    }
+                    obj['after'] = `${d.relate.name}:${d.relate.to}`
+                  }
+                  promise = promise.pipe(ajax.postAll(obj));
+                }
+              }
+            });
+            promise.then(x => {
+              scope.grid.data = x;
+            })
+          }
+          if (scope.grid.url) {
+            getGridData();
+          }
+          scope.$on('PS_REFRESH_GRID', (e, d) => {
+            getGridData(d)
+          });
+        });
+      }
+
+      let watch1, watch2, watch3;
+      watch1 = scope.$watch(`config`, n => {
+        if (typeof n !== 'undefined') {
+          init();
+        }
+      });
+      watch2 = scope.$watch(`option`, (n, o, s) => {
+        if (typeof n !== 'undefined') {
+          s.config = n.config;
+        }
+        watch3 = scope.$watch(`config.grid.options`, (n, o, s) => {
+          if (n) {
+            scope.grid ? scope.grid.data = n : null;
+          }
+        });
+      });
+
+      scope.$on('$destroy', () => {
+        watch1();
+        watch2();
+        watch3();
+      });
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+.box {
+    padding: 6px;
+}
+</style>

@@ -1,0 +1,122 @@
+<config injector="$q, ajax"
+></config>
+<template>
+  <div>
+    <div class="whole" ng-if="validate(option.options)">
+      <ps-tree-view2-content
+          data-search="search"
+          data-level="1"
+          data-option="op"
+          data-buttons="option.buttons"
+          data-root = "op._isRoot"
+          ng-repeat="op in option.options track by $index">
+      </ps-tree-view2-content>
+    </div>
+  </div>
+</template>
+<script type="text/javascript">
+  import { isArray, each } from "ps-ultility";
+  export default function(q, ajax){
+    return {
+      scope : {
+        option: "="
+      },
+      require : '?ngModel',
+      link(scope, element, attr, ngModel) {
+        let pid = scope.option.parentId;
+        function list2Tree(list){
+          let tree = null;
+          each(list, (n, i)=>{
+            var findParent = list.find((m, i)=>{
+              return n[pid] === m["id"];
+            });
+            if(!findParent){
+                n._isRoot = true;
+              tree = n;
+            } else {
+                n._isRoot = false;
+              findParent.children = findParent.children || [];
+              findParent.children.push(n);
+            }
+          })
+          console.log("tree.....",[tree]);
+          return [tree];
+        }
+        function preparation(){
+          let defer = q.defer();
+          if(typeof scope.option.options === "object"){
+            defer.resolve("success");
+          } else {
+            ajax.post(scope.option.options, scope.option.parameter).then(function(d){
+              scope.option.options = list2Tree(d);
+              defer.resolve("success");
+            })
+          }
+          return defer.promise;
+        }
+        scope.search = function(row){
+            return row.label.indexOf("1") !== -1;
+        }
+        scope.validate = function(options){
+          return typeof options === "object";
+        };
+        preparation().then(()=>{
+
+        })
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+  * {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /*取消双击选中样式*/
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    user-select: none;
+  }
+
+  .ps_tree {
+    position: relative;
+    width : 100%;
+    cursor : pointer;
+  }
+
+  .level {
+    margin-left : 20px;
+  }
+  .sel {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width : 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+  }
+
+  .whole {
+    /*width: 180px;*/
+    min-height: 600px;
+    border-top: 1px solid #d2d6de;
+    border-left: 1px solid #d2d6de;
+    border-right: 1px solid #d2d6de;
+    color: #666;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #ffffff;
+    margin-bottom : 20px;
+  }
+</style>

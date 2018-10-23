@@ -1,0 +1,59 @@
+<config injector="$q, $timeout, psUltility"
+></config>
+<script type="text/javascript">
+  import { extend, isArray, isObject, isFunction } from "ps-ultility";
+  export default function(q, timeout, psUltility){
+    function psEvent(event){
+      const commands = {};
+      let psevent;
+      psEvent.init = function(){
+        for(var i in event){
+          this[i] = event[i];
+        }
+      };
+      function registerCommand(name, fn){
+        commands[name] = fn;
+      }
+      function pipe(key, args){
+        let defer = q.defer(),
+          promise = defer.promise,
+          fn;
+        if(isArray(key)){
+          data = key[1];
+          key = key[0];
+          fn = commands[key];
+        } else if(isObject(key)){
+          args = key.args;
+          key = key.command;
+          fn = commands[key];
+        } else if(isFunction(key)){
+          fn = key;
+        }
+        function next(data){
+          defer.resolve(data);
+        }
+        function freeze(data){
+          defer.reject(data);
+        }
+        args = args || [];
+        typeof this.then === "function"
+          ? this.then((d)=>{
+            fn.apply(null, args.concat([d, next,freeze]));
+          })
+          : fn.apply(null, args.concat([null, next,freeze]));
+        promise.pipe = pipe;
+        return promise;
+      }
+      extend(psEvent.init.prototype, {
+        registerCommand : registerCommand,
+        pipe : pipe,
+        extend : function(b){
+          extend(this, b);
+        }
+      });
+      psevent = new psEvent.init();
+      return psevent;
+    };
+    return psEvent;
+  }
+</script>

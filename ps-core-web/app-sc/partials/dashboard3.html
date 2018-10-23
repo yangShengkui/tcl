@@ -1,0 +1,221 @@
+<!-- Content Header (Page header) -->
+<div ipcam class="ipcam" data-ic="cam" ng-click="$event.stopPropagation();" ng-show="cam.show">
+  <div class="camWrap">
+    <div class="camHeader">
+      <button class="camBtn" ng-click="cam.hideCam();$event.stopPropagation();">关闭</button>
+    </div>
+    <img id="videoDiv" class="cam" />
+  </div>
+</div>
+<section class="content-header">
+  <h1>
+	    服务概览
+	    <small ng-show="selectView==undefined">
+		    	<a class="text-green" ><i class="fa fa-square "></i>正常状态</a>
+		    <a class="text-red" ><i class="fa fa-square"></i>告警状态</a>
+		    <a class="text-yellow" ><i class="fa fa-square"></i>异常状态</a>
+	    </small>
+	    <small ng-show="selectView!=undefined">
+		    	<a class="text-green" ><i class="fa fa-square "></i>连接正常</a>
+		    <a class="text-red" ><i class="fa fa-square"></i>指标告警</a>
+		    <a class="text-yellow" ><i class="fa fa-square"></i>连接异常</a>
+	    </small>
+	</h1>
+
+  <ol class="breadcrumb">
+    <li><i class="sidebar-toggle2 proudsmart ps-server"></i> 服务中心</li>
+    <li class="active" ng-show="selectView==undefined">服务概览</li>
+    <li ng-show="selectView!=undefined" style="cursor : pointer" ng-click="backMainPage()">服务概览</li>
+    <li class="active" ng-show="selectView!=undefined">{{selectItem.label}}</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content" style="padding: 10px; background-color: #eee;" id="consumer">
+  <!-- Direct Chat -->
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li>
+                <a>服务中心</a>
+              </li>
+            </ul>
+            <small ng-show="selectView==undefined">
+              <a class="text-green" ><i class="fa fa-square "></i>正常状态</a>
+              <a class="text-red" ><i class="fa fa-square"></i>告警状态</a>
+              <a class="text-yellow" ><i class="fa fa-square"></i>异常状态</a>
+            </small>
+            <small ng-show="selectView!=undefined">
+              <a class="text-green" ><i class="fa fa-square "></i>连接正常</a>
+              <a class="text-red" ><i class="fa fa-square"></i>指标告警</a>
+              <a class="text-yellow" ><i class="fa fa-square"></i>连接异常</a>
+            </small>
+          </div>
+        </div>
+        <div class="box-body" ng-style="bgColorFn(bgColor)" style="min-height:calc(100vh - 120px);">
+          <div class="row" ng-show="selectView==undefined">
+            <div class="col-xs-12 col-lg-6" ng-repeat="item in resourceTree track by item.id">
+              <!-- DIRECT CHAT PRIMARY -->
+              <div class="box form-group {{item.stateStyle}}">
+                <div class="box-header with-border">
+                  <h3 class="box-title">{{{true : item.JSON.label, false : item.label}[item.JSON != undefined]}}</h3>
+
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-toggle="tooltip" title="编辑" ng-click="viewEdit(item, 0)"><i class="fa fa-edit"></i></button>
+                    <button class="btn btn-box-tool" data-toggle="tooltip" title="详细" ng-click="viewDetail(item, 0)"><i class="fa fa-list"></i></button>
+                    <button class="btn btn-box-tool" data-toggle="tooltip" title="删除" ng-click="viewDelete(item, 0)"><i class="fa fa-bitbucket"></i></button>
+                  </div>
+                </div>
+
+                <div class="box-body" style="padding: 10px 30px; min-height: 172px;">
+                  <div class="text-center slick" itemLabel="{{item.label}}" itemId="{{item.id}}" ng-model="item.kpis" kpi-slick>
+                  </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer" style="padding: 5px 0px;">
+                  <div class='col-xs-12'>
+                    <div style="height:48px" baidu-weather ng-model="item.city" templateUrl="partials/weather_sm.html"></div>
+                  </div>
+
+                </div>
+                <!-- /.box-footer-->
+              </div>
+              <!--/.direct-chat -->
+            </div>
+            <!-- /.col -->
+            <div class="col-xs-12 col-lg-6" ng-if="groupModel == true">
+              <!-- DIRECT CHAT PRIMARY -->
+              <div class="text-center" style="padding-top: 100px;">
+                <a class="btn">
+                  <i class="fa fa-plus fa-5x" data-toggle="tooltip" ng-click="addResource()"></i>
+                </a>
+                <!--
+                <a class="btn">
+                  <i class="glyphicon glyphicon-hdd" style="font-size:50px;" data-toggle="tooltip" title="添加网关" ng-click="addGateway()"></i>
+                </a>
+                -->
+              </div>
+
+            </div>
+            <!-- /.col -->
+          </div>
+          <div class="row" ng-if="selectView!=undefined">
+            <div class="col-xs-12">
+              <div class="box form-group {{selectItem.stateStyle}}">
+                <div class="box-header with-border">
+                  <h3 class="box-title">{{{true : selectView.JSON.label, false : selectView.viewTitle}[selectView.JSON != undefined]}}</h3>
+                  <h3 ng-show="mapShow && (!selectItem.values || !selectItem.values.latitude)" class="box-title">当前没有具体的地理位置，<a ng-click="viewEdit(selectItem,1)">请点击设置</a></h3>
+                  <button class="btn btn-box-tool changeBtn" ng-click="changeDispaly()" ng-show="!displayState">查看监控信息</button>
+                  <button class="btn btn-box-tool" ng-click="changeDispaly()" ng-show="displayState">查看业务信息</button>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-toggle="tooltip" title="摄像头" ng-if="camDisp" ng-click="cam.showCam()"><i class="fa fa-video-camera"></i></button>
+                    <button ng-show="mapShow" class="btn btn-box-tool" data-toggle="tooltip" title="详细信息" ng-click="showGis()"><i class="fa fa-list"></i></button>
+                    <button ng-if="!mapShow" class="btn btn-box-tool" data-toggle="tooltip" title="地理位置" ng-click="showGis()"><i class="fa fa-map-marker"></i></button>
+                    <button class="btn btn-box-tool" data-toggle="tooltip" title="编辑" ng-click="viewEdit(selectItem,1)"><i class="fa fa-edit"></i></button>
+                  </div>
+                </div>
+                <div class="box-body auto-height" ng-hide="mapShow">
+                  <div class="tograph_wrap">
+                    <!--<div class="topograph" ng-class="{false:'topograph topo_left',true:'topograph topo_right'}[displayState]" ng-style="{'background-image' : 'url(../../topology/' + {true:selectView.JSON.bgImgId,false:selectView.content.bgImgId}[selectView.content.bgImgId==undefined] + ')'}">-->
+                    <div class="topograph" ng-class="{false:'topograph topo_left',true:'topograph topo_right'}[displayState]" ng-style="getBgImg()">
+                      <div ng-repeat="elem in selectViewElems" class="elemWrap" vlaue="{{elem.instance}}" viewId="{{selectItem.viewId}}" modelid="{{selectItem.modelId}}" ng-style="elePos(elem.top, elem.left)" ng-model="elem" chartinterval="{{elem.chartinterval}}" min="{{elem.min}}" max="{{elem.max}}" sensor-popover>
+                        <div class="icon {{elem.icon}} {{elem.stateStyle}}" style="font-size: 30px; padding-left: 6px; padding-top: 4px;"></div>
+                        <div class="title">{{elem.instance?elem.instance:elem.label}}:{{elem.value != 'NA' ? elem.value : '-'}}{{elem.value=='NA'||elem.unit=='NA'?'':elem.unit}}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pull-right pull-right-server right-header" ng-class="{true:'pull-right pull-right-server-active',false:'pull-right pull-right-server'}[displayState]">
+                    <div baidu-weather ng-model="selectItem.city" templateUrl="partials/weather_lg2.html"></div>
+                    <div class="col-xs-12 no-margin no-padding">
+                      <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="查询更多适合的传感器">
+                        <span class="input-group-btn">
+                  <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                </span>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 no-margin no-padding dropdown-open open">
+                      <ul class="dropdown-menu right-footer">
+                        <!--<li class="header">生产纪录</li>-->
+                        <li class="header">
+                          {{reports.title}}
+                          <small ng-show="camDisp" class="pull-right"><a role="button" href="#/expertcurve/{{selectView.content.nodeId}}"><i class="fa fa-bar-chart"></i> 专家曲线</a></small>
+                        </li>
+                        <li class="scrollContent">
+                          <ul class="menu right-menu" slim-scroll>
+                            <li ng-repeat="item in reports.list">
+                              <a>
+                                <h4 style="margin-left: 4px;">
+                                  <i class="fa fa-info-circle {{item.status}}"></i>{{item.title}}
+                                  <small ng-show="item.time"><i class="fa fa-clock-o"></i> {{item.time}}</small>
+                                </h4>
+                                <p data-toggle="tooltip" title="{{item.remark}}" style="margin-left: 4px;">{{item.remark}}</p>
+                              </a>
+                            </li>
+
+                            <li ng-repeat="item in selectItem.alerts">
+                              <a href="#/configAlert/{{item.nodeId}}">
+                                <h4 style="margin-left: 4px;">
+                                  <i class="fa fa-warning {{item.stateStyle}}"></i>{{item.instance}}
+                                  <small ><i class="fa fa-clock-o"></i> {{item.time}}</small>
+                                </h4>
+                                <p data-toggle="tooltip" title="{{item.message}}" style="margin-left: 4px;"><span>{{item.message}}</span></p>
+                              </a>
+                            </li>
+                            <li ng-show="selectItem.alerts ==null || selectItem.alerts.length == 0">
+                              <a>
+                                <h4 style="margin-left: 4px;">
+                                  <i class="fa fa-thumbs-up text-green"></i>大棚监控各个指标正常
+                                </h4>
+                              </a>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="pull-left pull-left-server" ng-show="!displayState">
+                    <div class="left-header">
+                      <div class="img-panel">
+                        <div class="pull-left image">
+                          <img src="" ng-src="{{selectItem.values['image']}}" class="img-thumbnail" />
+                        </div>
+                        <div class="pull-left info">
+                          <p>品种:{{selectItem.values["types"]}}</p>
+                          <p>重量:{{selectItem.values["weight"]}}</p>
+                          <p>产量:{{selectItem.values["output"]}}</p>
+                          <p>特点:{{selectItem.values["typical"]}}</p>
+                        </div>
+                      </div>
+                      <P class="box-title-server">平均价格:{{selectItem.avgprice}}元</p>
+                      <div echarts3-dom name="priceMain" style="height:150px"></div>
+                    </div>
+                    <div class="col-xs-12 no-margin no-padding dropdown-info open">
+                      <ul class="col-xs-12 dropdown-menu left-footer">
+                        <li class="header">农业资讯</li>
+                        <li>
+                          <ul class="menu left-menu" slim-scroll>
+                            <li ng-repeat="item in news">
+                              <a data-toggle="tooltip" title="{{item.title}}" target="_blank" href="{{item.url}}"><i class="fa fa-newspaper-o"></i> {{item.title}}</a>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="box-body" ng-if="mapShow">
+                  <div ng-controller="ViewMaps3Ctrl" ng-model="selectItem" echarts2-dom class="auto-height"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /.content -->

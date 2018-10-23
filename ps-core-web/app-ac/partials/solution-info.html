@@ -1,0 +1,69 @@
+<!---->
+<div class="example-modal">
+  <div class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">解决方案基础信息</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="solutionname" class="col-sm-3 control-label"><span class="text-danger">*</span>方案名称</label>
+              <div class="col-sm-9">
+                <input class="form-control input-sm" id="solutionname" ng-model="newSolution.label" placeholder="解决方案名称">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="managedByGroup" class="col-sm-3 control-label"><span class="text-danger">*</span>方案类型</label>
+              <div class="col-sm-9">
+                <select class="form-control input-sm" id="managedByGroup" ng-model="newSolution.managedByGroup" ng-options="value.value as value.label for value in managedByGroups" ng-disabled="newSolution.id > 0">
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="serviceView" class="col-sm-3 control-label"><span class="text-danger">*</span>服务视图模板</label>
+              <div class="col-sm-9">
+                <select class="form-control input-sm" id="serviceView" ng-model="newSolution.serviceViewId"  ng-options="value.value as value.label for value in serviceViews" ng-disabled="newSolution.id > 0">
+                </select>
+              </div>
+            </div>
+            
+            
+            <div class="form-group">
+              <label for="icon" class="col-sm-3 control-label"><span class="text-danger">*</span>方案图标</label>
+              <div class="col-sm-7">
+                <select class="form-control input-sm" id="icon" ng-model="newSolution.icon" ng-options="value.icon as value.label for value in solutionIcons">
+                </select>
+              </div>
+              <div class="col-sm-2">
+                <img class="tupian" ng-src="images/appcenter/{{newSolution.icon}}.png" alt="" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="industry" class="col-sm-3 control-label">所在行业</label>
+              <div class="col-sm-9">
+                <select class="form-control input-sm" id="industry" ng-model="newSolution.industry"  ng-options="value.id as value.label for value in industries">
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="solutiondesc" class="col-sm-3 control-label">方案描述</label>
+              <div class="col-sm-9">
+                <textarea class="form-control input-sm" rows="3" id="solutiondesc" ng-model="newSolution.desc" placeholder="解决方案基本描述"></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" ng-click="confirm()">保存</button>
+          <button type="button" class="btn btn-default" ng-click="closeThisDialog()">取消</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+</div>
+<!-- /.example-modal -->

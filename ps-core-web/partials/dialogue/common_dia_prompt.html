@@ -1,0 +1,43 @@
+<div id="common-dialog" class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog type-primary">
+    <div class="modal-content" style="border-radius : 4px;">
+      <div class="modal-header">
+        <div class="bootstrap-dialog-header">
+          <div class="bootstrap-dialog-close-button" style="display: none;">
+            <button class="close">×</button>
+          </div>
+          <div class="bootstrap-dialog-title" ng-bind="dialog.title.label"></div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="bootstrap-dialog-body">
+          <div class="bootstrap-dialog-message" ng-bind="dialog.description.label"></div>
+          <div ng-if="dialog.input" class="row" ng-repeat="item in dialog.input" style="margin : 2px auto;">
+            <div class="col-md-3" style="line-height: 35px;padding:0 3px;">
+              <span class="box-title pull-right" ng-bind="item.label + ':'"></span>
+              <span ng-if="item.composory" style="color:red;font-weight:bold;" class="pull-right">*</span>
+            </div>
+            <div class="col-md-8" style="padding:0 3px;">
+              <input ng-model="item.value" style="width : calc(100% - 20px); display:inline-block; padding: 6px 6px;" ng-if="item.type==undefined || item.type == 'input'" ng-change="item.onChange(item)" ng-disabled="item.disabled" ng-attr-placeholder="{{item.placeholder}}" maxlength="item.maxlength" class="form-control" />
+              <textarea ng-model="item.value" style="width : calc(100% - 20px);display:inline-block;padding: 6px 6px;" ng-if="item.type == 'textarea'" maxlength="item.maxlength" ng-change="item.onChange(item)" ng-attr-placeholder="{{item.placeholder}}" class="form-control"></textarea>
+              <div class="dropdowntree" ng-if="item.type=='tree'" data-style="" fontsize="item.fontsize" width="item.width" placeholder="请选择..." label="item.lb" showclear="true" ng-model="item.value" disabled="item.disabled" dt-key="item.key" options="item.options" dt-mark="item.mark" style="box-sizing: border-box;"></div>
+              <select ng-model="item.value" style="width : calc(100% - 20px); display:inline-block;" ng-if="item.type == 'select'" class="form-control input-sm" ng-disabled="item.abled" ng-change="item.onChange(item)" ng-options="op as op[item.format.label] for op in item.options">
+              </select>
+            </div>
+            <div class="col-md-8 col-md-offset-3" ng-if="item.error" style="fong-size : 12px; font-weight : bold; color : red">
+              <span ng-bind="item.error"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="display: block;">
+        <div class="bootstrap-dialog-footer">
+          <div class="bootstrap-dialog-footer-buttons">
+            <button ng-class="btn.icon" ng-repeat="btn in dialog.fnlist" ng-click="btn.fn(dialog)" ng-bind="btn.label" ng-class="btn.icon;" ng-disabled="btn.disabled()">
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

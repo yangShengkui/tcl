@@ -1,0 +1,725 @@
+.ui-tooltip,
+.arrow:after {
+  background: #038ddc;
+  border: 2px solid white;
+}
+#tg-edit .toggle-wrap {
+  width: 80px;
+  height: 24px;
+  border-radius: 12px;
+  background-color: #fff;
+  border: 1px solid #cacaca;
+  cursor: pointer;
+  transition: 0.1s linear all;
+  -webkit-transition: 0.1s linear all;
+}
+#tg-edit .toggle-wrap.active {
+  border: 1px solid #00c6ff;
+}
+#tg-edit .toggle-wrap.active .toggle-inner {
+  margin-left: 36px;
+  width: 40px;
+  height: 20px;
+  margin-top: 1px;
+  border-radius: 10px;
+  background-color: #00c6ff;
+}
+#tg-edit .toggle-wrap .toggle-inner {
+  transition: 0.1s linear all;
+  -webkit-transition: 0.1s linear all;
+  margin-left: 2px;
+  width: 40px;
+  height: 20px;
+  margin-top: 1px;
+  border-radius: 10px;
+  background-color: #cacaca;
+}
+#tg-edit .drawWrap .drawingArea {
+  width: 1024px;
+  height: 720px;
+  border: 1px solid #eee;
+  margin: 20px auto;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+#tg-edit .drawWrap .drawingArea .element {
+  border: 1px dashed #ddd;
+  cursor: pointer;
+}
+#tg-edit .drawWrap .drawingArea .element.active {
+  border: 1px solid #bbb;
+}
+#tg-edit .drawWrap .drawingArea .element .closeBtn {
+  top: -20px;
+  right: -20px;
+  position: absolute;
+}
+#tg-edit .drawWrap .drawingArea .element .open {
+  width: 100%;
+  height: 100%;
+  transform: rotate(0deg);
+}
+#tg-edit .drawWrap .drawingArea .element .open .rotate_wrap {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding-bottom: 3%;
+  overflow: hidden;
+  border-bottom: 2px solid #fff;
+  border-left: 2px solid #fff;
+  box-shadow: -3px 1px 10px #fff;
+}
+#tg-edit .drawWrap .drawingArea .element .open .rotate_wrap .rotate_wrap_inner {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  border-radius: 100%;
+  margin-left: -100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid #fff;
+  overflow: hidden;
+}
+#tg-edit .drawWrap .drawingArea .element .open .rotate_wrap .rotate_wrap_inner .rotate_value {
+  width: 200%;
+  height: 200%;
+  margin-top: 50%;
+  margin-left: -50%;
+  background-color: #04e196;
+  transform: rotate(-20deg);
+  -ms-transform: rotate(-20deg);
+  /* IE 9 */
+  -moz-transform: rotate(-20deg);
+  /* Firefox */
+  -webkit-transform: rotate(-20deg);
+  /* Safari 和 Chrome */
+  -o-transform: rotate(-20deg);
+  transform-origin: top;
+}
+#tg-edit .drawWrap .drawingArea .element .bar {
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/tongji/barOuter.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+#tg-edit .drawWrap .drawingArea .element .bar .bar-inner {
+  position: absolute;
+  left: 30%;
+  top: 5%;
+  width: 40%;
+  height: 90%;
+  background-color: #222;
+}
+#tg-edit .drawWrap .drawingArea .element .bar .bar-value {
+  position: absolute;
+  left: 30%;
+  bottom: 5%;
+  width: 40%;
+  height: 30%;
+  background-color: #00b990;
+}
+#tg-edit .drawWrap .drawingArea .element .blink {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+#tg-edit .drawWrap .drawingArea .element .switch {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.ui-tooltip {
+  padding: 10px 20px;
+  color: white;
+  border-radius: 20px;
+  font: bold 14px "Helvetica Neue", Sans-Serif;
+  text-transform: uppercase;
+  box-shadow: 0 0 7px #038ddc;
+}
+.arrow {
+  width: 70px;
+  height: 16px;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  margin-left: -35px;
+  bottom: -16px;
+}
+.arrow.top {
+  top: -16px;
+  bottom: auto;
+}
+.arrow.left {
+  left: 20%;
+}
+.arrow:after {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: -20px;
+  width: 25px;
+  height: 25px;
+  box-shadow: 6px 5px 9px -9px black;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.arrow.top:after {
+  bottom: -20px;
+  top: auto;
+}
+.ipcam {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  background-color: transparent;
+  pointer-events: none;
+}
+.ipcam .camWrap {
+  pointer-events: all;
+  width: 640px;
+  height: 480px;
+  background-color: #eee;
+  border: 1px solid #999;
+  box-shadow: 1px 1px 10px #000;
+  position: relative;
+  top: 20%;
+  left: 10%;
+}
+.ipcam .camWrap .camHeader {
+  cursor: move;
+  background-color: #999;
+  height: 34px;
+  width: 100%;
+  position: absolute;
+}
+.ipcam .camWrap .camHeader .camBtn {
+  background-color: #222;
+  color: #fff;
+  float: right;
+  border: 0;
+  margin: 4px 10px 0 0;
+}
+.ipcam .camWrap .cam {
+  width: 90%;
+  height: calc(95% - 80px);
+  top: 60px;
+  left: 5%;
+  position: relative;
+}
+.whole {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #fff;
+}
+.whole .leftPart_tongji {
+  float: left;
+  position: relative;
+  width: 70%;
+}
+.whole .leftPart_tongji .leftTop {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+.whole .leftPart_tongji .leftTop .top_column {
+  height: 100px;
+  background: -webkit-gradient(linear, center top, center bottom, from(#e5e5e5), to(#ffffff));
+  float: left;
+  overflow: visible;
+  z-index: 999;
+  position: relative;
+}
+.whole .leftPart_tongji .leftTop .top_column .inner {
+  height: 70px;
+  margin-top: 15px;
+  width: 100%;
+  border-left: 1px solid #ccc;
+}
+.whole .leftPart_tongji .leftTop .top_column .inner .health {
+  top: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #04e196;
+  position: absolute;
+}
+.whole .leftPart_tongji .leftTop .top_column .inner .health::before {
+  content: '';
+  display: block;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #15ba91;
+}
+.whole .leftPart_tongji .leftTop .top_column .inner .alert {
+  top: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #ff6b09;
+  opacity: 0;
+  position: absolute;
+}
+.whole .leftPart_tongji .leftTop .top_column .inner .alert::before {
+  content: '';
+  display: block;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #c70000;
+}
+.whole .leftPart_tongji .leftTop .top_column .inner .btn {
+  height: 40px;
+  background-color: #fff;
+}
+.whole .leftPart_tongji .leftTop .top_column .inner .btn:focus {
+  color: #666;
+}
+.whole .leftPart_tongji .leftTop .top_column .inner .btn .setting {
+  display: block;
+  float: left;
+  margin-right: 10px;
+  margin-left: 20px;
+  width: 20px;
+  height: 20px;
+  background-image: url(../images/tongji/iconfont-androidoptions.svg);
+  background-size: contain;
+  background-position: center;
+}
+.whole .leftPart_tongji .leftTop .top_column .inner .btn .text {
+  display: block;
+  float: left;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  margin-right: 20px;
+}
+.whole .leftPart_tongji .leftTop .top_column .inner .value {
+  font-weight: bold;
+  text-align: left;
+  width: 60%;
+  color: #038ddc;
+  font-family: arial, sans-serif;
+  font-size: 48px;
+  vertical-align: middle;
+}
+.whole .leftPart_tongji .leftTop .top_column .inner .des {
+  text-align: right;
+  font-family: Heiti;
+  font-weight: bold;
+  font-size: 16px;
+  vertical-align: middle;
+}
+.whole .leftPart_tongji .leftTop .top_column .inner .value_t {
+  font-weight: bold;
+  text-align: left;
+  width: 60%;
+  color: #038ddc;
+  font-family: arial, sans-serif;
+  font-size: 48px;
+  vertical-align: middle;
+}
+.whole .leftPart_tongji .leftTop .top_column .inner .des_t {
+  text-align: right;
+  font-family: Heiti;
+  font-weight: bold;
+  font-size: 16px;
+  vertical-align: middle;
+}
+.whole .leftPart_tongji .leftTop .top_column .inner .btn {
+  margin: auto;
+  margin-top: 20px;
+  display: block;
+}
+.whole .leftPart_tongji .leftTop .top_column .inner::before {
+  content: '';
+  display: block;
+  height: 1px;
+}
+.whole .leftPart_tongji .leftTop .top_column .dropdown {
+  transition: 0.3s linear all;
+  -webkit-transition: 0.3s linear all;
+  position: relative;
+  overflow: hidden;
+  width: 90%;
+  top: 15px;
+  left: calc(10% + 2px);
+  max-height: 0;
+  background-color: #f8f8f8;
+  border: 1px solid transparent;
+  opacity: 0;
+}
+.whole .leftPart_tongji .leftTop .top_column .dropdown .title {
+  line-height: 50px;
+  font-family: hei;
+  font-weight: bold;
+}
+.whole .leftPart_tongji .leftTop .top_column .dropdown .title .valTable {
+  width: 100%;
+}
+.whole .leftPart_tongji .leftTop .top_column .dropdown .title .valTable .val {
+  color: #038ddc;
+  font-family: arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+.whole .leftPart_tongji .leftTop .top_column .dropdown .title_small {
+  line-height: 50px;
+  font-family: hei;
+  font-weight: bold;
+  float: left;
+}
+.whole .leftPart_tongji .leftTop .top_column .dropdown .tg-toggle {
+  float: right;
+  margin: 10px 10px 0 0;
+}
+.whole .leftPart_tongji .leftTop .top_column .dropdown .ui-slider {
+  height: 24px;
+  border-radius: 12px;
+  background-color: #fff;
+}
+.whole .leftPart_tongji .leftTop .top_column .dropdown .ui-slider .ui-slider-range {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 0;
+  background: #3edda7;
+}
+.whole .leftPart_tongji .leftTop .top_column .dropdown .ui-slider .ui-slider-handle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #009f78;
+  border: 0;
+  top: 0;
+  cursor: move;
+}
+.whole .leftPart_tongji .leftTop .top_column .dropdown .ui-slider .ui-slider-handle:hover {
+  background: #00634b;
+}
+.whole .leftPart_tongji .leftTop .top_column .dropdown .ui-slider .ui-slider-handle:focus {
+  outline: 0px;
+}
+.whole .leftPart_tongji .leftTop .top_column .dropdown .dropIn {
+  padding: 4% 20px;
+}
+.whole .leftPart_tongji .leftTop .top_column .dropdown.visible {
+  max-height: 900px;
+  border: 1px solid #bbb;
+  opacity: 1;
+}
+.whole .leftPart_tongji .leftTop .top_column .dropdown .toggle-wrap {
+  width: 80px;
+  height: 24px;
+  border-radius: 12px;
+  background-color: #fff;
+  border: 1px solid #cacaca;
+  cursor: pointer;
+  transition: 0.1s linear all;
+  -webkit-transition: 0.1s linear all;
+}
+.whole .leftPart_tongji .leftTop .top_column .dropdown .toggle-wrap.active {
+  border: 1px solid #00c6ff;
+}
+.whole .leftPart_tongji .leftTop .top_column .dropdown .toggle-wrap.active .toggle-inner {
+  margin-left: 36px;
+  width: 40px;
+  height: 20px;
+  margin-top: 1px;
+  border-radius: 10px;
+  background-color: #00c6ff;
+}
+.whole .leftPart_tongji .leftTop .top_column .dropdown .toggle-wrap .toggle-inner {
+  transition: 0.1s linear all;
+  -webkit-transition: 0.1s linear all;
+  margin-left: 2px;
+  width: 40px;
+  height: 20px;
+  margin-top: 1px;
+  border-radius: 10px;
+  background-color: #cacaca;
+}
+.whole .leftPart_tongji .leftTop::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.whole .leftPart_tongji .camBtn {
+  position: absolute;
+  left: 3%;
+  top: 120px;
+  z-index: 99;
+  border: 0;
+  background-color: #3C8DBC;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  transition: 0.1s all linear;
+  -webkit-transition: 0.1s all linear;
+  border: 4px solid #fff;
+}
+.whole .leftPart_tongji .camBtn:focus {
+  outline: 0;
+}
+.whole .leftPart_tongji .camBtn.move {
+  left: 3%;
+}
+.whole .leftPart_tongji .camBtn span {
+  top: 2px;
+  left: 2px;
+  font-size: 30px;
+  color: #fff;
+}
+.whole .leftPart_tongji .leftMiddle {
+  width: 100%;
+  background-image: url(../images/tongji/bg.jpg);
+  background-position-y: -200px;
+}
+.whole .leftPart_tongji .leftMiddle .image {
+  position: relative;
+  width: 100%;
+  background-size: contain;
+  background-position: center;
+}
+.whole .leftPart_tongji .leftMiddle .image .open {
+  width: 100%;
+  height: 100%;
+}
+.whole .leftPart_tongji .leftMiddle .image .open .rotate_wrap {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding-bottom: 3%;
+  overflow: hidden;
+  border-bottom: 2px solid #fff;
+  border-left: 2px solid #fff;
+  box-shadow: -3px 1px 10px #fff;
+}
+.whole .leftPart_tongji .leftMiddle .image .open .rotate_wrap .rotate_wrap_inner {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  border-radius: 100%;
+  margin-left: -100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid #fff;
+  overflow: hidden;
+}
+.whole .leftPart_tongji .leftMiddle .image .open .rotate_wrap .rotate_wrap_inner .rotate_value {
+  width: 200%;
+  height: 200%;
+  margin-top: 50%;
+  margin-left: -50%;
+  background-color: #04e196;
+  transform: rotate(-20deg);
+  -ms-transform: rotate(-20deg);
+  /* IE 9 */
+  -moz-transform: rotate(-20deg);
+  /* Firefox */
+  -webkit-transform: rotate(-20deg);
+  /* Safari 和 Chrome */
+  -o-transform: rotate(-20deg);
+  transform-origin: top;
+}
+.whole .leftPart_tongji .leftMiddle .image .bar {
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/tongji/barOuter.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.whole .leftPart_tongji .leftMiddle .image .bar .innerText {
+  color: #fff;
+  text-shadow: 1px 1px 5px #000;
+  position: absolute;
+  top: -25px;
+  font-weight: bold;
+  font-size: 16px;
+}
+.whole .leftPart_tongji .leftMiddle .image .bar .bar-inner {
+  position: absolute;
+  left: 30%;
+  top: 5%;
+  width: 40%;
+  height: 90%;
+  background-color: #222;
+}
+.whole .leftPart_tongji .leftMiddle .image .bar .bar-value {
+  position: absolute;
+  left: 30%;
+  bottom: 5%;
+  width: 40%;
+  height: 30%;
+  background-color: #00b990;
+}
+.whole .leftPart_tongji .leftMiddle .image .blink {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.whole .leftPart_tongji .leftMiddle .image .switch {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.whole .leftPart_tongji .leftMiddle .image .tg-blink {
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.whole .leftPart_tongji .leftMiddle .image .btn-info {
+  position: absolute;
+  width: 150px;
+  margin: 60% 0 0 5%;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+}
+.whole .leftPart_tongji .leftMiddle .image .btn-info.alertBtn {
+  display: block;
+  background-color: #ef8242;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  border: 0;
+}
+.whole .leftPart_tongji .leftMiddle .image .btn-info.alertBtn:hover {
+  background-color: #DE2525;
+  color: #fff;
+}
+.whole .leftPart_tongji .leftMiddle .image .btnWrap {
+  position: absolute;
+  margin: 65% 0 0 5%;
+  font-size: 14px;
+}
+.whole .leftPart_tongji .leftMiddle .image .btnWrap .btn {
+  border-radius: 0;
+}
+.whole .leftPart_tongji .leftMiddle .image .btnWrap .otherBtn {
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  float: left;
+  width: 120px;
+  margin-right: 30px;
+  background-color: #fff;
+  border: 1px solid #378cbe;
+  color: #378cbe;
+  font-weight: bold;
+  font-size: 16px;
+}
+.whole .leftPart_tongji .leftMiddle .image .btnWrap .otherBtn:hover {
+  background-color: #378cbe;
+  color: #fff;
+}
+.whole .leftPart_tongji .leftMiddle .image .btnWrap .otherBtn .glyphicon {
+  margin-right: 10px;
+  font-size: 14px;
+}
+.whole .leftPart_tongji .leftMiddle #bigimg {
+  display: block;
+  width: 100%;
+  padding-bottom: 70%;
+  position: absolute;
+  z-index: 9999;
+}
+.whole .rightPart_tongji {
+  float: left;
+  width: 30%;
+  background-color: #f8f8f8;
+}
+.whole .rightPart_tongji .chartLabel {
+  border-left: 1px solid #bbb;
+  padding: 20px 10% 0 11%;
+  font-size: 14px;
+  font-weight: bold;
+}
+.whole .rightPart_tongji .tg-echarts {
+  height: calc(20vh - 60px);
+  min-height: 120px;
+  border-bottom: 1px solid #888;
+  border-left: 1px solid #bbb;
+}
+@media screen and (max-width: 1280px) {
+  .whole {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #fff;
+  }
+  .whole .leftPart_tongji {
+    float: none;
+    width: 100%;
+  }
+  .whole .rightPart_tongji {
+    float: none;
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .whole {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #fff;
+  }
+  .whole .leftPart_tongji {
+    float: left;
+    width: 70%;
+  }
+  .whole .rightPart_tongji {
+    float: left;
+    width: 30%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .whole .leftPart_tongji .top_column {
+    width: 100%;
+  }
+  .whole .leftPart_tongji .top_column .value {
+    width: 50%;
+  }
+  .whole .leftPart_tongji .top_column .des {
+    width: 50%;
+  }
+  .whole .leftPart_tongji .top_column .value_t {
+    width: 50%;
+  }
+  .whole .leftPart_tongji .top_column .des_t {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 769px) {
+  .whole .leftPart_tongji .top_column {
+    width: 20%;
+  }
+}

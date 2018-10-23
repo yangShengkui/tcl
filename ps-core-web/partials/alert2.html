@@ -1,0 +1,122 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">查询条件</h3>
+        </div>
+        <div class="box-body no-padding">
+          <form id="alert-form" role="form" name="alertForm">
+            <div class="col-sm-12">
+              <div class="form-group col-sm-3">
+                <label for="">所属域</label>
+                <div class="dropdowntree" ng-disabled="!shyj" placeholder="选择所属域" ng-model="selectedAlertitem.domain" change="" key="domainPath" options="domainListTree" mark="nodes"></div>
+              </div>
+              <div class="form-group col-sm-3">
+                <label for="">设备模板</label>
+                <div class="dropdowntree" ng-disabled="!shyj" placeholder="选择设备模板" ng-model="selectedAlertitem.nodeType" change="getAlertTypeByDeviceType" options="rootModel" mark="nodes" />
+              </div>
+              <div class="form-group col-sm-3">
+                <label for="">设备名称</label>
+                <select class="form-control" ng-model="selectedAlertitem.nodeIds" ng-options="value.id as value.label for value in selectedDitem.label" ng-disabled="!shyj">
+                  <option value="">选择设备名称</option>
+                </select>
+              </div>
+              <div class="form-group col-sm-3">
+                <label for="">告警名称</label>
+                <select id="selectedAlertType" class="form-control" ng-model="selectedAlertitem.alertCodes" ng-options="value.id as value.label for value in selectedDitem.alerts">
+                  <option value="">选择告警名称</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group col-sm-3">
+                <label for="">总数据量</label>
+                <input type="text" autocomplete="off" class="form-control" ng-model="selectedAlertitem.pageSize" id="alertCount" name="alertCount" ng-pattern="/^\+?[1-9]\d*$/" placeholder="总数据量控制1000条">
+                <span style="color:red" ng-show="alertForm.alertCount.$dirty && alertForm.alertCount.$invalid">
+                          <span ng-show="alertForm.alertCount.$dirty && alertForm.alertCount.$invalid">只能输入大于0的整数</span>
+                </span>
+              </div>
+              <div class="form-group col-sm-3">
+                <label for="">开始时间</label>
+                <input type="text" autocomplete="off" id="createStart" name="createStart" class="form-control" ng-model="selectedAlertitem.createTimeFrom" timepicker="true" iszero="true" placeholder="选择开始时间" date-time-picker>
+              </div>
+              <div class="form-group col-sm-3">
+                <label for="">结束时间</label>
+                <input type="text" autocomplete="off" id="createEnd" name="createEnd" class="form-control" ng-model="selectedAlertitem.createTimeTo" timepicker="true" iszero="true" placeholder="选择结束时间" date-time-picker>
+              </div>
+              <div class="form-group col-sm-3">
+                <label for="">内容关键字</label>
+                <!--ng-pattern="/^[0-9A-Za-z\u4e00-\u9fa5,.，。\[\]:：\【\】-\s+]{1,40}$/"-->
+                <input autocomplete="off" class="form-control" type="text" id="alertMessageFilter" name="alertMessageFilter" ng-model="selectedAlertitem.messageFilter" maxlength="200" value="{{selectedAlertitem.messageFilter}}" placeholder="输入内容关键字" />
+                <span style="color:red" ng-show="alertForm.alertMessageFilter.$dirty && alertForm.alertMessageFilter.$invalid">
+                          <span ng-show="alertForm.alertMessageFilter.$dirty && alertForm.alertMessageFilter.$invalid">仅限数字字母中文逗号句号冒号分号中括号破折号</span>
+                </span>
+              </div>
+            </div>
+            <!-- /.form-group-->
+            <div class="col-sm-12">
+              <div class="form-group col-sm-5">
+                <label>告警状态：</label>
+                <label>
+                  <input type="checkbox" i-check ng-model="selectedAlertitem.selected.state0" value="0" />新产生</label>
+                <label>
+                  <input type="checkbox" i-check ng-model="selectedAlertitem.selected.state5" value="5" />已确认
+                </label>
+                <label>
+                  <input type="checkbox" i-check ng-model="selectedAlertitem.selected.state10" value="10" />处理中
+                </label>
+                <label>
+                  <input type="checkbox" i-check ng-model="selectedAlertitem.selected.state20" value="20" />已解决
+                </label>
+              </div>
+              <div class="form-group text-center col-sm-5">
+                <label>告警级别：</label>
+                <label>
+                  <input type="checkbox" name="severity" i-check ng-model="selectedAlertitem.selected.severity1" value="1" />警告
+                </label>
+                <label>
+                  <input type="checkbox" name="severity" i-check ng-model="selectedAlertitem.selected.severity2" value="2" />次要
+                </label>
+                <label>
+                  <input type="checkbox" name="severity" i-check ng-model="selectedAlertitem.selected.severity3" value="3" />重要
+                </label>
+                <label>
+                  <input type="checkbox" name="severity" i-check ng-model="selectedAlertitem.selected.severity4" value="4" />严重
+                </label>
+              </div>
+              <div class="form-group text-center col-sm-2">
+                <a id="save-btn" ng-click="searchAlert()" class="btn btn-default btn-sm">
+                  <i class="fa fa-search"></i>
+                  <span class="hidden-xs ng-binding">查询</span>
+                </a>
+                <a id="save-btn" ng-click="clearSearchAlert()" class="btn btn-default btn-sm">
+                  <i class="fa fa-times"></i>
+                  <span class="hidden-xs ng-binding">清除</span>
+                </a>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="box-footer no-padding">
+          <div class="box box-solid" style="margin-bottom:1px">
+            <div class="box-header">
+              <h3 class="box-title">告警列表</h3>
+              <div class="box-tools pull-right">
+                <button id="alertcollapse" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="box-body">
+              <table width="100%" class="table table-hover " ng-controller="ViewAlertCtrl" alert-table>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+<!-- before 2016-12-20
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+<section class="content">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="box">
+        <div class="box-body">
+            <div data-table-dom
+                 data-source="viewlist">
+            </div>
+
+          <table width="100%" class="table table-hover" rappid-views-dom>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <div class="box-tools pull-left nav-tabs-header">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active">
+                                <a>视图管理</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="box-tools pull-right">
+                        <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div data-table-dom
+                         data-source="viewlist">
+                    </div>
+                </div>
+                <div class="box-footer no-pad-top no-border">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

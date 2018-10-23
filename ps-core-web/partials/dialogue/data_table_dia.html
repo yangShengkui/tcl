@@ -1,0 +1,22 @@
+<div id="bootstrap-dialog" class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block; overflow : auto;">
+  <div class="modal-dialog" style="width : 700px;">
+    <div class="modal-content">
+      <div class="modal-header bg-f2" style="padding: 12px 12px 12px 15px;">
+        <a role="button" class="close" ng-click="closeThisDialog()">×</a>
+        <h4 class="modal-title info-box-number" ng-bind="dialog.title"></h4>
+      </div>
+      <div class="margin-top-2 alert-info-dialog t-sty" ng-if="dialog.note">
+        <i class="proudsmart ps-fail c-f29047  i-con"></i>
+        <b bo-text="'msg.cm.lb.tips'|translate">提醒：</b>
+        <span class="c-f29047" style="font-size: 12px;" ng-bind="dialog.note.message"></span>
+      </div>
+      <div style="padding: 10px 15px 0 15px;">
+        <div table-dom source="dialog.datatablesource"></div>
+      </div>
+      <div class="modal-footer" style="padding-top: 8px;">
+        <button ng-repeat="btn in dialog.button" ng-class="btn.icon" ng-click="btn.fn(dialog)" ng-bind="btn.label" ng-class="btn.icon;" ng-disabled="btn.disabled">
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

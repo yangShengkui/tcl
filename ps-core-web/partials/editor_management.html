@@ -1,0 +1,100 @@
+<!-- Main content -->
+<section class="content" loading>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <div class="box-tools pull-left nav-tabs-header">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active">
+                                <a>设计器管理</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--添加按钮-->
+                <!--<div class="" style="margin: 10px 0">-->
+                <!--<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">添加设计器名称-->
+                <!--</button>-->
+                <!--</div>-->
+
+                <!--表格-->
+                <div class="box-body">
+                    <div data-table-dom
+                         data-source="calcRules">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--模态框-->
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" ng-click="closeEditorManagemengt()"
+                            aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">添加设计服务器</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!--左侧-->
+                        <div class="col-md-6">
+
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">名称</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" ng-model="editor.name" class="form-control"
+                                               id="inputEmail3" placeholder="请输入中文名称">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">标识</label>
+                                    <div class="col-sm-10">
+                                        <input ng-model="editor.id" type="text" class="form-control"
+                                               id="inputPassword3"
+                                               placeholder="请输入大写中文拼音">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">JSON</label>
+                                    <div class="col-sm-10" code-mirror-editor height="402"
+                                         data-target="cmcontroller1"
+                                         ng-model="editor.json">
+
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                        <!--右侧-->
+                        <div class="col-md-6">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">代码</label>
+                                    <div class="col-sm-10" code-mirror-editor height="500" ng-model="editor.code">
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" ng-click="closeEditorManagemengt()"
+                                data-dismiss="modal">关闭
+                        </button>
+                        <button type="button" ng-click="editorManagemengt()" class="btn btn-primary">提交</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

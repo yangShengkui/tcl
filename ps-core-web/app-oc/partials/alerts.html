@@ -1,0 +1,155 @@
+<section class="content" id="alerts">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Application buttons -->
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active">
+                <a>{{menuitems['S05'].name}}</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body">
+          <!--<button type="button" ng-class="{true: 'btn-primary', false: 'btn-default'}[selectedAlertitem==item]" class="btn btn-sm margin-right-5 margin-bottom-10" ng-click="alertViewClick(item)" ng-repeat="item in alertViewList"><i class="{{item.icon}}"></i><span class="hidden-sm"> {{item.title}}</span></button>-->
+          <!--<button type="button" ng-class="{true: 'btn-primary', false: 'fc-button'}[selectAlertList.search]" ng-click="goBack();selectedAlertitem = {};selectedAlertitem.timeType = '1';selectedAlertitem.states = ['0','5','10','20'];selectedAlertitem.severities = ['1','2','3','4'];" class="btn  btn-sm  margin-right-5 margin-bottom-10 "><i class="fa fa-search"></i><span class="hidden-sm"> 搜索</span></button>-->
+        </div>
+
+        <!--
+        	作者：zhangafa@hotmail.com
+        	时间：2017-09-11
+        	描述：查询时显示如下内容
+        -->
+        <div class="box-footer">
+          <form role="form" name="alertForm" id="alert-form" class=" col-sm-14 no-padding-lr no-pad-bottom">
+            <div class="form-group col-sm-2  height-50">
+              <label class="control-label">厂部：</label>
+              <select select2 class="form-control"  ng-model="selectedAlertitem.domain" ng-change="customerChange();clearSearch('customers');" ng-options="value.id as value.text for value in customersList" selectdata="customersList">
+                <option value="">请选择...</option>
+              </select>
+              <!--<div ng-disabled="!shyj" class="dropdowntree" placeholder="请选择..." ng-model="selectedAlertitem.domain" change="selectedAlertitem.nodeType = '';selectedAlertitem.nodeIds = '';" key="domainPath" options="domainListTree" mark="nodes" />-->
+            </div>
+            <div class="form-group col-sm-2  height-50">
+              <label class="control-label">车间：</label>
+              <select select2 class="form-control"  ng-model="selectedAlertitem.plant"  ng-change="projectChange();clearSearch('project');" ng-options="value.id as value.text for value in projectsList | filter:{ customerId :selectedAlertitem.domain}" selectdata="projectsList">
+                <option value="">请选择...</option>
+              </select>
+              <!--<div ng-disabled="!shyj" class="dropdowntree" placeholder="请选择..." ng-model="selectedAlertitem.domain" change="selectedAlertitem.nodeType = '';selectedAlertitem.nodeIds = '';" key="domainPath" options="domainListTree" mark="nodes" />-->
+            </div>
+            <div class="form-group col-sm-2  height-50">
+              <label class="control-label">线体：</label>
+              <!--<select select2 class="form-control"  ng-model="selectedAlertitem.line"  ng-change="projectChange();clearSearch('project');" ng-options="value.id as value.text for value in projectsList | filter:{ customerId :selectedItem.projectId}" selectdata="projectsList">-->
+                <select select2 class="form-control"  ng-model="selectedAlertitem.line" ng-options="value.id as value.productionLineName for value in lineBodyList | filter:{ projectId :selectedAlertitem.plant}" selectdata="lineBodyList">
+
+                <option value="">请选择...</option>
+              </select>
+              <!--<div ng-disabled="!shyj" class="dropdowntree" placeholder="请选择..." ng-model="selectedAlertitem.domain" change="selectedAlertitem.nodeType = '';selectedAlertitem.nodeIds = '';" key="domainPath" options="domainListTree" mark="nodes" />-->
+            </div>
+            <div class="form-group col-sm-2 height-50">
+              <label class="control-label full-width">设备名称：</label>
+              <select select2 class="form-control" ng-model="selectedAlertitem.nodeIds" selectdata="selectedDitem.label" ng-disabled="nodeIdStatus > 0" ng-options="value.id as value.label for value in selectedDitem.label ">
+                <option value="">请选择...</option>
+
+              </select>
+            </div>
+            <div class="form-group col-sm-2 height-50">
+              <label class="control-label">报警状态：</label>
+              <div class="col-sm-12 no-padding-lr multiselect-group">
+                <select class="form-control" buttonclass='btn btn-default full-width' ng-model="selectedAlertitem.states"  ng-options="value.valueCode as value.label for value in allDictList | filter:{ dictCode :'alertStatus'}" selectdata="allDictList" numberdisplayed="6" multiple="multiple" bootstrap-multiselect>
+                </select>
+              </div>
+            </div>
+            <div class="form-group col-sm-2 height-50"  style="clear:both">
+              <label class="control-label">处理类型：</label>
+              <div class="col-sm-12 no-padding-lr multiselect-group">
+                <select class="form-control" buttonclass='btn btn-default full-width' ng-model="selectedAlertitem.disposeType"  ng-options="value.valueCode as value.label for value in allDictList | filter:{ dictCode :'handleType'}" selectdata="allDictList" numberdisplayed="6" multiple="multiple" bootstrap-multiselect>
+
+                </select>
+              </div>
+            </div>
+            <div class="form-group col-sm-2 height-50" >
+              <label class="control-label">报警级别：</label>
+              <div class="col-sm-12 no-padding-lr multiselect-group">
+                <select class="form-control" buttonclass='btn btn-default full-width' ng-model="selectedAlertitem.severities"  ng-options="value.valueCode as value.label for value in allDictList | filter:{ dictCode :'alertLevel'}" selectdata="allDictList" numberdisplayed="6" multiple="multiple" bootstrap-multiselect>
+                </select>
+              </div>
+            </div>
+            <div class="form-group col-sm-2 height-50">
+              <label class="control-label">报警来源：</label>
+              <div class="col-sm-12 no-padding-lr multiselect-group">
+                <select class="form-control" buttonclass='btn btn-default full-width' ng-model="selectedAlertitem.originType"  ng-options="value.valueCode as value.label for value in allDictList | filter:{ dictCode :'alertSource'}" selectdata="allDictList" numberdisplayed="6" multiple="multiple" bootstrap-multiselect>
+                </select>
+              </div>
+            </div>
+            <div class="form-group col-sm-2 height-50">
+              <label class="control-label">是否超时：</label>
+              <select class="form-control" buttonclass='btn btn-default full-width' ng-model="selectedAlertitem.timeoutType" ng-init="selectedAlertitem.alarmTimeOut=''">
+                <option value="" selected>请选择</option>
+                <option value="1" >超时</option>
+                <option value="0" >正常</option>
+                <option value="3" >逾期</option>
+              </select>
+            </div>
+            <div class="form-group col-sm-2  height-50">
+              <label class="control-label">第一责任人：</label>
+              <div ng-disabled="!shyj" class="dropdowntree" placeholder="请选择..." ng-model="selectedAlertitem.owner" change="selectedAlertitem.nodeType = '';selectedAlertitem.nodeIds = '';" key="domainPath" options="domainListTree" mark="nodes" />
+            </div>
+            <div class="form-group col-sm-2  height-50"  style="clear:both">
+              <label class="control-label">处理人：</label>
+              <!--<div ng-disabled="!shyj" class="dropdowntree" placeholder="请选择..." ng-model="selectedAlertitem.processingLiable" change="selectedAlertitem.nodeType = '';selectedAlertitem.nodeIds = '';" key="domainPath" options="domainListTree" mark="nodes" />-->
+                <!--<label class="col-sm-3 control-label">请选择用户：</label>-->
+              <div class="col-sm-12 no-padding-lr multiselect-group">
+                 <select class="form-control" buttonclass='btn btn-default full-width' ng-model="selectedAlertitem.claimBy" numberdisplayed="6" multiple="multiple" bootstrap-multiselect nonselectedtext="所有用户" ng-options="item.userName as item.userName for item in handlerUserList"  ng-model="handerConfsData[flowList.taskId].userIdsOfRole">
+                  </select>
+                  <!--<label style="color: #f56e00;" class="form-control no-border no-margin padding-left-20 light-label bg-transparent">(如果没有选用户默认所有用户)</label>-->
+                </div>
+            </div>
+            <div class="form-group col-sm-2 height-50">
+              <label class="control-label">开始时间：</label>
+              <input type="text" autocomplete="off" id="createStart" style="background-color:#fff;" name="createStart" class="form-control" ng-model="selectedAlertitem.createTimeFrom" timepicker="true" readonly="readonly" placeholder="请选择..." opens="left" drops="down" date-time-picker>
+            </div>
+            <div class="form-group col-sm-2 height-50">
+              <label class="control-label">结束时间：</label>
+              <input type="text" autocomplete="off" id="createEnd" style="background-color:#fff;" name="createEnd" class="form-control" ng-model="selectedAlertitem.createTimeTo" timepicker="true" readonly="readonly" placeholder="请选择..." opens="left" drops="down" date-time-picker>
+            </div>
+            <!--<div class="form-group col-sm-2 height-50">-->
+            <!--<label class="control-label">告警名称：</label>-->
+            <!--<select class="form-control" ng-model="selectedAlertitem.alertCodes" ng-options="value.id as value.label for value in selectedDitem.alerts">-->
+            <!--<option value="">请选择...</option>-->
+            <!--</select>-->
+            <!--</div>-->
+            <!--<div class="form-group col-sm-2 height-50">-->
+            <!--<label class="control-label">内容关键字：</label>-->
+            <!--<input autocomplete="off" class="form-control" type="text" id="alertMessageFilter" name="alertMessageFilter" ng-model="selectedAlertitem.messageFilter" maxlength="200" value="{{selectedAlertitem.messageFilter}}" placeholder="输入内容关键字" />-->
+            <!--<span style="color:red" ng-show="alertForm.alertMessageFilter.$dirty && alertForm.alertMessageFilter.$invalid">-->
+            <!--<span ng-show="alertForm.alertMessageFilter.$dirty && alertForm.alertMessageFilter.$invalid">仅限数字字母中文逗号句号冒号分号中括号破折号</span>-->
+            <!--</span>-->
+            <!--</div>-->
+
+
+
+            <div class="form-group col-sm-3 ">
+              <label class="col-sm-12 control-label font-white">操作：</label>
+              <div class="btn-group">
+                <button ng-click="goBack();selectedAlertitem.timeType = '1';searchAlert()" type="button" class="btn btn-primary btn-sm "><i class="fa fa-search"></i><span class="hidden-sm"> 查询</span></button>
+                <!--<button ng-click="clearSearchAlert()" type="button" class="btn btn-default btn-sm "><i class="fa fa-close"></i><span class="hidden-sm"> 清除</span></button>-->
+                <!--<button ng-click="selectAlertList.search = false;selectedAlertitem = alertViewList[0];alertViewClick(alertViewList[0]);" type="button" class="btn btn-default btn-sm"><i class="proudsmart ps-back-01"></i><span class="hidden-sm"> 返回</span></button>-->
+              </div>
+            </div>
+          </form>
+          <div ng-controller="ViewAlertCtrl" ng-show="selectAlertList.searchStatus">
+            <table width="100%" class="table table-hover" alert-page-table></table>
+          </div>
+        </div>
+        <div class="box-footer" ng-controller="ViewAlertCtrl" ng-if="selectAlertList.search == false">
+          <table width="100%" class="table table-hover" alert-table></table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

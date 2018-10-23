@@ -1,0 +1,163 @@
+
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog" style="width: 800px;">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">备件</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal" name="dirForm">
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">厂部：</span>
+            </label>
+            <div class="col-sm-8">
+              <select class="form-control input-sm"  placeholder="请选择..."  ng-model="sparepartAddData.customerId"  selectdata="customersList" ng-change="queryCustomer();" ng-init="queryCustomer();" ng-options="x.id as x.customerName for x in customersList" >
+                <option value="">请选择...</option>
+              </select>
+
+            </div>
+          </div>
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">使用设备类型：</span>
+            </label>
+            <div class="col-sm-7">
+
+
+                <select class="form-control input-sm deviceSelect" multiple bootstrap-multiselect style="height: 50%"placeholder="请选择..."  ng-model="sparepartAddData.deviceModelId" ng-change="queryModelChange();"  ng-options="value.id as value.label for value in modelListSelect" selectdata="modelListSelect">
+                  <!--<option value="">请选择...</option>-->
+                </select>
+
+
+              <!--<label class="col-sm-2  dialog-control-label no-padding dialog-control-h">
+                <span class="text-danger ng-binding">多选</span>
+              </label>-->
+
+            </div>
+          </div>
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">备件类型：</span>
+            </label>
+            <div class="col-sm-8">
+              <select class="form-control input-sm"   placeholder="请选择..." ng-model="sparepartAddData.model" ng-options="value.valueCode as value.label for value in sparepartListSelect" selectdata="sparepartListSelect">
+                <option value="">请选择...</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group col-sm-6 ">
+          <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+            <span class="text-danger ng-binding">*</span> <span class="ng-binding">备件名称：</span>
+          </label>
+          <div class="col-sm-7">
+            <input class="form-control" type="text"  ng-required="item.required == 'yes'"  ng-disabled="detail.taskStatus >= 100"  ng-model="sparepartAddData.label" />
+          </div>
+        </div>
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">备件编码：</span>
+            </label>
+            <div class="col-sm-8">
+              <input class="form-control" type="text"    ng-model="sparepartAddData.name" />
+            </div>
+          </div>
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">规格型号：</span>
+            </label>
+            <div class="col-sm-7">
+              <input class="form-control" type="text"  ng-required="item.required == 'yes'"  ng-disabled="detail.taskStatus >= 100"  ng-model="sparepartAddData.specification" />
+            </div>
+          </div>
+
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">生产厂家：</span>
+            </label>
+            <div class="col-sm-8">
+              <input class="form-control" type="text"  ng-required="item.required == 'yes'"  ng-disabled="detail.taskStatus >= 100"  ng-model="sparepartAddData.manufacturer" />
+            </div>
+          </div>
+
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">实际库存：</span>
+            </label>
+            <div class="col-sm-7">
+              <input class="form-control" type="text"    ng-model="sparepartAddData.stockNumber" />
+            </div>
+          </div>
+
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">安全库存：</span>
+            </label>
+            <div class="col-sm-8">
+              <input class="form-control" type="text"  ng-required="item.required == 'yes'"  ng-disabled="detail.taskStatus >= 100"  ng-model="sparepartAddData.lowerLimit" />
+            </div>
+          </div>
+
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">使用寿命：</span>
+            </label>
+            <div class="form-group col-sm-7 no-padding-right">
+
+                  <div class="col-sm-11">
+                    <input class="form-control" type="text"  ng-required="item.required == 'yes'"  ng-disabled="detail.taskStatus >= 100"  ng-model="sparepartAddData.lifespan" />
+                  </div>
+
+                  <label class="col-sm-1 dialog-control-label no-padding dialog-control-h">
+                    天
+                  </label>
+
+            </div>
+          </div>
+
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">附      件：</span>
+            </label>
+            <div class="col-sm-8 ">
+              <input id="fileName" style="display:none" class="form-control" type="file" nv-file-select="" uploader="uploader" multiple  >
+              <input type="text" readonly="readonly" class="form-control dialog-inp-text  input-sm" title="dfsfsa" ng-model="sparepartAddData.imageUrl" required="required">
+              <span onclick="$('#fileName').click()" style="position: absolute;top: 10%;right: 15%;"><i class="proudsmart ps-add"></i></span>
+              <span ng-show="docError.name == 'error'" style="font-size: 12px;"  ng-bind="docError.conter" class="help-block text-danger text-muted" ng-cloak></span>
+            </div>
+          </div>
+
+
+
+
+
+       <!--   <div class="form-group col-sm-6 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">故障码：</span>
+            </label>
+            <div class="col-sm-8">
+              <select class="form-control input-sm"   placeholder="请选择..."  ng-model="orderAddData.faultId" ng-options="x.id  as x.faultNo for x in initData.faultList" >
+                <option value="">请选择</option>
+              </select>
+            </div>
+          </div>-->
+          <!--<div class="form-group col-sm-12">-->
+            <!--<label class="col-sm-2 margin-left-15 dialog-control-label no-padding-right dialog-control-h">-->
+              <!--<span class="ng-binding">工单内容：</span>-->
+            <!--</label>-->
+            <!--<div class="col-sm-9 no-padding-right">-->
+              <!--<textarea  id="discription" ng-model="orderAddData.message" class="col-md-12  form-control"  style="height:100px;resize: none;" name="discription" maxlength="500"  type="text" placeholder="最多可输入500字"></textarea>-->
+            <!--</div>-->
+          <!--</div>-->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button ng-model="sparepartAddData.id" class="btn btn-primary"   ng-click="saveSparePart(sparepartAddData.id)" >
+          保存
+        </button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

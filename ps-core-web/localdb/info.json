@@ -1,0 +1,897 @@
+{
+  "alertStyle": [
+    {
+      "dataField": "title" ,
+      "headerText": "告警名称" ,
+      "width": "100" ,
+      "visible": true
+    }, {
+      "dataField": "message" ,
+      "headerText": "告警消息" ,
+      "width": "200" ,
+      "visible": true
+    }, {
+      "dataField": "severity" ,
+      "headerText": "告警级别" ,
+      "width": "60" ,
+      "visible": true
+    }, {
+      "dataField": "state" ,
+      "headerText": "状态" ,
+      "width": "60" ,
+      "visible": true
+    }, {
+      "dataField": "arisingTime" ,
+      "headerText": "最近告警时间" ,
+      "width": "140" ,
+      "visible": true
+    }, {
+      "dataField": "devName" ,
+      "headerText": "设备名称" ,
+      "width": "100" ,
+      "visible": false
+    }, {
+      "dataField": "appName" ,
+      "headerText": "应用名称" ,
+      "width": "100" ,
+      "visible": false
+    }, {
+      "dataField": "receiveTime" ,
+      "headerText": "接收时间" ,
+      "width": "140" ,
+      "visible": false
+    }, {
+      "dataField": "count" ,
+      "headerText": "次数" ,
+      "width": "60" ,
+      "visible": false
+    }, {
+      "dataField": "agentId" ,
+      "headerText": "采集系统" ,
+      "width": "80" ,
+      "visible": false
+    }, {
+      "dataField": "related" ,
+      "headerText": "子告警" ,
+      "width": "80" ,
+      "visible": false
+    }, {
+      "dataField": "owner" ,
+      "headerText": "处理人" ,
+      "width": "80" ,
+      "visible": false
+    }, {
+      "dataField": "eventId" ,
+      "headerText": "事件编号" ,
+      "width": "120" ,
+      "visible": false
+    }, {
+      "dataField": "alertId" ,
+      "headerText": "告警编号" ,
+      "width": "120" ,
+      "visible": false
+    }, {
+      "dataField": "srcEventId" ,
+      "headerText": "原始事件编号" ,
+      "width": "120" ,
+      "visible": false
+    }, {
+      "dataField": "nodeId" ,
+      "headerText": "节点编号" ,
+      "width": "120" ,
+      "visible": false
+    }, {
+      "dataField": "alertCode" ,
+      "headerText": "告警类型编号" ,
+      "width": "120" ,
+      "visible": false
+    }, {
+      "dataField": "alertType" ,
+      "headerText": "告警类型" ,
+      "width": "120" ,
+      "visible": false
+    }, {
+      "dataField": "nodeType" ,
+      "headerText": "节点类型" ,
+      "width": "100" ,
+      "visible": false
+    }, {
+      "dataField": "relatedNodeId" ,
+      "headerText": "辅助节点编号" ,
+      "width": "120" ,
+      "visible": false
+    }, {
+      "dataField": "instance" ,
+      "headerText": "接入行" ,
+      "width": "100" ,
+      "visible": false
+    }, {
+      "dataField": "instance2" ,
+      "headerText": "交易渠道" ,
+      "width": "100" ,
+      "visible": false
+    }, {
+      "dataField": "kpiValue" ,
+      "headerText": "KPI值" ,
+      "width": "80" ,
+      "visible": false
+    }, {
+      "dataField": "kpiCode" ,
+      "headerText": "KPI编号" ,
+      "width": "120" ,
+      "visible": false
+    }, {
+      "dataField": "kpiUnit" ,
+      "headerText": "KPI单位" ,
+      "width": "80" ,
+      "visible": false
+    }, {
+      "dataField": "title" ,
+      "headerText": "事件标题" ,
+      "width": "80" ,
+      "visible": false
+    }, {
+      "dataField": "causeAlertId" ,
+      "headerText": "关联告警" ,
+      "width": "120" ,
+      "visible": false
+    }, {
+      "dataField": "firstArisingTime" ,
+      "headerText": "首次告警时间" ,
+      "width": "140" ,
+      "visible": false
+    }, {
+      "dataField": "oldSeverity" ,
+      "headerText": "首次级别" ,
+      "width": "80" ,
+      "visible": false
+    }, {
+      "dataField": "updateTime" ,
+      "headerText": "更新时间" ,
+      "width": "140" ,
+      "visible": false
+    }, {
+      "dataField": "openTime" ,
+      "headerText": "确认时间" ,
+      "width": "140" ,
+      "visible": false
+    }, {
+      "dataField": "openTime" ,
+      "headerText": "前转时间" ,
+      "width": "140" ,
+      "visible": false
+    }, {
+      "dataField": "closeTime" ,
+      "headerText": "关闭时间" ,
+      "width": "140" ,
+      "visible": false
+    }, {
+      "dataField": "upgradeTime" ,
+      "headerText": "升级时间" ,
+      "width": "140" ,
+      "visible": false
+    }, {
+      "dataField": "upgradeCount" ,
+      "headerText": "升级次数" ,
+      "width": "60" ,
+      "visible": false
+    }, {
+      "dataField": "claimBy" ,
+      "headerText": "确认人" ,
+      "width": "80" ,
+      "visible": false
+    }, {
+      "dataField": "openBy" ,
+      "headerText": "前转人" ,
+      "width": "80" ,
+      "visible": false
+    }, {
+      "dataField": "closeBy" ,
+      "headerText": "关闭人" ,
+      "width": "80" ,
+      "visible": false
+    }, {
+      "dataField": "orderId" ,
+      "headerText": "工单编号" ,
+      "width": "100" ,
+      "visible": false
+    }, {
+      "dataField": "orderStatus" ,
+      "headerText": "工单状态" ,
+      "width": "80" ,
+      "visible": false
+    }, {
+      "dataField": "comments" ,
+      "headerText": "备注" ,
+      "width": "150" ,
+      "visible": false
+    }, {
+      "dataField": "tags" ,
+      "headerText": "告警标记" ,
+      "width": "150" ,
+      "visible": false
+    }, {
+      "dataField": "incidentId" ,
+      "headerText": "故障编号" ,
+      "width": "120" ,
+      "visible": false
+    }, {
+      "dataField": "activeState" ,
+      "headerText": "活动状态" ,
+      "width": "60" ,
+      "visible": false
+    }, {
+      "dataField": "age" ,
+      "headerText": "延迟时间" ,
+      "width": "140" ,
+      "visible": false
+    }, {
+      "dataField": "soundState" ,
+      "headerText": "声音" ,
+      "width": "60" ,
+      "visible": false
+    }
+  ],
+  "systemProcess": [
+    {
+      "id": 4011,
+      "dictCode": "systemProcessTemplate",
+      "valueCode": "oneStep",
+      "label": "一步工单",
+      "name": "第一步",
+      "param": "1"
+    }, {
+      "id": 4012,
+      "dictCode": "systemProcessTemplate",
+      "valueCode": "twoStep",
+      "label": "二步工单",
+      "name": "第二步",
+      "param": "2"
+    }, {
+      "id": 4013,
+      "dictCode": "systemProcessTemplate",
+      "valueCode": "threeStep",
+      "label": "三步工单",
+      "name": "第三步",
+      "param": "3"
+    }, {
+      "id": 4014,
+      "dictCode": "systemProcessTemplate",
+      "valueCode": "fourStep",
+      "label": "四步工单",
+      "name": "第四步",
+      "param": "4"
+    }, {
+      "id": 4015,
+      "dictCode": "systemProcessTemplate",
+      "valueCode": "fiveStep",
+      "label": "五步工单",
+      "name": "第五步",
+      "param": "5"
+    }
+  ],
+  "workOrderType": [
+    {
+      "id": 1301,
+      "dictCode": "ticketCategory",
+      "valueCode": "10",
+      "label": "告警工单"
+    }, {
+      "id": 1302,
+      "dictCode": "ticketCategory",
+      "valueCode": "20",
+      "label": "维修工单"
+    }, {
+      "id": 1303,
+      "dictCode": "ticketCategory",
+      "valueCode": "30",
+      "label": "业务工单"
+    }
+  ],
+  "orderPriorityCode": [
+    {
+      "id": 1101,
+      "dictCode": "orderPriority",
+      "valueCode": "10",
+      "label": "低"
+    }, {
+      "id": 1102,
+      "dictCode": "orderPriority",
+      "valueCode": "30",
+      "label": "中"
+    }, {
+      "id": 1103,
+      "dictCode": "orderPriority",
+      "valueCode": "50",
+      "label": "高"
+    }
+  ],
+  "priorityData": [
+    {
+      "value": 0,
+      "name": "低"
+    }, {
+      "value": 100,
+      "name": "中"
+    }, {
+      "value": 200,
+      "name": "高"
+    }
+  ],
+  "statusData": [
+    {
+      "value": 10,
+      "name": "草稿"
+    }, {
+      "value": 100,
+      "name": "处理中"
+    }, {
+      "value": 200,
+      "name": "已完成"
+    }
+  ],
+  "emcsAlertColorDic": {
+    "0": {
+      "id": "0",
+      "color": "#00b9b2",
+      "class": "color-info"
+    },
+    "1": {
+      "id": "1",
+      "color": "#25bce7",
+      "class": "color-warning"
+    },
+    "2": {
+      "id": "2",
+      "color": "#e1cd0a",
+      "class": "color-minor"
+    },
+    "3": {
+      "id": "3",
+      "color": "#ed9700",
+      "class": "color-major"
+    },
+    "4": {
+      "id": "4",
+      "color": "#e7675d",
+      "class": "color-critical"
+    },
+    "-1": {
+      "id": "-1",
+      "color": "#00b9b2",
+      "class": "color-info"
+    }
+  },
+  "emcsAlertColor": [
+    {
+      "id": "0",
+      "color": "#00b9b2",
+      "class": "color-info"
+    }, {
+      "id": "1",
+      "color": "#25bce7",
+      "class": "color-warning"
+    }, {
+      "id": "2",
+      "color": "#e1cd0a",
+      "class": "color-minor"
+    }, {
+      "id": "3",
+      "color": "#ed9700",
+      "class": "color-major"
+    }, {
+      "id": "4",
+      "color": "#e7675d",
+      "class": "color-critical"
+    }, {
+      "id": "-1",
+      "color": "#00b9b2",
+      "class": "color-info"
+    }
+  ],
+  "emcsSetTime": [
+    {
+      "name": "最近10条",
+      "value": "10"
+    }, {
+      "name": "最近50条",
+      "value": "50"
+    }, {
+      "name": "最近100条",
+      "value": "100"
+    }, {
+      "name": "最近500条",
+      "value": "500"
+    }, {
+      "name": "最近1000条",
+      "value": "1000"
+    }, {
+      "name": "最近2000条",
+      "value": "2000"
+    }
+  ],
+  "customerConfig": {
+    "display": true,
+    "enabled": true,
+    "check": true
+  },
+  "projectConfig": {
+    "display": true,
+    "enabled": true,
+    "check": true
+  },
+  "gatewayManufacturer": [
+    {
+      "id": "1001",
+      "index": 3,
+      "label": "研华科技",
+      "fullName": "研华科技",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_01.png" ,
+      "desc": ""
+    }, {
+      "id": "1002",
+      "index": 3,
+      "label": "南京迈思德",
+      "fullName": "南京迈思德电气自动化有限公司",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_02.png" ,
+      "desc": ""
+    }, {
+      "id": "1003",
+      "index": 3,
+      "label": "恩易物联",
+      "fullName": "山东恩易物联技术有限公司",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_03.png" ,
+      "desc": ""
+    }, {
+      "id": "1004",
+      "index": 3,
+      "label": "上海繁易",
+      "fullName": "上海繁易信息科技股份有限公司",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_04.png" ,
+      "desc": ""
+    }, {
+      "id": "1005",
+      "index": 7,
+      "label": "厦门四信",
+      "fullName": "厦门四信通信科技有限公司",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_05.png" ,
+      "desc": ""
+    }, {
+      "id": "1006",
+      "index": 7,
+      "label": "广州鲁邦通",
+      "fullName": "广州鲁邦通网络技术有限公司",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_06.png" ,
+      "desc": ""
+    }, {
+      "id": "1007",
+      "index": 7,
+      "label": "上海卓岚",
+      "fullName": "上海卓岚信息科技有限公司",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_07.png" ,
+      "desc": ""
+    }, {
+      "id": "1008",
+      "index": 7,
+      "label": "厦门为那",
+      "fullName": "厦门为那通信科技有限公司",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_08.png" ,
+      "desc": ""
+    }, {
+      "id": "1009",
+      "index": 11,
+      "label": "北京自动元素",
+      "fullName": "北京自动元素科技有限公司",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_09.png" ,
+      "desc": ""
+    }, {
+      "id": "1010",
+      "index": 11,
+      "label": "普奥",
+      "fullName": "普奥云信息科技有限公司",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_10.png" ,
+      "desc": ""
+    }, {
+      "id": "1011",
+      "index": 11,
+      "label": "广州朗威",
+      "fullName": "广州朗威电子科技有限公司",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_11.png" ,
+      "desc": ""
+    }, {
+      "id": "1012",
+      "index": 11,
+      "label": "广州巨控电子",
+      "fullName": "广州市巨控电子科技有限公司",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_12.png" ,
+      "desc": ""
+    }, {
+      "id": "1013",
+      "index": 15,
+      "label": "上海紫澜",
+      "fullName": "上海紫澜信息科技有限公司",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_13.png" ,
+      "desc": ""
+    }, {
+      "id": "1014",
+      "index": 15,
+      "label": "深圳盈科互动",
+      "fullName": "深圳市盈科互动科技有限公司",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_14.png" ,
+      "desc": ""
+    }, {
+      "id": "1015",
+      "index": 15,
+      "label": "上海沃兴自动化",
+      "fullName": "上海沃兴自动化技术有限公司",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_15.png" ,
+      "desc": ""
+    }, {
+      "id": "1016",
+      "index": 15,
+      "label": "井深信息科技",
+      "fullName": "井深信息科技(上海)有限公司",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_16.png" ,
+      "desc": ""
+    }  , {
+      "id": "1017",
+      "index": 19,
+      "label": "广州致远电子",
+      "fullName": "广州致远电子有限公司",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_17.png" ,
+      "desc": ""
+    }  , {
+      "id": "1018",
+      "index": 19,
+      "label": "济南有人科技",
+      "fullName": "济南有人科技有限公司",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_18.png" ,
+      "desc": ""
+    }  , {
+      "id": "1019",
+      "index": 19,
+      "label": "北京阿尔泰科技",
+      "fullName": "北京阿尔泰科技发展有限公司",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_19.png" ,
+      "desc": ""
+    }  , {
+      "id": "1020",
+      "index": 19,
+      "label": "宇泰科技",
+      "fullName": "深圳市宇泰科技有限公司",
+      "address": "",
+      "href": "" ,
+      "icon": "images/gatewayEnterprises/logo_20.png" ,
+      "desc": ""
+    }
+  ],
+  "gatewayModel": [
+    {
+      "id": "1001_1",
+      "label": "ECU-1152",
+      "manufacturerId": "1001",
+      "icon": "images/gatewayProducts/produck_01.png",
+      "protocol": "MQTT" ,
+      "protocolVersion": "1.0.0" ,
+      "gatewayType": "工业网关" ,
+      "desc": ""
+    }, {
+      "id": "1002_1",
+      "label": "MHGateWay-1E-4C",
+      "manufacturerId": "1002",
+      "icon": "images/gatewayProducts/produck_02.png",
+      "protocol": "MQTT" ,
+      "protocolVersion": "1.0.0" ,
+      "gatewayType": "工业网关" ,
+      "desc": ""
+    }, {
+      "id": "1003_1",
+      "label": "NE-GQ6000N-DT",
+      "manufacturerId": "1003",
+      "icon": "images/gatewayProducts/produck_03.png",
+      "protocol": "MQTT" ,
+      "protocolVersion": "1.0.0" ,
+      "gatewayType": "电梯专用网关" ,
+      "desc": ""
+    }, {
+      "id": "1004_1",
+      "label": "FBOX",
+      "manufacturerId": "1004",
+      "icon": "images/gatewayProducts/produck_04.png",
+      "protocol": "flexem" ,
+      "protocolVersion": "V2.0.0" ,
+      "gatewayType": "工业网关" ,
+      "desc": ""
+    }, {
+      "id": "1004_2",
+      "label": "FBOX-2G",
+      "manufacturerId": "1004",
+      "icon": "images/gatewayProducts/produck_05.png",
+      "protocol": "flexem" ,
+      "protocolVersion": "V2.0.0" ,
+      "gatewayType": "工业网关" ,
+      "desc": ""
+    }, {
+      "id": "1004_3",
+      "label": "FBOX-mini",
+      "manufacturerId": "1004",
+      "icon": "images/gatewayProducts/produck_06.png",
+      "protocol": "flexem" ,
+      "protocolVersion": "V2.0.0" ,
+      "gatewayType": "工业网关" ,
+      "desc": ""
+    }, {
+      "id": "1004_4",
+      "label": "FBOX-4G",
+      "manufacturerId": "1004",
+      "icon": "images/gatewayProducts/produck_07.png",
+      "protocol": "flexem" ,
+      "protocolVersion": "V2.0.0" ,
+      "gatewayType": "工业网关" ,
+      "desc": ""
+    }, {
+      "id": "1005_1",
+      "label": "F8926-L",
+      "manufacturerId": "1005",
+      "icon": "images/gatewayProducts/produck_08.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "工业路由器" ,
+      "desc": ""
+    }, {
+      "id": "1005_2",
+      "label": "F2114",
+      "manufacturerId": "1005",
+      "icon": "images/gatewayProducts/produck_09.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "DTU" ,
+      "desc": ""
+    }, {
+      "id": "1006_1",
+      "label": "R2000 Ent",
+      "manufacturerId": "1006",
+      "icon": "images/gatewayProducts/produck_10.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "DTU" ,
+      "desc": ""
+    }, {
+      "id": "1006_2",
+      "label": "R2000 Lite",
+      "manufacturerId": "1006",
+      "icon": "images/gatewayProducts/produck_11.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "DTU" ,
+      "desc": ""
+    }, {
+      "id": "1006_3",
+      "label": "R2000 Dual",
+      "manufacturerId": "1006",
+      "icon": "images/gatewayProducts/produck_12.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "工业路由器" ,
+      "desc": ""
+    }, {
+      "id": "1006_4",
+      "label": "R2000",
+      "manufacturerId": "1006",
+      "icon": "images/gatewayProducts/produck_13.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "DTU" ,
+      "desc": ""
+    }, {
+      "id": "1006_5",
+      "label": "R3000 Lite",
+      "manufacturerId": "1006",
+      "icon": "images/gatewayProducts/produck_14.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "DTU" ,
+      "desc": ""
+    }, {
+      "id": "1006_6",
+      "label": "R3000 Quad",
+      "manufacturerId": "1006",
+      "icon": "images/gatewayProducts/produck_15.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "工业路由器" ,
+      "desc": ""
+    }, {
+      "id": "1006_7",
+      "label": "R3000",
+      "manufacturerId": "1006",
+      "icon": "images/gatewayProducts/produck_16.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "工业路由器" ,
+      "desc": ""
+    }, {
+      "id": "1007_1",
+      "label": "ZLAN-5102",
+      "manufacturerId": "1007",
+      "icon": "images/gatewayProducts/produck_17.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "DTU" ,
+      "desc": ""
+    }, {
+      "id": "1007_2",
+      "label": "ZLAN-8303",
+      "manufacturerId": "1007",
+      "icon": "images/gatewayProducts/produck_18.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "DTU" ,
+      "desc": ""
+    }, {
+      "id": "1008_1",
+      "label": "WCTU2016",
+      "manufacturerId": "1008",
+      "icon": "images/gatewayProducts/produck_19.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "DTU" ,
+      "desc": ""
+    }, {
+      "id": "1009_1",
+      "label": "IE1000",
+      "manufacturerId": "1009",
+      "icon": "images/gatewayProducts/produck_20.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "DTU" ,
+      "desc": ""
+    }, {
+      "id": "1010_1",
+      "label": "ProudLink",
+      "manufacturerId": "1010",
+      "icon": "images/gatewayProducts/produck_21.png",
+      "protocol": "MQTT" ,
+      "protocolVersion": "1.0.0" ,
+      "gatewayType": "工业网关" ,
+      "desc": ""
+    }, {
+      "id": "1011_1",
+      "label": "LNU2000",
+      "manufacturerId": "1011",
+      "icon": "images/gatewayProducts/produck_22.png",
+      "protocol": "MQTT" ,
+      "protocolVersion": "1.0.0" ,
+      "gatewayType": "工业网关" ,
+      "desc": ""
+    }, {
+      "id": "1012_1",
+      "label": "GRM200G",
+      "manufacturerId": "1012",
+      "icon": "images/gatewayProducts/produck_23.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "RTU" ,
+      "desc": ""
+    }, {
+      "id": "1013_1",
+      "label": "DA100",
+      "manufacturerId": "1013",
+      "icon": "images/gatewayProducts/produck_24.png",
+      "protocol": "RESTful" ,
+      "protocolVersion": "1.0.0" ,
+      "gatewayType": "工业网关" ,
+      "desc": ""
+    }, {
+      "id": "1014_1",
+      "label": "CWT5018",
+      "manufacturerId": "1014",
+      "icon": "images/gatewayProducts/produck_25.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "RTU" ,
+      "desc": ""
+    }, {
+      "id": "1015_1",
+      "label": "远程监控模块",
+      "manufacturerId": "1015",
+      "icon": "images/gatewayProducts/produck_26.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "RTU" ,
+      "desc": ""
+    }, {
+      "id": "1016_1",
+      "label": "WAC-G",
+      "manufacturerId": "1016",
+      "icon": "images/gatewayProducts/produck_27.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "工业网关" ,
+      "desc": ""
+    }, {
+      "id": "1016_2",
+      "label": "WAC-R",
+      "manufacturerId": "1016",
+      "icon": "images/gatewayProducts/produck_28.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "RTU" ,
+      "desc": ""
+    }, {
+      "id": "1017_1",
+      "label": "MPort-100IE",
+      "manufacturerId": "1017",
+      "icon": "images/gatewayProducts/produck_29.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "串口服务器" ,
+      "desc": ""
+    }, {
+      "id": "1018_1",
+      "label": "USR-TCP232-410",
+      "manufacturerId": "1018",
+      "icon": "images/gatewayProducts/produck_30.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "串口服务器" ,
+      "desc": ""
+    }, {
+      "id": "1019_1",
+      "label": "DAM-E3220M",
+      "manufacturerId": "1019",
+      "icon": "images/gatewayProducts/produck_31.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "串口服务器" ,
+      "desc": ""
+    }, {
+      "id": "1020_1",
+      "label": "UT-620",
+      "manufacturerId": "1020",
+      "icon": "images/gatewayProducts/produck_32.png",
+      "protocol": "modbus" ,
+      "protocolVersion": "TCP1.0.0" ,
+      "gatewayType": "串口服务器" ,
+      "desc": ""
+    }
+  ]
+}

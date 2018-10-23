@@ -1,0 +1,3892 @@
+{
+  "thridPartyApiService" : {
+    "searchShipParticular" : {
+      "description" : "船舶档案查询",
+      "params" : ["String", "String"]
+    },
+    "searchShip":{
+      "description" :"根据关键字搜索船舶信息",
+      "params": ["String"]
+    },
+    "getSignalShipInfo":{
+      "description" : "根据船舶ID获得船舶信息（单船）",
+      "params" : ["String"]
+    },
+    "getShipTrack":{
+      "description" :"根据船舶ID获得船舶轨迹信息，时间为秒不是毫秒",
+      "params": ["String" ,"long" ,"long" ,"int"]
+    },
+    "getShipTrack":{
+      "description" :"根据船舶ID获得船舶轨迹信息，时间为秒不是毫秒",
+      "params": ["String" ,"long" ,"long" ]
+    },
+    "getShipStatus":{
+      "description" :"船舶挂靠当前状态",
+      "params": ["String" ,"String"  ]
+    },
+    "getPortOfCallByShipPort":{
+      "description" :"船舶挂靠指定港口,时间戳单位为秒",
+      "params": ["String" ,"String" ,"String" ,"long" ,"long"  ]
+    },
+    "getPortOfCallByShip":{
+      "description" :"船舶靠港记录查询,时间戳单位为秒",
+      "params": ["String" ,"String" ,"long" ,"long"  ]
+    },
+    "getPortOfCallByPort":{
+      "description" :"港口挂靠历史,时间戳单位为秒",
+      "params": ["String" ,"String" ,"long" ,"long"  ]
+    },
+    "getManyShipInfo":{
+      "description" :"根据船舶ID获得船舶信息（多船）,多个ID以','间隔",
+      "params": ["String"   ]
+    },
+    "getAreaShip":{
+      "description" :"区域船舶查询，参数为经纬度，经纬度逗号分隔，多个经纬度间'-'减号分隔",
+      "params": ["String"   ]
+    }
+  },
+  "psMessageService":{
+    "sendMessageToAll" : {
+      "description" : "发送站内消息给所有人",
+      "params" : ["Long"]
+    },
+    "sendMessage":{
+      "description" : "发送站内消息",
+      "params" : ["String" ,"String" ,"[Long]"]
+    },
+    "queryMessageNum":{
+      "description" : "消息条数",
+      "params" : []
+    },
+    "queryMessageInfo":{
+      "description" : "查询消息",
+      "params" : ["long"]
+    },
+    "queryMessageByUserID":{
+      "description" : "查询一个用户的消息",
+      "params" : []
+    },
+    "queryMessageByTypeAndUserID":{
+      "description" : "查询一个用户的一种类型消息",
+      "params" : ["String"]
+    },
+    "queryMessageByStatusAndUserID":{
+      "description" : "查询一个用户的一种状态消息",
+      "params" : ["String"]
+    },
+    "queryMessageByStatus":{
+      "description" : "查询草稿消息",
+      "params" : ["int"]
+    },
+    "queryMessageByID":{
+      "description" : "查询消息",
+      "params" : ["long 消息ID"]
+    },
+    "queryMessage":{
+      "description" : "查询消息",
+      "params" : ["long"]
+    },
+    "modifyMsgStatus":{
+      "description" : "查询草稿消息",
+      "params" : ["[long]"]
+    },
+    "modifyMessage":{
+      "description" : "添加草稿消息",
+      "params" : ["Message"]
+    },
+    "deleteMessage":{
+      "description" : "删除消息",
+      "params" : ["long"]
+    },
+    "addMessageUser":{
+      "description" : "添加消息关联",
+      "params" : ["MessageUser"]
+    },
+    "addMessage":{
+      "description" : "添加草稿消息",
+      "params" : ["Message"]
+    }
+  },
+  "dataMiningService":{
+    "getDeviceHistory":{
+      "description" : "得到设备大事件",
+      "params" : ["Long 设备ID"]
+    },
+    "getCompanyRelation":{
+      "description" : "得到公司的关联关系",
+      "params" : ["Long 公司ID"]
+    }
+  },
+  "reportUIService":{
+    "updateReportTemplate":{
+      "description" : "更新报表模板",
+      "params" : ["ReportTemplate 报表模板信息"]
+    },
+    "updateReportSendPolicy":{
+      "description" : "修改报表发送策略",
+      "params" : ["ReportSendPolicy 发送策略信息"]
+    },
+    "updateReportBuildPolicy":{
+      "description" : "更新报表生成策略",
+      "params" : ["ReportBuildPolicy"]
+    },
+    "getSendPeriod":{
+      "description" : "读取生成周期",
+      "params" : []
+    },
+    "getReportXls":{
+      "description" : "导出XLS",
+      "params" : ["Long ","[DictionaryItem]" ,"[String]"]
+    },
+    "getReportWord":{
+      "description" : "导出WORD",
+      "params" : ["Long ","[DictionaryItem]" ,"[String]"]
+    },
+    "getReportTemplatesByCondition":{
+      "description" : "根据查询条件获取报表模板集合",
+      "params" : ["ReportTemplate"]
+    },
+    "getReportTemplates":{
+      "description" : "获取用户的所有报表模板",
+      "params" : []
+    },
+    "getReportTemplateMeta":{
+      "description" : "获得报表的参数定义",
+      "params" : ["String"]
+    },
+    "getReportTemplate":{
+      "description" : "获取指定报表模板Id的模板",
+      "params" : ["Long 报表模板Id"]
+    },
+    "getReportSendPolicys":{
+      "description" : "获取企业的所有报表发送策略",
+      "params" : [""]
+    },
+    "getReportSendPolicy":{
+      "description" : "通过ID获取报表发送策略",
+      "params" : ["Long 发送策略Id"]
+    },
+    "getReportPpt":{
+      "description" : "导出PPT",
+      "params" : ["Long" ,"[DictionaryItem]" ,"[String]"]
+    },
+    "getReportPdf":{
+      "description" : "导出PDF",
+      "params" : ["Long" ,"[DictionaryItem]" ,"[String]"]
+    },
+    "getReportInfo":{
+      "description" : "获取报表信息",
+      "params" : ["ReportInfoCondition"]
+    },
+    "getReportHTML":{
+      "description" : "导出HTML",
+      "params" : ["Long" ,"[DictionaryItem]" ,"[String]"]
+    },
+    "getReportCatalogList":{
+      "description" : "	读取报表分类列表",
+      "params" : []
+    },
+    "getReportBuildPolicyListByUserId":{
+      "description" : "当前用户所有的报表生成策略",
+      "params" : []
+    },
+    "getReportBuildPolicyListByCondition":{
+      "description" : "当前条件所有的报表生成策略",
+      "params" : ["ReportBuildPolicyCondition"]
+    },
+    "getReportBuildPolicyListAll":{
+      "description" : "	当前所有的报表生成策略",
+      "params" : []
+    },
+    "getReportBuildPolicyList":{
+      "description" : "当前所有的有效报表生成策略",
+      "params" : []
+    },
+    "getReportBuildPolicy":{
+      "description" : "获取报表生成策略",
+      "params" : ["Long 生成策略Id"]
+    },
+    "getParamShowList":{
+      "description" : "读取所有的报表展示方式列表信息",
+      "params" : []
+    },
+    "getDataSourceConfigList":{
+      "description" : "读取数据源列表",
+      "params" : []
+    },
+    "deleteReportTemplate":{
+      "description" : "删除报表模板",
+      "params" : ["Long 报表模板Id"]
+    },
+    "deleteReportSendPolicy":{
+      "description" : "删除报表发送策略",
+      "params" : ["Long 报表模板Id"]
+    },
+    "deleteReportInfo":{
+      "description" : "删除报表信息",
+      "params" : ["ReportInfoCondition"]
+    },
+    "deleteReportBuildPolicy":{
+      "description" : "删除指定的生成策略",
+      "params" : ["Long 生成策略Id"]
+    },
+    "addReportTemplate":{
+      "description" : "添加报表模板",
+      "params" : ["ReportTemplate 报表模板信息"]
+    },
+    "addReportSendPolicy":{
+      "description" : "添加报表发送策略",
+      "params" : ["ReportSendPolicy 发送策略信息"]
+    },
+    "addReportBuildPolicy":{
+      "description" : "添加报表生成策略",
+      "params" : ["ReportBuildPolicy"]
+    }
+  },
+  "resourceUIService": {
+    "uploadModelFile": {
+      "description": "上传文件",
+      "params": [
+        "Map"
+      ]
+    },
+    "uploadDeviceFile": {
+      "description": "上传设备文件",
+      "params": [
+        "Map"
+      ]
+    },
+    "updateParams": {
+      "description": "修改设备参数",
+      "params": [
+        "long",
+        "long",
+        "[Map]"
+      ]
+    },
+    "updateNoticeRule": {
+      "description": "更改告警通知规则",
+      "params": [
+        "AlertNoticeRule"
+      ]
+    },
+    "updateModel": {
+      "description": "修改模型，现在做了名称的修改",
+      "params": [
+        "ModelDefinition 模型资源模型"
+      ]
+    },
+    "updateKpiThreshold": {
+      "description": "修改告警规则",
+      "params": [
+        "KpiThreshold"
+      ]
+    },
+    "updateGatewayInfo": {
+      "description": "编辑网关接入信息",
+      "params": [
+        "long",
+        "GatewayInfo"
+      ]
+    },
+    "updateGateway": {
+      "description": "修改网关",
+      "params": [
+        "Gateway"
+      ]
+    },
+    "updateEnterpriseAccessAccount": {
+      "description": "更新企业接入用户",
+      "params": [
+        "EnterpriseAccessAccount 企业接入用户信息"
+      ]
+    },
+    "updateDeviceGroupModel": {
+      "description": "更新设备组模型",
+      "params": [
+        "ModelDefinition 模型资源模型"
+      ]
+    },
+    "updateDeviceCustomer": {
+      "description": "同步客户信息",
+      "params": []
+    },
+    "updateDevice": {
+      "description": "更新设备",
+      "params": [
+        "Device"
+      ]
+    },
+    "updateAlertDefinition": {
+      "description": "更改告警分类",
+      "params": [
+        "AlertDefinition"
+      ]
+    },
+    "unregisterDevices": {
+      "description": "注销设备",
+      "params": [
+        "long",
+        "[Long]"
+      ]
+    },
+    "unregisterDevice": {
+      "description": "注销设备",
+      "params": [
+        "long",
+        "long"
+      ]
+    },
+    "sendDeviceDirectives": {
+      "description": "发送设备指令",
+      "params": [
+        "long 设备ID",
+        "long 指令ID",
+        "[String] 设备集合",
+        "Map 参数集合"
+      ]
+    },
+    "sendDeviceDirective": {
+      "description": "发送设备指令",
+      "params": [
+        "long 设备ID",
+        "long 指令ID",
+        "Map 参数集合"
+      ]
+    },
+    "saveThresholdsByModelId": {
+      "description": "通过模型ID保存一个阈值规则",
+      "params": [
+        "long 模型ID",
+        "long 告警id",
+        "KpiThreshold"
+      ]
+    },
+    "saveThresholdsByAlertDeviceId": {
+      "description": "通过设备ID保存设备阈值，一个告警定义，一次提交",
+      "params": [
+        "long 设备ID",
+        "AlertDefinition"
+      ]
+    },
+    "saveThresholdsByAlert": {
+      "description": "通过模型ID和一个告警定义保存阈值，一次提交",
+      "params": [
+        "long 模型ID",
+        "AlertDefinition"
+      ]
+    },
+    "saveThresholds": {
+      "description": "保存阈值",
+      "params": [
+        "long 模型ID",
+        "long 告警定义ID",
+        "[KpiThreshold] 阈值列表"
+      ]
+    },
+    "saveTechnicalParameterByModelId": {
+      "description": "保存技术参数",
+      "params": [
+        "long ",
+        "[TechnicalParameter]"
+      ]
+    },
+    "savePrincipalComponentByModelId": {
+      "description": "保存主要部件",
+      "params": [
+        "long",
+        "[PrincipalComponent]"
+      ]
+    },
+    "saveModelView": {
+      "description": "保存指令定义",
+      "params": [
+        "long",
+        "ViewInfo"
+      ]
+    },
+    "saveModelConfig": {
+      "description": "添加型号协议配置",
+      "params": [
+        "ModelConfig 型号配置"
+      ]
+    },
+    "saveKpis": {
+      "description": "保存KPI定义列表，全量更新",
+      "params": [
+        "long 模型ID",
+        "[KpiDefinition] KPI定义列表"
+      ]
+    },
+    "saveKpi": {
+      "description": "保存KPI定义",
+      "params": [
+        "long 模型ID",
+        "KpiDefinition KPI定义列表"
+      ]
+    },
+    "saveFaultKnowledgeByModelId": {
+      "description": "保存故障信息",
+      "params": [
+        "long ",
+        "[FaultKnowledge]"
+      ]
+    },
+    "saveDirectives": {
+      "description": "保存指令定义列表，全量更新",
+      "params": [
+        "long 模型ID",
+        "[DirectiveDefinition] 指令定义列表"
+      ]
+    },
+    "saveDirective": {
+      "description": "保存指令定义",
+      "params": [
+        "long 模型ID",
+        "DirectiveDefinition 指令定义列表"
+      ]
+    },
+    "saveDeviceToGroups": {
+      "description": "保存设备组和设备的参数",
+      "params": [
+        "long 设备组Id",
+        "[DeviceToGroup] 设备组列表"
+      ]
+    },
+    "saveDeviceGroup": {
+      "description": "保存设备组",
+      "params": [
+        "DeviceGroup 设备组属性定义"
+      ]
+    },
+    "saveCollectionTaskDefinitionByModelId": {
+      "description": "保存采集任务",
+      "params": [
+        "long ",
+        "[CollectionTaskDefinition]"
+      ]
+    },
+    "saveAttrs": {
+      "description": "保存属性定义s",
+      "params": [
+        "[AttributeDefinition] 属性定义s"
+      ]
+    },
+    "saveAttr": {
+      "description": "保存属性定义",
+      "params": [
+        "long 模型ID",
+        "AttributeDefinition 属性定义"
+      ]
+    },
+    "saveAlerts": {
+      "description": "保存告警定义列表，全量更新",
+      "params": [
+        "long 模型ID",
+        "[AlertDefinition] 告警定义列表"
+      ]
+    },
+    "saveAlert": {
+      "description": "保存告警定义",
+      "params": [
+        "long 模型ID",
+        "AlertDefinition 告警定义列表"
+      ]
+    },
+    "registerDevice": {
+      "description": "向网关注册设备",
+      "params": [
+        "long ",
+        "Device"
+      ]
+    },
+    "loadResolutionProtocol": {
+      "description": "加载解析协议",
+      "params": []
+    },
+    "loadConnectionPoint": {
+      "description": "加载指定网关的连接点",
+      "params": [
+        "String 网关内部标识"
+      ]
+    },
+    "isExistExternalGwId": {
+      "description": "查询网关内部标识是否存在",
+      "params": [
+        "String 网关内部标识"
+      ]
+    },
+    "importModel": {
+      "description": "导入模板",
+      "params": [
+        "[List]"
+      ]
+    },
+    "getdefaultAttrs": {
+      "description": "获取默认属性定义列表",
+      "params": []
+    },
+    "getUploadModelFileList": {
+      "description": "获取文件列表",
+      "params": [
+        "long"
+      ]
+    },
+    "getUploadDeviceFileList": {
+      "description": "获取设备文件列表",
+      "params": [
+        "long 设备ID"
+      ]
+    },
+    "getThresholdsByModelId": {
+      "description": "通过模型获取阈值",
+      "params": [
+        "long 模型ID"
+      ]
+    },
+    "getThresholds": {
+      "description": "通过告警id和模型id获取",
+      "params": [
+        "long 模型ID",
+        "long定义ID"
+      ]
+    },
+    "getSimpleDistricts": {
+      "description": "获取区域",
+      "params": []
+    },
+    "getRootModel": {
+      "description": "获取根模型",
+      "params": []
+    },
+    "getResourcesByDomainPathAndCategory": {
+      "description": "通过域和分类获取资源",
+      "params": [
+        "String 域路径",
+        "String 分类"
+      ]
+    },
+    "getResourcesByDomainPath": {
+      "description": "通过域路径获取该路径下的资源",
+      "params": [
+        "String 域路径"
+      ]
+    },
+    "getResourcesByCondition": {
+      "description": "条件查询设备",
+      "params": [
+        "ResourceCondition"
+      ]
+    },
+    "getResources": {
+      "description": "获取所有资源",
+      "params": []
+    },
+    "getResourceByModelId": {
+      "description": "通过模型ID获取该模型下的所有影子列表",
+      "params": [
+        "long 模型ID"
+      ]
+    },
+    "getResourceByIds": {
+      "description": "通过资源ID列表获取资源",
+      "params": [
+        "[Long] 资源ID列表"
+      ]
+    },
+    "getResourceById": {
+      "description": "通过资源ID获取资源",
+      "params": [
+        "long"
+      ]
+    },
+    "getResourceByGatewayId": {
+      "description": "通过网关ID获取资源",
+      "params": [
+        "long"
+      ]
+    },
+    "getPhysicalDevicesByGatewayId": {
+      "description": "通过网关ID获取该模型下的资源列表",
+      "params": [
+        "long 网关ID"
+      ]
+    },
+    "getPhysicalDeviceById": {
+      "description": "查询物理设备",
+      "params": [
+        "long"
+      ]
+    },
+    "getParams": {
+      "description": "获取设备参数",
+      "params": [
+        "long ",
+        "long"
+      ]
+    },
+    "getModelsByCondition": {
+      "description": "企业B获取资源模型定义",
+      "params": [
+        "ModelDefinitionCondition 查询条件"
+      ]
+    },
+    "getModels": {
+      "description": "企业B获取资源模型定义",
+      "params": []
+    },
+    "getModelConfigByModelId": {
+      "description": "通过型号id获取协议配置信息",
+      "params": [
+        "long 型号id"
+      ]
+    },
+    "getModelConfigById": {
+      "description": "通过id获取协议配置信息",
+      "params": [
+        "long 型号id"
+      ]
+    },
+    "getModelByIds": {
+      "description": "通过模型ID列表获取模型",
+      "params": [
+        "[Long]"
+      ]
+    },
+    "getManagedDevicesByModelId": {
+      "description": "获取管理设备ID",
+      "params": [
+        "long 模型ID"
+      ]
+    },
+    "getLatestDevices": {
+      "description": "获取最新的设备列表",
+      "params": []
+    },
+    "getKpisByModelId": {
+      "description": "通过模型ID获取数据项",
+      "params": [
+        "long 模型ID"
+      ]
+    },
+    "getKpisByKpiIds": {
+      "description": "通过KPI ID获取KPI定义列表",
+      "params": [
+        "[Long] KPI ID列表"
+      ]
+    },
+    "getGatewayInfo": {
+      "description": "获取网关接入信息",
+      "params": [
+        "long"
+      ]
+    },
+    "getGatewayById": {
+      "description": "获取网关",
+      "params": [
+        "long"
+      ]
+    },
+    "getFaultsByModelId": {
+      "description": "通过模型ID获取KPI定义列表",
+      "params": [
+        "long 模型ID"
+      ]
+    },
+    "getEnterpriseDomainsByFilter": {
+      "description": "仅查询domainPath三级企业用户信息",
+      "params": [
+        "ResourceCondition"
+      ]
+    },
+    "getEnterpriseAccessAccounts": {
+      "description": "查询用户企业域下的接入用户",
+      "params": []
+    },
+    "getDomainsByFilter": {
+      "description": "条件查询域",
+      "params": [
+        "ResourceCondition"
+      ]
+    },
+    "getDirectivesByModelIdNotByRole": {
+      "description": "通过模型ID按权限获取指令定义列表",
+      "params": [
+        "long"
+      ]
+    },
+    "getDirectivesByModelId": {
+      "description": "通过模型ID获取指令定义列表",
+      "params": [
+        "long"
+      ]
+    },
+    "getDevicesByDomainPath": {
+      "description": "通过域获取本企业的设备",
+      "params": [
+        "String"
+      ]
+    },
+    "getDevicesByConditionWithPage": {
+      "description": "条件分页查询设备",
+      "params": [
+        "ResourceCondition 查询条件",
+        "PageRequest 分页条件"
+      ]
+    },
+    "getDevicesByCondition": {
+      "description": "条件查询设备",
+      "params": [
+        "ResourceCondition 查询条件"
+      ]
+    },
+    "getDevices": {
+      "description": "获取所有设备",
+      "params": []
+    },
+    "getDeviceToGroupsByGroupId": {
+      "description": "通过设备组ID获取设备和设备的对应关系",
+      "params": [
+        "long"
+      ]
+    },
+    "getDeviceModel": {
+      "description": "查询设备模型",
+      "params": [
+        "Long"
+      ]
+    },
+    "getDeviceGroups": {
+      "description": "获取所有设备组",
+      "params": []
+    },
+    "getDeviceGroupModels": {
+      "description": "获取用户所属域的设备组模板",
+      "params": []
+    },
+    "getDataItemsByModelId": {
+      "description": "通过模型ID获取KPI定义列表",
+      "params": [
+        "long 模型ID"
+      ]
+    },
+    "getCountResourceByGatewayId": {
+      "description": "查询网关统计表",
+      "params": [
+        "CountResource"
+      ]
+    },
+    "getConnectionPoint": {
+      "description": "获取连接点",
+      "params": [
+        "String 网关内部标识"
+      ]
+    },
+    "getCanRelatedToGroupDevicesByModelId": {
+      "description": "通过模型ID获取可以关联设备组的设备列表",
+      "params": [
+        "long"
+      ]
+    },
+    "getAttrsByModelIdAndType": {
+      "description": "通过模型ID获取属性定义列表",
+      "params": [
+        "long 模型ID",
+        "String 属性类型"
+      ]
+    },
+    "getAttrsByModelId": {
+      "description": "通过模型ID获取属性定义列表",
+      "params": [
+        "long 模型ID"
+      ]
+    },
+    "getAppData": {
+      "description": "获取当前解决方案",
+      "params": []
+    },
+    "getAllUnits": {
+      "description": "查询所有单位",
+      "params": []
+    },
+    "getAllThresholdsByDeviceId": {
+      "description": "通过设备ID获取阈值",
+      "params": [
+        "long 设备ID"
+      ]
+    },
+    "getAllResourcesByDomainPath": {
+      "description": "获取所有域下的资源",
+      "params": [
+        "String"
+      ]
+    },
+    "getAllResolutionProtocol": {
+      "description": "查询接入协议和解析协议",
+      "params": [
+        "String"
+      ]
+    },
+    "getAllModels": {
+      "description": "获取所有模型定义，包括企业根域",
+      "params": []
+    },
+    "getAllModelType": {
+      "description": "查询接入协议和解析协议",
+      "params": []
+    },
+    "getAllGatewaysByConditionWithPage": {
+      "description": "分页条件查询所有网关",
+      "params": [
+        "GatewayCondition 条件项",
+        "PageRequest 分页参数"
+      ]
+    },
+    "getAllGatewaysByCondition": {
+      "description": "条件查询所有网关",
+      "params": [
+        "GatewayCondition 条件项"
+      ]
+    },
+    "getAllGateways": {
+      "description": "获取所有网关",
+      "params": []
+    },
+    "getAllDataTypes": {
+      "description": "查询所有数据类型",
+      "params": []
+    },
+    "getAllDataItems": {
+      "description": "查询所有数据项",
+      "params": []
+    },
+    "getAllCollectionPlugins": {
+      "description": "获取所有采集插件",
+      "params": []
+    },
+    "getAllAttrs": {
+      "description": "获取所有模型属性列表",
+      "params": []
+    },
+    "getAlertsByModelId": {
+      "description": "通过模型ID获取告警定义列表",
+      "params": [
+        "long 模型ID"
+      ]
+    },
+    "getAlertDefinitionByAlertCode": {
+      "description": "查看告警定义",
+      "params": [
+        "long 告警定义Id,long 设备模型Id"
+      ]
+    },
+    "getAccessAddress": {
+      "description": "获取接入地址列表",
+      "params": [
+        "String 协议,String 协议版本"
+      ]
+    },
+    "findUnRecognizedDevice": {
+      "description": "通过网关ID查询为确认设备",
+      "params": [
+        "long 网关Id"
+      ]
+    },
+    "findTemplateByCondition": {
+      "description": "按条件查询通知模板",
+      "params": [
+        "String"
+      ]
+    },
+    "findTechnicalParameterByModelId": {
+      "description": "查询技术参数",
+      "params": [
+        "long"
+      ]
+    },
+    "findResourcesByProjectId": {
+      "description": "通过项目查设备",
+      "params": [
+        "long"
+      ]
+    },
+    "findResourcesByCustomerId": {
+      "description": "通过客户查设备",
+      "params": [
+        "long"
+      ]
+    },
+    "findResourcesByCondition": {
+      "description": "通过设备的字段属性多条件查询设备列表	",
+      "params": [
+        "Resource"
+      ]
+    },
+    "findResourceAccesses": {
+      "description": "各测点分别接入删除测点",
+      "params": [
+        "long"
+      ]
+    },
+    "findProjectsByCustomerId": {
+      "description": "通过客户查项目",
+      "params": [
+        "long"
+      ]
+    },
+    "findPrincipalComponentByModelId": {
+      "description": "查询主要部件",
+      "params": [
+        "long"
+      ]
+    },
+    "findNoticeRules": {
+      "description": "查询告警通知规则列表",
+      "params": [
+        "AlertNoticeRule"
+      ]
+    },
+    "findNoticeRuleById": {
+      "description": "根据告警通知id查询告警通知",
+      "params": [
+        "long"
+      ]
+    },
+    "findKpiThresholds": {
+      "description": "查询告警规则列表",
+      "params": [
+        "KpiThreshold"
+      ]
+    },
+    "findKpiThresholdById": {
+      "description": "根据告警规则id查询告警规则",
+      "params": [
+        "Long"
+      ]
+    },
+    "findFaultKnowledgeByModelId": {
+      "description": "查询故障信息",
+      "params": [
+        "long"
+      ]
+    },
+    "findDeviceOperationLog": {
+      "description": "获取操作日志",
+      "params": [
+        "DeviceOperationLogQueryModel 查询条件"
+      ]
+    },
+    "findCollectionTaskDefinitionByModelId": {
+      "description": "查询采集任务",
+      "params": [
+        "long"
+      ]
+    },
+    "findByExternalDevIdAndLabel": {
+      "description": "通过内部码和名称获取资源",
+      "params": [
+        "String 标示"
+      ]
+    },
+    "findAlertDefinitions": {
+      "description": "查询告警分类列表",
+      "params": [
+        "AlertDefinition"
+      ]
+    },
+    "exportModel": {
+      "description": "导出模板",
+      "params": [
+        "long"
+      ]
+    },
+    "exportKpiDataTemplate": {
+      "description": "导出KPI数据模板",
+      "params": [
+        "long"
+      ]
+    },
+    "enabledKpiThresholds": {
+      "description": "批量启用停用告警规则",
+      "params": [
+        "long[]",
+        "boolean"
+      ]
+    },
+    "editResourceAccesses": {
+      "description": "各测点分别接入/修改测点",
+      "params": [
+        "[ResourceAccess]"
+      ]
+    },
+    "displayGatewayLog": {
+      "description": "查看网关日志",
+      "params": [
+        "String 网关序列号",
+        "boolean 是否显示"
+      ]
+    },
+    "deleteUnRecognizedDevice": {
+      "description": "删除未确认设备",
+      "params": [
+        "long"
+      ]
+    },
+    "deleteThresholdById": {
+      "description": "根据thresholdId删除告阈值",
+      "params": [
+        "long 阈值ID"
+      ]
+    },
+    "deleteThresholdByAlertDeviceId": {
+      "description": "根据设备id删除告警定义以及阈值，一次提交",
+      "params": [
+        "long 设备ID",
+        "long 告警定义ID"
+      ]
+    },
+    "deleteThresholdByAlert": {
+      "description": "删除告警定义以及阈值，一次提交",
+      "params": [
+        "long 模型ID",
+        "long 告警定义ID"
+      ]
+    },
+    "deleteTechnicalParameterByModelId": {
+      "description": "删除技术参数",
+      "params": [
+        "long ",
+        "long"
+      ]
+    },
+    "deleteResourceAccesses": {
+      "description": "各测点分别接入删除测点",
+      "params": [
+        "[ResourceAccess]"
+      ]
+    },
+    "deleteResource": {
+      "description": "删除资源",
+      "params": [
+        "long"
+      ]
+    },
+    "deletePrincipalComponentByModelId": {
+      "description": "删除主要部件",
+      "params": [
+        "long ",
+        "long"
+      ]
+    },
+    "deleteNoticeRule": {
+      "description": "删除告警通知规则",
+      "params": [
+        "long[]"
+      ]
+    },
+    "deleteModelView": {
+      "description": "删除模型对应视图",
+      "params": [
+        "long",
+        "long"
+      ]
+    },
+    "deleteModelType": {
+      "description": "删除设备类别种类",
+      "params": [
+        "Long"
+      ]
+    },
+    "deleteModelConfig": {
+      "description": "删除型号协议配置",
+      "params": [
+        "long 型号配置id"
+      ]
+    },
+    "deleteModel": {
+      "description": "删除模型",
+      "params": [
+        "long 模型ID"
+      ]
+    },
+    "deleteKpiThresholds": {
+      "description": "删除告警规则",
+      "params": [
+        "[Long]"
+      ]
+    },
+    "deleteKpi": {
+      "description": "删除KPI定义",
+      "params": [
+        "long 模型ID",
+        "long KPI ID"
+      ]
+    },
+    "deleteGateways": {
+      "description": "删除网关",
+      "params": [
+        "[Long] 网关ID"
+      ]
+    },
+    "deleteGateway": {
+      "description": "删除网关",
+      "params": [
+        "long 网关ID"
+      ]
+    },
+    "deleteFaultKnowledgeByModelId": {
+      "description": "删除故障信息",
+      "params": [
+        "long",
+        "long"
+      ]
+    },
+    "deleteEnterpriseAccessAccount": {
+      "description": "删除企业接入用户",
+      "params": [
+        "long 企业接入用户ID"
+      ]
+    },
+    "deleteDirective": {
+      "description": "删除指令定义",
+      "params": [
+        "long 模型ID",
+        "long 指令定义列表"
+      ]
+    },
+    "deleteDeviceGroup": {
+      "description": "删除设备组",
+      "params": [
+        "long 设备组ID"
+      ]
+    },
+    "deleteDeviceFile": {
+      "description": "删除设备文件",
+      "params": [
+        "DeviceFile"
+      ]
+    },
+    "deleteDevice": {
+      "description": "删除设备",
+      "params": [
+        "long 影子设备Id"
+      ]
+    },
+    "deleteCollectionTaskDefinitionByModelId": {
+      "description": "删除采集任务",
+      "params": [
+        "long",
+        "long"
+      ]
+    },
+    "deleteAttrs": {
+      "description": "删除属性定义",
+      "params": [
+        "[Long] 属性ID"
+      ]
+    },
+    "deleteAttr": {
+      "description": "删除属性定义",
+      "params": [
+        "long 模型ID",
+        "long 属性ID"
+      ]
+    },
+    "deleteAlertDefinition": {
+      "description": "删除告警分类",
+      "params": [
+        "long[]"
+      ]
+    },
+    "deleteAlert": {
+      "description": "保存告警定义",
+      "params": [
+        "long 模型ID,long 告警定义列表"
+      ]
+    },
+    "deactivateGateways": {
+      "description": "停用网关",
+      "params": [
+        "[Long] 网关ID"
+      ]
+    },
+    "deactivateGateway": {
+      "description": "停用网关",
+      "params": [
+        "long 网关ID"
+      ]
+    },
+    "deactivateDevices": {
+      "description": "停用设备",
+      "params": [
+        "[Long]"
+      ]
+    },
+    "deactivateDevice": {
+      "description": "停用设备",
+      "params": [
+        "long"
+      ]
+    },
+    "countDevicesByGatewayId": {
+      "description": "统计设备数量",
+      "params": [
+        "long"
+      ]
+    },
+    "copyModelDefinition": {
+      "description": "删除模型协议配置",
+      "params": [
+        "long 设备型号ID"
+      ]
+    },
+    "copyKpiThresholdById": {
+      "description": "复制告警规则，同时复制告警规则下面的告警通知",
+      "params": [
+        "Long"
+      ]
+    },
+    "changeDeviceDomain": {
+      "description": "变更资源域",
+      "params": [
+        "long 设备ID",
+        "String 域路径"
+      ]
+    },
+    "addTechnicalParameterByModelId": {
+      "description": "添加技术参数",
+      "params": [
+        "long",
+        "TechnicalParameter"
+      ]
+    },
+    "addResourceAccesses": {
+      "description": "各测点分别接入/保存测点",
+      "params": [
+        "[ResourceAccess]"
+      ]
+    },
+    "addResource": {
+      "description": "增加资源",
+      "params": [
+        "Device"
+      ]
+    },
+    "addPrincipalComponentByModelId": {
+      "description": "添加主要部件",
+      "params": [
+        "long",
+        "PrincipalComponent"
+      ]
+    },
+    "addNoticeRule": {
+      "description": "增加告警通知规则",
+      "params": [
+        "AlertNoticeRule"
+      ]
+    },
+    "addModelType": {
+      "description": "增加设备类别种类",
+      "params": [
+        "ModelType"
+      ]
+    },
+    "ModelType": {
+      "description": "增加设备模型",
+      "params": [
+        "ModelDefinition 模型资源模型"
+      ]
+    },
+    "addKpiThreshold": {
+      "description": "增加告警规则",
+      "params": [
+        "KpiThreshold"
+      ]
+    },
+    "addGateway": {
+      "description": "增加网关",
+      "params": [
+        "Gateway"
+      ]
+    },
+    "addEnterpriseAccessAccount": {
+      "description": "新增企业接入用户",
+      "params": [
+        "EnterpriseAccessAccount 企业接入用户信息"
+      ]
+    },
+    "addDeviceGroupModel": {
+      "description": "增加设备组模型",
+      "params": [
+        "ModelDefinition 模型资源模型"
+      ]
+    },
+    "addCountResource": {
+      "description": "统计网关设备数量",
+      "params": [
+        "CountResource"
+      ]
+    },
+    "addCollectionTaskDefinitionByModelId": {
+      "description": "添加采集任务",
+      "params": [
+        "long",
+        "CollectionTaskDefinition"
+      ]
+    },
+    "addAlertDefinition": {
+      "description": "增加告警分类",
+      "params": [
+        "AlertDefinition"
+      ]
+    },
+    "activateSimulatedGateways": {
+      "description": "激活模拟网关",
+      "params": [
+        "[Long] 网关ID"
+      ]
+    },
+    "activateSimulatedGateway": {
+      "description": "激活模拟网关",
+      "params": [
+        "long 网关ID"
+      ]
+    },
+    "activateGateways": {
+      "description": "激活网关",
+      "params": [
+        "[Long] 网关ID"
+      ]
+    },
+    "activateGateway": {
+      "description": "激活网关",
+      "params": [
+        "long 网关ID"
+      ]
+    },
+    "activateDevices": {
+      "description": "激活设备",
+      "params": [
+        "[Long]"
+      ]
+    },
+    "activateDevice": {
+      "description": "激活设备",
+      "params": [
+        "long"
+      ]
+    },
+    "StorageConfigsApplyToAll": {
+      "description": "存储配置应用到所有",
+      "params": ["StorageConfig"]
+    }
+  },
+  "kqiManageUIService":{
+    "updateKqiCalcRule":{
+      "description" : "更新kqi计算",
+      "params" : ["KqiCalcRule kqi计算配置"]
+    },
+    "saveExpertDataModel":{
+      "description" : "保存KQI专家模型",
+      "params" : ["ExpertDataModel"]
+    },
+    "getKqiCalcRulesByCondition":{
+      "description" : "通过条件获取KQI计算规则",
+      "params" : ["Map"]
+    },
+    "getKqiCalcRules":{
+      "description" : "获取用户所属域的kqi计算",
+      "params" : []
+    },
+    "getExpertDataModels":{
+      "description" : "获取KQI专家模型",
+      "params" : []
+    },
+    "getExpertDataModelById":{
+      "description" : "获取KQI专家模型",
+      "params" : ["long"]
+    },
+    "deleteKqiCalcRule":{
+      "description" : "删除kqi计算",
+      "params" : ["long kqi计算的id"]
+    },
+    "deleteExpertDataModel":{
+      "description" : "删除KQI专家模型",
+      "params" : ["long"]
+    },
+    "addKqiCalcRule":{
+      "description" : "增加kqi计算",
+      "params" : ["KqiCalcRule kqi计算配置"]
+    }
+
+  },
+  "gatewayVendorUIService":{
+    "updateGatewayVendor":{
+      "description" : "添加/修改网关厂家",
+      "params" : ["GatewayVendor"]
+    },
+    "updateGatewayModel":{
+      "description" : "添加或修改网关型号",
+      "params" : ["GatewayModel"]
+    },
+    "getGatewayVendors":{
+      "description" : "条件查询网关厂家",
+      "params" : ["String"]
+    },
+    "getGatewayModels":{
+      "description" : "根据厂家id和型号名称（模糊），查询所有的网关型号",
+      "params" : ["long ","String"]
+    },
+    "deleteGatewayVendor":{
+      "description" : "删除网关厂家(级联删除该厂家下的网关型号)",
+      "params" : ["long"]
+    },
+    "deleteGatewayModel":{
+      "description" : "删除单个网关型号",
+      "params" : ["long"]
+    }
+  },
+  "directiveStrategyUIService":{
+    "updateDirectiveStrategys":{
+      "description" : "更新指令策略",
+      "params" : ["DirectiveStrategy 指令策略配置"]
+    },
+    "getDirectiveStrategys":{
+      "description" : "获得指令策略列表",
+      "params" : []
+    },
+    "getDirectiveStrategyHistory":{
+      "description" : "获取指令策略执行历史",
+      "params" : ["long" ,"String" ,"PageRequest"]
+    },
+    "deleteDirectiveStrategy":{
+      "description" : "删除指令策略",
+      "params" : ["long 指令策略ID"]
+    },
+    "addDirectiveStrategys":{
+      "description" : "添加指令策略",
+      "params" : ["DirectiveStrategy 指令策略配置"]
+    }
+  },
+  "devGroupUIService":{
+    "updateDevGroup":{
+      "description" : "更新设备组",
+      "params" : ["DevGroup"]
+    },
+    "findMyGroups":{
+      "description" : "查找本企业的设备组",
+      "params" : []
+    },
+    "findById":{
+      "description" : "通过ID获取设备组",
+      "params" : ["long 设备组ID"]
+    },
+    "deleteDevGroup":{
+      "description" : "删除设备组",
+      "params" : ["long 设备组ID"]
+    },
+    "addDevGroup":{
+      "description" : "新增设备组",
+      "params" : ["DevGroup 设备组信息"]
+    }
+  },
+  "viewFlexService":{
+    "updateView":{
+      "description" : "更新视图",
+      "params" : ["ViewInfo"]
+    },
+    "saveModelDashboard":{
+      "description" : "保存模型dashboard",
+      "params" : ["long" ,"ViewInfo"]
+    },
+    "saveManageDashboard":{
+      "description" : "保存运营dashboard",
+      "params" : ["ViewInfo"]
+    },
+    "releaseViews":{
+      "description" : "批处理批量发布视图",
+      "params" : ["[Long]"]
+    },
+    "releaseViewBatch":{
+      "description" : "发布单个视图",
+      "params" : ["long"]
+    },
+    "releaseView":{
+      "description" : "发布多个视图",
+      "params" : ["long[]"]
+    },
+    "getViewsOnlyPublishedByTypeAndDomainPath":{
+      "description" : "根据视图类型查询已发布的视图",
+      "params" : ["String" ,"String"]
+    },
+    "getViewsByTemplate":{
+      "description" : "根据视图模板查询已经发布的视图",
+      "params" : ["ViewTemplate"]
+    },
+    "getViewsByOnlyRole":{
+      "description" : "根据视图类型仅查询授权的视图",
+      "params" : ["String"]
+    },
+    "getViewById":{
+      "description" : "通过ID获取视图",
+      "params" : ["long"]
+    },
+    "getThirdPartyViews":{
+      "description" : "获取第三方的所有视图",
+      "params" : []
+    },
+    "getServiceViewMap":{
+      "description" : "通过模型ID获取服务视图，如果参数0 ，获取整个解决方案的视图",
+      "params" : []
+    },
+    "getModelDashboard":{
+      "description" : "通过模型ID获取模型dashboard",
+      "params" : ["long"]
+    },
+    "getManagedViewsByTypeAndRole":{
+      "description" : "根据视图类型和当前用户角色查询视图,视图类型+用户角色+自己的",
+      "params" : ["String"]
+    },
+    "getManagedViewsByType":{
+      "description" : "根据视图类型查询视图",
+      "params" : ["String" ,"String"]
+    },
+    "getManageDashboard":{
+      "description" : "获取运营dashboard",
+      "params" : []
+    },
+    "getDefaultView":{
+      "description" : "根据视图的模型id查询默认视图",
+      "params" : ["Long"]
+    },
+    "getAllMyViews":{
+      "description" : "获取当前我的所有视图",
+      "params" : []
+    },
+    "deleteViews":{
+      "description" : "批量删除视图",
+      "params" : ["[Long]"]
+    },
+    "deleteView":{
+      "description" : "行删除视图",
+      "params" : ["long"]
+    },
+    "addView":{
+      "description" : "添加视图",
+      "params" : ["添加视图"]
+    }
+  },
+  "maintenanceRecordService":{
+    "saveMaintenanceRecord":{
+      "description" : "更新维保记录",
+      "params" : ["MaintenanceRecord"]
+    },
+    "getRecordByCondition":{
+      "description" : "获取维保记录",
+      "params" : ["MaintenanceRecord"]
+    },
+    "deleteMaintenanceRecord":{
+      "description" : "删除维保记录",
+      "params" : ["long"]
+    }
+  },
+  "maintenanceTaskUIService": {
+    "updateMaintenanceTask": {
+      "description": "更新维保任务",
+      "params": [
+        "MaintenanceTask"
+      ]
+    },
+    "modifyStatus": {
+      "description": "任务完成",
+      "params": [
+        "[Long]",
+        "int"
+      ]
+    },
+    "getTaskByCondition": {
+      "description": "获取维保任务",
+      "params": [
+        "MaintenanceTask"
+      ]
+    },
+    "deleteTask": {
+      "description": "删除维保任务",
+      "params": [
+        "Long"
+      ]
+    },
+    "deleteMaintenanceTask": {
+      "description": "批量删除维保任务",
+      "params": [
+        "[Long]"
+      ]
+    },
+    "addMaintenanceTask": {
+      "description": "新增维保任务",
+      "params": ["MaintenanceTask"]
+    }
+  },
+  "maintenanceUIService": {
+    "uploadTaskImage": {
+      "description": "上传图片",
+      "params": [
+        "Map"
+      ]
+    },
+    "updateUserToTeam": {
+      "description": "更新用户到班组关联",
+      "params": [
+        "UserToTeam 用户班组关联信息"
+      ]
+    },
+    "updateTeam": {
+      "description": "更新班组",
+      "params": [
+        "Team"
+      ]
+    },
+    "updateInspectionRecord": {
+      "description": "更新巡检记录",
+      "params": [
+        "InspectionRecord 巡检记录"
+      ]
+    },
+    "updateInspectionItem": {
+      "description": "更新巡检标准",
+      "params": [
+        "InspectionItem 巡检标准"
+      ]
+    },
+    "updateDeviceToTeam": {
+      "description": "更新设备到班组关联",
+      "params": [
+        "DeviceToTeam 设备班组关联信息"
+      ]
+    },
+    "getUsersByTeamId": {
+      "description": "根据班组id查询用户列表",
+      "params": [
+        "long 班组id"
+      ]
+    },
+    "getUserToTeamByUserId": {
+      "description": "根据用户id查询用户班组关联信息",
+      "params": [
+        "long 用户id"
+      ]
+    },
+    "getUserToTeamById": {
+      "description": "根据用户班组关联信息Id获取关联信息",
+      "params": [
+        "long 用户班组关联信息id"
+      ]
+    },
+    "getTeamByUserId": {
+      "description": "根据用户id获取所在班组",
+      "params": [
+        "long"
+      ]
+    },
+    "getTeamById": {
+      "description": "查询班组",
+      "params": [
+        "long"
+      ]
+    },
+    "getTeam": {
+      "description": "获取用户所在的班组",
+      "params": []
+    },
+    "getInspectionRecordsByCondition": {
+      "description": "按筛选条件巡检记录",
+      "params": [
+        "Long 班组id",
+        "Long 用户id",
+        "Date 开始日期",
+        "Date 结束日期"
+      ]
+    },
+    "getInspectionRecordById": {
+      "description": "根据id获取巡检记录详情",
+      "params": [
+        "long 巡检记录id"
+      ]
+    },
+    "getInspectionItemsByModelId": {
+      "description": "根据设备模板id获取巡检标准",
+      "params": [
+        "long"
+      ]
+    },
+    "getInspectionItemsByDeviceId": {
+      "description": "根据设备ID获取巡检标准",
+      "params": [
+        "long"
+      ]
+    },
+    "getInspectionItemsByCondition": {
+      "description": "根据条件获取巡检标准",
+      "params": [
+        "InspectionItem"
+      ]
+    },
+    "getInspectionItemById": {
+      "description": "根据id获取巡检标准详情",
+      "params": [
+        "long 巡检标准id"
+      ]
+    },
+    "getDevicesByTeamId": {
+      "description": "根据班组id获取设备列表",
+      "params": [
+        "long 班组id"
+      ]
+    },
+    "getDevicesByResourceDomain": {
+      "description": "通过设备获取感知传感器",
+      "params": [
+        "long"
+      ]
+    },
+    "getDeviceToTeamsByDeviceId": {
+      "description": "根据设备id获取设备列表",
+      "params": [
+        "long 设备id"
+      ]
+    },
+    "getDeviceToTeamById": {
+      "description": "根据设备班组关联信息Id获取关联信息",
+      "params": [
+        "long 设备班组关联信息id"
+      ]
+    },
+    "getAllUserToTeams": {
+      "description": "根据域获取用户到班组关联",
+      "params": []
+    },
+    "getAllTeams": {
+      "description": "根据域查找班组",
+      "params": []
+    },
+    "getAllInspectionRecordsWithPage": {
+      "description": "获取所有巡检记录",
+      "params": [
+        "int 页数",
+        "int 页面大小"
+      ]
+    },
+    "getAllInspectionRecordsByUserIdWithPage": {
+      "description": "按用户获取所有巡检记录",
+      "params": [
+        "int 页数",
+        "int 页面大小"
+      ]
+    },
+    "getAllInspectionRecords": {
+      "description": "获取所有巡检记录",
+      "params": []
+    },
+    "getAllInspectionItems": {
+      "description": "获取所有巡检标准",
+      "params": []
+    },
+    "getAllDeviceToTeams": {
+      "description": "根据域获取设备到班组关联",
+      "params": []
+    },
+    "deleteUserToTeamByUserIdAndTeamId": {
+      "description": "通过用户id和班组id删除用户到班组关联",
+      "params": [
+        "long 用户Id(userId)",
+        "long 班组Id(teamId)"
+      ]
+    },
+    "deleteUserToTeamById": {
+      "description": "删除用户到班组关联",
+      "params": [
+        "long 用户班组关联信息id"
+      ]
+    },
+    "deleteTeamById": {
+      "description": "删除班组",
+      "params": [
+        "long"
+      ]
+    },
+    "deleteInspectionRecordById": {
+      "description": "根据id删除巡检记录",
+      "params": [
+        "long 巡检记录id"
+      ]
+    },
+    "deleteInspectionItemById": {
+      "description": "根据id删除巡检标准",
+      "params": [
+        "long 巡检标准id"
+      ]
+    },
+    "deleteDeviceToTeamById": {
+      "description": "删除设备到班组关联",
+      "params": [
+        "long 设备班组关联信息id"
+      ]
+    },
+    "deleteDeviceToTeamByDeviceIdAndTeamId": {
+      "description": "通过班组id和设备id删除设备到班组关联",
+      "params": [
+        "long 设备id",
+        "long 班组id"
+      ]
+    },
+    "addUserToTeam": {
+      "description": "添加用户到班组关联",
+      "params": [
+        "UserToTeam 用户班组关联信息"
+      ]
+    },
+    "addUserToTeam": {
+      "description": "添加用户到班组关联",
+      "params": [
+        "UserToTeam 用户班组关联信息"
+      ]
+    },
+    "addTeam": {
+      "description": "新增班组",
+      "params": [
+        "Team"
+      ]
+    },
+    "addInspectionRecord": {
+      "description": "新增巡检记录",
+      "params": [
+        "InspectionRecord 巡检记录"
+      ]
+    },
+    "addInspectionItem": {
+      "description": "新增巡检标准",
+      "params": [
+        "InspectionItem 巡检标准"
+      ]
+    },
+    "addDevicesToTeam": {
+      "description": "添加设备列表到班组关联",
+      "params": [
+        "DevicesToTeam 设备数组到班组关联信息"
+      ]
+    },
+    "addDeviceToTeam": {
+      "description": "添加设备到班组关联",
+      "params": [
+        "DeviceToTeam 设备班组关联信息"
+      ]
+    }
+  },
+  "chargeUIService":{
+    "getValidCoupons":{
+      "description" : "获取当前用户可使用的优惠券",
+      "params" : []
+    },
+    "getUsedCoupons":{
+      "description" : "获取当前用户已经使用的优惠券",
+      "params" : []
+    },
+    "getOrderList":{
+      "description" : "获取当前用户的账单列表",
+      "params" : []
+    },
+    "getOrderItem":{
+      "description" : "查看账单项信息",
+      "params" : ["long 账单Id"]
+    },
+    "getOrderDetail":{
+      "description" : "查看账单详细",
+      "params" : ["long 账单Id"]
+    },
+    "getExpireCoupons":{
+      "description" : "获取当前用户过期的优惠券",
+      "params" : []
+    },
+    "getChargeModels":{
+      "description" : "获取当前用户的计费模型，包含默认的计费模型",
+      "params" : []
+    },
+    "commitOrder":{
+      "description" : "提交账单",
+      "params" : ["Order 账单"]
+    },
+    "addCouponByPromoCode":{
+      "description" : "添加优惠券",
+      "params" : ["String 优惠码"]
+    },
+    "addChargeModel":{
+      "description" : "添加计费模型",
+      "params" : ["ChargeModel"]
+    }
+  },
+  "enumUIService":{
+    "getEnums":{
+      "description" : "通过枚举名称获取枚举",
+      "params" : ["String"]
+    },
+    "getEnum":{
+      "description" : "获取枚举",
+      "params" : ["String" ,"String"]
+    },
+    "getAllEnums":{
+      "description" : "获取所有枚举",
+      "params" : []
+    }
+  },
+  "contractUIService":{
+    "updateContract":{
+      "description" : "更新合同",
+      "params" : ["Contract 合同"]
+    },
+    "getContractByCondition":{
+      "description" : "条件查询合同",
+      "params" : ["Contract 合同"]
+    },
+    "deleteContract":{
+      "description" : "删除合同",
+      "params" : ["long 合同ID"]
+    },
+    "addContract":{
+      "description" : "添加合同",
+      "params" : ["Contract 合同"]
+    }
+  },
+  "kpiDataFlexService":{
+    "getKpiValuesByCis":{
+      "description" : "获取带默认值的kpi值列表",
+      "params" : ["[Long]" ,"long"]
+    },
+    "getKpiValueList":{
+      "description" : "获取KPI值列表",
+      "params" : ["String" ,"KpiQueryModel"]
+    },
+    "getKpiHierarchyValueList":{
+      "description" : "KPI视图查询接口",
+      "params" : ["String ","KpiQueryModel"]
+    },
+    "exportKpiValueList":{
+      "description" : "获取KPI值列表",
+      "params" : ["String ","KpiQueryModel" ,"int 时间间隔","long 文件生成间隔","boolean"]
+    }
+  },
+  "marketplaceUIService":{
+    "updateAppData":{
+      "description" : "删除App数据，只有status<100时可以删除",
+      "params" : ["AppData"]
+    },
+    "publish":{
+      "description" : "发布数据",
+      "params" : ["AppData"]
+    },
+    "getMyAppDatas":{
+      "description" : "获取所有应用数据",
+      "params" : []
+    },
+    "getAllAppDatas":{
+      "description" : "获取所有应用数据",
+      "params" : []
+    },
+    "getActivedStandardAppDatas":{
+      "description" : "获取有效的标准解决方案",
+      "params" : []
+    },
+    "deleteAppData":{
+      "description" : "删除App数据，只有status<100时可以删除",
+      "params" : ["long"]
+    },
+    "buy":{
+      "description" : "购买解决方案",
+      "params" : ["long"]
+    },
+    "authorizeAppData":{
+      "description" : "授权",
+      "params" : ["long"]
+    }
+  },
+  "workflowService":{
+    "getWorkflows":{
+      "description" : "查询工作流管理",
+      "params" : []
+    },
+    "getWorkflowByWorkflowDefinitionId":{
+      "description" : "查询某个流程定义所有已发布的流程",
+      "params" : ["long 流程定义Id"]
+    },
+    "getWorkflowById":{
+      "description" : "通过ID获取工作流管理",
+      "params" : ["long"]
+    },
+    "deleteWorkflowById":{
+      "description" : "删除工作流管理",
+      "params" : ["long"]
+    }
+  },
+  "workflowDefinitionService":{
+    "updateWorkflowDefinition":{
+      "description" : "更新工作流定义",
+      "params" : ["long ","String"]
+    },
+    "saveWorkflowDefinition":{
+      "description" : "保存工作流定义",
+      "params" : ["WorkflowDefinition"]
+    },
+    "publishWorkflow":{
+      "description" : "发布工作流设计",
+      "params" : ["Workflow"]
+    },
+    "getWorkflowDefinitions":{
+      "description" : "查询工作流定义",
+      "params" : []
+    },
+    "getWorkflowDefinitionById":{
+      "description" : "通过ID获取工作流定义",
+      "params" : ["long"]
+    },
+    "deleteWorkflowDefinitionById":{
+      "description" : "删除工作流定义",
+      "params" : ["long"]
+    }
+  },
+  "ticketTaskService":{
+    "ticketTaskBindStockOrder":{
+      "description" : "任务关联库单",
+      "params" : ["long 工单任务Id,long 库单Id"]
+    },
+    "saveTicket":{
+      "description" : "暂存工单",
+      "params" : ["Ticket"]
+    },
+    "isMyTicketTask":{
+      "description" : "查询该工单任务是否为当前登录用户的",
+      "params" : ["long 工单任务Id"]
+    },
+    "getTicketsByStatusAndDeviceId":{
+      "description" : "获取工单",
+      "params" : ["int 执行中：100","未发布：10","已完成：200","long 设备Id"]
+    },
+    "getTicketsByStatus":{
+      "description" : "获取工单：执行中：100，未发布：10，已完成：200",
+      "params" : ["int"]
+    },
+    "getTicketsByDeviceId":{
+      "description" : "通过设备Id，获取工单",
+      "params" : ["long 设备Id"]
+    },
+    "getTicketTasksByStatus":{
+      "description" : "获取工单任务：待处理：10，处理中:100，已完成:200",
+      "params" : ["int"]
+    },
+    "getTicketTasks":{
+      "description" : "通过工单号,获取任务",
+      "params" : ["String"]
+    },
+    "getTicketTaskById":{
+      "description" : "通过任务id，获取任务",
+      "params" : ["long"]
+    },
+    "getTicket":{
+      "description" : "通过工单号获取工单",
+      "params" : ["String"]
+    },
+    "getCompleteTaskUUIDs":{
+      "description" : "通过工单号，获取执行完的UUID列表",
+      "params" : ["String"]
+    },
+    "getAllTickets":{
+      "description" : "获取所有工单",
+      "params" : []
+    },
+    "findTickets":{
+      "description" : "工单查询",
+      "params" : ["Ticket 工单条件"]
+    },
+    "doTask":{
+      "description" : "执行工单任务",
+      "params" : ["TicketTask"]
+    },
+    "deleteTicket":{
+      "description" : "删除工单，只有",
+      "params" : ["String"]
+    },
+    "commitTicket":{
+      "description" : "提交工单",
+      "params" : ["Ticket"]
+    },
+    "cancelTicket":{
+      "description" : "撤消工单",
+      "params" : ["String"]
+    }
+  },
+  "ticketService":{
+    "saveTicket":{
+      "description" : "暂存工单",
+      "params" : ["Ticket"]
+    },
+    "getTicketsByStatus":{
+      "description" : "获取工单：执行中：100，未发布：10，已完成：200",
+      "params" : ["int"]
+    },
+    "getTicketTasksByStatus":{
+      "description" : "获取工单任务：待处理：10，处理中:100，已完成:200",
+      "params" : ["int"]
+    },
+    "getTicketTasks":{
+      "description" : "通过工单号,获取任务",
+      "params" : ["String"]
+    },
+    "getTicketTaskById":{
+      "description" : "通过任务id，获取任务",
+      "params" : ["long"]
+    },
+    "getTicket":{
+      "description" : "通过工单号获取工单",
+      "params" : ["String"]
+    },
+    "getAllTickets":{
+      "description" : "获取所有工单",
+      "params" : []
+    },
+    "doTask":{
+      "description" : "执行工单任务",
+      "params" : ["TicketTask"]
+    },
+    "deleteTicket":{
+      "description" : "删除工单，只有",
+      "params" : ["String"]
+    },
+    "commitTicket":{
+      "description" : "提交工单",
+      "params" : ["Ticket"]
+    }
+  },
+  "ticketCategoryService":{
+    "saveTicketCategory":{
+      "description" : "保存工单流程",
+      "params" : ["TicketCategory"]
+    },
+    "getWorkflowById":{
+      "description" : "通过ID获取关联的流程",
+      "params" : ["long"]
+    },
+    "getTicketCategorys":{
+      "description" : "查询工单流程",
+      "params" : []
+    },
+    "getTicketCategoryById":{
+      "description" : "通过ID获取工单流程",
+      "params" : ["long"]
+    },
+    "deleteTicketCategoryById":{
+      "description" : "删除工单流程",
+      "params" : ["long"]
+    }
+  },
+  "processDefinitionService":{
+    "saveProcessDefinition":{
+      "description" : "保存流程定义",
+      "params" : ["ProcessDefinition"]
+    },
+    "getProcessDefinitions":{
+      "description" : "查询流程定义",
+      "params" : []
+    },
+    "getProcessDefinitionById":{
+      "description" : "通过ID获取流程定义",
+      "params" : ["long"]
+    },
+    "deleteProcessDefinitionById":{
+      "description" : "删除流程定义",
+      "params" : ["long"]
+    }
+  },
+  "ticketLogService":{
+    "saveTicketLog":{
+      "description" : "保存工单日志",
+      "params" : ["String 工单号","String 日志描述","String 日志类型：startEvent, endEvent, userTask, serviceTask, exclusiveGateway, parallelGateway"]
+    },
+    "getHistoricActivityInstance":{
+      "description" : "查询工单流程节点的执行状态",
+      "params" : ["String 工单号"]
+    },
+    "getByTicketNo":{
+      "description" : "查询工单日志",
+      "params" : ["String 工单号"]
+    }
+  },
+  "userInitService":{
+    "etRoleResByModelId":{
+      "description" : "通过模型id获取视图",
+      "params" : ["long"]
+    },
+    "deleteInitUser":{
+      "description" : "删除用户",
+      "params" : ["long 用户ID"]
+    },
+    "changeDomain":{
+      "description" : "转存域接口",
+      "params" : []
+    },
+    "addRoleRes":{
+      "description" : "转存域接口",
+      "params" : ["long" ,"int" ,"[String]"]
+    }
+  },
+  "userRoleUIService":{
+    "removeUser":{
+      "description" : "给角色移除用户",
+      "params" : ["[Long] 用户ID","long 角色ID"]
+    },
+    "removeRole":{
+      "description" : "移除用户的角色",
+      "params" : ["long 用户ID","[Long] 角色ID"]
+    },
+    "queryRoleInfo":{
+      "description" : "查看角色信息",
+      "params" : ["long 角色ID"]
+    },
+    "queryRoleByUser":{
+      "description" : "查看一个用户的所有角色",
+      "params" : ["long 用户ID"]
+    },
+    "queryRoleByDomain":{
+      "description" : "查看一个域的所有角色",
+      "params" : ["String 域路径"]
+    },
+    "queryRoleByCondition":{
+      "description" : "按条件查看角色",
+      "params" : ["RoleCondition 角色ID"]
+    },
+    "modifyRole":{
+      "description" : "修改角色信息",
+      "params" : ["Role 角色"]
+    },
+    "getAssociateRole2User":{
+      "description" : "查看该角色下的用户",
+      "params" : ["Role 角色"]
+    },
+    "findRoleViews":{
+      "description" : "查询视图权限",
+      "params" : ["RoleView"]
+    },
+    "findRoleResByResIds":{
+      "description" : "根据资源id查询资源权限",
+      "params" : ["[String]"]
+    },
+    "findRoleRes":{
+      "description" : "查询资源权限",
+      "params" : ["QueryRoleRes"]
+    },
+    "deleteRoleView":{
+      "description" : "删除视图权限",
+      "params" : ["[RoleView]"]
+    },
+    "deleteRoleRes":{
+      "description" : "删除资源权限",
+      "params" : ["[RoleRes]"]
+    },
+    "deleteRole2User":{
+      "description" : "删除用户的一个角色",
+      "params" : ["long 用户ID","long 角色ID"]
+    },
+    "deleteRole":{
+      "description" : "删除角色",
+      "params" : ["Role 角色"]
+    },
+    "appendUser":{
+      "description" : "给角色添加用户",
+      "params" : ["[Long] 用户ID","long 角色ID"]
+    },
+    "appendRole":{
+      "description" : "添加角色给用户",
+      "params" : ["long 用户ID","[Long] 角色ID"]
+    },
+    "addUser2Role":{
+      "description" : "给角色添加用户并删除",
+      "params" : ["[Long] 用户ID","long 角色ID"]
+    },
+    "addRoleView":{
+      "description" : "添加视图权限",
+      "params" : ["[RoleView]"]
+    },
+    "addRoleRes":{
+      "description" : "添加资源权限",
+      "params" : ["long ","int" ,"[String]"]
+    },
+    "addRole2User":{
+      "description" : "给用户添加角色",
+      "params" : ["long 用户ID","[Long] 角色ID"]
+    },
+    "addRole":{
+      "description" : "添加角色",
+      "params" : ["Role 角色"]
+    }
+  },
+  "userLoginUIService":{
+    "weChatLogin":{
+      "description" : "微信登录",
+      "params" : ["String ,String"]
+    },
+    "setUserUIService":{
+      "description" : "设置用户服务",
+      "params" : ["IUserUIService 用户服务"]
+    },
+    "modifyPassword":{
+      "description" : "第一次登录修改密码",
+      "params" : ["long 用户帐号，可以是手机号，用户登录名，或者用户邮箱","String 初始密码","String 新密码"]
+    },
+    "logout":{
+      "description" : "用户登出,登出失败时以异常返回",
+      "params" : []
+    },
+    "login":{
+      "description" : "用户登录",
+      "params" : ["String 用户帐号，可以是手机号，用户登录名，或者用户邮箱","String 登录密码"]
+    },
+    "logout":{
+      "description" : "用户登出,登出失败时以异常返回",
+      "params" : []
+    },
+    "login":{
+      "description" : "用户登录",
+      "params" : ["String 用户帐号，可以是手机号，用户登录名，或者用户邮箱","String 登录密码"]
+    },
+    "getCurrentUser":{
+      "description" : "获取当前用户",
+      "params" : []
+    }
+  },
+  "userUIService": {
+    "uploadHeadImage": {
+      "description": "用户上传头像",
+      "params": [
+        "long 用户id",
+        "String 用户头像码"
+      ]
+    },
+    "sendRegisterEmail": {
+      "description": "运维用户发送邮件",
+      "params": [
+        "User 用户基本信息"
+      ]
+    },
+    "sendModifyPassword": {
+      "description": "发重置密码邮件",
+      "params": [
+        "String 邮箱地址"
+      ]
+    },
+    "queryUserList": {
+      "description": "查询用户基本信息",
+      "params": [
+        "[Long] 用户id"
+      ]
+    },
+    "queryUserByCondition": {
+      "description": "按条件查询用户",
+      "params": [
+        "UserCondition 查询条件"
+      ]
+    },
+    "queryUser": {
+      "description": "查询用户基本信息",
+      "params": [
+        "long 用户id"
+      ]
+    },
+    "querAllUserInfo": {
+      "description": "",
+      "params": []
+    },
+    "psUserRegister": {
+      "description": "运维用户注册",
+      "params": [
+        "User 用户基本信息",
+        "Enterprise 企业信息",
+        "String 发送邮箱地址"
+      ]
+    },
+    "modifyUser": {
+      "description": "修改用户",
+      "params": [
+        "User 用户基本信息"
+      ]
+    },
+    "modifyIndustry": {
+      "description": "修改用户",
+      "params": [
+        "long 用户ID",
+        "long 用户行业"
+      ]
+    },
+    "individualUserRegister": {
+      "description": "个人用户注册",
+      "params": [
+        "User 个人用户",
+        "Enterprise 企业信息"
+      ]
+    },
+    "getOneTimeToken": {
+      "description": "获取一次性token",
+      "params": []
+    },
+    "getHeadImage": {
+      "description": "获取用户头像",
+      "params": [
+        "long 用户id"
+      ]
+    },
+    "getEnterpriseUser": {
+      "description": "查询管理员用户",
+      "params": [
+        "[String] 域路径"
+      ]
+    },
+    "findUserByUserType": {
+      "description": "根据当前用户的用户类型编码本用户的列表",
+      "params": []
+    },
+    "findUserByDomains": {
+      "description": "根据domains查询用户列表",
+      "params": [
+        "String"
+      ]
+    },
+    "enterpriseUserRegister": {
+      "description": "企业普通用户注册",
+      "params": [
+        "User 企业普通用户",
+        "UserDomain 用戶域表",
+        "[Role] 用戶角色表"
+      ]
+    },
+    "enterpriseIndividualRegister": {
+      "description": "企业个人用户注册",
+      "params": [
+        "Customer 客户信息"
+      ]
+    },
+    "enableUsers": {
+      "description": "enable用户",
+      "params": [
+        "[Long] 用户id"
+      ]
+    },
+    "userUIService.disableUsers": {
+      "description": "disable用户",
+      "params": [
+        "[Long] 用户id"
+      ]
+    },
+    "checkMobilePhone": {
+      "description": "检查手机号是否唯一",
+      "params": [
+        "String 手机号"
+      ]
+    },
+    "checkLoginName": {
+      "description": "检查登录名是否唯一",
+      "params": [
+        "String 登录名"
+      ]
+    },
+    "checkEmailAddress": {
+      "description": "检查郵箱是否唯一",
+      "params": [
+        "String 郵箱"
+      ]
+    },
+    "addLoginName": {
+      "description": "添加登录名",
+      "params": [
+        "String 登录名"
+      ]
+    }
+  },
+  "userIdentifyService": {
+    "sendSMS": {
+      "description": "发短信校验",
+      "params": [
+        "String 手机号"
+      ]
+    },
+    "sendPasswordSMS": {
+      "description": "发短信修改密码",
+      "params": [
+        "String 手机号"
+      ]
+    },
+    "sendEmailPassword": {
+      "description": "发送重置密码邮件",
+      "params": [
+        "String"
+      ]
+    },
+    "sendEmail": {
+      "description": "发邮件",
+      "params": [
+        "String 邮箱地址",
+        "String 国家地区"
+      ]
+    },
+    "repeatEmail": {
+      "description": "校验邮箱是否存在",
+      "params": [
+        "String 邮箱地址"
+      ]
+    },
+    "identifySMS": {
+      "description": "短信校验",
+      "params": [
+        "String 短信验证码"
+      ]
+    },
+    "identifyPasswordSMS": {
+      "description": "验证短信修改密码",
+      "params": [
+        "String 短信验证码"
+      ]
+    },
+    "identifyNum": {
+      "description": "验证码校验",
+      "params": [
+        "String 验证码"
+      ]
+    },
+    "identifyEmail": {
+      "description": "邮箱校验",
+      "params": [
+        "String 验证码"
+      ]
+    },
+    "getIdentifyEmail": {
+      "description": "获取邮箱地址校验状态",
+      "params": [
+        "String 邮箱地址"
+      ]
+    },
+    "getIdentify": {
+      "description": "生成验证码",
+      "params": []
+    },
+    "forgetPassword": {
+      "description": "忘记密码修改",
+      "params": [
+        "String 用户邮箱",
+        "String 隐藏验证码",
+        "String 新密码"
+      ]
+    },
+    "emailCheckPassword": {
+      "description": "邮件验证码校验",
+      "params": [
+        "String"
+      ]
+    }
+  },
+  "userFunctionService": {
+    "saveFunctionList": {
+      "description": "保存数据表",
+      "params": []
+    },
+    "saveFunctionJson": {
+      "description": "保存功能",
+      "params": [
+        "[FunctionJson] 功能列表"
+      ]
+    },
+    "queryMehtodByMethodName": {
+      "description": "查询一个方法",
+      "params": [
+        "String 方法名"
+      ]
+    },
+    "queryFunctionByRoleId": {
+      "description": "查看一个角色的功能",
+      "params": [
+        "long"
+      ]
+    },
+    "queryFunctionByParentCode": {
+      "description": "用父功能查询一类功能",
+      "params": [
+        "String 功能父节点码",
+        "long 用户ID，没有传0"
+      ]
+    },
+    "queryFunctionByFunctionCode": {
+      "description": "查询一个功能",
+      "params": [
+        "String 功能码"
+      ]
+    },
+    "queryFunction2Role": {
+      "description": "查看一个角色的功能/树形",
+      "params": [
+        "long 角色ID"
+      ]
+    },
+    "queryAllFunctionByUser": {
+      "description": "查看一个用户的所有功能",
+      "params": [
+        "long 用户ID",
+        "long 角色ID,没有传0"
+      ]
+    },
+    "queryAllFunction": {
+      "description": "查看所有功能",
+      "params": []
+    },
+    "modifyFunction": {
+      "description": "修改功能",
+      "params": [
+        "Function 功能（functionCode必传）"
+      ]
+    },
+    "deleteMethod2Function": {
+      "description": "删除功能对应的方法",
+      "params": [
+        "String 功能码",
+        "String 方法名"
+      ]
+    },
+    "deleteFunction2Role": {
+      "description": "删除角色的功能",
+      "params": [
+        "long 角色ID",
+        "String 功能编码"
+      ]
+    },
+    "addMethod2Function": {
+      "description": "添加功能对应的方法",
+      "params": [
+        "String 功能码",
+        "String 方法名"
+      ]
+    },
+    "addFunction2Role": {
+      "description": "给角色添加功能",
+      "params": [
+        "long 角色ID",
+        "[String] 功能编码"
+      ]
+    },
+    "addFunction": {
+      "description": "添加功能",
+      "params": [
+        "Function 功能"
+      ]
+    }
+  },
+  "userAuthenticationService":{
+    "saveUserImage":{
+      "description" : "保存个人身份认证图片",
+      "params" : ["long 个人用户ID","[String] 个人图片码"]
+    },
+    "saveEnterpriseImage":{
+      "description" : "保存企业身份认证图片",
+      "params" : ["long 企业用户ID","[String] 企业图片码"]
+    },
+    "queryAuthenticationUser":{
+      "description" : "审核实名认证用户信息",
+      "params" : ["long 用户ID"]
+    },
+    "queryAuthenticationInfoE":{
+      "description" : "查看实名认证用户信息",
+      "params" : ["long 企业ID"]
+    },
+    "queryAuthenticationInfo":{
+      "description" : "查看实名认证用户信息",
+      "params" : ["long 用户ID"]
+    },
+    "queryAuthenticationEnterprise":{
+      "description" : "审核实名认证用户信息",
+      "params" : ["long 企业ID"]
+    },
+    "modifyAuthenticationStatusE":{
+      "description" : "修改用户认证状态",
+      "params" : ["long 企业ID","int 审核状态结果"]
+    },
+    "modifyAuthenticationStatus":{
+      "description" : "修改用户认证状态",
+      "params" : ["long 用户ID","int 审核状态结果"]
+    },
+    "getUserImage":{
+      "description" : "获取个人身份认证图片",
+      "params" : ["long 个人用户ID"]
+    },
+    "getEnterpriseImage":{
+      "description" : "获取企业身份认证图片",
+      "params" : ["long 企业用户ID"]
+    },
+    "deleteAuthenticationUser":{
+      "description" : "删除实名认证信息",
+      "params" : ["long 用户ID"]
+    },
+    "deleteAuthenticationEnterprise":{
+      "description" : "删除实名认证信息",
+      "params" : ["long 企业ID"]
+    },
+    "addAuthenticationUser":{
+      "description" : "添加实名认证用户",
+      "params" : ["AuthenticationUser 用户实名信息"]
+    },
+    "addAuthenticationEnterprise":{
+      "description" : "添加实名认证企业",
+      "params" : ["AuthenticationEnterprise 企业实名信息"]
+    }
+  },
+  "userDomainService":{
+    "queryEnterpriseDomainTree":{
+      "description" : "根据用户id,查看用户所在企业根域的树",
+      "params" : ["long 用户ID"]
+    },
+    "queryDomainTreeByUser":{
+      "description" : "根据用户查域的树",
+      "params" : ["long 用户ID"]
+    },
+    "queryDomainTreeByDomainPath":{
+      "description" : "根据设备id查看域的树",
+      "params" : ["long 设备ID"]
+    },
+    "queryDomainTree":{
+      "description" : "查看域的树",
+      "params" : ["long 用户ID"]
+    },
+    "queryDomainInfoByPath":{
+      "description" : "查看域及子域",
+      "params" : ["String 域路径"]
+    },
+    "queryDomainInfo":{
+      "description" : "查看域信息",
+      "params" : ["long 域ID"]
+    },
+    "queryDomainByUser":{
+      "description" : "查看一个用户下的所有域",
+      "params" : ["long 用户ID"]
+    },
+    "queryDomainBySelf":{
+      "description" : "查看自己的所有域",
+      "params" : []
+    },
+    "queryDeleteDomain":{
+      "description" : "查看是否能删除域",
+      "params" : ["Domain 域"]
+    },
+    "modifyDomain":{
+      "description" : "修改域信息",
+      "params" : ["Domain 域"]
+    },
+    "getAssociateDomain2User":{
+      "description" : "查看域关联的用户",
+      "params" : ["String 域路径"]
+    },
+    "deleteDomain2User":{
+      "description" : "删除用户的一个域",
+      "params" : ["Domain 域","long 用户ID"]
+    },
+    "deleteDomain":{
+      "description" : "删除域",
+      "params" : ["Domain"]
+    },
+    "changeDomain":{
+      "description" : "切换域",
+      "params" : ["long 用户ID","Domain 新域","long 旧域ID"]
+    },
+    "addModelDomain":{
+      "description" : "添加域",
+      "params" : ["String 父域路径","Domain 添加域"]
+    },
+    "addDomainUser":{
+      "description" : "给用户添加域",
+      "params" : ["Domain 域","long 用户ID"]
+    },
+    "addDomain2User":{
+      "description" : "给用户批量添加域",
+      "params" : ["[Domain] 域","long 用户ID"]
+    },
+    "addDomain":{
+      "description" : "添加域",
+      "params" : ["long 父域ID","Domain 子域信息"]
+    }
+  },
+  "userEnterpriseService":{
+    "queryUserGroup":{
+      "description" : "查看用户所在组",
+      "params" : ["long 用户ID"]
+    },
+    "querySupplierDomainPath":{
+      "description" : "查询供应商域路径",
+      "params" : ["String 域路径"]
+    },
+    "querySupplierByEnterpriseID":{
+      "description" : "通过企业ID查询供应商",
+      "params" : ["Long 企业ID"]
+    },
+    "querySupplier":{
+      "description" : "查看设备提供商",
+      "params" : [""]
+    },
+    "queryGroupUser":{
+      "description" : "查看用户组用户",
+      "params" : ["long 用户组ID"]
+    },
+    "queryGroup":{
+      "description" : "查看用户组信息",
+      "params" : ["long 用户组ID"]
+    },
+    "queryEnterpriseUser":{
+      "description" : "查看企业用户",
+      "params" : [""]
+    },
+    "queryEnterpriseRole":{
+      "description" : "查看企业角色",
+      "params" : [""]
+    },
+    "queryEnterpriseGroup":{
+      "description" : "查看用户所在组",
+      "params" : [""]
+    },
+    "queryEnterpriseDomain":{
+      "description" : "查看企业域",
+      "params" : [""]
+    },
+    "queryEnterpriseByDomainPath":{
+      "description" : "通过域路径查看企业",
+      "params" : ["String"]
+    },
+    "queryEnterprise":{
+      "description" : "查看企业信息",
+      "params" : [""]
+    },
+    "queryCustomerById":{
+      "description" : "ID查看客户",
+      "params" : ["long"]
+    },
+    "queryCustomer":{
+      "description" : "查看客户",
+      "params" : [""]
+    },
+    "queryAllEnterprise":{
+      "description" : "查看所有企业",
+      "params" : [""]
+    },
+    "modifyStatusCustomer":{
+      "description" : "修改企业客户状态",
+      "params" : ["long"]
+    },
+    "modifyLogo":{
+      "description" : "修改企业图片链接",
+      "params" : ["long" ,"String"]
+    },
+    "modifyGroupInfo":{
+      "description" : "修改用户组信息",
+      "params" : ["Group 用户组信息"]
+    },
+    "modifyEnterpriseUser":{
+      "description" : "修改企业用户信息",
+      "params" : ["User 用户信息","Enterprise 企业信息"]
+    },
+    "modifyEnterpriseStatus":{
+      "description" : "修改企业状态",
+      "params" : ["long"]
+    },
+    "modifyEnterpriseInfo":{
+      "description" : "修改用户所在企业基本信息",
+      "params" : ["Enterprise 企业"]
+    },
+    "modifyDefaultRole":{
+      "description" : "查看企业角色",
+      "params" : ["long 企业id","[Long] 默认角色"]
+    },
+    "modifyCustomer":{
+      "description" : "修改客户信息",
+      "params" : ["Customer 客户信息"]
+    },
+    "modifyCopyRight":{
+      "description" : "修改企业copyRight",
+      "params" : ["String 名称","String 链接","long 企业ID"]
+    },
+    "findEnterpriseDomain":{
+      "description" : "查看企业域",
+      "params" : ["String"]
+    },
+    "findEnterpriseDomain":{
+      "description" : "查看企业域",
+      "params" : [""]
+    },
+    "findEnterpriseById":{
+      "description" : "根据id查看企业",
+      "params" : ["long"]
+    },
+    "deleteUser2UserGroup":{
+      "description" : "移除用户组用户",
+      "params" : ["long 用户组ID","[Long] 用户ID"]
+    },
+    "deleteCustomer":{
+      "description" : "删除客户",
+      "params" : ["long 企业ID"]
+    },
+    "adminModifyEnterprise":{
+      "description" : "修改企业用户信息",
+      "params" : ["Enterprise 企业信息"]
+    },
+    "addUser2UserGroup":{
+      "description" : "给用户组添加用户",
+      "params" : ["long 用户组ID","long 企业ID","[Long] 用户ID"]
+    },
+    "addGroup":{
+      "description" : "添加用户组",
+      "params" : ["Group 用户组信息"]
+    }
+  },
+  "projectUIService":{
+    "updateProject":{
+      "description" : "更改项目管理",
+      "params" : ["Project"]
+    },
+    "findProjectsByCondition":{
+      "description" : "查询项目管理",
+      "params" : ["Project"]
+    },
+    "findProjectById":{
+      "description" : "根据项目Id查询",
+      "params" : ["long"]
+    },
+    "deleteProjectById":{
+      "description" : "删除项目管理",
+      "params" : ["Long"]
+    },
+    "addProject":{
+      "description" : "增加项目管理",
+      "params" : ["Project"]
+    }
+  },
+  "generalUIService":{
+    "update":{
+      "description" : "更新",
+      "params" : ["String" ,"Map"]
+    },
+    "find":{
+      "description" : "查询",
+      "params" : ["String" ,"Map"]
+    },
+    "delete":{
+      "description" : "删除",
+      "params" : ["String" ,"long"]
+    },
+    "count":{
+      "description" : "统计",
+      "params" : ["String ","Map"]
+    },
+    "add":{
+      "description" : "添加",
+      "params" : ["String" ,"Map"]
+    }
+  },
+  "productUIService":{
+    "updateProduct":{
+      "description" : "更改产品",
+      "params" : ["Product"]
+    },
+    "findProductsByEnterpriseId":{
+      "description" : "通过企业id查询产品列表",
+      "params" : ["long"]
+    },
+    "findProducts":{
+      "description" : "查询产品列表",
+      "params" : ["Product"]
+    },
+    "findProductById":{
+      "description" : "通过产品id查产品",
+      "params" : ["long"]
+    },
+    "deleteProduct":{
+      "description" : "批量删除产品",
+      "params" : ["long[]"]
+    },
+    "addProduct":{
+      "description" : "添加产品",
+      "params" : ["Product"]
+    }
+  },
+  "orderUIService":{
+    "updateOrder":{
+      "description" : "更改客户管理",
+      "params" : ["CustomerOrder"]
+    },
+    "getOrderSchedules":{
+      "description" : "查询客户管理",
+      "params" : ["OrderSchedule"]
+    },
+    "findOrdersById":{
+      "description" : "查询客户管理",
+      "params" : ["long"]
+    },
+    "findOrdersByCondition":{
+      "description" : "查询客户管理",
+      "params" : ["CustomerOrder"]
+    },
+    "deleteOrderById":{
+      "description" : "删除客户管理",
+      "params" : ["long"]
+    },
+    "ddOrder":{
+      "description" : "增加客户管理",
+      "params" : ["CustomerOrder"]
+    }
+  },
+  "energyStatUIService":{
+    "getEnergyConsumeByArea":{
+      "description" : "各区域内综合能耗的分布比例",
+      "params" : ["String"]
+    }
+  },
+  "energyConsumeUIService":{
+    "updateProductYield":{
+      "description" : "更改产品产量",
+      "params" : ["ProductYield"]
+    },
+    "updateProductStruct":{
+      "description" : "更改产品结构",
+      "params" : ["ProductStruct"]
+    },
+    "updateProduct":{
+      "description" : "更改产品",
+      "params" : ["Product"]
+    },
+    "updateEnterpriseOperateInfoDto":{
+      "description" : "修改企业经营记录",
+      "params" : ["EnterpriseOperateInfoDto"]
+    },
+    "updateEnterpriseOperateInfoCommitStatus":{
+      "description" : "修改提交状态",
+      "params" : ["long" ,"String"]
+    },
+    "updateEnterpriseOperateInfo":{
+      "description" : "更改企业经营信息",
+      "params" : ["EnterpriseOperateInfo"]
+    },
+    "updateEnterpriseInfo":{
+      "description" : "更改企业信息",
+      "params" : ["EnterpriseInfo"]
+    },
+    "updateEnergyEfficacy":{
+      "description" : "更新能效对标",
+      "params" : ["EnergyEfficacy"]
+    },
+    "updateEnergyConvertStandardDto":{
+      "description" : "更新能源折标系数",
+      "params" : ["EnergyConvertStandardDto"]
+    },
+    "updateEnergyConvertStandardDetail":{
+      "description" : "更改能耗折标系数详情",
+      "params" : ["EnergyConvertStandardDetail"]
+    },
+    "updateEnergyConvertStandard":{
+      "description" : "更改能耗折标系数",
+      "params" : ["EnergyConvertStandard"]
+    },
+    "updateEnergyConsumeRecordTaskState":{
+      "description" : "修改能耗录入任务的提交状态",
+      "params" : ["long ","String"]
+    },
+    "updateEnergyConsumeMeter":{
+      "description" : "更改能耗计量点",
+      "params" : ["EnergyConsumeMeter"]
+    },
+    "updateDomainsByStatus":{
+      "description" : "修改能耗节点提交状态",
+      "params" : ["String" ,"String"]
+    },
+    "saveReduceEnergy":{
+      "description" : "保存节能周期,保存节能周期的完成情况",
+      "params" : ["ReduceEnergy"]
+    },
+    "saveMarkValue":{
+      "description" : "保存标杆值",
+      "params" : ["[Map]"]
+    },
+    "saveEnergyConsumeTree":{
+      "description" : "保存企业的能耗结构树",
+      "params" : [""]
+    },
+    "saveEnergyConsumeRecords":{
+      "description" : "保存能耗录入记录",
+      "params" : ["[EnergyConsumeRecord]" ,"long"]
+    },
+    "saveEnergyConsumeMeters":{
+      "description" : "保存能耗计量点",
+      "params" : ["long ","[EnergyConsumeMeter]"]
+    },
+    "saveAndCommitEnergyConsumeRecords":{
+      "description" : "保存能耗录入记录,并提交",
+      "params" : ["[EnergyConsumeRecord]" ,"long"]
+    },
+    "readEnergyConsumeRecords":{
+      "description" : "读取能耗记录",
+      "params" : ["Long"]
+    },
+    "queryEnergyNodeTreeByDomainPath":{
+      "description" : "查询能耗节点树,根据企业domainPath",
+      "params" : ["String"]
+    },
+    "queryDomainsByEnterpriseId":{
+      "description" : "根据企业id获取能耗节点树",
+      "params" : ["long"]
+    },
+    "queryDomainByDomainPath":{
+      "description" : "查询能耗节点",
+      "params" : ["String"]
+    },
+    "publishReduceEnergy":{
+      "description" : "发布企业的周期节能指标",
+      "params" : ["ReduceEnergy"]
+    },
+    "publishForecastResult":{
+      "description" : "根据选择的企业发布综合能耗预测结果和各能源类型的预测结果",
+      "params" : ["long"]
+    },
+    "modifyDomainInfo":{
+      "description" : "更改能耗节点",
+      "params" : ["Domain"]
+    },
+    "importEnergyConsumeRecords":{
+      "description" : "导入能耗记录excel模板",
+      "params" : ["[List]"]
+    },
+    "getTopN":{
+      "description" : "获得TopN值",
+      "params" : ["int ","String" ,"String ","String ","int"]
+    },
+    "getModelDefinitionsByEnterpriseIds":{
+      "description" : "根据企业id数组查询设备模型列表",
+      "params" : ["Long[]"]
+    },
+    "getIndustryMarkValue":{
+      "description" : "获取行业标准值（平均值 或最好值）",
+      "params" : ["String" ,"String" ,"long" ,"String ","long[]" ,"Date" ,"Date"]
+    },
+    "getEnterpriseInfosByModelDefinitionId":{
+      "description" : "根据设备模型id查询企业列表",
+      "params" : ["long"]
+    },
+    "getEnergyEvaluations":{
+      "description" : "能效评估指标值",
+      "params" : ["String" ,"String" ,"long" ,"Date" ,"Date"]
+    },
+    "getDeviceTypeNames":{
+      "description" : "通过设备属性获取设备模板定义的设备类型,devicetype查找设备类型",
+      "params" : ["String"]
+    },
+    "generateEnergyConsumeRecordTaskByTime":{
+      "description" : "生成指定周期能耗录入任务",
+      "params" : ["String ","String"]
+    },
+    "generateEnergyConsumeRecordTask":{
+      "description" : "生成能耗录入任务",
+      "params" : [""]
+    },
+    "findReduceEnergyListByCondition":{
+      "description" : "根据企业domainpath获取企业的节能周期",
+      "params" : ["ReduceEnergy"]
+    },
+    "findProductsByEnterpriseId":{
+      "description" : "通过企业id查询产品列表",
+      "params" : ["long"]
+    },
+    "findProducts":{
+      "description" : "查询产品列表",
+      "params" : ["Product"]
+    },
+    "findProductYieldsByEnterpriseOperateRecordId":{
+      "description" : "根据企业经营信息记录id查询产品产量列表",
+      "params" : ["long"]
+    },
+    "findProductYields":{
+      "description" : "查询产品产量列表",
+      "params" : ["ProductYield"]
+    },
+    "findProductStructs":{
+      "description" : "查询产品结构列表",
+      "params" : ["ProductStruct"]
+    },
+    "findProductById":{
+      "description" : "通过产品id查产品",
+      "params" : ["long"]
+    },
+    "findLastEnergyByEnterpriseId":{
+      "description" : "根据企业id获取企业上周期的综合能耗数据",
+      "params" : ["long"]
+    },
+    "findForecastResultsByCondition":{
+      "description" : "根据企业domainpath获取企业的综合能耗预测和各能源类型的预测结果",
+      "params" : ["ForecastResult"]
+    },
+    "findForecastResult":{
+      "description" : "根据企业id获取企业综合能耗预测结果和各能源类型的预测结果",
+      "params" : ["long"]
+    },
+    "findEnterpriseOperateInfosByPage":{
+      "description" : "按真分页查询企业经营信息列表",
+      "params" : ["EnterpriseOperateInfo","PageRequest"]
+    },
+    "findEnterpriseOperateInfos":{
+      "description" : "查询企业经营信息列表",
+      "params" : ["EnterpriseOperateInfo"]
+    },
+    "findEnterpriseOperateInfoDtos":{
+      "description" : "查询企业经营记录",
+      "params" : ["EnterpriseOperateInfo"]
+    },
+    "findEnterpriseInfosByCondition":{
+      "description" : "查询企业信息列表",
+      "params" : ["EnterpriseInfo ","PageRequest"]
+    },
+    "findEnterpriseInfos":{
+      "description" : "根据企业domain查询企业列表",
+      "params" : [""]
+    },
+    "findEnterpriseInfoByNodeId":{
+      "description" : "通过节点id查询企业信息",
+      "params" : ["long"]
+    },
+    "findEnterpriseInfoById":{
+      "description" : "根据企业id查询企业信息",
+      "params" : ["long"]
+    },
+    "findEnterpriseInfoByDomainPath":{
+      "description" : "根据企业domaiPath查企业信息",
+      "params" : ["String"]
+    },
+    "findEnergyEfficacys":{
+      "description" : "查询能效对标",
+      "params" : ["EnergyEfficacy"]
+    },
+    "findEnergyConvertStandards":{
+      "description" : "查询能源折标系数",
+      "params" : ["EnergyConvertStandard"]
+    },
+    "findEnergyConvertStandardDetailsByEnergyConvertStandardId":{
+      "description" : "查询能源折标系数详情,根据能源折标系数id",
+      "params" : ["long"]
+    },
+    "findEnergyConsumeRecordsByTaskId":{
+      "description" : "根据能耗录入任务id,查询能耗录入记录",
+      "params" : ["long"]
+    },
+    "findEnergyConsumeMetersByPage":{
+      "description" : "查询能耗计量点,真分页",
+      "params" : ["EnergyConsumeMeter" ,"PageRequest"]
+    },
+    "findEnergyConsumeMetersByEnterpriseId":{
+      "description" : "根据企业id查询能耗计量点列表",
+      "params" : ["long"]
+    },
+    "findEnergyConsumeMetersByEnergyConsumeNodeIds":{
+      "description" : "根据能耗节点数组查询能耗计量点列表",
+      "params" : ["[Long]"]
+    },
+    "findEnergyConsumeMeters":{
+      "description" :" 查询能耗计量点",
+      "params" : ["EnergyConsumeMeter"]
+    },
+    "findConsumeRecordTasksByCondition":{
+      "description" : "查询能耗录入任务",
+      "params" : ["EnergyConsumeRecordTask"]
+    },
+    "exportEnergyConsumeRecord":{
+      "description" : "导出能耗记录excel模板",
+      "params" : ["long"]
+    },
+    "effectEnergyConvertStandard":{
+      "description" : "提交生效的能耗折标系数",
+      "params" : ["long"]
+    },
+    "deleteProductYield":{
+      "description" : "删除产品产量",
+      "params" : ["long[]"]
+    },
+    "deleteProductStruct":{
+      "description" : "删除产品结构",
+      "params" : ["long[]"]
+    },
+    "deleteProduct":{
+      "description" : "批量删除产品",
+      "params" : ["long[]"]
+    },
+    "deleteEnterpriseOperateInfoDto":{
+      "description" : "删除企业经营记录",
+      "params" : ["long[]"]
+    },
+    "deleteEnterpriseOperateInfo":{
+      "description" : "批量删除企业经营信息",
+      "params" : ["long[]"]
+    },
+    "deleteEnterpriseInfo":{
+      "description" : "批量删除企业信息",
+      "params" : ["long[]"]
+    },
+    "deleteEnergyEfficacy":{
+      "description" : "批量删除能效对标",
+      "params" : ["long[]"]
+    },
+    "deleteEnergyConvertStandardDto":{
+      "description" : "删除能源折标系数",
+      "params" : ["long[]"]
+    },
+    "deleteEnergyConvertStandardDetail":{
+      "description" : "删除能耗折标系数详情",
+      "params" : ["long[]"]
+    },
+    "deleteEnergyConvertStandard":{
+      "description" : "删除能耗折标系数",
+      "params" : ["long[]"]
+    },
+    "deleteEnergyConsumeRecordTask":{
+      "description" : "删除能耗录入任务",
+      "params" : ["long"]
+    },
+    "deleteEnergyConsumeMeter":{
+      "description" : "批量删除能耗计量点",
+      "params" : ["long[]"]
+    },
+    "deleteDomainByDomainID":{
+      "description" : "删除能耗节点",
+      "params" : ["long"]
+    },
+    "copyEnergyConvertStandardDto":{
+      "description" : "复制能源折标系数,根据能源折标系数id",
+      "params" : ["long"]
+    },
+    "commitEnterpriseOperateInfo":{
+      "description" : "提交企业经营信息",
+      "params" : ["long"]
+    },
+    "commitEnergyConsumeRecordTask":{
+      "description" : "提交能耗录入任务",
+      "params" : ["long"]
+    },
+    "clacKqiByTime":{
+      "description" : "动态执行kqi直到当前月",
+      "params" : ["Object"]
+    },
+    "checkOverdueConsumeRecordTaskByYear":{
+      "description" : "检查是否超期按年",
+      "params" : [""]
+    },
+    "checkOverdueConsumeRecordTaskByQuarter":{
+      "description" : "检查是否超期按季",
+      "params" : [""]
+    },
+    "checkOverdueConsumeRecordTaskByMonth":{
+      "description" : "检查是否超期按月",
+      "params" : [""]
+    },
+    "checkOverdueConsumeRecordTask":{
+      "description" : "检查是否超期",
+      "params" : [""]
+    },
+    "addProductYield":{
+      "description" : "添加产品产量",
+      "params" : ["ProductYield"]
+    },
+    "addProductStruct":{
+      "description" : "添加产品结构",
+      "params" : ["ProductStruct"]
+    },
+    "addProduct":{
+      "description" : "添加产品",
+      "params" : ["Product"]
+    },
+    "addEnterpriseOperateInfoDto":{
+      "description" : "增加企业经营记录",
+      "params" : ["EnterpriseOperateInfoDto"]
+    },
+    "addEnterpriseOperateInfo":{
+      "description" : "增加企业经营信息",
+      "params" : ["EnterpriseOperateInfo"]
+    },
+    "addEnterpriseInfo":{
+      "description" : "增加企业信息",
+      "params" : ["EnterpriseInfo"]
+    },
+    "addEnergyEfficacy":{
+      "description" : "添加能效对标",
+      "params" : ["EnergyEfficacy"]
+    },
+    "addEnergyConvertStandardDto":{
+      "description" : "添加能源折标系数",
+      "params" : ["EnergyConvertStandardDto"]
+    },
+    "addEnergyConvertStandardDetail":{
+      "description" : "添加能耗折标系数详情",
+      "params" : ["EnergyConvertStandardDetail"]
+    },
+    "addEnergyConvertStandard":{
+      "description" : "添加能耗折标系数",
+      "params" : ["EnergyConvertStandard"]
+    },
+    "addEnergyConsumeMeters":{
+      "description" : "批量增加能耗计量点",
+      "params" : ["[EnergyConsumeMeter]"]
+    },
+    "addEnergyConsumeMeter":{
+      "description" : "增加能耗计量点",
+      "params" : ["EnergyConsumeMeter"]
+    },
+    "addDomain":{
+      "description" : "添加能耗节点",
+      "params" : ["Domain"]
+    }
+  },
+  "distributorUIService":{
+    "updateDistributor":{
+      "description" : "更改经销商管理",
+      "params" : ["Distributor"]
+    },
+    "findDistributorsByCondition":{
+      "description" : "查询经销商管理",
+      "params" : ["Distributor"]
+    },
+    "deleteDistributorById":{
+      "description" : "删除经销商管理",
+      "params" : ["long"]
+    },
+    "addDistributor":{
+      "description" : "添加经销商管理",
+      "params" : ["Distributor"]
+    }
+  },
+  "customerUIService":{
+    "updateCustomer":{
+      "description" : "更改客户管理",
+      "params" : ["Customer"]
+    },
+    "findCustomersById":{
+      "description" : "查询客户管理",
+      "params" : ["long"]
+    },
+    "findCustomersByCondition":{
+      "description" : "查询客户管理",
+      "params" : ["Customer"]
+    },
+    "deleteCustomerById":{
+      "description" : "删除客户管理",
+      "params" : ["long"]
+    },
+    "addCustomer":{
+      "description" : "增加客户管理",
+      "params" : ["Customer"]
+    }
+  },
+  "weatherService":{
+    "getWeatherByCity":{
+      "description" : "通过城市获取天气",
+      "params" : ["String"]
+    }
+  },
+  "sparePartUIService": {
+    "saveStockOrderItem": {
+      "description": "保存库单条目",
+      "params": [
+        "StockOrderItem 库单条目"
+      ]
+    },
+    "saveSparePart": {
+      "description": "保存备件",
+      "params": [
+        "SparePart 备件"
+      ]
+    },
+    "saveOutStockOrder": {
+      "description": "保存出库单",
+      "params": [
+        "StockOrder 库单"
+      ]
+    },
+    "saveInStockOrder": {
+      "description": "保存入库单",
+      "params": [
+        "StockOrder 库单"
+      ]
+    },
+    "getStockOrderItemsByStockOrderId": {
+      "description": "根据库单Id获取库单条目",
+      "params": [
+        "long"
+      ]
+    },
+    "getStockOrderItemsBySparePartId": {
+      "description": "根据库单Id获取库单条目及库单，不包含未提示的条目",
+      "params": [
+        "long"
+      ]
+    },
+    "getStockOrderItemById": {
+      "description": "根据库单条目Id获取",
+      "params": [
+        "long 库单条目Id"
+      ]
+    },
+    "getStockOrderById": {
+      "description": "根据库单Id获取",
+      "params": [
+        "long 库单Id"
+      ]
+    },
+    "getSparePartById": {
+      "description": "根据备件Id获取",
+      "params": [
+        "long 库单Id"
+      ]
+    },
+    "getOutStockOrders": {
+      "description": "获取所有 出库单",
+      "params": [
+        ""
+      ]
+    },
+    "getInStockOrders": {
+      "description": "获取所有入库单",
+      "params": [
+        ""
+      ]
+    },
+    "getAllSpareParts": {
+      "description": "获取所有备件",
+      "params": [
+        ""
+      ]
+    },
+    "deleteStockOrderItem": {
+      "description": "删除库单条目",
+      "params": [
+        "long 库单条目Id"
+      ]
+    },
+    "deleteStockOrder": {
+      "description": "删除库单",
+      "params": [
+        "long 库单Id"
+      ]
+    },
+    "deleteSparePart": {
+      "description": "删除备件",
+      "params": [
+        "long 备件Id"
+      ]
+    },
+    "commitStockOrder": {
+      "description": "提交库单",
+      "params": [
+        "long 库单Id",
+        "boolean 是否验证备件的库存数量"
+      ]
+    },
+    "batchOutStock": {
+      "description": "批量出库",
+      "params": [
+        "Object 备件Id和数量必填",
+        "boolean 是否验证备件的库存数量",
+        "long 工单任务Id"
+      ]
+    }
+  },
+  "solutionUIService":{
+    "saveThresholdBySolution":{
+      "description" : "保存阈值",
+      "params" : ["long ","long" ,"long" ,"AlertDefinition"]
+    },
+    "saveSolution":{
+      "description" : "保存解决方案",
+      "params" : ["Solution"]
+    },
+    "saveServiceViewContent":{
+      "description" : "保存服务中心视图",
+      "params" : ["long 解决方案id","long" ,"long" ,"String"]
+    },
+    "saveModelDashboardViewContent":{
+      "description" : "保存服务中心视图",
+      "params" : ["long 解决方案id","long" ,"long" ,"String"]
+    },
+    "saveManageViewContent":{
+      "description" : "保存管理中心视图",
+      "params" : ["long 解决方案id","String"]
+    },
+    "saveKqiCalcRuleBySolution":{
+      "description" : "保存KQI规则",
+      "params" : ["long 解决方案id","long 模型id","KqiCalcRule"]
+    },
+    "saveGroupModel":{
+      "description" : "保存设备组",
+      "params" : ["long 解决方案id","ModelDefinition"]
+    },
+    "linkModelToSolution":{
+      "description" : "关联模型和解决方案",
+      "params" : ["long 解决方案id","long 模型id"]
+    },
+    "linkModelToGroupModel":{
+      "description" : "关联模型和设备组",
+      "params" : ["long 解决方案id","long 组模型Id","long 模型id"]
+    },
+    "getThresholdsBySolution":{
+      "description" : "通过解决方案和模型获取阈值定义",
+      "params" : ["long 解决方案id","long" ,"long 模型id"]
+    },
+    "getSolutions":{
+      "description" : "查询解决方案",
+      "params" : [""]
+    },
+    "getServiceViewContent":{
+      "description" : "获取服务中心视图",
+      "params" : ["long" ,"long" ,"long"]
+    },
+    "getModelsByGroupId":{
+      "description" : "获取设备组下的模型",
+      "params" : ["long 解决方案id","long"]
+    },
+    "getModelDashboardViewContent":{
+      "description" : "获取服务中心视图",
+      "params" : ["long" ,"long" ,"long"]
+    },
+    "getManageViewContent":{
+      "description" : "获取管理中心视图",
+      "params" : ["long"]
+    },
+    "getKqiCalcRulesBySolution":{
+      "description" : "通过解决方案和模型获取kqi计算",
+      "params" : ["long 解决方案id","long" ,"long 模型id"]
+    },
+    "getGroupModelsBySolutionId":{
+      "description" : "通过解决方案获取设备组模型",
+      "params" : ["long 解决方案id"]
+    },
+    "getGroupModels":{
+      "description" : "获取设备组模型",
+      "params" : [""]
+    },
+    "getDeviceModelsBySolutionId":{
+      "description" : "通过通过解决方案获取设备模型",
+      "params" : ["long 解决方案id"]
+    },
+    "deleteThresholdBySolution":{
+      "description" : "删除阈值",
+      "params" : ["long" ,"long" ,"long" ,"long"]
+    },
+    "deleteSolution":{
+      "description" : "删除解决方案",
+      "params" : ["long"]
+    },
+    "deleteModelFromSolution":{
+      "description" : "删除模型和设备组的关联",
+      "params" : ["long 解决方案id","long 模型id"]
+    },
+    "deleteModelFromGroupModel":{
+      "description" : "删除模型和设备组的关联",
+      "params" : ["long 解决方案id","long 组模型Id","long 模型id"]
+    },
+    "buySolution":{
+      "description" : "购买解决方案",
+      "params" : ["long"]
+    }
+  },
+  "jacquardMachineStateUIService": {
+    "getRunTimeStat": {
+      "description": "获取当天运行时间 本周运行时间 本月运行时间及本月开机率",
+      "params": [
+        ""
+      ]
+    },
+    "getCurrentDateStateByfigureName": {
+      "description": "获取指定花亲名称的最近的状态数据",
+      "params": [
+        "String 花样名称"
+      ]
+    },
+    "getCurrentDateStateByCustomerId": {
+      "description": "获取指定客户编号的最近的状态数据",
+      "params": [
+        "String 客户编号"
+      ]
+    },
+    "getCurrentDateState": {
+      "description": "获取当天的状态数据",
+      "params": [
+        ""
+      ]
+    }
+  },
+  "gisService":{
+    "getLocationByAddress":{
+      "description" : "通过地址获取坐标",
+      "params" : ["String"]
+    }
+  },
+  "faultKnowledgeUIService":{
+    "saveFaultKnowledge":{
+      "description" : "保存故障知识",
+      "params" : ["FaultKnowledge 故障知识"]
+    },
+    "getFaultKnowledgeById":{
+      "description" : "根据故障知识Id获取",
+      "params" : ["long 故障知识Id"]
+    },
+    "getByFaultNo":{
+      "description" : "根据故障编号查询故障知识",
+      "params" : ["String 故障编号"]
+    },
+    "getAllFaultKnowledges":{
+      "description" : "获取所有故障知识",
+      "params" : [""]
+    },
+    "deleteFaultKnowledge":{
+      "description" : "删除故障知识",
+      "params" : ["long 故障知识Id"]
+    }
+  },
+  "deviceAccessUIService":{
+    "getFlexemCloudConfAddr":{
+      "description" : "配置Fbox",
+      "params" : ["String 网关标识,String 返回地址"]
+    }
+  },
+  "descMTService":{
+    "getFunctionDescs":{
+      "description" : "获取所有服务描述",
+      "params" : [""]
+    },
+    "getFunctionDescById":{
+      "description" : "获取所有服务描述",
+      "params" : ["String" ,"String"]
+    },
+    ".":{
+      "description" : "获取所有服务描述",
+      "params" : [""]
+    }
+  },
+  "	customerProjectUIService":{
+    "saveProject":{
+      "description" : "保存项目",
+      "params" : ["Project 项目"]
+    },
+    "saveContractTermsToDeviceList":{
+      "description" : "保存多个合同条款和设备关系",
+      "params" : ["long 合同条款Id","[Long] 设备Id集合"]
+    },
+    "saveContractTerms":{
+      "description" : "保存合同条款",
+      "params" : ["ContractTerms 合同条款"]
+    },
+    "getProjectById":{
+      "description" : "根据项目Id获取",
+      "params" : ["long 项目Id"]
+    },
+    "getProjectByDeviceId":{
+      "description" : "根据设备Id获取关联的项目",
+      "params" : ["long 设备Id"]
+    },
+    "getContractTermsToDevicesByProjectId":{
+      "description" : "根据项目Id获取关联的设备	",
+      "params" : ["long 项目Id"]
+    },
+    "getContractTermsToDeviceById":{
+      "description" : "根据合同条款和设备关系Id获取",
+      "params" : ["long 合同条款和设备关系Id"]
+    },
+    "getContractTermsByProjectId":{
+      "description" : "根据项目Id获取合同条款",
+      "params" : ["long	"]
+    },
+    "getContractTermsById":{
+      "description" : "根据合同条款Id获取",
+      "params" : ["long 合同条款Id"]
+    },
+    "getContractTermsByDeviceId":{
+      "description" : "根据设备Id获取关联的合同条款",
+      "params" : ["long 设备Id"]
+    },
+    "getByContractTermsId":{
+      "description" : "根据合同条款Id获取条款设备关系",
+      "params" : ["long 合同条款Id"]
+    },
+    "getAllProjects":{
+      "description" : "获取所有项目",
+      "params" : [""]
+    },
+    "getAllContractTermsToDevices":{
+      "description" : "获取所有合同条款和设备关系",
+      "params" : [""]
+    },
+    "getAllContractTerms":{
+      "description" : "获取所有合同条款",
+      "params" : [""]
+    },
+    "findProjects":{
+      "description" : "查询项目：可分页，可加过滤条件",
+      "params" : ["ProjectQueryModel 查询条件"]
+    },
+    "findContractTerms":{
+      "description" : "查询合同条款：可分页，可加过滤条件",
+      "params" : ["ContractTermsQueryModel"]
+    },
+    "deleteProjectById":{
+      "description" : "根据项目id删除项目",
+      "params" : ["Long"]
+    },
+    "deleteProject":{
+      "description" : "删除项目",
+      "params" : ["long 项目Id"]
+    },
+    "deleteContractTermsToDevice":{
+      "description" : "删除合同条款和设备关系",
+      "params" : ["long 合同条款和设备关系Id"]
+    },
+    "deleteContractTerms":{
+      "description" : "删除合同条款",
+      "params" : ["long 合同条款Id"]
+    }
+  },
+  "configUIService":{
+    "uploadConfigFile":{
+      "description" : "上传配置图片",
+      "params" : ["Map"]
+    },
+    "saveConfigGroup":{
+      "description" : "保存配置组",
+      "params" : ["ConfigGroup"]
+    },
+    "saveConfig":{
+      "description" : "保存配置",
+      "params" : ["Config"]
+    },
+    "getConfigsByGroupName":{
+      "description" : "获取当前企业的某个类型的配置项列表",
+      "params" : ["String"]
+    },
+    "getConfigByGroupNameAndConfigKey":{
+      "description" : "获取当前企业的某个类型的配置项列表",
+      "params" : ["String" ,"String"]
+    },
+    "getAllConfigs":{
+      "description" : "获取当前企业的所有配置",
+      "params" : [""]
+    },
+    "getAllConfigGroups":{
+      "description" : "获取所有配置组",
+      "params" : [""]
+    },
+    "deleteConfigGroup":{
+      "description" : "删除配置组",
+      "params" : ["long"]
+    },
+    "deleteConfig":{
+      "description" : "删除某个配置",
+      "params" : ["long"]
+    }
+  }
+}

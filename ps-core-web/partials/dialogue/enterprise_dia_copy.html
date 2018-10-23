@@ -1,0 +1,32 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="dialog.button[1].fn();" class="close">×</a>
+        <h4 class="modal-title info-box-number" ng-bind="dialog.title.label"></h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal row">
+          <div class="form-group" ng-repeat="item in dialog.input" ng-if="item.apply != false">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger" ng-if="item.composory">*</span> <span ng-bind="item.label + ':'"></span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input class="form-control input-sm" disabled="true" ng-if="item.id && item.id >0" value="{{domainListDic[item.domainPath].name}}" />
+              <div ng-if="item.type=='tree' && (!item.id || item.id == -1)" class="dropdowntree select-sm" autocomplete="off" ng-model="item.value" change="" key="domainPath" options="domainListTree" mark="nodes">
+              </div>
+              <select ng-if="item.type=='select'" ng-model="item.value" class="form-control input-sm" ng-options="op.label for op in item.options" ng-change="item.change(item)"></select>
+              <input ng-if="item.type=='input'" type="text" placeholder="{{item.placeholder}}" class="form-control input-sm" ng-model="item.value" maxlength="32">
+              <span style="color:red;" ng-if="item.error" ng-bind="item.error"></span>
+              <textarea ng-model="item.value" ng-if="item.type == 'textarea'" maxlength="item.maxlength" ng-change="item.onChange(item)" ng-attr-placeholder="{{item.placeholder}}" class="form-control input-sm"></textarea>
+            </div>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button ng-class="btn.icon" ng-repeat="btn in dialog.fnlist" ng-click="btn.fn(dialog)" ng-bind="btn.label" ng-class="btn.icon;" ng-disabled="btn.disabled">
+          </button>
+          <!-- <button class="btn btn-primary" ng-click="dialog.button[0].fn();" disabled="btn.disabled">确定</button>
+          <button class="btn btn-default" ng-click="dialog.button[1].fn();">取消</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

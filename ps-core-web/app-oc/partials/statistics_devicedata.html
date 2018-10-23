@@ -1,0 +1,115 @@
+<section class="content-header">
+  <h1>
+    设备数据统计
+    <small></small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#dashboard2"><i class="proudsmart ps-center"></i> 运营中心</a></li>
+    <li>
+      故障分析
+    </li>
+    <li class="active">设备数据统计</li>
+  </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+  <div class="box-footer">
+    <div class="nav-tabs-custom">
+      <!-- tab-content -->
+      <div class="tab-content">
+        <form role="form" class="form-horizontal tab-pane active" name="myForm" style="font-size: 14px">
+          <div class="form-group">
+            <div class="col-sm-3">
+              <div class="form-group no-margin">
+                <label><span class="text-danger">*</span>设备模板：</label>
+                <input autocomplete="off" placeholder="请选择..." name="modelId" model-Picker class="form-control domainClass" type="text" ng-change="getDeviceByDeviceType(selectedItem.nodeType)" ng-model="rootModelDic[selectedItem.nodeType].label" modelId="" model="selectedItem.nodeType">
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group no-margin">
+                <label>资源域：</label>
+                <input autocomplete="off" placeholder="请选择..." name="domainPath" domain-Picker class="form-control domainClass" type="text" ng-model="domainListDic[selectedItem.domain].name" model="selectedItem.domain" domainPath="{{selectedItem.domain}}" ng-change="getDevices(selectedItem.domain)">
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group no-margin">
+                <label><span class="text-danger">*</span>设备：</label>
+                <select class="form-control" ng-model="selectedItem.nodeId" ng-options="value.id as value.label for value in selectedDitem.label" ng-change="getselectedDevice(selectedItem.nodeId)">
+                  <option value="">请选择...</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group no-margin">
+                <label><span class="text-danger">*</span>指标：</label>
+                <select class="form-control" ng-model="selectedItem.kpiId" ng-options="value.id as value.label for value in selectedDitem.kpis" ng-change="getKpi(selectedItem.kpiId)">
+                  <option value="">请选择...</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-3">
+              <div class="form-group no-margin">
+                <label><span class="text-danger">*</span>开始时间：</label>
+                <input type="text" autocomplete="off" id="createStart" readonly="readonly" name="createStart" class="form-control" ng-change="iftime(selectedItem.startTime)" ng-model="selectedItem.startTime" iszero="true" timepicker="true" date-time-picker2>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group no-margin">
+                <label><span class="text-danger">*</span>结束时间：</label>
+                <input type="text" autocomplete="off" id="createStart" readonly="readonly" name="createStart" class="form-control" ng-change="iftime(selectedItem.endTime)" ng-model="selectedItem.endTime" iszero="true" timepicker="true" date-time-picker2>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group no-margin">
+                <label><span class="text-danger">*</span>统计方式：</label>
+                <select class="form-control" ng-model="selectedItem.statisticType" ng-options="value.smId as value.smName for value in statiMethod" ng-change="getKpi(selectedItem.kpiId)">
+                  <option value="">请选择...</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group no-margin">
+                <label><span class="text-danger">*</span>统计粒度：</label>
+                <div class="form-control" style="border-width: 0;">
+                  <input type="radio" value="hour" ng-model="selectedItem.statisticTimeType" i-check/> <span>小时</span>
+                  <input type="radio" value="day" ng-model="selectedItem.statisticTimeType" i-check/><span>天</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <div class="text-center">
+                <a id="save-btn" ng-click="searchData()" style="margin-right: 15px;" class="btn btn-default btn-sm">
+                  <i class="fa fa-search"></i>
+                  <span class="hidden-xs "> 查询</span></a>
+                <a id="cancel-btn" ng-click="cancelRecords()" class="btn btn-default btn-sm"><i class="fa fa-close"></i><span class="hidden-xs"> 清除</span></a>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- /.tab-content-->
+    </div>
+  </div>
+  <div class="box box-solid" style="margin-bottom:1px">
+    <div class="box-header">
+      <h3 class="box-title">当前测点：{{selectedItem.kpilabel}}</h3>
+      <div class="box-tools pull-right">
+        <button id="devicecollapse" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+        </button>
+      </div>
+    </div>
+    <div class="box-body" ng-show="ifTables">
+      <div class="tab-content">
+        <form role="form" class="form-horizontal tab-pane active" name="myForm" style="font-size: 14px">
+          <div class="form-group col-sm-12">
+            <div style="height: 300px;" id="linedataview"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

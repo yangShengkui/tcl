@@ -1,0 +1,26 @@
+<section class="content" id="datamodel">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active" style="cursor:pointer;">
+                <a>指令策略管理</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body" ng-if="viewId == undefined">
+          <div data-table-dom data-source="instructions">
+          </div>
+        </div>
+        <div class="box-footer no-pad-top no-border">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

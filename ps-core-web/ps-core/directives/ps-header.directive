@@ -1,0 +1,59 @@
+<config injector="$location">
+</config>
+<template>
+    <div class="box-header">
+        <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+                <li ng-class="{true : 'active'}[nav.active]"
+                    ng-click="nav.click(nav.url)"
+                    ng-repeat="nav in navs"
+                    style="cursor: pointer;">
+                    <a ng-bind="nav.label"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="box-tools pull-right">
+            <span class="history-btn"
+                  role="button"
+                  ng-show="menuitems['#'+treeviewIndex] == null"
+                  data-toggle="返回"
+                  title="返回"
+                  data-original-title="返回"
+                  onclick="window.history.back();">
+                <i class="proudsmart ps-back-01"></i>
+            </span>
+        </div>
+    </div>
+</template>
+<script type="text/javascript">
+export default function ($location) {
+  return {
+    scope: {
+      navigators: '='
+    },
+    link (scope) {
+      scope.navs = [];
+      scope.$watch(`navigators`, n => {
+        if (typeof n !== 'undefined') {
+          scope.navs = n.map(d => {
+            return {
+              label: d.label,
+              url: d.url,
+              active: d.active,
+              click: url => {
+                if (!url) {
+                  return;
+                }
+                console.log('---->')
+                $location.path(url);
+              }
+            }
+          });
+        }
+      });
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+</style>

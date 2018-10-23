@@ -1,0 +1,24 @@
+<config router="prod_ceshi"
+        injector="request"
+></config>
+<template>
+
+
+</template>
+<script type="text/javascript">
+export default function (request) {
+  request.request('customer').then(function (d) {
+    console.log(d)
+  });
+
+};
+</script>
+<style type="less" scoped="true">
+.wrap {
+    margin: 5px;
+    padding: 10px;
+    color: #333;
+    background-color: #eee;
+    border: 1px solid #ddd;
+}
+</style>

@@ -1,0 +1,78 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">告警通知</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal" name="alertInformsForm" id="alertInformsForm">
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">通知消息名称：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <input type="text" name="ruleName" autocomplete="off" ng-model="alertInformsInfo.ruleName" maxlength="32" class="form-control input-sm" placeholder="" required="required">
+              </div>
+            </div>
+          </div>
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">通知人员类型：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <select class="form-control input-sm" style="width: 190px;" ng-model="alertInformsInfo.personType" ng-options="value.valueCode as value.label for value in notificationType" ng-change="changeRole(alertInformsInfo.personType)" required></select>
+              </div>
+            </div>
+          </div>
+          <div class="simple-form-field" ng-if="alertInformsInfo.personType == 'inSystem'">
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">通知角色：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <select class="form-control input-sm" style="width: 190px;" ng-model="alertInformsInfo.noticeRole" ng-options="value.id as value.text for value in allRoles" required></select>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12" style="margin-left: 5px;padding-right: 25px;" ng-if="alertInformsInfo.personType">
+            <div class="box-body table-responsive" slim-scroll height="280px">
+              <table width="100%" class="table table-hover text-center" name="enterpriseForm" border="1" style="border: 1px solid #eee;">
+                <thead>
+                  <tr role="row">
+                    <th>
+                      通知类型
+                    </th>
+                    <th ng-hide="alertInformsInfo.personType == 'inSystem'">
+                      联系方式
+                    </th>
+                    <th>
+                      模板
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr role="row" ng-repeat="item in templates | filter:{ personType : alertInformsInfo.personType} ">
+                    <td style="text-align: left;padding-left: 30px;">
+                      <input type="checkbox" i-check ng-model="item.state" item="item" change="alertFun" value="{{item.noticeWay}}" />
+                      <label ng-bind="item.noticeWayLabel"></label>
+                    </td>
+                    <td ng-hide="alertInformsInfo.personType == 'inSystem'">
+                      <input type="phone" name="" ng-disabled="!item.state" ng-if="item.personType == 'outSystem'" ng-model="item.contact" ng-change="verifyFun(item.contact, item.noticeWay)">
+                      <span ng-if="item.personType != 'outSystem'">-</span>
+                      <span style="color:red;" ng-show="mistakeMesg.phone && item.noticeWay=='sms' && item.contact">请正确输入手机号</span>
+                      <span style="color:red" ng-show="mistakeMesg.email && item.noticeWay=='email'  && item.contact">请输入正确的邮箱地址</span>
+                    </td>
+                    <td>
+                      <label ng-bind="item.noticeTemplateDesc "></label>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer ">
+        <button class="btn btn-primary " ng-disabled="alertInformsForm.$invalid " ng-click="saveData() " disabled="disabled ">确定</button>
+        <button class="btn btn-default " ng-click="closeDialog(); ">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

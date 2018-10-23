@@ -1,0 +1,43 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="dialog.button[1].fn();" class="close">×</a>
+        <h4 class="modal-title info-box-number" ng-bind="dialog.title"></h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal row" name="erengyForm">
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">企业名称：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <select ng-model="dialog.input.enterpriseId" class="form-control input-sm" selectdata="allEnterprises" ng-options="value.id as value.text for value in allEnterprises" itemchange="queryEnterpriseById" select2 required></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">周期类型：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <select ng-model="statisticsType" class="form-control input-sm" ng-disabled="true" ng-options="value.id as value.text for value in [{id:'YEAR',text:'年'},{id:'MONTH',text:'月'},{id:'QUARTER',text:'季度'}]"></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">上周期能耗数据（单位：吨标煤）：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="number" string-to-number class="form-control input-sm" ng-disabled="true" ng-model="dialog.input.lastReducePeriodData">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">本周期节能指标（单位：%）：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="number" string-to-number class="form-control input-sm" ng-model="dialog.input.thisReduceIndicator" name="thisReduceIndicator" maxlength="32" autocomplete="off" ng-change="verifyFun(dialog.input.thisReduceIndicator,'thisReduceIndicator')" required>
+              <span style="color:red" ng-show="erengyForm.thisReduceIndicator.$dirty && mistakeMesg.thisReduceIndicator">请输入正确的数据</span>
+            </div>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button class="btn btn-primary" ng-click="dialog.button[0].fn();" ng-disabled="erengyForm.$invalid" disabled="disabled">确定</button>
+          <button class="btn btn-default" ng-click="dialog.button[1].fn();">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

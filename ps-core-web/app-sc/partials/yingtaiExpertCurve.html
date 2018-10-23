@@ -1,0 +1,67 @@
+<section class="content-header">
+  <h1>产能分析</h1>
+  <ol class="breadcrumb">
+    <li><a href="#servers"><i class="proudsmart ps-server"></i>服务中心</a></li>
+    <li><a href="#servers">服务概览</a></li>
+    <li class="active">产能分析</li>
+  </ol>
+</section>
+<section class="content">
+  <!-- <div class="row"> -->
+  <div class="box">
+    <div class="row col-sm-11 none-float auto-margin no-padding margin-top-40">
+      <div class="col-md-3 col-sm-6" ng-repeat="item in expertCurveHeader">
+        <div class="">
+          <div class="icon pull-left" style="width:60px;">
+          	<i class="proudsmart {{item.icon}}" style="width:50px;height:50px;font-size : 50px;color:#25bce7"></i>
+          </div>
+          <div class="inner">
+            <h3>{{item.title}}</h3>
+            <p>{{item.type}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+    <div class="panel panel-default col-sm-11 none-float auto-margin no-padding">
+      <div class="panel-heading pull-left full-width" style="background-color:#E0E0E0">
+        <div class="col-sm-2">
+          生产参照曲线
+        </div>
+        <div class="col-sm-5 align-center">
+          菌丝体
+        </div>
+        <div class="col-sm-5 align-center">
+          子实体
+        </div>
+      </div>
+      <div class="panel-body" style="background-color:#EBEBEB">
+        <div class="col-sm-12" style="margin-top:20px;">
+          <div class="col-sm-2">
+            <label style="margin-top:10px;">金针菇</label>
+          </div>
+          <div class="col-sm-5">
+            <div class="col-sm-3" ng-repeat="item in MyceliaData">
+              <label>{{item.name}}</label>
+              <p>{{item.value}}</p>
+            </div>
+          </div>
+          <div class="col-sm-5">
+            <div class="col-sm-3" ng-repeat="item in MyceliaData">
+              <label>{{item.name}}</label>
+              <p>{{item.sporocarpvalue}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- echarts -->
+    <div class="row col-sm-11 none-float auto-margin no padding margin-top-40 margin-bottom-20">
+    	<div id="airTem" class="col-sm-6" style="height:400px;"></div>
+    	<div id="airHum" class="col-sm-6" style="height:400px;"></div>
+    	<div id="soilTem" class="col-sm-6" style="height:400px;"></div>
+    	<div id="soilHum" class="col-sm-6" style="height:400px;"></div>
+    	</div>
+  </div>
+</section>

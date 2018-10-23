@@ -1,0 +1,89 @@
+<config injector="$scope,ajax,$location,psDialog,$routeParams" params="/:id?">
+</config>
+<template>
+    <proudsmart-base>
+        <ps-layout data-option="layout"></ps-layout>
+    </proudsmart-base>
+</template>
+<script type="text/javascript">
+    export default function (scope, ajax,location,psDialog,routeParams) {
+        scope.layout = {
+            label: '公共文档',
+            children: [{
+                label: '公共文档',
+                type: "panel",
+                children: [{
+                    type: "table",
+                    config: {
+                        attributes: {
+                            "name": ["文档名称", "text"],
+                            "description": ["文档描述","text"]
+                        },
+                        grid: {
+                            body: ["name","description"],
+                            buttons: {
+                                outGrid: [{
+                                    label: "添加文档",
+                                    class: "primary",
+                                    icon: "fa fa-plus",
+                                    on: {
+                                        click : function(){
+                                            psDialog.modal({
+                                                label : "添加文档",
+                                                type : "layout",
+                                                children : [{
+                                                    type : "form-dialog",
+                                                    data : null,
+                                                    children : [{
+                                                        type : "input",
+                                                        label : "文档名称",
+                                                        composory: true,
+                                                        __key : "name",
+                                                    },{
+                                                        type : "input",
+                                                        label : "文档描述",
+                                                        __key : "description",
+                                                    }]
+                                                }],
+                                                buttons : [{
+                                                    label : "确定",
+                                                    class : "btn btn-primary",
+                                                    click : function(){
+
+                                                        this.close();
+                                                    }
+                                                },{
+                                                    label : "取消",
+                                                    click : function(){
+                                                        this.close();
+                                                    }
+                                                }]
+                                            });
+                                        }
+                                    }
+                                }],
+                                inGrid: [{
+                                    label: "下载",
+                                    class: "btn btn-primary"
+                                },{
+                                    label: "删除",
+                                    class: "btn btn-primary"
+                                }]
+                            },
+                            config: {
+                                url: 'resourceUIService.getUploadModelFileList',
+                                parameter: routeParams.id,
+                                showIndex: false,
+                                showSelector: false,
+                                showSearch: false
+                            },
+                            options: []
+                        }
+                    }
+                }]
+            }]
+        }
+    };
+</script>
+<style type="less">
+</style>

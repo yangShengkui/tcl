@@ -1,0 +1,122 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Application buttons -->
+      <div class="box">
+        <div class="box-header">
+          <ol class="breadcrumb">
+            <div class="text-center pull-right" style="display: inherit;">
+              <!--二维码暂时不用
+              <a ng-if="selectedGateitem" ng-click="qrCode()" class="btn btn-default btn-sm"><i class="fa fa-qrcode"></i><span class="hidden-xs"> 二维码</span></a>-->
+              <a ng-click="addModel()" class="btn btn-default btn-sm"><i class="fa fa-plus"></i><span class="hidden-xs"> 新建网关</span></a>
+              <a ng-if="selectedGateitem && selectedGateitem.id != 0" ng-click="changeManagedStatus()" class="btn btn-default btn-sm"><i ng-class="{true:'fa fa-play',false:'fa fa-pause'}[selectedGateitem.managedStatus=='deactive']"></i><span class="hidden-xs" ng-bind="selectedGateitem.managedStatus=='deactive'?' 启用网关':' 停用网关'"></span></a>
+              <a ng-if="selectedGateitem" ng-click="delModel()" class="btn btn-default btn-sm"><i class="fa fa-minus"></i><span class="hidden-xs"> 删除网关</span></a>
+            </div>
+          </ol>
+        </div>
+
+        <div class="box-body slick-box-body">
+          <div variablesidth="true" dots="false" arrows="true" slidesToScroll="3" autorender="false" ng-model="gatewaysAry" slick>
+            <a class="btn btn-app slick-a" ng-class="{true: 'btn btn-app slick-a active active-ps', false: 'btn btn-app slick-a'}[selectedGateitem.id==item.id]" ng-click="click(item)" ng-repeat="item in gatewaysAry track by $index" on-finish-render-filters>
+              <span class="badge {{item.alertlv}}">{{item.count}}</span>
+
+              <span class="badgeleft">
+								<i ng-class="{true:'fa fa-link',false:'fa fa-unlink'}[item.onlineStatus=='online']"></i>
+							</span>
+              <!--
+							<span class="badgecenter {{item.managedStatuslv}}">{{item.managedStatuslab}}</span>
+							-->
+              <i ng-class="{true:item.icon,false:'fa fa-ban fa-2x text-danger'}[item.managedStatus=='active']"></i> {{item.name}}
+            </a>
+          </div>
+        </div>
+        <div class="box-footer" ng-show="selectedGateitem">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs pull-left">
+              <li class="active" ng-class="{true:'active'}[activeListTab == 'tab4']"><a name="tab4" href="#" data-toggle="tab"><i class="fa fa-cogs"></i><span class="hidden-xs"> 基本信息</span></a></li>
+              <li ng-class="{true:'active'}[activeListTab == 'tab6']"><a name="tab6" href="#" data-toggle="tab"><i class="fa fa-list text-green"></i><span class="hidden-xs"> 设备列表</span></a></li>
+              <li ng-class="{true:'active'}[activeListTab == 'tab5']"><a name="tab5" href="#" data-toggle="tab"><i class="fa fa-list text-red"></i><span class="hidden-xs"> 新发现设备</span></a></li>
+
+            </ul>
+            <div class="tab-content">
+              <form role="form" class="form-horizontal tab-pane active" ng-show="activeListTab == 'tab4'" name="myForm" novalidate>
+                <div class="form-group">
+                  <div class="col-sm-3">
+                    <a ng-click="saveModelSubItem()" class="btn btn-default btn-sm"><i class="fa fa-save"></i><span class="hidden-xs"> 保存信息</span></a>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-4">
+                    <label><span class="text-danger">*</span>网关名称:</label>
+                    <input ng-pattern="/^[0-9A-Za-z\u4e00-\u9fa5]{0,40}$/" name="name" class="form-control input-sm" type="text" ng-model="selectedGateitem.name" />
+                    <span style="color:red" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+                      <span ng-show="myForm.name.$dirty && myForm.name.$invalid">仅限数字字母和中文</span>
+                    </span>
+                  </div>
+                  <div class="col-sm-4">
+                    <label><span class="text-danger">*</span>网关标识:</label>
+                    <input class="form-control input-sm" type="text" name="externalGwId" ng-model="selectedGateitem.externalGwId" />
+                  </div>
+                  <div class="col-sm-4">
+                    <label><span class="text-danger">*</span>所属域:</label>
+                    <!--<input autocomplete="off" placeholder="请选择..." name="domainPath" domain-Picker class="form-control input-sm domainClass" type="text" ng-model="domainListDic[selectedGateitem.domain].name" domainPath="{{selectedGateitem.domain}}" model="selectedGateitem.domain"
+                      ng-disabled="selectedGateitem.id !=0">-->
+                    <input class="form-control input-sm" disabled="true" ng-if="selectedGateitem.id !=0" value="{{domainListDic[selectedGateitem.domain].name}}"/>
+                    <div ng-if="!selectedGateitem.id || selectedGateitem.id == 0" class="dropdowntree select-sm" placeholder="请选择..." ng-model="selectedGateitem.domain" change="" key="domainPath" options="domainListTree" mark="nodes"/>  
+                  </div>
+
+                </div>
+
+                <div class="form-group">
+
+                  <div class="col-sm-4">
+                    <label><span class="text-danger">*</span>接入协议:</label>
+                    <select class="form-control input-sm" ng-model="selectedGateitem.protocol" ng-options="value.protocol as value.protocol for value in protocols" style="width: 100%">
+                        <option value="">请选择...</option>
+                      </select>
+                  </div>
+                  <div class="col-sm-4">
+                    <label><span class="text-danger">*</span>协议版本:</label>
+                    <select class="form-control input-sm" ng-model="selectedGateitem.protocolVersion" ng-change="protocolVersionChange()" ng-options="value.protocolVersion as value.protocolVersion  for value in protocolVersions| filter:{ protocol :  selectedGateitem.protocol}"
+                      style="width: 100%">
+                      <option value="">请选择...</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-4">
+                    <label>采集模板:</label>
+                    <select class="form-control input-sm" ng-model="selectedGateitem.collectionTemplate" ng-options="value as value for value in collectionTemplates" style="width: 100%">
+                      <option value="">请选择...</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-4">
+                    <label>网关描述:</label>
+                    <input class="form-control input-sm" type="text" ng-model="selectedGateitem.desc" maxlength="200" />
+                  </div>
+                  <div class="col-sm-4">
+                    <label>接入地址:</label>
+                    <input class="form-control input-sm" type="text" ng-model="selectedGateitem.accessAddress" maxlength="40" />
+                  </div>
+                </div>
+              </form>
+              <div class="box-body no-padding" ng-show="activeListTab == 'tab6'">
+                <table width="100%" class="table table-hover" cmdb3-table></table>
+              </div>
+              <div class="box-body no-padding" ng-show="activeListTab == 'tab5'">
+                <table width="100%" class="table table-hover" not-confirmed-table></table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</section>
+<!-- /.content -->

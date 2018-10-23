@@ -1,0 +1,56 @@
+<config injector=""
+></config>
+<template>
+    <div>
+        <div style=""></div>
+        <span>40%</span>
+    </div>
+</template>
+<script type="text/javascript">
+    export default function(){
+        return {
+            scope : {
+                ngModel : "=?",
+                config : "=?",
+                options: "@",
+            },
+            require : '?ngModel',
+            link(scope, element, attr, ngModel) {
+                scope.data = [{
+                    prodline: "装配",
+                    time:"7月1日 15:30",
+                    status:"正常",
+                    finish: 2050,
+                     percent: "87%"
+                },{
+                    prodline: "差壳",
+                    time:"7月2日 15:30",
+                    status:"正常",
+                    finish: 2000,
+                    percent: "100%"
+                },{
+                    prodline: "减壳",
+                    time:"7月3日 15:30",
+                    status:"正常",
+                    finish: 450,
+                    percent: "45%"
+                },{
+                    prodline: "齿轮",
+                    time:"7月4日 15:30",
+                    status:"正常",
+                    finish: 2500,
+                    percent: "72%"
+                }]
+            }
+        }
+    }
+</script>
+<style type="less" scoped="true">
+    .wrap{
+        margin : 5px;
+        padding : 10px;
+        color : #333;
+        background-color : #eee;
+        border : 1px solid #ddd;
+    }
+</style>

@@ -1,0 +1,91 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-f2">
+                <a role="button" ng-click="closeModel()" class="close">×</a>
+                <h4 class="modal-title info-box-number">{{option.title}}</h4>
+            </div>
+            <div class="modal-body clearfix row">
+                <div style="max-height: 400px;overflow-y: auto;overflow-x: hidden">
+                    <form role="form" class="form-horizontal" name="dialogForm">
+                        <div class="form-group" ng-repeat="item in option.body">
+                            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+                                <span class="text-danger" ng-if="item.required">*</span>
+                                <span>{{item.label}}：</span>
+                            </label>
+                            <div ng-if="item.type === 'input'"
+                                 class="col-sm-6 padding-left-5">
+                                <input class="form-control dialog-inp-text input-sm"
+                                       name="{{item.field}}"
+                                       type="text"
+                                       placeholder="{{item.placeholder || ''}}"
+                                       ng-pattern="item.reg"
+                                       ng-change="item.changeFn()"
+                                       ng-model="formData[item.field]"
+                                       ng-disabled="item.disabled"
+                                       ng-required="item.required">
+                                <span ng-show="dialogForm[item.field].$error.pattern || item.checkValue()"
+                                      style="font-size: 12px; display: block;"
+                                      class="text-danger">{{item.errorTip}}</span>
+                            </div>
+                            <div ng-if="item.type === 'textarea'"
+                                 class="col-sm-6 padding-left-5">
+                                <textarea class="form-control dialog-inp-text input-sm"
+                                          name="{{item.field}}"
+                                          placeholder="{{item.placeholder || ''}}"
+                                          rows="3"
+                                          ng-pattern="item.reg"
+                                          ng-change="item.changeFn()"
+                                          ng-model="formData[item.field]"
+                                          ng-disabled="item.disabled"
+                                          ng-required="item.required">
+                                </textarea>
+                                <span ng-show="dialogForm[item.field].$error.pattern || item.checkValue()"
+                                      style="font-size: 12px; display: block;"
+                                      class="text-danger">{{item.errorTip}}</span>
+                            </div>
+                            <div ng-if="item.type === 'select'"
+                                 class="col-sm-6 padding-left-5">
+                                <select ng-model="formData[item.field]"
+                                        ng-disabled="item.disabled"
+                                        ng-required="item.required"
+                                        name="{{item.field}}"
+                                        class="form-control dialog-inp-text input-sm"
+                                        ng-change="item.changeFn()"
+                                        ng-options="x.id as x.label for x in item.selectData"></select>
+                                <span ng-show="dialogForm[item.field].$error.required"
+                                      style="font-size: 12px; display: block;"
+                                      class="text-danger">{{item.errorTip}}</span>
+                            </div>
+                            <div ng-if="item.type === 'select2'"
+                                 class="col-sm-6 padding-left-5">
+                                <select ng-model="formData[item.field]"
+                                        ng-disabled="item.disabled"
+                                        ng-required="item.required"
+                                        class="form-control dialog-inp-text input-sm"
+                                        ng-options="x.id as x.label for x in item.selectData"
+                                        ng-change="item.changeFn()"
+                                        selectData="item.selectData"
+                                        select2>
+                                </select>
+                                <span ng-show="dialogForm[item.field].$error.required"
+                                      style="font-size: 12px; display: block;"
+                                      class="text-danger">{{item.errorTip}}</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button ng-repeat="button in option.buttons"
+                        class="btn"
+                        ng-click=" button.clickFn($event)"
+                        ng-disabled="button.invalid ? dialogForm.$invalid : false"
+                        ng-class="button.class? button.class: 'btn-default'">
+                    {{button.label}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

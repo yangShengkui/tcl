@@ -1,0 +1,154 @@
+<config defaultRouter = "true"
+        params="/:viewId?"
+        injector="$scope,$rootScope,$q,$location,$timeout,$routeParams,growl,viewFlexService,psCommand"
+></config>
+<template>
+  <div>
+    <free-board-editor
+        data-type="type"
+        data-on-preview-tree="onPreviewTree(d)"
+        data-on-preview="onPreview(d)"
+        data-on-del="onDel(d)"
+        data-cotree="psComponents"
+        data-setting="setting"
+        data-options="options"
+        data-on-save="onSave(d)">
+    </free-board-editor>
+  </div>
+</template>
+<script type="text/javascript">
+  export default function(scope,rootScope,q,loc,timeout,routeParams,growl,viewFlexService,psCommand, psComponents) {
+    let storage = window.localStorage, dt = storage[`freeboardView`], obj, dashboardV3 = [], dashboardV3Map = {};
+    function addView(viewInfo){
+      var defer = q.defer();
+      viewFlexService.addView(viewInfo, (d) => {
+        d.code == 0 ? defer.resolve(d.data) : defer.reject(d.message)
+      });
+      return defer.promise;
+    }
+    function updateView(viewInfo){
+      var defer = q.defer();
+      viewFlexService.updateView(viewInfo, (d) => {
+        d.code == 0 ? defer.resolve(d.data) : defer.reject(d.message)
+      });
+      return defer.promise;
+    }
+    function deleteViewById(viewId){
+      var defer = q.defer();
+      viewFlexService.deleteView(viewId, (d) => {
+        d.code == 0 ? defer.resolve(d.data) : defer.reject(d.message)
+      });
+      return defer.promise;
+    }
+    function getViewById(viewId){
+      var defer = q.defer();
+      viewFlexService.getViewById(viewId, (d) => {
+        d.code == 0 ? defer.resolve(d.data) : defer.reject(d.message)
+      });
+      return defer.promise;
+    }
+    function getAllMyViews(){
+      var defer = q.defer();
+      viewFlexService.getAllMyViews((d) => {
+        d.code == 0 ? defer.resolve(d.data) : defer.reject(d.message)
+      });
+      return defer.promise;
+    }
+    function parser(str){
+      let json;
+      try {
+        json = JSON.parse(str);
+      } catch(e) {
+        console.error(e);
+        json = null;
+      } finally {
+        return json
+      }
+    }
+    function clone(obj){
+      return JSON.parse(JSON.stringify(obj));
+    }
+    scope.onPreviewTree = function(d){
+      var href = window.location.href;
+      window.open(href.split("#")[0] + "#/index/" + d.attributes.viewId, "_blank");
+    }
+    scope.onPreview = function(d){
+      var href = window.location.href;
+      storage["freeboardView"] = d;
+      window.open(href.split("#")[0] + "#/preview/" + scope.viewId, "_blank");
+    }
+    scope.onDel = function(d){
+      deleteViewById(d.attributes.viewId).then(() => {
+        growl.success(`删除图片成功`)
+      }).catch((e) => {
+        console.error(e);
+      });
+    }
+    scope.onSave = function(d){
+      let viewInfo = {
+          viewTitle : scope.setting.attributes.viewTitle,
+          viewType : "dashboardV3",
+          content : d
+        },
+        promise = scope.viewId
+          ? (viewInfo.viewId = scope.viewId, updateView(viewInfo))
+          : addView(viewInfo);
+      promise.then((d) => {
+        if(!scope.viewId){
+          scope.viewId = d.viewId;
+          loc.path("index/" + d.viewId);
+        }
+        d ? growl.success(`${scope.viewId ? `编辑`:`创建`}新视成功`)
+          : growl.error(`创建新视图失败`)
+      })
+    }
+    getAllMyViews().then((views) => {
+      let view, json, cl = clone(psComponents);
+      scope.viewId = routeParams.viewId;
+      dashboardV3 = views.filter((v) => {
+        let rs = v.viewType === "dashboardV3";
+        if(rs){ dashboardV3Map[v.viewId] = v; }
+        return rs;
+      });
+      cl.children.push({
+        abspath : "已创建视图",
+        name : "已创建视图",
+        ext : "",
+        children : dashboardV3.map((n) => {
+          return {
+            abspath : "/free-comp-view.layout",
+            name : n.viewTitle,
+            ext : "layout",
+            attributes : {
+              viewId : n.viewId
+            }
+          }
+        })
+      });
+      scope.psComponents = cl;
+      if(scope.viewId === "absolute"){
+        scope.type = "absolute";
+        scope.viewId = null;
+        scope.options = [];
+        scope.setting = { attributes : {} } ;
+      } else if(dashboardV3Map[scope.viewId]){
+        getViewById(scope.viewId).then((view) => {
+          json = parser(view.content);
+          scope.type = json ? json.type : "";
+          scope.options = json ? (json.data || []) : [];
+          scope.setting = json ? { attributes : json.setting || {} } : { attributes : {} };
+        }).catch((e)=>{
+          scope.options = [];
+          scope.setting = { attributes : {} } ;
+        })
+      } else {
+        scope.viewId = null;
+        scope.options = [];
+        scope.setting = { attributes : {} } ;
+      }
+    });
+  }
+</script>
+<style type="less">
+
+</style>

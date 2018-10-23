@@ -1,0 +1,107 @@
+{
+  "layout": {
+    "type": "column",
+    "children": [
+      {
+        "label": "控制板1",
+        "type": "block",
+        "source": "BLOCK",
+        "style": {
+          "padding": "10px",
+          "margin": "5px",
+          "background-color": "#3c8dbc"
+        },
+        "advance": {
+          "expression": {}
+        },
+        "children": [
+          {
+            "type": "column",
+            "col": 12,
+            "children": [
+              {
+                "label": "文字",
+                "type": "text",
+                "source": "TEXT",
+                "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                "data": {
+                  "applied": false,
+                  "kpi": [],
+                  "modelType": 300,
+                  "resfilltype": "parameter",
+                  "resource": [],
+                  "multipleCi": false,
+                  "multipleKpi": false,
+                  "series": {
+                    "manual": "拷贝图标样式到剪切板",
+                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                  },
+                  "modelDisable": true
+                },
+                "style": {
+                  "font-size": "16px",
+                  "font-weight": "bold",
+                  "text-align": "left",
+                  "color": "rgb(255, 255, 255)"
+                },
+                "advance": {
+                  "getfunction": "kpiDataService.getValueList",
+                  "category": "ci",
+                  "condition": [
+                    "kpi",
+                    "{object:kpiQueryModel}"
+                  ],
+                  "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"拷贝图标样式\")\n        }\n    }\n}"
+                },
+                "url": "images/map/map1.png"
+              }
+            ]
+          }
+        ],
+        "url": "images/map/map1.png"
+      },
+      {
+        "label": "控制板1",
+        "type": "block",
+        "source": "BLOCK",
+        "style": {
+          "padding": "5px",
+          "margin": "5px",
+          "border": "1px solid #eee",
+          "background-color": "#fff",
+          "box-shadow": "1px 1px 10px 1px rgba(0,0,0,.2)",
+          "background": "#fff",
+          "height": "calc( 100vh - 60px)",
+          "overflow": "auto"
+        },
+        "advance": {
+          "expression": {}
+        },
+        "children": [
+          {
+            "type": "column",
+            "col": 12,
+            "children": [
+              {
+                "label": "控件组",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [];\n      target.getIcons(function(icons){\n          var colLength = 6;\n          var rowLength = Math.ceil(icons.length / colLength);\n          var createTd = function(icon){\n            return {\n              type : \"jquery\",\n              render : function(){\n                  var wrap = $(\"<button></button>\");\n                  var iconDom = $(\"<div></div>\");\n                  var text = $(\"<p></p>\");\n                  wrap.addClass(\"btn btn-default\");\n                  wrap.css(\"width\", \"100%\");\n                  wrap.css(\"padding-top\", \"20px\")\n                  wrap.css(\"height\", \"auto\");\n                  iconDom.css(\"font-size\", \"30px\");\n                  iconDom.css(\"display\", \"block\");\n                  iconDom.addClass(icon);\n                  text.html(icon.replace(\" \", \"<br/>\"));\n                  wrap.append(iconDom);\n                  wrap.append(text);\n                  target.copyToClipBoard(wrap, icon, function(){\n                          target.growl(\"已拷贝到剪切板!\")\n                      });\n                  return wrap;\n              }\n            }\n          }\n          for(var i = 0; i < rowLength; i++){\n              var tr = [];\n              for(var j = 0; j < colLength; j++){\n                  var icon = icons[i * colLength + j];\n                  if(icon){\n                      tr.push(createTd(icon))\n                  } else {\n                     break;   \n                  }\n              }\n              ctrlGroups.push(tr);\n          };\n          event.target.render(ctrlGroups);\n      });\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px"
+                },
+                "help": "../pdf/ctrlgroup.pdf"
+              }
+            ]
+          }
+        ],
+        "url": "images/map/map1.png"
+      }
+    ],
+    "col": 12
+  },
+  "setting": "setting = {\n  \"showNavi\" : false,\n  \"style\" : {\n    \"padding\" : \"5px\",\n    \"background\" : \"-webkit-linear-gradient(top,#eee,#fff)\"\n  }\n}"
+}

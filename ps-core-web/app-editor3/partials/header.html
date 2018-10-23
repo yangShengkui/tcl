@@ -1,0 +1,31 @@
+<header class="main-header" style="margin-left: 300px;">
+  
+  <form role="form" name="alertForm">
+    <div class="form-group col-sm-2">
+      <label style="margin-top: 8px;"> | 视图名称：{{selectedView.viewTitle}} </label>
+    </div>
+    <div class="form-group col-sm-2">
+      <div class="dropdowntree" placeholder="请选择管理域"
+            ng-model="queryDitem.domainPath" change="" key="domainPath" options="domainListTree" mark="nodes"/>
+    </div>
+    <div class="form-group col-sm-2" ng-if="baseConfig.customerConfig.display && !userInfo.subDomain">
+      <select select2 class="form-control" placeholder="请选择{{menuitems['S12'].label?menuitems['S12'].label:'客户'}}"  ng-model="queryDitem.customerId" selectdata="customersList" ng-options="value.id as value.text for value in customersList | filter:{ domainPath :queryDitem.domainPath}">
+      </select>
+    </div>
+    <div class="form-group col-sm-2" ng-if="baseConfig.projectConfig.display && !userInfo.subDomain">
+      <select select2 class="form-control" placeholder="请选择{{menuitems['S13'].label?menuitems['S13'].label:'项目'}}" ng-model="queryDitem.projectId" ng-options="value.id as value.text for value in projectsList | filter:{ customerId :queryDitem.customerId}" selectdata="projectsList">
+      </select>
+    </div>
+    <div class="form-group col-sm-2">
+      <select select2 class="form-control" placeholder="请选择设备模板" ng-change="queryModelChange();" ng-model="queryDitem.modelId" ng-options="value.id as value.label for value in modelListSelect" selectdata="modelListSelect">
+      </select>
+    </div>
+    <div class="form-group col-sm-2 pull-right no-pad" >
+      
+      <div class="btn-group">
+        <button ng-click="saveContentData()"  type="button" class="btn btn-primary btn-sm"><i class="fa fa-save"></i><span class="hidden-sm"> 保存</span></button>
+        <button ng-click="$parent.homeClick(2)" type="button" class="btn btn-default btn-sm"><i class="fa fa-close"></i><span class="hidden-sm"> 退出</span></button>
+      </div>
+    </div>
+  </form>
+</header>

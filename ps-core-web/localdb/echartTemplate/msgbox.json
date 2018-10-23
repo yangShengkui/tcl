@@ -1,0 +1,60 @@
+{
+  "layout": {
+    "type": "column",
+    "children": [
+      {
+        "label": "文字",
+        "type": "text",
+        "source": "TEXT",
+        "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+        "data": {
+          "applied": false,
+          "multipleCi": false,
+          "multipleKpi": false,
+          "resource": [],
+          "modelType": 300,
+          "resfilltype": "parameter",
+          "series": {
+            "manual": "新建文字",
+            "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+          },
+          "modelDisable": true
+        },
+        "style": {
+          "margin": "5px",
+          "padding": "0",
+          "font-size": "12px",
+          "font-weight": "normal"
+        },
+        "advance": {
+          "getfunction": "kpiDataService.getValueList",
+          "category": "ci",
+          "condition": [
+            "kpi",
+            "{object:kpiQueryModel}"
+          ],
+          "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            var dt = target.getPopupData() || {};\n            target.setText(dt.text || \"信息\");\n        }\n    }\n}"
+        },
+        "url": "images/map/map1.png"
+      },
+      {
+        "label": "控件组",
+        "type": "ctrlgroup",
+        "source": "CTRLGROUP",
+        "advance": {
+          "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var buttons = [{\n          id : 0,\n          label : \"确认\",\n          icon : \"glyphicon glyphicon-ok\",\n          class : \"btn btn-primary\"\n      },{\n           id : 1,\n          label : \"取消\",\n          icon : \"glyphicon glyphicon-remove\",\n          class : \"btn btn-default\"\n      }]\n      var ctrlGroups = [];\n      var content = [];\n      var tr = [{\n          type : \"buttonGroup\",\n          content : content,\n          groupStyle : {\n              float : \"right\"\n          }\n      }]\n      var createBtn = function(index, element){\n          return {\n              type : \"button\",\n              value : buttons[index].label,\n              icon : buttons[index].icon,\n              btnclass : buttons[index].class,\n              tdStyle : {\n                  width : \"100px\",\n                  float : \"right\"\n              },\n              on : {\n                click : function(elem){\n                  if(index == 0){\n                      target.submit();\n                  } else {\n                      target.cancel();\n                  }\n                }\n              }\n          };\n      }\n      for(var i in buttons){\n          content.push(createBtn(i, buttons[i]))\n      };\n      ctrlGroups.push(tr);\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+        },
+        "style": {
+          "margin": "5px",
+          "font-size": "12px"
+        },
+        "help": "../pdf/ctrlgroup.pdf",
+        "url": "images/map/map1.png"
+      }
+    ],
+    "col": 12
+  },
+  "setting": {
+    "padding": 15
+  }
+}

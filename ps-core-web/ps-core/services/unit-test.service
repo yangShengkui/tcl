@@ -1,0 +1,52 @@
+<config injector="$q, $timeout, $http, growl"
+></config>
+<script type="text/javascript">
+  export default function(q, timeout, http, growl){
+    function test(descr, fn, isRun){
+      test.defer = test.defer || [];
+      var defer = q.defer()
+        ,def = test.defer.pop();
+      if(isRun){
+        if(def){
+          test.defer.push(def.then((d) => {
+            console.warn(descr, " (  已启用，执行中 ) ");
+            debug(function(){
+              fn(next);
+            })
+            return defer.promise;
+          }))
+        } else {
+          console.warn(descr, " ( 已启用，执行中 )  ");
+          debug(function(){
+            fn(next);
+          })
+          test.defer.push(defer.promise);
+        }
+      } else {
+        if(def){
+          test.defer.push(def.then((d) => {
+            console.info(descr, "  ( 已停用，不执行 ) ");
+            test.defer.push(defer.promise);
+            next();
+          }))
+        } else {
+          console.info(descr, "  ( 已停用，不执行 ) ");
+          test.defer.push(defer.promise);
+          next();
+        }
+      }
+      function next(){
+        defer.resolve("success");
+      }
+    }
+    function debug(fn){
+      try {
+        fn();
+      } catch(e) {
+        console.log(e.code);
+        console.error(e);
+      }
+    }
+    return test;
+  }
+</script>

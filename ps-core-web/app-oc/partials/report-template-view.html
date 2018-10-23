@@ -1,0 +1,59 @@
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active">
+                <a>报表模板</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn"  ng-show="menuitems['#'+treeviewIndex] == null" role="button" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body no-padding-left no-pad-bottom">
+          <form role="form" name="reportForm">
+            <div class="form-group col-sm-2">
+              <label class="control-label">管理域：</label>
+              <div  class="dropdowntree" placeholder="请选择..."
+                    ng-model="queryDitem.domainPath" change="" key="domainPath" options="domainListTree" mark="nodes"/>
+            </div>
+            <div class="form-group col-sm-2">
+              <label class="control-label">模板分类：</label>
+              <select select2 class="form-control" ng-model="queryDitem.catalogId" ng-options="value.id as value.name for value in catalogs" selectdata="catalogs">
+                <option value="">请选择...</option>
+              </select>
+            </div>
+            <div class="form-group col-sm-2">
+              <label class="control-label">模板数据源：</label>
+              <select select2 class="form-control" ng-model="queryDitem.dataSourceId" ng-options="value.id as value.name for value in dataSources" selectdata="dataSources">
+                <option value="">请选择...</option>
+              </select>
+            </div>
+            <div class="form-group col-sm-2">
+              <label class="control-label">模板名称：</label>
+              <input class="form-control" type="text" ng-model="queryDitem.name" placeholder="请输入..." />
+            </div>
+            <div class="form-group col-sm-2">
+              <label class="control-label">模板标题：</label>
+              <input class="form-control" type="text" ng-model="queryDitem.title" placeholder="请输入..." />
+            </div>
+            <div class="form-group col-sm-2 pull-right no-pad" >
+              <label class="col-sm-12 control-label font-white">操作：</label>
+              <div class="btn-group">
+                <button ng-click="goSearch()"  type="button" class="btn btn-primary btn-sm"><i class="fa fa-search"></i><span class="hidden-sm"> 查询</span></button>
+                <button ng-click="goClear()" type="button" class="btn btn-default btn-sm"><i class="fa fa-close"></i><span class="hidden-sm"> 清除</span></button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="box-footer">
+          <table style="width:100%" class="table table-hover" report-template-table></table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

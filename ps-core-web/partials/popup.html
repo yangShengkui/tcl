@@ -1,0 +1,485 @@
+<div class="free-board-edit-panel" ng-if="show">
+  <div class="content-wrap">
+    <div class="content">
+      <div class="box">
+        <div class="box-header text-center">
+          <h4 class="box-title" ng-bind="$parent.popup.label"></h4>
+          <button class="btn btn-primary btn-xs" style="position:absolute; top:8px; margin-left: 10px;" ng-click="$parent.popup.toHelpDoc()">
+            帮助
+            <span class="glyphicon glyphicon-question-sign" ></span>
+          </button>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="remove" ng-click="$panelCancel()"><i class="fa fa-times"></i></button>
+          </div>
+          <ul id="myTabs" class="nav nav-tabs">
+            <li role="presentation" ng-class="{true : 'active', false : ''}[navi == $parent.popup.selected]" ng-click="navi.click();" style="cursor : pointer;" ng-repeat="navi in $parent.popup.content">
+              <a ng-bind="navi.label"></a>
+            </li>
+          </ul>
+        </div>
+        <div class="box-body" style="border : 1px dashed #ccc; height : 600px; overflow-y : scroll; overflow-x: hidden;">
+          <!-- 样式模板 -->
+          <div ng-if="($parent.popup.selected.$name == 'template')">
+            <div class="col-md-4" ng-click="item.choseTemplate()" ng-repeat="item in $parent.popup.selected.list">
+              <table style="width:100%; cursor:pointer; margin-bottom:10px;" ng-class="{true:'template-selected', false:'template-no-selected'}[item.chosen == true]">
+                <td data-template="item" data-element="$parent.popup.domHtml" example style="vertical-align: middle; padding:10px; height : 80px;"></td>
+              </table>
+            </div>
+          </div>
+          <!-- 样式模板 -->
+          <!-- 样式版模板视图 -->
+          <div ng-if="($parent.popup.selected.$name == 'parameters')">
+            <div class="col-md-12">
+              <table style="width : 100%;">
+                <tr style="height : 40px;" ng-repeat="item in $parent.popup.selected.list">
+                  <td style="width : 100px;">
+                    <span ng-bind="item.label"></span>
+                  </td>
+                  <td>
+                    <div ng-model="item.value" ng-if="item.type=='boolean'" fb-toggle data-change="item.change()"></div>
+                    <input ng-model="item.value" ng-if="item.type=='input'" class="form-control" ng-change="item.change()" />
+                    <div ng-model="item.value" ng-if="item.type=='select-single'" data-change="item.change()" data-options="item.options" select-single></div>
+                    <div ng-if="item.type=='options'" style="min-height:200px;">
+                      <ul class="nav nav-tabs">
+                        <li role="presentation" ng-class="{true : 'active', false : ''}[item.selectItem.value == subNavi.value]" ng-click="subNavi.click()" style="cursor : pointer;" ng-repeat="subNavi in item.options">
+                          <a ng-bind="subNavi.label"></a>
+                        </li>
+                      </ul>
+                      <div ng-model="item.selectItem.data" ng-if="item.selectItem.type=='exceloneline'" exceloneline></div>
+                      <div ng-model="item.selectItem.data" ng-if="item.selectItem.type=='code'" code-mirror></div>
+                      <div ng-model="item.selectItem.data" ng-if="item.selectItem.type=='excel'" excel></div>
+                      <div ng-model="item.selectItem.data" ng-if="item.selectItem.type=='fileinput'" file-input></div>
+                    </div>
+                    <div ng-model="item.value" ng-if="item.type=='excel'" data-change="item.change()" excel></div>
+                    <div ng-model="item.value" ng-if="item.type=='selectImage'" data-options="item.options" data-change="item.change()" select-image></div>
+                    <div ng-model="item.value" ng-if="item.type=='code'" data-change="item.change()" code-mirror data-root-target="$parent.popup"></div>
+                    <div ng-model="item" ng-if="item.type=='fileinput'" file-input data-change="item.change()"></div>
+                    <input ng-model="item.value" ng-if="item.type=='colorPicker'" color-picker/>
+                    <div ng-model="item.value" ng-if="item.type=='iconSelector'" data-change="item.change()" icon-selector class="icon-selector" data-target="$parent.$parent.popup.selected.list"></div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!-- 样式版模板视图 -->
+          <!-- 样式版模板视图 -->
+          <!-- 数据源-->
+          <div ng-if="($parent.popup.selected.$name == 'source')">
+            <div class="col-md-12">
+              <table style="width : 100%;">
+                <tr>
+                  <td style="height : 40px;">
+                    <span>绑定数据</span>
+                  </td>
+                  <td style="height : 40px;">
+                    <div ng-model="$parent.popup.selected.content.applied" fb-toggle></div>
+                  </td>
+                </tr>
+
+                <tr style="height : 40px;">
+                  <td style="width : 100px;">
+                    <span>专家模版</span>
+                  </td>
+                  <td>
+                    <select ng-model="$parent.popup.selected.content.kqiModel" ng-options="item as item.label for item in $parent.popup.selected.kqiModels" class="form-control"></select>
+                  </td>
+                </tr>
+
+                <tr style="height : 40px;" ng-if="$parent.popup.selected.content.applied">
+                  <td style="width : 100px;">
+                    <span>资源类型</span>
+                  </td>
+                  <td>
+                    <select ng-model="$parent.popup.selected.content.modelType" ng-options="item.id as item.label for item in $parent.popup.selected.modelTypes" ng-change="$parent.popup.selected.content.modelTypeOnChange($parent.popup.selected.content.modelType)" class="form-control"></select>
+                  </td>
+                </tr>
+
+                <tr style="height : 40px;" ng-if="$parent.popup.selected.content.applied && $parent.popup.selected.content.modelType == 0">
+                  <td style="width : 100px;">
+                    <span>选择模板</span>
+                  </td>
+                  <td>
+                    <select ng-model="$parent.popup.selected.content.model" ng-options="item as item.label for item in $parent.popup.selected.models" class="form-control" ng-change="$parent.popup.selected.content.model.onChange()"></select>
+                  </td>
+                </tr>
+                <tr style="height : 40px;" ng-if="$parent.popup.selected.content.applied">
+                  <td style="width : 100px;">
+                    <span>资源选择方式</span>
+                  </td>
+                  <td>
+                    <select ng-model="$parent.popup.selected.content.resfilltype" ng-options="item.id as item.label for item in $parent.popup.selected.resfilltypes" class="form-control"></select>
+                  </td>
+                </tr>
+                <tr style="height : 40px;" ng-if="$parent.popup.selected.content.applied && $parent.popup.selected.content.resfilltype == 'manual'">
+                  <td style="width : 100px;">
+                    <span>选择资源</span>
+                  </td>
+                  <td>
+                    <div ng-model="$parent.popup.selected.content.resource" data-multiple="$parent.popup.selected.content.multipleCi" data-options="$parent.popup.selected.resources" auto-multiselect></div>
+                  </td>
+                </tr>
+                <tr style="height : 40px;" ng-if="$parent.popup.selected.content.applied">
+                  <td style="width : 100px;">
+                    <span>选择指标</span>
+                  </td>
+                  <td>
+                    <div ng-model="$parent.popup.selected.content.kpi" data-multiple="$parent.popup.selected.content.multipleKpi" data-options="$parent.popup.selected.kpis" auto-multiselect></div>
+                  </td>
+                </tr>
+
+                <tr style="height : 40px;" ng-if="$parent.popup.selected.content.applied && $parent.popup.selected.content.aggregate_instance != undefined">
+                  <td style="width : 100px;">
+                    <span>选择实例</span>
+                  </td>
+                  <td>
+                    <select ng-model="$parent.popup.selected.content.aggregate_instance" ng-options="item.id as item.label for item in $parent.popup.selected.aggregate_instances" class="form-control"></select>
+                  </td>
+                </tr>
+
+                <tr style="height : 40px;" ng-if="$parent.popup.selected.content.applied && $parent.popup.selected.content.timespan">
+                  <td style="width : 100px;">
+                    <span>显示时长</span>
+                  </td>
+                  <td>
+                    <timeselect ng-model="$parent.popup.selected.content.timespan"></timeselect>
+                  </td>
+                </tr>
+
+                <tr style="height : 40px;" ng-if="$parent.popup.selected.content.applied && $parent.popup.selected.content.frequency">
+                  <td style="width : 100px;">
+                    <span>显示周期</span>
+                  </td>
+                  <td>
+                    <timeselect ng-model="$parent.popup.selected.content.frequency"></timeselect>
+                  </td>
+                </tr>
+
+                <tr style="height : 40px;" ng-if="$parent.popup.selected.content.applied && $parent.popup.selected.content.aggregate_rule != undefined">
+                  <td style="width : 100px;">
+                    <span>取值规则</span>
+                  </td>
+                  <td>
+                    <select ng-model="$parent.popup.selected.content.aggregate_rule" ng-options="item.id as item.label for item in $parent.popup.selected.aggregate_rules" class="form-control"></select>
+                  </td>
+                </tr>
+
+                <tr style="height : 40px;" ng-if="$parent.popup.selected.content.applied && $parent.popup.selected.content.autoFillBlank != undefined">
+                  <td style="width : 100px;">
+                    <span>填充空值</span>
+                  </td>
+                  <td>
+                    <div ng-model="$parent.popup.selected.content.autoFillBlank" fb-toggle></div>
+                  </td>
+                </tr>
+
+                <tr style="height : 40px;" ng-if="$parent.popup.selected.content.applied">
+                  <td style="width : 100px;">
+                    <span>统计周期</span>
+                  </td>
+                  <td>
+                    <select ng-model="$parent.popup.selected.content.granularityUnit" ng-options="item.valueCode as item.label for item in $parent.popup.selected.granularityUnits" class="form-control"></select>
+                  </td>
+                </tr>
+                <tr style="height : 40px;" ng-if="$parent.popup.selected.content.applied && $parent.popup.selected.content.aggregate_type">
+                  <td style="width : 100px;">
+                    <span>统计类型</span>
+                  </td>
+                  <td>
+                    <div ng-model="$parent.popup.selected.content.aggregate_type" data-config="{disp : 'label', id : 'valueCode', valueOnly : true}" data-options="$parent.popup.selected.aggregate_types" auto-multiselect></div>
+                  </td>
+                </tr>
+                <tr style="height : 40px;" ng-if="$parent.popup.selected.content.applied && $parent.popup.selected.content.format">
+                  <td style="width : 100px;">
+                    <span>时间格式</span>
+                  </td>
+                  <td>
+                    <select ng-model="$parent.popup.selected.content.format" ng-options="item as item for item in ['年月日', '年月日时分','年月','月日','年','月','日','时分秒','时分','分秒']" class="form-control"></select>
+                  </td>
+                </tr>
+                <tr style="height : 40px; margin-bottom:20px;" ng-if="$parent.popup.selected.content.text">
+                  <td style="width : 100px;" rowspan=1>
+                    <span>文字</span>
+                  </td>
+                  <td>
+                    <div ng-if="!$parent.popup.selected.content.applied" ng-model="$parent.popup.selected.content.text.manual" code-mirror data-target="$parent.popup.selected.content.text" style="margin-bottom: 10px;"></div>
+                    <div ng-if="$parent.popup.selected.content.applied" ng-model="$parent.popup.selected.content.text.bind" code-mirror data-target="$parent.popup.selected.content.text" style="margin-bottom: 10px;"></div>
+                  </td>
+                </tr>
+                <!--
+                <tr style="height : 40px;">
+                  <td colspan = 2>
+                    <button class="btn btn-primary" ng-click="$parent.popup.selected.renderData();">绑定设备指标</button>
+                  </td>
+                </tr>
+                -->
+                <tr style="height : 40px; margin-bottom:20px;" ng-if="$parent.popup.selected.content.legend">
+                  <td style="width : 100px;" rowspan=1>
+                    <span>图例</span>
+                  </td>
+                  <td>
+                    <div data-show="!$parent.popup.selected.content.applied" ng-model="$parent.popup.selected.content.legend.value.manual" code-mirror data-target="$parent.popup.selected.content.legend" style="margin-bottom: 10px;"></div>
+                    <div data-show="$parent.popup.selected.content.applied" ng-model="$parent.popup.selected.content.legend.value.bind" code-mirror data-target="$parent.popup.selected.content.legend" style="margin-bottom: 10px;"></div>
+                  </td>
+                </tr>
+                <!--
+                <tr style="height : 40px;" ng-if="$parent.popup.selected.content.legend">
+                  <td>
+                    <div data-source="$parent.popup.selected.content.legend.prev" excel-prev></div>
+                  </td>
+                </tr>
+                 -->
+
+                <tr ng-if="$parent.popup.selected.content.xAxisType">
+                  <td style="height : 40px;">
+                    <span>X轴类型</span>
+                  </td>
+                  <td style="height : 40px;">
+                    <div ng-model="$parent.popup.selected.content.xAxisType" data-options="[{label:'类目',value:'category'},{label:'取值',value:'value'}]" select></div>
+                  </td>
+                </tr>
+
+                <tr style="height : 40px; margin-bottom:20px;" ng-if="$parent.popup.selected.content.xAxis">
+                  <td style="width : 100px;" rowspan=1>
+                    <span>X轴坐标</span>
+                  </td>
+                  <td>
+                    <div data-show="!$parent.popup.selected.content.applied && ($parent.popup.selected.content.xAxisType == 'category')" ng-model="$parent.popup.selected.content.xAxis.value.manual" code-mirror data-target="$parent.popup.selected.content.xAxis" style="margin-bottom: 10px;"></div>
+                    <div data-show="$parent.popup.selected.content.applied && ($parent.popup.selected.content.xAxisType == 'category')" ng-model="$parent.popup.selected.content.xAxis.value.bind" code-mirror data-target="$parent.popup.selected.content.xAxis" style="margin-bottom: 10px;"></div>
+                    <div ng-if="$parent.popup.selected.content.xAxisType == 'value'" style="border:1px solid #ddd; padding: 10px;margin : 10px auto;">X轴取值将通过取值范围自行定义</div>
+                  </td>
+                </tr>
+
+                <tr ng-if="$parent.popup.selected.content.yAxisType">
+                  <td style="height : 40px;">
+                    <span>Y轴类型</span>
+                  </td>
+                  <td style="height : 40px;">
+                    <div ng-model="$parent.popup.selected.content.yAxisType" data-options="[{label:'类目',value:'category'},{label:'取值',value:'value'}]" select></div>
+                  </td>
+                </tr>
+
+                <tr style="height : 40px; margin-bottom:20px;" ng-if="$parent.popup.selected.content.yAxis">
+                  <td style="width : 100px;" rowspan=1>
+                    <span>Y轴坐标</span>
+                  </td>
+                  <td>
+                    <div data-show="!$parent.popup.selected.content.applied && ($parent.popup.selected.content.yAxisType == 'category')" ng-model="$parent.popup.selected.content.yAxis.manual" code-mirror data-target="$parent.popup.selected.content.yAxis" style="margin-bottom: 10px;"></div>
+                    <div data-show="$parent.popup.selected.content.applied && ($parent.popup.selected.content.yAxisType == 'category')" ng-model="$parent.popup.selected.content.yAxis.bind" code-mirror data-target="$parent.popup.selected.content.yAxis" style="margin-bottom: 10px;"></div>
+                    <div ng-if="$parent.popup.selected.content.yAxisType == 'value'" style="border:1px solid #ddd;padding: 10px;margin : 10px auto;">Y轴取值将通过取值范围自行定义</div>
+                  </td>
+                </tr>
+
+                <tr style="height : 40px; margin-bottom:20px;" ng-if="$parent.popup.selected.content.series">
+                  <td style="width : 100px;" rowspan=1>
+                    <span>数据列</span>
+                  </td>
+                  <td>
+                    <div data-show="!$parent.popup.selected.content.applied" ng-model="$parent.popup.selected.content.series.value.manual" code-mirror data-target="$parent.popup.selected.content.series"></div>
+                    <div data-show="$parent.popup.selected.content.applied" ng-model="$parent.popup.selected.content.series.value.bind" code-mirror data-target="$parent.popup.selected.content.series"></div>
+                  </td>
+                </tr>
+                <!--
+                <tr style="height : 40px;" ng-if="$parent.popup.selected.content.series">
+                  <td>
+                    <div data-source="$parent.popup.selected.content.series.prev" excel-prev></div>
+                  </td>
+                </tr>
+                -->
+              </table>
+            </div>
+          </div>
+          <!-- 数据源-->
+          <div ng-if="($parent.popup.selected.$name == 'style')">
+            <div class="col-md-12">
+              <table style="width : 100%;">
+                <tr style="height : 40px;">
+                  <td style="height : 40px;">
+                    <span>添加样式</span>
+                  </td>
+                  <td style="width : 400px;">
+                    <div ng-model="$parent.popup.inputname" data-options="$parent.popup.selected.rest" data-format="$parent.popup.selected.format" select-single style="width : 100%;">
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn btn-primary" ng-click="$parent.popup.selected.addVal($parent.popup.inputname)" ng-disabled="$parent.popup.inputname == undefined">
+                      <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                  </td>
+                </tr>
+                <tr style="height : 40px;" ng-repeat="item in $parent.popup.selected.list">
+                  <td style="width : 200px;">
+                    <span ng-bind="item.label + '(' + item.$name + ')'"></span>
+                  </td>
+                  <td style="width : 400px;">
+                    <input class="form-control" ng-model="item.value" ng-if="item.type=='input'" ng-change="item.change();" />
+                    <input class="form-control" ng-model="item.value" ng-if="item.type=='colorPicker'" color-picker/>
+                    <div ng-model="item.value" ng-if="item.type=='select'" data-options="item.options" select data-change="item.change();"></div>
+                  </td>
+                  <td>
+                    <button class="btn btn-default" ng-click="item.delete()">
+                      <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!-- 样式版模板视图 -->
+          <!-- ECHART样式 -->
+          <div ng-if="($parent.popup.selected.$name == 'echart')">
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" ng-class="{true : 'active', false : ''}[navi == $parent.$parent.popup.selected.selected]" ng-click="navi.click();" style="cursor : pointer;" ng-repeat="navi in $parent.$parent.popup.selected.list">
+                <a ng-bind="navi.label"></a>
+              </li>
+            </ul>
+            <div class="row">
+              <div class="col-md-12">
+                <table style="width : 100%;" ng-if="!$parent.$parent.popup.selected.selected.arraylike">
+                  <tr style="height : 40px;" ng-repeat="item in $parent.$parent.popup.selected.selected.children">
+                    <td style="width : 200px;">
+                      <span ng-bind="item.label"></span>
+                    </td>
+                    <td>
+                      <input class="form-control" ng-model="item.value" ng-if="item.type=='input'" />
+                      <input class="form-control" ng-model="item.value" ng-if="item.type=='numberinput'" />
+                      <input class="form-control" ng-model="item.value" ng-if="item.type=='colorPicker'" color-picker /><span ng-if="item.type=='colorPicker'" ng-bind="item.value" style="line-height: 35px; font-size:20px; margin:0 10px; color:#ccc;"></span>
+                      <div ng-model="item.value" ng-if="item.type=='exceloneline'" exceloneline></div>
+                      <div ng-model="item.value" ng-if="item.type=='select'" data-options="item.options" select></div>
+                      <div ng-model="item.value" ng-if="item.type=='boolean'" fb-toggle></div>
+                      <div ng-model="item.value" ng-if="item.type=='code'" code-mirror data-root-target="$parent.popup"></div>
+                      <div ng-model="item.value" ng-if="item.type=='evalinput'" evalinput/>
+                    </td>
+                  </tr>
+                </table>
+                <div ng-if="$parent.$parent.popup.selected.selected.arraylike">
+                  <table style="width : 100%;border-bottom: 1px solid #eee;" ng-repeat="item in $parent.$parent.popup.selected.selected.children">
+                    <tr style="height : 40px; background-color: #efefef;">
+                      <th style="vertical-align: middle;" colspan="2">
+                        <button class="pull-left btn btn-default" ng-click="item.select();" style="margin:3px 5px;">
+                          <span class="glyphicon" ng-class="{true :'glyphicon-minus', false:'glyphicon-plus'}[item.visible]"></span>
+                        </button>
+                        <span ng-bind="' (' + ($index + 1) + ') ' + item.label + ' ( 类型:' + item.children[0].value + ' )'" style="line-height: 40px; margin-left:10px;"></span>
+                        <button class="pull-right btn btn-default" ng-click="item.delete();" style="margin:3px 5px;">
+                          <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                      </th>
+                    </tr>
+                    <tr style="height : 40px;" ng-repeat="param in item.children" ng-if="item.visible">
+                      <td style="width : 200px;">
+                        <span ng-bind="param.label"></span>
+                      </td>
+                      <td>
+                        <input class="form-control" ng-model="param.value" ng-if="param.type=='input'" />
+                        <input class="form-control" ng-model="param.value" ng-if="param.type=='numberinput'" />
+                        <input class="form-control" ng-model="param.value" ng-if="param.type=='colorPicker'" color-picker /><span ng-if="param.type=='colorPicker'" ng-bind="param.value" style="line-height: 35px; font-size:20px; margin:0 10px; color:#ccc;"></span>
+                        <div ng-model="param.value" ng-if="param.type=='exceloneline'" exceloneline></div>
+                        <div ng-model="param.value" ng-if="param.type=='select'" data-options="param.options" select></div>
+                        <div ng-model="param.value" ng-if="param.type=='boolean'" fb-toggle></div>
+                        <div ng-model="param.value" ng-if="param.type=='code'" code-mirror data-root-target="$parent.popup"></div>
+                        <div ng-model="param.value" ng-if="param.type=='evalinput'" evalinput/>
+                      </td>
+                    </tr>
+                  </table>
+                  <table>
+                    <tr style="height : 50px;">
+                      <td>
+                        <div button-group ng-show="$parent.$parent.popup.selected.selected.$name == 'series'" data-label="$parent.$parent.popup.selected.defaulttype" data-click="$parent.$parent.popup.selected.selected.add(type);" data-options="[{name:'线图',value:'line'}, {name:'柱图',value:'bar'}, {name:'饼图',value:'pie'}, {name:'散点',value:'scatter'}, {name:'波动散点',value:'effectScatter'}, {name:'仪表',value:'gauge'}, {name:'地图',value:'map'}]"></div>
+                        <div button-group ng-show="$parent.$parent.popup.selected.selected.$name == 'visualMap'" data-label="'continuous'" data-click="$parent.$parent.popup.selected.selected.add(type);" data-options="[{name:'连续映射',value:'continuous'}, {name:'分段映射',value:'piecewise'}]"></div>
+                        <button ng-hide="$parent.$parent.popup.selected.selected.$name == 'series'
+                            || $parent.$parent.popup.selected.selected.$name == 'visualMap'" ng-click="$parent.$parent.popup.selected.selected.add();" class="btn btn-primary" style="width : 100%;">
+                          <span class="glyphicon glyphicon-plus"></span>
+                          <span ng-bind="'增加一组'"></span>
+                        </button>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ECHART样式 -->
+          <!-- 高级设定 -->
+          <div ng-if="($parent.popup.selected.$name == 'advance')">
+            <div class="col-md-12">
+              <table style="width : 100%;">
+                <tr style="height : 40px;" ng-repeat="item in $parent.popup.selected.list">
+                  <td style="width : 100px;">
+                    <span ng-bind="item.label"></span>
+                  </td>
+                  <td>
+                    <input ng-model="item.value" ng-if="item.type=='input'" class="form-control" ng-change="item.change()" />
+                    <div ng-model="item.value" ng-if="item.type=='select-single'" data-change="item.change()" data-options="item.options" select-single></div>
+                    <div ng-model="item.value" ng-if="item.type=='select'" data-options="item.options" select data-change="item.change();"></div>
+                    <div ng-if="item.type=='options'" style="min-height:200px;">
+                      <ul class="nav nav-tabs">
+                        <li role="presentation" ng-class="{true : 'active', false : ''}[item.selectItem.value == subNavi.value]" ng-click="subNavi.click()" style="cursor : pointer;" ng-repeat="subNavi in item.options">
+                          <a ng-bind="subNavi.label"></a>
+                        </li>
+                      </ul>
+                      <div ng-model="item.selectItem.data" ng-if="item.selectItem.type=='exceloneline'" exceloneline></div>
+                      <div ng-model="item.selectItem.data" data-root-target="$parent.popup" ng-if="item.selectItem.type=='code'" data-root-target="$parent.$parent.popup" code-mirror></div>
+                      <div ng-model="item.selectItem.data" ng-if="item.selectItem.type=='excel'" excel></div>
+                    </div>
+                    <div ng-model="item.value" ng-if="item.type=='excel'" excel data-change="item.change();"></div>
+                    <input ng-model="item.value" ng-if="item.type=='colorPicker'" color-picker/>
+                    <div ng-model="item.value" ng-if="item.type=='code'" code-mirror data-change="item.change();" data-root-target="$parent.$parent.popup" data-target="item"></div>
+                    <div ng-model="item.value" ng-if="item.type=='iconSelector'" icon-selector class="icon-selector" data-change="item.change();" data-target="$parent.$parent.popup.selected.list"></div>
+                  </td>
+                </tr>
+                <!-- == {{$parent.popup.selected.content}} == -->
+                <tr ng-if="$parent.popup.selected.content.category == 'choselist'">
+                  <td style="width : 100px;">
+                    <span>仪表板选择</span>
+                  </td>
+                  <td>
+                    <div class="row">
+                      <div class="col-lg-8">
+                        <div class="input-group">
+                          <select select2 class="form-control" ng-model="selectedView.item" ng-change="" ng-options="value as value.label for value in dashboardView" selectdata="dashboardView">
+                            <option value="">请选择...</option>
+                          </select>
+                          <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" ng-click="addViewItem()">添加</button>
+                            <button class="btn btn-default" type="button" ng-click="saveViewItems()">保存</button>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group col-sm-12 margin-left-5">
+                      <div slim-scroll height='200px'>
+                        <table class="table table-hover dataTable">
+                          <thead>
+                            <tr role="row">
+                              <th>序号</th>
+                              <th>展示名</th>
+                              <th>视图名</th>
+                              <th>显示</th>
+                              <th>操作</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr ng-repeat="viewItem in selectedView.items">
+                              <td><input ng-model="viewItem.index" value="{{viewItem.index}}" style="width:50px;"></td>
+                              <td><input ng-model="viewItem.label" value="{{viewItem.label}}"></td>
+                              <td>{{viewItem.viewTitle}}</td>
+                              <td><div ng-model="viewItem.show" fb-toggle></div></td>
+                              <td><button class="btn btn-default btn-sm" type="button" ng-click="deleteViewItem(viewItem.viewId)">删除</button></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!-- 高级设定 -->
+        </div>
+        <div class="box-footer">
+          <button class="btn btn-primary pull-right" ng-click="$panelSubmit()">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

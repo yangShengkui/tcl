@@ -1,0 +1,43 @@
+<!--创建文档模态框-->
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">更改归属</h4>
+      </div>
+      <div>  <label class="control-label" style=" margin-left: 15px;
+    margin-top: 15px;">原归属：</label>
+        <span>{{originalData}}</span>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" name="alertForm">
+        <div class="form-group col-sm-2" style="width:180px">
+          <label class="control-label">管理域：</label>
+          <div  class="dropdowntree" placeholder="请选择..."
+                ng-model="queryDitem.domainPath" change="" key="domainPath" options="domainListTree" mark="nodes"/>
+        </div>
+        <div class="form-group col-sm-2" style="width:180px" ng-if="baseConfig.customerConfig.display && !userInfo.subDomain">
+          <label class="control-label">{{menuitems['S12'].label?menuitems['S12'].label:'客户'}}：</label>
+          <select select2 class="form-control"   ng-model="queryDitem.customerId" selectdata="customersList" ng-options="value.id as value.text for value in customersList | filter:{ domainPath :queryDitem.domainPath}">
+            <option value="">请选择...</option>
+          </select>
+        </div>
+        <div class="form-group col-sm-2" style="width:180px" ng-if="baseConfig.projectConfig.display && !userInfo.subDomain">
+          <label class="control-label">{{menuitems['S13'].label?menuitems['S13'].label:'项目'}}：</label>
+          <select select2 class="form-control"  ng-model="queryDitem.projectId" ng-options="value.id as value.text for value in projectsList | filter:{ customerId :queryDitem.customerId}" selectdata="projectsList">
+            <option value="">请选择...</option>
+          </select>
+        </div>
+        </form>
+
+
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="docForm.$invalid || docError.conter || isLoading" ng-click="modifyAscription()" disabled="disabled">
+          确定
+        </button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+  </div>

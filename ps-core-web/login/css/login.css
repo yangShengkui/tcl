@@ -1,0 +1,240 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	margin:0px;
+	min-width:1024px;
+	font-family:arial,"Microsoft Yahei","Hiragino Sans GB",sans-serif;
+	background: #1D1F23;
+	overflow-y: hidden;
+}
+img{
+	border:none;
+}
+.top{
+	z-index:9999;
+	position:absolute;
+	top:0px;
+	width:100%;
+	height:80px;
+	border-bottom:1px #555555 solid;
+}
+.top_c{
+	/*max-width:1200px;*/
+	min-width:1024px;
+	width: 80%;
+	height:80px;
+}
+.logo{
+	margin-top:20px;
+	float:left;
+	width:96px;
+	height:40px;
+	display:block;
+	background:url(../img/ps_logo.svg);
+}
+.logo02{
+	margin-top:-40px;
+	float: right;
+}
+.top_01{
+	padding-top:32px;
+	color:#888888;
+	text-align:right;
+	font-size:12px;
+	height:28px;
+	padding-right:91px;
+}
+.top_01 a{
+	font-size:12px;
+	text-decoration:none;
+	padding:0px 10px;
+	color:#cecece;
+}
+.top_01 a:hover{
+	color:#eeeeee;
+}
+
+
+/*=======================middle==========================*/
+
+.content{
+	z-index: 1;
+	position: absolute;
+	top: 80px;
+	width: 100vw;
+	height: 100%;
+	background-size: cover;
+	background-image: url(../img/bk_m.svg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	text-align: center;
+}
+.con_01{
+	/*border: 1px #0090FF solid;*/
+	width: 1024px;
+	position: relative;
+	top: 50%;
+	left: 0px;
+	right : 0px;
+	margin : auto;
+	margin-top: -220px;
+	/*padding: 0 5%;*/
+}
+.con_01::after{
+	content : "";
+	display : block;
+	clear : left;
+}
+
+.text{
+	float:left;
+	/*border: 1px #0090FF solid;*/
+	width:440px;
+	height:300px;
+}
+.text h1{
+	font-family: arial;
+	font-weight:lighter;
+	font-size:53px;
+	color: #FFFFFF;
+	line-height:30px;
+}
+.text h2{
+	padding-left:36px;
+	font-family: "microsoft yahei";
+	font-weight: 100;
+	font-size: 59px;
+	color: #FFFFFF;
+	letter-spacing: 40px;
+	line-height:10px;
+}
+.text h3{
+	font-weight: 100;
+	font-family: "microsoft yahei";
+	font-size: 34px;
+	color: #FFFFFF;
+	letter-spacing: 6px;
+	line-height: 36px;
+}
+.text h4{
+	margin: 0px 36px;
+	color: #999;
+	border-bottom: 1px solid #555;
+}
+.box{
+	margin-top:-25px;
+	float: right;
+	background-image: linear-gradient(0deg, #F2F9FD 0%, #FFFFFF 82%);
+	box-shadow: 0 8px 10px 0 rgba(0,0,0,0.20);
+	width:380px;
+	height:350px;
+	border-radius:3px ;
+}
+.box_01{
+	text-align: left;
+	margin:20px;
+	width:340px;
+	height:330px;
+	font-weight: 100;
+	font-family: "microsoft yahei";
+	font-size: 24px;
+	color: #666666;
+	line-height: 28px;
+	position: relative;
+}
+.er_float{
+	width: 160px;
+	height:160px;
+	background: #FFFFFF;
+	box-shadow: 0 2px 4px 2px rgba(1,159,233,0.08);
+	border-radius: 3px;
+	position: absolute;
+	z-index: 99999;
+	text-align: center;
+	top:35px;
+	right: 0px;
+}
+.er_float img{
+	width: 90%;
+	margin-top: 5%;
+}
+.line_01 a{
+	margin-top:4px;
+	float: right;
+	margin-bottom: 10px;
+}
+.line_02{
+	margin-top:6px;
+	text-indent:8px;
+	text-align: left;
+	font-family:"microsoft yahei";
+	font-size: 14px;
+	color: #FA4242;
+	line-height:24px;
+}
+
+.line_03 a{
+	text-decoration:none;
+	font-size: 14px;
+	color: #ccc;
+	line-height:40px;
+}
+.line_04 a{
+	text-decoration:none;
+	background-image: linear-gradient(-90deg, #8095F3 0%, #28ABEA 100%);
+	border-radius: 3px;
+	font-size: 18px;
+	color: #FFFFFF;
+	line-height:48px;
+	margin-top:6px;
+	width: 340px;
+	display: block;
+	height:48px;
+}
+.line_04 a:hover{
+	text-decoration:none;
+	background-image: linear-gradient(-90deg, #7289F2 0%, #11A2E8 100%);
+	border-radius: 3px;
+	font-size: 20px;
+	color: #FFFFFF;
+	line-height:48px;
+	margin-top:6px;
+	width: 340px;
+	display: block;
+	height:48px;
+}
+.inbox{
+	text-indent:8px;
+	margin:6px 0px 0px 0px;
+	background: #FFFFFF;
+	border: 1px solid #d5d5d5;
+	border-radius: 3px;
+	width: 336px;
+	height:48px;
+	font-family: "microsoft yahei";
+	font-size: 12px;
+	color: #333333;
+	line-height: 14px;
+}
+
+/*=======================footer==========================*/
+
+.footer{
+	z-index:9;
+	position: absolute;
+	bottom:10px;
+	width:100%;
+	text-align: center;
+}
+.footer_box{
+	width: 1024px;
+	margin: 0 auto;
+}
+.footer_box h4{
+	margin: 0px;
+	font-family: "microsoft yahei";
+	font-size: 12px;
+	color: #cccccc;
+	line-height: 20px;
+	font-weight: 100;
+}

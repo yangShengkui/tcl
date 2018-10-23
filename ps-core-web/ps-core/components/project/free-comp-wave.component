@@ -1,0 +1,235 @@
+<config injector="$q, kpiDataService, $interval"
+></config>
+<properties>
+    <script type="text/javascript">
+    function properties () {
+      return [{
+        label: "基本设定",
+        attributes: {
+          height: ["高度", "input", 200]
+        }
+      }, {
+        label: "数据",
+        attributes: {
+          nkIds: ["详细指标", "input", '']
+        }
+      }]
+    }
+
+    export {properties}
+    </script>
+</properties>
+<template>
+    <div style="width: 100%; display: flex; flex-direction: column;justify-content: space-between">
+        <div class="item">
+            <div id="water">
+                <div class="text-wrap">
+                    <div class="title-value water-bg">
+                        <p class="title">用水</p>
+                        <p class="value">{{value.water}}t</p>
+                    </div>
+                    <div class="percent-wrap">
+                        <!--<p class="percent">50%</p>-->
+                    </div>
+                </div>
+            </div>
+            <div id="electric">
+                <div class="text-wrap">
+                    <div class="title-value electric-bg">
+                        <p class="title">电</p>
+                        <p class="value">{{value.electric}}kW·h</p>
+                    </div>
+                    <div class="percent-wrap">
+                        <!--<p class="percent">50%</p>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div id="gas">
+                <div class="text-wrap">
+                    <div class="title-value gas-bg">
+                        <p class="title">气</p>
+                        <p class="value">{{value.gas}}m³</p>
+                    </div>
+                    <div class="percent-wrap">
+                        <!--<p class="percent">50%</p>-->
+                    </div>
+                </div>
+            </div>
+            <div id="airCondition">
+                <div class="text-wrap">
+                    <div class="title-value air-condition-bg">
+                        <p class="title">空调</p>
+                        <p class="value">{{value.airCondition}}kW·h</p>
+                    </div>
+                    <div class="percent-wrap">
+                        <!--<p class="percent">50%</p>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script type="text/javascript">
+export default function (q, kpiDataService, $interval) {
+  return {
+    scope: {
+      option: "="
+    },
+    link (scope, element, attr, ngModel) {
+
+      scope.value = {
+        water: 0,
+        gas: 0,
+        electric: 0,
+        airCondition: 0
+      };
+      let getValue = (n) => {
+        let defer = q.defer();
+        if (n.nkIds) {
+          let nkIds = JSON.parse(n.nkIds);
+          let resourceIds = {};
+          let kpiCodes = {};
+          nkIds.forEach(nk => {
+            resourceIds[nk.nodeId] = nk.nodeId * 1;
+            kpiCodes[nk.kpiCode] = nk.kpiCode * 1;
+          });
+          kpiDataService.getRealTimeKpiData(Object.values(resourceIds), Object.values(kpiCodes), ret => {
+            if (ret.code == '0') {
+              defer.resolve({
+                nkIds: nkIds,
+                data: ret.data
+              });
+            }
+          });
+        } else {
+          defer.resolve();
+        }
+        return defer.promise;
+      }
+
+      function renderAll (op) {
+        window['require'](["../ps-core/toolkit/wave.js"], function () {
+          var w1 = new TextWave({
+            id: 'water',
+            percent: '0.5'
+          });
+          w1.action();
+          var w2 = new TextWave({
+            id: 'electric',
+            percent: '0.5'
+          });
+          w2.action();
+          var w3 = new TextWave({
+            id: 'gas',
+            percent: '0.5'
+          });
+          w3.action();
+          var w4 = new TextWave({
+            id: 'airCondition',
+            percent: '0.5'
+          });
+          w4.action();
+        });
+        render(op);
+      }
+
+      function render (op) {
+        getValue(op).then(function (d) {
+          let data = d && d.data ? d.data : [];
+          let nkIds = d && d.nkIds ? d.nkIds : [];
+          scope.value.water = data.find(item => {
+            return item.kpiCode == nkIds.find(nk => {
+              return nk.label == '用水';
+            }).kpiCode
+          }).value;
+          scope.value.electric = data.find(item => {
+            return item.kpiCode == nkIds.find(nk => {
+              return nk.label == '电';
+            }).kpiCode
+          }).value;
+          scope.value.gas = data.find(item => {
+            return item.kpiCode == nkIds.find(nk => {
+              return nk.label == '气';
+            }).kpiCode
+          }).value;
+          scope.value.airCondition = data.find(item => {
+            return item.kpiCode == nkIds.find(nk => {
+              return nk.label == '空调';
+            }).kpiCode
+          }).value;
+        });
+      }
+
+      scope.$watch("option", (n, o, s) => {
+        if (typeof n !== 'undefined') {
+          element[0].style.height = n.attributes.height + "px";
+          renderAll(n.attributes);
+          $interval(function () {
+            render(n.attributes);
+          }, 3 * 60 * 1000);
+        }
+      });
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+.item {
+    flex: 1;
+    display: flex;
+}
+
+#water,
+#electric,
+#gas,
+#airCondition {
+    flex: 1;
+    margin: 15px;
+    .text-wrap {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        z-index: 1;
+        .title-value {
+            display: flex;
+            padding: 40px 0;
+            justify-content: space-around;
+            font-size: 54px;
+            .title {
+                color: #fff;
+            }
+            .value {
+                color: #a7bffb;
+            }
+            &.water-bg {
+                background: url("../images/water.svg") no-repeat;
+                background-size: auto 80%;
+            }
+            &.electric-bg {
+                background: url("../images/electric.svg") no-repeat;
+                background-size: auto 80%;
+            }
+            &.gas-bg {
+                background: url("../images/co2.svg") no-repeat;
+                background-size: auto 80%;
+            }
+            &.air-condition-bg {
+                background: url("../images/wind.svg") no-repeat;
+                background-size: auto 80%;
+            }
+            
+        }
+        .percent-wrap {
+            .percent {
+                text-align: center;
+                color: #fff;
+                font-size: 24px;
+            }
+        }
+    }
+}
+</style>

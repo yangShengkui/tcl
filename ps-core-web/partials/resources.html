@@ -1,0 +1,45 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Application buttons -->
+      <div class="box">
+        <div class="box-body">
+          <form class="form-inline">
+            <div class="form-group col-sm-2">
+              <label class="sr-only" >选择客户</label>
+              <select class="form-control" ng-model="queryDitem.physicalDeviceDomain" ng-options="value.domainPath as value.customerName for value in userGridData" style="width: 100%">
+                <option value="">选择客户</option>
+              </select>
+            </div>
+            <div class="form-group col-sm-2">
+              <div class="dropdowntree" placeholder="选择设备模板" ng-model="queryDitem.modelId" change="" options="rootModel" mark="nodes"/>
+              <!--<label class="sr-only" for="domainPath">选择设备模板</label>-->
+              <!--<input autocomplete="off" placeholder="选择设备模板" name="modelId" model-Picker class="form-control input-sm domainClass" type="text" modelId="" model="queryDitem.modelId">-->
+            </div>
+
+            <div class="form-group col-sm-2">
+              <div class="dropdowntree" placeholder="选择所属域" ng-model="queryDitem.domainPath" change="" key="domainPath" options="domainListTree" mark="nodes"/>
+              <!--<label class="sr-only" for="domainPath">选择所属域</label>
+              <input autocomplete="off" placeholder="选择所属域" name="domainPath" domain-Picker class="form-control input-sm domainClass" type="text" domainPath="" model="queryDitem.domainPath">-->
+            </div>
+            
+            <button ng-click="goSearch()" class="btn btn-default btn-sm">查询</button>
+            <button ng-click="goClear()" class="btn btn-default btn-sm">清除</button>
+          </form>
+        </div>
+        <div class="box-footer">
+          <div class="box-body table-padding-3 table-responsive">
+            <table style="width:100%" class="table table-hover" shadows-table></table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</section>
+<!-- /.content -->

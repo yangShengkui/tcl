@@ -1,0 +1,38 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="dialog.button[1].fn();" class="close">×</a>
+        <h4 class="modal-title info-box-number" ng-bind="dialog.title"></h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal row" name="erengyForm">
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">能源类型：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <select ng-model="dialog.input.energyType" class="form-control input-sm" selectdata="energyTypeList" ng-options="value.id as value.text for value in energyTypeList" select2 required></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">当量系数：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="number" string-to-number class="form-control input-sm" ng-model="dialog.input.valentweight" name="valentweight" maxlength="32" autocomplete="off" ng-change="verifyFun(dialog.input.valentweight,'valentweight')" required>
+              <span style="color:red" ng-show="erengyForm.valentweight.$dirty && mistakeMesg.valentweight">请输入正确的当量系数</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">等量系数：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="number" string-to-number class="form-control input-sm" ng-model="dialog.input.equal" name="equal" maxlength="32" autocomplete="off" ng-change="verifyFun(dialog.input.equal,'equal')" required>
+              <span style="color:red" ng-show="erengyForm.equal.$dirty && mistakeMesg.equal">请输入正确的等量系数</span>
+            </div>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button class="btn btn-primary" ng-click="dialog.button[0].fn();" ng-disabled="erengyForm.$invalid" disabled="disabled">确定</button>
+          <button class="btn btn-default" ng-click="dialog.button[1].fn();">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

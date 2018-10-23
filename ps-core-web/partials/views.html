@@ -1,0 +1,44 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Application buttons -->
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">视图列表</h3>
+          <div class="text-center pull-right">
+            <a ng-click="addDesignView()" class="btn btn-default btn-sm"><i class="fa fa-plus"></i><span class="hidden-xs"> 新建视图</span></a>
+            <a ng-show="selectedDesignitem" ng-click="editDesignView()" class="btn btn-default btn-sm"><i class="fa fa-edit"></i><span class="hidden-xs"> 编辑视图</span></a>
+            <a ng-show="selectedDesignitem" ng-click="delDesignView()" class="btn btn-default btn-sm"><i class="fa fa-minus"></i><span class="hidden-xs"> 删除视图</span></a>
+            <div class="box-tools pull-right">
+              <span class="history-btn" role="button" style="margin-left:10px;" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class="box-body">
+          <a class="btn btn-app" ng-class="{true: 'btn btn-app active active-ps', false: 'btn btn-app'}[selectedDesignitem==item]" ng-click="chartViewClick(item)" ng-repeat="item in designView">
+            <span class="badge {{item.statusBg}}">{{item.statusLab}}</span>
+            <i class="{{item.icon}}"></i> {{item.title}}
+          </a>
+        </div>
+        <div class="box-footer">
+          <div class="box-header" ng-show="selectedDesignitem">
+            <select multiple="multiple" bootstrap-multiselect ng-model="selectedCis" ng-change="changeChartsCI()"
+              ng-options="item.id as item.label for item in cilistByModelId"></select>
+          </div>
+          <div class="{{item.layout.class}}" ng-style="item.layout.style" ng-repeat="item in chartsItems" >
+            <div style="height:100%" ng-controller="ViewChartsCtrl" echarts3-dom></div>
+          </div>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</section>
+<!-- /.content -->

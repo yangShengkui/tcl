@@ -1,0 +1,153 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- Application buttons -->
+            <div class="box">
+                <div class="box-header">
+                    <ol class="breadcrumb breadcrumb2">
+                        <div class="text-center pull-right" style="display: inherit;">
+                            <a ng-click="addTeamGroup()" class="btn btn-default btn-sm"><i class="fa fa-plus"></i><span class="hidden-xs"> 新建班组</span></a>
+                            <a ng-if="selectedGroup" ng-click="delTeamGroup()" class="btn btn-default btn-sm"><i
+                      class="fa fa-minus"></i><span class="hidden-xs"> 删除班组</span></a>
+                        </div>
+                    </ol>
+                </div>
+                <div class="box-body slick-box-body">
+                    <div variablesidth="true" dots="false" arrows="true" slidesToScroll="3" autorender="false" ng-model="queryGroupList" slick>
+                        <a class="btn btn-app slick-a" ng-class="{true: 'active active-ps'}[selectedGroup.id==item.id]" ng-click="groupClick(item)" ng-repeat="item in queryGroupList track by $index" on-finish-render-filters>
+                            <i class="fa fa-group"></i> {{item.name}}
+                        </a>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <div class="nav-tabs-custom" ng-show="selectedGroup != null">
+                        <ul class="nav nav-tabs pull-left">
+                            <li ng-class="{true:'active',false:''}[activeListTab == 'tab3']">
+                                <a name="tab3" href="#" data-toggle="tab">
+                                    <i class="fa fa-cogs"></i><span class="hidden-xs"> 班组信息</span>
+                                </a>
+                            </li>
+                            <li ng-class="{true:'active',false:''}[activeListTab == 'tab4']">
+                                <a name="tab4" href="#" data-toggle="tab">
+                                    <i class="fa fa-user"></i><span class="hidden-xs"> 班组用户</span>
+                                </a>
+                            </li>
+                            <li ng-class="{true:'active',false:''}[activeListTab == 'tab5']">
+                                <a name="tab5" href="#" data-toggle="tab">
+                                    <i class="fa fa-user"></i><span class="hidden-xs"> 班组巡检设备</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <form role="form" class="form-horizontal tab-pane active" ng-show="activeListTab == 'tab3'" name="groupForm" novalidate>
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <button class="btn btn-default btn-sm" ng-disabled="formReg.name != 0 ||formReg.workArea != 0 || !selectedGroup" ng-click="saveTeamGroup()"><i class="fa fa-save"></i><span class="hidden-xs"> 保存班组信息</span></button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-3">
+                                            <div class="form-group no-margin">
+                                                <label>班组名称：</label>
+                                                <input class="form-control input-sm" type="text" maxlength="100" name="name" ng-model="selectedGroup.name" />
+                                                <span style="color:red" ng-show="formReg.name == 1001 ">不能输入空格或者空</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group no-margin">
+                                                <label>所在工区：</label>
+                                                <input class="form-control input-sm" type="text" maxlength="100" name="workArea" ng-model="selectedGroup.workArea" />
+                                                <span style="color:red" ng-show="formReg.workArea == 1001 ">不能输入空格或者空</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group no-margin">
+                                                <label>班组类型：</label>
+                                                <select id="teamType" class="form-control" ng-model="selectedGroup.teamType" ng-options="value.teamType as value.typeName for value in teamTypes">
+                                                    <option value="">请选择...</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group no-margin">
+                                                <label>备注：</label>
+                                                <input class="form-control input-sm" type="text" maxlength="100" name="remark" ng-model="selectedGroup.remark" />
+                                                <span style="color:red" ng-show="formReg.desc == 1001 ">不能输入空格或者空</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="table-responsive table-padding-bottom-6" ng-show="activeListTab == 'tab4'">
+                                <table width="100%" class="table table-hover" team2user-table></table>
+                            </div>
+                            <div class="table-responsive table-padding-bottom-6" ng-show="activeListTab == 'tab5'">
+                                <!--<div class="form-group">
+                                    <div class="col-sm-4">
+                                        <button class="btn btn-default btn-sm" ng-disabled="formReg.name != 0 ||formReg.workArea != 0 || !selectedGroup" ng-click="addDevices()"><i class="fa fa-plus"></i><span class="hidden-xs"> 添加设备</span></button>
+                                    </div>
+                                </div>-->
+                                <table width="100%" class="table table-hover" team2device-table></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<script type="text/ng-template" id="templateId">
+    <div style="height: 300px;">
+        <div class="modal-header">
+            <h4 class="modal-title">关联设备</h4>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <div class="col-sm-12">
+                    <!-- <div class="col-sm-4" style="position:static">
+                        <div class="form-group no-margin">
+                            <label>资源域</label>
+                            <input autocomplete="off" placeholder="请选择..." name="domainPath" domain-Picker class="form-control domainClass" type="text" ng-change="getDevices()" ng-model="domainListDic[selectedAlertitem.domain].name" model="selectedAlertitem.domain" domainPath="{{selectedAlertitem.domain}}">
+                        </div>
+                    </div> -->
+                    <!-- <div class="col-sm-6" id="searchAlert">
+                        <div class="form-group no-margin">
+                            <label>设备模板</label>
+                            <input autocomplete="off" placeholder="请选择..." name="modelId" model-Picker class="form-control domainClass" type="text" ng-change="getDeviceType(selectedAlertitem.nodeType)" ng-model="rootModelDic[selectedAlertitem.nodeType].label" modelId="" model="selectedAlertitem.nodeType">
+                        </div>
+                    </div> -->
+                    <div class="col-sm-6" id="searchAlert">
+                        <div class="form-group no-margin">
+                            <label>设备模板</label>
+                            <select class="form-control domainClass" ng-change="getDeviceType(selectedAlertitem.nodeType)" ng-model="selectedAlertitem.nodeType" ng-options="value.id as value.label for value in selectedDitem.types">
+                                <option value="">请选择...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6" id="searchAlert">
+                        <div class="form-group no-margin">
+                            <label>设备名称</label>
+                            <select class="form-control domainClass" multiple="multiple" bootstrap-multiselect ng-model="selectedAlertitem.id" ng-change="selectedDevices(selectedAlertitem.id)" ng-options="value.id as value.label for value in selectedDitem.label">
+                                <!-- <option value="">请选择...</option> -->
+                                <span value="">请选择...</span>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+        <!-- /.modal-dialog -->
+        <!-- /.modal -->
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="saveDevices()">保存</button>
+        <button type="button" class="btn btn-default" ng-click="closeThisDialog()">取消</button>
+    </div>
+</script>

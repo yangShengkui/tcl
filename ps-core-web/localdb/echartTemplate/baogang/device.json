@@ -1,0 +1,182 @@
+{
+  "layout": {
+    "type": "column",
+    "children": [
+      {
+        "type": "row",
+        "source": "ROW",
+        "parameters": {
+          "alignment": "bootstrap"
+        },
+        "style": {},
+        "children": [
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "控制板1",
+                "type": "block",
+                "source": "BLOCK",
+                "style": {
+                  "padding": "5px",
+                  "overflow": "hidden",
+                  "background-color": "#04131e",
+                  "border": "0",
+                  "height": "calc( 100vh - 115px)"
+                },
+                "advance": {
+                  "expression": "{}"
+                },
+                "children": [
+                  {
+                    "type": "column",
+                    "col": 12,
+                    "children": [
+                      {
+                        "label": "控件组",
+                        "type": "ctrlgroup",
+                        "source": "CTRLGROUP",
+                        "advance": {
+                          "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var inp = \"\"\n      var render = function(){\n          var ctrlGroups = [\n           [{\n               type : \"input\",\n               value : inp,\n               class : \"col-md-6\",\n               on : {\n                change : function(elem){\n                  inp = elem.value;\n                }\n              }\n           },{\n              type : \"button\",\n              value : \"搜索\",\n              icon : \"glyphicon glyphicon-search\",\n              btnclass : \"btn btn-primary\",\n              class : \"col-md-5\",\n              on : {\n                click : function(elem){\n                    console.log(\"===\", inp);\n                  target.trigger(\"searchtree\", inp);\n                }\n              }\n            }]\n          ];\n          event.target.render(ctrlGroups);\n      }\n      render();\n    }\n  }\n}"
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "font-size": "12px"
+                        },
+                        "help": "../pdf/ctrlgroup.pdf",
+                        "parameters": {
+                          "cgroupstyle": "table"
+                        }
+                      },
+                      {
+                        "label": "控制板1",
+                        "type": "block",
+                        "source": "BLOCK",
+                        "style": {
+                          "padding": "0px",
+                          "margin": "0px",
+                          "border": "0",
+                          "box-shadow": "0px 0px 0px 0px rgba(0,0,0,0)",
+                          "background-color": "rgba(250,250,250,0)",
+                          "height": "calc( 100vh - 135px)",
+                          "overflow-y": "auto",
+                          "overflow-x": "auto"
+                        },
+                        "advance": {
+                          "expression": {}
+                        },
+                        "children": [
+                          {
+                            "type": "column",
+                            "col": 12,
+                            "children": [
+                              {
+                                "label": "数结构目录",
+                                "type": "treemenu",
+                                "source": "TREEMENU",
+                                "advance": {
+                                  "expression": "var expression = {\n  on : {\n    init : function(event){\n      var models = {}\n      var target = event.target;\n      debugger;\n      target.getDomainAreaLineTree_alertStatus(function(domaintree){\n        domaintree.traverse(function(node){\n          node.showfold = true;\n          node.searchable = true;\n          node.folderStyle = 1;\n          node.showDescription = false;\n          node.triggerEvent = \"none\";\n          node.on = {\n            click : function(node){\n              if(node.setHighlight){\n                node.setHighlight(true);\n              };\n              var path = node.$location;\n              if(node.resourceType == \"device\"){\n                target.setValue(\"global/resource\", node);\n              }\n              target.setParameter(\"id\", node.id);\n              target.trigger(\"pathChange\", path);\n\n              var str = node.label;\n              node.traverseParents(function(parent){\n                if(parent.parent ){\n                  str = parent.label + \" > \" + str;\n                };\n              });\n\n              target.trigger(\"tree_resourceChange\", {\n                resource : node\n              });\n              target.trigger(\"changeNavString\", str);\n\n\n            }\n          }\n        });\n        var treeDataMap = target.render(domaintree);\n        target.on(\"searchtree\", function(str){\n          treeDataMap.search(function(node){\n            return node.label.indexOf(str) != -1;\n          })\n        });\n        treeDataMap.hideRootNode();\n        var resource = target.getValue(\"global/resource\");\n        if(!resource){\n          treeDataMap.traverse(function(node){\n            if(!resource && node.category == \"Device\"){\n              resource = node;\n            }\n          });\n          target.setValue(\"global/resource\", resource);\n          var str = resource.label;\n          resource.traverseParents(function(parent){\n            if(parent.parent ){\n              str = parent.label + \" > \" + str;\n            };\n          });\n          target.trigger(\"changeNavString\", str);\n        };\n        setTimeout(function(){\n          target.setParameter(\"id\", resource.id);\n          target.trigger(\"pathChange\", resource.$location);\n        });\n        target.on(\"treeSelect\", function(id){\n          var find = treeDataMap.find(function(node){\n              return node.id == id;\n            }) || {};\n          if(find.setHighlight){\n            find.setHighlight(true);\n          };\n        })\n        treeDataMap.traverse(function(node){\n          if(node.level > 2){\n            var find = node.find(function(nd){\n              return nd.id == resource.id;\n            });\n            if(find){\n              find.setHighlight(true);\n              if(typeof node.open == \"function\"){\n                node.open();\n              };\n            } else {\n              if(typeof node.close == \"function\"){\n                node.close();\n              };\n            }\n          } else {\n            if(typeof node.open == \"function\"){\n              node.open();\n            };\n          }\n          if(node == resource){\n            if(node.setHighlight){\n              node.setHighlight(true);\n            };\n          }\n        });\n      })\n    }\n  }\n}"
+                                },
+                                "style": {
+                                  "padding": "5px",
+                                  "min-height": "100px"
+                                },
+                                "parameters": {}
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "url": "images/map/map1.png"
+              }
+            ],
+            "col": 2
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "控制板1",
+                "type": "block",
+                "source": "BLOCK",
+                "style": {
+                  "padding": "0",
+                  "margin": "0",
+                  "border": "0",
+                  "background-color": "rgba(250,250,250,0)",
+                  "max-height": "calc( 100vh - 115px)",
+                  "overflow-y": "scroll"
+                },
+                "advance": {
+                  "expression": "{}"
+                },
+                "children": [
+                  {
+                    "type": "column",
+                    "col": 12,
+                    "children": [
+                      {
+                        "label": "控件组",
+                        "type": "ctrlgroup",
+                        "source": "CTRLGROUP",
+                        "advance": {
+                          "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var render = function(str){\n          var ctrlGroups = [\n           [{\n              type : \"label\",\n              value : str || \"普通标签\",\n              style : {\n                  \"font-weight\" : \"bold\",\n                  \"color\" : \"#72b3d7\",\n                  \"line-height\" : \"20px\"\n              },\n              class : \"col-md-12\"\n            }]\n          ];\n          event.target.render(ctrlGroups);\n      }\n      var naviString = target.getValue(\"global/navistring\");\n      render(naviString || \"读取中请稍后。。。\");\n      target.off(\"changeNavString\");\n      target.on(\"changeNavString\", function(str){\n          render(str);\n      });;\n      \n    }\n  }\n}"
+                        },
+                        "style": {
+                          "margin": "0 5px",
+                          "font-size": "12px",
+                          "color": "#72b3d7"
+                        },
+                        "help": "../pdf/ctrlgroup.pdf",
+                        "url": "images/map/map1.png",
+                        "parameters": {
+                          "cgroupstyle": "table"
+                        }
+                      },
+                      {
+                        "label": "视图嵌入",
+                        "type": "injector",
+                        "source": "INJECTOR",
+                        "parameters": {
+                          "icon": {
+                            "id": 0,
+                            "perfix": "ion",
+                            "css": "ion-ios-gear-outline"
+                          }
+                        },
+                        "advance": {
+                          "getfunction": "",
+                          "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var render = function(path){\n        var viewId = 543156203876070;\n        target.getViewById(viewId, function(view){\n          var json = JSON.parse(view.content);\n          if(path){\n            var find = json.groups.find(function(elem){\n              return elem.path == path;\n            });\n            json.layout = find.layout;\n          } else {\n            json.layout = json.groups[0].layout;\n          };\n          target.render(json);\n        });\n      };\n      target.off('pathChange');\n      target.on('pathChange', function(path){\n        render(path)\n      });\n    }\n  }\n}"
+                        },
+                        "style": {
+                          "border": "0",
+                          "background-color": "rgba(250,250,250,0)"
+                        },
+                        "children": [],
+                        "url": "images/map/map1.png"
+                      }
+                    ]
+                  }
+                ],
+                "url": "images/map/map1.png",
+                "parameters": {}
+              }
+            ],
+            "col": 10
+          }
+        ],
+        "advance": {
+          "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      var ticketNo = event.data.values.ticketNo;\n      event.tools.location.href='../../app-oc/index.html#/workOrderTimeLine/'+ ticketNo;\n     }\n  },  \n  \"format\" : [\n    {\n      \"name\": \"工单号\",\n      \"value\": \"{item:ticketNo}\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"内容\",\n      \"value\": \"{item:message}\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"紧急度\",\n      \"value\": \"{item:priorityCode}\",\n      \"type\": \"priority\"\n    }\n  ]\n}"
+        }
+      }
+    ],
+    "col": 12,
+    "CACHEDVALUENAME": "controlPanelAnalysisNavigation",
+    "CHANGENAVEEVENT": "analysisviewchange",
+    "MOVETOEVENT": "analysismoveTo"
+  },
+  "setting": "{\n  \"theme\": \"steel\"\n}"
+}

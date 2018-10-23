@@ -1,0 +1,108 @@
+{
+  "type": "absolute",
+  "setting": {
+    "viewTitle": "青岛展厅视图0708",
+    "description": "青岛展厅视图0708",
+    "cls": "qingdao0708"
+  },
+  "data": [
+    {
+      "type": "title",
+      "position": {
+        "top": 212,
+        "left": "22.213541666666668%",
+        "width": "3.28125%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "数据时间:",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 216,
+        "left": "24.53125%",
+        "width": "5.598958333333334%",
+        "height": 100
+      },
+      "attributes": {
+        "width": 200,
+        "height": 50,
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "format": "yyyy-MM-dd HH:mm:ss",
+        "real": "false"
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 407774594970207
+      },
+      "position": {
+        "top": 853,
+        "left": "32.526041666666664%",
+        "width": "5.546875%",
+        "height": 205
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 407774594970207
+      },
+      "position": {
+        "top": 512,
+        "left": "32.421875%",
+        "width": "5.546875%",
+        "height": 213
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 407774594970206
+      },
+      "position": {
+        "top": 514,
+        "left": "38.255208333333336%",
+        "width": "2.7604166666666665%",
+        "height": 211
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 407774594970249
+      },
+      "position": {
+        "top": 514,
+        "left": "41.067708333333336%",
+        "width": "3.28125%",
+        "height": 214
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 407774594970250
+      },
+      "position": {
+        "top": 514,
+        "left": "44.375%",
+        "width": "3.9322916666666665%",
+        "height": 216
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 407774594970251
+      },
+      "position": {
+        "top": 852,
+        "left": "38.307291666666664%",
+        "width": "8.802083333333334%",
+        "height": 209
+      }}
+  ]
+}

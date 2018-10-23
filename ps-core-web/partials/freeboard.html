@@ -1,0 +1,978 @@
+<!-- Content Header (Page header) -->
+<div class="chartPop_wrap" ng-if="toolbarDetail">
+  <div class="chartPop">
+    <button ng-click="$parent.toolbarDetail = undefined" class="closeBtn">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+    <h4 ng-bind="toolbarDetail.name"></h4>
+    <div class="item"
+         ng-click="item.click()"
+         ng-repeat="item in toolbarDetail.sub | filter : { show : true }">
+      <div class="imgWrap">
+        <img ng-src="{{'images/' + item.src + '.png'}}" />
+      </div>
+      <div ng-bind="item.title" class="title"></div>
+      <div ng-bind="item.context" class="context"></div>
+    </div>
+    <div style="height : 20px; clear : both;">
+    </div>
+  </div>
+</div>
+<div class="bgcover" ng-if="toolbarDetail">
+</div>
+
+<div id="bootstrap-dialog" class="modal bootstrap-dialog type-primary fade size-normal in" ng-if="dialogBox" style="display : block;">
+  <div class="modal-dialog type-primary">
+    <div class="modal-content" style="border-radius : 4px;">
+      <div class="modal-header">
+        <div class="bootstrap-dialog-header">
+          <div class="bootstrap-dialog-close-button" style="display: none;"><button class="close">×</button></div>
+          <div class="bootstrap-dialog-title" ng-bind="dialogBox.title.label"></div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="bootstrap-dialog-body">
+          <div class="bootstrap-dialog-message" ng-bind="dialogBox.description.label"></div>
+          <div ng-if="dialogBox.input" class="row" ng-repeat="item in dialogBox.input">
+            <div class="col-md-3" style="line-height: 35px;">
+              <span class="box-title" ng-bind="item.label"></span>
+            </div>
+            <div class="col-md-9">
+              <input ng-model="item.value"
+                     ng-change="item.onChange()"
+                     ng-attr-placeholder="{{item.placeholder}}"
+                     class="form-control"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="display: block;">
+        <div class="bootstrap-dialog-footer">
+          <div class="bootstrap-dialog-footer-buttons">
+            <button ng-class="btn.icon"
+                    ng-repeat="btn in dialogBox.fnlist"
+                    ng-click="btn.fn()"
+                    ng-bind="btn.label"
+                    ng-class="btn.icon;"
+                    ng-disabled = "btn.disabled">
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="free-board-edit-panel" ng-if="setting">
+  <div class="content-wrap">
+    <div class="content">
+      <div class="box">
+        <div class="box-header text-center">
+          <h4 class="box-title">视图基本属性</h4>
+          <!--
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool"
+                    ng-click="setting.close()">
+              <i class="fa fa-times"></i>
+            </button>
+          </div>
+          -->
+        </div>
+        <div class="box-body" style="border : 1px dashed #ccc;">
+          <table class="wrap">
+            <tr>
+              <td style="width : 100px;" class="wrap-title pull-right">
+                <span>视图名称:</span><span class="composory">*</span>
+              </td>
+              <td style="width : 350px;" colspan="1" class="wrap-content">
+                <input ng-model="$parent.viewTitle"
+                       placeholder = "请填写视图名(最多32字)"
+                       class = "form-control viewTitle"
+                       maxlength = "32"
+                       ng-class = "{true : '', false : {true : 'correct', false :'mistake'}[correct]}[correct == undefined || viewTitle == undefined || viewTitle == '']"
+                       ng-change = "titleChange()"/>
+              </td>
+              <td colspan="1" class="padding-5">
+                <div class="composory">
+                  <span class="glyphicon"
+                        ng-class="inputCheck.icon"
+                        ng-style="inputCheck.style;"></span>
+                  <span ng-style="{true : {color: 'green'}, false : {color:'orangered'}}[inputCheck.correct == true]"
+                        ng-bind="inputCheck.msg"></span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="width : 100px;" class="wrap-title">
+                <span>视图描述:</span>
+              </td>
+              <td style="width : 400px;" colspan="1" class="wrap-content">
+                <textarea ng-model="$parent.description" placeholder="请填写视图描述(最多200字)" class="form-control" maxlength="200"></textarea>
+              </td>
+            </tr>
+            <tr ng-if="viewmode != 'editor'">
+              <td style="width : 100px;" class="wrap-title">
+                <span>模板:</span>
+              </td>
+              <td style="width : 400px;" colspan="1" class="wrap-content">
+                <div class="input-group" ng-class="{true:'open', false:''}[globalModel.open && globalModel.enable]">
+                  <span class="input-group-addon">
+                    <input type="checkbox" ng-model="globalModel.enable">
+                  </span>
+                  <button ng-click="globalModel.click();$event.stopPropagation();"
+                          ng-disabled="!globalModel.enable"
+                          class="form-control"
+                          ng-bind="{false:globalModel.model.label, true:'请选择...'}[globalModel.model.label == undefined]"></button>
+                  <ul class="dropdown-menu" style="right : 0; overflow-x: hidden; overflow-y: scroll; max-height: 300px;">
+                    <li ng-repeat="model in allModels"
+                        ng-click="globalModel.subclick(model);$event.stopPropagation();"
+                        style="cursor : pointer;"
+                        ><a ng-bind="model.label"></a></li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td style="width : 100px;" class="wrap-title">
+                <span>选择主题:</span>
+              </td>
+              <td style="width : 400px;" colspan="2" class="wrap-content">
+                <select ng-model="setting.theme" ng-options="theme.id as theme.label for theme in themes" class="form-control"></select>
+              </td>
+            </tr>
+            <tr>
+              <td style="width : 100px;" class="wrap-title">
+                <span>全页样式:</span>
+              </td>
+              <td style="width : 400px;" colspan="2" class="wrap-content">
+                <div ng-model="setting.data" code-mirror></div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="box-footer">
+          <button class="btn btn-default pull-right"
+                  style="margin-left : 10px;"
+                  ng-click="setting.close()">取消</button>
+          <button class="btn btn-primary pull-right"
+                  ng-disabled="inputCheck.correct!=true"
+                  ng-click="setting.save()">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="free-board-edit-panel" ng-if="JsonInput">
+  <div class="content-wrap">
+    <div class="content">
+      <div class="box">
+        <div class="box-header text-center">
+          <h4 class="box-title">输入JSON文件</h4>
+          <div style="margin : 5px auto; color : #888">导入视图的JSON文件</div>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="remove" ng-click="jsonClose()"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <div class="box-body" style="border : 1px dashed #ccc;">
+          <div class="row">
+            <div class="col-md-12">
+              <textarea ng-model="$parent.JsonData" style="width:100%; height: 400px;"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button class="btn btn-primary pull-right" ng-click="applyJSON()" ng-disabled="$parent.JsonData == undefined">使用</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="free-board-edit-panel" ng-if="template">
+  <div class="content-wrap">
+    <div class="content">
+      <div class="box">
+        <div class="box-header text-center">
+          <h4 class="box-title">使用模板</h4>
+          <div style="margin : 5px auto; color : #888">选定的模板将替换现有视图!!</div>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="remove" ng-click="templateClose()"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <div class="box-body" style="border : 1px dashed #ccc;">
+          <div class="row">
+            <div class="col-md-4" ng-repeat="temp in template">
+              <div class="tempwrap" ng-click="selectTemp(temp);" ng-class="{true : 'active', false : ''}[temp.id == ctemp.id]">
+                <div ng-bind="temp.title"class="temptitle"></div>
+                <div class="templateImage" ng-style="{'background-image' : temp.src}" style="background-color: #fff; border:1px solid #ccc;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button class="btn btn-primary pull-right" ng-click="applyTemp()" ng-disabled="ctemp == undefined">使用</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="free-board-edit-panel" ng-if="specialist">
+  <div class="content-wrap">
+    <div class="content">
+      <div class="box">
+        <div class="box-header text-center">
+          <h4 class="box-title">使用专家模板</h4>
+          <div style="margin : 5px auto; color : #888">选定的模板将替换现有视图!!</div>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="remove" ng-click="specialistClose()"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <div class="box-body" style="border : 1px dashed #ccc;">
+          <div class="row">
+            <div class="col-md-4" ng-repeat="temp in specialist">
+              <div class="tempwrap" ng-click="selectSpec(temp);" ng-class="{true : 'active', false : ''}[temp.id == cspec.id]">
+                <div ng-bind="temp.label"class="temptitle"></div>
+                <div class="templateImage" ng-style="{'background-image' : 'url(' + temp.url + ')'}" style="background-color: #fff; border:1px solid #ccc;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button class="btn btn-primary pull-right" ng-click="applySpecTemp()" ng-disabled="cspec == undefined">使用</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="free-board-edit-panel" ng-if="editPanel">
+  <div class="content-wrap">
+    <div class="content">
+      <div class="box">
+        <div class="box-header text-center">
+          <h4 class="box-title" ng-bind="'编辑' + editPanel.label"></h4>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="remove" ng-click="panelCancel()"><i class="fa fa-times"></i></button>
+          </div>
+          <ul id="myTabs" class="nav nav-tabs" role="tablist" ng-init="tab = 0">
+            <li role="presentation" ng-class="{true : 'active', false : ''}[tab==0]" ng-click="tab=0" style="cursor : pointer;"><a>基本属性</a></li>
+            <li role="presentation" ng-class="{true : 'active', false : ''}[tab==1]" ng-click="tab=1" style="cursor : pointer;"><a ng-bind="editPanel.valueGroup.label"></a></li>
+          </ul>
+        </div>
+        <div class="box-body" style="border : 1px dashed #ccc; height : 600px; overflow-y : auto; overflow-x: hidden;" >
+          <!--
+          <button class="btn btn-warning pull-right" ng-click="switchToData()" ng-if="editPanel.data != undefined">数据</button>
+          -->
+          <div ng-if="tab==1">
+            <table class="wrap">
+              <tr>
+                <td style="width : 100px;height : 50px;">
+                  <span>数据源</span>
+                </td>
+                <td>
+                  <select ng-model="editPanel.valueGroup.data.value"
+                          ng-change="dataTypeChange(editPanel.valueGroup.data, editPanel)"
+                          ng-options="item.value as item.label for item in editPanel.valueGroup.data.option"
+                          class="form-control"></select>
+                </td>
+              </tr>
+            </table>
+            <table class="wrap" ng-repeat="vgroup in editPanel.valueGroup[editPanel.valueGroup.data.value]" style="border: 1px dashed #aaa; margin : 5px auto;">
+              <tr>
+                <th colspan="3" style="background-color: #eee; padding : 5px; height : 50px;">
+                  <span ng-bind="editPanel.valueGroup.label + $index" style="background-color: #eee; line-height: 40px;"></span>
+                  <button class="btn btn-default pull-right"
+                          ng-if="editPanel.valueGroup.data.value=='custom' && editPanel.valueGroup[editPanel.valueGroup.data.value].length > 1"
+                          ng-click="groupRemove(vgroup, editPanel.valueGroup[editPanel.valueGroup.data.value]);">
+                    <span class="proudsmart ps-delete"></span>
+                  </button>
+                </th>
+              </tr>
+              <tr ng-repeat="(key, val) in vgroup.attributes">
+                <td style="width : 100px;height : 50px;">
+                  <span ng-bind="val.label"></span>
+                </td>
+                <td>
+                  <input ng-model="val.value"
+                         ng-change="val.onChange()"
+                         data-number-max="val.maxlength"
+                         ng-maxlength="val.maxlength"
+                         ng-attr-placeholder="{{val.placeholder}}"
+                         ng-if="val.type=='standardInput'"
+                         ng-show="{true : true, false : editPanel.valueGroup.data.value =='custom'}[editPanel.valueGroup.data == undefined]"
+                         class="form-control" />
+                  <input ng-model="val.value"
+                         ng-if="val.type=='standardInput'"
+                         ng-attr-placeholder="{{val.placeholder}}"
+                         data-number-max="val.maxlength"
+                         ng-maxlength="val.maxlength"
+                         ng-disabled="true"
+                         ng-show="{true : false, false : editPanel.valueGroup.data.value !='custom'}[editPanel.valueGroup.data == undefined]"
+                         class="form-control" />
+                  <textarea ng-model="val.value"
+                            style="height : 100px;"
+                            ng-change="val.onChange()"
+                            ng-if="val.type=='textAreaInput'"
+                            ng-show="{true : true, false : editPanel.valueGroup.data.value =='custom'}[editPanel.valueGroup.data == undefined]"
+                            class="form-control"></textarea>
+                  <textarea ng-model="val.value"
+                            style="height : 100px;"
+                            ng-if="val.type=='textAreaInput'"
+                            ng-disabled="true"
+                            ng-show="{true : false, false : editPanel.valueGroup.data.value !='custom'}[editPanel.valueGroup.data == undefined]"
+                            class="form-control"></textarea>
+                  <select ng-model="val.value" class="form-control" ng-if="val.type=='select'" ng-options="item.value as item.label for item in val.option"></select>
+                  <input ng-model="val.value" ng-if="val.type=='colorPicker'" color-picker/>
+                  <table ng-if="val.type=='slider'" style="width : 100%;">
+                    <tr>
+                      <td style="width : 300px;">
+                        <div ng-model="val.value" fb-slider data-min="val.min" data-max="val.max" data-unit="val.unit" data-step="val.step" data-range="val.range"></div>
+                      </td>
+                      <td ng-bind="val.replace[val.value] ? val.replace[val.value] : (val.value + val.unit)">
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+            <table ng-if="editPanel.valueGroup.data.value=='custom'">
+              <tr>
+                <td colspan="2">
+                  <button class="btn btn-primary"
+                          ng-click="groupAdd(editPanel.valueGroup[editPanel.valueGroup.data.value]);"
+                          ng-bind="'添加一组新' + editPanel.valueGroup.label"></button>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <table class="wrap" ng-if="tab==0">
+            <tr ng-if="editPanel.data!=undefined">
+              <td style="width : 100px;" style="height : 50px;">
+                <span>数据源</span>
+              </td>
+              <td colspan="2" style="height : 50px;">
+                <div class="row" >
+                  <div class="col-md-10">
+                    <div style="padding : 3px; margin:2px; border : 1px dashed #ccc;">
+                      <span style="background-color: #eee; color : #333; padding : 3px;">设备</span>
+                      <span ng-repeat="res in editPanel.data.resource" >
+                        <span class="circle" ng-bind="($index + 1)" style="background-color: rgba(0,0,0,.1);"></span>
+                        <span ng-bind="res.label + {true:'', false:','}[$index==editPanel.data.resource.length - 1]"></span>
+                      </span>
+                    </div>
+                    <div style="padding : 3px; margin:2px; border : 1px dashed #ccc;">
+                      <span style="background-color: #eee; color : #333; padding : 3px;">指标</span>
+                      <span ng-repeat="kpi in editPanel.data.kpi">
+                        <span class="circle" ng-bind="($index + 1)" style="background-color: rgba(0,0,0,.1);"></span>
+                        <span ng-bind="kpi.label + {true:'', false:','}[$index==editPanel.data.kpi.length - 1]"></span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <button class="btn btn-warning pull-right" ng-click="switchToData()" ng-if="editPanel.data != undefined">数据源</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr ng-repeat="(key, val) in editPanel.attributes">
+              <td style="width : 100px; height : 50px;">
+                <span ng-bind="val.label"></span>
+              </td>
+              <td ng-if="val.applied != undefined" style="width : 25px;">
+                <input type="checkbox" ng-model="val.applied"/>
+              </td>
+              <td ng-attr-colspan="{{{true:'2',false:'1'}[val.applied == undefined]}}">
+                <div class="row" ng-if="val.type=='standardInput'">
+                  <div ng-class="{true : 'col-md-8', false : 'col-md-12'}[val.data != undefined || (val.unit != undefined && val.unit != '')]">
+                    <input ng-model="val.value"
+                           data-number-max="{{val.maxlength}}"
+                           ng-attr-placeholder="{{val.placeholder}}"
+                           ng-change="val.onChange()"
+                           ng-show="{ true : false, false : {true : true, false : val.data.value=='none'}[val.data == undefined] }[val.applied==false]"
+                           class="form-control" />
+                    <input ng-model="val.data.readValue[val.data.value]"
+                           data-number-max="{{val.maxlength}}"
+                           ng-attr-placeholder="{{val.placeholder}}"
+                           ng-show="{ true : false, false : {true : false, false : val.data.value!='none'}[val.data == undefined] }[val.applied==false]"
+                           ng-disabled="true"
+                           class="form-control" />
+                  </div>
+                  <div class="col-md-4" ng-if="val.data != undefined">
+                    <select ng-model="val.data.value"
+                            ng-hide = "val.applied==false"
+                            ng-change="dataTypeChange(val.data, editPanel)"
+                            ng-options="item.value as item.label for item in val.data.option"
+                            class="form-control"></select>
+                  </div>
+                  <div class="col-md-4" ng-if="val.unit != undefined && val.unit != ''">
+                    <span ng-if="val.unit != '' && val.unit != undefined" ng-bind="val.unit" style="line-height: 34px;"></span>
+                  </div>
+                </div>
+                <div class="row" ng-if="val.type=='numberInput'" ng-hide = "val.applied==false">
+                  <div ng-class="{true : 'col-md-8', false : 'col-md-12'}[val.data != undefined || (val.unit != undefined && val.unit != '')]">
+                    <input ng-model="val.value"
+                           ng-change="val.onChange()"
+                           number-input="val.maxlength"
+                           ng-maxlength="val.maxlength"
+                           ng-attr-placeholder="{{val.placeholder}}"
+                           ng-show="{ true : false, false : {true : true, false : val.data.value=='none'}[val.data == undefined] }[val.applied==false]"
+                           class="form-control" />
+                    <input ng-model="val.data.readValue[val.data.value]"
+                           number-input="val.maxlength"
+                           ng-maxlength="val.maxlength"
+                           ng-attr-placeholder="{{val.placeholder}}"
+                           ng-show="{ true : false, false : {true : false, false : val.data.value!='none'}[val.data == undefined] }[val.applied==false]"
+                           ng-disabled="true"
+                           class="form-control" />
+                    <div ng-bind="val.default" ng-show="(val.applied == false && val.type == 'numberInput')" style="color : #999; line-height: 34px;"></div>
+                  </div>
+                  <div class="col-md-4" ng-if="val.data != undefined">
+                    <select ng-model="val.data.value"
+                            ng-hide = "val.applied==false"
+                            ng-change="dataTypeChange(val.data, editPanel)"
+                            ng-options="item.value as item.label for item in val.data.option"
+                            class="form-control"></select>
+                  </div>
+                  <div class="col-md-4" ng-if="val.unit != undefined && val.unit != ''">
+                    <span ng-if="val.unit != '' && val.unit != undefined" ng-bind="val.unit" style="line-height: 34px;"></span>
+                  </div>
+                </div>
+                <select ng-model="val.value"
+                        ng-hide = "val.applied==false"
+                        class="form-control"
+                        ng-if="val.type=='select' && key != 'linkData'"
+                        ng-options="item.value as item.label for item in val.option"></select>
+                <select ng-model="val.value"
+                        ng-hide = "val.applied==false"
+                        class="form-control"
+                        ng-if="val.type=='select' && key == 'linkData'"
+                        ng-options="item.value as item.label for item in anchors | anchorFilter : editPanel"></select>
+                <div ng-bind="val.default" ng-show="val.applied==false" style="color : #999;"></div>
+                <div ng-if="val.type=='excel'"
+                     ng-model="val.value"
+                     excel></div>
+                <div ng-hide="val.applied==false">
+                  <input ng-model="val.value" ng-if="val.type=='colorPicker'" color-picker />
+                </div>
+                <table ng-if="val.type=='slider'" style="width : 100%;" ng-hide = "val.applied==false">
+                  <tr>
+                    <td style="width : 300px; height : 30px;">
+                      <div ng-model="val.value" fb-slider data-min="val.min" data-max="val.max" data-unit="val.unit" data-step="val.step" data-range="val.range"></div>
+                    </td>
+                    <td ng-bind="val.replace[val.value] ? val.replace[val.value] : (val.value + val.unit)" style="height : 30px;">
+                    </td>
+                  </tr>
+                </table>
+                <table ng-if="val.type=='sliderbyunit'" style="width : 100%;" ng-hide = "val.applied==false">
+                  <tr>
+                    <td style="width : 190px; height : 30px;">
+                      <div ng-model="val.value" fb-slider data-min="val.min" data-max="val.max" data-unit="val.unit" data-step="1" data-range="val.range"></div>
+                    </td>
+                    <td ng-bind="val.value[0] * val.step + ',' + val.value[1] * val.step "
+                        style="height : 30px; width : 70px; font-size : 9px;">
+                    </td>
+                    <td>
+                      <div class="btn-group" role="group" aria-label="...">
+                        <button type="button"
+                                ng-click="val.step = item.value"
+                                ng-repeat="item in val.option"
+                                style="font-size : 9px;"
+                                ng-bind="item.label"
+                                ng-class="{true : 'btn-primary', false : 'btn-default'}[val.step == item.value]"
+                                class="btn"></button>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+                <div ng-model="val.value" icon-selector class="icon-selector" ng-if="val.type=='iconPicker'">
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="box-footer">
+          <button class="btn btn-primary pull-right" ng-click="panelClose()">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="free-board-edit-panel" ng-if="dataPanel">
+  <div class="content-wrap">
+    <div class="content">
+      <div class="box">
+        <div class="box-header text-center">
+          <h4 class="box-title" ng-bind="'数据绑定'"></h4>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" ng-click="panelCancel()"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <div class="box-body" style="border : 1px dashed #ccc;">
+          <div class="row dataBind">
+            <div class="col-md-6">
+              <div class="row dataBind">
+                <div class="col-md-12" ng-init="resourcesFilter=''">
+                  <div class="inner">
+                    选择设备
+                  </div>
+                  <div class="inner">
+                    <select ng-model="dataPanel.data.model"
+                            ng-disabled="dataPanel.data.modelDisable"
+                            ng-change="dataPanel.data.model.change()"
+                            ng-options="model as model.label for model in $parent.allModels" class="form-control"></select>
+                  </div>
+                  <div class="inner">
+                    <input ng-model="resourcesFilter" class="form-control" placeholder="按照设备名称过滤"/>
+                  </div>
+                  <div class="scrollWrap">
+                    <div ng-repeat="resource in $parent.resources | filter : { label : resourcesFilter }"
+                         ng-click="resourceChange(resource)"
+                         ng-style="{true:{'pointer-events':'none'}, false:{}}[dataPanel.data.modelDisable]"
+                         class="inner"
+                         ng-class="{true:'check',false:''}[resource.checked]">
+                      <input type="checkbox"
+                             ng-model="resource.checked"
+                             style="pointer-events: none;"
+                             ng-disabled="dataPanel.data.modelDisable"
+                          /><span ng-bind="resource.label"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row dataBind">
+                <div class="col-md-12" ng-init="kpisFilter=''">
+                  <div class="inner">
+                    选择指标
+                  </div>
+                  <div class="inner">
+                    <select class="form-control" ng-model="$parent.unitFilter" ng-options="unit.value as unit.label for unit in kpiUnits" ng-disabled="$parent.unitFilterDisabled"></select>
+                  </div>
+                  <div class="inner">
+                    <input ng-model="kpisFilter" class="form-control" placeholder="按照设备指标名称过滤"/>
+                  </div>
+                  <div class="scrollWrap">
+                    <div ng-repeat="kpi in $parent.kpis | filter : { label : kpisFilter } | unitfilter : $parent.unitFilter"
+                         ng-attr-title="kpi.id"
+                         ng-click="kpiChange(kpi) "
+                         class="inner" ng-class="{true:'check',false:''}[kpi.checked]">
+                      <input type="checkbox" ng-model="kpi.checked" style="pointer-events: none;"/><span ng-bind="kpi.label"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button class="btn btn-primary pull-right" ng-click="panelClose()">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main content -->
+
+<div id="free-board">
+  <div class="free-board-left">
+    <div style="width : 230px; background-color: #50575b; padding-top:10px; height: 100%;">
+      <button class="btn btn-primary"
+              ng-if="viewmode=='editor'"
+              ng-click="openSpecialist();"
+              style="margin : 10px auto; display: block; width : 130px; font-weight : bold;">
+        <span class="glyphicon glyphicon-list-alt" style="margin-right : 10px;"></span>使用专家模板
+      </button>
+      <button class="btn btn-primary"
+              ng-if="viewmode=='freeboard' || viewmode=='service' || viewmode=='template'"
+              ng-click="openTemplate();"
+              style="margin : 10px auto; display: block; width : auto; font-weight : bold;">
+        <span class="glyphicon glyphicon-list-alt" style="margin-right : 10px;"></span>使用模板(ctrl+u)
+      </button>
+      <button class="btn btn-primary"
+              ng-if="viewmode=='freeboard' || viewmode=='service' || viewmode=='template'"
+              ng-click="inputJSON();"
+              style="margin : 10px auto; display: block; width : auto; font-weight : bold;">
+        <span class="glyphicon glyphicon-list-alt" style="margin-right : 10px;"></span>导入JSON(ctrl+i)
+      </button>
+      <div class="free-board-header" ng-click="toolbarClick({id : 'GRID'})">
+        <span class="glyphicon" ng-class="{true:'glyphicon-minus',false:'glyphicon-plus'}[currentSelect=='GRID']" style="margin-right : 10px;"></span>布局设置
+      </div>
+      <div ng-class="{true:'free-board-open',false:'free-board-fold'}[currentSelect=='GRID']" class="free-board-wrap">
+        <div id="add_grid" board-drag drag="tools.grid.children">
+          <div class="row preview">
+            <select ng-model="colstyle"
+                    ng-options="col as col.label for col in colstyles"
+                    ng-change="colChange(colstyle.value)"
+                    class="form-control"
+                    style="margin-bottom : 10px; text-align: center;"></select>
+            <div ng-class="'col-sm-' + col.col" ng-repeat="col in tools.grid.children">
+              <div class="prevblock">
+                <span ng-bind=" (col.col / 12 * 100) | percent"></span>
+              </div>
+            </div>
+          </div>
+          <div grid-selector
+               data-selector="gridSelector"
+               data-change="onChange(cols, reset)"
+               class="grid-selector">
+          </div>
+          <table class="tablewrap">
+            <tr>
+              <td style="width : 60%">
+                <span class="text">栅格</span>
+              </td>
+              <td style="width : 40%">
+                <div class="moveBtn">
+                  <span class="proudsmart ps-move"></span>拖拽
+                </div>
+              </td>
+            </tr>
+          </table>
+          <div class="row">
+            <div id="prev_grid" class="col-md-12 tool-item-prev">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-----------------------------------graph editor used only-------------------------------------->
+
+      <div ng-if="viewmode=='editor'">
+        <div class="free-board-header">
+          视图列表
+        </div>
+        <ul class="leftBar_wrap">
+          <li ng-click="toolbar.click();"
+              board-drag
+              data-handle="false"
+              ng-attr-id="{{'add_' + toolbar.id}}"
+              class="leftBar_btn"
+              ng-repeat="toolbar in toolBarList | filter : { show : true }">
+            <div class="tooltips" ng-bind="toolbar.name"></div>
+            <ul style="margin:0; padding:0;">
+              <li toolbar_id="{{'toolbar_'+ toolbar.id}}" class="toolBox" dataType="{{toolbar.sub[0].dataType}}" option="{{toolbar.sub[0].option}}">
+                <div ng-style="{'background-image' : 'url(images/icons/' + toolbar.image + '.svg)'}" class="icon"></div>
+              </li>
+            </ul>
+            <div class="innerTitle" ng-bind="toolbar.shortname"></div>
+          </li>
+        </ul>
+        <div class="free-board-header" ng-click="currentSelect='EDIT'">
+          控制器
+        </div>
+        <div class="free-board-wrap free-board-open">
+          <div id="add_tab" board-drag drag="cols" class="tool-item">
+            <table class="tablewrap">
+              <tr>
+                <td style="width : 60%">
+                  <span class="text">TAB标签</span>
+                </td>
+                <td style="width : 40%">
+                  <div class="moveBtn">
+                    <span class="proudsmart ps-move"></span>拖拽
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="free-board-wrap free-board-open">
+          <div id="add_text" board-drag drag="cols" class="tool-item">
+            <table class="tablewrap">
+              <tr>
+                <td style="width : 60%">
+                  <span class="text">文字</span>
+                </td>
+                <td style="width : 40%">
+                  <div class="moveBtn">
+                    <span class="proudsmart ps-move"></span>拖拽
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="free-board-wrap free-board-open">
+          <div id="add_block" board-drag drag="cols" class="tool-item">
+            <table class="tablewrap">
+              <tr>
+                <td style="width : 60%">
+                  <span class="text">控制板1</span>
+                </td>
+                <td style="width : 40%">
+                  <div class="moveBtn">
+                    <span class="proudsmart ps-move"></span>拖拽
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="free-board-wrap free-board-open">
+          <div id="add_multiselect" board-drag drag="cols" class="tool-item">
+            <table class="tablewrap">
+              <tr>
+                <td style="width : 60%">
+                  <span class="text">选择器</span>
+                </td>
+                <td style="width : 40%">
+                  <div class="moveBtn">
+                    <span class="proudsmart ps-move"></span>拖拽
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <!--
+        <div class="free-board-wrap free-board-open">
+          <div id="add_multiselect" board-drag drag="cols" class="tool-item">
+            <table class="tablewrap">
+              <tr>
+                <td style="width : 60%">
+                  <span class="text">模型选择器</span>
+                </td>
+                <td style="width : 40%">
+                  <div class="moveBtn">
+                    <span class="proudsmart ps-move"></span>拖拽
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="free-board-wrap free-board-open">
+          <div id="add_datalist_wrap" board-drag drag="cols" class="tool-item">
+            <table class="tablewrap">
+              <tr>
+                <td style="width : 60%">
+                  <span class="text">数据列表</span>
+                </td>
+                <td style="width : 40%">
+                  <div class="moveBtn">
+                    <span class="proudsmart ps-move"></span>拖拽
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        -->
+      </div>
+
+      <!-----------------------------------dashboard editor used only-------------------------------------->
+
+      <div ng-if="viewmode=='freeboard'||viewmode=='service' || viewmode=='template' || viewmode=='specialist'">
+        <div ng-repeat="toolbar in $parent.toolbarListMap">
+          <div class="free-board-header" ng-click="toolbar.click();">
+            <span class="glyphicon " ng-class="{true:'glyphicon-minus', false:'glyphicon-plus'}[toolbar.fold==false]" style="margin-right : 10px;"></span>
+            <span ng-bind="toolbar.label"></span>
+            <button class="btn btn-sm btn-primary pull-right" ng-click="importGraphToFunc();$event.stopPropagation();" ng-if="toolbar.label == '功能模块'">
+              <span class="glyphicon glyphicon-plus"></span>
+            </button>
+          </div>
+          <div ng-repeat="item in toolbar.sub"
+               ng-class="{true:'free-board-open',false:'free-board-fold'}[toolbar.fold==false]"
+               class="free-board-wrap">
+            <div ng-if="item.type != 'folder'"
+                 ng-attr-id="{{'add_' + item.type}}"
+                 ng-attr-viewId="{{item.viewId}}"
+                 board-drag drag="cols"
+                 class="tool-item"
+                 ng-class="{true:'open-item',false:''}[item.show]">
+              <table class="tablewrap">
+                <tr>
+                  <td style="width : 60%" ng-click="item.click()">
+                    <span class="text" ng-bind="item.label"></span>
+                  </td>
+                  <td style="width : 10%" ng-click="item.click()">
+                    <span class="glyphicon"
+                          ng-show = "item.render != 'text' || item.message"
+                          ng-class="{true:'glyphicon-minus-sign',false:'glyphicon-question-sign'}[item.show==true]"></span>
+                  </td>
+                  <td style="width : 30%">
+                    <div class="moveBtn">
+                      <span class="proudsmart ps-move"></span>拖拽
+                    </div>
+                  </td>
+                </tr>
+              </table>
+              <div class="row">
+                <div ng-attr-id="{{'prev_' + item.type}}" class="col-md-12 tool-item-prev" >
+                  <div ng-if="item.render == 'text'"
+                       class="sampleText"
+                       ng-bind="item.message"></div>
+                  <div ng-if="item.render == 'folder'"
+                       class="sampleText"
+                       ng-bind="'文件夹'"></div>
+                  <div ng-if="item.render == 'bgimage' || subItem.render == 'bgimage'"
+                       ng-style="{'background-image':'url(' + item.url + ')'}"
+                       class="prev-bg"></div>
+                  <div ng-if="item.render == 'edit'"
+                       class="sampleText" style="padding : 5px">
+                    <button class="btn btn-sm btn-default" ng-click="removeConfigClick(item)">删除</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div ng-if="item.type == 'folder'">
+              <div class="free-board-header-sub" ng-click="item.click()">
+                <span class="glyphicon " ng-class="{true:'glyphicon-minus-sign', false:'glyphicon-plus-sign'}[item.fold==false]" style="margin-right : 10px;"></span><span ng-bind="item.label"></span>
+              </div>
+              <div ng-repeat="subitem in item.sub"
+                   ng-class="{true:'free-board-open',false:'free-board-fold'}[item.fold==false]"
+                   class="free-board-wrap">
+                <div ng-attr-id="{{'add_' + subitem.type}}"
+                     ng-attr-viewId="{{subitem.viewId}}"
+                     board-drag drag="cols"
+                     class="tool-item"
+                     ng-class="{true:'open-item',false:''}[subitem.show]">
+                  <table class="tablewrap">
+                    <tr>
+                      <td style="width : 60%" ng-click="subitem.click()">
+                        <span class="text" ng-bind="subitem.label"></span>
+                      </td>
+                      <td style="width : 10%" ng-click="subitem.click()">
+                        <span class="glyphicon"
+                              ng-show = "subitem.render != 'text' || subitem.message"
+                              ng-class="{true:'glyphicon-question-sign',false:'glyphicon-question-sign'}[subitem.fold==true]"></span>
+                      </td>
+                      <td style="width : 30%">
+                        <div class="moveBtn">
+                          <span class="proudsmart ps-move"></span>拖拽
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="row">
+                    <div ng-attr-id="{{'prev_' + item.type}}" class="col-md-12 tool-item-prev" >
+                      <div ng-if="subitem.render == 'text'"
+                           class="sampleText"
+                           ng-bind="subitem.message"></div>
+                      <div ng-if="subitem.render == 'folder'"
+                           class="sampleText"
+                           ng-bind="subitem"></div>
+                      <div ng-if="item.render == 'bgimage' || subitem.render == 'bgimage'"
+                           ng-class="'prev-' + subitem.type + '-bg'"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="free-board-right">
+    <div class="col-md-12">
+      <div ng-if="!titleComposory" style="margin-bottom : 30px;"></div>
+      <!--
+      <div class="viewwrap" ng-if="titleComposory">
+        <div class="viewName" style="margin : 0 15px">
+          <span ng-if="!viewId">视图名称(新建) : </span>
+          <span ng-if="viewId">视图名称(编辑): </span>
+        </div>
+        <div class="viewinput">
+          <input ng-model = "$parent.viewTitle"
+                 ng-attr-placeholder = "请填写视图名(最多30字)"
+                 class = "form-control viewTitle"
+                 number-max = "30"
+                 ng-class = "{true : '', false : {true : 'correct', false :'mistake'}[correct]}[correct == undefined || viewTitle == undefined || viewTitle == '']"
+                 ng-change = "titleChange()"/>
+        </div>
+        <div class="composory">
+          <span class="glyphicon"
+                ng-class="inputCheck.icon"
+                ng-style="inputCheck.style;"></span>
+          <span ng-style="{true : {color: 'green'}, false : {color:'orangered'}}[inputCheck.correct == true]"
+                ng-bind="inputCheck.msg"></span>
+        </div>
+      </div>
+      -->
+      <div class="btn-group" role="group" aria-label="Basic example" style="margin:15px;">
+        <button type="button" class="btn btn-default" ng-click="tabClick('EDIT')" ng-class="{true:'active',false:''}[mode=='EDIT']">编辑模式</button>
+        <button type="button" class="btn btn-default" ng-click="tabClick('PREV')" ng-class="{true:'active',false:''}[mode=='PREV']">预览模式</button>
+        <button type="button" class="btn btn-default" ng-click="tabClick()" >JSON文件</button>
+      </div>
+      <!--
+      <div class="btn-group" ng-if="viewmode=='template'&& tempResource==undefined">
+        <label style="float:left;padding:8px 10px 0 0;">我要单独为某一设备配置视图</label>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            请选择设备
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li ng-repeat="resource in resources" ng-click="tempResClick(resource);">
+              <a ng-bind="resource.label" style="cursor:pointor;"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="btn-group" ng-if="viewmode=='template'">
+        <label style="float:left;padding:8px 10px 0 0;">当前编辑设备 : {{tempResource.label}}</label>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-default" ng-click="$parent.backTemp();">
+            返回设备仪表板
+          </button>
+        </div>
+      </div>-->
+      <ul class="nav nav-tabs" style="width : auto; margin : 15px;">
+        <li role="presentation"
+            style="cursor:pointer;"
+            ng-click="selectEditDataGroup($index)"
+            ng-class="{true : 'active', false : ''}[tabIndex==$index]"
+            ng-repeat="tab in editData.groups track by $index">
+          <a>
+            <span ng-bind="tab.label"></span>
+            <span class="proudsmart ps-edit"
+                  ng-show="mode=='EDIT'"
+                  ng-click="renameEditDataGroup(tab);$event.stopPropagation();"
+                  style="cursor:pointer;"></span>
+            <span class="glyphicon glyphicon-remove"
+                  ng-show="mode=='EDIT'"
+                  ng-click="removeEditDataGroup(tab);$event.stopPropagation();"
+                  style="cursor:pointer;"></span>
+          </a>
+        </li>
+        <li role="presentation" style="cursor : pointer;" ng-click="addEditDataGroup()" ng-show="mode=='EDIT'">
+          <a>
+            <span class="glyphicon glyphicon-plus"></span>
+            <span ng-bind="{true:'', false:'添加页面'}[tabIndex!=undefined]"></span>
+          </a>
+        </li>
+      </ul>
+      <div id="whole" class="whole row" ng-class="JSONParse(editData.setting).theme">
+        <div class="col-md-12 drawarea"
+             id = "free-board-area"
+             ng-show = "mode=='EDIT' || mode=='PREV'"
+             data-instance = "instance"
+             data-on-delete="onDelete(event, ui)"
+             data-on-cut="onCut(event, ui)"
+             data-on-copy="onCopy(event, ui)"
+             data-on-insert="onInsert(id)"
+             data-on-paste="onPaste(id)"
+             data-on-setting="onSetting(event, ui)"
+             data-on-drop="onDrop(event, ui, before)"
+             data-on-data-change="onDataChange(event, ui, before)"
+             data-on-tab-click="onTabClick(event, ui, target, parent)"
+             data-on-insertjson="onInsertJSON(id)"
+             data-on-pastejson="onPasteJSON(id)"
+             data-drop="drop" board-drop data-edit="editData"></div>
+        <div class="col-md-12 codeArea"
+             ng-show = "mode=='JSON' || mode=='HTML'">
+          <div style="padding:10px 0">
+            <copy-button ng-model="jsonCode"></copy-button>
+          </div>
+          <pre>{{jsonCode}}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.content -->

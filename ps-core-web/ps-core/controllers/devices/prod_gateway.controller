@@ -1,0 +1,88 @@
+<config injector="$scope,ajax">
+</config>
+<template>
+    <ps-base config="config"></ps-base>
+</template>
+<script type="text/javascript">
+export default function (scope, ajax) {
+    ajax.config({});
+    scope.config = {
+        title: "网关管理",
+        attributes: {
+            "name": ["网关名称", "text"],
+            "externalGwId": ["网关标识", "text"],
+            "managedStatus": ["管理状态","text"],
+            "id": ["在线状态","text",{
+                label: "online"
+            }],
+            "customerId": ["工厂名称","text", "customer", {
+                label: "customerName"
+            }],
+            "projectId": ["车间名称","text", "project", {
+                label: "projectName"
+            }]
+        },
+        search: {
+            body: []
+        },
+        grid: {
+            body: ["name", "externalGwId",{
+                name: "managedStatus",
+                bind: function (row) {
+                    return row.managedStatus== "deactive" ? '未启用' : '已启用';
+                }
+            },{
+                name: "state",
+                label: "在线状态",
+                relate: {
+                    name: "state"
+                },
+                bind: function (row) {
+                    if (row.simulated && row.managedStatus == "active"){
+                        return "模拟中";
+                    }
+                    return "";
+                }
+            },"customerId","projectId"],
+            buttons: {
+                outGrid: [{
+                    label: "添加网关",
+                    class: "primary",
+                    icon: "fa fa-plus"
+                },{
+                    label: "启用网关",
+                    class: "primary",
+                    icon: "fa fa-play"
+                },{
+                    label: "停用网关",
+                    class: "primary",
+                    icon: "fa fa-stop"
+                },{
+                    label: "注销网关",
+                    class: "primary",
+                    icon: "fa fa-trash"
+                },{
+                    label: "数据仿真",
+                    class: "primary",
+                    icon: "fa fa-line-chart"
+                }],
+                inGrid: [{
+                    label: "管理",
+                    class: "btn btn-primary",
+                },["停用"],["采集日志"],["历史日志"],["下发配置"],["更改归属"]]
+            },
+            config: {
+                url: 'resourceUIService.getAllGatewaysByCondition',
+                parameter: {},
+                showIndex: false,
+                showSelector: false,
+                showSearch: false
+            },
+            options: []
+        }
+    };
+
+};
+</script>
+<style type="less">
+</style>

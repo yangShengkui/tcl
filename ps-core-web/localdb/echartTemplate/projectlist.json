@@ -1,0 +1,673 @@
+{
+  "version": "V_2",
+  "groups": [
+    {
+      "id": "0",
+      "label": "项目模版",
+      "path": "index",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "控制板1",
+            "type": "block",
+            "source": "BLOCK",
+            "style": {
+              "padding": "10px",
+              "margin": "5px",
+              "background-color": "#3c8dbc"
+            },
+            "advance": {
+              "expression": {}
+            },
+            "children": [
+              {
+                "type": "column",
+                "col": 12,
+                "children": [
+                  {
+                    "label": "文字",
+                    "type": "text",
+                    "source": "TEXT",
+                    "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                    "data": {
+                      "applied": false,
+                      "kpi": [],
+                      "modelType": 300,
+                      "resfilltype": "parameter",
+                      "resource": [],
+                      "multipleCi": false,
+                      "multipleKpi": false,
+                      "series": {
+                        "manual": "拷贝图标样式到剪切板",
+                        "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                      },
+                      "modelDisable": true
+                    },
+                    "style": {
+                      "font-size": "16px",
+                      "font-weight": "bold",
+                      "text-align": "left",
+                      "color": "rgb(255, 255, 255)"
+                    },
+                    "advance": {
+                      "getfunction": "kpiDataService.getValueList",
+                      "category": "ci",
+                      "condition": [
+                        "kpi",
+                        "{object:kpiQueryModel}"
+                      ],
+                      "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"项目模版\")\n        }\n    }\n}"
+                    },
+                    "url": "images/map/map1.png",
+                    "template": [
+                      {
+                        "type": "text",
+                        "style": {
+                          "margin": "auto",
+                          "padding": "0",
+                          "font-size": "10px",
+                          "font-weight": "bold",
+                          "color": "#333"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "style": {
+                          "margin": "auto",
+                          "padding": "0",
+                          "font-size": "16px",
+                          "font-weight": "bold",
+                          "color": "#666",
+                          "text-align": "center"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "style": {
+                          "width": "60px",
+                          "height": "60px",
+                          "margin": "auto",
+                          "padding": "0",
+                          "font-size": "12px",
+                          "line-height": "60px",
+                          "font-weight": "bold",
+                          "color": "#fff",
+                          "text-align": "center",
+                          "border-radius": "50%",
+                          "background-color": "#3c8dbc"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "style": {
+                          "width": "140px",
+                          "height": "60px",
+                          "margin": "auto",
+                          "padding": "0",
+                          "font-size": "12px",
+                          "line-height": "60px",
+                          "font-weight": "bold",
+                          "color": "#fff",
+                          "text-align": "center",
+                          "border-radius": "4px",
+                          "background-color": "#3c8dbc"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "style": {
+                          "width": "140px",
+                          "height": "60px",
+                          "margin": "auto",
+                          "padding": "0",
+                          "font-size": "12px",
+                          "line-height": "60px",
+                          "font-weight": "bold",
+                          "color": "#444",
+                          "text-align": "center",
+                          "border-radius": "4px",
+                          "background-color": "#eee"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "style": {
+                          "margin": "auto",
+                          "padding": "5px",
+                          "font-size": "18px",
+                          "font-weight": "bold",
+                          "color": "#444",
+                          "text-align": "center",
+                          "border-radius": "0px",
+                          "background-color": "#eee"
+                        }
+                      }
+                    ],
+                    "id": "ySNPpSpEZNrJ3nwGsArpSChyYsWRdp28",
+                    "$index": [
+                      3,
+                      0
+                    ]
+                  }
+                ],
+                "id": "8xbZFpMBmh832zbYRcAJc5YJS7My5yZe"
+              }
+            ],
+            "url": "images/map/map1.png",
+            "id": "PBxtADmbJYJjtGsP5s7JCyxExTdExiYj"
+          },
+          {
+            "label": "控制板1",
+            "type": "block",
+            "source": "BLOCK",
+            "style": {
+              "padding": "10px",
+              "margin": "5px",
+              "border": "1px solid #eee",
+              "background-color": "#fff",
+              "box-shadow": "1px 1px 10px 1px rgba(0,0,0,.2)",
+              "background": "#fff"
+            },
+            "advance": {
+              "expression": {}
+            },
+            "children": [
+              {
+                "type": "column",
+                "col": 12,
+                "children": [
+                  {
+                    "label": "高级列表",
+                    "type": "dataTableAdvance",
+                    "source": "DATATABLEADVANCE",
+                    "parameters": {
+                      "col": 1,
+                      "pageSize": 10,
+                      "listbottom": "standard"
+                    },
+                    "advance": {
+                      "expression": "expression = {\n  \"on\" : {\n    \"init\" : function(event){\n      var target = event.target;\n      var projectModel;\n      var projectAttr;\n      var render = function(){\n        target.getResourceByModelId(302, function(projects){\n          target.render({\n            data : projects,\n            buttons : [{\n              label : \"编辑模版\",\n              class : \"btn btn-default\",\n              \"icon\" : \"glyphicon glyphicon-edit\",\n              \"on\" : {\n                \"click\" : function(element){\n                  target.createPopupBypath(\"popup\", {\n                    width : \"50%\",\n                    title : \"编辑模版\",\n                    theme : \"system\",\n                    on : {\n                      submit : function(data){\n                        projectModel = data;\n                      }\n                    }\n                  }, projectModel);\n                }\n              }\n            },{\n              label : \"保存模版\",\n              class : \"btn btn-primary\",\n              \"icon\" : \"glyphicon glyphicon-save\",\n              \"on\" : {\n                \"click\" : function(element){\n                  target.saveEditorStatus(\"PROJECTMODEL\", {\n                      projectModel : projectModel,\n                      projectAttr : projectAttr\n                  });\n                  target.growl(\"保存项目模版成功!\")\n                }\n              }\n            }],\n            format : [\n              {\n                \"name\": \"属性名称\",\n                \"value\": \"label\",\n                \"type\": \"text\",\n                \"width\" : 300\n              },{\n                \"name\": \"属性\",\n                \"value\": \"id\",\n                \"type\": \"text\",\n                \"format\" : function(value){\n                    if(projectAttr[value]){\n                        return JSON.stringify(projectAttr[value]);\n                    } else {\n                        return \"无\";\n                    }\n                }\n              },{\n                \"name\": \"操作\",\n                \"width\" : 100,\n                \"type\": \"buttonGroup\",\n                \"value\" : \"label\",\n                \"content\" : [{\n                  \"type\": \"button\",\n                  \"label\" : \"编辑\",\n                  \"icon\" : \"glyphicon glyphicon-edit\",\n                  \"class\" : \"btn btn-default\",\n                  \"on\" : {\n                    \"click\" : function(element){\n                      var id = element.row.id;\n                      target.createPopupBypath(\"attredit\", {\n                        title : \"[\" + element.row.label + \"]项目属性\",\n                        width : \"50%\",\n                        theme : \"system\",\n                        on : {\n                          submit : function(data){\n                            projectAttr[id] = data;\n                            render();\n                          }\n                        }\n                      }, {\n                        projectModel : projectModel,\n                        projectAttr : projectAttr[id] || {}\n                      });\n                    }\n                  }\n                }]\n              }\n            ]\n          });\n        })\n      }\n      target.getEditorStatus(\"PROJECTMODEL\", function(pmodel){\n          var dt = pmodel || {}\n          projectModel = dt.projectModel || [];\n          projectAttr = dt.projectAttr || {};\n          render();\n        });\n    }\n  }\n}"
+                    },
+                    "style": {
+                      "margin": "5px",
+                      "font-size": "12px"
+                    },
+                    "id": "HDYD4aWEE7m46nischdM7xQKYA7mkWjB"
+                  }
+                ],
+                "id": "F8ZMJDYK4t7DcQaY4YmfkFw38WDd2tx3"
+              }
+            ],
+            "url": "images/map/map1.png",
+            "template": [
+              {
+                "type": "css",
+                "style": {
+                  "padding": "10px",
+                  "margin": "5px",
+                  "border": "1px solid #ccc",
+                  "background-color": "#fff"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "padding": "5px",
+                  "margin": "5px",
+                  "border": "1px solid #ccc",
+                  "background-color": "#fff",
+                  "border-top": "0"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "margin": "5px",
+                  "padding": "5px",
+                  "background-color": "#efdcaf",
+                  "border": "1px solid #c2ad7a"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "margin": "5px",
+                  "padding": "5px",
+                  "background-color": "#f0c0a4",
+                  "border": "1px solid #e5671b"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "margin": "5px",
+                  "padding": "5px",
+                  "background-color": "#ffb3b3",
+                  "border": "1px solid #db2222"
+                }
+              }
+            ],
+            "id": "2Bd5SybbXKtA2zaeYenbZZK7DfETsxPn"
+          }
+        ],
+        "col": 12,
+        "id": "SRh4xCtBCEXyBhQNHDfCAyjnsQtwmN2y"
+      },
+      "$$hashKey": "object:1152"
+    },
+    {
+      "label": "弹出窗口",
+      "path": "popup",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "高级列表",
+            "type": "dataTableAdvance",
+            "source": "DATATABLEADVANCE",
+            "parameters": {
+              "col": 1,
+              "pageSize": 10,
+              "listbottom": "standard"
+            },
+            "advance": {
+              "expression": "expression = {\n  \"on\" : {\n    \"init\" : function(event){\n      var target = event.target;\n      var projectModel = target.getPopupData() || [];\n      target.setValue(\"errMsg\", null);\n      target.setValue(\"projectModel\", projectModel);\n      for(var i in projectModel){\n          projectModel[i].id = projectModel[i].id || Math.uuid()\n      }\n      var check = function(){\n          var repeat = projectModel.reduce(function(a, b){\n              if(a.indexOf(b.name) == -1){\n                  a.push(b.name);\n              };\n              return a\n          },[]);\n          var some = projectModel.some(function(elem){\n              return elem.name == \"\";\n          });\n          console.log(repeat);\n          if(some) {\n              target.setValue(\"errMsg\", \"存在变量明为空的变量，请修改后继续。\");\n          } else if(projectModel.length !== repeat.length){\n              target.setValue(\"errMsg\", \"存在重名变量，请修改后继续。\");\n          } else {\n              target.setValue(\"errMsg\", null);\n          }\n      }\n      var render = function(){\n        check();\n        target.render({\n          data : projectModel,\n          buttons : [{\n            label : \"添加属性\",\n            class : \"btn btn-primary\",\n            \"icon\" : \"glyphicon glyphicon-plus\",\n            \"on\" : {\n              \"click\" : function(elmenet){\n                projectModel.push({\n                  id : Math.uuid(),\n                  name : \"attr\",\n                  type : 0\n                });\n                render();\n              }\n            }\n          },{\n            label : \"清空属性\",\n            class : \"btn btn-default\",\n            \"icon\" : \"glyphicon glyphicon-trash\",\n            \"on\" : {\n              \"click\" : function(elmenet){\n                projectModel = [];\n                render();\n              }\n            }\n          }],\n          format : [\n            {\n              \"name\": \"属性名称\",\n              \"value\": \"name\",\n              \"type\": \"input\",\n              \"width\" : 400,\n              \"style\" : {\n                width : \"100%\"\n              },\n              \"on\" : {\n                  \"change\" : function(event){\n                      var id = event.row.id;\n                      var find = projectModel.find(function(element){\n                          return element.id == id;\n                      });\n                      find.name = event.value;\n                      check();\n                  }\n              }\n            },{\n              \"name\": \"属性类型\",\n              \"value\": \"type\",\n              \"type\": \"select\",\n              \"on\" : {\n                  \"change\" : function(event){\n                      event.row.type = event.value.id;\n                  }\n              },\n              \"format\" : {\n                  \"id\" : \"id\",\n                  \"label\" : \"label\"\n              },\n              \"options\" : [{\n                \"id\" : 0,\n                \"label\" : \"普通\"\n              },{\n                \"id\" : 1,\n                \"label\" : \"组态视图\"\n              }]\n            },{\n              \"name\": \"操作\",\n              \"width\" : 100,\n              \"type\": \"buttonGroup\",\n              \"value\" : \"label\",\n              \"content\" : [{\n                \"type\": \"button\",\n                \"label\" : \"删除\",\n                \"icon\" : \"glyphicon glyphicon-trash\",\n                \"class\" : \"btn btn-default\",\n                \"on\" : {\n                  \"click\" : function(event){\n                    projectModel.splice(event.index, 1);\n                    render();\n                  }\n                }\n              }]\n            }\n          ]\n        });\n      };\n      render();\n    }\n  }\n}"
+            },
+            "style": {
+              "margin": "5px",
+              "font-size": "12px"
+            },
+            "id": "pQkPmx5CX4wC8KrEGixftz8Z7Km8MYNK"
+          },
+          {
+            "label": "控件组",
+            "type": "ctrlgroup",
+            "source": "CTRLGROUP",
+            "advance": {
+              "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n       [{\n          type : \"button\",\n          value : \"提交\",\n          icon : \"glyphicon glyphicon-ok\",\n          btnclass : \"btn btn-primary\",\n          class : \"col-md-12\",\n          on : {\n            click : function(elem){\n                var err = target.getValue(\"errMsg\");\n                if(err){\n                    target.createMsgBox({\n                      title : \"错误！\",\n                      message : err\n                  });\n                } else {\n                  target.submit(target.getValue(\"projectModel\"));\n                };\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+            },
+            "style": {
+              "margin": "5px",
+              "font-size": "12px",
+              "margin-top": "20px"
+            },
+            "help": "../pdf/ctrlgroup.pdf",
+            "parameters": {},
+            "template": [
+              {
+                "label": "普通按钮",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n       [{\n          type : \"button\",\n          value : \"按钮\",\n          icon : \"glyphicon glyphicon-search\",\n          btnclass : \"btn btn-primary\",\n          class : \"col-md-12\",\n          on : {\n            click : function(elem){\n              target.console(elem);\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px"
+                },
+                "parameters": {},
+                "url": "images/map/map1.png"
+              },
+              {
+                "label": "设备，项目，客户下拉",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  on : {\n    init : function(event){\n\n      var target = event.target;\n      var global = event.global;\n      event.target.getDomainsByFilter({\n        modelIds : [301,302]\n      }, function(obj){\n        var projects = obj.filter(function(elem){\n          return elem.modelId == 302;\n        })\n        var customers = obj.filter(function(elem){\n          return elem.modelId == 301;\n        })\n        event.target.getDevicesByCondition({}, function(devices){\n          var ctrlGroups = [\n            [{\n              type : \"label\",\n              value : \"设备下拉列表\"\n            },{\n              type : \"select\",\n              value : \"\",\n              on : {\n                change : function(elem){\n                  console.log(elem);\n                }\n              },\n              options : devices,\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"客户下拉列表\"\n            },{\n              type : \"select\",\n              value : \"\",\n              on : {\n                change : function(elem){\n                  console.log(elem);\n                }\n              },\n              options : customers,\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"项目下拉列表1\"\n            },{\n              type : \"select\",\n              value : \"\",\n              on : {\n                change : function(elem){\n                  console.log(elem);\n                }\n              },\n              options : projects,\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"\"\n            },{\n              type : \"button\",\n              value : \"按钮\",\n              icon : \"glyphicon glyphicon-search\",\n              class : \"btn-primary\",\n              on : {\n                click : function(elem){\n                  console.log(elem);\n                }\n              }\n            }]\n          ];\n          event.target.render(ctrlGroups);\n        });\n      });\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px"
+                },
+                "parameters": {},
+                "url": "images/map/map1.png"
+              },
+              {
+                "label": "竖排组件功能组件",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n        [{\n          type : \"label\",\n          value : \"普通输入框\"\n        },{\n          type : \"input\",\n          value : \"普通输入框\",\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          }\n        }],[{\n          type : \"label\",\n          value : \"普通下拉列表\"\n        },{\n          type : \"select\",\n          value : \"普通下拉列表\",\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          },\n          options : [{\n            id : 0,\n            label : \"项目1\"\n          },{\n            id : 1,\n            label : \"项目名称2\"\n          },{\n            id : 2,\n            label : \"名称3\"\n          }],\n          format : {\n            \"id\" : \"id\",\n            \"label\" : \"label\"\n          }\n        }],[{\n          type : \"label\",\n          value : \"日期选择器\"\n        },{\n          type : \"datePicker\",\n          value : \"普通输入框\",\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          }\n        }],[{\n          type : \"label\",\n          value : \"输入选择器\"\n        },{\n          type : \"autoComplete\",\n          value : \"search\",\n          options : [{\n            id : 0,\n            label : \"项目1\"\n          },{\n            id : 1,\n            label : \"项目名称2\"\n          },{\n            id : 2,\n            label : \"名称3\"\n          }],\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          },\n          format : {\n            \"id\" : \"id\",\n            \"label\" : \"label\",\n            \"searchkey\" : \"label\"\n          }\n        }],[{\n          type : \"label\",\n          value : \"树状选择器\"\n        },{\n          type : \"dropdowntree\",\n          value : \"search\",\n          options : {\n            \"children\" : [{\n              id : 0,\n              label : \"根节点\",\n              children : [{\n                id : 1,\n                label : \"子节点1\"\n              },{\n                id : 2,\n                label : \"子节点2\"\n              }]\n            }]\n          },\n          on : {\n            change : function(elem){\n              console.log(elem)\n            }\n          },\n          format : {\n            \"children\" : \"children\"\n          }\n        }],[{\n          type : \"label\",\n          value : \"\"\n        },{\n          type : \"button\",\n          value : \"按钮\",\n          icon : \"glyphicon glyphicon-search\",\n          class : \"btn-primary\",\n          on : {\n            click : function(elem){\n              console.log(elem);\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px"
+                },
+                "url": "images/map/map1.png"
+              },
+              {
+                "label": "项目，管理域,提交按钮",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "{\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      event.target.queryDomainTree(function(domaintree){\n        event.target.getDomainsByFilter({\n          modelIds : [302]\n        }, function(projects){\n          event.target.setValue(\"projectName\", \"\");\n          event.target.setValue(\"domainPath\", \"\")\n          var ctrlGroups = [\n            [{\n              type : \"label\",\n              value : \"项目名称\"\n            },{\n              type : \"autoComplete\",\n              value : \"search\",\n              options : projects,\n              on : {\n                change : function(elem){\n                  var projectName = elem.value;\n                  target.setValue(\"projectName\", projectName);\n                }\n              },\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\",\n                \"searchkey\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"管理域\"\n            },{\n              type : \"dropdowntree\",\n              value : \"search\",\n              options : {\n                \"domainInfos\" : domaintree\n              },\n              on : {\n                change : function(elem){\n                  var domain = elem.value;\n                  target.setValue(\"domainPath\", domain.domainPath);\n                }\n              },\n              format : {\n                \"children\" : \"domainInfos\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"\"\n            },{\n              type : \"button\",\n              value : \"搜索\",\n              icon : \"glyphicon glyphicon-search\",\n              class : \"btn-primary\",\n              on : {\n                click : function(elem){\n                  global.fire(\"refresh\")\n                }\n              }\n            }]\n          ];\n          event.target.render(ctrlGroups);\n        });\n      });\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px",
+                  "width": "100%"
+                },
+                "url": "images/map/map1.png"
+              }
+            ],
+            "id": "2dDD7W363RGCtKMJdmZXRwktTTxawy6S"
+          }
+        ],
+        "col": 12,
+        "id": "ztyciZEimzW2cttE7KzZFsEXYbjfeH8P"
+      },
+      "id": "1",
+      "$$hashKey": "object:1159"
+    },
+    {
+      "label": "编辑属性弹出",
+      "path": "attredit",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "高级列表",
+            "type": "dataTableAdvance",
+            "source": "DATATABLEADVANCE",
+            "parameters": {
+              "col": 1,
+              "pageSize": 10,
+              "listbottom": "standard"
+            },
+            "advance": {
+              "expression": "expression = {\n  \"on\" : {\n    \"init\" : function(event){\n      var target = event.target;\n      var dt = target.getPopupData() || {};\n      var projectModel = dt.projectModel || [];\n      var projectAttr = {};\n      var resources;\n      var list = [];\n      var render = function(){\n        target.render({\n          data : list,\n          format : [\n            {\n              \"name\": \"属性名称\",\n              \"value\": \"name\",\n              \"type\": \"label\",\n              \"style\" : {\n                width : \"100%\"\n              }\n            },{\n              \"name\": \"属性类别\",\n              \"value\": \"type\",\n              \"type\": \"label\",\n              \"style\" : {\n                width : \"100%\"\n              },\n              format : function(value){\n                  if(value == 0){\n                      return \"普通\"\n                  }else if(value == 1){\n                      return \"组态视图\"\n                  }\n              }\n            },{\n              \"name\": \"属性取值\",\n              \"value\": \"type\",\n              \"type\": \"valueBased\",\n              \"options\" : {\n                  0 : {\n                    \"value\": \"value\",\n                    \"type\": \"input\",\n                    \"style\" : {\n                        width : \"100%\"\n                    },\n                    \"on\" : {\n                        \"change\" : function(element){\n                            var row = element.row;\n                            var name = row.name;\n                            projectAttr[name] = element.value;\n                            \n                        }\n                    }\n                  },\n                  1 : {\n                    \"value\": \"value\",\n                    \"type\": \"select\",\n                    \"options\" : resources,\n                    \"style\" : {\n                        width : \"100%\"\n                    },\n                    format : {\n                        \"id\" : \"viewId\",\n                        \"label\" : \"viewTitle\"\n                    },\n                    \"on\" : {\n                        \"change\" : function(element){\n                            var row = element.row;\n                            var name = row.name;\n                            projectAttr[name] = element.value.viewId;\n                        }\n                    }\n                  }\n                }\n            }\n          ]\n        });\n      };\n      target.setValue(\"projectAttr\", projectAttr);\n      for(var i in projectModel){\n          var name = dt.projectModel[i].name;\n          var type = projectModel[i].type\n          var value = dt.projectAttr[name]\n          list.push({\n              name : name,\n              type : type,\n              value : value\n          });\n          projectAttr[name] = dt.projectAttr[name];\n      };\n      target.getManagedViewsByTypeAndRole(\"configure\", function(data){\n          resources = data;\n          render();\n      });\n    }\n  }\n}"
+            },
+            "style": {
+              "margin": "5px",
+              "font-size": "12px"
+            },
+            "id": "KbpGFrhmCtwPXwXjGYa7aKhi2zshHFEp"
+          },
+          {
+            "label": "控件组",
+            "type": "ctrlgroup",
+            "source": "CTRLGROUP",
+            "advance": {
+              "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n       [{\n          type : \"button\",\n          value : \"提交\",\n          icon : \"glyphicon glyphicon-ok\",\n          btnclass : \"btn btn-primary\",\n          class : \"col-md-12\",\n          on : {\n            click : function(elem){\n              target.submit(target.getValue(\"projectAttr\"));\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+            },
+            "style": {
+              "margin": "5px",
+              "font-size": "12px",
+              "margin-top": "20px"
+            },
+            "help": "../pdf/ctrlgroup.pdf",
+            "parameters": {},
+            "template": [
+              {
+                "label": "普通按钮",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n       [{\n          type : \"button\",\n          value : \"按钮\",\n          icon : \"glyphicon glyphicon-search\",\n          btnclass : \"btn btn-primary\",\n          class : \"col-md-12\",\n          on : {\n            click : function(elem){\n              target.console(elem);\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px"
+                },
+                "parameters": {},
+                "url": "images/map/map1.png"
+              },
+              {
+                "label": "设备，项目，客户下拉",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  on : {\n    init : function(event){\n\n      var target = event.target;\n      var global = event.global;\n      event.target.getDomainsByFilter({\n        modelIds : [301,302]\n      }, function(obj){\n        var projects = obj.filter(function(elem){\n          return elem.modelId == 302;\n        })\n        var customers = obj.filter(function(elem){\n          return elem.modelId == 301;\n        })\n        event.target.getDevicesByCondition({}, function(devices){\n          var ctrlGroups = [\n            [{\n              type : \"label\",\n              value : \"设备下拉列表\"\n            },{\n              type : \"select\",\n              value : \"\",\n              on : {\n                change : function(elem){\n                  console.log(elem);\n                }\n              },\n              options : devices,\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"客户下拉列表\"\n            },{\n              type : \"select\",\n              value : \"\",\n              on : {\n                change : function(elem){\n                  console.log(elem);\n                }\n              },\n              options : customers,\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"项目下拉列表1\"\n            },{\n              type : \"select\",\n              value : \"\",\n              on : {\n                change : function(elem){\n                  console.log(elem);\n                }\n              },\n              options : projects,\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"\"\n            },{\n              type : \"button\",\n              value : \"按钮\",\n              icon : \"glyphicon glyphicon-search\",\n              class : \"btn-primary\",\n              on : {\n                click : function(elem){\n                  console.log(elem);\n                }\n              }\n            }]\n          ];\n          event.target.render(ctrlGroups);\n        });\n      });\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px"
+                },
+                "parameters": {},
+                "url": "images/map/map1.png"
+              },
+              {
+                "label": "竖排组件功能组件",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n        [{\n          type : \"label\",\n          value : \"普通输入框\"\n        },{\n          type : \"input\",\n          value : \"普通输入框\",\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          }\n        }],[{\n          type : \"label\",\n          value : \"普通下拉列表\"\n        },{\n          type : \"select\",\n          value : \"普通下拉列表\",\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          },\n          options : [{\n            id : 0,\n            label : \"项目1\"\n          },{\n            id : 1,\n            label : \"项目名称2\"\n          },{\n            id : 2,\n            label : \"名称3\"\n          }],\n          format : {\n            \"id\" : \"id\",\n            \"label\" : \"label\"\n          }\n        }],[{\n          type : \"label\",\n          value : \"日期选择器\"\n        },{\n          type : \"datePicker\",\n          value : \"普通输入框\",\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          }\n        }],[{\n          type : \"label\",\n          value : \"输入选择器\"\n        },{\n          type : \"autoComplete\",\n          value : \"search\",\n          options : [{\n            id : 0,\n            label : \"项目1\"\n          },{\n            id : 1,\n            label : \"项目名称2\"\n          },{\n            id : 2,\n            label : \"名称3\"\n          }],\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          },\n          format : {\n            \"id\" : \"id\",\n            \"label\" : \"label\",\n            \"searchkey\" : \"label\"\n          }\n        }],[{\n          type : \"label\",\n          value : \"树状选择器\"\n        },{\n          type : \"dropdowntree\",\n          value : \"search\",\n          options : {\n            \"children\" : [{\n              id : 0,\n              label : \"根节点\",\n              children : [{\n                id : 1,\n                label : \"子节点1\"\n              },{\n                id : 2,\n                label : \"子节点2\"\n              }]\n            }]\n          },\n          on : {\n            change : function(elem){\n              console.log(elem)\n            }\n          },\n          format : {\n            \"children\" : \"children\"\n          }\n        }],[{\n          type : \"label\",\n          value : \"\"\n        },{\n          type : \"button\",\n          value : \"按钮\",\n          icon : \"glyphicon glyphicon-search\",\n          class : \"btn-primary\",\n          on : {\n            click : function(elem){\n              console.log(elem);\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px"
+                },
+                "url": "images/map/map1.png"
+              },
+              {
+                "label": "项目，管理域,提交按钮",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "{\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      event.target.queryDomainTree(function(domaintree){\n        event.target.getDomainsByFilter({\n          modelIds : [302]\n        }, function(projects){\n          event.target.setValue(\"projectName\", \"\");\n          event.target.setValue(\"domainPath\", \"\")\n          var ctrlGroups = [\n            [{\n              type : \"label\",\n              value : \"项目名称\"\n            },{\n              type : \"autoComplete\",\n              value : \"search\",\n              options : projects,\n              on : {\n                change : function(elem){\n                  var projectName = elem.value;\n                  target.setValue(\"projectName\", projectName);\n                }\n              },\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\",\n                \"searchkey\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"管理域\"\n            },{\n              type : \"dropdowntree\",\n              value : \"search\",\n              options : {\n                \"domainInfos\" : domaintree\n              },\n              on : {\n                change : function(elem){\n                  var domain = elem.value;\n                  target.setValue(\"domainPath\", domain.domainPath);\n                }\n              },\n              format : {\n                \"children\" : \"domainInfos\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"\"\n            },{\n              type : \"button\",\n              value : \"搜索\",\n              icon : \"glyphicon glyphicon-search\",\n              class : \"btn-primary\",\n              on : {\n                click : function(elem){\n                  global.fire(\"refresh\")\n                }\n              }\n            }]\n          ];\n          event.target.render(ctrlGroups);\n        });\n      });\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px",
+                  "width": "100%"
+                },
+                "url": "images/map/map1.png"
+              }
+            ],
+            "id": "idmeDKwWGz2mZNMdtTEyHctXA8EAyYYK"
+          }
+        ],
+        "col": 12,
+        "id": "eEtdYyPGmnr5zyXpEX5eHb6NsWFWAMwf"
+      },
+      "id": "2",
+      "$$hashKey": "object:1436"
+    },
+    {
+      "label": "对话框",
+      "path": "msgbox",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "文字",
+            "type": "text",
+            "source": "TEXT",
+            "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+            "data": {
+              "applied": false,
+              "multipleCi": false,
+              "multipleKpi": false,
+              "resource": [],
+              "modelType": 300,
+              "resfilltype": "parameter",
+              "series": {
+                "manual": "新建文字",
+                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+              },
+              "modelDisable": true
+            },
+            "style": {
+              "margin": "5px",
+              "padding": "0",
+              "font-size": "12px",
+              "font-weight": "bold"
+            },
+            "advance": {
+              "getfunction": "kpiDataService.getValueList",
+              "category": "ci",
+              "condition": [
+                "kpi",
+                "{object:kpiQueryModel}"
+              ],
+              "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"新建文字\")\n        }\n    }\n}"
+            },
+            "template": [
+              {
+                "type": "text",
+                "style": {
+                  "margin": "auto",
+                  "padding": "0",
+                  "font-size": "10px",
+                  "font-weight": "bold",
+                  "color": "#333"
+                }
+              },
+              {
+                "type": "text",
+                "style": {
+                  "margin": "auto",
+                  "padding": "0",
+                  "font-size": "16px",
+                  "font-weight": "bold",
+                  "color": "#666",
+                  "text-align": "center"
+                }
+              },
+              {
+                "type": "text",
+                "style": {
+                  "width": "60px",
+                  "height": "60px",
+                  "margin": "auto",
+                  "padding": "0",
+                  "font-size": "12px",
+                  "line-height": "60px",
+                  "font-weight": "bold",
+                  "color": "#fff",
+                  "text-align": "center",
+                  "border-radius": "50%",
+                  "background-color": "#3c8dbc"
+                }
+              },
+              {
+                "type": "text",
+                "style": {
+                  "width": "140px",
+                  "height": "60px",
+                  "margin": "auto",
+                  "padding": "0",
+                  "font-size": "12px",
+                  "line-height": "60px",
+                  "font-weight": "bold",
+                  "color": "#fff",
+                  "text-align": "center",
+                  "border-radius": "4px",
+                  "background-color": "#3c8dbc"
+                }
+              },
+              {
+                "type": "text",
+                "style": {
+                  "width": "140px",
+                  "height": "60px",
+                  "margin": "auto",
+                  "padding": "0",
+                  "font-size": "12px",
+                  "line-height": "60px",
+                  "font-weight": "bold",
+                  "color": "#444",
+                  "text-align": "center",
+                  "border-radius": "4px",
+                  "background-color": "#eee"
+                }
+              },
+              {
+                "type": "text",
+                "style": {
+                  "margin": "auto",
+                  "padding": "5px",
+                  "font-size": "18px",
+                  "font-weight": "bold",
+                  "color": "#444",
+                  "text-align": "center",
+                  "border-radius": "0px",
+                  "background-color": "#eee"
+                }
+              }
+            ],
+            "id": "x5hE5ePM4s5wn8FpW5GtaNtJa58YnCF8"
+          },
+          {
+            "label": "控件组",
+            "type": "ctrlgroup",
+            "source": "CTRLGROUP",
+            "advance": {
+              "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var buttons = [{\n          id : 0,\n          label : \"确认\",\n          icon : \"glyphicon glyphicon-ok\",\n          class : \"btn btn-primary\"\n      },{\n           id : 0,\n          label : \"取消\",\n          icon : \"glyphicon glyphicon-remove\",\n          class : \"btn btn-default\"\n      }]\n      var ctrlGroups = [];\n      var content = [];\n      var tr = [{\n          type : \"buttonGroup\",\n          content : content,\n          groupStyle : {\n              float : \"right\"\n          }\n      }]\n      for(var i in buttons){\n          content.push({\n              type : \"button\",\n              value : buttons[i].label,\n              icon : buttons[i].icon,\n              btnclass : buttons[i].class,\n              tdStyle : {\n                  width : \"100px\",\n                  float : \"right\"\n              },\n              on : {\n                click : function(elem){\n                  \n                }\n              }\n          })\n      };\n      ctrlGroups.push(tr);\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+            },
+            "style": {
+              "margin": "5px",
+              "font-size": "12px"
+            },
+            "help": "../pdf/ctrlgroup.pdf",
+            "url": "images/map/map1.png",
+            "template": [
+              {
+                "label": "普通按钮",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n       [{\n          type : \"button\",\n          value : \"按钮\",\n          icon : \"glyphicon glyphicon-search\",\n          btnclass : \"btn btn-primary\",\n          class : \"col-md-12\",\n          on : {\n            click : function(elem){\n              target.console(elem);\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px"
+                },
+                "parameters": {},
+                "url": "images/map/map1.png"
+              },
+              {
+                "label": "设备，项目，客户下拉",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  on : {\n    init : function(event){\n\n      var target = event.target;\n      var global = event.global;\n      event.target.getDomainsByFilter({\n        modelIds : [301,302]\n      }, function(obj){\n        var projects = obj.filter(function(elem){\n          return elem.modelId == 302;\n        })\n        var customers = obj.filter(function(elem){\n          return elem.modelId == 301;\n        })\n        event.target.getDevicesByCondition({}, function(devices){\n          var ctrlGroups = [\n            [{\n              type : \"label\",\n              value : \"设备下拉列表\"\n            },{\n              type : \"select\",\n              value : \"\",\n              on : {\n                change : function(elem){\n                  console.log(elem);\n                }\n              },\n              options : devices,\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"客户下拉列表\"\n            },{\n              type : \"select\",\n              value : \"\",\n              on : {\n                change : function(elem){\n                  console.log(elem);\n                }\n              },\n              options : customers,\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"项目下拉列表1\"\n            },{\n              type : \"select\",\n              value : \"\",\n              on : {\n                change : function(elem){\n                  console.log(elem);\n                }\n              },\n              options : projects,\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"\"\n            },{\n              type : \"button\",\n              value : \"按钮\",\n              icon : \"glyphicon glyphicon-search\",\n              class : \"btn-primary\",\n              on : {\n                click : function(elem){\n                  console.log(elem);\n                }\n              }\n            }]\n          ];\n          event.target.render(ctrlGroups);\n        });\n      });\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px"
+                },
+                "parameters": {},
+                "url": "images/map/map1.png"
+              },
+              {
+                "label": "竖排组件功能组件",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n        [{\n          type : \"label\",\n          value : \"普通输入框\"\n        },{\n          type : \"input\",\n          value : \"普通输入框\",\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          }\n        }],[{\n          type : \"label\",\n          value : \"普通下拉列表\"\n        },{\n          type : \"select\",\n          value : \"普通下拉列表\",\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          },\n          options : [{\n            id : 0,\n            label : \"项目1\"\n          },{\n            id : 1,\n            label : \"项目名称2\"\n          },{\n            id : 2,\n            label : \"名称3\"\n          }],\n          format : {\n            \"id\" : \"id\",\n            \"label\" : \"label\"\n          }\n        }],[{\n          type : \"label\",\n          value : \"日期选择器\"\n        },{\n          type : \"datePicker\",\n          value : \"普通输入框\",\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          }\n        }],[{\n          type : \"label\",\n          value : \"输入选择器\"\n        },{\n          type : \"autoComplete\",\n          value : \"search\",\n          options : [{\n            id : 0,\n            label : \"项目1\"\n          },{\n            id : 1,\n            label : \"项目名称2\"\n          },{\n            id : 2,\n            label : \"名称3\"\n          }],\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          },\n          format : {\n            \"id\" : \"id\",\n            \"label\" : \"label\",\n            \"searchkey\" : \"label\"\n          }\n        }],[{\n          type : \"label\",\n          value : \"树状选择器\"\n        },{\n          type : \"dropdowntree\",\n          value : \"search\",\n          options : {\n            \"children\" : [{\n              id : 0,\n              label : \"根节点\",\n              children : [{\n                id : 1,\n                label : \"子节点1\"\n              },{\n                id : 2,\n                label : \"子节点2\"\n              }]\n            }]\n          },\n          on : {\n            change : function(elem){\n              console.log(elem)\n            }\n          },\n          format : {\n            \"children\" : \"children\"\n          }\n        }],[{\n          type : \"label\",\n          value : \"\"\n        },{\n          type : \"button\",\n          value : \"按钮\",\n          icon : \"glyphicon glyphicon-search\",\n          class : \"btn-primary\",\n          on : {\n            click : function(elem){\n              console.log(elem);\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px"
+                },
+                "url": "images/map/map1.png"
+              },
+              {
+                "label": "项目，管理域,提交按钮",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "{\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      event.target.queryDomainTree(function(domaintree){\n        event.target.getDomainsByFilter({\n          modelIds : [302]\n        }, function(projects){\n          event.target.setValue(\"projectName\", \"\");\n          event.target.setValue(\"domainPath\", \"\")\n          var ctrlGroups = [\n            [{\n              type : \"label\",\n              value : \"项目名称\"\n            },{\n              type : \"autoComplete\",\n              value : \"search\",\n              options : projects,\n              on : {\n                change : function(elem){\n                  var projectName = elem.value;\n                  target.setValue(\"projectName\", projectName);\n                }\n              },\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\",\n                \"searchkey\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"管理域\"\n            },{\n              type : \"dropdowntree\",\n              value : \"search\",\n              options : {\n                \"domainInfos\" : domaintree\n              },\n              on : {\n                change : function(elem){\n                  var domain = elem.value;\n                  target.setValue(\"domainPath\", domain.domainPath);\n                }\n              },\n              format : {\n                \"children\" : \"domainInfos\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"\"\n            },{\n              type : \"button\",\n              value : \"搜索\",\n              icon : \"glyphicon glyphicon-search\",\n              class : \"btn-primary\",\n              on : {\n                click : function(elem){\n                  global.fire(\"refresh\")\n                }\n              }\n            }]\n          ];\n          event.target.render(ctrlGroups);\n        });\n      });\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px",
+                  "width": "100%"
+                },
+                "url": "images/map/map1.png"
+              }
+            ],
+            "id": "E5hCz6eFZ3esC8pDEk6AjNhEmPnytk2f"
+          }
+        ],
+        "col": 12,
+        "id": "RxT5bHDCQnXNa5cPWAtyXWxHmCrFntHW"
+      },
+      "id": "3",
+      "$$hashKey": "object:1050"
+    }
+  ],
+  "setting": "setting = {\n  \"showNavi\" : false,\n  \"style\" : {\n    \"padding\" : \"5px\",\n    \"background\" : \"-webkit-linear-gradient(top,#eee,#fff)\"\n  }\n}"
+}

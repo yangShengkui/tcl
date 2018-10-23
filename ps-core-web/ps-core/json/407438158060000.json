@@ -1,0 +1,303 @@
+{
+  "type": "absolute",
+  "setting": {
+    "viewTitle": "青岛展厅视图0102",
+    "cls": "qingdao0102",
+    "description": "青岛展厅视图0102"
+  },
+  "data": [
+    {
+      "type": "times",
+      "position": {
+        "top": 881,
+        "left": "27.369791666666664%",
+        "width": "6.614583333333333%",
+        "height": 100
+      },
+      "attributes": {
+        "height": "50",
+        "width": "200",
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "poor": "0",
+        "HHMMSS": true,
+        "format": "yyyy-MM-dd HH:mm:ss",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "real": "false"
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 925,
+        "left": "27.395833333333336%",
+        "width": "6.510416666666667%",
+        "height": 100
+      },
+      "attributes": {
+        "height": "50",
+        "width": "200",
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "poor": "1",
+        "HHMMSS": true,
+        "format": "yyyy-MM-dd HH:mm:ss",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "real": "false"
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 970,
+        "left": "27.369791666666664%",
+        "width": "6.640625%",
+        "height": 100
+      },
+      "attributes": {
+        "height": "50",
+        "width": "200",
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "poor": "2",
+        "HHMMSS": true,
+        "format": "yyyy-MM-dd HH:mm:ss",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "real": "false"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 881,
+        "left": "10.15625%",
+        "width": "10.703125%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "齿轮箱侧轴承振动冲击有效值异常",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 925,
+        "left": "10.15625%",
+        "width": "10.677083333333332%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "齿轮箱输出轴承垂直振动速度有效值异常",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 970,
+        "left": "10.130208333333334%",
+        "width": "10.598958333333334%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "齿轮箱输出轴承垂直振动速度有效值超标",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 881,
+        "left": "20.104166666666668%",
+        "width": "4.557291666666666%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "振动超标",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 925,
+        "left": "20.052083333333336%",
+        "width": "4.583333333333333%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "振动超标",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 970,
+        "left": "20.130208333333332%",
+        "width": "4.505208333333333%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "振动超标",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 880,
+        "left": "37.213541666666664%",
+        "width": "2.96875%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "振动监测",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 926,
+        "left": "37.1875%",
+        "width": "2.9427083333333335%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "振动监测",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 881,
+        "left": "44.817708333333336%",
+        "width": "4.036458333333334%",
+        "height": 100
+      },
+      "attributes": {
+        "height": "50",
+        "width": "120",
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "poor": "0",
+        "HHMMSS": "false",
+        "format": "yyyy-MM-dd",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "real": "false"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 971,
+        "left": "37.161458333333336%",
+        "width": "2.994791666666667%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "振动监测",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 881,
+        "left": "40.15625%",
+        "width": "5.104166666666667%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "Z-201809AER002",
+        "fontSize": "18px",
+        "color": "#FFFFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 927,
+        "left": "40.15625%",
+        "width": "5.130208333333333%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "Z-201809AER001",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 971,
+        "left": "40.182291666666664%",
+        "width": "5.104166666666667%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "Z-201809AER003",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 929,
+        "left": "44.84375%",
+        "width": "3.9843749999999996%",
+        "height": 100
+      },
+      "attributes": {
+        "height": "50",
+        "width": "120",
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "poor": "1",
+        "HHMMSS": "false",
+        "format": "yyyy-MM-dd",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "real": "false"
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 976,
+        "left": "44.895833333333336%",
+        "width": "4.010416666666667%",
+        "height": 100
+      },
+      "attributes": {
+        "height": "50",
+        "width": "120",
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "poor": "2",
+        "HHMMSS": "false",
+        "format": "yyyy-MM-dd",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "real": "false"
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 407774594970041
+      },
+      "position": {
+        "top": 977,
+        "left": "59.42708333333333%",
+        "width": "15.130208333333334%",
+        "height": 100
+      }}
+  ]
+}

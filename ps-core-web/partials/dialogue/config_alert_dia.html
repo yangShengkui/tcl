@@ -1,0 +1,64 @@
+<div id="bootstrap-dialog" class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2 padding-top-10 padding-bottom-10">
+        <a role="button" class="close" ng-click="closeThisDialog()">×</a>
+        <h4 class="modal-title info-box-number" ng-bind="dialog.title"></h4>
+      </div>
+      <div class="margin-top-2 alert-info-dialog t-sty" ng-if="dialog.note">
+        <i class="proudsmart ps-fail c-f29047  i-con"></i>
+        <b bo-text="'msg.cm.lb.tips'|translate">提醒：</b>
+        <span class="c-f29047" style="font-size: 12px;" ng-bind="dialog.note.message"></span>
+      </div>
+      <div class="modal-body padding-top-10 no-pad-bottom">
+        <form role="form form-inline" class="form-horizontal" name="userForm">
+          <div class="simple-form-field" class="row">
+            <div class="form-group margin-bottom-10" ng-repeat="item in dialog.input" ng-if="item.apply != false">
+              <div class="col-sm-4 dialog-control-label no-padding-right dialog-control-h" style="height:auto;">
+                <span class="text-danger" ng-if="item.composory">*</span>
+                <span ng-bind="item.label + ':'"></span>
+              </div>
+              <div class=" padding-left-5 dialog-control-h" ng-class="{true: 'col-sm-4', false: 'col-sm-7'}[item.resetdis == true]" style="height:auto;">
+                <span style="padding-left : 20px;color : #888;" ng-if="item.type=='text'" ng-bind="{true : item.value, false: item.format(item.value)}[item.format==undefined]"></span>
+                <input type="text" class="form-control dialog-inp-text input-sm" ng-change="item.events.change(item)" maxlength="item.maxlength" ng-model="item.value" placeholder="{{item.placeholder}}" ng-if="item.type=='text' || item.type=='input'" ng-blur="item.events.blur(item)" />
+                <input type="number" class="form-control dialog-inp-text input-sm" ng-change="item.events.change(item)" min="item.minlength" max="item.maxlength"  ng-model="item.value" placeholder="{{item.placeholder}}" ng-if="item.type=='number'" ng-blur="item.events.blur(item)" />
+                <input type="text" class="form-control dialog-inp-text input-sm" style="background-color: rgb(255, 255, 255);" readonly="readonly" drops="down"  ng-change="item.events.change(item)" ng-model="item.value" date-time-picker  ng-if="item.type=='data'"  />
+                <textarea type="text" class="form-control dialog-inp-text input-sm" style="height:30px;" ng-change="item.events.change(item)" maxlength="item.maxlength" ng-model="item.value" ng-if="item.type=='textarea'"></textarea>
+                <div class="dropdowntree select-sm" ng-if="item.type=='tree'" disabled="item.disabled" fontsize="item.fontsize" width="item.width" placeholder="请选择..." ng-model="item.value" dt-key="item.key" options="item.options" dt-mark="item.mark" data-change="item.events.change(item)" style="box-sizing: border-box;"></div>
+                <select class="form-control dialog-inp-text no-padding-left input-sm" ng-model="item.value" ng-change="item.events.change(item)" ng-if="item.type=='userType'" ng-disabled="item.disabled" ng-options="op as op.label for op in item.options">
+                   <option value="">请选择...</option>
+                </select>
+                <select class="form-control dialog-inp-text no-padding-left input-sm" ng-model="item.value" ng-change="item.events.change(item)" ng-if="item.type=='select'" ng-disabled="item.disabled" ng-options="op.id as op.label for op in item.options">
+                   <option value="" selected="selected">请选择...</option>
+                </select>
+                <select class="form-control dialog-inp-text input-sm" ng-model="item.value" ng-change="item.events.change(item)" ng-if="item.type=='multiple'" ng-disabled="item.disabled" multiple="multiple" buttonclass="btn btn-default btn-sm multiselect-btn padding-left-5 padding-right-20" bootstrap-multiselect numberdisplayed="2" buttonWidth="200" ng-options="op.id as op.label for op in item.options">
+                </select>
+                <!--<div ng-model="item.value" ng-if="item.type=='codeMirror'" code-mirror style="width:200px;" data-config="{showCopy:false,showPaste:false}"></div>-->
+                <label ng-repeat="op in item.options" ng-if="item.type=='checkbox'" style="display: inline;">
+                  <div class="icheckbox_square-blue" ng-class="{true:'checked', false:''}[op.value]" style="position: relative;">
+                    <input type="checkbox" ng-model="op.value" class="ng-pristine ng-untouched ng-valid ng-empty" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
+                    <ins ng-bind="op.label" class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
+                    </ins>
+                  </div>
+                  <span ng-bind="op.label" style="font-size : 12px; padding:0 6px; font-weight: normal;"></span>
+                </label>
+                <div fb-toggle ng-model="item.value" ng-if="item.type=='toggle'" style="margin:2px 0;"></div>
+                <span ng-show="item.error" style="font-size: 12px;display: block;" class="text-danger " ng-bind="item.error"></span>
+              </div>
+              <div ng-if="item.resetdis" class="col-sm-2 margin-top-5">
+                <a  href="javascript:void(0);" ng-click="item.events.reset(item)">重置</a>
+              </div>
+              <!-- <div class="col-sm-7 col-md-offset-4" ng-if="item.error">
+                <span ng-bind="item.error" style="color:red;font-weight: bold; font-size : 12px;"></span>
+              </div>-->
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer padding-top-10">
+        <button ng-repeat="btn in dialog.button" ng-class="btn.icon" ng-click="btn.fn(dialog)" ng-bind="btn.label" ng-class="btn.icon;" ng-disabled="btn.disabledFn()">
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

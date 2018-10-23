@@ -1,0 +1,2246 @@
+{
+  "version": "V_2",
+  "groups": [
+    {
+      "id": "0",
+      "label": "普奥空调项目总揽",
+      "path": "index",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "type": "row",
+            "children": [
+              {
+                "type": "column",
+                "col": 3,
+                "children": [
+                  {
+                    "label": "数据统计标签",
+                    "type": "totalItem",
+                    "source": "TOTALITEM",
+                    "data": {
+                      "applied": true,
+                      "kpi": [
+                        3001
+                      ],
+                      "modelType": 300,
+                      "resfilltype": "parameter",
+                      "resource": [],
+                      "multipleCi": false,
+                      "multipleKpi": false,
+                      "series": {
+                        "manual": [
+                          {
+                            "data": [
+                              {
+                                "name": "模拟数据",
+                                "unit": "个",
+                                "value": "10"
+                              }
+                            ]
+                          }
+                        ],
+                        "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n  }\n  return source.ci.getSeries(formatter);\n})"
+                      },
+                      "modelDisable": true
+                    },
+                    "parameters": {
+                      "icon": {
+                        "id": "1",
+                        "perfix": "fa",
+                        "css": "fa-connectdevelop"
+                      }
+                    },
+                    "advance": {
+                      "getfunction": "kpiDataService.getValueList",
+                      "category": "ci",
+                      "condition": [
+                        "kpi",
+                        "{object:kpiQueryModel}"
+                      ],
+                      "expression": "{\n  on : {\n    click : function(event){\n      console.log(event);\n      event.tools.location.href='../../app-oc/index.html#/facility';\n    }\n  }\n}\n"
+                    },
+                    "style": {
+                      "color": "#fff",
+                      "background-color": "#25bce7",
+                      "margin": "5px"
+                    },
+                    "id": "ZmBDKFw5xWA7SH85BZjhyEpQSGZdkEJZ"
+                  }
+                ],
+                "id": "z4TAhnBMp8B8cijNecA2e36WwwZGRMBQ"
+              },
+              {
+                "type": "column",
+                "col": 3,
+                "children": [
+                  {
+                    "label": "数据统计标签",
+                    "type": "totalItem",
+                    "source": "TOTALITEM",
+                    "data": {
+                      "applied": true,
+                      "resource": [],
+                      "modelDisable": true,
+                      "series": {
+                        "manual": [
+                          {
+                            "data": [
+                              {
+                                "name": "模拟数据",
+                                "unit": "个",
+                                "value": "10"
+                              }
+                            ]
+                          }
+                        ],
+                        "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                      },
+                      "model": {
+                        "id": 204
+                      },
+                      "kpi": [
+                        3002
+                      ],
+                      "multipleCi": false,
+                      "multipleKpi": false,
+                      "modelType": 300,
+                      "resfilltype": "parameter"
+                    },
+                    "parameters": {
+                      "icon": {
+                        "id": "3",
+                        "perfix": "fa",
+                        "css": "fa-edit"
+                      }
+                    },
+                    "advance": {
+                      "getfunction": "kpiDataService.getValueList",
+                      "category": "ci",
+                      "condition": [
+                        "kpi",
+                        "{object:kpiQueryModel}"
+                      ],
+                      "expression": "{\n  on : {\n    click : function(event){\n      console.log(event);\n      event.tools.location.href='../../app-oc/index.html#/gateways2';\n    }\n  }\n}"
+                    },
+                    "style": {
+                      "color": "#fff",
+                      "background-color": "#00b9b2",
+                      "margin": "5px"
+                    },
+                    "id": "NeNtWP6rtiwZTpfQndWPY6HX3NF72J3X"
+                  }
+                ],
+                "id": "iEpdtK652dXdJ3hz7BRpifPKm8PZfxnC"
+              },
+              {
+                "type": "column",
+                "col": 3,
+                "children": [
+                  {
+                    "label": "数据统计标签",
+                    "type": "totalItem",
+                    "source": "TOTALITEM",
+                    "data": {
+                      "applied": true,
+                      "kpi": [
+                        3040
+                      ],
+                      "modelType": 300,
+                      "resfilltype": "parameter",
+                      "resource": [],
+                      "multipleCi": false,
+                      "multipleKpi": false,
+                      "series": {
+                        "manual": [
+                          {
+                            "data": [
+                              {
+                                "name": "模拟数据",
+                                "unit": "条",
+                                "value": "10"
+                              }
+                            ]
+                          }
+                        ],
+                        "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                      },
+                      "modelDisable": true
+                    },
+                    "parameters": {
+                      "icon": {
+                        "id": "2",
+                        "perfix": "fa",
+                        "css": "fa-warning"
+                      }
+                    },
+                    "advance": {
+                      "getfunction": "kpiDataService.getValueList",
+                      "category": "ci",
+                      "condition": [
+                        "kpi",
+                        "{object:kpiQueryModel}"
+                      ],
+                      "expression": "{\n  on : {\n    click : function(event){\n      console.log(event);\n      event.tools.location.href='../../app-oc/index.html#/configAlert/0/1,0,0,0';\n    }\n  }\n}"
+                    },
+                    "style": {
+                      "color": "#fff",
+                      "background-color": "#e7675d",
+                      "margin": "5px"
+                    },
+                    "id": "Eb2tNnc8GQsFSjBCr7WC7zZFRpEYYzBt"
+                  }
+                ],
+                "id": "dtrPAwYaGxzBeFieMnbNAMBKnkmhfWCh"
+              },
+              {
+                "type": "column",
+                "col": 3,
+                "children": [
+                  {
+                    "label": "数据统计标签",
+                    "type": "totalItem",
+                    "source": "TOTALITEM",
+                    "data": {
+                      "applied": true,
+                      "kpi": [
+                        3017
+                      ],
+                      "modelType": 300,
+                      "resfilltype": "parameter",
+                      "resource": [],
+                      "multipleCi": false,
+                      "multipleKpi": false,
+                      "series": {
+                        "manual": [
+                          {
+                            "data": [
+                              {
+                                "name": "模拟数据",
+                                "unit": "%",
+                                "value": "10"
+                              }
+                            ]
+                          }
+                        ],
+                        "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                      },
+                      "modelDisable": true
+                    },
+                    "parameters": {
+                      "icon": {
+                        "id": "5",
+                        "perfix": "fa",
+                        "css": "fa-user"
+                      }
+                    },
+                    "advance": {
+                      "getfunction": "kpiDataService.getValueList",
+                      "category": "ci",
+                      "condition": [
+                        "kpi",
+                        "{object:kpiQueryModel}"
+                      ],
+                      "expression": "{\n  on : {\n    click : function(event){\n      console.log(event);\n      event.tools.location.href='../../app-oc/index.html#/workorder';\n    }\n  }\n}"
+                    },
+                    "style": {
+                      "color": "#fff",
+                      "background-color": "#ebae0b",
+                      "margin": "5px"
+                    },
+                    "id": "wJxr5GRKT5Tt5NpxaQhZexZaNET2iDhC"
+                  }
+                ],
+                "id": "h3mMcKyY2bXWd8C3pdJJSPd26Ds3yDQC"
+              }
+            ],
+            "source": "ROW",
+            "parameters": {
+              "alignment": "bootstrap"
+            },
+            "style": {},
+            "id": "wNdHmczacnfFbASSmfxPjAZnHrNBt2C4"
+          },
+          {
+            "type": "row",
+            "source": "ROW",
+            "parameters": {
+              "alignment": "bootstrap"
+            },
+            "style": {},
+            "children": [
+              {
+                "type": "column",
+                "children": [
+                  {
+                    "label": "控制板2",
+                    "type": "box",
+                    "class": "box box-info",
+                    "source": "BOX",
+                    "parameters": {
+                      "title": "检索"
+                    },
+                    "style": {
+                      "font-size": "12px",
+                      "font-weight": "bold",
+                      "text-align": "left",
+                      "margin": "5px"
+                    },
+                    "children": [
+                      {
+                        "class": "box-body",
+                        "type": "box-body",
+                        "children": [
+                          {
+                            "type": "column",
+                            "col": 12,
+                            "children": [
+                              {
+                                "label": "控件组",
+                                "type": "ctrlgroup",
+                                "source": "CTRLGROUP",
+                                "advance": {
+                                  "expression": "{\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      event.target.queryDomainTree(function(domaintree){\n        event.target.getDomainsByFilter({\n          modelIds : [302]\n        }, function(projects){\n          event.target.setValue(\"projectName\", \"\");\n          event.target.setValue(\"domainPath\", \"\")\n          var ctrlGroups = [\n            [{\n              type : \"label\",\n              value : \"项目名称\"\n            },{\n              type : \"autoComplete\",\n              value : \"search\",\n              options : projects,\n              on : {\n                change : function(elem){\n                  var projectName = elem.value;\n                  target.setValue(\"projectName\", projectName);\n                }\n              },\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\",\n                \"searchkey\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"管理域\"\n            },{\n              type : \"dropdowntree\",\n              value : \"search\",\n              options : {\n                \"domainInfos\" : domaintree\n              },\n              on : {\n                change : function(elem){\n                  var domain = elem.value;\n                  target.setValue(\"domainPath\", domain.domainPath);\n                }\n              },\n              format : {\n                \"children\" : \"domainInfos\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"\"\n            },{\n              type : \"button\",\n              value : \"搜索\",\n              icon : \"glyphicon glyphicon-search\",\n              class : \"btn-primary\",\n              on : {\n                click : function(elem){\n                  global.fire(\"refresh\")\n                }\n              }\n            }]\n          ];\n          event.target.render(ctrlGroups);\n        });\n      });\n    }\n  }\n}"
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "font-size": "12px",
+                                  "width": "100%"
+                                },
+                                "id": "pJDK5j7EkxYdFrZnaeZf7N6HJyEthCQd"
+                              }
+                            ],
+                            "id": "FBJJrGEzmwpEeceDTBp4kraaiartzzHW"
+                          }
+                        ],
+                        "id": "Sebk6SbJiAx4isdxA8BtsZACbZGdny5P"
+                      },
+                      {
+                        "class": "box-footer",
+                        "type": "box-footer",
+                        "children": [
+                          {
+                            "type": "column",
+                            "col": 12,
+                            "children": [
+                              {
+                                "label": "列表",
+                                "type": "dataTable",
+                                "source": "DATATABLE",
+                                "parameters": {
+                                  "col": 1,
+                                  "pageSize": 10,
+                                  "listbottom": "pageOnly"
+                                },
+                                "advance": {
+                                  "getListTable": "newdevice",
+                                  "expression": "{\n\t\"on\" : {\n    \"init\" : function(event){\n    \tevent.target.getDomainsByFilter({\n        modelIds : [302]\n      }, function(projects){\n        event.target.render(projects);\n      })\n    },\n    \"click\" : function(event){\n      var project = event.data;\n      event.global.fire(\"highlight\", {\n        project : project\n      })\n    },\n    \"refresh\" : function(event){\n      var projectName = event.target.getValue(\"projectName\");\n      var domainPath = event.target.getValue(\"domainPath\");\n      event.target.getDomainsByFilter({\n        modelIds : [302]\n      }, function(projects){\n        var filter = projects.filter(function(elem){\n          return (projectName == \"\" || elem.label.indexOf(projectName) != -1) && (domainPath == \"\" || elem.domainPath.indexOf(domainPath) != -1);\n        })\n        event.target.render(filter);\n      })\n    }\n  },\n  \"format\" : [\n    {\n      \"name\": \"项目名称\",\n      \"value\": \"label\",\n      \"type\": \"text\",\n      \"style\" : {\n        \"width\" : \"100px\"\n      }\n    }\n  ]\n}",
+                                  "condition": "[100]"
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "font-size": "12px"
+                                },
+                                "template": [
+                                  {
+                                    "label": "全部设备列表",
+                                    "type": "image",
+                                    "url": "images/line/line1.png",
+                                    "parameters": {
+                                      "col": 1,
+                                      "pageSize": 10,
+                                      "listbottom": "standard"
+                                    },
+                                    "advance": {
+                                      "getListTable": "newdevice",
+                                      "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"label\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"创建时间\",\n      \"value\": \"createTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    }\n  ]\n}",
+                                      "condition": "[100]"
+                                    },
+                                    "style": {
+                                      "margin": "5px",
+                                      "font-size": "12px"
+                                    }
+                                  },
+                                  {
+                                    "label": "当前项目设备列表",
+                                    "type": "image",
+                                    "url": "images/line/line1.png",
+                                    "parameters": {
+                                      "col": 1,
+                                      "pageSize": 10,
+                                      "listbottom": "standard"
+                                    },
+                                    "advance": {
+                                      "getListTable": "currentDevicesByProject",
+                                      "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"label\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"启动时间\",\n      \"value\": \"activeTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    },\n    {\n      \"name\": \"创建时间\",\n      \"value\": \"createTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    }\n  ]\n}",
+                                      "condition": "[100]"
+                                    },
+                                    "style": {
+                                      "margin": "5px",
+                                      "font-size": "12px"
+                                    }
+                                  },
+                                  {
+                                    "label": "全部告警列表",
+                                    "type": "image",
+                                    "url": "images/line/line2.png",
+                                    "parameters": {
+                                      "col": 1,
+                                      "pageSize": 10,
+                                      "listbottom": "standard"
+                                    },
+                                    "advance": {
+                                      "getListTable": "alert",
+                                      "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"devName\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警信息\",\n      \"value\": \"message\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警时间\",\n      \"value\": \"arisingTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    },\n    {\n      \"name\": \"告警级别\",\n      \"value\": \"severity\",\n      \"type\": \"priority\"\n    }\n  ]\n}",
+                                      "condition": "[100]"
+                                    },
+                                    "style": {
+                                      "margin": "5px",
+                                      "font-size": "12px"
+                                    }
+                                  },
+                                  {
+                                    "label": "当前设备告警列表",
+                                    "type": "image",
+                                    "url": "images/line/line2.png",
+                                    "parameters": {
+                                      "col": 1,
+                                      "pageSize": 10,
+                                      "listbottom": "standard"
+                                    },
+                                    "advance": {
+                                      "getListTable": "currentAlertByDevice",
+                                      "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"devName\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警信息\",\n      \"value\": \"message\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警时间\",\n      \"value\": \"arisingTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    },\n    {\n      \"name\": \"告警级别\",\n      \"value\": \"severity\",\n      \"type\": \"priority\"\n    }\n  ]\n}",
+                                      "condition": "[100]"
+                                    },
+                                    "style": {
+                                      "margin": "5px",
+                                      "font-size": "12px"
+                                    }
+                                  },
+                                  {
+                                    "label": "当前设备指令列表",
+                                    "type": "image",
+                                    "url": "images/line/line2.png",
+                                    "parameters": {
+                                      "col": 2,
+                                      "pageSize": 10,
+                                      "listbottom": "standard"
+                                    },
+                                    "advance": {
+                                      "getListTable": "currentDirectiveByDevice",
+                                      "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"指令名称\",\n      \"value\": \"name\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"指令输入\",\n      \"type\": \"directiveInput\"\n    },\n    {\n      \"name\": \"操作\",\n      \"type\": \"button\"\n    }\n  ]\n}",
+                                      "condition": "[100]"
+                                    },
+                                    "style": {
+                                      "margin": "5px",
+                                      "font-size": "12px"
+                                    }
+                                  }
+                                ],
+                                "id": "jjxJmtbTze3ktnRrKR4MH6nQ6Y5DW7hw"
+                              }
+                            ],
+                            "id": "yBAcEQrFSXtT3enxEddZ4bhndK3wzTcZ"
+                          }
+                        ],
+                        "id": "X4Nas3tbHn7XJR2XAs7zdm376MPeSMm4"
+                      }
+                    ],
+                    "id": "Mc8dbtFJRZtpJx5Jx3mXWWWCjyPd7Yjp"
+                  }
+                ],
+                "col": 3,
+                "id": "7tm2DWSGxXJKXFCpQFpynPR3bxYj4pjB"
+              },
+              {
+                "type": "column",
+                "children": [
+                  {
+                    "label": "控制板2",
+                    "type": "box",
+                    "class": "box box-info",
+                    "source": "BOX",
+                    "parameters": {
+                      "title": "地图展示"
+                    },
+                    "style": {
+                      "font-size": "12px",
+                      "font-weight": "bold",
+                      "text-align": "left",
+                      "margin": "5px"
+                    },
+                    "children": [
+                      {
+                        "class": "box-body",
+                        "type": "box-body",
+                        "children": [
+                          {
+                            "type": "column",
+                            "col": 12,
+                            "children": [
+                              {
+                                "label": "地图展示",
+                                "type": "baidumap",
+                                "source": "BAIDUMAP",
+                                "style": {
+                                  "padding": "0",
+                                  "font-size": "12px",
+                                  "height": "calc(100vh - 300px)",
+                                  "margin": "5px"
+                                },
+                                "advance": {
+                                  "expression": "{\n  on : {\n    init : function(event){\n      var markers = [];\n      var target = event.target;\n      event.target.getCurrentProjects(function(projects){\n        event.target.queryDomainTree(function(domains){\n          var markers = [];\n          var loopProject = function(project){\n            return {\n              id : project.id,\n              icon : {\n                normal : {\n                  url : \"../images/ouke/oukeIcon2.svg\",\n                  width : 30,\n                  height : 30\n                },\n                highlight : {\n                  url : \"../images/ouke/oukeIcon2.svg\",\n                  width : 50,\n                  height : 50\n                }\n              },\n              lng : project.values.longitude,\n              lat : project.values.latitude,\n              infoWindow : {\n                html : project.label\n              },\n              rotation : 0,\n              minZoom : 7,\n              maxZoom : 19,\n              on : {\n                click : function(){\n                  event.target.navigateTo(\"topo\", {\n                    tabLabel : project.label,\n                    projectId : project.id\n                  }, \"blank\");\n                }\n              }\n            }\n          };\n          var loopDomain = function(domain){\n            return {\n              id : domain.id,\n              icon : {\n                normal : {\n                  url : \"../images/ouke/oukeIcon1.svg\",\n                  width : 30,\n                  height : 30\n                },\n                highlight : {\n                  url : \"../images/ouke/oukeIcon1.svg\",\n                  width : 50,\n                  height : 50\n                }\n              },\n              lng : domain.values.longitude,\n              lat : domain.values.latitude,\n              infoWindow : {\n                html : domain.label\n              },\n              rotation : 0,\n              minZoom : 0,\n              maxZoom : 7,\n              on : {\n                click : function(){\n                  target.setCenter([domain.values.longitude,domain.values.latitude]);\n                  target.setZoom(8);\n                }\n              }\n            }\n          }\n          for(var i in domains[0].domainInfos){\n            markers.push(loopDomain(domains[0].domainInfos[i]));\n          };\n          for(var i in projects){\n            markers.push(loopProject(projects[i]));\n          };\n          event.target.render({\n            center : [116.404, 33.915],\n            markers : markers,\n            zoom : 6\n          });\n        });\n      })\n    },\n    highlight : function(event){\n      var project = event.params.project;\n      event.target.setCenter([project.values.longitude,project.values.latitude]);\n      event.target.setZoom(8);\n      event.target.setHighlightByMakerId(project.id);\n    }\n  }\n}",
+                                  "stylejson": {}
+                                },
+                                "template": [
+                                  {
+                                    "label": "管理域，项目两层显示",
+                                    "url": "images/map/map1.png",
+                                    "style": {
+                                      "padding": "0",
+                                      "font-size": "12px",
+                                      "height": "calc(100vh - 200px)",
+                                      "margin": "5px"
+                                    },
+                                    "advance": {
+                                      "expression": "{\n  on : {\n    init : function(event){\n      var markers = [];\n      var target = event.target;\n      event.target.getCurrentProjects(function(projects){\n        event.target.queryDomainTree(function(domains){\n          var markers = [];\n          var loopProject = function(project){\n            return {\n              id : project.id,\n              icon : {\n                normal : {\n                  url : \"../images/ouke/oukeIcon2.svg\",\n                  width : 30,\n                  height : 30\n                },\n                highlight : {\n                  url : \"../images/ouke/oukeIcon2.svg\",\n                  width : 50,\n                  height : 50\n                }\n              },\n              lng : project.values.longitude,\n              lat : project.values.latitude,\n              infoWindow : {\n                html : project.label\n              },\n              rotation : 0,\n              minZoom : 7,\n              maxZoom : 19,\n              on : {\n                click : function(){\n                  console.log(project);\n                }\n              }\n            }\n          };\n          var loopDomain = function(domain){\n            return {\n              id : domain.id,\n              icon : {\n                normal : {\n                  url : \"../images/ouke/oukeIcon1.svg\",\n                  width : 30,\n                  height : 30\n                },\n                highlight : {\n                  url : \"../images/ouke/oukeIcon1.svg\",\n                  width : 50,\n                  height : 50\n                }\n              },\n              lng : domain.values.longitude,\n              lat : domain.values.latitude,\n              infoWindow : {\n                html : domain.label\n              },\n              rotation : 0,\n              minZoom : 0,\n              maxZoom : 7,\n              on : {\n                click : function(){\n                  target.setCenter([domain.values.longitude,domain.values.latitude]);\n                  target.setZoom(8);\n                }\n              }\n            }\n          }\n          for(var i in domains[0].domainInfos){\n            markers.push(loopDomain(domains[0].domainInfos[i]));\n          };\n          for(var i in projects){\n            markers.push(loopProject(projects[i]));\n          };\n          event.target.render({\n            center : [116.404, 33.915],\n            markers : markers,\n            zoom : 6\n          });\n        });\n      })\n    },\n    highlight : function(event){\n      var project = event.params.project;\n      event.target.setCenter([project.values.longitude,project.values.latitude]);\n      event.target.setZoom(8);\n      event.target.setHighlightByMakerId(project.id);\n    }\n  }\n}",
+                                      "stylejson": {}
+                                    }
+                                  },
+                                  {
+                                    "label": "展示所有设备地址",
+                                    "style": {
+                                      "padding": "0",
+                                      "font-size": "12px",
+                                      "height": "calc(100vh - 200px)",
+                                      "margin": "5px"
+                                    },
+                                    "advance": {
+                                      "expression": "{\n  on : {\n    init : function(event){\n      var markers = [];\n      var target = event.target;\n      event.target.getDevicesByCondition({}, function(devices){\n        var markers = [];\n        var loopDevice = function(device){\n          return {\n            id : device.id,\n            icon : {\n              normal : {\n                url : \"../images/ouke/oukeIcon1.svg\",\n                width : 30,\n                height : 30\n              },\n              highlight : {\n                url : \"../images/ouke/oukeIcon1.svg\",\n                width : 50,\n                height : 50\n              }\n            },\n            lng : device.values.longitude,\n            lat : device.values.latitude,\n            infoWindow : {\n              html : device.label\n            },\n            rotation : 0,\n            minZoom : 0,\n            maxZoom : 19,\n            on : {\n              click : function(){\n                console.log(device);\n              }\n            }\n          }\n        };\n        for(var i in devices){\n          markers.push(loopDevice(devices[i]));\n        };\n        console.log(markers);\n        event.target.render({\n          center : [116.404, 33.915],\n          markers : markers,\n          zoom : 6\n        });\n      });\n    },\n    highlight : function(event){\n      var project = event.params.project;\n      event.target.setCenter([project.values.longitude,project.values.latitude]);\n      event.target.setZoom(8);\n      event.target.setHighlightByMakerId(project.id);\n    }\n  }\n}"
+                                    },
+                                    "url": "images/map/map1.png"
+                                  }
+                                ],
+                                "id": "4NbB7ZDkPkbsGGn4BzQMr3tshpYF5yiT"
+                              }
+                            ],
+                            "id": "QtWEeMahicsQW8PSZNaydm4XNnXMrMGD"
+                          }
+                        ],
+                        "id": "7r2PmeT4kn6GjmmkW2cGEfsC7aeMTN8E"
+                      },
+                      {
+                        "class": "box-footer",
+                        "type": "box-footer",
+                        "children": [
+                          {
+                            "type": "column",
+                            "col": 12,
+                            "children": [],
+                            "id": "TXNxM8w4ZHRdHJ4wcHXPrFh5E2YtmQzw"
+                          }
+                        ],
+                        "id": "SWwSDpcYzaXGDMmRmaZPTEydYb5PRw4H"
+                      }
+                    ],
+                    "id": "P5AKKPMQMbGej5DY4Ham882frT87kPZT"
+                  }
+                ],
+                "col": 9,
+                "id": "c6DTkbGKbCWbRnTnEXNfmnjdfpjcaCjT"
+              }
+            ],
+            "id": "TbG6328nmiS8kA35xdy6w3XN5tXtsQRi"
+          }
+        ],
+        "col": 12,
+        "id": "BZNBrz2G2Kair6e2xawTwfec4MpM2krM"
+      },
+      "$$hashKey": "object:674"
+    },
+    {
+      "label": "系统",
+      "path": "topo",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "TAB标签",
+            "type": "tab",
+            "source": "TAB",
+            "parameters": {
+              "align": "horizental"
+            },
+            "style": {
+              "margin": "5px"
+            },
+            "children": [
+              {
+                "tabName": "工程视图",
+                "tabId": "0",
+                "display": "block",
+                "type": "tabItem",
+                "children": [
+                  {
+                    "type": "row",
+                    "source": "ROW",
+                    "parameters": {
+                      "alignment": "bootstrap"
+                    },
+                    "style": {},
+                    "children": [
+                      {
+                        "type": "column",
+                        "children": [
+                          {
+                            "label": "组态视图",
+                            "type": "topo",
+                            "source": "TOPO",
+                            "style": {
+                              "margin": "5px",
+                              "height": "calc(100vh - 210px)",
+                              "font-size": "12px",
+                              "background-repeat": "no-repeat",
+                              "background-color": "rgb(243, 243, 243)",
+                              "border": "1px solid #ddd"
+                            },
+                            "viewId": 145395417136086,
+                            "advance": {
+                              "expression": "{\n\t\"on\" : {\n    \"init\" : function(event){\n      var param = event.self.getParameter(\"projectId\");\n      event.self.getViewByProjectId(param, function(view){\n        if(view){\n          var json = JSON.parse(view.content);\n        \tevent.self.render(json);\n        } else {\n          event.self.error(\"无对应的项目组态视图，请配置后重试.\");\n        };\n      })\n    },\n    \"click\" : function(event){\n      var modelId = event.ui.modelId;\n      var resourceId = event.ui.resourceId;\n      var subViewId = event.ui.subViewId;\n     \tif(resourceId){\n       \tevent.self.getResourceById(resourceId, function(resource){\n          if(subViewId && subViewId != 0){\n            var param = {\n              type : \"panel\",\n              tabLabel : resource.label,\n              subViewId : subViewId,\n              modelId : modelId,\n              resourceId : resourceId\n            }\n            event.self.navigateTo(\"subview\", param);\n          } else {\n            var param = {\n              tabLabel : resource.label,\n              modelId : modelId,\n              resourceId : resourceId\n            }\n            event.self.navigateTo(\"panel\", param);\n          }\n        }); \n      }\n    }\n  }\n}",
+                              "variable": ""
+                            },
+                            "id": "ffHMn2XiGJMrJ5Q6n7aZach4zFmfhQSt"
+                          }
+                        ],
+                        "col": 10,
+                        "id": "XS86DKYbbKYD2bQfEj5KFW7bPTaKcjWK"
+                      },
+                      {
+                        "type": "column",
+                        "children": [
+                          {
+                            "label": "数据统计标签",
+                            "type": "totalItem",
+                            "source": "TOTALITEM",
+                            "parameters": {
+                              "icon": {
+                                "perfix": "proudsmart",
+                                "css": "ps-video-camera",
+                                "id": "28"
+                              }
+                            },
+                            "advance": {
+                              "getfunction": "kpiDataService.getValueList",
+                              "category": "ci",
+                              "condition": "[\n  \"kpi\",\n  \"{object:kpiQueryModel}\"\n]",
+                              "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+                            },
+                            "style": {
+                              "color": "#fff",
+                              "background-color": "#3c8dbc",
+                              "margin": "5px"
+                            },
+                            "data": {
+                              "applied": true,
+                              "model": {
+                                "id": 186085941866113
+                              },
+                              "kpi": [
+                                3001
+                              ],
+                              "modelType": 302,
+                              "resfilltype": "parameter",
+                              "resource": [],
+                              "multipleCi": false,
+                              "multipleKpi": false,
+                              "series": {
+                                "manual": [
+                                  {
+                                    "name": "工厂A产量",
+                                    "data": [
+                                      {
+                                        "name": "指标",
+                                        "value": 3300,
+                                        "unit": "个"
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                              },
+                              "modelDisable": true
+                            },
+                            "id": "4Paic3j63r6ZEB2S5B8xsCnbaHa8RC7Z"
+                          },
+                          {
+                            "label": "数据统计标签",
+                            "type": "totalItem",
+                            "source": "TOTALITEM",
+                            "parameters": {
+                              "icon": {
+                                "perfix": "fa",
+                                "css": "fa-warning",
+                                "id": "2"
+                              }
+                            },
+                            "advance": {
+                              "getfunction": "kpiDataService.getValueList",
+                              "category": "ci",
+                              "condition": "[\n  \"kpi\",\n  \"{object:kpiQueryModel}\"\n]",
+                              "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+                            },
+                            "style": {
+                              "color": "#fff",
+                              "background-color": "rgb(147, 196, 125)",
+                              "margin": "5px"
+                            },
+                            "data": {
+                              "applied": true,
+                              "model": {
+                                "id": 186085941866113
+                              },
+                              "kpi": [
+                                3017
+                              ],
+                              "modelType": 302,
+                              "resfilltype": "parameter",
+                              "resource": [],
+                              "multipleCi": false,
+                              "multipleKpi": false,
+                              "series": {
+                                "manual": "[\n  {\n    \"name\": \"工厂A产量\",\n    \"data\": [\n      {\n        \"name\": \"告警总数\",\n        \"value\": 3300,\n        \"unit\": \"个\"\n      }\n    ]\n  }\n]",
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                              },
+                              "modelDisable": true
+                            },
+                            "id": "mZEWey3iNG2in4xapKJSMXbWPPBGmApS"
+                          },
+                          {
+                            "label": "数据统计标签",
+                            "type": "totalItem",
+                            "source": "TOTALITEM",
+                            "parameters": {
+                              "icon": {
+                                "perfix": "proudsmart",
+                                "css": "ps-task",
+                                "id": "19"
+                              }
+                            },
+                            "advance": {
+                              "getfunction": "kpiDataService.getValueList",
+                              "category": "ci",
+                              "condition": "[\n  \"kpi\",\n  \"{object:kpiQueryModel}\"\n]",
+                              "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+                            },
+                            "style": {
+                              "color": "#fff",
+                              "background-color": "rgb(246, 178, 107)",
+                              "margin": "5px"
+                            },
+                            "data": {
+                              "applied": true,
+                              "model": {
+                                "id": 186085941866113
+                              },
+                              "kpi": [
+                                3014
+                              ],
+                              "modelType": 302,
+                              "resfilltype": "parameter",
+                              "resource": [],
+                              "multipleCi": false,
+                              "multipleKpi": false,
+                              "series": {
+                                "manual": "[\n  {\n    \"name\": \"工厂A产量\",\n    \"data\": [\n      {\n        \"name\": \"工单总数\",\n        \"value\": 3300,\n        \"unit\": \"个\"\n      }\n    ]\n  }\n]",
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                              },
+                              "modelDisable": true
+                            },
+                            "id": "hbkxJAxewxaZWYA4DHYWFiEHfn5SbTef"
+                          },
+                          {
+                            "label": "控制板1",
+                            "type": "block",
+                            "source": "BLOCK",
+                            "style": {
+                              "padding": "5px",
+                              "margin": "5px",
+                              "border": "1px solid #ccc",
+                              "background-color": "rgb(243, 243, 243)"
+                            },
+                            "children": [
+                              {
+                                "type": "column",
+                                "col": 12,
+                                "children": [
+                                  {
+                                    "type": "row",
+                                    "source": "ROW",
+                                    "parameters": {
+                                      "alignment": "bootstrap"
+                                    },
+                                    "style": {},
+                                    "children": [
+                                      {
+                                        "type": "column",
+                                        "children": [
+                                          {
+                                            "label": "控制板1",
+                                            "type": "block",
+                                            "source": "BLOCK",
+                                            "style": {
+                                              "padding": "5px",
+                                              "margin": "5px"
+                                            },
+                                            "children": [
+                                              {
+                                                "type": "column",
+                                                "col": 12,
+                                                "children": [
+                                                  {
+                                                    "label": "文字",
+                                                    "type": "text",
+                                                    "source": "TEXT",
+                                                    "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                                                    "data": {
+                                                      "applied": false,
+                                                      "kpi": [],
+                                                      "modelType": 300,
+                                                      "resfilltype": "parameter",
+                                                      "resource": [],
+                                                      "multipleCi": false,
+                                                      "multipleKpi": false,
+                                                      "series": {
+                                                        "manual": "(function(){\n  return \"网关在线状态\"\n})()",
+                                                        "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                                                      },
+                                                      "modelDisable": true
+                                                    },
+                                                    "style": {
+                                                      "margin": "auto",
+                                                      "padding": "0",
+                                                      "font-size": "16px",
+                                                      "font-weight": "bold",
+                                                      "color": "#666",
+                                                      "text-align": "center",
+                                                      "line-height": "20px"
+                                                    },
+                                                    "advance": {
+                                                      "getfunction": "kpiDataService.getValueList",
+                                                      "category": "ci",
+                                                      "condition": [
+                                                        "kpi",
+                                                        "{object:kpiQueryModel}"
+                                                      ],
+                                                      "expression": ""
+                                                    },
+                                                    "template": [
+                                                      {
+                                                        "type": "text",
+                                                        "style": {
+                                                          "margin": "auto",
+                                                          "padding": "0",
+                                                          "font-size": "10px",
+                                                          "font-weight": "bold",
+                                                          "color": "#333"
+                                                        }
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "style": {
+                                                          "margin": "auto",
+                                                          "padding": "0",
+                                                          "font-size": "16px",
+                                                          "font-weight": "bold",
+                                                          "color": "#666",
+                                                          "text-align": "center"
+                                                        }
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "style": {
+                                                          "width": "60px",
+                                                          "height": "60px",
+                                                          "margin": "auto",
+                                                          "padding": "0",
+                                                          "font-size": "12px",
+                                                          "line-height": "60px",
+                                                          "font-weight": "bold",
+                                                          "color": "#fff",
+                                                          "text-align": "center",
+                                                          "border-radius": "50%",
+                                                          "background-color": "#3c8dbc"
+                                                        }
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "style": {
+                                                          "width": "140px",
+                                                          "height": "60px",
+                                                          "margin": "auto",
+                                                          "padding": "0",
+                                                          "font-size": "12px",
+                                                          "line-height": "60px",
+                                                          "font-weight": "bold",
+                                                          "color": "#fff",
+                                                          "text-align": "center",
+                                                          "border-radius": "4px",
+                                                          "background-color": "#3c8dbc"
+                                                        }
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "style": {
+                                                          "width": "140px",
+                                                          "height": "60px",
+                                                          "margin": "auto",
+                                                          "padding": "0",
+                                                          "font-size": "12px",
+                                                          "line-height": "60px",
+                                                          "font-weight": "bold",
+                                                          "color": "#444",
+                                                          "text-align": "center",
+                                                          "border-radius": "4px",
+                                                          "background-color": "#eee"
+                                                        }
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "style": {
+                                                          "margin": "auto",
+                                                          "padding": "5px",
+                                                          "font-size": "18px",
+                                                          "font-weight": "bold",
+                                                          "color": "#444",
+                                                          "text-align": "center",
+                                                          "border-radius": "0px",
+                                                          "background-color": "#eee"
+                                                        }
+                                                      }
+                                                    ],
+                                                    "id": "yD8HitM4aTBT5XCcpTayc7kj6YPwJk5A"
+                                                  }
+                                                ],
+                                                "id": "Q6khESD8FfKJKMZ4wMrA6WBtNQZjDNzp"
+                                              }
+                                            ],
+                                            "advance": {
+                                              "expression": {}
+                                            },
+                                            "template": [
+                                              {
+                                                "type": "css",
+                                                "style": {
+                                                  "padding": "10px",
+                                                  "margin": "5px",
+                                                  "border": "1px solid #ccc",
+                                                  "background-color": "#fff"
+                                                }
+                                              },
+                                              {
+                                                "type": "css",
+                                                "style": {
+                                                  "padding": "5px",
+                                                  "margin": "5px",
+                                                  "border": "1px solid #ccc",
+                                                  "background-color": "#fff",
+                                                  "border-top": "0"
+                                                }
+                                              },
+                                              {
+                                                "type": "css",
+                                                "style": {
+                                                  "margin": "5px",
+                                                  "padding": "5px",
+                                                  "background-color": "#efdcaf",
+                                                  "border": "1px solid #c2ad7a"
+                                                }
+                                              },
+                                              {
+                                                "type": "css",
+                                                "style": {
+                                                  "margin": "5px",
+                                                  "padding": "5px",
+                                                  "background-color": "#f0c0a4",
+                                                  "border": "1px solid #e5671b"
+                                                }
+                                              },
+                                              {
+                                                "type": "css",
+                                                "style": {
+                                                  "margin": "5px",
+                                                  "padding": "5px",
+                                                  "background-color": "#ffb3b3",
+                                                  "border": "1px solid #db2222"
+                                                }
+                                              }
+                                            ],
+                                            "id": "HbWpWHtD2rCSY4h38w7B5C4xe4ZKKD7J"
+                                          }
+                                        ],
+                                        "col": 8,
+                                        "id": "B3E6Yw53tbKYHhtidaZyHcK7JffYsKTx"
+                                      },
+                                      {
+                                        "type": "column",
+                                        "children": [
+                                          {
+                                            "label": "控制板1",
+                                            "type": "block",
+                                            "source": "BLOCK",
+                                            "style": {
+                                              "padding": "5px",
+                                              "margin": "5px",
+                                              "border": "1px solid #ccc",
+                                              "background-color": "#fff"
+                                            },
+                                            "children": [
+                                              {
+                                                "type": "column",
+                                                "col": 12,
+                                                "children": [
+                                                  {
+                                                    "label": "文字",
+                                                    "type": "text",
+                                                    "source": "TEXT",
+                                                    "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                                                    "data": {
+                                                      "applied": false,
+                                                      "kpi": [],
+                                                      "modelType": 300,
+                                                      "resfilltype": "parameter",
+                                                      "resource": [],
+                                                      "multipleCi": false,
+                                                      "multipleKpi": false,
+                                                      "series": {
+                                                        "manual": "新建文字",
+                                                        "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                                                      },
+                                                      "modelDisable": true
+                                                    },
+                                                    "style": {
+                                                      "padding": "0",
+                                                      "font-size": "16px",
+                                                      "font-weight": "bold",
+                                                      "line-height": "20px",
+                                                      "text-align": "center",
+                                                      "color": "rgb(61, 133, 198)"
+                                                    },
+                                                    "advance": {
+                                                      "getfunction": "kpiDataService.getValueList",
+                                                      "category": "ci",
+                                                      "condition": [
+                                                        "kpi",
+                                                        "{object:kpiQueryModel}"
+                                                      ],
+                                                      "expression": "{\n  \"on\" : {\n    \"init\" : function(event){\n      var projectId = event.target.getParameter(\"projectId\");\n      var target = event.target;\n      event.target.postService(\"resourceUIService\", \"getAllGatewaysByCondition\", {\n        projectId : projectId\n      }, function(event){\n        if(event.code == 0){\n          var list = event.data[0];\n          target.getKpiValueCi([list.id], [999998], function(valueList){\n            console.log(valueList);\n            if(valueList[0]){\n              if(valueList[0].value == 0){\n                target.setText(\"离线\")\n              } else {\n                target.setText(\"在线\")\n              };\n            } else {\n              target.setText(\"离线\");\n            }\n          })\n        }\n      })\n    }\n  }\n}"
+                                                    },
+                                                    "template": [
+                                                      {
+                                                        "type": "text",
+                                                        "style": {
+                                                          "margin": "auto",
+                                                          "padding": "0",
+                                                          "font-size": "10px",
+                                                          "font-weight": "bold",
+                                                          "color": "#333"
+                                                        }
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "style": {
+                                                          "margin": "auto",
+                                                          "padding": "0",
+                                                          "font-size": "16px",
+                                                          "font-weight": "bold",
+                                                          "color": "#666",
+                                                          "text-align": "center"
+                                                        }
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "style": {
+                                                          "width": "60px",
+                                                          "height": "60px",
+                                                          "margin": "auto",
+                                                          "padding": "0",
+                                                          "font-size": "12px",
+                                                          "line-height": "60px",
+                                                          "font-weight": "bold",
+                                                          "color": "#fff",
+                                                          "text-align": "center",
+                                                          "border-radius": "50%",
+                                                          "background-color": "#3c8dbc"
+                                                        }
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "style": {
+                                                          "width": "140px",
+                                                          "height": "60px",
+                                                          "margin": "auto",
+                                                          "padding": "0",
+                                                          "font-size": "12px",
+                                                          "line-height": "60px",
+                                                          "font-weight": "bold",
+                                                          "color": "#fff",
+                                                          "text-align": "center",
+                                                          "border-radius": "4px",
+                                                          "background-color": "#3c8dbc"
+                                                        }
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "style": {
+                                                          "width": "140px",
+                                                          "height": "60px",
+                                                          "margin": "auto",
+                                                          "padding": "0",
+                                                          "font-size": "12px",
+                                                          "line-height": "60px",
+                                                          "font-weight": "bold",
+                                                          "color": "#444",
+                                                          "text-align": "center",
+                                                          "border-radius": "4px",
+                                                          "background-color": "#eee"
+                                                        }
+                                                      },
+                                                      {
+                                                        "type": "text",
+                                                        "style": {
+                                                          "margin": "auto",
+                                                          "padding": "5px",
+                                                          "font-size": "18px",
+                                                          "font-weight": "bold",
+                                                          "color": "#444",
+                                                          "text-align": "center",
+                                                          "border-radius": "0px",
+                                                          "background-color": "#eee"
+                                                        }
+                                                      }
+                                                    ],
+                                                    "id": "TQxbeArnrQhebZ725paSj4CkysQNxCwH"
+                                                  }
+                                                ],
+                                                "id": "Ae53iztmcCCPm8fYdy4rpDaBQH7sRXm5"
+                                              }
+                                            ],
+                                            "advance": {
+                                              "expression": {}
+                                            },
+                                            "template": [
+                                              {
+                                                "type": "css",
+                                                "style": {
+                                                  "padding": "10px",
+                                                  "margin": "5px",
+                                                  "border": "1px solid #ccc",
+                                                  "background-color": "#fff"
+                                                }
+                                              },
+                                              {
+                                                "type": "css",
+                                                "style": {
+                                                  "padding": "5px",
+                                                  "margin": "5px",
+                                                  "border": "1px solid #ccc",
+                                                  "background-color": "#fff",
+                                                  "border-top": "0"
+                                                }
+                                              },
+                                              {
+                                                "type": "css",
+                                                "style": {
+                                                  "margin": "5px",
+                                                  "padding": "5px",
+                                                  "background-color": "#efdcaf",
+                                                  "border": "1px solid #c2ad7a"
+                                                }
+                                              },
+                                              {
+                                                "type": "css",
+                                                "style": {
+                                                  "margin": "5px",
+                                                  "padding": "5px",
+                                                  "background-color": "#f0c0a4",
+                                                  "border": "1px solid #e5671b"
+                                                }
+                                              },
+                                              {
+                                                "type": "css",
+                                                "style": {
+                                                  "margin": "5px",
+                                                  "padding": "5px",
+                                                  "background-color": "#ffb3b3",
+                                                  "border": "1px solid #db2222"
+                                                }
+                                              }
+                                            ],
+                                            "id": "kAKC3fEiJrpti8DSYnYtDGWXRbhkdaWb"
+                                          }
+                                        ],
+                                        "col": 4,
+                                        "id": "63r5t8MN4sx3xGXC76c26MfhDjn4EnKj"
+                                      }
+                                    ],
+                                    "id": "ce224WwexMktPydGNhChStBCAQw5RNMY"
+                                  }
+                                ],
+                                "id": "MNyxcamMjtfz5nmGwJAK6WipCMcR4dFr"
+                              }
+                            ],
+                            "advance": {
+                              "expression": {}
+                            },
+                            "template": [
+                              {
+                                "type": "css",
+                                "style": {
+                                  "padding": "10px",
+                                  "margin": "5px",
+                                  "border": "1px solid #ccc",
+                                  "background-color": "#fff"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "padding": "5px",
+                                  "margin": "5px",
+                                  "border": "1px solid #ccc",
+                                  "background-color": "#fff",
+                                  "border-top": "0"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "5px",
+                                  "background-color": "#efdcaf",
+                                  "border": "1px solid #c2ad7a"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "5px",
+                                  "background-color": "#f0c0a4",
+                                  "border": "1px solid #e5671b"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "5px",
+                                  "background-color": "#ffb3b3",
+                                  "border": "1px solid #db2222"
+                                }
+                              }
+                            ],
+                            "id": "es3iM4rKdbiA8EYSk6cHaHNEhYHhn5S2"
+                          }
+                        ],
+                        "col": 2,
+                        "id": "64P8WpHcRTphtARbjSefX4ZHRpkdkm8t"
+                      }
+                    ],
+                    "id": "5dhMNEiptaeiQHbc25yeYEQ7RNk8RW2w"
+                  }
+                ],
+                "default": true,
+                "id": "fHBxid2KwXSZp5DPYjcy8dCmT4djdFDc"
+              },
+              {
+                "tabName": "设备列表",
+                "tabId": "1",
+                "type": "tabItem",
+                "display": "none",
+                "children": [
+                  {
+                    "label": "控制板1",
+                    "type": "block",
+                    "source": "BLOCK",
+                    "style": {
+                      "padding": "5px",
+                      "border": "1px solid #ccc",
+                      "background-color": "#fff",
+                      "border-top": "0",
+                      "min-height": "400px"
+                    },
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "列表",
+                            "type": "listTable",
+                            "source": "LISTTABLE",
+                            "advance": {
+                              "getfunction": "",
+                              "expression": "{\n  \"on\" : {\n    \"init\" : function(event){\n      var projectId = event.self.getParameter(\"projectId\");\n      if(projectId){\n        event.self.getResourcesByProjectId(projectId, function(resources){\n          event.self.render(resources);\n        });\n      };\n    },\n    \"click\" : function(event){\n      console.log(event);\n    }\n  },\n  format : [\n    {\n      \"name\": \"创建日期\",\n      \"value\": \"{item:createTime}\",\n      \"type\": \"date\",\n      \"style\": {\n        \"color\" : \"#FFF\",\n        \"background-color\" : \"#3c8dbc\",\n        \"padding\" : \"2px 10px\",\n        \"border-radius\" : \"3px\"\n      }\n    },\n    {\n      \"name\": \"名称\",\n      \"value\": \"{item:label}\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"序列号\",\n      \"value\": \"{item:sn}\",\n      \"type\": \"text\"\n    }\n  ]\n}",
+                              "condition": "[]",
+                              "variable": "",
+                              "getListTable": "newdevice"
+                            },
+                            "style": {
+                              "margin": "5px",
+                              "font-size": "12px"
+                            },
+                            "id": "j3G4WTBPfBp4nzxxiJ8Yd4FRQt3e8zZA"
+                          }
+                        ],
+                        "id": "r7rYfCh3TSCwkAzW52jQa86Rjf3hYyKJ"
+                      }
+                    ],
+                    "advance": {
+                      "expression": {}
+                    },
+                    "template": [
+                      {
+                        "type": "css",
+                        "style": {
+                          "padding": "10px",
+                          "margin": "5px",
+                          "border": "1px solid #ccc",
+                          "background-color": "#fff"
+                        }
+                      },
+                      {
+                        "type": "css",
+                        "style": {
+                          "padding": "5px",
+                          "margin": "5px",
+                          "border": "1px solid #ccc",
+                          "background-color": "#fff",
+                          "border-top": "0"
+                        }
+                      },
+                      {
+                        "type": "css",
+                        "style": {
+                          "margin": "5px",
+                          "padding": "5px",
+                          "background-color": "#efdcaf",
+                          "border": "1px solid #c2ad7a"
+                        }
+                      },
+                      {
+                        "type": "css",
+                        "style": {
+                          "margin": "5px",
+                          "padding": "5px",
+                          "background-color": "#f0c0a4",
+                          "border": "1px solid #e5671b"
+                        }
+                      },
+                      {
+                        "type": "css",
+                        "style": {
+                          "margin": "5px",
+                          "padding": "5px",
+                          "background-color": "#ffb3b3",
+                          "border": "1px solid #db2222"
+                        }
+                      }
+                    ],
+                    "id": "X4e7aECd5aphGjaXdmtaAkM8y6dt2pJP"
+                  }
+                ],
+                "default": false,
+                "id": "YbiFjJdC6esjTWZTM6ZQPsY8GhWcZzPi"
+              },
+              {
+                "tabName": "告警列表",
+                "tabId": "2",
+                "type": "tabItem",
+                "display": "none",
+                "children": [
+                  {
+                    "label": "控制板1",
+                    "type": "block",
+                    "source": "BLOCK",
+                    "style": {
+                      "padding": "5px",
+                      "border": "1px solid #ccc",
+                      "background-color": "#fff",
+                      "border-top": "0",
+                      "min-height": "400px"
+                    },
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "列表",
+                            "type": "dataTable",
+                            "source": "DATATABLE",
+                            "parameters": {
+                              "col": 1,
+                              "pageSize": 10,
+                              "listbottom": "standard"
+                            },
+                            "advance": {
+                              "getListTable": "currentAlertByDevice",
+                              "expression": "{\n\t\"on\" : {\n    \"init\" : function(event){\n      var projectId = event.target.getParameter(\"projectId\");\n      event.target.getResourceById(projectId, function(resource){\n        var domains = resource.domains;\n        var param = {\n          domains : domains\n        };\n        event.target.queryFromDb(param, function(alerts){\n          console.log(alerts);\n          event.target.render(alerts);\n        })\n      })\n    }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"devName\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警内容\",\n      \"value\": \"message\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"紧急度\",\n      \"value\": \"severity\",\n      \"type\": \"priority\"\n    },\n    {\n      \"name\": \"首次告警时间\",\n      \"value\": \"firstArisingTime\",\n      \"type\": \"date\"\n    },{\n      \"name\": \"最近告警时间\",\n      \"value\": \"arisingTime\",\n      \"type\": \"date\"\n    },{\n      \"name\": \"关闭告警时间\",\n      \"value\": \"closeTime\",\n      \"type\": \"date\"\n    }\n  ]\n}",
+                              "condition": "[100]"
+                            },
+                            "style": {
+                              "margin": "5px",
+                              "font-size": "12px"
+                            },
+                            "template": [
+                              {
+                                "label": "全部设备列表",
+                                "type": "image",
+                                "url": "images/line/line1.png",
+                                "parameters": {
+                                  "col": 1,
+                                  "pageSize": 10,
+                                  "listbottom": "standard"
+                                },
+                                "advance": {
+                                  "getListTable": "newdevice",
+                                  "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"label\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"创建时间\",\n      \"value\": \"createTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    }\n  ]\n}",
+                                  "condition": "[100]"
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "font-size": "12px"
+                                }
+                              },
+                              {
+                                "label": "当前项目设备列表",
+                                "type": "image",
+                                "url": "images/line/line1.png",
+                                "parameters": {
+                                  "col": 1,
+                                  "pageSize": 10,
+                                  "listbottom": "standard"
+                                },
+                                "advance": {
+                                  "getListTable": "currentDevicesByProject",
+                                  "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"label\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"启动时间\",\n      \"value\": \"activeTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    },\n    {\n      \"name\": \"创建时间\",\n      \"value\": \"createTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    }\n  ]\n}",
+                                  "condition": "[100]"
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "font-size": "12px"
+                                }
+                              },
+                              {
+                                "label": "全部告警列表",
+                                "type": "image",
+                                "url": "images/line/line2.png",
+                                "parameters": {
+                                  "col": 1,
+                                  "pageSize": 10,
+                                  "listbottom": "standard"
+                                },
+                                "advance": {
+                                  "getListTable": "alert",
+                                  "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"devName\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警信息\",\n      \"value\": \"message\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警时间\",\n      \"value\": \"arisingTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    },\n    {\n      \"name\": \"告警级别\",\n      \"value\": \"severity\",\n      \"type\": \"priority\"\n    }\n  ]\n}",
+                                  "condition": "[100]"
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "font-size": "12px"
+                                }
+                              },
+                              {
+                                "label": "当前设备告警列表",
+                                "type": "image",
+                                "url": "images/line/line2.png",
+                                "parameters": {
+                                  "col": 1,
+                                  "pageSize": 10,
+                                  "listbottom": "standard"
+                                },
+                                "advance": {
+                                  "getListTable": "currentAlertByDevice",
+                                  "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"devName\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警信息\",\n      \"value\": \"message\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警时间\",\n      \"value\": \"arisingTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    },\n    {\n      \"name\": \"告警级别\",\n      \"value\": \"severity\",\n      \"type\": \"priority\"\n    }\n  ]\n}",
+                                  "condition": "[100]"
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "font-size": "12px"
+                                }
+                              },
+                              {
+                                "label": "当前设备指令列表",
+                                "type": "image",
+                                "url": "images/line/line2.png",
+                                "parameters": {
+                                  "col": 2,
+                                  "pageSize": 10,
+                                  "listbottom": "standard"
+                                },
+                                "advance": {
+                                  "getListTable": "currentDirectiveByDevice",
+                                  "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"指令名称\",\n      \"value\": \"name\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"指令输入\",\n      \"type\": \"directiveInput\"\n    },\n    {\n      \"name\": \"操作\",\n      \"type\": \"button\"\n    }\n  ]\n}",
+                                  "condition": "[100]"
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "font-size": "12px"
+                                }
+                              }
+                            ],
+                            "id": "STzsZbQGHBczPhZGZZQ7TQSB656WsmNB"
+                          }
+                        ],
+                        "id": "k6NjiSH76S6rMjJRwENZ8CmjsyBpE55A"
+                      }
+                    ],
+                    "advance": {
+                      "expression": {}
+                    },
+                    "template": [
+                      {
+                        "type": "css",
+                        "style": {
+                          "padding": "10px",
+                          "margin": "5px",
+                          "border": "1px solid #ccc",
+                          "background-color": "#fff"
+                        }
+                      },
+                      {
+                        "type": "css",
+                        "style": {
+                          "padding": "5px",
+                          "margin": "5px",
+                          "border": "1px solid #ccc",
+                          "background-color": "#fff",
+                          "border-top": "0"
+                        }
+                      },
+                      {
+                        "type": "css",
+                        "style": {
+                          "margin": "5px",
+                          "padding": "5px",
+                          "background-color": "#efdcaf",
+                          "border": "1px solid #c2ad7a"
+                        }
+                      },
+                      {
+                        "type": "css",
+                        "style": {
+                          "margin": "5px",
+                          "padding": "5px",
+                          "background-color": "#f0c0a4",
+                          "border": "1px solid #e5671b"
+                        }
+                      },
+                      {
+                        "type": "css",
+                        "style": {
+                          "margin": "5px",
+                          "padding": "5px",
+                          "background-color": "#ffb3b3",
+                          "border": "1px solid #db2222"
+                        }
+                      }
+                    ],
+                    "id": "NeawfZ4xsbpeXTBDHbFiSK4SGFbz7bM4"
+                  }
+                ],
+                "default": false,
+                "id": "8iNXYzZMaHcYZt3XeQmTrDpb6SCHPd3E"
+              }
+            ],
+            "id": "CstmQ5p4hdbpDrDNRwCrjsBHMkF8cpET"
+          }
+        ],
+        "col": 12,
+        "id": "cMxe3ix8PeiQZAMYt3CStYEQpdTc4Psr"
+      },
+      "id": "1",
+      "$$hashKey": "object:544"
+    },
+    {
+      "label": "设备",
+      "path": "subview",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "TAB标签",
+            "type": "tab",
+            "source": "TAB",
+            "parameters": {
+              "align": "horizental"
+            },
+            "style": {
+              "margin": "5px"
+            },
+            "children": [
+              {
+                "tabName": "设备视图",
+                "tabId": "0",
+                "display": "none",
+                "type": "tabItem",
+                "children": [
+                  {
+                    "label": "组态视图",
+                    "type": "topo",
+                    "source": "TOPO",
+                    "advance": {
+                      "expression": "{\n\t\"on\" : {\n    \"init\" : function(event){\n      var param = event.self.getParameter(\"subViewId\");\n      if(param){\n        event.self.getViewByViewId(param, function(view){\n          if(view){\n            var json = JSON.parse(view.content);\n          \tevent.self.render(json);\n          } else {\n            event.self.error(\"没有配置正确的组态视图。\")\n          }\n        })\n      }\n    },\n    \"click\" : function(event){\n      var param = {\n        modelId : event.ui.modelId,\n        resourceId : event.ui.resourceId\n      };\n      //event.self.navigateTo(\"panel\", param, 'home');\n    }\n  }\n}",
+                      "variable": ""
+                    },
+                    "style": {
+                      "margin": "5px",
+                      "height": "calc(100vh - 180px)",
+                      "font-size": "12px",
+                      "background-repeat": "no-repeat",
+                      "background-color": "rgb(238, 238, 238)",
+                      "border": "1px solid #ddd"
+                    },
+                    "viewId": 147778235096074,
+                    "id": "wye4bP5s2sxAJSd7Y7kFXesB2RbrKtPM"
+                  }
+                ],
+                "default": true,
+                "id": "BbzcAib6jDiar7M4NX8ATQAXPyFZbi7W"
+              },
+              {
+                "tabName": "设备控制",
+                "tabId": "1",
+                "type": "tabItem",
+                "display": "block",
+                "children": [
+                  {
+                    "label": "控制板1",
+                    "type": "block",
+                    "source": "BLOCK",
+                    "style": {
+                      "padding": "5px",
+                      "border": "1px solid #ccc",
+                      "background-color": "#fff",
+                      "border-top": "0",
+                      "min-height": "400px"
+                    },
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "控制板1",
+                            "type": "block",
+                            "source": "BLOCK",
+                            "style": {
+                              "padding": "5px",
+                              "margin": "5px 0",
+                              "border": "1px solid #eee",
+                              "background-color": "rgb(243, 243, 243)"
+                            },
+                            "children": [
+                              {
+                                "type": "column",
+                                "col": 12,
+                                "children": [
+                                  {
+                                    "type": "row",
+                                    "source": "ROW",
+                                    "parameters": {
+                                      "alignment": "bootstrap"
+                                    },
+                                    "style": {},
+                                    "children": [
+                                      {
+                                        "type": "column",
+                                        "children": [
+                                          {
+                                            "type": "row",
+                                            "source": "ROW",
+                                            "parameters": {
+                                              "alignment": "bootstrap"
+                                            },
+                                            "style": {},
+                                            "children": [
+                                              {
+                                                "type": "column",
+                                                "children": [
+                                                  {
+                                                    "label": "按钮",
+                                                    "type": "button",
+                                                    "source": "BUTTON",
+                                                    "parameters": {
+                                                      "text": "手动刷新",
+                                                      "icon": {
+                                                        "perfix": "proudsmart",
+                                                        "css": "ps-center",
+                                                        "id": "29"
+                                                      }
+                                                    },
+                                                    "advance": {
+                                                      "expression": "{\n  on : {\n    click : function(event){\n      console.log(event);\n      event.global.fire(\"refresh\");\n    }\n  }\n}"
+                                                    },
+                                                    "style": {
+                                                      "color": "#fff",
+                                                      "background-color": "#3c8dbc",
+                                                      "width": "calc(100% - 5px)",
+                                                      "margin": "5px 5px 5px 0"
+                                                    },
+                                                    "id": "aSJxXxby2ykrtGNPeEw4idabPEWWAB6R"
+                                                  }
+                                                ],
+                                                "col": 6,
+                                                "id": "fkpDHR7M5JrtsbdbiAPPNTzxxXXRCQd7"
+                                              },
+                                              {
+                                                "type": "column",
+                                                "children": [
+                                                  {
+                                                    "label": "按钮",
+                                                    "type": "button",
+                                                    "source": "BUTTON",
+                                                    "parameters": {
+                                                      "text": "全部发送",
+                                                      "icon": {
+                                                        "perfix": "proudsmart",
+                                                        "css": "ps-publish",
+                                                        "id": "109"
+                                                      }
+                                                    },
+                                                    "advance": {
+                                                      "expression": "{\n  on : {\n    click : function(event){\n      var resourceId = event.target.getParameter(\"resourceId\");\n      var directives = event.target.getValue(\"directive\");\n      var dirArr = [];\n      for(var i in directives){\n        var obj = {\n          id : i,\n          param : directives[i]\n        }\n        dirArr.push(obj);\n      };\n      var inx = 0;\n      var runDir = function(inx){\n        var dir = dirArr[inx]\n        if(dir){\n          event.target.sendDirective(resourceId, dir.id, dir.param, function(data){\n            inx++;\n            runDir(inx)\n          })\n        } else {\n          event.target.growl(\"全部指令发送成功!\")\n        }\n      }\n      runDir(inx);\n    }\n  }\n}"
+                                                    },
+                                                    "style": {
+                                                      "color": "#fff",
+                                                      "background-color": "#3c8dbc",
+                                                      "width": "calc(100% - 5px)",
+                                                      "margin": "5px 5px 5px 0"
+                                                    },
+                                                    "id": "Tb75ndCz5WSeJB2AFEeDaZ7TWCmnxwsT"
+                                                  }
+                                                ],
+                                                "col": 6,
+                                                "id": "wszjTkWAhXDQjkZxxf4fdrhCXsXP3sKy"
+                                              }
+                                            ],
+                                            "id": "KEbbJab2XNbANsXZRcnZyTR4GKQBBf7G"
+                                          }
+                                        ],
+                                        "col": 3,
+                                        "id": "tRNfMShdKd6YjcpKi2ZfHNTYmxRNdNMR"
+                                      },
+                                      {
+                                        "type": "column",
+                                        "children": [],
+                                        "col": 3,
+                                        "id": "PNbad5RkYZDyehMWAs6BPjNFhbc6BrH2"
+                                      },
+                                      {
+                                        "type": "column",
+                                        "children": [],
+                                        "col": 3,
+                                        "id": "B3H2K6yXnz8dnKWW8733YzJ64zbYZZmK"
+                                      },
+                                      {
+                                        "type": "column",
+                                        "children": [],
+                                        "col": 3,
+                                        "id": "hhTjNikJamNaPfMh3EGmSriRX2dmHS56"
+                                      }
+                                    ],
+                                    "id": "hfWiwa6ZTTnZjJB5KSz7s5G72bsXTKfB"
+                                  }
+                                ],
+                                "id": "ZME8rjE4RrJaK6R3MXPdR4G6dmQ8peMx"
+                              }
+                            ],
+                            "advance": {
+                              "expression": {}
+                            },
+                            "template": [
+                              {
+                                "type": "css",
+                                "style": {
+                                  "padding": "10px",
+                                  "margin": "5px",
+                                  "border": "1px solid #ccc",
+                                  "background-color": "#fff"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "padding": "5px",
+                                  "margin": "5px",
+                                  "border": "1px solid #ccc",
+                                  "background-color": "#fff",
+                                  "border-top": "0"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "5px",
+                                  "background-color": "#efdcaf",
+                                  "border": "1px solid #c2ad7a"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "5px",
+                                  "background-color": "#f0c0a4",
+                                  "border": "1px solid #e5671b"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "5px",
+                                  "background-color": "#ffb3b3",
+                                  "border": "1px solid #db2222"
+                                }
+                              }
+                            ],
+                            "id": "zbSRzAwxpiwnDH5rMp6EiYXpAF7JCNrh"
+                          },
+                          {
+                            "label": "列表",
+                            "type": "dataTable",
+                            "source": "DATATABLE",
+                            "parameters": {
+                              "col": 3,
+                              "pageSize": 10,
+                              "listbottom": "standard"
+                            },
+                            "advance": {
+                              "getListTable": "currentDirectiveByDevice",
+                              "expression": "{\n\t\"on\" : {\n    \"init\" : function(event){\n      var modelId = event.target.getParameter(\"modelId\");\n      if(modelId){\n        event.target.getDirectivesByTypeAndRoleAndValue(\"configure\",\"device\",modelId, function(directives){\n         event.target.render(directives);\n        });\n      };\n    },\n    \"refresh\" : function(event){\n      console.log(\"refresh\");\n      var modelId = event.target.getParameter(\"modelId\");\n      if(modelId){\n        event.target.getDirectivesByTypeAndRoleAndValue(\"configure\",\"device\",modelId, function(directives){\n         event.target.render(directives);\n        });\n      };\n    },\n    \"webSocketReturn\" : function(event){\n      event.target.deleteValue(\"directive/\" + event.data.id);\n    }\n  },\n  \"format\" : [\n    {\n      \"name\": \"指令名称\",\n      \"value\": \"name\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"参数\",\n      \"value\": \"value\",\n      \"type\": \"text\",\n      \"websocket\" : true\n    },\n    {\n      \"name\": \"指令输入\",\n      \"value\" : \"params\",\n      \"type\": \"directiveSingle\",\n      \"on\" : {\n      \t\"change\" : function(event){\n      \t\tvar value = event.value;\n      \t\tvar data = event.data;\n          var directiveId = data.id;\n          var obj = {};\n          obj[data.params[0].name] = value;\n      \t\tevent.target.setValue(\"directive/\" + directiveId, obj);\n      \t\tvar res = event.target.getValue(\"directive\");\n    \t\t}\n    \t}\n    }\n  ]\n}",
+                              "condition": "[100]"
+                            },
+                            "style": {
+                              "margin": "10px",
+                              "font-size": "12px"
+                            },
+                            "template": [
+                              {
+                                "label": "全部设备列表",
+                                "type": "image",
+                                "url": "images/line/line1.png",
+                                "parameters": {
+                                  "col": 1,
+                                  "pageSize": 10,
+                                  "listbottom": "standard"
+                                },
+                                "advance": {
+                                  "getListTable": "newdevice",
+                                  "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"label\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"创建时间\",\n      \"value\": \"createTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    }\n  ]\n}",
+                                  "condition": "[100]"
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "font-size": "12px"
+                                }
+                              },
+                              {
+                                "label": "当前项目设备列表",
+                                "type": "image",
+                                "url": "images/line/line1.png",
+                                "parameters": {
+                                  "col": 1,
+                                  "pageSize": 10,
+                                  "listbottom": "standard"
+                                },
+                                "advance": {
+                                  "getListTable": "currentDevicesByProject",
+                                  "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"label\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"启动时间\",\n      \"value\": \"activeTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    },\n    {\n      \"name\": \"创建时间\",\n      \"value\": \"createTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    }\n  ]\n}",
+                                  "condition": "[100]"
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "font-size": "12px"
+                                }
+                              },
+                              {
+                                "label": "全部告警列表",
+                                "type": "image",
+                                "url": "images/line/line2.png",
+                                "parameters": {
+                                  "col": 1,
+                                  "pageSize": 10,
+                                  "listbottom": "standard"
+                                },
+                                "advance": {
+                                  "getListTable": "alert",
+                                  "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"devName\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警信息\",\n      \"value\": \"message\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警时间\",\n      \"value\": \"arisingTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    },\n    {\n      \"name\": \"告警级别\",\n      \"value\": \"severity\",\n      \"type\": \"priority\"\n    }\n  ]\n}",
+                                  "condition": "[100]"
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "font-size": "12px"
+                                }
+                              },
+                              {
+                                "label": "当前设备告警列表",
+                                "type": "image",
+                                "url": "images/line/line2.png",
+                                "parameters": {
+                                  "col": 1,
+                                  "pageSize": 10,
+                                  "listbottom": "standard"
+                                },
+                                "advance": {
+                                  "getListTable": "currentAlertByDevice",
+                                  "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"devName\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警信息\",\n      \"value\": \"message\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警时间\",\n      \"value\": \"arisingTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    },\n    {\n      \"name\": \"告警级别\",\n      \"value\": \"severity\",\n      \"type\": \"priority\"\n    }\n  ]\n}",
+                                  "condition": "[100]"
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "font-size": "12px"
+                                }
+                              },
+                              {
+                                "label": "当前设备指令列表",
+                                "type": "image",
+                                "url": "images/line/line2.png",
+                                "parameters": {
+                                  "col": 2,
+                                  "pageSize": 10,
+                                  "listbottom": "standard"
+                                },
+                                "advance": {
+                                  "getListTable": "currentDirectiveByDevice",
+                                  "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"指令名称\",\n      \"value\": \"name\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"指令输入\",\n      \"type\": \"directiveInput\"\n    },\n    {\n      \"name\": \"操作\",\n      \"type\": \"button\"\n    }\n  ]\n}",
+                                  "condition": "[100]"
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "font-size": "12px"
+                                }
+                              }
+                            ],
+                            "id": "RZ4XraWaMHwknBxb4JmtJBM5GKsiGCbc"
+                          }
+                        ],
+                        "id": "RafSYBaSzPbxmCwrSRhKyyHrSHFpcR82"
+                      }
+                    ],
+                    "advance": {
+                      "expression": {}
+                    },
+                    "template": [
+                      {
+                        "type": "css",
+                        "style": {
+                          "padding": "10px",
+                          "margin": "5px",
+                          "border": "1px solid #ccc",
+                          "background-color": "#fff"
+                        }
+                      },
+                      {
+                        "type": "css",
+                        "style": {
+                          "padding": "5px",
+                          "margin": "5px",
+                          "border": "1px solid #ccc",
+                          "background-color": "#fff",
+                          "border-top": "0"
+                        }
+                      },
+                      {
+                        "type": "css",
+                        "style": {
+                          "margin": "5px",
+                          "padding": "5px",
+                          "background-color": "#efdcaf",
+                          "border": "1px solid #c2ad7a"
+                        }
+                      },
+                      {
+                        "type": "css",
+                        "style": {
+                          "margin": "5px",
+                          "padding": "5px",
+                          "background-color": "#f0c0a4",
+                          "border": "1px solid #e5671b"
+                        }
+                      },
+                      {
+                        "type": "css",
+                        "style": {
+                          "margin": "5px",
+                          "padding": "5px",
+                          "background-color": "#ffb3b3",
+                          "border": "1px solid #db2222"
+                        }
+                      }
+                    ],
+                    "id": "pbXJDPwypdZCMwF7mCKWReMD7yxx5T3X"
+                  }
+                ],
+                "default": false,
+                "id": "wmkrmbRtn5WYzHzr7xpiKPEGKF8jShZM"
+              },
+              {
+                "tabName": "设备告警",
+                "tabId": "2",
+                "type": "tabItem",
+                "display": "none",
+                "children": [
+                  {
+                    "label": "列表",
+                    "type": "dataTable",
+                    "source": "DATATABLE",
+                    "parameters": {
+                      "col": 1,
+                      "pageSize": 10,
+                      "listbottom": "standard"
+                    },
+                    "advance": {
+                      "getListTable": "currentAlertByDevice",
+                      "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"devName\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警信息\",\n      \"value\": \"message\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警时间\",\n      \"value\": \"arisingTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    },\n    {\n      \"name\": \"告警级别\",\n      \"value\": \"severity\",\n      \"type\": \"priority\"\n    }\n  ]\n}",
+                      "condition": "[100]"
+                    },
+                    "style": {
+                      "margin": "5px",
+                      "font-size": "12px"
+                    },
+                    "template": [
+                      {
+                        "label": "全部设备列表",
+                        "type": "image",
+                        "url": "images/line/line1.png",
+                        "parameters": {
+                          "col": 1,
+                          "pageSize": 10,
+                          "listbottom": "standard"
+                        },
+                        "advance": {
+                          "getListTable": "newdevice",
+                          "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"label\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"创建时间\",\n      \"value\": \"createTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    }\n  ]\n}",
+                          "condition": "[100]"
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "font-size": "12px"
+                        }
+                      },
+                      {
+                        "label": "当前项目设备列表",
+                        "type": "image",
+                        "url": "images/line/line1.png",
+                        "parameters": {
+                          "col": 1,
+                          "pageSize": 10,
+                          "listbottom": "standard"
+                        },
+                        "advance": {
+                          "getListTable": "currentDevicesByProject",
+                          "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"label\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"启动时间\",\n      \"value\": \"activeTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    },\n    {\n      \"name\": \"创建时间\",\n      \"value\": \"createTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    }\n  ]\n}",
+                          "condition": "[100]"
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "font-size": "12px"
+                        }
+                      },
+                      {
+                        "label": "全部告警列表",
+                        "type": "image",
+                        "url": "images/line/line2.png",
+                        "parameters": {
+                          "col": 1,
+                          "pageSize": 10,
+                          "listbottom": "standard"
+                        },
+                        "advance": {
+                          "getListTable": "alert",
+                          "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"devName\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警信息\",\n      \"value\": \"message\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警时间\",\n      \"value\": \"arisingTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    },\n    {\n      \"name\": \"告警级别\",\n      \"value\": \"severity\",\n      \"type\": \"priority\"\n    }\n  ]\n}",
+                          "condition": "[100]"
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "font-size": "12px"
+                        }
+                      },
+                      {
+                        "label": "当前设备告警列表",
+                        "type": "image",
+                        "url": "images/line/line2.png",
+                        "parameters": {
+                          "col": 1,
+                          "pageSize": 10,
+                          "listbottom": "standard"
+                        },
+                        "advance": {
+                          "getListTable": "currentAlertByDevice",
+                          "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"devName\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警信息\",\n      \"value\": \"message\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警时间\",\n      \"value\": \"arisingTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    },\n    {\n      \"name\": \"告警级别\",\n      \"value\": \"severity\",\n      \"type\": \"priority\"\n    }\n  ]\n}",
+                          "condition": "[100]"
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "font-size": "12px"
+                        }
+                      },
+                      {
+                        "label": "当前设备指令列表",
+                        "type": "image",
+                        "url": "images/line/line2.png",
+                        "parameters": {
+                          "col": 2,
+                          "pageSize": 10,
+                          "listbottom": "standard"
+                        },
+                        "advance": {
+                          "getListTable": "currentDirectiveByDevice",
+                          "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"指令名称\",\n      \"value\": \"name\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"指令输入\",\n      \"type\": \"directiveInput\"\n    },\n    {\n      \"name\": \"操作\",\n      \"type\": \"button\"\n    }\n  ]\n}",
+                          "condition": "[100]"
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "font-size": "12px"
+                        }
+                      }
+                    ],
+                    "id": "T2d6Y65B46PsbKQPzEKmt7bssMNP3chr"
+                  }
+                ],
+                "default": false,
+                "id": "RfmeN4weNJGEiSbSZitrDWiwEkPGjG7f"
+              },
+              {
+                "tabName": "监控数据",
+                "tabId": "3",
+                "type": "tabItem",
+                "display": "none",
+                "children": [
+                  {
+                    "label": "控制板1",
+                    "type": "block",
+                    "source": "BLOCK",
+                    "style": {
+                      "padding-top": "8px"
+                    },
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "parameters": {
+                              "colwidth": 3,
+                              "itemstyle": "style1",
+                              "webSocket": true
+                            },
+                            "data": {
+                              "applied": true,
+                              "model": {
+                                "id": 186085941866113
+                              },
+                              "kpi": [],
+                              "modelType": 0,
+                              "resfilltype": "manual",
+                              "resource": [
+                                186085941866141
+                              ],
+                              "series": {
+                                "manual": [],
+                                "bind": "(function (source){\n  return source.getResource();\n})"
+                              }
+                            },
+                            "label": "表单",
+                            "type": "kpilist",
+                            "source": "KPILIST",
+                            "advance": {
+                              "variable": "",
+                              "getoption": "selected-kpi",
+                              "expression": "{\n  \"on\" : {\n    \"init\" : function(event){\n      var modelId = event.self.getParameter(\"modelId\");\n      if(modelId){\n        event.self.getKpiFromViewByTypeAndRole(\"configure\",\"device\",modelId, function(resources){\n          if(resources){\n            event.target.render(resources);\n          } else {\n            event.self.error(\"没有配置正确的组态视图。\")\n          }\n        }, function(data){\n          console.log(\"socket\");\n          console.log(event.target);\n          event.target.socket(data);\n        })\n      }\n    },\n    \"click\" : function(event){\n      console.log(event);\n    }\n  },\n  format : [\n    {\n      \"name\": \"label\",\n      \"value\": \"{item:kpiName}\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"value\",\n      \"value\": \"{item:value}\",\n      \"type\": \"text\"\n    }\n  ]\n}"
+                            },
+                            "id": "Br4rh4tHfNAiZw7sEQZawMy73KCJP5rh"
+                          }
+                        ],
+                        "id": "rSTfSnZSAH2ZtE7zwjYnAXrTQWiS3yx6"
+                      }
+                    ],
+                    "advance": {
+                      "expression": {}
+                    },
+                    "template": [
+                      {
+                        "type": "css",
+                        "style": {
+                          "padding": "10px",
+                          "margin": "5px",
+                          "border": "1px solid #ccc",
+                          "background-color": "#fff"
+                        }
+                      },
+                      {
+                        "type": "css",
+                        "style": {
+                          "padding": "5px",
+                          "margin": "5px",
+                          "border": "1px solid #ccc",
+                          "background-color": "#fff",
+                          "border-top": "0"
+                        }
+                      },
+                      {
+                        "type": "css",
+                        "style": {
+                          "margin": "5px",
+                          "padding": "5px",
+                          "background-color": "#efdcaf",
+                          "border": "1px solid #c2ad7a"
+                        }
+                      },
+                      {
+                        "type": "css",
+                        "style": {
+                          "margin": "5px",
+                          "padding": "5px",
+                          "background-color": "#f0c0a4",
+                          "border": "1px solid #e5671b"
+                        }
+                      },
+                      {
+                        "type": "css",
+                        "style": {
+                          "margin": "5px",
+                          "padding": "5px",
+                          "background-color": "#ffb3b3",
+                          "border": "1px solid #db2222"
+                        }
+                      }
+                    ],
+                    "id": "5zmc8yjZwQSEGmm8zTf7SYN6TPhABX5S"
+                  }
+                ],
+                "default": false,
+                "id": "xn4b8Km8aXWDRyczcKMnKEKbEkBihTrJ"
+              }
+            ],
+            "id": "DshYsmWhKFAik8Cm7p46dJBeNdsAG6cf"
+          }
+        ],
+        "col": 12,
+        "id": "G7R5kSd87JzQZ4N8h6yTsiXzjbpBhEzZ"
+      },
+      "id": "2",
+      "$$hashKey": "object:525"
+    }
+  ],
+  "setting": {
+    "color": "",
+    "padding": 15
+  }
+}

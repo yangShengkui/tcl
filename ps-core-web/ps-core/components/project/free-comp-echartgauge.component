@@ -1,0 +1,196 @@
+<config injector="$q, resourceUIService, kpiDataServiceAsync, $interval"></config>
+<template>
+    <div>
+        <echarts-base
+                class="echarts-base-wrap"
+                data-theme="theme"
+                data-height="height"
+                data-option="chartOption">
+        </echarts-base>
+    </div>
+</template>
+<properties>
+    <script type="text/javascript">
+    function properties (q, resourceUIService) {
+      let propertiesDefer = q.defer();
+      let dataItems = [];
+      let getDataItems = () => {
+        let defer = q.defer();
+        resourceUIService.getDataItemsByModelId(300, ret => {
+          if (ret.code == '0') {
+            defer.resolve(ret.data);
+          }
+        });
+        return defer.promise;
+      };
+      let getResource = () => {
+        let defer = q.defer();
+        resourceUIService.getResourcesByCondition({
+          modelId: 300
+        }, ret => {
+          if (ret.code == '0') {
+            defer.resolve(ret.data);
+          }
+        });
+        return defer.promise;
+      };
+      q.all([getResource(), getDataItems()]).then(d => {
+        let resources = d[0];
+        let dataItems = d[1];
+        propertiesDefer.resolve([{
+          label: "基本设定",
+          attributes: {
+            title: ["标题", "input", "仪表盘标题"],
+            titleFontSize: ["标题字号", "input", "40"],
+            theme: ['主题', "input", "default"],
+            size: ["尺寸", "input", "xsmall"],
+            height: ["高度", "input", "200"],
+            radius: ["直径", "input", "75%"],
+            yAxisUnit: ["单位", "input", "a"]
+          }
+        }, {
+          label: "数据",
+          attributes: {
+            resource: ["资源", "select", null, resources.map(n => {
+              return [n.id, n.label]
+            }), {
+              multiple: false
+            }],
+            kpi: ["指标", "select", null, dataItems.map((n) => {
+              return [n.id, n.label]
+            }), {
+              multiple: false
+            }]
+          }
+        }]);
+      });
+
+      return propertiesDefer.promise;
+    }
+
+    export {properties}
+    </script>
+</properties>
+<script type="text/javascript">
+export default function (q, resourceUIService, kpiDataService, $interval) {
+  return {
+    scope: {
+      option: '=?'
+    },
+    link (scope, element, attr) {
+      let option = scope.option,
+        themeObj;
+
+      let getValue = (resourceId, kpiId) => {
+        let defer = q.defer();
+        if (resourceId && kpiId) {
+          let resourceIds = Array.isArray(resourceId) ? resourceId : [resourceId];
+          let kpiIds = Array.isArray(kpiId) ? kpiId : [kpiId];
+          kpiDataService.getRealTimeKpiData(resourceIds, kpiIds, ret => {
+            if (ret.code == '0') {
+              defer.resolve(ret.data);
+            }
+          });
+        } else {
+          defer.resolve();
+        }
+        return defer.promise;
+      }
+
+      function extend (a, b) {
+        for (var i in b) {
+          a[i] = b[i];
+        }
+        return a;
+      }
+
+      function render (n) {
+        getValue(n.resource, n.kpi).then(d => {
+          let legend = [];
+          scope.height = n.height;
+          scope.theme = [n.theme, themeObj(n.size)];
+          let v = d && d[0] ? d[0].value : '61';
+          scope.chartOption = {
+            series: {
+              type: 'gauge',
+              startAngle: 150,
+              endAngle: 30,
+              splitNumber: 5,
+              radius: n.radius,
+              center: ['50%', '70%'],
+              "axisLine": {
+                "lineStyle": {
+                  "color": [[0.2, '#679fff'], [0.8, '#bd7bf8'], [1, '#f6648b']],
+                  "width": 20
+                }
+              },
+              "splitLine": {
+                "width": 1,
+                "length": 20
+              },
+              "axisTick": {
+                "length": 8,
+                "lineStyle": {
+                  "width": 1,
+                  "color": 'rgba(250,250,250,.3)'
+                }
+              },
+              "axisLabel": {
+                "fontSize": 30,
+                "distance": -80,
+                "color": '#fff'
+              },
+              "pointer": {
+                "length": '70%',
+                "width": 4
+              },
+              "itemStyle": {
+                "color": '#679fff'
+              },
+              "detail": {
+                formatter: () => {
+                  return '{titleStyle|' + n.title + '}{valueStyle|' + v + n.yAxisUnit + '}';
+                },
+                rich: {
+                  titleStyle: {
+                    fontSize: n.titleFontSize,
+                    color: '#679fff'
+                  },
+                  valueStyle: {
+                    color: '#fff',
+                    padding: [0, 0, 0, 20],
+                    fontSize: n.titleFontSize
+                  }
+                }
+              },
+              data: [{
+                value: v
+              }]
+            }
+          }
+        });
+      }
+
+      scope.$watch(`option`, (n, o, s) => {
+        if (typeof n !== "undefined") {
+          window['require'](['../toolkit/echart-theme/fontsize.js'], (fn) => {
+            scope.$apply(() => {
+              themeObj = fn(s.setting ? s.setting.fontsize || 35 : 35);
+              render(n.attributes);
+              $interval(function () {
+                render(n.attributes);
+              }, 3 * 60 * 1000);
+            });
+          })
+        }
+      })
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+.echarts-base-wrap {
+    width: 100%;
+    height: 100%;
+}
+</style>

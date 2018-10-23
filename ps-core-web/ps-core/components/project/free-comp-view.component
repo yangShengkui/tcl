@@ -1,0 +1,83 @@
+<config injector="$q,viewFlexService"
+></config>
+<properties>
+  <script type="text/javascript">
+    function properties(){
+      return [{
+        label : "基本设定",
+        attributes : {
+          viewId : ["视图ID", "input", "399724155830035"],
+        }
+      }];
+    }
+    export { properties }
+  </script>
+</properties>
+<template>
+  <div ng-class="setting.cls">
+    <free-board-loading
+        data-loading="loading"
+    ></free-board-loading>
+    <ps-tool-preview
+        ng-if="type!=='absolute'"
+        ng-repeat="op in options"
+        data-parent-list="options"
+        data-option="op">
+    </ps-tool-preview>
+    <ps-tool-abs-preview
+        ng-if="type==='absolute'"
+        ng-repeat="op in options"
+        data-parent-list="options"
+        data-option="op">
+    </ps-tool-abs-preview>
+  </div>
+</template>
+<script type="text/javascript">
+  export default function(q,viewFlexService){
+    return {
+      scope : {
+        option : "="
+      },
+      link(scope, element, attr, ngModel) {
+        scope.loading = false;
+        function getViewById(viewId){
+          var defer = q.defer();
+          viewFlexService.getViewById(viewId, (d) => {
+            d.code == 0 ? defer.resolve(d.data) : defer.reject(d.message)
+          });
+          return defer.promise;
+        }
+        function parser(str){
+          let json;
+          try {
+            json = JSON.parse(str);
+          } catch(e) {
+            console.error(e);
+            json = null;
+          } finally {
+            return json
+          }
+        }
+        scope.$watch("option", (n, o, s) => {
+          if(n !== undefined){
+            getViewById(n.attributes.viewId).then((view) => {
+              scope.loading = false;
+              json = parser(view.content);
+              scope.setting = json.setting;
+              scope.options = json ? (json.data || []) : [];
+            })
+          }
+        })
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+  .wrap{
+    margin : 5px;
+    padding : 10px;
+    color : #333;
+    background-color : #eee;
+    border : 1px solid #ddd;
+  }
+</style>

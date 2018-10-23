@@ -1,0 +1,9 @@
+<h1>
+  {{menuitems[currentMenuCode].name}}
+  <small><a ng-show="menuitems['#'+treeviewIndex] == null" style="cursor: pointer;" onclick="window.history.back();">跳转回之前页面</a></small>
+</h1>
+<ol class="breadcrumb">
+  <li><a href="{{menuitems[localMenuCode].url}}"><i ng-class="menuitems[localMenuCode].icon"></i> {{menuitems[localMenuCode].name}}</a></li>
+  <li class="active"  ng-show="currentMenuCode != null && menuitems[currentMenuCode].functionCode.charAt(0)=='S'"><i ng-class="menuitems[firstMenuCode].icon"></i> {{menuitems[firstMenuCode].name}}</li>
+  <li><a href="{{menuitems[currentMenuCode].url}}"> {{menuitems[currentMenuCode].name}}</a></li>
+</ol>

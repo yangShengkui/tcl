@@ -1,0 +1,61 @@
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active">
+                <a>维保记录</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn"  ng-show="menuitems['#'+treeviewIndex] == null" role="button" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body no-padding-left no-pad-bottom">
+          <form role="form" name="alertForm">
+            <div class="form-group col-sm-2">
+              <label class="control-label">设备模板：</label>
+              <select select2 class="form-control"  ng-model="querySearch.modelId" ng-options="value.id as value.label for value in modelListSelect" selectdata="modelListSelect">
+              </select>
+            </div>
+            <div class="form-group col-sm-2">
+              <label class="control-label">维保类型：</label>
+              <select class="form-control"  ng-model="querySearch.type" ng-options="x.id as x.name  for x in processType">
+                <option value="">请选择</option>
+              </select>
+            </div>
+            <div class="form-group col-sm-2">
+              <label class="control-label">设备序列号/名称：</label>
+              <input class="form-control"  maxlength="20" type="text" ng-model="querySearch.deviceName" name="deviceName" placeholder="请输入..." />
+            </div>
+
+            <div class="form-group col-sm-2">
+              <label class="control-label">服务类别：</label>
+              <select  class="form-control"  ng-model="querySearch.serviceType" >
+                <option value="">请选择</option>
+                <option value="0">保内</option>
+                <option value="1">保外</option>
+              </select>
+            </div>
+            <div class="form-group col-sm-2 " style="width: 15%;">
+              <label class="col-sm-12 control-label font-white">操作：</label>
+              <div class="btn-group">
+                <button ng-click="goSearch()" type="button" class="btn btn-primary btn-sm"><i class="fa fa-search"></i><span class="hidden-sm"> 查询</span></button>
+                <button ng-click="goClear()" type="button" class="btn btn-default btn-sm"><i class="fa fa-close"></i><span class="hidden-sm"> 清除</span></button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="box">
+          <div  class="box-footer">
+            <table width="100%" class="table table-hover" maintenance-record-dom ></table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

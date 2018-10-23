@@ -1,0 +1,50 @@
+<!--创建文档模态框-->
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">发布信息</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal" name="releaseForm">
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h"><span
+                class="text-danger ng-binding">*</span> <span class="ng-binding">发布流程名称：</span></label>
+              <div class="col-sm-6 padding-left-5">
+                <input type="text" maxlength="32" autocomplete="off" class="form-control dialog-inp-text input-sm"  ng-model="releaseObj.name" name="Name"
+                       required="required">
+              </div>
+            </div>
+          </div>
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h"><span
+                class="text-danger ng-binding">*</span> <span class="ng-binding">发布流程版本：</span></label>
+              <div class="col-sm-6 padding-left-5">
+                <input type="text" maxlength="32" autocomplete="off" class="form-control dialog-inp-text input-sm"  ng-model="releaseObj.version" name="Name"
+                       required="required">
+              </div>
+            </div>
+          </div>
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h"> <span class="ng-binding">发布流程描述：</span></label>
+              <div class="col-sm-6 padding-left-5">
+                <input type="text" maxlength="32" autocomplete="off" class="form-control dialog-inp-text input-sm"  ng-model="releaseObj.desc" name="Name">
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="releaseForm.$invalid" ng-click="saveRelease();" disabled="disabled">
+          确定
+        </button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

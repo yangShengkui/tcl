@@ -1,0 +1,39 @@
+<config injector="$scope,$q,resourceUIService,viewFlexService,apiService"
+></config>
+<template>
+  <proudsmart-base>
+    <ps-tree-view2
+            data-options="options"
+            data-config="config"
+    ></ps-tree-view2>
+  </proudsmart-base>
+</template>
+<script type="text/javascript">
+    export default function(scope,q,resourceUIService,viewFlexService,api){
+        scope.options = [{
+            id : 0,
+            label : "0",
+            children : [{
+                id : 1,
+                label : 1,
+                children : [{
+                    id : 3,
+                    label : 3
+                }]
+            },{
+                id : 2,
+                label : 2
+            }]
+        }];
+        scope.config = {
+            on : {
+                click : function(e){
+                    console.log(e);
+                }
+            }
+        }
+    };
+</script>
+<style type="less" scoped="true">
+
+</style>

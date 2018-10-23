@@ -1,0 +1,361 @@
+<!-- Content Header (Page header) -->
+<div id="leftPart" class="leftPart" ng-init="show=0">
+  <div class="head-item">
+    <h>栅格</h>
+  </div>
+  <div ng-attr-id="{{layout.id}}" ng-repeat="layout in variables.layouts" drag="layouts" class="dragItem">
+    <div data-model="layout" ng-if="layout.freeStyle != true;" class="bootinput"></div>
+    <div data-model="layout" ng-if="layout.freeStyle == true;" class="bootinputfree"></div>
+    <div class="handler">
+      <span class="proudsmart ps-move"></span>
+    </div>
+  </div>
+  <div ng-click="show=0" class="head-item" ng-class="{true : 'active', false : ''}[show==0]">
+    <span ></span><h>基础线图</h>
+  </div>
+  <div ng-attr-id="{{variables.basicline[0].id}}" class="dragItem" drag="basicline" ng-if="show==0">
+    <div class="row">
+      <div class="col-md-3">
+        <label>设备</label>
+      </div>
+      <div class="col-md-6">
+        <select data-chart="variables.basicline[0]" ci-selectmenu-chart></select>
+      </div>
+      <div class="col-md-3">
+        <div class="handler">
+          <span class="proudsmart ps-move"></span>
+        </div>
+      </div>
+    </div>
+    <div ng-repeat="kpi in variables.basicline[0].kpiObjects" class="row">
+      <div class="col-md-3">
+        <label ng-bind="'指标'"></label>
+      </div>
+      <div class="col-md-6">
+        <select data-chart="kpi" data-target="variables.basicline[0]" kpi-selectmenu-chart></select>
+      </div>
+      <div class="col-md-3">
+        <button ng-click="variables.removeKpi(kpi, variables.basicline[0])" class="deleteBtn">
+          <span class="proudsmart ps-delete"></span>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button ng-click="variables.basicline[0].add()">
+          <span class="proudsmart ps-add"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div ng-click="show=1" class="head-item" ng-class="{true : 'active', false : ''}[show==1]">
+    <h>基础饼图</h>
+  </div>
+  <div ng-attr-id="{{variables.basicpie[0].id}}" class="dragItem" drag="basicpie" ng-if="show==1">
+    <div class="row">
+      <div class="col-md-3">
+        <label>设备</label>
+      </div>
+      <div class="col-md-6">
+        <select data-chart="variables.basicpie[0]" ci-selectmenu-chart></select>
+      </div>
+      <div class="col-md-3">
+        <div class="handler">
+          <span class="proudsmart ps-move"></span>
+        </div>
+      </div>
+    </div>
+    <div ng-repeat="kpi in variables.basicpie[0].kpiObjects" class="row">
+      <div class="col-md-3">
+        <label ng-bind="'指标'"></label>
+      </div>
+      <div class="col-md-6">
+        <select data-chart="kpi" data-target="variables.basicpie[0]" kpi-selectmenu-chart></select>
+      </div>
+      <div class="col-md-3">
+        <button ng-click="variables.removeKpi(kpi, variables.basicpie[0])" class="deleteBtn">
+          <span class="proudsmart ps-delete"></span>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button ng-click="variables.basicpie[0].add()">
+          <span class="proudsmart ps-add"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div ng-click="show=2" class="head-item" ng-class="{true : 'active', false : ''}[show==2]">
+    <h>常见告警类型</h>
+  </div>
+  <div ng-attr-id="{{variables.alertcommon[0].id}}" class="dragItem" drag="alertcommon" ng-if="show==2">
+    <div>
+      <label>常见告警类型（饼图）</label>
+      <div class="handler">
+        <span class="proudsmart ps-move"></span>
+      </div>
+    </div>
+  </div>
+
+  <div ng-click="show=3" class="head-item" ng-class="{true : 'active', false : ''}[show==3]">
+    <h>数据标签</h>
+  </div>
+  <div ng-attr-id="{{variables.totalItems[0].id}}" class="dragItem" drag="totalItems" ng-if="show==3">
+    <div class="row">
+      <div class="col-md-3">
+                 <span class="small-box bg-red" color-selector data-bgcolor="variables.totalItems[0]">
+                </span>
+      </div>
+      <div class="col-md-2">
+                <span class="icon" icon-selector data-icon="variables.totalItems[0]">
+                    <i class="proudsmart ps-edit" style="font-size : 18px; color : #fff; position : relative; top : 5px; left : 7px;"></i>
+                </span>
+      </div>
+      <div class="col-md-2 col-md-offset-5">
+        <div class="handler">
+          <span class="proudsmart ps-move"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <label>设备</label>
+      </div>
+      <div class="col-md-9">
+        <select data-tool="variables.totalItems[0]" ci-selectmenu></select>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <label>指标</label>
+      </div>
+      <div class="col-md-9">
+        <select data-tool="variables.totalItems[0]" kpi-selectmenu></select>
+      </div>
+    </div>
+  </div>
+  <!--
+  <div ng-click="show=4" class="head-item" ng-class="{true : 'active', false : ''}[show==4]">
+    <h>属性标签</h>
+  </div>
+  <div ng-attr-id="{{variables.attrTab[0].id}}" class="dragItem" drag="attrTab" ng-if="show==4">
+
+    <div class="row">
+      <div class="col-md-3">
+                 <span class="small-box bg-red" color-selector data-bgcolor="variables.attrTab[0]">
+                </span>
+      </div>
+      <div class="col-md-2">
+                <span class="icon" icon-selector data-icon="variables.attrTab[0]">
+                    <i class="proudsmart ps-edit" style="font-size : 18px; color : #fff; position : relative; top : 5px; left : 7px;"></i>
+                </span>
+      </div>
+      <div class="col-md-2 col-md-offset-5">
+        <div class="handler">
+          <span class="proudsmart ps-move"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <label>设备</label>
+      </div>
+      <div class="col-md-9">
+        <select data-attr="variables.attrTab[0]"  aci-selectmenu></select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <label>指标</label>
+      </div>
+      <div class="col-md-9">
+        <select data-attr="variables.attrTab[0]" attr-selectmenu></select>
+      </div>
+    </div>
+  </div>
+  -->
+  <div ng-click="show=5" class="head-item" ng-class="{true : 'active', false : ''}[show==5]">
+    <h>状态条（百分比）</h>
+  </div>
+  <div ng-attr-id="{{variables.progress[0].id}}" class="dragItem" drag="progress" ng-if="show==5">
+    <div class="row">
+      <div class="col-md-3">
+        <label>设备</label>
+      </div>
+      <div class="col-md-6">
+        <select data-tool="variables.progress[0]" ci-selectmenu></select>
+      </div>
+      <div class="col-md-3">
+        <div class="handler">
+          <span class="proudsmart ps-move"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <label>指标</label>
+      </div>
+      <div class="col-md-9">
+        <select data-tool="variables.progress[0]" kpi-selectmenu></select>
+      </div>
+    </div>
+
+  </div>
+  <div ng-click="show=6" class="head-item" ng-class="{true : 'active', false : ''}[show==6]">
+    <h>指标环比数据</h>
+  </div>
+  <div ng-attr-id="{{variables.downTab[0].id}}" class="dragItem" drag="downTab" ng-if="show==6">
+    <div class="row">
+      <div class="col-md-3">
+        <label>设备</label>
+      </div>
+      <div class="col-md-6">
+        <select data-tool="variables.downTab[0]" ci-selectmenu></select>
+      </div>
+      <div class="col-md-3">
+        <div class="handler">
+          <span class="proudsmart ps-move"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <label>指标</label>
+      </div>
+      <div class="col-md-9">
+        <select data-tool="variables.downTab[0]" kpi-selectmenu></select>
+      </div>
+    </div>
+  </div>
+  <div ng-click="show=7" class="head-item" ng-class="{true : 'active', false : ''}[show==7]">
+    <h>标题字段</h>
+  </div>
+  <div ng-attr-id="{{variables.header[0].id}}" class="dragItem" drag="header" ng-if="show==7">
+    <div>
+      <label>添加标题字段</label>
+      <div class="handler">
+        <span class="proudsmart ps-move"></span>
+      </div>
+    </div>
+  </div>
+  <div ng-click="show=8" class="head-item" ng-class="{true : 'active', false : ''}[show==8]">
+    <h>设备列表</h>
+  </div>
+  <div ng-attr-id="{{variables.listone[0].id}}" class="dragItem" drag="listone" ng-if="show==8">
+    <div>
+      <label>最新上线设备</label>
+      <div class="handler">
+        <span class="proudsmart ps-move"></span>
+      </div>
+    </div>
+  </div>
+  <div ng-click="show=9" class="head-item" ng-class="{true : 'active', false : ''}[show==9]">
+    <h>工单列表</h>
+  </div>
+  <div ng-attr-id="{{variables.listtwo[0].id}}" class="dragItem" drag="listtwo" ng-if="show==9">
+    <div>
+      <label>正在执行中工单</label>
+      <div class="handler">
+        <span class="proudsmart ps-move"></span>
+      </div>
+    </div>
+  </div>
+  <div ng-click="show=10" class="head-item" ng-class="{true : 'active', false : ''}[show==10]">
+    <h>地图显示</h>
+  </div>
+  <div ng-attr-id="{{variables.map[0].id}}" class="dragItem" drag="map" ng-if="show==10">
+    <div>
+      <label>设备运行情况 </label>
+      <div class="handler">
+        <span class="proudsmart ps-move"></span>
+      </div>
+    </div>
+  </div>
+  <div ng-click="show=11" class="head-item">
+    <h>指标柱状图</h>
+  </div>
+  <div ng-attr-id="{{variables.sparkline[0].id}}" class="dragItem" drag="sparkline" ng-if="show==11">
+
+    <div class="row">
+      <div class="col-md-3">
+        <label>设备</label>
+      </div>
+      <div class="col-md-2">
+        <select data-chart="variables.sparkline[0]" ci-selectmenu-chart></select>
+      </div>
+      <div class="col-md-2 col-md-offset-5">
+        <div class="handler">
+          <span class="proudsmart ps-move"></span>
+        </div>
+      </div>
+    </div>
+    <div ng-repeat="kpi in variables.sparkline[0].kpiObjects" class="row">
+      <div class="col-md-3">
+        <label ng-bind="'指标'"></label>
+      </div>
+      <div class="col-md-6">
+        <select data-chart="kpi" data-target="variables.sparkline[0]" kpi-selectmenu-chart></select>
+      </div>
+      <div class="col-md-3">
+        <button ng-click="variables.removeKpi(kpi, variables.sparkline[0])" class="deleteBtn">
+          <span class="proudsmart ps-delete"></span>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button ng-click="variables.sparkline[0].add()">
+          <span class="proudsmart ps-add"></span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+  <!--
+  <div ng-click="show=12" class="head-item" ng-class="{true : 'active', false : ''}[show==12]">
+    <h>来自视图编辑器</h>
+  </div>
+  <div ng-attr-id="{{designView.id}}" ng-repeat="designView in variables.designViews" drag="designViews" class="dragItem" ng-if="show==12">
+    <label ng-bind="designView.view.viewTitle"></label>
+    <div class="handler">
+      <span class="proudsmart ps-move"></span>
+    </div>
+  </div>
+  -->
+</div>
+<div id="rightPart" class="rightPart">
+  <section class="content-header">
+    <h1>
+      运营首页
+      <a ng-hide="dashboard.mode==variables._EDITMODE_" data-dashboard="dashboard" style="font-size:20px; margin-left:0px;cursor:pointer;" class="proudsmart ps-edit" edit-btn ng-hide="hideEdit"></a>
+      <small></small>
+      <span ng-show="dashboard.mode==variables._EDITMODE_">
+        <button class="btn btn-default" data-dashboard="dashboard" edit-btn>
+          预览
+        </button>
+        <button class="btn btn-default" ng-click="variables.resetClick()">
+          重置
+        </button>
+        <button class="btn btn-primary" ng-click="dashboard.save()">
+          保存
+        </button>
+        <!--
+          <button ng-click="dashboard.delete()">
+          放弃自定义样式
+          </button>
+        -->
+      </span>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#dashboard2"><i class="proudsmart ps-center"></i> 运营中心</a></li>
+      <li class="active">运营首页</li>
+    </ol>
+  </section>
+  <div dashboard-drop data-layout="dashboard.layout" data-dashboard="dashboard">
+    <div id="dropBody" ng-class="{true : 'edit', false : ''}[dashboard.mode == variables._EDITMODE_]"></div>
+  </div>
+</div>
+
+

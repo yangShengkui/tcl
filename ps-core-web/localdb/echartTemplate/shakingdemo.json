@@ -1,0 +1,518 @@
+{
+  "layout": {
+    "type": "column",
+    "children": [
+      {
+        "label": "控制板1",
+        "type": "block",
+        "source": "BLOCK",
+        "style": {
+          "padding": "5px",
+          "margin": "5px",
+          "border": "1px solid #ccc",
+          "background-color": "rgb(243, 243, 243)"
+        },
+        "advance": {
+          "expression": {}
+        },
+        "children": [
+          {
+            "type": "column",
+            "col": 12,
+            "children": [
+              {
+                "type": "row",
+                "source": "ROW",
+                "parameters": {
+                  "alignment": "bootstrap"
+                },
+                "style": {},
+                "children": [
+                  {
+                    "type": "column",
+                    "children": [
+                      {
+                        "label": "文字",
+                        "type": "text",
+                        "source": "TEXT",
+                        "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                        "data": {
+                          "applied": false,
+                          "multipleCi": false,
+                          "multipleKpi": false,
+                          "resource": [],
+                          "modelType": 300,
+                          "resfilltype": "parameter",
+                          "series": {
+                            "manual": "新建文字",
+                            "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                          },
+                          "modelDisable": true
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "padding": "0",
+                          "font-size": "12px",
+                          "font-weight": "bold",
+                          "color": "rgb(102, 102, 102)"
+                        },
+                        "advance": {
+                          "getfunction": "kpiDataService.getValueList",
+                          "category": "ci",
+                          "condition": [
+                            "kpi",
+                            "{object:kpiQueryModel}"
+                          ],
+                          "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"波形图\")\n        }\n    }\n}"
+                        }
+                      }
+                    ],
+                    "col": 3
+                  },
+                  {
+                    "type": "column",
+                    "children": [],
+                    "col": 2
+                  },
+                  {
+                    "type": "column",
+                    "children": [],
+                    "col": 2
+                  },
+                  {
+                    "type": "column",
+                    "children": [],
+                    "col": 2
+                  },
+                  {
+                    "type": "column",
+                    "children": [],
+                    "col": 3
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "source": "ROW",
+        "parameters": {
+          "alignment": "bootstrap"
+        },
+        "style": {},
+        "children": [
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "控制板1",
+                "type": "block",
+                "source": "BLOCK",
+                "style": {
+                  "padding": "5px",
+                  "margin": "5px",
+                  "border": "1px solid #ccc",
+                  "background-color": "#fff"
+                },
+                "advance": {
+                  "expression": {}
+                },
+                "children": [
+                  {
+                    "type": "column",
+                    "col": 12,
+                    "children": [
+                      {
+                        "label": "高级视图",
+                        "type": "advanceEchart",
+                        "source": "ADVANCEECHART",
+                        "advance": {
+                          "expression": "express = {\n  on : {\n    init : function(event){\n      var global = event.global;\n      global.fire(\"changeEchart\");\n    },\n    changeEchart : function(event){\n        var target = event.target;\n      var global = event.global;\n      var p1 = target.getValue(\"p1\") || 0;\n      var p2 = target.getValue(\"p2\") || 0;\n      var p3 = target.getValue(\"p3\") || 0;\n      var p4 = target.getValue(\"p4\") || 0;\n      var p5 = target.getValue(\"p5\") || 0;\n      console.log(p1,p2,p3,p4,p5);\n      var option = {\n            title: {\n                text: '波形'\n            },\n            tooltip: {},\n            legend: {\n                data:['波形']\n            },\n            xAxis: {\n                data: (function(){\n                    var rs = [];\n                    for(var i=0; i<1000; i++){\n                        rs.push(i);\n                    }\n                    return rs;\n                })()\n            },\n            yAxis: {},\n            series: [{\n                name: '波形',\n                type: 'line',\n                data: (function(){\n                    var rs = [];\n                    for(var i=0; i<1000; i++){\n                        var num = Math.sin(Math.PI * i * .02)\n                        rs.push((num + Math.random() * .2) * 10);\n                    }\n                    return rs;\n                })()\n            }]\n        };\n      event.target.render(option);\n    }\n  }\n}"
+                        },
+                        "style": {
+                          "margin": "auto",
+                          "width": "100%",
+                          "height": "300px"
+                        }
+                      },
+                      {
+                        "label": "高级视图",
+                        "type": "advanceEchart",
+                        "source": "ADVANCEECHART",
+                        "advance": {
+                          "expression": "express = {\n  on : {\n      changeEchart : function(event){\n          var target = event.target;\n      var global = event.global;\n      var option = {\n            title: {\n                text: '频道'\n            },\n            tooltip: {},\n            legend: {\n                data:['频道']\n            },\n            xAxis: {\n                data: (function(){\n                    var rs = [];\n                    for(var i=0; i<1000; i++){\n                        rs.push(i);\n                    }\n                    return rs;\n                })()\n            },\n            yAxis: {},\n            series: [{\n                name: '频道',\n                type: 'line',\n                data: (function(){\n                    var rs = [];\n                    for(var i=0; i<1000; i++){\n                        var num = Math.sin(Math.PI * i * .02)\n                        rs.push((num) * 10);\n                    }\n                    return rs;\n                })()\n            }]\n        };\n        if(target.render){\n            target.render(option);\n        }\n      },\n      init : function(event){\n          var global = event.global;\n          global.fire(\"changeEchart\");\n      }\n  }\n}"
+                        },
+                        "style": {
+                          "margin": "auto",
+                          "width": "100%",
+                          "height": "300px"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "控制板1",
+                "type": "block",
+                "source": "BLOCK",
+                "style": {
+                  "padding": "5px",
+                  "margin": "5px",
+                  "border": "1px solid #ccc",
+                  "background-color": "rgb(243, 243, 243)"
+                },
+                "advance": {
+                  "expression": {}
+                },
+                "children": [
+                  {
+                    "type": "column",
+                    "col": 12,
+                    "children": [
+                      {
+                        "type": "row",
+                        "source": "ROW",
+                        "parameters": {
+                          "alignment": "bootstrap"
+                        },
+                        "style": {},
+                        "children": [
+                          {
+                            "type": "column",
+                            "children": [
+                              {
+                                "label": "文字",
+                                "type": "text",
+                                "source": "TEXT",
+                                "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                                "data": {
+                                  "applied": false,
+                                  "multipleCi": false,
+                                  "multipleKpi": false,
+                                  "resource": [],
+                                  "modelType": 300,
+                                  "resfilltype": "parameter",
+                                  "series": {
+                                    "manual": "新建文字",
+                                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                                  },
+                                  "modelDisable": true
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "0",
+                                  "font-size": "12px",
+                                  "font-weight": "bold",
+                                  "color": "rgb(255, 0, 0)"
+                                },
+                                "advance": {
+                                  "getfunction": "kpiDataService.getValueList",
+                                  "category": "ci",
+                                  "condition": [
+                                    "kpi",
+                                    "{object:kpiQueryModel}"
+                                  ],
+                                  "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"正常监测\")\n        }\n    }\n}"
+                                }
+                              }
+                            ],
+                            "col": 3
+                          },
+                          {
+                            "type": "column",
+                            "children": [
+                              {
+                                "label": "文字",
+                                "type": "text",
+                                "source": "TEXT",
+                                "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                                "data": {
+                                  "applied": false,
+                                  "multipleCi": false,
+                                  "multipleKpi": false,
+                                  "resource": [],
+                                  "modelType": 300,
+                                  "resfilltype": "parameter",
+                                  "series": {
+                                    "manual": "新建文字",
+                                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                                  },
+                                  "modelDisable": true
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "0",
+                                  "font-size": "12px",
+                                  "font-weight": "bold",
+                                  "color": "rgb(102, 102, 102)"
+                                },
+                                "advance": {
+                                  "getfunction": "kpiDataService.getValueList",
+                                  "category": "ci",
+                                  "condition": [
+                                    "kpi",
+                                    "{object:kpiQueryModel}"
+                                  ],
+                                  "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var modelId = 142775081516072;\n      var modelName = \"螺杆式水冷冷机组 EKSC450F3ST-SZ1624\";\n      var resourceIds = [215755216796141];\n      var resourceNames = [\"螺杆水冷冷1号机组\"];\n      var kpiIds = [144684185476439];\n      var kpiNames = [\"压缩机1电流1\"];\n      target.getKpiValueCi(resourceIds, kpiIds, function(valuelist){\n          if(valuelist[0]){\n              target.setText(kpiNames[0] + \"  :  \" + valuelist[0].value)\n          } else {\n              target.setText(kpiNames[0] + \"  :  -\")\n          };\n      });\n    }\n  }\n}"
+                                }
+                              }
+                            ],
+                            "col": 2
+                          },
+                          {
+                            "type": "column",
+                            "children": [
+                              {
+                                "label": "文字",
+                                "type": "text",
+                                "source": "TEXT",
+                                "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                                "data": {
+                                  "applied": false,
+                                  "multipleCi": false,
+                                  "multipleKpi": false,
+                                  "resource": [],
+                                  "modelType": 300,
+                                  "resfilltype": "parameter",
+                                  "series": {
+                                    "manual": "新建文字",
+                                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                                  },
+                                  "modelDisable": true
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "0",
+                                  "font-size": "12px",
+                                  "font-weight": "bold",
+                                  "color": "rgb(102, 102, 102)"
+                                },
+                                "advance": {
+                                  "getfunction": "kpiDataService.getValueList",
+                                  "category": "ci",
+                                  "condition": [
+                                    "kpi",
+                                    "{object:kpiQueryModel}"
+                                  ],
+                                  "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var modelId = 142775081516072;\n    var modelName = \"螺杆式水冷冷机组 EKSC450F3ST-SZ1624\";\n    var resourceIds = [215755216796141];\n    var resourceNames = [\"螺杆水冷冷1号机组\"];\n    var kpiIds = [144684185476447];\n    var kpiNames = [\"排气压力1\"];\n      target.getKpiValueCi(resourceIds, kpiIds, function(valuelist){\n          if(valuelist[0]){\n              target.setText(kpiNames[0] + \"  :  \" + valuelist[0].value)\n          } else {\n              target.setText(kpiNames[0] + \"  :  -\")\n          };\n      });\n    }\n  }\n}"
+                                }
+                              }
+                            ],
+                            "col": 2
+                          },
+                          {
+                            "type": "column",
+                            "children": [
+                              {
+                                "label": "文字",
+                                "type": "text",
+                                "source": "TEXT",
+                                "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                                "data": {
+                                  "applied": false,
+                                  "multipleCi": false,
+                                  "multipleKpi": false,
+                                  "resource": [],
+                                  "modelType": 300,
+                                  "resfilltype": "parameter",
+                                  "series": {
+                                    "manual": "新建文字",
+                                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                                  },
+                                  "modelDisable": true
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "0",
+                                  "font-size": "12px",
+                                  "font-weight": "bold",
+                                  "color": "rgb(102, 102, 102)"
+                                },
+                                "advance": {
+                                  "getfunction": "kpiDataService.getValueList",
+                                  "category": "ci",
+                                  "condition": [
+                                    "kpi",
+                                    "{object:kpiQueryModel}"
+                                  ],
+                                  "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var modelId = 142775081516072;\nvar modelName = \"螺杆式水冷冷机组 EKSC450F3ST-SZ1624\";\nvar resourceIds = [215755216796141];\nvar resourceNames = [\"螺杆水冷冷1号机组\"];\nvar kpiIds = [144684185476450];\nvar kpiNames = [\"油压1\"];\n      target.getKpiValueCi(resourceIds, kpiIds, function(valuelist){\n          if(valuelist[0]){\n              target.setText(kpiNames[0] + \"  :  \" + valuelist[0].value)\n          } else {\n              target.setText(kpiNames[0] + \"  :  -\")\n          };\n      });\n    }\n  }\n}"
+                                }
+                              }
+                            ],
+                            "col": 2
+                          },
+                          {
+                            "type": "column",
+                            "children": [
+                              {
+                                "label": "文字",
+                                "type": "text",
+                                "source": "TEXT",
+                                "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                                "data": {
+                                  "applied": false,
+                                  "multipleCi": false,
+                                  "multipleKpi": false,
+                                  "resource": [],
+                                  "modelType": 300,
+                                  "resfilltype": "parameter",
+                                  "series": {
+                                    "manual": "新建文字",
+                                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                                  },
+                                  "modelDisable": true
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "0",
+                                  "font-size": "12px",
+                                  "font-weight": "bold",
+                                  "color": "rgb(102, 102, 102)"
+                                },
+                                "advance": {
+                                  "getfunction": "kpiDataService.getValueList",
+                                  "category": "ci",
+                                  "condition": [
+                                    "kpi",
+                                    "{object:kpiQueryModel}"
+                                  ],
+                                  "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var modelId = 142775081516072;\nvar modelName = \"螺杆式水冷冷机组 EKSC450F3ST-SZ1624\";\nvar resourceIds = [215755216796141];\nvar resourceNames = [\"螺杆水冷冷1号机组\"];\nvar kpiIds = [144684185476458];\nvar kpiNames = [\"模式选择\"];\n      target.getKpiValueCi(resourceIds, kpiIds, function(valuelist){\n          if(valuelist[0]){\n              target.setText(kpiNames[0] + \"  :  \" + valuelist[0].value)\n          } else {\n              target.setText(kpiNames[0] + \"  :  -\")\n          };\n      });\n    }\n  }\n}"
+                                }
+                              }
+                            ],
+                            "col": 3
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "col": 9
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "控制板1",
+                "type": "block",
+                "source": "BLOCK",
+                "style": {
+                  "padding": "5px",
+                  "margin": "5px",
+                  "border": "1px solid #ccc",
+                  "background-color": "rgb(243, 243, 243)"
+                },
+                "advance": {
+                  "expression": {}
+                },
+                "children": [
+                  {
+                    "type": "column",
+                    "col": 12,
+                    "children": [
+                      {
+                        "label": "控件组",
+                        "type": "ctrlgroup",
+                        "source": "CTRLGROUP",
+                        "advance": {
+                          "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n       [{\n          type : \"select\",\n          value : 0,\n          on : {\n            change : function(elem){\n              target.setValue(\"p1\", elem.value);\n              global.fire(\"changeEchart\");\n            }\n          },\n          format : {\n            \"id\" : \"id\",\n            \"label\" : \"label\"\n          },\n          options :  [{\n            id : 0,\n            label : \"2102-J\"\n          },{\n            id : 1,\n            label : \"2103-J\"\n          }]\n        }],[{\n          type : \"select\",\n          value : 0,\n          on : {\n            change : function(elem){\n              target.setValue(\"p2\", elem.value);\n              global.fire(\"changeEchart\");\n            }\n          },\n          format : {\n            \"id\" : \"id\",\n            \"label\" : \"label\"\n          },\n          options : [{\n            id : 0,\n            label : \"低速轴线\"\n          },{\n            id : 1,\n            label : \"高速轴线\"\n          }]\n        }],[{\n          type : \"select\",\n          value : \"普通下拉列表\",\n          on : {\n            change : function(elem){\n              target.setValue(\"p3\", elem.value);\n              global.fire(\"changeEchart\");\n            }\n          },\n          format : {\n            \"id\" : \"id\",\n            \"label\" : \"label\"\n          },\n          options : [{\n            id : 0,\n            label : \"JT-SV\"\n          }]\n        }],[{\n          type : \"select\",\n          value : 0,\n          on : {\n            change : function(elem){\n              target.setValue(\"p4\", elem.value);\n              global.fire(\"changeEchart\");\n            }\n          },\n          format : {\n            \"id\" : \"id\",\n            \"label\" : \"label\"\n          },\n          options : [{\n            id : 0,\n            label : \"32周期\"\n          },{\n            id : 0,\n            label : \"64周期\"\n          }]\n        }],[{\n          type : \"select\",\n          value : 0,\n          on : {\n            change : function(elem){\n              target.setValue(\"p5\", elem.value);\n              global.fire(\"changeEchart\");\n            }\n          },\n          format : {\n            \"id\" : \"id\",\n            \"label\" : \"label\"\n          },\n          options : [{\n            id : 0,\n            label : \"12倍频\"\n          },{\n            id : 1,\n            label : \"24倍频\"\n          },{\n            id : 1,\n            label : \"48倍频\"\n          }]\n        }],[{\n          type : \"button\",\n          value : \"数据类型选择\",\n          icon : \"glyphicon glyphicon-th-list\",\n          btnclass : \"btn btn-primary\",\n          class:\"col-md-12\",\n          btnStyle : {\n              width : \"100%\"\n          },\n          on : {\n            click : function(elem){\n              console.log(elem);\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "font-size": "12px"
+                        },
+                        "help": "../pdf/ctrlgroup.pdf",
+                        "parameters": {}
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "控制板1",
+                "type": "block",
+                "source": "BLOCK",
+                "style": {
+                  "padding": "5px",
+                  "margin": "5px",
+                  "border": "1px solid #ccc",
+                  "background-color": "rgb(243, 243, 243)"
+                },
+                "advance": {
+                  "expression": {}
+                },
+                "children": [
+                  {
+                    "type": "column",
+                    "col": 12,
+                    "children": [
+                      {
+                        "label": "控件组",
+                        "type": "ctrlgroup",
+                        "source": "CTRLGROUP",
+                        "advance": {
+                          "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var drops = [{\n            id : 0,\n            label : \"项目1\"\n          },{\n            id : 1,\n            label : \"项目名称2\"\n          },{\n            id : 2,\n            label : \"名称3\"\n          }]\n      var ctrlGroups = [\n       [{\n          type : \"button\",\n          value : \"定义坐标值\",\n          icon : \"glyphicon glyphicon-inbox\",\n          btnclass : \"btn btn-primary\",\n          class:\"col-md-12\",\n          btnStyle : {\n              width : \"100%\"\n          },\n          on : {\n            click : function(elem){\n              console.log(elem);\n            }\n          }\n        }],[{\n          type : \"radio\",\n          value : 0,\n          on : {\n            change : function(elem){\n                target.setValue(\"p6\", elem.value);\n              global.fire(\"changeEchart\");\n            }\n          },\n          format : {\n            \"id\" : \"id\",\n            \"label\" : \"label\"\n          },\n          options : [{\n              id : 0,\n              label : \"阶比\"\n          },{\n              id : 1,\n              label : \"频率\"\n          }]\n        }],[{\n          type : \"radio\",\n          value : 0,\n          on : {\n            change : function(elem){\n              target.setValue(\"p7\", elem.value);\n              global.fire(\"changeEchart\");\n            }\n          },\n          format : {\n            \"id\" : \"id\",\n            \"label\" : \"label\"\n          },\n          options : [{\n              id : 0,\n              label : \"静态\"\n          },{\n              id : 1,\n              label : \"动态\"\n          }]\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "font-size": "12px"
+                        },
+                        "help": "../pdf/ctrlgroup.pdf",
+                        "parameters": {}
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "label": "控制板1",
+                "type": "block",
+                "source": "BLOCK",
+                "style": {
+                  "padding": "5px",
+                  "margin": "5px",
+                  "border": "1px solid #ccc",
+                  "background-color": "rgb(243, 243, 243)"
+                },
+                "advance": {
+                  "expression": {}
+                },
+                "children": [
+                  {
+                    "type": "column",
+                    "col": 12,
+                    "children": [
+                      {
+                        "label": "控件组",
+                        "type": "ctrlgroup",
+                        "source": "CTRLGROUP",
+                        "advance": {
+                          "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var modelId = 142775081516072;\n      var modelName = \"螺杆式水冷冷机组 EKSC450F3ST-SZ1624\";\n      var resourceIds = [215755216796141];\n      var resourceNames = [\"螺杆水冷冷1号机组\"];\n      var kpiIds = [144684185476439,144684185476440,144684185476441,144684185476442,144684185476443,144684185476444];\n      var kpiNames = [\"压缩机1电流1\",\"压缩机1电流2\",\"压缩机1电流3\",\"压缩机2电流2\",\"压缩机2电流3\",\"压缩机1加载脉冲个数\"];\n      var ctrlGroups = [];\n      target.getKpiValueCi(resourceIds, kpiIds, function(valuelist){\n        for(var i in kpiIds){\n          var find = valuelist.find(function(elem){\n            return elem.kpiCode == kpiIds[i];\n          });\n          ctrlGroups.push([{\n              id : kpiIds[i],\n            type : \"label\",\n            value : kpiNames[i]\n          },{\n            type : \"label\",\n            value : find ? find.value : \"-\"\n          }])\n        }\n        target.render(ctrlGroups);\n      });\n      target.webSocket(resourceIds, kpiIds, function(data){\n          var find = ctrlGroups.find(function(elem){\n              return elem[0].id == data.kpiCode\n          });\n          find.value = data.value;\n          target.render(ctrlGroup);\n      })\n    }\n  }\n}"
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "font-size": "12px"
+                        },
+                        "help": "../pdf/ctrlgroup.pdf"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "col": 3
+          }
+        ]
+      }
+    ],
+    "col": 12
+  },
+  "setting": {
+    "padding": 15
+  }
+}

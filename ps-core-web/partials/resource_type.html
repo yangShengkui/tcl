@@ -1,0 +1,226 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <ol ng-show="!alertMode" class="breadcrumb breadcrumb2">
+            <li ng-show="!searchExt" role="button" ng-repeat="item in routePaths">
+              <i class="glyphicon glyphicon-arrow-up" role="button" ng-click="gotoParentPath(selectedParentitem)" ng-show="selectedParentitem && $index == 0 && routePaths.length > 2"></i>
+              <div class="btn-group" ng-show="$index !=  0 && $index !=  routePaths.length-1">
+                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <span class="glyphicon glyphicon-menu-right"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li ng-click="gotoBrotherPath(subitem)" ng-repeat="subitem in rootModelDic[item.parentModelId].nodes"><a>{{subitem.label}}</a></li>
+                </ul>
+              </div>
+              <span ng-click="gotoPath(item)" ng-show="$index !=  routePaths.length-1">{{item.name}}</span>
+              <i role="button" ng-click="showChildren(item)" ng-show="item.name != '' && $index ==  routePaths.length-1" class="glyphicon glyphicon-menu-right"></i>
+            </li>
+            <form class="form-inline pull-right" style="padding-left:10px">
+              <div class="input-group input-group-sm">
+                <input type="text" class="form-control" ng-model="devName" ng-change="initfindByExternalModel()" placeholder="请输入模板名称过滤">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button" ng-click="findByExternalModelIdAndLabel()"><i class="fa fa-search"></i></button>
+                </span>
+              </div>
+            </form>
+            <div class="text-center pull-right" style="display: inherit;">
+              <a ng-if="!devName" ng-click="addModel()" class="btn btn-default btn-sm"><i class="fa fa-plus"></i><span class="hidden-xs"> 新建模板</span></a>
+              <a ng-if="!devName && selectedDitem" ng-click="delModel()" class="btn btn-default btn-sm"><i class="fa fa-minus"></i><span class="hidden-xs"> 删除模板</span></a>
+              <a ng-if="!devName && selectedDitem && selectedDitem.id !=0" href="../app-oc/index.html#/facility/model/{{selectedDitem.id}}" class="btn btn-default btn-sm"><i class="fa fa-fw fa-dropbox"></i><span class="hidden-xs"> 相关设备</span></a>
+              <a ng-if="!devName && selectedDitem && selectedDitem.id !=0" ng-click="writeXml()" class="btn btn-default btn-sm"><i class="fa fa-file-excel-o"></i><span class="hidden-xs"> 导出</span></a>
+            </div>
+          </ol>
+        </div>
+        <div class="box-body slick-box-body">
+          <div variablesidth="true" dots="false" arrows="true" slidesToScroll="3" autorender="false" ng-model="treeAry" slick>
+            <a class="btn btn-app slick-a" ng-class="{true: 'active active-ps'}[selectedDitem.id==item.id]" sglclick="click(item)" ng-dblclick="dbClick(item)" ng-repeat="item in treeAry track by $index" on-finish-render-filters>
+							<span class="badge bg-green" ng-show="item.nodes&&item.nodes.length>0">{{item.nodes.length}}</span>
+						  <span class="badge2 triangle-topleft" ng-class="{true: 'triangle-topleft-active'}[selectedDitem.id==item.id]" ng-click="dbClick(item)" ng-show="item.nodes.length > 0 || item.id == 0"></span>
+              <span class="badge2 triangle-icon" ng-class="{true: 'triangle-icon-active'}[selectedDitem.id==item.id]" ng-click="dbClick(item)" ng-show="item.nodes.length > 0 || item.id == 0"><i class="glyphicon" ng-class="{true:'glyphicon-plus',false:'glyphicon-exclamation-sign'}[item.id != 0]"></i></span>
+							<i class="{{item.icon}}"></i>{{item.label}}
+						</a>
+          </div>
+        </div>
+        <div class="box-footer" ng-show="selectedDitem">
+          <div class="nav-tabs-custom">
+            <ul id="devTab" class="nav nav-tabs pull-left">
+              <li ng-class="{true:'active'}[activeTab=='信息']"><a href="#infos-form" data-toggle="tab"><i class="fa fa-info-circle"></i><span class="hidden-xs"> 信息</span></a></li>
+              <li ng-class="{true:'active'}[activeTab=='属性']"><a href="#attrs-form" data-toggle="tab"><i class="fa fa-cogs"></i><span class="hidden-xs"> 属性</span></a></li>
+              <li ng-class="{true:'active'}[activeTab=='测点']"><a href="#kpis-form" data-toggle="tab"><i class="fa fa-pie-chart"></i><span class="hidden-xs"> 测点</span></a></li>
+              <li ng-class="{true:'active'}[activeTab=='故障']"><a href="#fault-form" data-toggle="tab"><i class="fa fa-wrench"></i><span class="hidden-xs"> 故障</span></a></li>
+              <li ng-class="{true:'active'}[activeTab=='指令']"><a href="#directive-form" data-toggle="tab"><i class="fa fa-send"></i><span class="hidden-xs"> 指令</span></a></li>
+              <li ng-class="{true:'active'}[activeTab=='告警']"><a href="#alerts-form" data-toggle="tab"><i class="fa fa-warning"></i><span class="hidden-xs"> 告警</span></a></li>
+              <li ng-class="{true:'active'}[activeTab=='技术参数']"><a href="#technical-form" data-toggle="tab"><i class="fa fa-futbol-o"></i><span class="hidden-xs"> 技术参数</span></a></li>
+              <li ng-class="{true:'active'}[activeTab=='任务']"><a href="#task-form" data-toggle="tab"><i class="fa fa-tasks "></i><span class="hidden-xs"> 任务</span></a></li>
+              <li ng-class="{true:'active'}[activeTab=='主要部件']"><a href="#major-form" data-toggle="tab"><i class="fa fa-puzzle-piece"></i><span class="hidden-xs"> 主要部件</span></a></li>
+              <li ng-class="{true:'active'}[activeTab=='文档']"><a href="#doc-form" data-toggle="tab"><i class="fa fa-file"></i><span class="hidden-xs"> 文档</span></a></li>
+            </ul>
+            <div class="tab-content">
+              <form id="infos-form" name="deviceForm" class="tab-pane form-horizontal" ng-class="{true:'active'}[activeTab=='信息']" role="form" novalidate>
+                <div class="form-group">
+                  <div class="col-sm-4">
+                    <button class="btn btn-default btn-sm" ng-if="selectedDitem.canEdit" ng-disabled="!selectedDitem || selectedDitem.id == null || (deviceForm.deviceName.$dirty && deviceForm.deviceName.$invalid)" ng-click="saveModelSubItem()"><i class="fa fa-save"></i><span class="hidden-xs"> 保存信息</span></button>
+                    <button class="btn btn-default btn-sm" ng-click="modelViewEdit()" ng-disabled="!selectedDitem || selectedDitem.id == null || (deviceForm.deviceName.$dirty && deviceForm.deviceName.$invalid)"><i class="fa fa-bar-chart"></i><span class="hidden-xs"> 设备仪表板</span></button>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-3">
+                    <label class="control-label col-sm-5">设备模板:</label>
+                    <div class="col-sm-7 no-padding">
+                      <input class="form-control input-sm" maxlength="20" type="text" name="deviceName" ng-model="selectedDitem.modelNo" ng-disabled="!selectedDitem.canEdit"/>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-3">
+                    <label class="control-label col-sm-5">模板名称:</label>
+                    <div class="col-sm-7 no-padding">
+                      <input class="form-control input-sm" maxlength="20" type="text" name="deviceName" ng-model="selectedDitem.label" ng-disabled="!selectedDitem.canEdit"/>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <label class="control-label col-sm-5">模板图标:</label>
+                    <div class="col-sm-7 no-padding">
+                      <select class="combobox form-control input-sm" ng-model="selectedDitem.icon" ng-options="val.icon as val.title for val in iconList" ng-disabled="!selectedDitem.canEdit">
+                        <option value="">请选择...</option>
+                      </select>
+                    </div>
+                  </div>
+                  
+                </div>
+              </form>
+              <form id="attrs-form" class="tab-pane" role="form">
+                <table width="100%" class="table table-hover" attrsedit-table>
+                </table>
+              </form>
+              <form id="kpis-form" class="tab-pane" ng-class="{true:'active'}[activeTab=='测点']" role="form">
+                <table width="100%" class="table table-hover" kpiedit-table>
+                </table>
+              </form>
+              <form id="fault-form" class="tab-pane" ng-class="{true:'active'}[activeTab=='故障']" role="form">
+                <table width="100%" class="table table-hover" fault-table>
+                </table>
+              </form>
+              <form id="technical-form" class="tab-pane" role="form">
+                <table width="100%" class="table table-hover" technical-table>
+                </table>
+              </form>
+              <form id="major-form" class="tab-pane" role="form">
+                <table width="100%" class="table table-hover" major-table>
+                </table>
+              </form>
+              <form id="doc-form" class="tab-pane  form-horizontal" role="form">
+                <!--<div class="form-group">-->
+                  <!--<div class="col-sm-7">-->
+                    <!--<label class="control-label col-sm-2">文档名称:</label>-->
+                    <!--<div class="col-sm-4 no-padding" style="margin-right: 10px;">-->
+                      <!--<input class="form-control input-sm" maxlength="20" type="text" name="deviceName"/>-->
+                    <!--</div>-->
+
+                    <!--<div class="col-sm-4 no-padding" >-->
+                      <!--<input type="file" nv-file-select uploader="uploader" multiple/>-->
+
+                      <!--&lt;!&ndash;<input class="form-control input-sm"  uploader="uploader"  maxlength="20" type="file" name="deviceName"/>&ndash;&gt;-->
+                      <!--&lt;!&ndash;<input class="form-control input-sm"  type="file" id='fileUp' name='fileUp' nv-file-select="" uploader="uploader" multiple />&ndash;&gt;-->
+                    <!--</div>-->
+                  <!--</div>-->
+                  <!--<div class="col-sm-4">-->
+                  <!--<div class="col-sm-7 no-padding">-->
+                  <!--<button class="btn btn-primary" ng-click="UploadFile();" >上传</button>-->
+                  <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <table width="100%" class="table table-hover" document-table></table>
+              </form>
+              <form id="task-form" class="tab-pane" role="form">
+                <table width="100%" class="table table-hover" task-model-table></table>
+              </form>
+              <form id="alerts-form" class="tab-pane" ng-class="{true:'active'}[activeTab=='告警']" role="form">
+                <table width="100%" class="table table-hover" aedit-table>
+                </table>
+              </form>
+              <form id="directive-form" name="myForm" class="tab-pane" role="form" novalidate>
+                <div class="box-body no-padding no-margin" ng-hide="selectedDirective!=null">
+                  <table width="100%" class="table table-hover" directive-table> </table>
+                </div>
+                <div class="box-footer" ng-show="selectedDirective!=null">
+                  <h4><span class="btn btn-info btn-xs" ng-click="directiveBack()">返回指令列表</span>    {{selectedDirective.label}}的表达式参数解析结果</h4>
+                  <div ng-repeat="item in selectedDirective.params">
+                    <div class="form-group col-sm-6 no-padding">
+                      <div class="col-sm-3 no-padding">
+                        <input ng-pattern="/^[0-9A-Za-z\u4e00-\u9fa5]{1,40}$/" name="label{{$index}}" class="form-control" type="text" ng-model="item.label" placeholder="请输入显示名称" />
+                        <span style="color:red" ng-show="myform.label{{$index}}.$dirty && myform.label{{$index}}.$invalid">
+												<span ng-show="myform.label{{$index}}.$dirty && myform.label{{$index}}.$invalid">仅限数字字母和中文</span>
+                        </span>
+                      </div>
+
+                      <div class="col-sm-5 ">
+                        <input ng-pattern="/^[0-9A-Za-z]{1,40}$/" name="name{{$index}}" class="form-control" type="text" ng-model="item.name" placeholder="请输入属性名称" disabled/>
+                        <span style="color:red" ng-show="myform.name{{$index}}.$dirty && myform.name{{$index}}.$invalid">
+												<span ng-show="myform.name{{$index}}.$dirty && myform.name{{$index}}.$invalid">仅限数字字母</span>
+                        </span>
+                      </div>
+                      <div class="col-sm-3 no-padding">
+                        <select ng-model="item.dataType" ng-options="value.valueCode as value.label for value in myDicts['DataType']" class="combobox form-control">
+													<option value="">请选择...</option>
+												</select>
+                      </div>
+                      <div class="col-sm-1 no-padding" ng-show="item.canEdit">
+                        <a class="btn btn-social-icon" ng-click="delModelSubItem(item)"><i class="fa fa-minus-square-o"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="box" ng-show="functionExtended == 'point'">
+        <div class="box-header with-border">
+          <h3 class="box-title" ng-if="dirSelectOption.type == 'point'">给{{dirSelectOption.list.name}}指令设置测点</h3>
+          <h3 class="box-title" ng-if="dirSelectOption.type == 'task'">给{{dirSelectOption.list.name}}任务设置测点</h3>
+          <div class="text-center pull-right">
+            <a class="btn btn-default btn-sm" ng-click="potionSave();">
+              <i class="fa fa-save"><span class="hidden-xs"> 保存</span></i>
+            </a>
+            <a class="btn btn-default btn-sm" ng-click="closeTable();">
+              <i class="fa fa-times"></i><span class="hidden-xs"> 关闭</span>
+            </a>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <!--<label ng-if="dirSelectOption.type == 'point'">给{{dirSelectOption.list.name}}指令设置测点</label>-->
+          <table width="100%"  name="point" class="table table-hover" directives-point-table></table>
+
+        </div>
+      </div>
+      <div class="box" ng-show="functionExtended == 'attachment'">
+        <div class="box-header with-border">
+          <h3 class="box-title">给{{selectParts.name}}部件设置备件</h3>
+          <div class="text-center pull-right">
+            <!--<a class="btn btn-default btn-sm" ng-click="potionSave();">-->
+              <!--<i class="fa fa-save"><span class="hidden-xs"> 保存</span></i>-->
+            <!--</a>-->
+            <a class="btn btn-default btn-sm" ng-click="closeTable();">
+              <i class="fa fa-times"></i><span class="hidden-xs">关闭</span>
+            </a>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <!--<label>主要部件名称：</label>-->
+          <table width="100%"  class="table table-hover" major-attachment-table></table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- /.content -->

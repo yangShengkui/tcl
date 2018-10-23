@@ -1,0 +1,521 @@
+<!-- Content Header (Page header) -->
+<!-- Main content -->
+<div class="machine-edit-panel" ng-show="leftPartA.visible">
+  <div class="content-wrap" style="width : 800px;">
+    <div class="content">
+      <div class="box">
+        <div class="box-header text-center">
+          <h4 class="box-title">编辑状态栏</h4>
+        </div>
+        <div class="box-body" style="border : 1px dashed #ccc;min-height : 200px;">
+          <div ng-if="leftBar.columnA.list.length==0" class="noData">列表无数据</div>
+          <div class="row" ng-repeat = "elem in leftBar.columnA.list" style="margin : 5px auto;">
+            <div class="col-md-1">
+              <span style="line-height : 32px;">标题</span>
+            </div>
+            <div class="col-md-3">
+              <input ng-model="elem.label" class="form-control"/>
+            </div>
+            <div class="col-md-1">
+              <span style="line-height : 32px;">指标</span>
+            </div>
+            <div class="col-md-2">
+              <select class="form-control" ng-model="elem.type" ng-options="type as type for type in ['attr', 'kpi', 'formula']"></select>
+            </div>
+            <div class="col-md-4">
+              <select class="form-control"
+                      ng-if="elem.type != 'formula'"
+                      ng-model="elem[elem.type]"
+                      ng-options="item as ( item.label + '(' + item.id + ')') for item in model[elem.type]"></select>
+              <input ng-model="elem[elem.type]" ng-if="elem.type == 'formula'" class="form-control"/>
+            </div>
+            <div class="col-md-1">
+              <button class="btn btn-warning" ng-click="elem.remove(elem)">删除</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button class="btn btn-primary addData"
+                  ng-click="leftBar.columnA.pushData({
+                                type : 'kpi',
+                                kpi : '',
+                                })"><span class="proudsmart ps-add"></span>增加中间显示信息</button>
+          <button class="btn btn-primary pull-right" ng-click="leftPartA.hide();">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="machine-edit-panel" ng-show="leftPartB.visible">
+  <div class="content-wrap" style="width : 800px;">
+    <div class="content">
+      <div class="box">
+        <div class="box-header text-center">
+          <h4 class="box-title">编辑状态栏</h4>
+        </div>
+        <div class="box-body" style="border : 1px dashed #ccc; min-height : 200px;">
+          <div ng-if="leftBar.columnB.list.length==0" class="noData">列表无数据</div>
+          <div class="row" ng-repeat = "elem in leftBar.columnB.list" style="margin : 5px auto;">
+            <div class="col-md-1">
+              <span style="line-height : 32px;">标题</span>
+            </div>
+            <div class="col-md-3">
+              <input ng-model="elem.label" class="form-control"/>
+            </div>
+            <div class="col-md-1">
+              <span style="line-height : 32px;">指标</span>
+            </div>
+            <div class="col-md-2">
+              <select class="form-control" ng-model="elem.type" ng-options="type as type for type in ['attr', 'kpi', 'formula']"></select>
+            </div>
+            <div class="col-md-4">
+              <select class="form-control"
+                      ng-if="elem.type != 'formula'"
+                      ng-model="elem[elem.type]"
+                      ng-options="item as ( item.label + '(' + item.id + ')') for item in model[elem.type]"></select>
+              <input ng-model="elem[elem.type]" ng-if="elem.type == 'formula'" class="form-control"/>
+            </div>
+            <div class="col-md-1">
+              <button class="btn btn-warning" ng-click="elem.remove(elem)">删除</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button class="btn btn-primary addData"
+                  ng-click="leftBar.columnB.pushData({
+                                type : 'kpi',
+                                kpi : '',
+                                })"><span class="proudsmart ps-add"></span>增加中间显示信息</button>
+          <button class="btn btn-primary pull-right" ng-click="leftPartB.hide();">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="machine-edit-panel" ng-show="leftPartC.visible">
+  <div class="content-wrap" style="width : 800px;">
+    <div class="content">
+      <div class="box">
+        <div class="box-header text-center">
+          <h4 class="box-title">编辑状态栏</h4>
+        </div>
+        <div class="box-body" style="border : 1px dashed #ccc; min-height : 200px;">
+          <div ng-if="leftBar.columnC.list.length==0" class="noData">列表无数据</div>
+          <div class="row" ng-repeat = "elem in leftBar.columnC.list" style="margin : 5px auto;">
+            <div class="col-md-1">
+              <span style="line-height : 32px;">标题</span>
+            </div>
+            <div class="col-md-3">
+              <input ng-model="elem.label" class="form-control"/>
+            </div>
+            <div class="col-md-1">
+              <span style="line-height : 32px;">指标</span>
+            </div>
+            <div class="col-md-2">
+              <select class="form-control" ng-model="elem.type" ng-options="type as type for type in ['attr', 'kpi', 'formula']"></select>
+            </div>
+            <div class="col-md-4">
+              <select class="form-control"
+                      ng-if="elem.type != 'formula'"
+                      ng-model="elem[elem.type]"
+                      ng-options="item as ( item.label + '(' + item.id + ')') for item in model[elem.type]"></select>
+              <input ng-model="elem[elem.type]" ng-if="elem.type == 'formula'" class="form-control"/>
+            </div>
+            <div class="col-md-1">
+              <button class="btn btn-warning" ng-click="elem.remove(elem)">删除</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button class="btn btn-primary addData"
+                  ng-click="leftBar.columnC.pushData({
+                                type : 'kpi',
+                                kpi : '',
+                                })"><span class="proudsmart ps-add"></span>添加视图</button>
+          <button class="btn btn-primary pull-right" ng-click="leftPartC.hide();">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="machine-edit-panel" ng-show="midPart.visible">
+  <div class="content-wrap" style="width : 800px;">
+    <div class="content">
+      <div class="box">
+        <div class="box-header text-center">
+          <h4 class="box-title">编辑状态栏</h4>
+        </div>
+        <div class="box-body" style="border : 1px dashed #ccc; min-height : 200px;">
+          <div ng-if="midBar.list.length==0" class="noData">列表无数据</div>
+          <div class="row" ng-repeat = "elem in midBar.list" style="margin : 5px auto;">
+            <div class="col-md-1">
+              <span style="line-height : 32px;">标题</span>
+            </div>
+            <div class="col-md-3">
+              <input ng-model="elem.label" class="form-control"/>
+            </div>
+            <div class="col-md-1">
+              <span style="line-height : 32px;">指标</span>
+            </div>
+            <div class="col-md-2">
+              <select class="form-control" ng-model="elem.type" ng-options="type as type for type in ['attr', 'kpi', 'formula']"></select>
+            </div>
+            <div class="col-md-4">
+              <select class="form-control"
+                      ng-if="elem.type != 'formula'"
+                      ng-model="elem[elem.type]"
+                      ng-options="item as ( item.label + '(' + item.id + ')') for item in model[elem.type]"></select>
+              <input ng-model="elem[elem.type]" ng-if="elem.type == 'formula'" class="form-control"/>
+            </div>
+            <div class="col-md-1">
+              <button class="btn btn-warning" ng-click="elem.remove(elem)">删除</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button class="btn btn-primary addData"
+                  ng-click="midBar.pushData({
+                                type : 'kpi',
+                                kpi : '',
+                                })"><span class="proudsmart ps-add"></span>添加视图</button>
+          <button class="btn btn-primary pull-right" ng-click="midPart.hide();">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="machine-edit-panel" ng-show="rightPart.visible">
+  <div class="content-wrap">
+    <div class="content">
+      <div class="box">
+        <div class="box-header text-center">
+          <h4 class="box-title">编辑状态栏</h4>
+        </div>
+        <div class="box-body" style="border : 1px dashed #ccc; min-height : 200px;">
+          <div ng-if="rightBar.list.length==0" class="noData">列表无数据</div>
+          <div class="row" ng-repeat = "elem in rightBar.list" style="margin : 5px auto;">
+            <div class="col-md-1">
+              <span style="line-height : 32px;">标题</span>
+            </div>
+            <div class="col-md-1" style="line-height: 40px;">
+              <span class="proudsmart" ng-class="elem.icon" ng-click="wholeClick();elem.open();$event.stopPropagation();" style="font-size : 20px;"></span>
+            </div>
+            <div class="col-md-2">
+              <input ng-model="elem.label" class="form-control"/>
+            </div>
+            <div class="col-md-1">
+              <span style="line-height : 32px;">指标</span>
+            </div>
+            <div class="col-md-2">
+              <select class="form-control" ng-model="elem.type" ng-options="type as type for type in ['attr', 'kpi', 'formula']"></select>
+            </div>
+            <div class="col-md-2">
+              <select class="form-control"
+                      ng-if="elem.type != 'formula'"
+                      ng-model="elem[elem.type]"
+                      ng-options="item as ( item.label + '(' + item.id + ')') for item in model[elem.type]"></select>
+              <input ng-model="elem[elem.type]" ng-if="elem.type == 'formula'" class="form-control"/>
+            </div>
+            <div class="col-md-2" style="line-height: 40px;">
+              <lable>订单客户可见</lable><input type="checkbox" ng-model="elem.showWhenCustomerA" />
+              <lable>链接</lable><input type="checkbox" ng-model="elem.link" />
+            </div>
+            <div class="col-md-1">
+              <button class="btn btn-warning" ng-click="elem.remove(elem)">删除</button>
+            </div>
+            <div class="col-md-12">
+              <div class="row" ng-if="elem.show==true;">
+                <div ng-repeat="icon in icons"
+                     ng-click="elem.select(icon)"
+                     class="proudsmart"
+                     ng-class="icon" style="color : #fff; font-size : 19px; margin : 2px; padding : 5px; background-color : #378cbe;"></div>
+              </div>
+              <div class="row" ng-if="elem.link==true;">
+                <div class="col-md-1">
+                  链接
+                </div>
+                <div class="col-md-11">
+                  <input ng-model="elem.linkage" class="form-control" placeholder="链接地址 (例: '/101/' + {resource:workorder})"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button class="btn btn-primary addData"
+                  ng-click="rightBar.pushData({
+                                icon : 'ps-edit',
+                                type : 'kpi',
+                                kpi : '',
+                                });wholeClick();$event.stopPropagation();"><span class="glyphicon glyphicon-plus"></span>增加显示项</button>
+          <button class="btn btn-primary pull-right" ng-click="rightPart.hide();">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="machine-edit-panel" ng-show="prevPanel.visible">
+  <div class="content-wrap" style="width : 800px;">
+    <div class="content">
+      <div class="box">
+        <div class="box-header text-center">
+          <h4 class="box-title">内容页标题</h4>
+        </div>
+        <div class="box-body" style="border : 1px dashed #ccc; min-height : 200px;">
+          <div ng-if="preview.list.length==0" class="noData">列表无数据</div>
+          <div class="row" ng-repeat = "elem in preview.list" style="margin : 5px auto;">
+            <div class="col-md-1">
+              <span style="line-height : 32px;">标题</span>
+            </div>
+            <div class="col-md-3">
+              <input ng-model="elem.label" class="form-control"/>
+            </div>
+            <div class="col-md-1">
+              <span style="line-height : 32px;">指标</span>
+            </div>
+            <div class="col-md-2">
+              <select class="form-control" ng-model="elem.type" ng-options="type as type for type in ['attr', 'kpi', 'formula']"></select>
+            </div>
+            <div class="col-md-4">
+              <select class="form-control"
+                      ng-if="elem.type!='formula'"
+                      ng-model="elem[elem.type]"
+                      ng-options="item as ( item.label + '(' + item.id + ')') for item in model[elem.type]"></select>
+              <input ng-model="elem[elem.type]" ng-if="elem.type == 'formula'" class="form-control"/>
+            </div>
+            <div class="col-md-1">
+              <button class="btn btn-warning" ng-click="elem.remove(elem)">删除</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+
+            </div>
+          </div>
+          <div class="row" style="height : 20px;"></div>
+        </div>
+        <div class="box-footer">
+          <button class="btn btn-primary addData"
+                  ng-click="preview.pushData({
+                                    type : 'kpi',
+                                     kpi : '',
+                                })"><span class="glyphicon glyphicon-plus"></span>增加属性</button>
+          <button class="btn btn-primary pull-right" ng-click="prevPanel.hide();">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="machine-edit-panel" ng-show="fronticons">
+  <div class="content-wrap" style="width : 400px;">
+    <div class="content">
+      <div class="box">
+        <div class="box-header text-center">
+          <h4 class="box-title">内容页标题</h4>
+        </div>
+        <div class="box-body" style="border : 1px dashed #ccc; min-height : 200px;">
+
+         <div ng-style="{'background-image' : 'url(' + icon.value + ')'}"
+              ng-click="preview.icon = icon.value"
+              class = "fronticon"
+              ng-class="{true:'active', false:''}[preview.icon == icon.value]"
+             ng-repeat="icon in fronticons">
+         </div>
+        </div>
+        <div class="box-footer">
+          <button class="btn btn-primary pull-right" ng-click="iconClose()">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="content" style="padding : 0;" auto-height-adjustment ng-init="step = 0;" ng-click="wholeClick();$event.stopPropagation();">
+  <button class="btn btn-default" ng-click="saveServiceView()">保存退出</button>
+  <ul class="nav nav-pills nav-justified">
+    <li role="presentation" ng-class="{true : 'active', false : ''}[step==0]" ng-click="step = 0"><a href="">配置预览页</a></li>
+    <li role="presentation" ng-class="{true : 'active', false : ''}[step==1]" ng-click="step = 1"><a href="">配置内容页</a></li>
+  </ul>
+  <div class='row' ng-if="step == 0" style="margin : 15px;">
+    <div class="row" style="margin:10px auto;border: 1px dashed #aaa; padding : 10px;" ng-if="step == 0" ng-hide="previewMode">
+      <div class="col-md-2 col-md-offset-1">
+        <span style="line-height : 32px;">订单客户用户名 == </span>
+      </div>
+      <div class="col-md-7">
+        <select class="form-control"
+                ng-model="$parent.$parent.kpitoUsername"
+                ng-options="item as ( item.label + '(' + item.id + ')') for item in model['kpi']"></select>
+      </div>
+    </div>
+    <div class="editWrap col-sm-12 col-md-6 col-lg-3">
+      <div class="row tools" ng-hide="previewMode">
+        <button class="btn btn-primary edit" ng-click="$parent.prevPanel.show()"><span class="proudsmart ps-edit"></span>编辑</button>
+      </div>
+      <div class="wrap level3" style="position : relative;">
+        <div class="resources">
+          <div class="line"></div>
+          <div class="label ng-binding" ng-bind="'{设备名称} + ' + $parent.preview.title"></div>
+          <div>
+            <div class="icon"
+                 ng-click = "iconSelect();"
+                 ng-style="{'background-image':'url(' + $parent.preview.icon + ')'}"
+                 style="border:1px dashed #ccc;"></div>
+            <table class="text">
+              <tbody>
+              <tr ng-repeat = "prev in $parent.preview.list">
+                <td>
+                  <span class="textInfo" ng-bind="prev.label + ' : '"></span>
+                </td>
+                <td>
+                  <span class="ng-binding" ng-bind="'{' + prev.type + ':' + prev.kpi.id + '}'"></span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <div style="height : 1px; clear : both;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='row detailWrap' ng-if="step == 1" style="margin : 15px;">
+    <div class="editWrap left-column col-sm-12 col-md-6 col-lg-3">
+      <div>
+        <div class="header editWrap">
+          <div class="row tools" ng-hide="previewMode">
+            <input ng-model="$parent.leftBar.title" class="form-control" placeholder="请输入标题文字" style="font-size : 18px; font-weight: bold; color : #000;"/>
+          </div>
+          <span ng-show="previewMode" ng-bind="$parent.leftBar.title" class="headerTxt"></span>
+        </div>
+        <div class="midBody editWrap" style="padding : 10px 20px; margin : 0; min-height: 100px;">
+          <div class="row tools" ng-hide="previewMode">
+            <button class="btn btn-primary edit" ng-click="$parent.leftPartA.show()"><span class="proudsmart ps-edit"></span>编辑</button>
+          </div>
+          <div class="row">
+            <div class="col-md-6" ng-repeat="item in $parent.leftBar.columnA.list">
+              <div class="row">
+                <div class="col-md-6">
+                  <span ng-bind="item.label"></span>
+                </div>
+                <div class="col-md-6">
+                  <span ng-bind="'{' + item.type + ':' + { true : item[item.type].id, false : item[item.type]}[item.type != 'formula'] + '}'"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer editWrap" style="min-height: 100px;">
+          <div class="row tools" ng-hide="previewMode">
+            <button class="btn btn-primary edit" ng-click="$parent.leftPartB.show()"><span class="proudsmart ps-edit"></span>编辑</button>
+          </div>
+          <ul class="inner-ul">
+            <li  ng-repeat="item in $parent.leftBar.columnB.list">
+              <span class="innerbox"></span><span class="innertext" ng-bind='item.label + " : {" + item.type + " : " + item.kpi.id + "}"'></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="tools" ng-hide="previewMode">
+        <button class="btn btn-primary edit" ng-click="$parent.leftPartC.show()"><span class="proudsmart ps-edit"></span>编辑</button>
+      </div>
+      <div ng-repeat="option in $parent.leftBar.columnC.list" style="border-top : 1px solid #ababab" ng-hide="roleID == 1000">
+        <div class="header">
+          <span ng-bind="option.label" class="headerTxt"></span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6" style="margin : 0; padding : 0;">
+      <div class="innerInfo">
+        <button class="btn btn-primary edit" ng-click="$parent.midPart.show()" ng-hide="previewMode"><span class="proudsmart ps-edit"></span>编辑</button>
+        <div class="row">
+          <div class="col-md-6" ng-repeat="item in $parent.midBar.list">
+            <div class="row">
+              <div class="col-md-6" ng-bind="item.label">
+              </div>
+              <div class="col-md-6" ng-bind="'{' + item.type + ':' + item[item.type].id + '}'">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="inner-content">
+        <div class="titleWrap">
+          <span class="headerTxt">标题</span>
+          <small>
+            <span class="al-normal"><i class="fa fa-square "></i>正常状态</span>
+          </small>
+        </div>
+        <div style="clear : both"></div>
+      </div>
+      <div class="drawingArea" ng-style="{'background-image' :  'url(' + $parent.backgroundImage + ')'}">
+        <div>
+
+        </div>
+        <select ng-model="$parent.backgroundImage"
+                ng-options="backgroundImage.value as backgroundImage.label for backgroundImage in $parent.bgImages"
+                class="form-control"
+                ng-hide="previewMode"
+                style="position:absolute; bottom : 30px; width : 60%; left : 20%;"
+            ></select>
+      </div>
+    </div>
+    <div class="col-md-3 right-column" style="margin : 0; padding : 0;">
+      <div class="editWrap" style="padding-bottom : 20px;">
+        <div class="header">
+          <div class="row tools" ng-hide="previewMode">
+            <input class="form-control" ng-model="$parent.rightBar.title" placeholder="输入右侧标题" style="font-size : 18px; font-weight: bold; color : #000;"/>
+          </div>
+          <span ng-show="previewMode" ng-bind="$parent.rightBar.title" class="headerTxt"></span>
+        </div>
+        <div class="tools" ng-hide="previewMode">
+          <button class="btn btn-primary edit" ng-click="$parent.rightPart.show()"><span class="proudsmart ps-edit"></span>编辑</button>
+        </div>
+
+        <div class="inner-content ng-scope" ng-repeat="item in $parent.rightBar.list">
+          <p class="des ng-binding" ng-bind="item.label"></p>
+          <table class="info">
+            <tbody><tr>
+              <td class="left">
+                <span ng-class="item.icon" class="icon proudsmart"></span>
+              </td>
+              <td class="right">
+                <p class="value ng-binding" ng-bind="'{' + item.type + ':' + item[item.type].id + '}'"></p>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- /.content -->

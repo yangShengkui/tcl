@@ -1,0 +1,53 @@
+<config injector="$q,$timeout"></config>
+<template>
+    <div class="out">
+      <div style="width: 100%;height: 30px;position: relative;">
+        <ul>
+          <li>0</li>
+          <li>{{d.total * 1 / 5}}</li>
+          <li>{{d.total * 2 / 5}}</li>
+          <li>{{d.total * 3 / 5}}</li>
+          <li>{{d.total * 4 / 5}}</li>
+          <li>{{d.total}}</li>
+        </ul>
+        <div style="height: 12px;margin-top: 10px;display: inline-block;width: 70%;float: left;">
+          <div style="height: 6px;background-color: #87AAFC; margin-top: 1%;width: {{((d.total == 0 ? 0 :d.finish * 100 / d.total)+'').split('.')[0] + '%'}};"></div>
+        </div>
+        <span ng-bind="((d.total == 0 ? 0 : d.finish * 100 / d.total)+'').split('.')[0] + '%'" class="inner-bar"></span>
+      </div>
+    </div>
+</template>
+<script type="text/javascript">
+export default function (q,timeout) {
+  return {
+    link(scope, element, attr){
+      var bg = element[0].children[0],
+        ul = bg.firstElementChild,
+        bgBar = bg.children[1],
+        bgBarColor = bgBar.firstElementChild,
+        spa = element.find('span')[0],
+        warnValue = 50;
+
+      timeout((function (spa,bgBarColor) {//异步 闭包
+        return function(){
+          if(parseInt(spa.innerText.slice(0,-1)) <= warnValue) {
+            bgBarColor.style.backgroundColor = '#FF5A5A';
+          }else {
+            bgBarColor.style.backgroundColor = '#87AAFC';
+          }
+        }
+      })(spa,bgBarColor),0);
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+  .inner-bar{
+    width: 18%;
+    color: #fff;
+    font-family: 微软雅黑;
+    float: right;
+    padding : 1%;
+    display: block;
+  }
+</style>

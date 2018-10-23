@@ -1,0 +1,60 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <h4 class="modal-title info-box-number">组态视图信息</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal row" name="configureForm">
+          <div class="form-group" ng-style="{false : {'margin-bottom': 0}}[errorMsg==undefined]">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">视图名称：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="text" class="form-control input-sm" ng-model="configureInfo.viewTitle" maxlength="32" ng-change="checkSameName(configureInfo.viewTitle)" required>
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:0;" ng-if="errorMsg">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"></label>
+            <div class="col-sm-4 padding-left-5" ng-bind="errorMsg" style="color:red;">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span><span class="ng-binding">视图类型：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <select class="form-control input-sm"
+                      ng-model="configureInfo.template.type"
+                      ng-options="value.id as value.label for value in typeAry"
+                      required>
+              </select>
+            </div>
+          </div>
+          <div class="form-group" ng-if="configureInfo.template.type == 0">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger">*</span> <span>管理域：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input class="form-control input-sm" disabled="true" ng-if="configureInfo.viewId && configureInfo.viewId >0" value="{{domainListDic[configureInfo.domainPath].name}}" />
+              <div ng-if="!configureInfo.viewId || configureInfo.viewId == -1" class="dropdowntree select-sm" autocomplete="off" ng-model="configureInfo.domainPath" change="" key="domainPath" options="domainListTree" mark="nodes" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-group" ng-if="configureInfo.template.type > 0">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span><span ng-bind="{1:'默认模板',2:'默认项目',3:'默认客户'}[configureInfo.template.type]"></span></label>
+            <div class="col-sm-4 padding-left-5">
+              <select select2 class="form-control select-sm" ng-model="configureInfo.template.resourceId" selectdata="typeContents" ng-options="value.id as value.label for value in typeContents" required>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="ng-binding">说明：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input class="form-control input-sm" ng-model="configureInfo.description" >
+            </div>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button class="btn btn-primary" ng-disabled="checkSm || configureForm.$invalid || ((configureInfo.template.type > 0) && !configureInfo.template.resourceId)" ng-click="saveData()" disabled="disabled">确定</button>
+          <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- 响应屏幕宽度 -->
+    <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <!-- 360等浏览器默认webkit内核 -->
+    <meta name="renderer" content="webkit">
+    <!-- IE浏览器默认edge渲染 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Bootstrap 样式-->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome 字体图标-->
+    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- AdminLTE 样式 -->
+    <link rel="stylesheet" href="../css/admin-lte/AdminLTE.css">
+  </head>
+
+  <body>
+    <a class="btn btn-app" onclick="systemClick()">
+      <i class="fa fa-warning"></i> 动力安全系统
+    </a>
+    
+  </body>
+  <script>
+    var systemClick = function(event) {
+      var params = JSON.parse(localStorage.getItem("AISINFO"));
+      var param = [0, {
+        tabLabel: params.label,
+        modelId: 302,
+        projectId: params.projectId
+      }]
+      var paraStr = encodeURIComponent(JSON.stringify(param));
+      if (window.parent.parent.location.href.search("/app-sc") > -1)
+        window.parent.parent.location.href = "../app-sc/index_freeboard.html#/freeboard/index|system/" + paraStr;
+      else
+        window.parent.parent.location.href = "../app-oc/index.html#/dashboard/index|system/" + paraStr;
+    }
+  </script>
+
+</html>

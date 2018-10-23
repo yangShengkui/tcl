@@ -1,0 +1,75 @@
+<config injector="$q, $timeout"
+></config>
+<script type="text/javascript">
+  export default function(q, timeout){
+    function cache(attr, val){
+      var arr = attr.split("."),
+        target = cache,
+        end = arr.pop();
+      for(var i = 0; i < arr.length; i++){
+        target = target[arr[i]] = target[arr[i]] || {};
+      }
+      target[end] = val;
+    }
+    function apiService(apicode){
+      let fn = apicode;
+      return {
+        getCache : function(){
+          return cache;
+        },
+        send : function(p){
+          let defer = q.defer(), cacheFn, cacheEachFn, getCache,
+            cached, params, args = [].slice.call(arguments),
+            promise = defer.promise;
+          timeout(function(){
+            cached = getCache();
+            if(typeof cached === "undefined"){
+              cacheFn && cacheFn(defer.promise);
+              args.push(function(d){
+                if(d.code == 0){
+                  cacheFn && cacheFn(d.data);
+                  cacheEachFn && cacheEachFn(d.data);
+                  defer.resolve(d.data)
+                } else {
+                  defer.reject(d.message)
+                }
+              });
+              fn.apply(null, args);
+            } else {
+              if(typeof cached.then === "function"){
+                cached.then(function(d){
+                  defer.resolve(d)
+                })
+              } else {
+                defer.resolve(cached);
+              }
+            }
+          })
+          promise.cache = function(id){
+            cacheFn = function(d){
+              cache(id, d);
+            }
+            getCache = function(){
+              var arr = id.split("."), target = cache,end = arr.pop();
+              for(var i = 0; i < arr.length; i++){
+                target = target[arr[i]] = target[arr[i]] || {};
+              }
+              return target[end];
+            }
+            return this
+          }
+          promise.cacheEach = function(fn){
+            cacheEachFn = function(d){
+              for(var i = 0; i < d.length; i++){
+                cache(fn(d[i]), d[i]);
+              }
+            }
+            return this
+          }
+          return promise;
+        }
+      };
+    }
+    return apiService;
+  }
+</script>

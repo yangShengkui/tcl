@@ -1,0 +1,31 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="dialog.button[1].fn();" class="close">×</a>
+        <h4 class="modal-title info-box-number" ng-bind="dialog.title"></h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal row" name="proStructrueForm">
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger">*</span> <span>能耗节点：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <div class="energytree select-sm" autocomplete="off" ng-model="dialog.input.energyConsumeNodeId" change="" key="id" options="energyListTree" mark="nodes" required="required">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">所用时间（分钟）：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="number" class="form-control input-sm" ng-model="dialog.input.occupyPrcent" name="number" maxlength="32" ng-change="dialog.event.verifyFun('number',dialog.input.occupyPrcent)" required>
+            </div>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button class="btn btn-primary" ng-click="dialog.button[0].fn();" ng-disabled="proStructrueForm.$invalid" disabled="disabled">确定</button>
+          <button class="btn btn-default" ng-click="dialog.button[1].fn();">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

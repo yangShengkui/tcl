@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>视图设计器</title>
+		<link rel="shortcut icon" href="" type="image/vnd.microsoft.icon">
+		<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../bower_components/jquery-ui/themes/base/jquery-ui.css">
+		<link rel="stylesheet" type="text/css" href="../bower_components/spectrum/spectrum.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="../css/proudsmart-webfont/font-proudsmart.css">
+		<link rel="stylesheet" type="text/css" href="../css/admin-lte/AdminLTE.css">
+		<link rel="stylesheet" type="text/css" href="../css/dropdowntree/dropdowntree.css">
+		<script>
+			var echartVersion = '';
+		</script>
+		<script data-main="js/main" src="../bower_components/requirejs/require.js"></script>
+		<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=NnMW3maSPQGpNrYVkNWGcaF2&s=1"></script>
+	</head>
+	<body style="width : 100%; height : 100%; overflow-y:auto;">
+		<div class="loading_wrap" ng-if="loading">
+			<table>
+				<tr>
+					<td>
+						<div class="loading_inner">
+							<div class="wrap">
+								<div class="leftP">
+									<div class="loadingIcon"></div>
+								</div>
+								<div class="rightP">
+									<div class="proudLogo" src="" width="94" height="32"></div>
+									<div class="text" ng-bind="loading">验证登录信息...</div>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="bgcover" ng-if="loading">
+		</div>
+		<div ng-view class="whole"></div>
+        <div id="img_preload" style="display : none"></div>
+	</body>
+</html>

@@ -1,0 +1,175 @@
+<config injector="$scope,ajax,psDialog">
+</config>
+<template>
+    <ps-table config="config"></ps-table>
+</template>
+<script type="text/javascript">
+export default function (scope, ajax) {
+  scope.config = {
+    title: "设备信息",
+    attributes: {
+      "customerId": ["工厂", "dict", {
+        name: "customer",
+        from: "customerId",
+        to: "id",
+        label: "customerName"
+      }],
+      "projectId": ["车间", "dict", {
+        name: "project",
+        label: "projectName"
+      }],
+      modelId: ["设备模板", "dict", "modelDefinition"],
+      "label": ["设备名称", "text"],
+      "sn": ["设备序列号", "text"],
+      "online": ["在线状态", "dict", {
+        name: "online",
+        label: "value"
+      }],
+      "state": ["故障状态", "text", {
+        name: "state",
+        label: "value"
+      }],
+      domainPath: ["管理域", "dict", {
+        name: "resource",
+        from: "domainPath",
+        to: "domainPath",
+        parameter: {
+          modelId: 300,
+          category: "Domain"
+        }
+      }]
+    },
+    search: {
+      body: [{
+        name: "domainPath",
+        searchType: "tree"
+      }, {
+        name: "customerId",
+        format: "label:customerName"
+      }, {
+        name: "projectId",
+        format: "label:projectName"
+      }, "modelId", "sn"]
+    },
+    grid: {
+      body: ["customerId", "projectId", "modelId", "label", "sn", {
+        name: "online",
+        gridType: "severity",
+        bind: function (row, relateStr) {
+          let severityStr = "无数据";
+          let severityBg = "bg-gray";
+          if (row.alertSwitchOn === false) {
+            severityStr = "检修";
+            severityBg = "label-danger";
+          } else {
+            if (relateStr === 0 || relateStr === '0') {
+              severityStr = "离线";
+              severityBg = "label-warning";
+            } else if (relateStr === 1 || relateStr === '0') {
+              severityStr = "在线";
+              severityBg = "label-primary";
+            }
+          }
+          return [severityStr, severityBg];
+        }
+      }, {
+        name: "state",
+        gridType: "severity",
+        bind: function (row, relateStr) {
+          var severityStr = "无数据";
+          var severityBg = "bg-gray";
+          if (relateStr == 4) {
+            severityStr = "严重";
+            severityBg = "bg-alarm-critical";
+          } else if (relateStr == 3) {
+            severityStr = "重要";
+            severityBg = "bg-alarm-major";
+          } else if (relateStr == 2) {
+            severityStr = "次要";
+            severityBg = "bg-alarm-minor";
+          } else if (relateStr == 1) {
+            severityStr = "警告";
+            severityBg = "bg-alarm-warning";
+          } else if (relateStr < 1) {
+            severityStr = "正常";
+            severityBg = "progress-bar-success";
+          }
+          return [severityStr, severityBg];
+        }
+      }, "domainPath"],
+      buttons: {
+        outGrid: [{
+          label: "行内添加",
+          symbol: "inline"
+        }, {
+          label: "添加设备",
+          class: "primary",
+          icon: "fa fa-plus",
+          on: {
+            click: function (row) {
+              openView("/deviceEdit/0/");
+            }
+          }
+        }, {
+          label: "删除设备",
+          on: {
+            click: function (row) {
+              e.$row;
+              e.$index
+              this.openModal()
+              callService("resourceUIService.deleteById", row.id);
+            }
+          }
+        }],
+        inGrid: [["查看", "deviceEdit"], ["接入设置",
+          function (row) {
+            openModal()
+          }],
+          ["数据检测",
+            function (row) {
+              openView("/deviceKpi/" + row.id);
+            }], ["设备档案",
+            function (row) {
+              openView("/deviceArchives/" + row.id);
+            }], ["删除",
+            function (row) {
+              callService("resourceUIService.deleteById", row.id);
+            }]]
+
+      },
+      config: {
+        url: "resourceUIService.getDevicesByCondition",
+        parameter: {},
+        showIndex: false,
+        showSelector: false,
+        showSearch: false,
+        inlineAdd: {
+          customerId: {
+            type: 'select'
+          },
+          projectId: {
+            type: 'select'
+          },
+          modelId: {
+            type: 'select',
+            options: [{
+              id: 1,
+              label: "2"
+            }]
+          },
+          domainPath: {
+            type: 'select'
+          },
+          submit: function (data) {
+            console.log(data);
+          }
+        },
+        modalAdd: {}
+      },
+      options: []
+    }
+  };
+};
+</script>
+<style type="less">
+</style>

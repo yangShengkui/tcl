@@ -1,0 +1,311 @@
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li ng-show="menuitems['A02_S03']" ng-class="{'active' : activeListTab == 'tab1'}" name="tab1"><a role="button" data-toggle="tab">网关信息</a></li>
+              <li ng-show="menuitems['A03_S03']" ng-class="{'disabled' : !selectedGateitem || selectedGateitem.id == 0, 'active' : activeListTab == 'tab2'}" name="tab2"><a role="button" data-toggle="tab">接入设备</a></li>
+              <li ng-show="menuitems['A04_S03']" ng-class="{'disabled' : !selectedGateitem || selectedGateitem.id == 0, 'active' : activeListTab == 'tab3'}" name="tab3"><a role="button" data-toggle="tab">未识别设备</a></li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();" role="button"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body">
+          <button class="btn btn-primary btn-sm" ng-show="activeListTab == 'tab1' && menuitems['D01_S03']" ng-click="saveModelSubItem()"><i class="fa fa-save"></i><span class="hidden-sm"> 保存网关</span></button>
+          <button class="btn btn-default btn-sm" ng-show="activeListTab == 'tab1' && selectedGateitem.managedStatus == 'deactive' && menuitems['D02_S03']" ng-click="infoPageManage('网关启用')"><i class="fa fa-play"></i><span class="hidden-sm"> 启用网关</span></button>
+          <button class="btn btn-default btn-sm" ng-show="activeListTab == 'tab1' && selectedGateitem.managedStatus == 'active' && menuitems['D03_S03']" ng-click="infoPageManage('网关停用')"><i class="fa fa-stop"></i><span class="hidden-sm"> 停用网关</span></button>
+          <button class="btn btn-default btn-sm" ng-show="activeListTab == 'tab1' && selectedGateitem.protocol == 'flexem' && menuitems['D04_S03']" ng-click="infoPageManage('FBOX')"><i class="fa fa-edit"></i><span class="hidden-sm"> 配置FBox</span></button>
+          <button class="btn btn-primary btn-sm" ng-show="activeListTab == 'tab2' && menuitems['D05_S03']" ng-click="infoPageManage('DEVICE')"><i class="fa fa-plus"></i><span class="hidden-sm"> 添加设备</span></button>
+          <button class="btn btn-default btn-sm" ng-show="activeListTab == 'tab2' && menuitems['D01_A03_S03']"  ng-disabled="selectedDevices.length == 0" ng-click="exportModel();"><i class=" fa fa-arrow-circle-o-down"></i><span class="hidden-sm"> 导出设备</span></button>
+          <button class="btn btn-default btn-sm" ng-show="activeListTab == 'tab2' && menuitems['D06_S03']" ng-disabled="deactiveDevices.length == 0" ng-click="infoPageManage('设备启用')"><i class="fa fa-play"></i><span class="hidden-sm"> 启用设备</span></button>
+          <button class="btn btn-default btn-sm" ng-show="activeListTab == 'tab2' && menuitems['D07_S03']" ng-disabled="activeDevices.length == 0" ng-click="infoPageManage('设备停用')"><i class="fa fa-stop"></i><span class="hidden-sm"> 停用设备</span></button>
+          <button class="btn btn-default btn-sm" ng-show="activeListTab == 'tab2' && menuitems['D08_S03']" ng-disabled="deactiveDevices.length == 0" ng-click="infoPageManage('设备注销')"><i class="fa fa-trash"></i><span class="hidden-sm"> 注销设备</span></button>
+          <button class="btn btn-default btn-sm" ng-show="activeListTab == 'tab3' && menuitems['D09_S03']" ng-disabled="!selectUnComfirmedDevice" ng-click="infoPageManage('UNDEVICE')"><i class="fa fa-play"></i><span class="hidden-sm"> 识别设备</span></button>
+          <div  ng-show="activeListTab == 'tab2'"  class="combined-query  pull-right">
+            筛选: <input class="form-control input-sm" ng-model="tableSearchValue" ng-change="publicTableSearch('cmdb3-table',tableSearchValue)" />
+          </div>
+          <div  ng-show="activeListTab == 'tab3'"  class="combined-query  pull-right">
+            筛选: <input class="form-control input-sm" ng-model="tableSearchValue" ng-change="publicTableSearch('not-confirmed-table',tableSearchValue)" />
+          </div>
+        </div>
+        <div class="box-footer no-pad-top no-border">
+          <div class="bk-scope bk-theme-mini" ng-show="activeListTab == 'tab1'">
+            <dl class="bk-group">
+              <dt class="bk-group-title"><span>接入信息</span></dt>
+              <dd class="bk-group-detail">
+                <div class="bk-form-row" ng-show="!choseGateWayTab || choseGateWayTab == 1">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>接入协议：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select class="form-control bk-select bk-select-l2" ng-disabled="selectedGateitem.managedStatus == 'active'"
+                        ng-model="selectedGateitem.protocol" ng-options="value.protocol as value.protocol for value in protocols | filter:gateWayProtocolFilter">
+                        <option value="">请选择...</option>
+                      </select>
+                      <span class="bk-form-row-li-info bk-ml2">不同的接入协议所需的接入信息可能不同。如果无您所需接入协议<span><a ng-click="gatewayModal = true">请添加>></a></span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row" ng-show="!choseGateWayTab || choseGateWayTab == 1">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>接入版本：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select class="form-control bk-select bk-select-l2" ng-disabled="!selectedGateitem.protocol || selectedGateitem.managedStatus == 'active'" 
+                        ng-model="selectedGateitem.protocolVersion"
+                        ng-options="value.protocolVersion as value.protocolVersion  for value in protocolVersions| filter:{ protocol :  selectedGateitem.protocol}">
+                        <option value="">请选择...</option>
+                      </select>
+                      <span class="bk-form-row-li-info bk-ml2">设备接入时，不同的接入版本配置项可能不同，请确认版本号。如果无您所需接入版本请联系管理人员</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row" ng-show="choseGateWayTab == 2">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>接入厂商：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select class="form-control bk-select bk-select-l2" ng-disabled="selectedGateitem.managedStatus == 'active'"
+                        ng-model="selectedGateitem.enterpriseId" ng-options="value.id as value.label for value in baseConfig.gatewayManufacturer | filter:gateWayEnterPriseFilter">
+                        <option value="">请选择...</option>
+                      </select>
+                      <span class="bk-form-row-li-info bk-ml2">不同的厂商所需的接入网关可能不同。如果无您所需接入厂商<span><a ng-click="gatewayModal = true">请添加>></a></span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row" ng-show="choseGateWayTab == 2">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>接入网关：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select class="form-control bk-select bk-select-l2" ng-disabled="selectedGateitem.managedStatus == 'active'"
+                        ng-model="selectedGateitem.productId" ng-change="productChange()"
+                        ng-options="value.id as value.label for value in baseConfig.gatewayModel | filter:gateWayProductFilter">
+                        <option value="">请选择...</option>
+                      </select>
+                      <span class="bk-form-row-li-info bk-ml2">如果无您所需接入网关<span><a ng-click="gatewayModal = true">请添加>></a></span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row" ng-show="collectionTemplateDic[selectedGateitem.protocol+selectedGateitem.protocolVersion]">
+                  <label class="bk-form-row-name"><span class="text-gray-light">*</span>数据解释模板：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select class="form-control bk-select bk-select-l2" ng-disabled="!selectedGateitem.protocolVersion || selectedGateitem.managedStatus == 'active'"
+                        ng-model="selectedGateitem.collectionTemplate" 
+                        ng-options="value as value for value in collectionTemplateDic[selectedGateitem.protocol+selectedGateitem.protocolVersion]">
+                        <option value="">请选择...</option>
+                      </select>
+                      <span class="bk-form-row-li-info bk-ml2">数据解释模板定义如何解释协议中的数据，请选择数据解释模板。如果无您所需数据解释模板请联系管理员。</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row" ng-show="selectedGateitem.protocol == 'flexem' || selectedGateitem.protocol == 'webservice'">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>接入地址：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input type="text" ng-model="selectedGateitem.accessAddress" ng-disabled="selectedGateitem.managedStatus == 'active'"
+                        class="bk-form-input bk-form-input-l2" placeholder="">
+                      <span class="bk-form-row-li-info bk-ml2"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row" ng-show="selectedGateitem.protocol == 'flexem' || selectedGateitem.protocol == 'webservice'">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>接入密码：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input type="password" ng-model="selectedGateitem.accessPassword" ng-disabled="selectedGateitem.managedStatus == 'active'"
+                        class="bk-form-input bk-form-input-l2" placeholder="">
+                      <span class="bk-form-row-li-info bk-ml2"></span>
+                    </div>
+                  </div>
+                </div>
+              </dd>
+            </dl>
+            <dl class="bk-group">
+              <dt class="bk-group-title"><span>配置信息</span></dt>
+              <form name="pzForm">
+              <dd class="bk-group-detail">
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>管理域：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input class="bk-form-input bk-form-input-l2" disabled="true" ng-if="selectedGateitem.id && selectedGateitem.id !=0" value="{{domainListDic[selectedGateitem.domain].name}}"/>
+                      <div ng-if="!selectedGateitem.id || selectedGateitem.id == 0" class="dropdowntree bk-select bk-select-l2 select-sm" placeholder="请选择..." 
+                        ng-model="selectedGateitem.domain" change="changeDomain(selectedGateitem.domain)" key="domainPath"  options="domainListTree" mark="nodes"/>
+                      <span class="bk-form-row-li-info bk-ml2">选择管理域后不可修改，请慎重选择。<span ng-show="menuitems['A01_S16']"><a href="#/domains_type" target="_blank">创建一个新的>></a>或尝试<a ng-click="domainTreeQuery(true)">刷新>></a></span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row" ng-if="baseConfig.customerConfig.display">
+                  <label class="bk-form-row-name"><span class="text-red" ng-if="baseConfig.customerConfig.check">*</span>{{menuitems['S12'].label?menuitems['S12'].label:'客户'}}名称：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select select2 class="form-control bk-select bk-select-l2" ng-disabled="(selectedGateitem.id && selectedGateitem.id !=0) || !selectedGateitem.domain"
+                        ng-model="selectedGateitem.customerId" selectdata="customersList" ng-change="customerDomain(selectedGateitem.customerId)" ng-options="value.id as value.text for value in customersList | filter:{ domainPath :  selectedGateitem.domain}">
+                          <option value="">请选择...</option>
+                      </select>
+                      <span class="bk-form-row-li-info bk-ml2">标识当前网关属于哪一个{{menuitems['S12'].label?menuitems['S12'].label:'客户'}}。选择{{menuitems['S12'].label?menuitems['S12'].label:'客户'}}后不可修改，请慎重选择。<span ng-show="menuitems['S12']"><a href="#/userclient" target="_blank">创建一个新的>></a>或尝试<a ng-click="queryCustomer(true)">刷新>></a></span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row" ng-if="baseConfig.projectConfig.display && baseConfig.projectConfig.enabled">
+                  <label class="bk-form-row-name"><span class="text-red" ng-if="baseConfig.projectConfig.check">*</span>{{menuitems['S13'].label?menuitems['S13'].label:'项目'}}名称：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select select2 class="form-control bk-select bk-select-l2" ng-disabled="(selectedGateitem.id && selectedGateitem.id !=0) || !selectedGateitem.customerId"
+                        ng-model="selectedGateitem.projectId" ng-options="value.id as value.text for value in projectsList | filter:{ customerId :  selectedGateitem.customerId}" selectdata="projectsList">
+                        <option value="">请选择...</option>
+                      </select>
+                      <span class="bk-form-row-li-info bk-ml2">标识当前网关属于哪一个{{menuitems['S13'].label?menuitems['S13'].label:'项目'}}。选择{{menuitems['S13'].label?menuitems['S13'].label:'项目'}}后不可修改，请慎重选择。<span ng-show="menuitems['S13']"><a href="#/projectManagement" target="_blank">创建一个新的>></a>或尝试<a ng-click="queryProject(true)">刷新>></a></span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row" ng-if="baseConfig.enterpriseConfig.display">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>企业名称：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select class="form-control bk-select bk-select-l2" ng-disabled="(selectedGateitem.id && selectedGateitem.id !=0) || !selectedGateitem.domain" ng-model="selectedGateitem.domains" ng-options="value.domainPath as value.text for value in enterpriseList">
+                      </select>
+                      <span class="bk-form-row-li-info bk-ml2">标识当前网关属于哪一个企业。选择企业后不可修改，请慎重选择。<span ng-show="menuitems['S34']"><a href="#/enterpriseInfo" target="_blank">创建一个新的>></a>或尝试<a ng-click="queryCustomer(true)">刷新>></a></span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>网关标识：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input type="text" ng-model="selectedGateitem.externalGwId" name="externalGwId" ng-disabled="selectedGateitem.managedStatus == 'active'"
+                        class="bk-form-input bk-form-input-l2" maxlength="32" placeholder="">
+                      <span class="bk-form-row-li-info bk-ml2">系统内唯一，最多输入32个字符</span>
+                    </div>
+                    <div class="bk-form-status bk-form-error bk-form-row-txt">
+                      <span ng-show="pzForm.externalGwId.$error.pattern" class="bk-form-status-message ng-binding" style="">输入格式不正确，请重新输入</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>网关名称：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input type="text" ng-model="selectedGateitem.name" name="name"  maxlength="32" ng-disabled="selectedGateitem.managedStatus == 'active'"
+                        class="bk-form-input bk-form-input-l2"  ng-pattern="/^[\u4e00-\u9fa5_a-zA-Z][\u4e00-\u9fa5_a-zA-Z0-9._-]{1,32}$/" placeholder="">
+                      <span class="bk-form-row-li-info bk-ml2">网关的显示名，不具有唯一性，长度为2-32个字符，以大小写字母或中文开头，可包含数字，"."，"_"或"-"</span>
+                    </div>
+                    <div class="bk-form-status bk-form-error bk-form-row-txt">
+                      <span ng-show="pzForm.name.$error.pattern" class="bk-form-status-message ng-binding" style="">输入格式不正确，请重新输入</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-gray-light">*</span>网关描述：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <textarea ng-model="selectedGateitem.desc" ng-disabled="selectedGateitem.managedStatus == 'active'"
+                        class="bk-form-input bk-form-input-l2" maxlength="200">
+                      </textarea>
+                      <span class="bk-form-row-li-info bk-ml2">网关的详细描述，长度不超过200个字符</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-gray-light">*</span>网关告警：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select class="form-control bk-select bk-select-l2" ng-disabled="selectedGateitem.managedStatus == 'active'"
+                        ng-model="selectedGateitem.offlineAlert"
+                        ng-options="o.v as o.n for o in [{ n: '否', v: false }, { n: '是', v: true }]">
+                      </select>
+                      <span class="bk-form-row-li-info bk-ml2">选择“是”的情况下，网关离线时，将会有告警通知</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-gray-light">*</span>超时周期：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input ng-model="selectedGateitem.timeOutCycle" ng-disabled="selectedGateitem.managedStatus == 'active'"
+                        class="bk-form-input bk-form-input-l2" type="number" min="3">
+                      </input>
+                      <span class="bk-form-row-li-info bk-ml2">网关在“超时周期*周期时间”内无法采集到数据，就会出发网关告警，低于3个周期按照3个周期计算</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-gray-light">*</span>周期时间：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input ng-model="selectedGateitem.heartbeatTime" ng-disabled="selectedGateitem.managedStatus == 'active'"
+                        class="bk-form-input bk-form-input-l2" type="number" min="60">
+                      </input>
+                      <span class="bk-form-row-li-info bk-ml2">超时周期是指每一次采集的时间，默认为60秒，低于60秒按照60秒来计算</span>
+                    </div>
+                  </div>
+                </div>
+              </dd>
+              </form>
+            </dl>
+          </div>
+          <table class="table table-hover" ng-if="activeListTab == 'tab2'"  name="cmdb3-table" width="100%" cmdb3-table></table>
+          <table class="table table-hover" ng-if="activeListTab == 'tab3'"  name="not-confirmed-table" width="100%" not-confirmed-table></table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="free-board-edit-panel" ng-if="gatewayModal">
+  <div class="content-wrap">
+    <div class="content">
+      <div class="box">
+        <div class="box-header text-center">
+          <h4 class="box-title">请选择您的网关产品</h4>
+          <div style="margin : 5px auto; color : #888">如没有您所需的网关产品，请选择相应的网关协议。</div>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="remove" ng-click="closeGateWayModal()"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <div class="box-body" style="border : 1px dashed #ccc;">
+          <ul class="nav nav-tabs nav-justified">
+            <li ng-class="{'active' : choseGateWayTab == '2'}" ng-click="choseGateWayTabHandler(2)"><a role="button" data-toggle="tab">网关厂商({{baseConfig.gatewayManufacturer.length}}家)</a></li>
+            <li ng-class="{'active' : !choseGateWayTab || choseGateWayTab == '1'}" ng-click="choseGateWayTabHandler(1)"><a role="button" data-toggle="tab">网关协议({{protocols.length}}个)</a></li>
+          </ul>
+          <div class="row" ng-show="choseGateWayTab == '2'">
+            <div ng-repeat="gatewayEnterprise in baseConfig.gatewayManufacturer">
+              <div class="col-md-3">
+                <div class="tempwrap" ng-click="gatewayEnterpriseChose(gatewayEnterprise)" ng-class="{true : 'active', false : ''}[gatewayEnterprise.selected || gatewayEnterprise.showProduct]">
+                  <div ng-bind="gatewayEnterprise.label" class="temptitle" data-tooltip="{{gatewayEnterprise.funName}}"></div>
+                  <div class="templateImage" ng-style="{'background-image' : 'url(' + gatewayEnterprise.icon + ')','width':'132px','height':'120px'}"></div>
+                </div>
+              </div>
+              <div ng-if="($index+1)%4 == 0 || $last" class="panel panel-info no-padding-lr margin-left-15 col-md-12" style="width: 660px;" ng-show="selectedEnterPrise[$index].showProduct">
+                <div class="panel-heading">请选择该厂商的网关产品:</div>
+                <div class="panel-body">
+                  <div class="col-md-3" ng-repeat="gateway in baseConfig.gatewayModel | filter:{ manufacturerId :selectedEnterPrise[$index].id}">
+                    <div class="tempwrap" ng-click="gatewayProductChose(gateway)" ng-class="{true : 'active', false : ''}[gateway.selected]">
+                      <div ng-bind="gateway.label" class="temptitle" data-tooltip="{{gateway.label}}"></div>
+                      <div class="templateImage" ng-style="{'background-image' : 'url(' + gateway.icon + ')','width':'116px','height':'99px'}"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" ng-show="!choseGateWayTab || choseGateWayTab == '1'" >
+            <div class="col-md-3" ng-repeat="protocol in protocols">
+              <div class="tempwrap" ng-click="protocol.selected = !protocol.selected" ng-class="{true : 'active', false : ''}[protocol.selected]">
+                <div ng-bind="protocol.protocol" class="temptitle" data-tooltip="{{protocol.protocol}}"></div>
+                <div class="templateImage" ng-style="{'background-image' : 'url(images/gatewayProtocol/protocol_' + protocol.protocol + '.png)','width':'132px','height':'120px'}"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <input type="checkbox" ng-model="defaultGatewayType.display"> 下次默认提示
+          <button class="btn btn-primary pull-right" ng-click="applyGateWayConfig()">确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

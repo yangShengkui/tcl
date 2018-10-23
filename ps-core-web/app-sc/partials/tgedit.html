@@ -1,0 +1,442 @@
+<div class="row" style="margin : 20px auto;">
+  <div class="col-lg-5 col-lg-offset-1">
+    <button class="btn btn-primary" ng-click="saveAndExit()" style="width : 100%;">保存退出</button>
+  </div>
+  <div class="col-lg-5">
+    <button class="btn btn-cancel" ng-click="exit()" style="width : 100%;">退出</button>
+  </div>
+</div>
+<div class="row" id="tg-edit" ng-click="wholeClick();">
+  <div class="col-lg-10 col-lg-offset-1" style="min-width : 1200px;">
+    <div style = "background-color: white;">
+      <ul class="nav nav-pills nav-justified">
+        <li role="presentation" ng-class="{true : 'active', false : ''}[step==0]" ng-click="step = 0"><a href="">配置预览页</a></li>
+        <li role="presentation" ng-class="{true : 'active', false : ''}[step==1]" ng-click="step = 1"><a href="">配置详细页</a></li>
+        <li role="presentation" ng-class="{true : 'active', false : ''}[step==2]" ng-click="step = 2"><a href="">配置详细页（视图）</a></li>
+      </ul>
+      <div ng-if="step == 0;">
+        <h2 ng-bind="$parent.preview.title"></h2>
+        <div class="row">
+          <div class="col-md-1">名称 : </div>
+          <div class="col-md-11">
+            <input ng-model="$parent.preview.title" class="form-control" />
+          </div>
+        </div>
+        <!--
+        <div class="row">
+          <div class="col-md-1">模型 : </div>
+          <div class="col-md-11">
+            <select ng-model="deviceGroupModel" ng-options="deviceGroupModel as (deviceGroupModel.label + '(' + deviceGroupModel.id + ')') for deviceGroupModel in deviceGroupModels" class="form-control" ng-change="deviceGroupModels.onChange(deviceGroupModel)" ng-disabled="true"></select>
+          </div>
+        </div>
+        -->
+        <h2>显示预览</h2>
+        <div class="row">
+          <div class="col-lg-6 ng-scope">
+            <!-- DIRECT CHAT PRIMARY -->
+            <div class="box form-group box-danger">
+              <div class="box-header with-border">
+                <h3 class="box-title ng-binding">{resource : 实验室标题名}</h3>
+                <div class="box-tools pull-right">
+                  <button class="btn btn-box-tool" data-toggle="popover" title="编辑"><i class="fa fa-edit"></i></button>
+                  <button class="btn btn-box-tool" data-toggle="popover" title="详细"><i class="fa fa-list"></i></button>
+                  <button class="btn btn-box-tool" data-toggle="popover" title="删除"><i class="fa fa-bitbucket"></i></button>
+                </div>
+              </div>
+              <div class="box-body" style="padding: 10px 30px; min-height: 172px;">
+                <div class="text-center" data-preview-List="$parent.preview.list" tg-slick>
+                </div>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer" style="padding: 5px 0px;">
+
+              </div>
+              <!-- /.box-footer-->
+            </div>
+            <!--/.direct-chat -->
+          </div>
+        </div>
+        <h2>添加</h2>
+        <div class="row" ng-repeat = "item in $parent.preview.list" style="padding : 5px;">
+          <div class="col-md-1">
+            名称
+          </div>
+          <div class="col-md-2">
+            <input class="form-control" ng-model="item.label" class="form-control"/>
+          </div>
+          <div class="col-md-1" ng-if="mode=='editmodel'">
+            模型
+          </div>
+          <div class="col-md-1" ng-if="mode=='edit'">
+            设备
+          </div>
+          <div class="col-md-3" ng-if="mode=='editmodel'">
+            <select ng-model="item.modelObj"
+                    ng-change="item.modelObj.onChange(item)"
+                    ng-options="model as (model.label + '(' + model.id + ')') for model in allModels" class="form-control"></select>
+          </div>
+          <div class="col-md-3" ng-if="mode=='edit'">
+            <select ng-model="item.resourceObj"
+                    ng-change="item.resourceObj.onChange(item)"
+                    ng-options="resource as (resource.label + '(' + resource.id + ')') for resource in resources" class="form-control"></select>
+          </div>
+          <div class="col-md-1">
+            <select ng-model="item.type" ng-options="type as type for type in ['kpi']" class="form-control" ng-disabled="true"></select>
+          </div>
+          <div class="col-md-3">
+            <select ng-model="item[item.type]"
+                    ng-if="item.type!='formula' && mode=='edit'"
+                    ng-change = "kpiChange(item)"
+                    ng-options="kpi as (kpi.label + '(' + kpi.id + ')') for kpi in item.resource[item.type]"
+                    class="form-control">
+            </select>
+            <select ng-model="item[item.type]"
+                    ng-if="item.type!='formula' && mode=='editmodel'"
+                    ng-change = "kpiChange(item)"
+                    ng-options="kpi as (kpi.label + '(' + kpi.id + ')') for kpi in item.model[item.type]"
+                    class="form-control">
+            </select>
+            <input ng-model="item[item.type]" ng-if="item.type == 'formula'" class="form-control"/>
+          </div>
+          <div class="col-md-1">
+            <button ng-click="$parent.preview.remove(item)" class="btn btn-warning">删除</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-primary" ng-click="$parent.preview.add()">添加指标</button>
+          </div>
+        </div>
+      </div>
+      <div ng-if="step == 1;" class="row" ng-init="shownew=false;">
+        <div class="col-md-12">
+          <div class="row" ng-if="!shownew">
+            <div class="col-md-1 text-center col-md-offset-5">
+              <button class="btn btn-primary" ng-click="$parent.shownew=true;" style="margin: 20px auto;">创建指标显示</button>
+            </div>
+          </div>
+          <div class="row"
+               ng-if="shownew"
+               data-target="createNew"
+               style="padding: 10px 0; background-color: #eee;"
+               tg-drag id="tg-drag">
+            <div class="col-md-1 text-center" style="line-height: 20px;">新建</div>
+            <div class="col-md-1">
+              <select ng-model="createNew.type" ng-options="type.value as type.name for type in [{name : '开关', value : 'switch' }, {name : '液位柱', value : 'bar'}, {name : '开度', value : 'open'} , {name :'闪烁效果', value : 'blink'}]" class="form-control"></select>
+            </div>
+            <div class="col-md-1 text-center">
+              <label>显示</label>
+              <input type="checkbox" ng-model="createNew.show"/>
+            </div>
+            <div class="col-md-2 text-center" ng-if="createNew.type == 'blink'">
+              <input ng-model="createNew.blink.bgimage" class="form-control"/>
+            </div>
+            <div class="col-md-3 text-center" ng-if="createNew.type != 'blink'">
+              <select ng-model="createNew.modelObj"
+                      ng-if="mode=='editmodel'"
+                      ng-change="createNew.modelObj.onChange(createNew)"
+                      ng-options="model as (model.label + '(' + model.id + ')') for model in allModels" class="form-control"></select>
+              <select ng-model="createNew.resourceObj"
+                      ng-if="mode=='edit'"
+                      ng-change="createNew.resourceObj.onChange(createNew)"
+                      ng-options="resource as (resource.label + '(' + resource.id + ')') for resource in resources" class="form-control"></select>
+            </div>
+            <div class="col-md-3" ng-if="createNew.type != 'blink'">
+              <select ng-model="createNew.kpi"
+                      ng-if="mode=='editmodel'"
+                      ng-change = "kpiChange(createNew)"
+                      ng-options="kpi as (kpi.label + '(' + kpi.id + ')') for kpi in createNew.model.kpi"
+                      class="form-control">
+              </select>
+              <select ng-model="createNew.kpi"
+                      ng-if="mode=='edit'"
+                      ng-change = "kpiChange(createNew)"
+                      ng-options="kpi as (kpi.label + '(' + kpi.id + ')') for kpi in createNew.resource.kpi"
+                      class="form-control">
+              </select>
+            </div>
+            <div class="col-md-1 text-center">
+              <div id="moveBtn" class="btn btn-primary" style="cursor : move;">
+                <span class="proudsmart ps-move"></span>
+              </div>
+            </div>
+            <div class="col-md-2 text-center">
+              <button class="btn btn-cancel" ng-click="$parent.shownew=false;">
+                <span class="proudsmart ps-delete_02"></span>
+              </button>
+            </div>
+            <div class="col-md-1 text-center" ng-if="createNew.type == 'switch'">
+              开状态图片
+            </div>
+            <div class="col-md-2 text-center" ng-if="createNew.type == 'switch'">
+              <input ng-model="createNew.switch.bgimageOpen" class="form-control"/>
+            </div>
+            <div class="col-md-1 text-center" ng-if="createNew.type == 'switch'">
+              关状态图片
+            </div>
+            <div class="col-md-2 text-center" ng-if="createNew.type == 'switch'">
+              <input ng-model="createNew.switch.bgimageClose" class="form-control"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 text-center">
+              <div class="drawWrap">
+                <div class="drawingArea"
+                     ng-style="{'background-image' : 'url(' + $parent.drawarea.backgroundImage + ')'}"
+                     on-drop = "ondrop(ui);shownew=false;"
+                     tg-drop>
+                  <div ng-repeat = "element in $parent.drawarea.list"
+                       ng-click = "element.focusOn();$event.stopPropagation();"
+                       ng-style="drawPos(element)"
+                       data-stop-move = "element.stopMove(ui)"
+                       data-stop-resize = "element.stopResize(ui)"
+                       data-target="element"
+                       class="element"
+                       ng-class = "{true : 'active', false : ''}[element==$parent.parametersEditor]"
+                       tg-element>
+                    <button class="closeBtn" ng-click="element.remove();$event.stopPropagation();" ng-if="element==$parent.parametersEditor">
+                      <span class="proudsmart ps-delete_02"></span>
+                    </button>
+                    <div ng-if="element.type == 'bar'" class="bar">
+                      <div class="bar-inner"></div>
+                      <div class="bar-value" ng-style="{ height : element.value + '%'}"></div>
+                    </div>
+                    <div ng-if="element.type == 'open'" class="open">
+                      <div class="rotate_wrap">
+                        <div class="rotate_wrap_inner">
+                          <div class="rotate_value" ng-style="calcuRotation(element)">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div ng-if="element.type == 'blink'"
+                         ng-style="{'background-image' : 'url(' + element.bgBlinkImage + ')'}"
+                         class="blink">
+                    </div>
+                    <div ng-if="element.type == 'switch'"
+                         ng-style="{true : {'background-image' : 'url(' + element.bgimageOpen + ')'}, false : {'background-image' : 'url(' + element.bgimageClose + ')'}}[element.value > 0]"
+                         class="switch"
+                         tg-switch>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2 text-center">
+              <div ng-repeat = "elem in $parent.drawarea.list | filter : { type : 'open' }">
+                <div ng-bind="'{ci:' + elem.resource.id + ',kpi:' + elem.kpi.id + '}'"></div>
+                <div class="tg-scrollbar" data-control="elem"></div>
+              </div>
+              <div ng-repeat = "elem in $parent.drawarea.list | filter : { type : 'switch' }">
+                <div ng-bind="'{ci:' + elem.resource.id + ',kpi:' + elem.kpi.id + '}'"></div>
+                <div class="tg-toggle" data-tg="elem"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="padding: 10px 0; background-color: #eee;" ng-if="$parent.parametersEditor" ng-click="$event.stopPropagation();">
+            <div class="col-md-1 text-center">
+              <label>显示</label>
+              <input type="checkbox" ng-model="$parent.$parent.parametersEditor.show"/>
+            </div>
+            <div class="col-md-2 text-center" ng-if="$parent.$parent.parametersEditor.type == 'blink'">
+              <input ng-model="$parent.$parent.parametersEditor.bgBlinkImage" class="form-control"/>
+            </div>
+            <div class="col-md-2 text-center" ng-if="$parent.$parent.parametersEditor.type != 'blink'">
+              <select ng-model="$parent.$parent.parametersEditor.modelObj"
+                      ng-if="mode=='editmodel'"
+                      ng-change="$parent.$parent.parametersEditor.modelObj.onChange($parent.$parent.parametersEditor)"
+                      ng-options="model as (model.label + '(' + model.id + ')') for model in allModels" class="form-control"></select>
+              <select ng-model="$parent.$parent.parametersEditor.resourceObj"
+                      ng-if="mode=='edit'"
+                      ng-change="$parent.$parent.parametersEditor.resourceObj.onChange($parent.$parent.parametersEditor)"
+                      ng-options="resource as (resource.label + '(' + resource.id + ')') for resource in resources" class="form-control"></select>
+            </div>
+            <div class="col-md-2" ng-if="$parent.$parent.parametersEditor.type != 'blink'">
+              <select ng-model="$parent.$parent.parametersEditor.kpi"
+                      ng-if="mode=='editmodel'"
+                      ng-change = "kpiChange($parent.$parent.parametersEditor)"
+                      ng-options="kpi as (kpi.label + '(' + kpi.id + ')') for kpi in $parent.$parent.parametersEditor.model.kpi"
+                      class="form-control">
+              </select>
+              <select ng-model="$parent.$parent.parametersEditor.kpi"
+                      ng-if="mode=='edit'"
+                      ng-change = "kpiChange($parent.$parent.parametersEditor)"
+                      ng-options="kpi as (kpi.label + '(' + kpi.id + ')') for kpi in $parent.$parent.parametersEditor.resource.kpi"
+                      class="form-control">
+              </select>
+            </div>
+            <div class="col-md-1 text-center" ng-if="$parent.$parent.parametersEditor.type == 'switch'">
+              开状态图片
+            </div>
+            <div class="col-md-2 text-center" ng-if="$parent.$parent.parametersEditor.type == 'switch'">
+              <input ng-model="$parent.$parent.parametersEditor.bgimageOpen" class="form-control"/>
+            </div>
+            <div class="col-md-1 text-center" ng-if="$parent.$parent.parametersEditor.type == 'switch'">
+              关状态图片
+            </div>
+            <div class="col-md-2 text-center" ng-if="$parent.$parent.parametersEditor.type == 'switch'">
+              <input ng-model="$parent.$parent.parametersEditor.bgimageClose" class="form-control"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1 text-center">背景图</div>
+            <div class="col-md-11">
+              <input class="form-control" ng-model="$parent.drawarea.backgroundImage"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-if="step == 2" class="row">
+        <div class="col-md-12">
+          <div class="row" ng-repeat = "item in $parent.charts.list" style="padding : 5px;">
+            <div class="col-md-1">
+              名称
+            </div>
+            <div class="col-md-2">
+              <input class="form-control" ng-model="item.label" class="form-control"/>
+            </div>
+            <div class="col-md-1" ng-bind="{true : '选择模型', false : '设备'}[mode=='editmodel']"></div>
+            <div class="col-md-3">
+              <select ng-model="item.modelObj"
+                      ng-if="mode=='editmodel'"
+                      ng-change="item.modelObj.onChange(item)"
+                      ng-options="model as (model.label + '(' + model.id + ')') for model in allModels" class="form-control"></select>
+              <select ng-model="item.resourceObj"
+                      ng-if="mode=='edit'"
+                      ng-change="item.resourceObj.onChange(item)"
+                      ng-options="resource as (resource.label + '(' + resource.id + ')') for resource in resources" class="form-control"></select>
+            </div>
+            <div class="col-md-1">
+              <select ng-model="item.type" ng-options="type as type for type in ['kpi']" class="form-control" ng-disabled="true"></select>
+            </div>
+            <div class="col-md-3">
+              <select ng-model="item[item.type]"
+                      ng-if="item.type!='formula' && mode=='editmodel'"
+                      ng-change = "kpiChange(item)"
+                      ng-options="kpi as (kpi.label + '(' + kpi.id + ')') for kpi in item.model[item.type]"
+                      class="form-control">
+              </select>
+              <select ng-model="item[item.type]"
+                      ng-if="item.type!='formula' && mode=='edit'"
+                      ng-change = "kpiChange(item)"
+                      ng-options="kpi as (kpi.label + '(' + kpi.id + ')') for kpi in item.resource[item.type]"
+                      class="form-control">
+              </select>
+              <input ng-model="item[item.type]" ng-if="item.type == 'formula'" class="form-control"/>
+            </div>
+            <div class="col-md-1">
+              <button ng-click="$parent.charts.remove(item)" class="btn btn-warning">删除</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <button class="btn btn-primary" ng-click="$parent.charts.add()">添加指标</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+      <h1>统计实验室V4 展示配置页面</h1>
+      <button ng-click="edit.save()" class="btn btn-primary" style="width : 100%; margin : 20px auto;">保存退出</button>
+      <div ng-repeat="controllPanel in edit.controllPanel" class="row">
+          <div class="row">
+              <h3 ng-bind="controllPanel.label + 'ci(' + controllPanel.resource.id + ')' + 'kpi(' + controllPanel.kpi.id + ')'"></h3>
+          </div>
+          <div class="row">
+              <div class="col-md-1">
+                  选择设备
+              </div>
+              <div class="col-md-3">
+                  <select ng-model="controllPanel.resource"
+                          ng-change="controllPanel.onChange()"
+                          ng-options="resource as (resource.label + '(' + resource.id + ')') for resource in edit.resources.values()" class="form-control"
+                          class="form-control"></select>
+              </div>
+              <div class="col-md-1">
+                  名称
+              </div>
+              <div class="col-md-3">
+                  <input ng-model="controllPanel.title" class="form-control"/>
+              </div>
+              <div class="col-md-1">
+                  <span ng-if="controllPanel.kpis">选择指标</span>
+              </div>
+              <div class="col-md-3">
+                  <select ng-if="controllPanel.kpis"
+                          ng-model="controllPanel.kpi"
+                          ng-options="kpi as (kpi.label + '(' + kpi.id + ')') for kpi in controllPanel.kpis.values()"
+                          class="form-control"></select>
+              </div>
+          </div>
+      </div>
+      <div ng-repeat="toggle in edit.toggles" class="row">
+          <div class="row">
+              <h3 ng-bind="toggle.label + 'ci(' + toggle.resource.id + ')' + 'kpi(' + toggle.kpi.id + ')'"></h3>
+          </div>
+          <div class="row">
+              <div class="col-md-1">
+                  选择设备
+              </div>
+              <div class="col-md-3">
+                  <select ng-model="toggle.resource"
+                          ng-change="toggle.onChange()"
+                          ng-options="resource as (resource.label + '(' + resource.id + ')') for resource in edit.resources.values()" class="form-control"
+                          class="form-control"></select>
+              </div>
+              <div class="col-md-1">
+                  名称
+              </div>
+              <div class="col-md-3">
+                  <input ng-model="toggle.title" class="form-control"/>
+              </div>
+              <div class="col-md-1">
+                  <span ng-if="toggle.kpis">选择指标</span>
+              </div>
+              <div class="col-md-3">
+                  <select ng-if="toggle.kpis"
+                          ng-model="toggle.kpi"
+                          ng-options="kpi as (kpi.label + '(' + kpi.id + ')') for kpi in toggle.kpis.values()"
+                          class="form-control"></select>
+              </div>
+          </div>
+      </div>
+      <div ng-repeat="chart in edit.charts" class="row">
+          <div class="row">
+              <h3 ng-bind="chart.label + 'ci(' + chart.resource.id + ')' + 'kpi(' + chart.kpi.id + ')'"></h3>
+          </div>
+          <div class="row">
+              <div class="col-md-1">
+                  选择设备
+              </div>
+              <div class="col-md-3">
+                  <select ng-model="chart.resource"
+                          ng-change="chart.onChange()"
+                          ng-options="resource as (resource.label + '(' + resource.id + ')') for resource in edit.resources.values()" class="form-control"
+                          class="form-control"></select>
+              </div>
+              <div class="col-md-1">
+                  名称
+              </div>
+              <div class="col-md-3">
+                  <input ng-model="chart.title" class="form-control"/>
+              </div>
+              <div class="col-md-1">
+                  <span ng-if="chart.kpis">选择指标</span>
+              </div>
+              <div class="col-md-3">
+                  <select ng-if="chart.kpis"
+                          ng-model="chart.kpi"
+                          ng-options="kpi as (kpi.label + '(' + kpi.id + ')') for kpi in chart.kpis.values()"
+                          class="form-control"></select>
+              </div>
+          </div>
+      </div>
+      <button ng-click="edit.save()" class="btn btn-primary" style="width : 100%; margin : 20px auto;">保存退出</button>
+  </div>
+  -->
+</div>
+

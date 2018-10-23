@@ -1,0 +1,36 @@
+{
+  "procedureStep":[
+    { "id": 4011, "dictCode": "systemProcessTemplate", "valueCode": "oneStep", "label": "一步工单","name":"流程任务1","param": 1 },
+    { "id": 4012, "dictCode": "systemProcessTemplate", "valueCode": "twoStep", "label": "二步工单","name":"流程任务2", "param": 2 },
+    { "id": 4013, "dictCode": "systemProcessTemplate", "valueCode": "threeStep", "label": "三步工单","name":"流程任务3","param": 3 },
+    { "id": 4014, "dictCode": "systemProcessTemplate", "valueCode": "fourStep", "label": "四步工单","name":"流程任务4", "param": 4 },
+    { "id": 4015, "dictCode": "systemProcessTemplate", "valueCode": "fiveStep", "label": "五步工单", "name":"流程任务5","param": 5 }
+  ],
+  "procedureStepBk":[
+    { "id": 4011, "dictCode": "systemProcessTemplate", "valueCode": "oneStep", "label": "一步工单","name":"流程任务1","param": 1 },
+    { "id": 4012, "dictCode": "systemProcessTemplate", "valueCode": "twoStep", "label": "二步工单","name":"流程任务2", "param": 2 },
+    { "id": 4013, "dictCode": "systemProcessTemplate", "valueCode": "threeStep", "label": "三步工单","name":"流程任务3","param": 3 },
+    { "id": 4014, "dictCode": "systemProcessTemplate", "valueCode": "fourStep", "label": "四步工单","name":"流程任务4", "param": 4 },
+    { "id": 4015, "dictCode": "systemProcessTemplate", "valueCode": "fiveStep", "label": "五步工单", "name":"流程任务5","param": 5 }
+  ],
+  "workOrderType":[
+    {"id": 1301, "dictCode": "ticketCategory", "valueCode":"10",  "label": "告警工单"  },
+    {"id": 1302, "dictCode": "ticketCategory", "valueCode":"20",  "label": "维修工单"  },
+    {"id": 1303, "dictCode": "ticketCategory", "valueCode":"30",  "label": "业务工单"  }
+  ],
+  "orderPriorityCode":[
+    {"id": 1101, "dictCode": "orderPriority", "valueCode":"10",  "label": "低"  },
+    {"id": 1102, "dictCode": "orderPriority", "valueCode":"30",  "label": "中"  },
+    {"id": 1103, "dictCode": "orderPriority", "valueCode":"50",  "label": "高"  }
+  ],
+  "priorityData":[
+    {"value":0,"name":"低"},
+    {"value":100,"name":"中"},
+    {"value":200,"name":"高"}
+  ],
+  "statusData":[
+    {"value":10,"name":"草稿"},
+    {"value":100,"name":"处理中"},
+    {"value":200,"name":"已完成"}
+  ]
+}

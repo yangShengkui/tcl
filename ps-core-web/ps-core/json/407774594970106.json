@@ -1,0 +1,136 @@
+{
+  "type": "relative",
+  "setting": {
+    "viewTitle": "六个时间时分"
+  },
+  "data": [
+    {
+      "type": "row",
+      "children": [
+        {
+          "type": "col",
+          "col": 2,
+          "children": [
+            {
+              "type": "times",
+              "attributes": {
+                "width": "80",
+                "height": 50,
+                "fontSize": "18px",
+                "color": "#FFFFFF",
+                "textAlign": "center",
+                "hourpoor": "6",
+                "daypoor": 0,
+                "format": "HH:mm"
+              }
+            }
+          ],
+          "inx": 2
+        },
+        {
+          "type": "col",
+          "col": 2,
+          "children": [
+            {
+              "type": "times",
+              "attributes": {
+                "width": "80",
+                "height": 50,
+                "fontSize": "18px",
+                "color": "#FFFFFF",
+                "textAlign": "center",
+                "hourpoor": "5",
+                "daypoor": 0,
+                "format": "HH:mm"
+              }
+            }
+          ],
+          "inx": 4
+        },
+        {
+          "type": "col",
+          "col": 2,
+          "children": [
+            {
+              "type": "times",
+              "attributes": {
+                "width": "80",
+                "height": 50,
+                "fontSize": "18px",
+                "color": "#FFFFFF",
+                "textAlign": "center",
+                "hourpoor": "4",
+                "daypoor": 0,
+                "format": "HH:mm"
+              }
+            }
+          ],
+          "inx": 6
+        },
+        {
+          "type": "col",
+          "col": 2,
+          "children": [
+            {
+              "type": "times",
+              "attributes": {
+                "width": "80",
+                "height": 50,
+                "fontSize": "18px",
+                "color": "#FFFFFF",
+                "textAlign": "center",
+                "hourpoor": "3",
+                "daypoor": 0,
+                "format": "HH:mm"
+              }
+            }
+          ],
+          "inx": 8
+        },
+        {
+          "type": "col",
+          "col": 2,
+          "children": [
+            {
+              "type": "times",
+              "attributes": {
+                "width": "80",
+                "height": 50,
+                "fontSize": "18px",
+                "color": "#FFFFFF",
+                "textAlign": "center",
+                "hourpoor": "2",
+                "daypoor": 0,
+                "format": "HH:mm"
+              }
+            }
+          ],
+          "inx": 10
+        },
+        {
+          "type": "col",
+          "col": 2,
+          "children": [
+            {
+              "type": "times",
+              "attributes": {
+                "width": "80",
+                "height": 50,
+                "fontSize": "18px",
+                "color": "#FFFFFF",
+                "textAlign": "center",
+                "hourpoor": "1",
+                "daypoor": 0,
+                "format": "HH:mm"
+              }
+            }
+          ],
+          "inx": 12
+        }
+      ],
+      "attributes": {
+        "class": ""
+      }
+    }
+  ]
+}

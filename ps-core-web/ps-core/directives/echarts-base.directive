@@ -1,0 +1,130 @@
+<config injector="$rootScope,$q,$timeout"></config>
+<template>
+    <div class="out">
+    </div>
+</template>
+<script type="text/javascript">
+export default function (rootScope,q,timeout) {
+  return {
+    scope: {
+      theme : '=',
+      option: '=',
+      style : '=',
+      height : '='
+    },
+    link (scope, element, attr) {
+      let myChart,
+        el = element.get(0),
+        themes = {},
+        watchoption,
+        themeoption,
+        promise = getEchart();
+      function extend(a, b){
+        var rs = {};
+        function recursive(t, m){
+          for(var i in m){
+            if({}.toString.call(m[i]) === "[object Object]"){
+              if({}.toString.call(t[i]) === "[object Object]"){
+                recursive(t[i], m[i]);
+              } else {
+                recursive(t[i] = {}, m[i]);
+              }
+            } else {
+              t[i] = m[i]
+            }
+          }
+          return t
+        }
+        rs = recursive({}, a)
+        return recursive(rs, b);
+      }
+      function initEachart(theme){
+        let ext = theme[1];
+        typeof watchoption == "function" && watchoption(),
+        thObj = extend(themes[theme[0]], ext);
+        myChart && myChart.dispose();
+        myChart = echarts.init(el, thObj);
+        myChart.showLoading({
+          text : `加载中请稍后`,
+          color : `#fff`,
+          textColor : `#fff`,
+          maskColor : `rgba(0,0,0,.2)`
+        });
+        watchoption = scope.$watch("option", (n,o,s)=>{
+          if(typeof n !== "undefined"){
+            myChart.hideLoading();
+            myChart.setOption(n);
+          }
+        })
+      }
+      function init(theme){
+        let h = scope.height || 300;
+        el.style.height = h + "px";
+        if( themes[theme[0]] ){
+          render();
+        } else {
+          window['require']([`../toolkit/echart-theme/${theme[0]}.js`], (th) => {
+            themes[theme[0]] = th;
+            render();
+          })
+        }
+        function render(){
+          timeout(()=>{
+            initEachart(theme);
+          });
+        }
+      }
+      function getEchart(){
+        var defer = q.defer();
+        if(typeof echarts == "undefined"){
+          window['require'](['echarts'], function(ec){
+            defer.resolve(ec);
+          }, function(e){
+            defer.reject(e);
+          })
+        } else {
+          defer.resolve(echarts);
+        }
+        return defer.promise;
+      }
+      themeoption = scope.$watch("theme", (n,o,s)=>{
+        if(typeof n !== "undefined" && n[0]){
+          promise.then((ec)=>{
+            echarts = ec;
+            init(n);
+          }).catch((e) => {
+            console.error(e)
+          });
+        }
+      });
+      scope.$watch("height", (n,o,s)=>{
+        if(typeof n !== "undefined"){
+          el.style.height = n + "px";
+          myChart && myChart.resize();
+        }
+      });
+      scope.$on("freeboard:echartresize", ()=>{
+        myChart && myChart.resize();
+      })
+      scope.$on("$destroy", (n,o,s)=>{
+        themeoption && themeoption();
+        watchoption && watchoption();
+        myChart && myChart.dispose();
+        myChart = null;
+      })
+      window.onresize = window.onresize || function(){
+        rootScope.$broadcast("freeboard:echartresize");
+      }
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+>outter {
+    margin: 5px;
+    padding: 10px;
+    color: #333;
+    background-color: #eee;
+    border: 1px solid #ddd;
+}
+</style>

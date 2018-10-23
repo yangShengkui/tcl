@@ -1,0 +1,17 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+<p>
+<!-- Main content -->
+<section class="content" style="height:490px;background-color:white;">
+	<form class="form-inline">
+		<div class="form-group">
+			<input id="gatewayName" onKeydown="validatorHTML(event)" class="form-control" ng-model="gatewayName" placeholder="网关设备名称" />
+		</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<div class="form-group">
+			<input id="gatewayId" onKeyup="validatorNUM(this)" class="form-control" ng-model="gateway" placeholder="网关设备底部16位数字编码" />
+		</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<button id="registerGateway" type="button" ng-click="addGateway()" class="btn btn-primary">&nbsp;&nbsp;注册&nbsp;&nbsp;</button>
+	</form>
+</section><!-- /.content -->

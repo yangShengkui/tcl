@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html ng-app="LoginApp">
+<head>
+  <meta charset="utf-8" />
+  <title>普奥云</title>
+  <link href="css/login.css" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="img/shortcut.png" type="image/vnd.microsoft.icon">
+  <script type="text/javascript" src="../js/services/service_factory.js"></script>
+  <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+</head>
+<body ng-controller="loginCtr">
+<div class="top" align="center">
+  <div class="top_c">
+    <div class="logo"></div>
+    <div class="top_01">
+      |<a href="#">注册</a>|<a href="http://proudsmart.com/">首页</a>|</div>
+    <div class="logo02">
+      <img src="img/IIC-Member-logo.png" width="71px" height="40px" />
+    </div>
+  </div>
+</div>
+<div class="content" align="center">
+  <div class="con_01">
+    <div class="text">
+      <h1>ProudThink 5.0</h1>
+      <h2>全新上线</h2>
+      <h4>&nbsp;&nbsp;&nbsp;&nbsp;</h4>
+      <h3>拼出你的工业互联网</h3>
+    </div>
+    <div class="box">
+      <div class="box_01">
+        <div class="line_01">欢迎登录 <a href="#" id="er" ng-mouseover="show()" ng-mouseleave="hidden()"><img src="img/er01.svg" width="26px" height="26px" /></a> </div>
+        <div ng-show="over" ng-init="over = false" class="er_float"><img ng-src="{{imageUrl}}" alt=""></div>
+
+        <div><input class="inbox" type="text" ng-model="user" ng-change="hasError=false" name="firstname" placeholder="登录账号"></div>
+        <div class="line_02" align="center" style="display: block;line-height: 14px"> &nbsp;</div>
+        <div><input class="inbox" type="password" ng-model="password" ng-change="hasError=false" name="firstname" placeholder="登录密码"></div>
+        <div id="msg" ng-show="hasError" ng-bind="errorMsg" class="line_02"></div>
+        <!--<div class="line_02" align="center" style="display: block;">请输入正确的登录密码</div>-->
+        <div class="line_03" align="center">&nbsp; </div>
+        <div class="line_04" align="center" ng-click="login()"><a href="#">登&nbsp;录</a> </div>
+        <div class="line_03" align="right"><a href="/app-uc/forgetPassword.html">忘记密码</a> </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="footer" align="center">
+  <div class="footer_box">
+    <h4>联系我们：   010 - 8414 8078（北京）     021 - 6882 8631（上海）</h4>
+    <h4>© 2015 - 2018 proudsmart.com 普奥云信息科技（北京）有限公司 版权所有 京ICP备17006960号</h4>
+  </div>
+</div>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src='../node_modules/angular/angular.min.js'></script>
+
+<script>
+  var global = this;
+  var app = angular.module("LoginApp", []);
+
+  var injectParams = ['$http', '$rootScope', '$location'];
+
+  var authFactory = function($http, $rootScope, $location) {
+
+    var serviceBase = '/api/rest/',
+      factory = {};
+    factory.get = function(service, method, param, callBack, err) {
+      if(!angular.isString(param)) {
+        param = angular.copy(param);
+        param = JSON.stringify(param);
+      }
+      var url = $services.getUrl(global) + serviceBase + "post/" + service + "/" + method;
+
+      var callToken = $http.post(url, param);
+      //var callToken=$http.get(serviceBase+"get/"+service+"/"+method+"/"+param);
+      if(callBack != null) {
+
+        callToken.then(function(data) {
+          if(data.data.code == 0) {
+            callBack(data.data.data);
+          } else {
+            if(err) {
+              err(data.data);
+            }
+          }
+
+        });
+      }
+      callToken.catch(function(e) {
+        if(e.indexOf("RestServiceException:") == 0) {
+          alert(e);
+        }
+        if(err) {
+          err(e);
+        } else {
+          if(e.indexOf("BizException:") == 0) {
+            alert(e);
+          }
+        }
+      });
+      return callToken;
+    };
+
+    return factory;
+  };
+
+  authFactory.$inject = injectParams;
+  app.config(function ($httpProvider) {
+    $httpProvider.defaults.withCredentials = true;
+    $httpProvider.defaults.headers.post = {
+      'Content-Type': 'text/plain'
+    };
+  });
+
+  app.factory('serviceProxy', authFactory);
+  // I control the main demo.
+  app.controller("loginCtr", function($scope, $http, serviceProxy) {
+    $scope.show = function(){
+	  var img = $scope.imageUrl;
+	  if(img == undefined){
+        serviceProxy.get("configUIService", "getQrcodePath", [], function(result) {
+          $scope.imageUrl = result;
+        }, function(error) {
+          $scope.hasError = true;
+          $scope.errorMsg = error.message
+        })
+      }
+      $scope.over = true
+    }
+    $scope.hidden = function(){
+      $scope.over = false
+    }
+    $scope.login = function() {
+      serviceProxy.get("userLoginUIService", "login", [$scope.user, $scope.password], function(result) {
+        location.href = "../";
+      }, function(error) {
+        $scope.hasError = true;
+        $scope.errorMsg = error.message
+      })
+    };
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,1898 @@
+{
+  "version": "V_2",
+  "layout": {
+    "type": "column",
+    "children": [
+      {
+        "type": "row",
+        "source": "ROW",
+        "parameters": {
+          "alignment": "bootstrap"
+        },
+        "style": {},
+        "children": [
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "数据统计标签",
+                "type": "totalItem",
+                "source": "TOTALITEM",
+                "parameters": {
+                  "icon": {
+                    "perfix": "proudsmart",
+                    "css": "ps-kehufuwu",
+                    "id": "71"
+                  }
+                },
+                "advance": {
+                  "getfunction": "kpiDataService.getValueList",
+                  "category": "ci",
+                  "condition": [
+                    "kpi",
+                    "{object:kpiQueryModel}"
+                  ],
+                  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+                },
+                "style": {
+                  "color": "#fff",
+                  "background-color": "#31bfe5",
+                  "margin": "5px"
+                },
+                "data": {
+                  "applied": false,
+                  "model": {
+                    "id": 204
+                  },
+                  "kpi": [
+                    3022
+                  ],
+                  "resource": [],
+                  "multipleCi": false,
+                  "multipleKpi": false,
+                  "series": {
+                    "manual": "[\n  {\n    \"name\": \"客户数\",\n    \"data\": [\n      {\n        \"name\": \"客户数\",\n        \"value\": 115,\n        \"unit\": \"\"\n      }\n    ]\n  }\n]",
+                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                  },
+                  "modelDisable": true
+                },
+                "$index": [
+                  0,
+                  0
+                ]
+              }
+            ],
+            "col": 3
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "数据统计标签",
+                "type": "totalItem",
+                "source": "TOTALITEM",
+                "parameters": {
+                  "icon": {
+                    "perfix": "proudsmart",
+                    "css": "ps-item-number",
+                    "id": "72"
+                  }
+                },
+                "advance": {
+                  "getfunction": "kpiDataService.getValueList",
+                  "category": "ci",
+                  "condition": [
+                    "kpi",
+                    "{object:kpiQueryModel}"
+                  ],
+                  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+                },
+                "style": {
+                  "color": "#fff",
+                  "background-color": "#1dbab1",
+                  "margin": "5px"
+                },
+                "data": {
+                  "applied": false,
+                  "model": {
+                    "id": 204
+                  },
+                  "kpi": [
+                    3040
+                  ],
+                  "resource": [],
+                  "multipleCi": false,
+                  "multipleKpi": false,
+                  "series": {
+                    "manual": "[\n  {\n    \"name\": \"项目数\",\n    \"data\": [\n      {\n        \"name\": \"项目数\",\n        \"value\": 115,\n        \"unit\": \"\"\n      }\n    ]\n  }\n]",
+                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                  },
+                  "modelDisable": true
+                },
+                "$index": [
+                  0,
+                  0
+                ]
+              }
+            ],
+            "col": 3
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "数据统计标签",
+                "type": "totalItem",
+                "source": "TOTALITEM",
+                "parameters": {
+                  "icon": {
+                    "perfix": "proudsmart",
+                    "css": "ps-equipment-number",
+                    "id": "54"
+                  }
+                },
+                "advance": {
+                  "getfunction": "kpiDataService.getValueList",
+                  "category": "ci",
+                  "condition": [
+                    "kpi",
+                    "{object:kpiQueryModel}"
+                  ],
+                  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+                },
+                "style": {
+                  "color": "#fff",
+                  "background-color": "#e8aa2f",
+                  "margin": "5px"
+                },
+                "data": {
+                  "applied": false,
+                  "model": {
+                    "id": 204
+                  },
+                  "kpi": [
+                    3001
+                  ],
+                  "resource": [],
+                  "multipleCi": false,
+                  "multipleKpi": false,
+                  "series": {
+                    "manual": "[\n  {\n    \"name\": \"设备数\",\n    \"data\": [\n      {\n        \"name\": \"设备数\",\n        \"value\": 325,\n        \"unit\": \"\"\n      }\n    ]\n  }\n]",
+                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                  },
+                  "modelDisable": true
+                },
+                "$index": [
+                  0,
+                  0
+                ]
+              }
+            ],
+            "col": 3
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "数据统计标签",
+                "type": "totalItem",
+                "source": "TOTALITEM",
+                "parameters": {
+                  "icon": {
+                    "perfix": "fa",
+                    "css": "fa-warning",
+                    "id": "9"
+                  }
+                },
+                "advance": {
+                  "getfunction": "kpiDataService.getValueList",
+                  "category": "ci",
+                  "condition": [
+                    "kpi",
+                    "{object:kpiQueryModel}"
+                  ],
+                  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+                },
+                "style": {
+                  "color": "#fff",
+                  "background-color": "#e56660",
+                  "margin": "5px"
+                },
+                "data": {
+                  "applied": false,
+                  "model": {
+                    "id": 204
+                  },
+                  "kpi": [
+                    3026
+                  ],
+                  "resource": [],
+                  "multipleCi": false,
+                  "multipleKpi": false,
+                  "series": {
+                    "manual": "[\n  {\n    \"name\": \"告警数\",\n    \"data\": [\n      {\n        \"name\": \"当日告警\",\n        \"value\": 2002,\n        \"unit\": \"\"\n      }\n    ]\n  }\n]",
+                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                  },
+                  "modelDisable": true
+                },
+                "$index": [
+                  0,
+                  0
+                ]
+              }
+            ],
+            "col": 3
+          }
+        ]
+      },
+      {
+        "label": "控制板2",
+        "type": "box",
+        "class": "box box-info",
+        "source": "BOX",
+        "parameters": {
+          "title": "设备分布地图"
+        },
+        "style": {
+          "font-size": "12px",
+          "font-weight": "bold",
+          "text-align": "left",
+          "margin": "5px"
+        },
+        "children": [
+          {
+            "class": "box-body",
+            "type": "box-body",
+            "children": [
+              {
+                "type": "column",
+                "col": 12,
+                "children": [
+                  {
+                    "type": "row",
+                    "source": "ROW",
+                    "parameters": {
+                      "alignment": "bootstrap"
+                    },
+                    "style": {},
+                    "children": [
+                      {
+                        "type": "column",
+                        "children": [
+                          {
+                            "label": "地图分布",
+                            "type": "echart",
+                            "source": "MAP",
+                            "advance": {
+                              "custom_category": "",
+                              "getfunction": "resourceUIService.statDeviceByStandardAddress",
+                              "category": "scatter",
+                              "condition": [],
+                              "expression": "{\n  on : { \n    click : function(event){\n      var excel = event.global.variable('excel');\n      var etype = ['EKAA','EKAC','EKAH','EKAS','EKBG','EKCC','EKCE','EKCH','EKCK','EKCW'];\n\t\t\tvar rs = [];\n      for(var i in etype){\n        var rnd = parseInt(Math.random() * 10000);\n        rs.push({\n          name : etype[i],\n          value : rnd\n        })\n      };\n      rs.sort(function(a, b){\n        return b.value - a.value;\n      });\n      var arr = [['设备类型(TOP10)','数量']];\n      for(var i in rs){\n        var el = [rs[i].name, rs[i].value.toString()];\n        arr.push(el);\n      }\n      excel.render(arr)\n    } \n  }\n}"
+                            },
+                            "data": {
+                              "applied": false,
+                              "model": {
+                                "id": 204
+                              },
+                              "resource": [],
+                              "format": "年月日",
+                              "aggregate_type": [
+                                1
+                              ],
+                              "aggregate_period": 15,
+                              "aggregate_instance": [],
+                              "series": {
+                                "manual": "[\n  {\n    \"name\": \"设备数量统计\",\n    \"data\": [\n\t{name: '北京',value: 2933 },\n\t{name: '天津',value: 4988 },\n      {name: '上海',value: 2628 },\n      {name: '重庆',value: 14306 },\n      {name: '河北',value: 6429 },\n      {name: '河南',value: 3370 },\n      {name: '云南',value: 4572 },\n      {name: '辽宁',value: 6860 },\n      {name: '黑龙江',value: 359 },\n      {name: '湖南',value: 9975 },\n      {name: '安徽',value: 2895 },\n      {name: '山东',value: 6613 },\n      {name: '新疆',value: 1276 },\n      {name: '江苏',value: 9456 },\n      {name: '浙江',value: 7761 },\n      {name: '江西',value: 3632 },\n      {name: '湖北',value: 3755 },\n      {name: '广西',value: 7214 },\n      {name: '甘肃',value: 0 },\n      {name: '山西',value: 0 },\n      {name: '内蒙古',value: 0 },\n      {name: '陕西',value: 7796 },\n      {name: '吉林',value: 0 },\n      {name: '福建',value: 10189 },\n      {name: '贵州',value: 343 },\n      {name: '广东',value: 50517},\n      {name: '青海',value: 12 },\n      {name: '西藏',value: 2 },\n      {name: '四川',value: 9578 },\n      {name: '宁夏',value: 56 },\n      {name: '海南',value: 17 },\n      {name: '台湾',value: 2 },\n      {name: '香港',value: 1 },\n      {name: '澳门',value: 3 }]\n  }\n]",
+                                "bind": "(function (source){\n  return source.time.getSeries();\n})"
+                              }
+                            },
+                            "parameters": {
+                              "title": "",
+                              "subtitle": ""
+                            },
+                            "style": {
+                              "margin": "auto",
+                              "width": "100%",
+                              "height": "500px"
+                            },
+                            "echart": {
+                              "general": {},
+                              "title": {
+                                "textStyle": {
+                                  "fontWeight": "bold",
+                                  "fontSize": 16
+                                },
+                                "padding": 30
+                              },
+                              "tooltip": {},
+                              "grid": [
+                                {}
+                              ],
+                              "series": [
+                                {
+                                  "type": "map",
+                                  "mapType": "china",
+                                  "geoIndex": "0",
+                                  "name": "设备分布",
+                                  "roam": true,
+                                  "zoom": "1.2",
+                                  "item": {
+                                    "emphasis": {
+                                      "color": ""
+                                    }
+                                  }
+                                }
+                              ],
+                              "geo": {
+                                "map": "china",
+                                "itemStyle": {
+                                  "normal": {
+                                    "color": "rgb(255, 255, 255)",
+                                    "borderColor": "rgb(255, 255, 255)"
+                                  },
+                                  "emphasis": {
+                                    "areaColor": "rgb(159, 197, 232)"
+                                  }
+                                }
+                              },
+                              "visualMap": [
+                                {
+                                  "type": "continuous",
+                                  "calculable": true,
+                                  "color": "[ \"#24bcde\", \"#a2eeff\"]",
+                                  "left": "right",
+                                  "top": "center",
+                                  "min": "0",
+                                  "max": "10000"
+                                }
+                              ]
+                            },
+                            "$index": [
+                              4,
+                              5
+                            ]
+                          }
+                        ],
+                        "col": 8
+                      },
+                      {
+                        "type": "column",
+                        "children": [
+                          {
+                            "label": "表格",
+                            "type": "excel",
+                            "source": "EXCEL",
+                            "style": {
+                              "margin": "10px"
+                            },
+                            "parameters": {
+                              "excelData": [
+                                [
+                                  "设备类型(TOP10)",
+                                  "数量",
+                                  "",
+                                  "",
+                                  ""
+                                ],
+                                [
+                                  "EKAC",
+                                  "3,947",
+                                  "",
+                                  "",
+                                  ""
+                                ],
+                                [
+                                  "EKRV",
+                                  "3,381",
+                                  "",
+                                  "",
+                                  ""
+                                ],
+                                [
+                                  "EKDM",
+                                  "1,875",
+                                  "",
+                                  "",
+                                  ""
+                                ],
+                                [
+                                  "EKWD",
+                                  "409"
+                                ],
+                                [
+                                  "EKCH",
+                                  "318"
+                                ],
+                                [
+                                  "EKAH",
+                                  "312"
+                                ],
+                                [
+                                  "EKAS",
+                                  "146"
+                                ],
+                                [
+                                  "EKDX",
+                                  "120"
+                                ],
+                                [
+                                  "EKSC",
+                                  "111"
+                                ],
+                                [
+                                  "EKDC",
+                                  "4"
+                                ],
+                                [
+                                  "",
+                                  ""
+                                ],
+                                [
+                                  "",
+                                  ""
+                                ],
+                                [
+                                  "",
+                                  ""
+                                ],
+                                [
+                                  "",
+                                  ""
+                                ],
+                                [
+                                  "",
+                                  ""
+                                ],
+                                [
+                                  "",
+                                  ""
+                                ],
+                                []
+                              ]
+                            },
+                            "$index": [
+                              0,
+                              0
+                            ],
+                            "advance": {
+                              "variable": "excel",
+                              "expression": {}
+                            }
+                          }
+                        ],
+                        "col": 4
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "class": "box-footer",
+            "type": "box-footer",
+            "children": [
+              {
+                "type": "column",
+                "col": 12,
+                "children": []
+              }
+            ]
+          }
+        ],
+        "$index": [
+          4,
+          4
+        ]
+      },
+      {
+        "type": "row",
+        "source": "ROW",
+        "parameters": {
+          "alignment": "bootstrap"
+        },
+        "style": {},
+        "children": [
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "控制板2",
+                "type": "box",
+                "class": "box box-info",
+                "source": "BOX",
+                "parameters": {
+                  "title": "客户趋势"
+                },
+                "style": {
+                  "font-size": "12px",
+                  "font-weight": "bold",
+                  "text-align": "left",
+                  "margin": "5px"
+                },
+                "children": [
+                  {
+                    "type": "box-body",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "线图",
+                            "type": "echart",
+                            "source": "LINECHART",
+                            "data": {
+                              "applied": false,
+                              "model": {
+                                "id": 204
+                              },
+                              "resource": [
+                                "rootCi"
+                              ],
+                              "timespan": {
+                                "value": 24,
+                                "unit": "hour"
+                              },
+                              "format": "年月日",
+                              "frequency": {
+                                "value": 30,
+                                "unit": "minute"
+                              },
+                              "aggregate_type": [
+                                1
+                              ],
+                              "aggregate_period": 15,
+                              "aggregate_instance": [],
+                              "legend": {
+                                "manual": "[\n  \"当月客户数\",\n  \"新增客户数\"\n]",
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+                              },
+                              "xAxis": {
+                                "manual": "[\n  [\n    \"201607\",\n    \"201608\",\n    \"201609\",\n    \"201610\",\n    \"201611\",\n    \"201612\",\n    \"201701\",\n    \"201702\",\n    \"201703\",\n    \"201704\",\n    \"201705\",\n    \"201706\"\n  ]\n]",
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+                              },
+                              "xAxisType": "category",
+                              "yAxis": {
+                                "manual": [
+                                  [
+                                    "第一个数据",
+                                    "第二个数据",
+                                    "第三个数据",
+                                    "第四个数据",
+                                    "第五个数据",
+                                    "第六个数据"
+                                  ]
+                                ],
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+                              },
+                              "yAxisType": "value",
+                              "series": {
+                                "manual": "[\n  {\n    \"name\": \"当月客户数\",\n    \"data\": [\n      1,1,2,3,3,4,5,12,18,30,50,60\n    ]\n  },\n  {\n    \"name\": \"新增客户数\",\n    \"data\": [\n      1,0,1,1,0,1,5,7,6,12,20,20\n    ]\n  }\n]",
+                                "bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+                              },
+                              "modelDisable": true
+                            },
+                            "advance": {
+                              "variable": "",
+                              "getfunction": "kpiDataService.getValueList",
+                              "category": "time",
+                              "custom_category": "",
+                              "condition": [
+                                "kpi",
+                                "{object:kpiQueryModel}"
+                              ],
+                              "expression": {}
+                            },
+                            "parameters": {
+                              "title": "",
+                              "subtitle": ""
+                            },
+                            "style": {
+                              "margin": "auto",
+                              "width": "100%",
+                              "height": "220px",
+                              "margin-top": "5",
+                              "margin-bottom": "5"
+                            },
+                            "echart": {
+                              "general": {},
+                              "title": {
+                                "textStyle": {
+                                  "fontWeight": "bold",
+                                  "fontSize": 16
+                                },
+                                "padding": 30
+                              },
+                              "tooltip": {
+                                "trigger": "axis"
+                              },
+                              "legend": {
+                                "bottom": "10",
+                                "data": [
+                                  "数据1",
+                                  "数据2",
+                                  "数据3"
+                                ]
+                              },
+                              "grid": [
+                                {}
+                              ],
+                              "xAxis": [
+                                {
+                                  "axisLine": {
+                                    "lineStyle": {
+                                      "color": "#b0b0b0"
+                                    }
+                                  }
+                                }
+                              ],
+                              "yAxis": [
+                                {
+                                  "boundaryGap": false,
+                                  "axisLine": {
+                                    "lineStyle": {
+                                      "color": "#b0b0b0"
+                                    }
+                                  }
+                                }
+                              ],
+                              "series": [
+                                {
+                                  "type": "bar",
+                                  "itemStyle": {
+                                    "normal": {
+                                      "color": "#31bfe5"
+                                    }
+                                  },
+                                  "markPoint": {
+                                    "data": []
+                                  }
+                                },
+                                {
+                                  "type": "line",
+                                  "lineStyle": {
+                                    "normal": {
+                                      "color": "#9c7af3"
+                                    }
+                                  },
+                                  "markLine": {
+                                    "data": []
+                                  },
+                                  "markArea": {
+                                    "data": []
+                                  },
+                                  "markPoint": {
+                                    "data": []
+                                  }
+                                }
+                              ],
+                              "visualMap": []
+                            },
+                            "$index": [
+                              4,
+                              7
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "class": "box-body"
+                  },
+                  {
+                    "type": "box-footer",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": []
+                      }
+                    ],
+                    "class": "box-footer"
+                  }
+                ],
+                "$index": [
+                  0,
+                  3
+                ]
+              },
+              {
+                "label": "控制板2",
+                "type": "box",
+                "class": "box box-info",
+                "source": "BOX",
+                "parameters": {
+                  "title": "项目趋势"
+                },
+                "style": {
+                  "font-size": "12px",
+                  "font-weight": "bold",
+                  "text-align": "left",
+                  "margin": "5px"
+                },
+                "children": [
+                  {
+                    "type": "box-body",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "线图",
+                            "type": "echart",
+                            "source": "LINECHART",
+                            "data": {
+                              "applied": false,
+                              "model": {
+                                "id": 204
+                              },
+                              "resource": [
+                                "rootCi"
+                              ],
+                              "timespan": {
+                                "value": 24,
+                                "unit": "hour"
+                              },
+                              "format": "年月日",
+                              "frequency": {
+                                "value": 30,
+                                "unit": "minute"
+                              },
+                              "aggregate_type": [
+                                1
+                              ],
+                              "aggregate_period": 15,
+                              "aggregate_instance": [],
+                              "legend": {
+                                "manual": "[\n  \"当月项目数\",\n  \"新增项目数\"\n]",
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+                              },
+                              "xAxis": {
+                                "manual": "[\n  [\n    \"201607\",\n    \"201608\",\n    \"201609\",\n    \"201610\",\n    \"201611\",\n    \"201612\",\n    \"201701\",\n    \"201702\",\n    \"201703\",\n    \"201704\",\n    \"201705\",\n    \"201706\"\n  ]\n]",
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+                              },
+                              "xAxisType": "category",
+                              "yAxis": {
+                                "manual": [
+                                  [
+                                    "第一个数据",
+                                    "第二个数据",
+                                    "第三个数据",
+                                    "第四个数据",
+                                    "第五个数据",
+                                    "第六个数据"
+                                  ]
+                                ],
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+                              },
+                              "yAxisType": "value",
+                              "series": {
+                                "manual": "[\n  {\n    \"name\": \"当月项目数\",\n    \"data\": [\n      10,20,35,40,50,55,60,120,180,300,450,600\n    ]\n  },\n  {\n    \"name\": \"新增项目数\",\n    \"data\": [\n      10,10,15,5,10,5,60,60,60,120,150,100\n    ]\n  }\n]",
+                                "bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+                              },
+                              "modelDisable": true
+                            },
+                            "advance": {
+                              "variable": "",
+                              "getfunction": "kpiDataService.getValueList",
+                              "category": "time",
+                              "custom_category": "",
+                              "condition": [
+                                "kpi",
+                                "{object:kpiQueryModel}"
+                              ],
+                              "expression": {}
+                            },
+                            "parameters": {
+                              "title": "",
+                              "subtitle": ""
+                            },
+                            "style": {
+                              "margin": "auto",
+                              "width": "100%",
+                              "height": "220px"
+                            },
+                            "echart": {
+                              "general": {},
+                              "title": {
+                                "textStyle": {
+                                  "fontWeight": "bold",
+                                  "fontSize": 16
+                                },
+                                "padding": 30
+                              },
+                              "tooltip": {
+                                "trigger": "axis"
+                              },
+                              "legend": {
+                                "bottom": "10",
+                                "data": [
+                                  "数据1",
+                                  "数据2",
+                                  "数据3"
+                                ]
+                              },
+                              "grid": [
+                                {}
+                              ],
+                              "xAxis": [
+                                {
+                                  "axisLine": {
+                                    "lineStyle": {
+                                      "color": "#b0b0b0"
+                                    }
+                                  }
+                                }
+                              ],
+                              "yAxis": [
+                                {
+                                  "boundaryGap": false,
+                                  "axisLine": {
+                                    "lineStyle": {
+                                      "color": "#b0b0b0"
+                                    }
+                                  }
+                                }
+                              ],
+                              "series": [
+                                {
+                                  "type": "bar",
+                                  "itemStyle": {
+                                    "normal": {
+                                      "color": "#e86462"
+                                    }
+                                  },
+                                  "markPoint": {
+                                    "data": []
+                                  }
+                                },
+                                {
+                                  "type": "line",
+                                  "markLine": {
+                                    "data": []
+                                  },
+                                  "markArea": {
+                                    "data": []
+                                  },
+                                  "markPoint": {
+                                    "data": []
+                                  }
+                                }
+                              ],
+                              "visualMap": []
+                            },
+                            "$index": [
+                              4,
+                              7
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "class": "box-body"
+                  },
+                  {
+                    "type": "box-footer",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": []
+                      }
+                    ],
+                    "class": "box-footer"
+                  }
+                ],
+                "$index": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "col": 6
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "控制板2",
+                "type": "box",
+                "class": "box box-info",
+                "source": "BOX",
+                "parameters": {
+                  "title": "用户趋势"
+                },
+                "style": {
+                  "font-size": "12px",
+                  "font-weight": "bold",
+                  "text-align": "left",
+                  "margin": "5px"
+                },
+                "children": [
+                  {
+                    "type": "box-body",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "线图",
+                            "type": "echart",
+                            "source": "LINECHART",
+                            "data": {
+                              "applied": false,
+                              "model": {
+                                "id": 204
+                              },
+                              "resource": [
+                                "rootCi"
+                              ],
+                              "timespan": {
+                                "value": 24,
+                                "unit": "hour"
+                              },
+                              "format": "年月日",
+                              "frequency": {
+                                "value": 30,
+                                "unit": "minute"
+                              },
+                              "aggregate_type": [
+                                1
+                              ],
+                              "aggregate_period": 15,
+                              "aggregate_instance": [],
+                              "legend": {
+                                "manual": "[\n  \"当月用户数\",\n  \"新增用户数\"\n]",
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+                              },
+                              "xAxis": {
+                                "manual": "[\n  [\n    \"201607\",\n    \"201608\",\n    \"201609\",\n    \"201610\",\n    \"201611\",\n    \"201612\",\n    \"201701\",\n    \"201702\",\n    \"201703\",\n    \"201704\",\n    \"201705\",\n    \"201706\"\n  ]\n]",
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+                              },
+                              "xAxisType": "category",
+                              "yAxis": {
+                                "manual": [
+                                  [
+                                    "第一个数据",
+                                    "第二个数据",
+                                    "第三个数据",
+                                    "第四个数据",
+                                    "第五个数据",
+                                    "第六个数据"
+                                  ]
+                                ],
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+                              },
+                              "yAxisType": "value",
+                              "series": {
+                                "manual": "[\n  {\n    \"name\": \"当月用户数\",\n    \"data\": [\n      10,20,30,40,50,55,60,120,180,300,450,600\n    ]\n  },\n  {\n    \"name\": \"新增用户数\",\n    \"data\": [\n      10,10,10,10,10,5,60,60,60,120,150,100\n    ]\n  }\n]",
+                                "bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+                              },
+                              "modelDisable": true
+                            },
+                            "advance": {
+                              "variable": "",
+                              "getfunction": "kpiDataService.getValueList",
+                              "category": "time",
+                              "custom_category": "",
+                              "condition": [
+                                "kpi",
+                                "{object:kpiQueryModel}"
+                              ],
+                              "expression": {}
+                            },
+                            "parameters": {
+                              "title": "",
+                              "subtitle": ""
+                            },
+                            "style": {
+                              "margin": "auto",
+                              "width": "100%",
+                              "height": "220px"
+                            },
+                            "echart": {
+                              "general": {},
+                              "title": {
+                                "show": false,
+                                "textStyle": {
+                                  "fontWeight": "bold",
+                                  "fontSize": 16
+                                },
+                                "padding": 30
+                              },
+                              "tooltip": {
+                                "trigger": "axis"
+                              },
+                              "legend": {
+                                "bottom": "10",
+                                "data": [
+                                  "数据1",
+                                  "数据2",
+                                  "数据3"
+                                ]
+                              },
+                              "grid": [
+                                {}
+                              ],
+                              "xAxis": [
+                                {
+                                  "axisLine": {
+                                    "lineStyle": {
+                                      "color": "#b0b0b0"
+                                    }
+                                  }
+                                }
+                              ],
+                              "yAxis": [
+                                {
+                                  "boundaryGap": false,
+                                  "axisLine": {
+                                    "lineStyle": {
+                                      "color": "#b0b0b0"
+                                    }
+                                  }
+                                }
+                              ],
+                              "series": [
+                                {
+                                  "type": "bar",
+                                  "itemStyle": {
+                                    "normal": {
+                                      "color": "#e9ad2b"
+                                    }
+                                  },
+                                  "markPoint": {
+                                    "data": []
+                                  }
+                                },
+                                {
+                                  "type": "line",
+                                  "markLine": {
+                                    "data": []
+                                  },
+                                  "markArea": {
+                                    "data": []
+                                  },
+                                  "markPoint": {
+                                    "data": []
+                                  }
+                                }
+                              ],
+                              "visualMap": []
+                            },
+                            "$index": [
+                              4,
+                              7
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "class": "box-body"
+                  },
+                  {
+                    "type": "box-footer",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": []
+                      }
+                    ],
+                    "class": "box-footer"
+                  }
+                ],
+                "$index": [
+                  0,
+                  3
+                ]
+              },
+              {
+                "label": "控制板2",
+                "type": "box",
+                "class": "box box-info",
+                "source": "BOX",
+                "parameters": {
+                  "title": "设备趋势"
+                },
+                "style": {
+                  "font-size": "12px",
+                  "font-weight": "bold",
+                  "text-align": "left",
+                  "margin": "5px"
+                },
+                "children": [
+                  {
+                    "type": "box-body",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "type": "row",
+                            "children": [
+                              {
+                                "type": "column",
+                                "children": [
+                                  {
+                                    "label": "选择器",
+                                    "type": "multiselect",
+                                    "source": "MULTISELECT",
+                                    "advance": {
+                                      "variable": "",
+                                      "getoptions": "models",
+                                      "category": "ci",
+                                      "condition": [],
+                                      "expression": "{  'formatter' : {  'label' : '{item:label}', 'value' : '{item:id}' } }"
+                                    },
+                                    "$index": [
+                                      0,
+                                      0
+                                    ]
+                                  },
+                                  {
+                                    "label": "柱图",
+                                    "type": "echart",
+                                    "source": "BARCHART",
+                                    "advance": {
+                                      "variable": "",
+                                      "getfunction": "kpiDataService.getValueList",
+                                      "category": "time",
+                                      "custom_category": "",
+                                      "condition": [
+                                        "kpi",
+                                        "{object:kpiQueryModel}"
+                                      ],
+                                      "expression": {}
+                                    },
+                                    "data": {
+                                      "applied": false,
+                                      "model": {
+                                        "id": 204
+                                      },
+                                      "resource": [
+                                        "rootCi"
+                                      ],
+                                      "timespan": {
+                                        "value": 24,
+                                        "unit": "hour"
+                                      },
+                                      "format": "年月日",
+                                      "frequency": {
+                                        "value": 30,
+                                        "unit": "minute"
+                                      },
+                                      "aggregate_type": [
+                                        1
+                                      ],
+                                      "aggregate_period": 15,
+                                      "aggregate_instance": [
+                                        "instance1"
+                                      ],
+                                      "legend": {
+                                        "manual": "[\n  \"当月设备数\",\n  \"新增设备数\"\n]",
+                                        "bind": "(function (source){\n  return source.time.getLegend();\n})"
+                                      },
+                                      "xAxis": {
+                                        "manual": "[\n  [\n    \"201607\",\n    \"201608\",\n    \"201609\",\n    \"201610\",\n    \"201611\",\n    \"201612\",\n    \"201701\",\n    \"201702\",\n    \"201703\",\n    \"201704\",\n    \"201705\",\n    \"201706\"\n  ]\n]",
+                                        "bind": "(function (source){\n  return source.time.getxAxis();\n})"
+                                      },
+                                      "xAxisType": "category",
+                                      "yAxis": {
+                                        "manual": [
+                                          [
+                                            "第一个数据",
+                                            "第二个数据",
+                                            "第三个数据",
+                                            "第四个数据",
+                                            "第五个数据",
+                                            "第六个数据"
+                                          ]
+                                        ],
+                                        "bind": "(function (source){\n  return source.time.getxAxis();\n})"
+                                      },
+                                      "yAxisType": "value",
+                                      "series": {
+                                        "manual": "[\n  {\n    \"name\": \"当月设备数\",\n    \"data\": [\n      10,20,35,40,50,55,60,120,180,300,450,600\n    ]\n  },\n  {\n    \"name\": \"新增设备数\",\n    \"data\": [\n      10,10,15,5,10,5,60,60,60,120,150,100\n    ]\n  }\n]",
+                                        "bind": "(function (source){\n  return source.time.getSeries();\n})"
+                                      },
+                                      "modelDisable": true
+                                    },
+                                    "parameters": {
+                                      "title": "",
+                                      "subtitle": ""
+                                    },
+                                    "style": {
+                                      "margin": "auto",
+                                      "width": "100%",
+                                      "height": "186px"
+                                    },
+                                    "echart": {
+                                      "general": {},
+                                      "title": {
+                                        "textStyle": {
+                                          "fontWeight": "bold",
+                                          "fontSize": 16
+                                        },
+                                        "padding": "30",
+                                        "top": "10"
+                                      },
+                                      "tooltip": {
+                                        "trigger": "axis"
+                                      },
+                                      "legend": {
+                                        "bottom": "5",
+                                        "data": [
+                                          "数据1",
+                                          "数据2",
+                                          "数据3"
+                                        ]
+                                      },
+                                      "grid": [
+                                        {
+                                          "top": "30"
+                                        }
+                                      ],
+                                      "xAxis": [
+                                        {
+                                          "axisLine": {
+                                            "lineStyle": {
+                                              "color": "#b0b0b0"
+                                            }
+                                          }
+                                        }
+                                      ],
+                                      "yAxis": [
+                                        {
+                                          "axisLine": {
+                                            "lineStyle": {
+                                              "color": "#b0b0b0"
+                                            }
+                                          }
+                                        }
+                                      ],
+                                      "series": [
+                                        {
+                                          "type": "bar",
+                                          "name": "数据1",
+                                          "itemStyle": {
+                                            "normal": {
+                                              "color": "#38c7cb"
+                                            }
+                                          },
+                                          "markPoint": {
+                                            "data": []
+                                          }
+                                        },
+                                        {
+                                          "type": "line",
+                                          "lineStyle": {
+                                            "normal": {
+                                              "color": "rgb(142, 124, 195)"
+                                            }
+                                          },
+                                          "markLine": {
+                                            "data": []
+                                          },
+                                          "markArea": {
+                                            "data": []
+                                          },
+                                          "markPoint": {
+                                            "data": []
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "$index": [
+                                      4,
+                                      7
+                                    ]
+                                  }
+                                ],
+                                "col": 12
+                              }
+                            ],
+                            "source": "ROW",
+                            "parameters": {
+                              "alignment": "bootstrap"
+                            },
+                            "style": {}
+                          }
+                        ]
+                      }
+                    ],
+                    "class": "box-body"
+                  },
+                  {
+                    "type": "box-footer",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": []
+                      }
+                    ],
+                    "class": "box-footer"
+                  }
+                ],
+                "$index": [
+                  0,
+                  3
+                ]
+              }
+            ],
+            "col": 6
+          }
+        ]
+      },
+      {
+        "label": "控制板2",
+        "type": "box",
+        "class": "box box-info",
+        "source": "BOX",
+        "parameters": {
+          "title": "各办事处项目统计"
+        },
+        "style": {
+          "font-size": "12px",
+          "font-weight": "bold",
+          "text-align": "left",
+          "margin": "5px"
+        },
+        "children": [
+          {
+            "class": "box-body",
+            "type": "box-body",
+            "children": [
+              {
+                "type": "column",
+                "col": 12,
+                "children": [
+                  {
+                    "label": "柱图",
+                    "type": "echart",
+                    "source": "BARCHART",
+                    "advance": {
+                      "variable": "",
+                      "getfunction": "kpiDataService.getValueList",
+                      "category": "time",
+                      "custom_category": "",
+                      "condition": [
+                        "kpi",
+                        "{object:kpiQueryModel}"
+                      ],
+                      "expression": {}
+                    },
+                    "data": {
+                      "applied": false,
+                      "model": {
+                        "id": 204
+                      },
+                      "resource": [
+                        "rootCi"
+                      ],
+                      "timespan": {
+                        "value": 24,
+                        "unit": "hour"
+                      },
+                      "format": "年月日",
+                      "frequency": {
+                        "value": 30,
+                        "unit": "minute"
+                      },
+                      "aggregate_type": [
+                        1
+                      ],
+                      "aggregate_period": 15,
+                      "aggregate_instance": [
+                        "instance1"
+                      ],
+                      "legend": {
+                        "manual": "[\n  \"项目数\"\n]",
+                        "bind": "(function (source){\n  return source.time.getLegend();\n})"
+                      },
+                      "xAxis": {
+                        "manual": "[\n  [\n\"东莞办事处\",\n\"深圳办事处\",\n\"上海办事处\",\n\"南宁办事处\",\n\"广州办事处\",\n\"石家庄办事处\",\n\"郑州办事处\",\n\"南京办事处\",\n\"合肥办事处\",\n\"济南办事处\",\n\"福州办事处\",\n\"海南办事处\",\n\"长沙办事处\",\n\"佛山办事处\",\n\"北京办事处\",\n\"南昌办事处\",\n\"杭州办事处\",\n\"云贵办事处\"\n  ]\n]",
+                        "bind": "(function (source){\n  return source.time.getxAxis();\n})"
+                      },
+                      "xAxisType": "category",
+                      "yAxis": {
+                        "manual": [
+                          [
+                            "第一个数据",
+                            "第二个数据",
+                            "第三个数据",
+                            "第四个数据",
+                            "第五个数据",
+                            "第六个数据"
+                          ]
+                        ],
+                        "bind": "(function (source){\n  return source.time.getxAxis();\n})"
+                      },
+                      "yAxisType": "value",
+                      "series": {
+                        "manual": "[\n  {\n    \"name\": \"项目数\",\n    \"data\": [\n      12,\n      15,\n      14,\n      23,\n      15,\n      17,\n\t  21,\n      18,\n      61,\n      10,\n      11,\n      18,\n\t  41,\n      51,\n      62,\n      33,\n      41,\n      48\n    ]\n  }\n]",
+                        "bind": "(function (source){\n  return source.time.getSeries();\n})"
+                      },
+                      "modelDisable": true
+                    },
+                    "parameters": {
+                      "title": "",
+                      "subtitle": ""
+                    },
+                    "style": {
+                      "margin": "auto",
+                      "width": "100%",
+                      "height": "220px"
+                    },
+                    "echart": {
+                      "general": {},
+                      "title": {
+                        "textStyle": {
+                          "fontWeight": "bold",
+                          "fontSize": 16
+                        },
+                        "padding": 30
+                      },
+                      "tooltip": {
+                        "trigger": "axis"
+                      },
+                      "legend": {
+                        "bottom": "5",
+                        "data": [
+                          "数据1",
+                          "数据2",
+                          "数据3"
+                        ]
+                      },
+                      "grid": [
+                        {
+                          "left": "60",
+                          "top": "40",
+                          "right": "60"
+                        }
+                      ],
+                      "xAxis": [
+                        {
+                          "axisLine": {
+                            "lineStyle": {
+                              "color": "#b0b0b0"
+                            }
+                          }
+                        }
+                      ],
+                      "yAxis": [
+                        {
+                          "axisLine": {
+                            "lineStyle": {
+                              "color": "#b0b0b0"
+                            }
+                          }
+                        }
+                      ],
+                      "series": [
+                        {
+                          "type": "bar",
+                          "name": "数据1",
+                          "markPoint": {
+                            "data": []
+                          }
+                        }
+                      ]
+                    },
+                    "$index": [
+                      4,
+                      0
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "class": "box-footer",
+            "type": "box-footer",
+            "children": [
+              {
+                "type": "column",
+                "col": 12,
+                "children": []
+              }
+            ]
+          }
+        ],
+        "$index": [
+          0,
+          0
+        ]
+      },
+      {
+        "type": "row",
+        "source": "ROW",
+        "parameters": {
+          "alignment": "bootstrap"
+        },
+        "style": {},
+        "children": [
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "控制板2",
+                "type": "box",
+                "class": "box box-info",
+                "source": "BOX",
+                "parameters": {
+                  "title": "设备类型告警"
+                },
+                "style": {
+                  "font-size": "12px",
+                  "font-weight": "bold",
+                  "text-align": "left",
+                  "margin": "5px"
+                },
+                "children": [
+                  {
+                    "class": "box-body",
+                    "type": "box-body",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "饼图",
+                            "type": "echart",
+                            "source": "PIECHART",
+                            "advance": {
+                              "variable": "",
+                              "getfunction": "kpiDataService.getValueList",
+                              "category": "ci",
+                              "custom_category": "",
+                              "condition": [
+                                "kpi",
+                                "{object:kpiQueryModel}"
+                              ]
+                            },
+                            "data": {
+                              "applied": false,
+                              "model": {
+                                "id": 204
+                              },
+                              "resource": [
+                                "rootCi"
+                              ],
+                              "aggregate_type": [
+                                1
+                              ],
+                              "aggregate_instance": [],
+                              "legend": {
+                                "manual": "[\n\"EKAA\",\n\"EKAC\",\n\"EKAH\",\n\"EKAS\",\n\"EKBG\",\n\"EKCC\",\n\"EKCE\",\n\"EKCH\",\n\"EKCK\",\n\"EKCW\"\n]",
+                                "bind": "(function (source){\n console.log(source)\n return source.ci.getSeries();\n})"
+                              },
+                              "series": {
+                                "manual": "[\n  {\n    \"name\": \"设备模板告警统计\",\n    \"data\": [\n      {\n        \"name\": \"EKAA\",\n        \"value\": 33\n      },\n      {\n        \"name\": \"EKAC\",\n        \"value\": 27\n      },\n      {\n        \"name\": \"EKAH\",\n        \"value\": 41\n      },\n\t  {\n        \"name\": \"EKAS\",\n        \"value\": 51\n      },      {\n        \"name\": \"EKBG\",\n        \"value\": 21\n      },\n      {\n        \"name\": \"EKCC\",\n        \"value\": 33\n      },\n      {\n        \"name\": \"EKCE\",\n        \"value\": 27\n      },\n      {\n        \"name\": \"EKCH\",\n        \"value\": 41\n      },\n\t  {\n        \"name\": \"EKCK\",\n        \"value\": 51\n      },      {\n        \"name\": \"EKCW\",\n        \"value\": 21\n      }\n    ]\n  }\n]",
+                                "bind": "(function (source){\n  return source.ci.getSeries();\n})"
+                              },
+                              "modelDisable": true
+                            },
+                            "parameters": {
+                              "title": "",
+                              "subtitle": ""
+                            },
+                            "style": {
+                              "margin": "auto",
+                              "width": "100%",
+                              "height": "260px"
+                            },
+                            "echart": {
+                              "general": {},
+                              "title": {
+                                "show": false,
+                                "textStyle": {
+                                  "fontWeight": "bold",
+                                  "fontSize": 16
+                                },
+                                "padding": 30,
+                                "left": "50%"
+                              },
+                              "tooltip": {},
+                              "legend": {
+                                "show": false,
+                                "left": "1%",
+                                "bottom": "5",
+                                "data": [],
+                                "align": "left"
+                              },
+                              "series": [
+                                {
+                                  "type": "pie",
+                                  "name": "数据1",
+                                  "center": "[  \"50%\",  \"50%\"]",
+                                  "radius": "[  0,  \"55%\"]",
+                                  "markPoint": {
+                                    "data": []
+                                  }
+                                }
+                              ]
+                            },
+                            "$index": [
+                              2,
+                              3
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "class": "box-footer",
+                    "type": "box-footer",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": []
+                      }
+                    ]
+                  }
+                ],
+                "$index": [
+                  4,
+                  3
+                ]
+              }
+            ],
+            "col": 4
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "控制板2",
+                "type": "box",
+                "class": "box box-info",
+                "source": "BOX",
+                "parameters": {
+                  "title": "各办事处当前告警"
+                },
+                "style": {
+                  "font-size": "12px",
+                  "font-weight": "bold",
+                  "text-align": "left",
+                  "margin": "5px"
+                },
+                "children": [
+                  {
+                    "type": "box-body",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "线图",
+                            "type": "echart",
+                            "source": "LINECHART",
+                            "data": {
+                              "applied": false,
+                              "model": {
+                                "id": 204
+                              },
+                              "resource": [
+                                "rootCi"
+                              ],
+                              "timespan": {
+                                "value": 24,
+                                "unit": "hour"
+                              },
+                              "format": "年月日",
+                              "frequency": {
+                                "value": 30,
+                                "unit": "minute"
+                              },
+                              "aggregate_type": [
+                                1
+                              ],
+                              "aggregate_period": 15,
+                              "aggregate_instance": [],
+                              "legend": {
+                                "manual": "[\n  \"严重告警\",\n  \"重要告警\",\n  \"警告告警\",\n  \"一般告警\"\n]",
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+                              },
+                              "xAxis": {
+                                "manual": "[\n  [\n\"东莞办事处\",\n\"深圳办事处\",\n\"上海办事处\",\n\"南宁办事处\",\n\"广州办事处\",\n\"石家庄办事处\",\n\"郑州办事处\",\n\"南京办事处\",\n\"合肥办事处\",\n\"济南办事处\",\n\"福州办事处\",\n\"海南办事处\",\n\"长沙办事处\",\n\"佛山办事处\",\n\"北京办事处\",\n\"南昌办事处\",\n\"杭州办事处\",\n\"云贵办事处\"\n  ]\n]",
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+                              },
+                              "xAxisType": "category",
+                              "yAxis": {
+                                "manual": [
+                                  [
+                                    "第一个数据",
+                                    "第二个数据",
+                                    "第三个数据",
+                                    "第四个数据",
+                                    "第五个数据",
+                                    "第六个数据"
+                                  ]
+                                ],
+                                "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+                              },
+                              "yAxisType": "value",
+                              "series": {
+                                "manual": "[\n  {\n    \"name\": \"严重告警\",\n\tstack: '告警总数',\n    \"data\": [\n      2,\n      5,\n      4,\n      3,\n      5,\n      7,\n\t  2,\n      8,\n      6,\n      1,\n      1,\n      8,\n\t  1,\n      5,\n      6,\n      3,\n      1,\n      8\n    ]\n  },\n    {\n    \"name\": \"重要告警\",\n\tstack: '告警总数',\n    \"data\": [\n      1,\n      8,\n      6,\n      1,\n      2,\n      8,\n\t  10,\n      8,\n      6,\n      1,\n      1,\n      8,\n\t  10,\n      8,\n      6,\n      10,\n      12,\n      8\n    ]\n  },\n    {\n    \"name\": \"警告告警\",\n\tstack: '告警总数',\n    \"data\": [\n      12,\n      8,\n      6,\n      13,\n      15,\n      8,\n\t  12,\n      8,\n      6,\n      13,\n      15,\n      8,\n\t  12,\n      8,\n      4,\n      30,\n      12,\n      8\n    ]\n  },\n    {\n    \"name\": \"一般告警\",\n\tstack: '告警总数',\n    \"data\": [\n      12,\n      8,\n      6,\n      10,\n      12,\n      8,\n\t  10,\n      8,\n      6,\n      10,\n      15,\n      8,\n\t  12,\n      8,\n      6,\n      10,\n      12,\n      8\n    ]\n  }\n]",
+                                "bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+                              },
+                              "modelDisable": true
+                            },
+                            "advance": {
+                              "variable": "",
+                              "getfunction": "kpiDataService.getValueList",
+                              "category": "time",
+                              "custom_category": "",
+                              "condition": [
+                                "kpi",
+                                "{object:kpiQueryModel}"
+                              ],
+                              "expression": {}
+                            },
+                            "parameters": {
+                              "title": "",
+                              "subtitle": ""
+                            },
+                            "style": {
+                              "margin": "auto",
+                              "width": "100%",
+                              "height": "260px"
+                            },
+                            "echart": {
+                              "general": {},
+                              "title": {
+                                "textStyle": {
+                                  "fontWeight": "bold",
+                                  "fontSize": 16
+                                },
+                                "padding": 30
+                              },
+                              "tooltip": {
+                                "trigger": "axis"
+                              },
+                              "legend": {
+                                "show": false,
+                                "data": [
+                                  "数据1",
+                                  "数据2",
+                                  "数据3"
+                                ]
+                              },
+                              "grid": [
+                                {
+                                  "left": "50",
+                                  "right": "50"
+                                }
+                              ],
+                              "xAxis": [
+                                {
+                                  "nameLocation": "start",
+                                  "nameRotate": "45",
+                                  "axisLine": {
+                                    "lineStyle": {
+                                      "color": "#b0b0b0"
+                                    }
+                                  }
+                                }
+                              ],
+                              "yAxis": [
+                                {
+                                  "boundaryGap": false,
+                                  "axisLine": {
+                                    "lineStyle": {
+                                      "color": "#b0b0b0"
+                                    }
+                                  }
+                                }
+                              ],
+                              "series": [
+                                {
+                                  "type": "bar",
+                                  "stack": "告警总数",
+                                  "itemStyle": {
+                                    "normal": {
+                                      "color": "#1dbab3"
+                                    }
+                                  },
+                                  "markPoint": {
+                                    "data": [],
+                                    "symbolRotate": "45"
+                                  }
+                                },
+                                {
+                                  "type": "bar",
+                                  "stack": "告警总数",
+                                  "itemStyle": {
+                                    "normal": {
+                                      "color": "#33bfe3"
+                                    }
+                                  },
+                                  "markPoint": {
+                                    "data": []
+                                  }
+                                },
+                                {
+                                  "type": "bar",
+                                  "stack": "告警总数",
+                                  "itemStyle": {
+                                    "normal": {
+                                      "color": "#ec9524"
+                                    }
+                                  },
+                                  "markPoint": {
+                                    "data": []
+                                  }
+                                },
+                                {
+                                  "type": "bar",
+                                  "stack": "告警总数",
+                                  "itemStyle": {
+                                    "normal": {
+                                      "color": "#e56660"
+                                    }
+                                  },
+                                  "markPoint": {
+                                    "data": []
+                                  }
+                                },
+                                {
+                                  "type": "bar",
+                                  "stack": "告警总数",
+                                  "markPoint": {
+                                    "data": []
+                                  }
+                                }
+                              ],
+                              "visualMap": []
+                            },
+                            "$index": [
+                              2,
+                              0
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "class": "box-body"
+                  },
+                  {
+                    "type": "box-footer",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": []
+                      }
+                    ],
+                    "class": "box-footer"
+                  }
+                ],
+                "$index": [
+                  4,
+                  3
+                ]
+              }
+            ],
+            "col": 8
+          }
+        ]
+      }
+    ],
+    "col": 12
+  },
+  "setting": {
+    "padding": 15,
+    "color": ""
+  }
+}

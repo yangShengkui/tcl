@@ -1,0 +1,140 @@
+<!-- 我的任务-保养大修模板 -->
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog" style="width:1000px;">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">保养大修任务</h4>
+      </div>
+
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal" name="dirForm">
+          <!-- 保养计划编号 -->
+          <div class="form-group col-sm-4">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">保养计划编号：</span>
+            </label>
+            <div class="col-sm-7">
+              <span style="line-height: 30px;">AAAAAAAAA</span>
+            </div>
+          </div>
+          <!-- 保养项目名称 -->
+          <div class="form-group col-sm-4 ">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">保养项目名称: </span>
+            </label>
+            <div class="col-sm-7">
+              <span style="line-height: 30px;">AAAAAAAAA</span>
+            </div>
+          </div>
+          <!-- 保养设备 -->
+          <div class="form-group col-sm-4">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">保养设备: </span>
+            </label>
+            <div class="col-sm-7">
+              <span style="line-height: 30px;">AAAAAAAAA</span>
+            </div>
+          </div>
+
+
+          <!-- 周期单位 -->
+          <div class="form-group col-sm-4">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">周期单位：</span>
+            </label>
+            <div class="col-sm-7">
+              <span style="line-height: 30px;">AAAAAAAAA</span>
+            </div>
+          </div>
+          <!-- 周期间隔 -->
+          <div class="form-group col-sm-4 ">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">周期间隔: </span>
+            </label>
+            <div class="col-sm-7">
+              <span style="line-height: 30px;">AAAAAAAAA</span>
+            </div>
+          </div>
+          <!-- 开始日期 -->
+          <div class="form-group col-sm-4">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">开始日期: </span>
+            </label>
+            <div class="col-sm-7">
+              <span style="line-height: 30px;">AAAAAAAAA</span>
+            </div>
+          </div>
+
+          <!-- 开始时间 -->
+          <div class="form-group col-sm-4 ">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">开始时间: </span>
+            </label>
+            <div class="col-sm-7">
+              <span style="line-height: 30px;">AAAAAAAAA</span>
+            </div>
+          </div>
+          <!-- 保养类型 -->
+          <div class="form-group col-sm-4">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">保养类型: </span>
+            </label>
+            <div class="col-sm-7">
+              <span style="line-height: 30px;">AAAAAAAAA</span>
+            </div>
+          </div>
+          <!-- 第一责任人 -->
+          <div class="form-group col-sm-4">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">第一责任人: </span>
+            </label>
+            <div class="col-sm-7">
+              <span style="line-height: 30px;">AAAAAAAAA</span>
+            </div>
+          </div>
+
+          <div class="form-group col-sm-4">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">确认人: </span>
+            </label>
+            <div class="col-sm-7">
+              <select class="form-control input-sm" placeholder="请选择...">
+                <option value="">请选择...</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="form-group col-sm-12 " style="border:none;">
+        <label class="col-sm-2 dialog-control-label no-padding-right dialog-control-h">
+          <span class="ng-binding">使用备件：</span>
+        </label>
+        <div class="col-sm-2">
+            <button class="btn btn-primary" ng-click="AddsparePart()">添加备件</button>
+        </div>
+      </div>
+
+      <!-- 备件模块 -->
+      <div class="box-body col-sm-12  table-responsive margin-bottom-20 bg-write" style="padding: 0 10%;margin: 0 auto;">
+        <div class="box-footer margin-bottom-10">
+          <table width="100%" class="table table-hover" id="addCheckNumberTable" dialog-spare-part></table>
+        </div>
+      </div>
+
+      <!-- 表格 -->
+      <div class="box-body col-sm-12  table-responsive margin-bottom-20 bg-write ">
+        <div class="box-footer margin-bottom-10">
+          <table width="100%" class="table table-hover" id="addCheckNumberTable" add-task-big-daily-check-table></table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="collForm.$invalid" ng-click="saveCheckPlan()" disabled="disabled">
+          确定
+        </button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

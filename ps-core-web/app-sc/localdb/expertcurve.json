@@ -1,0 +1,14 @@
+{
+  "expertCurveHeader":[
+    {"icon":"ps-estimated_output","title":"8700Kg","type":"上期产量"},
+    {"icon":"ps-planting","title":"10000袋","type":"本期种植"},
+    {"icon":"ps-mushroom","title":"良好","type":"制菌情况"},
+    {"icon":"ps-current_production","title":"9600Kg","type":"预计产量"}
+  ],
+  "MyceliaData":[
+    {"name":"空气温度","value":"20 - 30","sporocarpvalue":"20 - 30"},
+    {"name":"土壤温度","value":"21 - 25","sporocarpvalue":"21 - 25"},
+    {"name":"空气湿度","value":"60 - 70","sporocarpvalue":"60 - 70"},
+    {"name":"土壤湿度","value":"50 - 60","sporocarpvalue":"50 - 60"}
+  ]
+}

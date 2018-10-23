@@ -1,0 +1,556 @@
+.ui-menu {
+  height: 200px;
+}
+#btitle {
+  position: relative;
+  top: 3px;
+  height: 21px;
+}
+.selWrap {
+  width: 183px;
+  min-height: 90px;
+  left: 20px;
+  border: 1px solid #999;
+  box-shadow: 1px 1px 4px #000;
+  background-color: #eee;
+  position: absolute;
+  display: none;
+  z-index: 999999;
+}
+.selWrap .icon {
+  width: 25px;
+  height: 25px;
+  color: #000;
+  border-radius: 50%;
+  background-color: #000;
+}
+.bg-white {
+  background-color: #fff;
+  color: #555;
+}
+.helper {
+  width: 600px;
+  background-color: #fff;
+  border: 1px dashed #555;
+  pointer-events: none;
+  opacity: 0.6;
+  margin: 0;
+  padding: 10px;
+}
+.helper .inner {
+  height: 100px;
+  background-color: #eee;
+  border: 1px dashed #aaa;
+}
+.help_wrap {
+  width: 500px;
+  padding: 20px;
+  border: 1px dashed #555;
+  background-color: #fff;
+}
+.help_wrap .column {
+  height: 130px;
+  background-color: #fff;
+}
+.rowWrap .toolbar {
+  height: 26px;
+  background-color: #aaa;
+}
+.rowWrap .toolbar .titleWrap {
+  float: left;
+}
+.rowWrap .toolbar .moveBtn {
+  width: 50px;
+  height: 20px;
+  line-height: 20px;
+  background-color: #000;
+  color: #fff;
+  float: right;
+  margin-top: 2px;
+  margin-right: 10px;
+  cursor: move;
+  text-align: center;
+}
+.rowWrap .toolbar .deleteBtn {
+  cursor: pointer;
+  width: 50px;
+  height: 20px;
+  line-height: 20px;
+  background-color: #000;
+  color: #fff;
+  margin-top: 2px;
+  margin-right: 10px;
+  float: right;
+  text-align: center;
+}
+.rowWrap .toolbar .showOutter {
+  float: right;
+  width: 80px;
+  color: #fff;
+}
+.rowWrap .column {
+  padding: 0 30px;
+}
+.rowWrap .column::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 0px dashed #eee;
+  pointer-events: none;
+}
+.rowWrap .insert_before {
+  position: relative;
+  display: block;
+  height: 30px;
+  margin: 0;
+}
+.rowWrap .insert_before.drophover {
+  margin: 0;
+  height: 190px;
+}
+.rowWrap .insert_before.drophover::before {
+  content: "";
+  display: block;
+  height: 30px;
+}
+.rowWrap .insert_before.drophover::after {
+  content: "";
+  display: block;
+  height: 130px;
+  width: 100%;
+  border: 1px dashed #999;
+  background-color: #eee;
+}
+.rowWrap .insert_after {
+  position: relative;
+  display: block;
+  height: 30px;
+  margin: 0;
+}
+.rowWrap .insert_after.drophover {
+  margin: 0;
+  height: 190px;
+}
+.rowWrap .insert_after.drophover::before {
+  content: "";
+  display: block;
+  height: 30px;
+}
+.rowWrap .insert_after.drophover::after {
+  content: "";
+  display: block;
+  height: 130px;
+  width: 100%;
+  border: 1px dashed #999;
+  background-color: #eee;
+}
+.rowWrap .innerContent {
+  background-color: #fff;
+  border: 1px dashed #aaa;
+}
+.leftPart {
+  display: block;
+  position: static;
+  float: left;
+  width: 0px;
+  height: calc(100vh - 101px);
+  background-color: #6F787D;
+  overflow: hidden;
+}
+.leftPart .head-item {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  border-bottom: 1px solid #777;
+  padding: 6px;
+}
+.leftPart .head-item.active {
+  background-color: #3c8dbc;
+}
+.leftPart .bootinputfree {
+  width: 160px;
+  float: left;
+}
+.leftPart .bootinputfree input {
+  letter-spacing: 5px;
+  text-align: center;
+  color: #378cbe;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #eee;
+  border: 1px solid #fff;
+  width: 100%;
+}
+.leftPart .bootinput {
+  width: 160px;
+  float: left;
+}
+.leftPart .bootinput::after {
+  display: block;
+  content: '';
+  height: 1px;
+  clear: both;
+}
+.leftPart .bootinput .bootShow.row {
+  margin: 1px;
+  padding: 0;
+}
+.leftPart .bootinput .bootShow.row .cwrap {
+  margin: 1px;
+}
+.leftPart .bootinput .bootShow.row .colNum {
+  width: calc(100% - 16px);
+  border: 0;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: bold;
+  color: #378cbe;
+  text-align: center;
+  top: 2px;
+  position: absolute;
+}
+.leftPart .bootinput .bootShow.row [class*=col-] {
+  margin: 0;
+  padding: 0;
+}
+.leftPart .bootinput .bootShow.row [class*=col-] .inner {
+  margin: 0 2px;
+  padding: 0 2px;
+}
+.leftPart .bootinput .bootShow.row [class*=col-] .inner .bwrap {
+  float: left;
+}
+.leftPart .bootinput .bootShow.row [class*=col-] .inner .bwrap .block {
+  height: 19px;
+  background-color: #ddd;
+  margin: 3px 1px;
+}
+.leftPart.open {
+  width: 230px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.leftPart .dragItem {
+  padding: 5px;
+  min-width: 230px;
+}
+.leftPart .dragItem label {
+  color: #ddd;
+  line-height: 25px;
+}
+.leftPart .dragItem::after {
+  content: '';
+  clear: both;
+  display: block;
+}
+.leftPart .dragItem .icon {
+  width: 30px;
+  height: 30px;
+  background-color: #000;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+}
+.leftPart .dragItem .small-box {
+  cursor: pointer;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin: 5px;
+  border: 2px solid #ddd;
+}
+.leftPart .dragItem .ui-selectmenu-text {
+  font-size: 12px;
+}
+.leftPart .dragItem .handler {
+  width: 25px;
+  height: 25px;
+  border-radius: 3px;
+  background-color: #3c8dbc;
+  color: #fff;
+  padding: 1px 0px;
+  margin-right: 20px;
+  float: right;
+  cursor: move;
+  text-align: center;
+}
+.leftPart .dragItem .handler span {
+  margin-top: 4px;
+}
+.leftPart .dragItem .deleteBtn {
+  margin-left: -14px;
+}
+.rightPart {
+  width: 100%;
+  height: calc(100vh - 101px);
+  display: block;
+  position: relative;
+  float: left;
+  padding-right: 14px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.rightPart.fold {
+  width: calc(100% - 230px);
+}
+.rightPart #dropBody {
+  width: 96%;
+  margin: 0 2%;
+}
+.rightPart #dropBody .insert_before {
+  position: relative;
+  display: block;
+  height: 30px;
+  margin: 0;
+}
+.rightPart #dropBody .insert_before.drophover {
+  margin: 0;
+  height: 190px;
+}
+.rightPart #dropBody .insert_before.drophover::before {
+  content: "";
+  display: block;
+  height: 30px;
+}
+.rightPart #dropBody .insert_before.drophover::after {
+  content: "";
+  display: block;
+  height: 130px;
+  width: 100%;
+  border: 1px dashed #999;
+  background-color: #eee;
+}
+.rightPart #dropBody .insert_after {
+  position: relative;
+  display: block;
+  height: 60px;
+  margin: 0;
+}
+.rightPart #dropBody .insert_after.drophover {
+  margin: 0;
+  height: 190px;
+}
+.rightPart #dropBody .insert_after.drophover::before {
+  content: "";
+  display: block;
+  height: 30px;
+}
+.rightPart #dropBody .insert_after.drophover::after {
+  content: "";
+  display: block;
+  height: 130px;
+  width: 100%;
+  border: 1px dashed #999;
+  background-color: #eee;
+}
+.rightPart #dropBody .visibleWhenView {
+  display: block;
+}
+.rightPart #dropBody .hideWhenView {
+  display: none;
+}
+.rightPart #dropBody.edit {
+  margin: 20px;
+}
+.rightPart #dropBody.edit .visibleWhenView {
+  display: none;
+}
+.rightPart #dropBody.edit .hideWhenView {
+  display: block;
+}
+.rightPart #dropBody.edit .box {
+  border: 0;
+  box-shadow: 0 0 0 transparent;
+  background-color: transparent;
+  margin-bottom: 0;
+}
+.rightPart #dropBody.edit .box .box-header {
+  display: none;
+}
+.rightPart #dropBody.edit .box .box-body {
+  padding: 10px !important;
+}
+.rightPart #dropBody.edit .row {
+  margin: 0;
+  padding: 0;
+}
+.rightPart #dropBody.edit .row .col {
+  padding: 10px;
+}
+.rightPart #dropBody.edit .rowWrap.hideWrap .innerContent {
+  background-color: #fff !important;
+}
+.rightPart #dropBody.edit .rowWrap.boot-mouseOver .toolbar {
+  opacity: 1;
+}
+.rightPart #dropBody.edit .rowWrap.boot-mouseOver .innerContent {
+  border: 1px dashed #aaa;
+}
+.rightPart #dropBody.edit .rowWrap.boot-mouseOver .innerContent .innerWrap {
+  opacity: 1;
+}
+.rightPart #dropBody.edit .rowWrap.boot-mouseOver .innerContent .innerWrap .small-box {
+  pointer-events: none;
+}
+.rightPart #dropBody.edit .rowWrap.boot-mouseOver .innerContent .innerWrap .designView {
+  pointer-events: none;
+}
+.rightPart #dropBody.edit .rowWrap.boot-mouseOver .innerContent .innerWrap table {
+  pointer-events: none;
+}
+.rightPart #dropBody.edit .rowWrap .toolbar {
+  height: 26px;
+  position: relative;
+  background-color: #aaa;
+  display: block;
+  opacity: 0.5;
+}
+.rightPart #dropBody.edit .rowWrap .toolbar .moveBtn {
+  width: 25px;
+  height: 20px;
+  line-height: 20px;
+  background-color: #3c8dbc;
+  border-radius: 3px;
+  color: #fff;
+  float: right;
+  margin-top: 2px;
+  margin-right: 10px;
+  cursor: move;
+  text-align: center;
+}
+.rightPart #dropBody.edit .rowWrap .toolbar .deleteBtn {
+  cursor: pointer;
+  width: 25px;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 3px;
+  background-color: #b52846;
+  color: #fff;
+  margin-top: 2px;
+  margin-right: 10px;
+  float: right;
+  text-align: center;
+}
+.rightPart #dropBody.edit .rowWrap .column::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px dashed #eee;
+  pointer-events: none;
+}
+.rightPart #dropBody.edit .rowWrap .insert_before {
+  position: relative;
+  display: block;
+  height: 30px;
+  margin: 0;
+}
+.rightPart #dropBody.edit .rowWrap .insert_before.drophover {
+  margin: 0;
+  height: 190px;
+}
+.rightPart #dropBody.edit .rowWrap .insert_before.drophover::before {
+  content: "";
+  display: block;
+  height: 30px;
+}
+.rightPart #dropBody.edit .rowWrap .insert_before.drophover::after {
+  content: "";
+  display: block;
+  height: 130px;
+  width: 100%;
+  border: 1px dashed #999;
+  background-color: #eee;
+}
+.rightPart #dropBody.edit .rowWrap .insert_after {
+  position: relative;
+  display: block;
+  height: 30px;
+  margin: 0;
+}
+.rightPart #dropBody.edit .rowWrap .insert_after.drophover {
+  margin: 0;
+  height: 190px;
+}
+.rightPart #dropBody.edit .rowWrap .insert_after.drophover::before {
+  content: "";
+  display: block;
+  height: 30px;
+}
+.rightPart #dropBody.edit .rowWrap .insert_after.drophover::after {
+  content: "";
+  display: block;
+  height: 130px;
+  width: 100%;
+  border: 1px dashed #999;
+  background-color: #eee;
+}
+.rightPart #dropBody.edit .rowWrap .innerContent {
+  opacity: 1;
+  background-color: #fff;
+  border: 1px dashed #efefef;
+  position: relative;
+}
+.rightPart #dropBody.edit .rowWrap .innerContent .innerWrap {
+  opacity: 0.5;
+}
+.rightPart #dropBody .row {
+  margin: 1px;
+}
+.rightPart #dropBody .rowWrap.hideWrap {
+  background-color: transparent;
+  margin: 0;
+}
+.rightPart #dropBody .rowWrap.hideWrap .box {
+  border: 0;
+  box-shadow: 0 0 0 transparent;
+  background-color: transparent;
+  margin-bottom: 0;
+}
+.rightPart #dropBody .rowWrap.hideWrap .box .box-header {
+  display: none;
+}
+.rightPart #dropBody .rowWrap.hideWrap .box .innerContent {
+  background-color: transparent;
+}
+.rightPart #dropBody .rowWrap.hideWrap .box .box-body {
+  padding: 0;
+}
+.rightPart #dropBody .rowWrap .toolbar {
+  display: none;
+}
+.rightPart #dropBody .rowWrap .column {
+  border: 0;
+  padding: 0;
+}
+.rightPart #dropBody .rowWrap .insert_before {
+  display: none;
+}
+.rightPart #dropBody .rowWrap .insert_after {
+  display: none;
+}
+.rightPart #dropBody .rowWrap .innerContent {
+  background-color: #fff;
+  border: 0;
+}
+.rightPart #dropBody .rowWrap .innerContent .small-box {
+  margin: 5px;
+}
+.rightPart #dropBody .rowWrap .innerContent .designView {
+  width: 100%;
+  min-height: 100px;
+}
+.rightPart #dropBody .rowWrap .innerContent .designView .rowCls:after {
+  content: '';
+  display: block;
+  height: 1px;
+  clear: both;
+}
+.rightPart #dropBody .rowWrap .innerContent .designView .rowCls .colCls {
+  padding: 10px;
+  float: left;
+}

@@ -1,0 +1,40 @@
+{
+  "layout": {
+    "type": "column",
+    "children": [
+      {
+        "label": "控件组",
+        "type": "ctrlgroup",
+        "source": "CTRLGROUP",
+        "advance": {
+          "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n       [{\n          type : \"label\",\n          value : \"设备名称\",\n          class : \"col-md-2\"\n        },{\n          type : \"label\",\n          value : \"XXXXX\",\n          class : \"col-md-4\"\n        },{\n          type : \"label\",\n          value : \"设备编号\",\n          class : \"col-md-2\"\n        },{\n          type : \"label\",\n          value : \"XXXXX\",\n          class : \"col-md-4\"\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+        },
+        "style": {
+          "margin": "5px",
+          "font-size": "12px"
+        },
+        "help": "../pdf/ctrlgroup.pdf"
+      },
+      {
+        "label": "控件组",
+        "type": "ctrlgroup",
+        "source": "CTRLGROUP",
+        "advance": {
+          "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var Dic = {\n        alertInfo : {\n          label : \"设备告警信息\",\n          type : \"input\"\n        },\n        abnormal : {\n          label : \"异常现象\",\n          type : \"select\",\n          options : [{\n            id : 0,\n            label : \"异常现象\"\n          }]\n        },\n        position : {\n          label : \"检测部位\",\n          type : \"select\",\n          options : [{\n            id : 0,\n            label : \"轴承座\"\n          }]\n        },\n        notice : {\n          label : \"注意事项\",\n          type : \"select\",\n          options : [{\n            id : 0,\n            label : \"空载\"\n          }]\n        },\n        standard : {\n          label : \"判断标准\",\n          type : \"select\",\n          options : [{\n            id : 0,\n            label : \"产品设计图纸\"\n          }]\n        },\n        condition : {\n          label : \"判断依据\",\n          type : \"select\",\n          options : [{\n            id : 0,\n            label : \"轴承冲击值上升\"\n          }]\n        },\n        level : {\n          label : \"综合状态等级\",\n          type : \"select\",\n          options : [{\n            id : 0,\n            label : \"轴承冲击值上升\"\n          }]\n        },\n        part : {\n          label : \"异常部位\",\n          type : \"select\",\n          options : [{\n            id : 0,\n            label : \"轴承冲击值上升\"\n          }]\n        },\n        reason : {\n          label : \"故障产生原因\",\n          type : \"select\",\n          options : [{\n            id : 0,\n            label : \"轴承冲击值上升\"\n          }]\n        },\n        conclusion : {\n          label : \"综合判断结论\",\n          type : \"select\",\n          options : [{\n            id : 0,\n            label : \"轴承冲击值上升\"\n          }]\n        },\n        suggestion : {\n          label : \"处理方案建议\",\n          type : \"select\",\n          options : [{\n            id : 0,\n            label : \"轴承冲击值上升\"\n          }]\n        },\n        charger : {\n          label : \"审核人\",\n          type : \"select\",\n          options : [{\n            id : 0,\n            label : \"轴承冲击值上升\"\n          }]\n        }\n      }\n      var ctrlGroups = [];\n      var loop = function(item){\n        var labelObj = {\n          type : \"label\",\n          value : item.label,\n          class : \"col-md-2\"\n        }\n        var type = item.type;\n        var obj = {};\n        obj.type = type;\n        obj.options = item.options;\n        obj.class = \"col-md-9\";\n        obj.colSpan = 2;\n        return [labelObj, obj, {\n          type : \"button\",\n          value : \"\",\n          icon : \"glyphicon glyphicon-plus\",\n          btnclass : \"btn btn-default\",\n          class : \"col-md-1\",\n          on : {\n            click : function(elem){\n              target.console(elem);\n            }\n          }\n        }];\n      }\n      for(var i in Dic){\n        ctrlGroups.push(loop(Dic[i]))\n      }\n      ctrlGroups.push([{\n        type : \"label\",\n        value : \"\"\n      },{\n        type : \"button\",\n        value : \"提交\",\n        icon : \"glyphicon glyphicon-ok\",\n        btnclass : \"btn btn-primary\",\n        class : \"col-md-1\",\n        on : {\n          click : function(elem){\n            target.console(elem);\n          }\n        }\n      },{\n        type : \"button\",\n        value : \"暂存\",\n        icon : \"glyphicon glyphicon-download-alt\",\n        btnclass : \"btn btn-primary\",\n        class : \"col-md-1\",\n        on : {\n          click : function(elem){\n            target.console(elem);\n          }\n        }\n      }])\n      console.log()\n      target.render(ctrlGroups);\n    }\n  }\n}"
+        },
+        "style": {
+          "margin": "5px",
+          "font-size": "12px"
+        },
+        "help": "../pdf/ctrlgroup.pdf"
+      }
+    ],
+    "col": 12
+  },
+  "setting": {
+    "showNavi": false,
+    "style": {
+      "padding": "15px"
+    }
+  }
+}

@@ -1,0 +1,120 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Application buttons -->
+      <div class="box">
+        <div class="box-header">
+          <ol class="breadcrumb">
+            <div class="text-center pull-right" style="display: inherit;">
+              <a ng-click="addModel()" class="btn btn-default btn-sm"><i class="fa fa-plus"></i><span class="hidden-xs"> 新建网关</span></a>
+              <a ng-if="selectedGateitem && selectedGateitem.id != 0" ng-click="changeManagedStatus()" class="btn btn-default btn-sm"><i ng-class="{true:'fa fa-play',false:'fa fa-pause'}[selectedGateitem.managedStatus=='deactive']"></i><span class="hidden-xs" ng-bind="selectedGateitem.managedStatus=='deactive'?' 启用网关':' 停用网关'"></span></a>
+              <a ng-if="selectedGateitem" ng-click="delModel()" class="btn btn-default btn-sm"><i class="fa fa-minus"></i><span class="hidden-xs"> 删除网关</span></a>
+            </div>
+          </ol>
+        </div>
+
+        <div class="box-body slick-box-body">
+          <div variablesidth="true" dots="false" arrows="true" slidesToScroll="3" autorender="false" ng-model="gatewaysAry" slick>
+            <a class="btn btn-app slick-a" ng-class="{true: 'btn btn-app slick-a active active-ps', false: 'btn btn-app slick-a'}[selectedGateitem.id==item.id]" ng-click="click(item)" ng-repeat="item in gatewaysAry track by $index" on-finish-render-filters>
+              <span class="badge {{item.alertlv}}">{{item.count}}</span>
+
+              <span class="badgeleft">
+								<i ng-class="{true:'fa fa-link',false:'fa fa-unlink'}[item.onlineStatus=='online']"></i>
+							</span>
+              <!--
+							<span class="badgecenter {{item.managedStatuslv}}">{{item.managedStatuslab}}</span>
+							-->
+              <i ng-class="{true:item.icon,false:'fa fa-ban fa-2x text-danger'}[item.managedStatus=='active']"></i> {{item.name}}
+            </a>
+          </div>
+        </div>
+        <div class="box-footer">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs pull-left">
+              <li class="active"><a href="#gateway-form" data-toggle="tab"><i class="fa fa-cogs"></i><span class="hidden-xs"> 基本信息</span></a></li>
+            </ul>
+            <div class="tab-content">
+              <form role="form" class="form-horizontal tab-pane active" name="myForm" novalidate>
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <a ng-click="saveModelSubItem()" class="btn btn-default btn-sm"><i class="fa fa-save"></i><span class="hidden-xs"> 保存信息</span></a>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label>网关类型:</label>
+                    <select class="form-control input-sm" ng-model="selectedGateitem.type" ng-options="value.valueCode as value.label for value in myDicts['gatewayType']" style="width: 100%">
+                        <option value="">请选择...</option>
+                      </select>
+                  </div>
+                  <div class="col-sm-2">
+                    <label>协议类型:</label>
+                    <select class="form-control input-sm" ng-model="selectedGateitem.protocolType" ng-options="value.valueCode as value.label for value in myDicts['gwProtocolType']" style="width: 100%">
+                        <option value="">请选择...</option>
+                      </select>
+                  </div>
+                  <div class="col-sm-2">
+                    <label>适配器类型:</label>
+                    <select class="form-control input-sm" ng-model="selectedGateitem.cloudAdapter" style="width: 100%">
+                        <option value="">请选择...</option>
+                        <option value="普奥HTTP" selected="selected">普奥HTTP</option>
+                        <option value="普奥MQTT">普奥MQTT</option>
+                        <option value="普奥Socket">普奥Socket</option>
+                        <option value="昆仑海岸">昆仑海岸</option>
+                      </select>
+                  </div>
+                  <div class="col-sm-2">
+                    <label>网关所属域:</label>
+                    <input autocomplete="off" placeholder="请选择..." name="domainPath" domain-Picker class="form-control input-sm domainClass" type="text" ng-model="domainListDic[selectedGateitem.domain].name" domainPath="{{selectedGateitem.domain}}" model="selectedGateitem.domain">
+                  </div>
+                  <div class="col-sm-4">
+                    <label>有效时间:</label>
+                    <input autocomplete="off" class="form-control input-sm" type="text" ng-model="selectedGateitem.validTime" model="selectedGateitem" startdate="activeTime" enddate="expireTime" daterange-Picker2/>
+                  </div>
+
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-2">
+                    <label>网关标识:</label>
+                    <input  class="form-control input-sm" type="text" name="externalGwId" ng-model="selectedGateitem.externalGwId" />
+                    <span style="color:red" ng-show="myForm.externalGwId.$dirty && myForm.externalGwId.$invalid">
+                      <span ng-show="myForm.externalGwId.$dirty && myForm.externalGwId.$invalid">仅限数字字母和中文</span>
+                    </span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label>网关名称:</label>
+                    <input ng-pattern="/^[0-9A-Za-z\u4e00-\u9fa5]{0,40}$/" name="name" class="form-control input-sm" type="text" ng-model="selectedGateitem.name" />
+                    <span style="color:red" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+                      <span ng-show="myForm.name.$dirty && myForm.name.$invalid">仅限数字字母和中文</span>
+                    </span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label>接入云端用户名:</label>
+                    <input ng-pattern="/^[0-9A-Za-z\u4e00-\u9fa5]{0,40}$/" name="accessName" class="form-control input-sm" type="text" ng-model="selectedGateitem.accessName" />
+                    <span style="color:red" ng-show="myForm.accessName.$dirty && myForm.accessName.$invalid">
+                      <span ng-show="myForm.accessName.$dirty && myForm.accessName.$invalid">仅限数字字母和中文</span>
+                    </span>
+                  </div>
+                  <div class="col-sm-2">
+                    <label>接入云端密码:</label>
+                    <input ng-pattern="/^[0-9A-Za-z]{0,40}$/" name="accessPassword" class="form-control input-sm" type="password" ng-model="selectedGateitem.accessPassword" />
+                    <span style="color:red" ng-show="myForm.accessPassword.$dirty && myForm.accessPassword.$invalid">
+                      <span ng-show="myForm.accessPassword.$dirty && myForm.accessPassword.$invalid">仅限数字字母</span>
+                    </span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</section>
+<!-- /.content -->

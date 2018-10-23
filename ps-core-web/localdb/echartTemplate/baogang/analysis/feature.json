@@ -1,0 +1,184 @@
+{
+  "version": "V_2",
+  "groups": [
+    {
+      "id": "0",
+      "label": "导航页",
+      "path": "page0",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "控制板1",
+            "type": "block",
+            "source": "BLOCK",
+            "style": {
+              "padding": "5px",
+              "margin": "5px"
+            },
+            "advance": {
+              "expression": {}
+            },
+            "children": [
+              {
+                "type": "column",
+                "col": 12,
+                "children": [
+                  {
+                    "label": "控件组",
+                    "type": "ctrlgroup",
+                    "source": "CTRLGROUP",
+                    "advance": {
+                      "expression": "expression = {\n  width : \"auto\",\n  on: {\n    init: function (event) {\n   \n      var target = event.target;\n      var global = event.global;\n      var dItem,kpi;\n      \n      var resource = target.getValue(\"global/resource\");\n      var sensor = target.getValue(\"global/sensor\") || {};\n      //var time = target.getValue(\"global/time\");\n      var subaccessConfigValues;\n\n\n      var deviceId;\n      if(resource){\n     \n        deviceId = resource.id;\n      }\n      target.off(\"tree_resourceChange\");\n      target.on(\"tree_resourceChange\", function tree_resourceChange_multi(node) {\n      \n        deviceId = node.resource.id;\n      })\n\n\n\n      var endDate = target.dateHandler();\n      var startDate = endDate.clone();\n      startDate.addHour(-4);\n      // 获取设备的测点\n      var alertInstance = target.getParameter(\"alertInstance\");\n      \n      var dateRangeTime = [startDate, endDate];\n \n      var all = [];\n      var success = function () {\n        if(!resource){\n          target.navigateTo(\"index\", {\n            main : 2,\n            sub : 0\n          },\"self\");\n        };\n        var ci = [resource.id]; // 设备 526443915616079\n        var modelId = [resource.modelId] // 获取modelId\n        target.getKpiTypeByFilter({\n          hasSingnal : true\n        }, function(kpis){\n          var CONDITIONA = function(value){\n\n            return value.instance == dItem.name && kpis.some(function(elem){\n              return elem.id == value.dataItemId;\n            });\n          };\n          var CONDITIONB = function(value){\n\n            return value.instance == dItem.name;\n          };\n          var accessConfigValues = resource.physicalConfig.accessConfigs;\n          condition = CONDITIONA;\n          target.getAttrsByModelId(modelId, function (attrs) {\n            var MeasurePointLocate = attrs.find(function (elem) {\n              return elem.name == \"MeasurePointLocate\";\n            }) || {};\n            var triggerEvent = function () { \n              target.trigger(\"drawDiagnoseFeatureEchart1\", {\n                ins: dItem,\n                kpi: kpi,\n                dateRangeTime:dateRangeTime\n              });\n              target.setValue(\"featureEchart\", {\n                ins: dItem,\n                kpi: kpi,\n                dateRangeTime:dateRangeTime\n              });\n            }\n\n            // 设备的属性表达式\n            var sourceValue = eval(MeasurePointLocate.sourceValue)|| \"\";\n            var sourceValueArr = [];\n            for (var i in sourceValue) {\n              for (var j in sourceValue[i]) {\n                for(var k in sourceValue[i][j]){\n                  sourceValueArr.push(sourceValue[i][j][k])\n                }\n              }\n            };\n\n            // dItem = sourceValueArr.find(function(elem){\n            //     if(sensor) {\n            //         return sensor.instance == elem.name;\n            //     } else {\n            //         return false;\n            //     }\n            //   }) || sourceValueArr[0];\n            // 默认第一个选中\n\n            dItem = sourceValueArr.find(function(elem){\n              if(alertInstance) {\n                return alertInstance == elem.name;\n              } else {\n                return sensor.instance == elem.name;\n              }\n            }) || sourceValueArr[0];\n   \n            subaccessConfigValues = accessConfigValues.filter(condition)\n            kpi = subaccessConfigValues.find(function(elem){\n              return elem.dataItemId == sensor.kpiId;\n            }) || subaccessConfigValues[0];\n            kpi = kpi || {};\n            triggerEvent();\n            var render = function () {\n              target.setValue(\"global/hasSingnal\", all);\n              var ctrlGroups = [\n                [{\n                  type: \"label\",\n                  value: \"测点\",\n                  style: {\n                    width : \"40px\",\n                    textAlign: \"center\"\n                  }\n                }, {\n                  type: \"select\",\n                  value: dItem.name,\n                  class: \"col-md-2\",\n                  on: {\n                    change: function (elem) {\n                      dItem = elem.value;\n                      subaccessConfigValues = accessConfigValues.filter(condition);\n                      kpi = subaccessConfigValues[0] || {};\n                      triggerEvent();\n                      render();\n                    }\n                  },\n                  options: sourceValueArr,\n                  format: {\n                    \"id\": \"name\",\n                    \"label\": \"label\"\n                  }\n                }, {\n                  type: \"label\",\n                  value: \"参数\",\n                  style: {\n                    width : \"40px\",\n                    textAlign: \"center\"\n                  }\n                }, {\n                  type: \"select\",\n                  value: kpi.kpiId,\n                  class: \"col-md-2\",\n                  on: {\n                    change: function (elem) {\n                      kpi = elem.value;\n                      triggerEvent();\n                    }\n                  },\n                  options: subaccessConfigValues,\n                  format: {\n                    \"id\": \"kpiId\",\n                    \"label\": \"kpiName\"\n                  },\n                }, {\n                  type: \"checkboxlist\",\n                  value: all,\n                  style: {\n                    width : \"80px\",\n                    textAlign: \"center\"\n                  },\n                  options : [{\n                    id : 0,\n                    label : \"全部\"\n                  }],\n                  on : {\n                    change : function(event){\n                      all = event.value.map(function(elem){\n                        return elem.id;\n                      });\n\n                      condition = event.value.length > 0 ? CONDITIONB : CONDITIONB;\n                      subaccessConfigValues = accessConfigValues.filter(condition);\n                      if(subaccessConfigValues.indexOf(kpi) == -1){\n                        kpi || subaccessConfigValues[0]\n                      }\n                      render();\n                      triggerEvent();\n\n                    }\n                  }\n                }, {\n                  id:1,\n                  icon:\"none\",\n                  value : startDate,\n                  type: \"dateTimePicker\",\n                  style : {\n                    width : \"200px\"\n                  },\n                  on: {\n                    change: function (elem) { \n                      startDate = target.dateHandler(elem.value.getUTCDateString);\n                      console.log(startDate);\n                      dateRangeTime[0] = startDate;\n                      triggerEvent();\n                    }\n                  },\n                }, {\n                  type: \"label\",\n                  value: \"至\",\n                  style: {\n                    textAlign: \"center\",\n                    width : \"30px\"\n                  }\n                },{\n                  id:2,\n                  icon:\"none\",\n                  value : endDate,\n                  type: \"dateTimePicker\",\n                  style : {\n                    width : \"200px\"\n                  },\n                  on: {\n                    change: function (elem) {\n                      endDate = target.dateHandler(elem.value.getUTCDateString);\n                       console.log(endDate);\n                      dateRangeTime[1] = endDate;\n                      triggerEvent();\n                    }\n                  },\n                }, {\n                  type: \"button\",\n                  class: \"col-md-1\",\n                  btnclass: \"btn btn-primary\",\n                  value: \"设备信息\",\n                  btnStyle: {\n                    width: \"100%\",\n                  },\n                  on:{\n                    click:function (elem) {\n                      //console.log(\"设备信息\")\n                      target.createSystemPopupByLocalPath(\"page1\",{\n                        width:\"600px\",\n                        title:\"设备信息\"\n                      },deviceId)\n                    }\n                  }\n                }, {\n                  type: \"button\",\n                  class: \"col-md-1\",\n                  btnclass: \"btn btn-primary\",\n                  value: \"信号分析\",\n                  btnStyle: {\n                    width: \"100%\",\n                  },\n                  on: {\n                    click: function (elem) {\n                      target.trigger(\"analysisShakeNavigateTo\", 2);\n                      /**\n                       target.navigateTo(\"index\", {\n                        main : 2,\n                        sub : 0,\n                        sub2 : 2\n                      }, \"self\");*/\n                    }\n                  }\n                },{\n                  type: \"button\",\n                  class: \"col-md-1\",\n                  btnclass: \"btn btn-primary\",\n                  value: \"求助知识库\",\n                  btnStyle: {\n                    width: \"100%\",\n                  },\n                  on: {\n                    click: function (elem) {\n                    }\n                  }\n                }, ]\n              ];\n              target.render(ctrlGroups);\n            };\n            render();\n          })\n        })\n      }\n      if(resource){\n        success();\n      };\n      target.on(\"tree_resourceChange\", function (node) {\n        success();\n      })\n    }\n  }\n  }"
+                    },
+                    "style": {
+                      "margin": "5px",
+                      "font-size": "12px"
+                    },
+                    "help": "../pdf/ctrlgroup.pdf",
+                    "url": "images/map/map1.png",
+                    "parameters": {}
+                  }
+                ]
+              }
+            ],
+            "url": "images/map/map1.png"
+          },
+          {
+            "label": "高级视图",
+            "type": "advanceEchart",
+            "source": "ADVANCEECHART",
+            "advance": {
+              "expression": "express = {\n  on: {\n    init: function (event) {\n      var target = event.target;\n      var global = event.global;\n      var color = \"#ffe400\";\n      var LENGTH = 50;\n      var resource = target.getValue(\"global/resource\");\n      var kpiName;\n      var instance;\n      var endDate = target.dateHandler();\n      var startDate = endDate.clone();\n      startDate.addHour(-4);\n      var endTime = endDate.getUTCDateString();\n      var startTime = startDate.getUTCDateString();\n      // 渲染echart图\n      debugger;\n      var renderEchart = function (ci, kpi, instance) {\n        // 扩展参数\n        var hasSingnal = target.getValue(\"global/hasSingnal\") || [];\n        target.showLoading();\n        target.hideNoData();\n        if(ci.length > 0 && kpi.length > 0 && instance){\n            var extension = {\n              isRealTimeData : false,\n              startTime:startTime,\n              endTime:endTime,\n              includeInstance : true,\n              queryInstances : instance\n            };\n            if(hasSingnal.length < 1){\n                extension.hasSingnal = true\n            }\n            var xAxis = [];\n            target.getKpiValueList(ci, kpi, 0, function (returnData) {\n              if(returnData.length > 0){\n                target.hideLoading();\n                var xAxisData = [];\n                target.setValue(\"global/sensor\", {\n                  kpiId : returnData[0].kpiCode,\n                  instance : returnData[0].instance\n                });\n                target.setValue(\"echarts/data\",returnData);//缓存返回的KPI\n                target.setValue(\"global/dt\", returnData[0]);\n                target.setValue(\"global/time\", target.dateHandler(returnData[0].arisingTime));\n                var etTime = target.dateHandler(returnData[returnData.length - 1].arisingTime);\n                var edTimeInx = 0;\n                returnData.forEach(function (ele) {\n                    var tmp = target.dateHandler(ele.arisingTime);\n                    if(etTime.minus(tmp) > 4 * 3600 * 1000){\n                        edTimeInx++;\n                    }\n                  xAxisData.push(tmp.getDateString(\"yy/MM/dd,hh:mm:ss\"));\n                });\n                var seriesData = []\n                if (returnData) {\n                  for (var i in kpi) {\n                    var item = {\n                      name: kpiName,\n                      data: returnData.map(function (elem) {\n                        return elem.value;\n                      })\n                    }\n                    seriesData.push(item);\n                  }\n                }\n                var option = {\n                  title: {\n                    textStyle: {color: \"#fff\"}\n                  },\n                  tooltip: {\n                    triggerOn: 'none',\n                    position: function (pt, param) {\n                      var dataIndex = param[0].dataIndex;\n                      var dt = returnData[dataIndex];\n                      target.setValue(\"global/sensor\", {\n                        kpiId : dt.kpiCode,\n                        instance : dt.instance\n                      });\n                      target.setValue(\"global/dt\", dt);\n                      target.setValue(\"global/time\", target.dateHandler(dt.arisingTime));\n                    }\n                  },\n                  legend: {\n                    data: seriesData.map(function (elem) {\n                      return elem.name;\n                    })\n                  },\n                  grid : {\n                    top : \"5%\",\n                    height : \"70%\"\n                  },\n                  toolbox: {\n                      feature: {\n                          dataZoom: {},\n                          restore: {},\n                          saveAsImage:{\n                              type:\"png\",\n                              name:\"振动分析-特征趋势图\",\n                              backgroundColor:\"#0b2232\"\n                          },\n                      },\n                      iconStyle:{\n                          normal:{\n                              borderColor:\"#fff\"\n                          },\n                          emphasis:{\n                              borderColor:\"#e6e2e2\"\n                          }\n                      }\n                  },\n                  xAxis: {\n                    boundaryGap: false,\n                    type: 'category',\n                    data: xAxisData,\n                    axisPointer: {\n                      value: xAxisData[0],\n                      snap: false,\n                      lineStyle: {\n                        color: '#126296',\n                        opacity: 0.5,\n                        width: 2\n                      },\n                      label: {\n                        show: true,\n                        backgroundColor: '#126296'\n                      },\n                      handle: {\n                        shadowBlur : 0,\n                        shadowColor : \"#fff\",\n                        show: true,\n                        color: '#126296'\n                      }\n                    },\n                  },\n                  yAxis: {\n                    type: 'value',\n                    max: function(value) {\n                         return (value.max * 1.2).toFixed(3);\n                    },\n                  },\n                  /**\n                  dataZoom: [{\n                    show: false,\n                    realtime: true,\n                    startValue: edTimeInx,\n                    end: 100,\n                  }],*/\n                  series: seriesData.map(function (elem) {\n                    elem.type = \"line\";\n                    elem.symbolSize = 8;\n                    elem.data = elem.data;\n                    return elem;\n                  })\n                };\n                var ins = target.render(option);\n              } else {\n                target.showNoData();\n              }\n            }, extension)\n        } else {\n            target.showNoData();\n        }\n      };\n      var callback = function(condition){\n        startTime = condition.dateRangeTime[0].getUTCDateString();\n        endTime = condition.dateRangeTime[1].getUTCDateString();\n        var ci = [resource.id];\n        var kpi = [];\n        if(condition.kpi.dataItemId){\n          kpi.push(condition.kpi.dataItemId);\n          kpiName = condition.kpi.label;\n          instance = condition.kpi.instance;\n        }\n        target.setValue(\"featureEchart\", null);\n        renderEchart(ci, kpi, instance);\n      }\n      var condition = target.getValue(\"featureEchart\");\n      if(condition){\n          callback(condition);\n      }\n      target.off(\"drawDiagnoseFeatureEchart1\");\n      target.on(\"drawDiagnoseFeatureEchart1\", function (condition) {\n        callback(condition);\n      });\n\n    },\n    dblclick: function(event) {\n      var target = event.target;\n      var returnData = target.getValue(\"echarts/data\");\n      //如果双击的index在数据里有\n      if (returnData && returnData[event.ui.dataIndex]) {\n        var dt = returnData[event.ui.dataIndex];\n        target.setValue(\"global/sensor\", {\n          kpiId : dt.kpiCode,\n          instance : dt.instance\n        });\n        target.setValue(\"global/dt\", dt);\n        target.setValue(\"global/time\", target.dateHandler(dt.arisingTime));\n        target.trigger(\"analysisShakeNavigateTo\", 2);    \n      }\n    }  \n  }\n};"
+            },
+            "style": {
+              "margin": "auto",
+              "width": "100%",
+              "height": "350px"
+            },
+            "parameters": {
+              "theme": "macarons"
+            },
+            "url": "images/map/map1.png"
+          }
+        ],
+        "col": 12
+      },
+      "$$hashKey": "object:2959"
+    },
+    {
+      "label": "弹出框",
+      "path": "page1",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "控制板1",
+            "type": "block",
+            "source": "BLOCK",
+            "style": {
+              "padding": "5px",
+              "margin": "5px",
+              "background-color": "rgba(250,250,250,0)"
+            },
+            "advance": {
+              "expression": {}
+            },
+            "children": [
+              {
+                "type": "column",
+                "col": 12,
+                "children": [
+                  {
+                    "label": "文字",
+                    "type": "text",
+                    "source": "TEXT",
+                    "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                    "data": {
+                      "applied": false,
+                      "multipleCi": false,
+                      "multipleKpi": false,
+                      "resource": [],
+                      "modelType": 300,
+                      "resfilltype": "parameter",
+                      "series": {
+                        "manual": "新建文字",
+                        "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                      },
+                      "modelDisable": true
+                    },
+                    "style": {
+                      "margin": "5px",
+                      "padding": "0",
+                      "font-size": "16px",
+                      "font-weight": "normal",
+                      "text-align": "center",
+                      "color": "rgb(255, 255, 255)",
+                      "border-bottom": "1px solid #666",
+                      "line-height": "30px"
+                    },
+                    "advance": {
+                      "getfunction": "kpiDataService.getValueList",
+                      "category": "ci",
+                      "condition": [
+                        "kpi",
+                        "{object:kpiQueryModel}"
+                      ],
+                      "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"基本信息\")\n        }\n    }\n}"
+                    },
+                    "url": "images/map/map1.png"
+                  },
+                  {
+                    "label": "控制板1",
+                    "type": "block",
+                    "source": "BLOCK",
+                    "style": {
+                      "padding": "0px",
+                      "margin": "0px",
+                      "border": "0",
+                      "box-shadow": "0px 0px 0px 0px rgba(0,0,0,0)",
+                      "background-color": "rgba(250,250,250,0)",
+                      "height": "300px",
+                      "overflow-y": "auto"
+                    },
+                    "advance": {
+                      "expression": {}
+                    },
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "控件组",
+                            "type": "ctrlgroup",
+                            "source": "CTRLGROUP",
+                            "advance": {
+                              "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      //var id = target.getParameter(\"id\");\n      var id = target.getPopupData();\n\n    //   getDeviceInfo\n      target.postService(\"resourceUIService\",\"getResourceById\",[id],function(tc){ \n          if(tc.data){\n             var deviceInfo = tc.data;\n             if(deviceInfo.values.ImplType==1){\n               deviceInfo.values.ImplType = \"离线设备\"  \n             }else if(deviceInfo.values.ImplType==2){\n               deviceInfo.values.ImplType = \"综合设备\"  \n             }else{\n               deviceInfo.values.ImplType = \"在线设备\"   \n             }\n             // DEVICE_TYPE\n            var deviceTypeName=\"\";\n            var deviceTypes = target.getRootScope(\"myDicts\")[\"deviceType\"];\n            deviceTypes.forEach(function(elem){\n                     if(elem.valueCode==deviceInfo.values.DEVICE_TYPE){\n                           deviceTypeName = elem.label;\n                           return;\n                     }\n              })\n              \n             var ctrlGroups = [\n                 [{\n                  type : \"label\",\n                  value : \"名称\",\n                  composory : \"none\",\n                  style : {\n                    //\"white-space\" : \"normal\"\n                    \"white-space\" : \"pre-wrap\",\n                    \"borderBottom\":\"1px solid #666666\",\n                    \"height\":\"41px\"\n                  },\n                  class : \"col-xs-4\"\n                },{\n                  type : \"label\",\n                  composory : \"none\",\n                  value: deviceInfo.label,\n                  class : \"col-xs-4\",\n                  style : {\n                    \"white-space\" : \"pre-wrap\",\n                    \"borderBottom\":\"1px solid #666666\",\n                    \"height\":\"41px\"\n                  }\n                }],\n                  [{\n                  type : \"label\",\n                  value : \"检测模式\",\n                  composory : \"none\",\n                  style : {\n                    \"white-space\" : \"pre-wrap\",\n                    \"borderBottom\":\"1px solid #666666\",\n                    \"height\":\"41px\"\n                  },\n                  class : \"col-xs-4\"\n                },{\n                  type : \"label\",\n                  composory : \"none\",\n                  value: deviceInfo.values.ImplType,  // 检测模式 ImplType 默认不设值， 1表示离线， 2表示都有\n                  class : \"col-xs-4\",\n                  style : {\n                    \"white-space\" : \"pre-wrap\",\n                    \"borderBottom\":\"1px solid #666666\",\n                    \"height\":\"41px\"\n                  }\n                }],\n                 [{\n                  type : \"label\",\n                  value : \"设备类别\",\n                  composory : \"none\",\n                  style : {\n                    //\"white-space\" : \"normal\"\n                    \"white-space\" : \"pre-wrap\",\n                    \"borderBottom\":\"1px solid #666666\",\n                    \"height\":\"41px\"\n                  },\n                  class : \"col-xs-4\"\n                },{\n                  type : \"label\",\n                  composory : \"none\",\n                  value: deviceTypeName,\n                  class : \"col-xs-4\",\n                  style : {\n                    \"white-space\" : \"pre-wrap\",\n                    \"borderBottom\":\"1px solid #666666\",\n                    \"height\":\"41px\"\n                  }\n                }],\n                 [{\n                  type : \"label\",\n                  value : \"功率\",\n                  composory : \"none\",\n                  style : {\n                    //\"white-space\" : \"normal\"\n                    \"white-space\" : \"pre-wrap\",\n                    \"borderBottom\":\"1px solid #666666\",\n                    \"height\":\"41px\"\n                  },\n                  class : \"col-xs-4\"\n                },{\n                  type : \"label\",\n                  composory : \"none\",\n                  value: deviceInfo.values.Power?deviceInfo.values.Power:\"\",\n                  class : \"col-xs-4\",\n                  style : {\n                    \"white-space\" : \"pre-wrap\",\n                    \"borderBottom\":\"1px solid #666666\",\n                    \"height\":\"41px\"\n                  }\n                }],\n                   [{\n                  type : \"label\",\n                  value : \"规格型号\",\n                  composory : \"none\",\n                  style : {\n                    //\"white-space\" : \"normal\"\n                    \"white-space\" : \"pre-wrap\",\n                    \"borderBottom\":\"1px solid #666666\",\n                    \"height\":\"41px\"\n                  },\n                  class : \"col-xs-4\"\n                },{\n                  type : \"label\",\n                  composory : \"none\",\n                  value: deviceInfo.values.TYPE_SPEC?deviceInfo.values.TYPE_SPEC:\"\",\n                  class : \"col-xs-4\",\n                  style : {\n                    \"white-space\" : \"pre-wrap\",\n                    \"borderBottom\":\"1px solid #666666\",\n                    \"height\":\"41px\"\n                  }\n                }],\n                 [{\n                  type : \"label\",\n                  value : \"生产厂商\",\n                  composory : \"none\",\n                  style : {\n                    //\"white-space\" : \"normal\"\n                    \"white-space\" : \"pre-wrap\",\n                    \"borderBottom\":\"1px solid #666666\",\n                    \"height\":\"41px\"\n                  },\n                  class : \"col-xs-4\"\n                },{\n                  type : \"label\",\n                  composory : \"none\",\n                  value: deviceInfo.values.FACTROY?deviceInfo.values.FACTROY:\"\",\n                  class : \"col-xs-4\",\n                  style : {\n                    \"white-space\" : \"pre-wrap\",\n                    \"borderBottom\":\"1px solid #666666\",\n                    \"height\":\"41px\"\n                  }\n                }],\n                  [{\n                  type : \"label\",\n                  value : \"使用日期\",\n                  composory : \"none\",\n                  style : {\n                    //\"white-space\" : \"normal\"\n                    \"white-space\" : \"pre-wrap\",\n                    \"borderBottom\":\"1px solid #666666\",\n                    \"height\":\"41px\"\n                  },\n                  class : \"col-xs-4\"\n                },{\n                  type : \"label\",\n                  composory : \"none\",\n                  value: deviceInfo.values.UseDate?new Date(deviceInfo.values.UseDate).Format(\"yyyy-MM-dd\"):\"\",\n                  class : \"col-xs-4\",\n                  style : {\n                    \"white-space\" : \"pre-wrap\",\n                    \"borderBottom\":\"1px solid #666666\",\n                    \"height\":\"41px\"\n                  }\n                }]\n                ];\n               target.render(ctrlGroups);\n          }\n      })\n      \n      \n    }\n  }\n}"
+                            },
+                            "style": {
+                              "margin": "5px",
+                              "font-size": "12px"
+                            },
+                            "help": "../pdf/ctrlgroup.pdf",
+                            "parameters": {}
+                          }
+                        ]
+                      }
+                    ],
+                    "url": "images/map/map1.png"
+                  }
+                ]
+              }
+            ],
+            "url": "images/map/map1.png"
+          }
+        ],
+        "col": 12
+      },
+      "id": "1",
+      "$$hashKey": "object:2966"
+    }
+  ],
+  "setting": "{\n  \"theme\": \"steel\"\n}"
+}

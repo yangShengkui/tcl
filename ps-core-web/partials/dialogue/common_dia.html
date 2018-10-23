@@ -1,0 +1,47 @@
+<div id="bootstrap-dialog" class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2 padding-top-10 padding-bottom-10">
+        <div class="bootstrap-dialog-header">
+          <a role="button" class="close" ng-click="closeThisDialog()">×</a>
+          <h4 class="modal-title info-box-number" ng-bind="dialog.title.label"></h4>
+        </div>
+      </div>
+      <div class="modal-body padding-top-10 no-pad-bottom">
+        <form role="form form-inline" class="form-horizontal" name="userForm">
+          <div class="simple-form-field row">
+            <!-- <div class="bootstrap-dialog-message" style="padding: 12px 0 20px 20px;" ng-bind="dialog.description.label"></div> -->
+            <div ng-if="dialog.input" class="form-group margin-bottom-10" ng-repeat="item in dialog.input">
+              <div class="col-sm-4 dialog-control-label no-padding-right dialog-control-h" style="height:auto;">
+                <span class="text-danger" ng-if="item.composory">*</span>
+                <span ng-bind="item.label + ':'"></span>
+              </div>
+              <div class="col-sm-7 padding-left-5 dialog-control-h" style="height:auto;">
+                <input ng-model="item.value" ng-if="item.type==undefined || item.type == 'input'" ng-change="item.onChange(item)" ng-disabled="item.disabled" ng-attr-placeholder="{{item.placeholder}}" maxlength="item.maxlength" class="form-control dialog-inp-text input-sm" />
+                <input ng-model="item.value" ng-if="item.type=='checkbox'" ng-change="item.onChange(item)" ng-disabled="item.disabled" type="checkbox" />
+                <textarea ng-model="item.value" ng-if="item.type == 'textarea'" maxlength="item.maxlength" ng-change="item.onChange(item)" ng-attr-placeholder="{{item.placeholder}}" class="form-control dialog-inp-text input-sm"></textarea>
+                <div class="dropdowntree select-sm" ng-if="item.type=='tree'" data-style="" fontsize="item.fontsize" width="item.width" placeholder="请选择..." label="item.lb" showclear="true" ng-model="item.value" disabled="item.disabled" dt-key="item.key" options="item.options" dt-mark="item.mark"></div>
+                <select ng-model="item.value" ng-if="item.type == 'select'" class="form-control dialog-inp-text input-sm" ng-disabled="item.abled" ng-change="item.onChange(item)" ng-options="op as op[item.format.label] for op in item.options">
+                </select>
+                <span ng-show="item.error" style="font-size: 12px;display: block;" class="text-danger " ng-bind="item.error"></span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer padding-top-10">
+        <div class="bootstrap-dialog-footer">
+          <div class="bootstrap-dialog-footer-buttons">
+            <button ng-class="btn.icon"
+                    ng-repeat="btn in dialog.fnlist"
+                    ng-click="btn.fn(dialog)"
+                    ng-bind="btn.label"
+                    ng-class="btn.icon;"
+                    ng-disabled="btn.disabledFn()">
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

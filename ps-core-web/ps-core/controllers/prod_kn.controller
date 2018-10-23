@@ -1,0 +1,76 @@
+<config injector="$scope,$rootScope,$routeParams,$q,$timeout,ajax"
+        params="/:viewId?"
+></config>
+<template>
+  <div>
+    <div ng-repeat="view in views" ng-style="{true : { 'background-color' : 'red' }}[viewId==view.viewId]">
+      json_{{view.viewTitle}}_{{view.viewId}}
+      <button ng-click="update(view)">update</button>
+      <button ng-click="delete(view.viewId)">delete</button>
+    </div>
+    <button ng-click="save()">add</button>
+  </div>
+</template>
+<script type="text/javascript">
+  export default function(scope,rootScope,routeParams,q,timeout,ajax) {
+    function random(){
+      return parseInt( Math.random() * 100 );
+    }
+    function getAllMyView(){
+      ajax.post("/api/node/smart/getAllMyView", null).then((d)=>{
+        if(d.code == "0"){
+          scope.views = d.data;
+        }
+      });
+    };
+    scope.save = function(){
+      let param = {
+          viewTitle : `name_${random()}`,
+          content : "{ a : 10 }"
+        },
+        promise = ajax.post("/api/node/smart/addView", param);
+      promise.then((d) => {
+        console.log(d);
+        scope.viewId = d.data.viewId;
+        getAllMyView();
+      })
+    }
+    scope.update = function(view){
+      let param = {
+          viewId : view.viewId,
+          viewTitle : view.viewTitle,
+          content : `{ a : ${random()}, b : ${random()} }`
+        },
+        promise = ajax.post("/api/node/smart/updateView", param);
+      promise.then((d) => {
+        console.log(d);
+        scope.viewId = d.data.viewId;
+        getAllMyView();
+      })
+    }
+    scope.delete = function(viewId){
+      let param = null,
+        promise = ajax.post("/api/node/smart/deleteView/" + viewId, param);
+      promise.then((d) => {
+        console.log(d);
+        getAllMyView();
+      })
+    }
+    scope.getAllMyView = function(){
+      let param = null,
+        promise = ajax.post("/api/node/smart/getAllMyView", param);
+      promise.then((d) => {
+        console.log(d);
+      })
+    }
+    getAllMyView();
+  }
+</script>
+<style type="less">
+  .sel{
+    position : absolute;
+    width : 100px;
+    top : 10px;
+    right : 10px;
+  }
+</style>

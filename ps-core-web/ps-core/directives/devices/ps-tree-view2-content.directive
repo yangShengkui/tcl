@@ -1,0 +1,116 @@
+<config injector="psEvent"
+></config>
+<template>
+  <div>
+    <div class="level">
+      <div class="item" ng-style="transf(level)">
+        <button ng-click="toggle()" ng-if="option.children.length > 0">
+          <span class="glyphicon glyphicon-minus"></span>
+        </button>
+        <!--<span class="glyphicon glyphicon-user" style="opacity: 0; margin: 0px 5px 0px 8px; color: rgb(204, 204, 204); display: none;"></span>-->
+        <span ng-bind="option.label" style="margin-left: 5px"></span>
+        <span class="glyphicon glyphicon-question-sign" ng-class="{_sign: true}"></span>
+        <button ng-repeat="btn in buttons" ng-if="!root || (root && btn.rootShow)" ng-class="{_fr:true}" ng-attr-title="{{btn.tit}}" ng-click="click(btn, $event)">
+          {{btn.label}}
+          <i class="{{btn.class}}"></i>
+        </button>
+      </div>
+      <div ng-if="open !== false">
+        <ps-tree-view2-content
+                data-search="search"
+                data-option="op"
+                data-buttons="buttons"
+                data-level="level + 1"
+                data-root = "op._isRoot"
+                ng-repeat="op in option.children track by $index">
+        </ps-tree-view2-content>
+      </div>
+    </div>
+  </div>
+</template>
+<script type="text/javascript">
+  export default function(psEvent){
+    return {
+      scope : {
+          search : "=",
+        level : "=",
+        option: "=",
+          buttons : "=",
+          root : "="
+      },
+      require : '?ngModel',
+      link(scope, element, attr, ngModel) {
+          console.log(scope.buttons);
+        scope.transf = function(level){
+          return {
+            "margin-left" : -20 * level + "px",
+            "padding-left" : 20 * level + "px"
+          }
+        };
+        scope.click = function(btn, event){
+            let evt = psEvent(event);
+            evt.$row = scope.option;
+            btn.on && typeof btn.on.click === "function" && btn.on.click(evt);
+        };
+        scope.toggle = function(){
+          scope.open = typeof scope.open === "undefined" ? false : !scope.open;
+        };
+      }
+    }
+
+  }
+</script>
+<style type="less" scoped="true">
+  .item {
+    display: block;
+    line-height: 32px;
+    border-bottom: 1px solid #d2d6de;
+    position: relative;
+    padding: 6px;
+    height: auto;
+    cursor: pointer;
+    &.active {
+      background-color : #3c8dbc;
+      color : #fff;
+      &:hover {
+        background-color: #3c8dbc;
+      }
+    }
+  }
+
+  .level {
+    margin-left: 20px;
+  }
+
+  .item:hover {
+    background: #f4f4f4;
+  }
+  button {
+    line-height: 20px;
+    color: rgb(255, 255, 255);
+    border: 0px;
+    background-color: rgb(0, 157, 234);
+    float: left;
+    padding: 2px 5px 2px 6px;
+    margin: 4px 0px 0px 3px;
+    display: block;
+  }
+  ._fr {
+    color: rgb(30, 184, 184);
+    border: 1px solid rgb(221, 221, 221);
+    margin: 4px 3px 0px 2px;
+    background-color: rgb(255, 255, 255);
+    line-height: 14px;
+    position: relative;
+    overflow: visible;
+    float: right;
+    z-index: 1;
+
+  }
+  ._sign {
+    font-size: 16px;
+    color: rgb(238, 238, 238);
+    margin-left: 20px;
+  }
+
+</style>

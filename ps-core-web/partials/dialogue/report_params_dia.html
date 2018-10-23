@@ -1,0 +1,130 @@
+<!--添加解析协议模态框-->
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeParams();" class="close">×</a>
+        <h4 class="modal-title info-box-number">报表模板参数设置</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <div class="box-body col-sm-12  table-responsive margin-bottom-20 bg-write table-overflow">
+          <table class="table table-hover dataTable">
+            <thead>
+              <tr role="row">
+                <th>参数名称</th>
+                <th>数据格式</th>
+                <th>显示名称</th>
+                <th>展示方式</th>
+                <th>参数值</th>
+                <th>参数默认值</th>
+                <th>默认展示</th>
+              </tr>
+            </thead>
+            <tbody ng-repeat="param in selectedTemplate.reportParams">
+              <tr>
+                <td>
+                  {{param.name}}
+                  <!--<input type="text" readonly ng-model="param.name" class="form-control padding-left-5 no-pad input-sm cursor-def" />-->
+                </td>
+                
+                <td>
+                  {{param.showType}}
+                </td>
+                <td>
+                  <input type="text" ng-model="param.title" class="form-control padding-left-5 no-pad input-sm cursor-def" />
+                </td>
+                <td>
+                  <select ng-model="param.showTypeValue" class="form-control no-pad input-sm cursor-def" ng-options="value.value as value.label for value in paramShowList">
+                    <option value="">请选择...</option>
+                  </select>
+                </td>
+                <!--      
+                <td>
+                  <input type="text"  ng-model="param.format" class="form-control padding-left-5 no-pad input-sm" />
+                </td>
+                -->
+                <td>
+                  <div ng-if="param.showTypeValue == 'DATETIME'">
+                    <input type="text" class="form-control padding-left-5 no-pad input-sm " readonly timepicker="true" ng-model="param.value" drops="down" date-time-picker>
+                  </div>
+                  <div ng-if="param.showTypeValue == 'LONG' || param.showTypeValue == 'INT' || param.showTypeValue == 'FLOAT' || param.showTypeValue == 'DOUBLE'">
+                    <input type="number" class="form-control padding-left-5 no-pad input-sm " min="0" ng-model="param.value">
+                  </div>
+                  <div ng-if="param.showTypeValue == 'STRING'">
+                    <input type="text" ng-model="param.value" class="form-control padding-left-5 no-pad input-sm" />
+                  </div>
+                  <div ng-if="param.showTypeValue == 'DOMAINS'">
+                    <div  class="dropdowntree" placeholder="请选择..."
+                    ng-model="param.value" change="" key="domainPath" options="domainListTree" mark="nodes"/>
+                  </div>  
+                  <div ng-if="param.showTypeValue == 'CUSTOMER'">
+                    <select select2 class="form-control"   ng-model="param.value" selectdata="customersList" ng-options="value.id as value.text for value in customersList">
+                      <option value="">请选择...</option>
+                    </select>
+                  </div>    
+                  <div ng-if="param.showTypeValue == 'PROJECT'">
+                    <select select2 class="form-control"  ng-model="param.value" ng-options="value.id as value.text for value in projectsList" selectdata="projectsList">
+                      <option value="">请选择...</option>
+                    </select>
+                  </div>
+                  <!--新增1-->
+                  <div ng-if="param.showTypeValue == 'troubleType'">
+                      <select select2 class="form-control"  ng-model="param.value" ng-options="value.id as value.text for value in troubleType" selectdata="troubleType">
+                        <option value="">请选择...</option>
+                      </select>
+                  </div>
+                  <!--新增2-->
+                  <div ng-if="param.showTypeValue == 'district'">
+                    <select select2 class="form-control"  ng-model="param.value" ng-options="value.id as value.text for value in district" selectdata="district">
+                      <option value="">请选择...</option>
+                    </select>
+                  </div>
+                  <!--新增3-->
+                  <div ng-if="param.showTypeValue == 'badCategory'">
+                    <select select2 class="form-control"  ng-model="param.value" ng-options="value.id as value.text for value in badCategory" selectdata="badCategory">
+                      <option value="">请选择...</option>
+                    </select>
+                  </div>
+                  <!--新增4-->
+                  <div ng-if="param.showTypeValue == 'years'">
+                    <select select2 class="form-control"  ng-model="param.value" ng-options="value.id as value.text for value in years" selectdata="years">
+                      <option value="">请选择...</option>
+                    </select>
+                  </div>
+                  <!--新增5-->
+                  <div ng-if="param.showTypeValue == 'weeks'">
+                    <select select2 class="form-control"  ng-model="param.value" ng-options="value.id as value.text for value in weeks" selectdata="weeks">
+                      <option value="">请选择...</option>
+                    </select>
+                  </div>
+                  <!--新增6-->
+                  <div ng-if="param.showTypeValue == 'quarters'">
+                    <select select2 class="form-control"  ng-model="param.value" ng-options="value.id as value.text for value in quarters" selectdata="quarters">
+                      <option value="">请选择...</option>
+                    </select>
+                  </div>
+                  <!--新增7-->
+                  <div ng-if="param.showTypeValue == 'BOOL'">
+                    <select select2 class="form-control"  ng-model="param.value" ng-options="value.id as value.text for value in bool" selectdata="bool">
+                      <option value="">请选择...</option>
+                    </select>
+                  </div>
+                </td>
+                <td>
+                  <input type="text" ng-model="param.defaultValue" class="form-control padding-left-5 no-pad input-sm cursor-def" />
+                </td>
+                <td>
+                  <input type="checkbox" ng-model="param.defaultShow">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="updateParams();">确定</button>
+        <button class="btn btn-default" ng-click="closeParams();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+﻿<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header" ng-hide="searchMode">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active">
+                <a>能效评估</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body no-padding-left no-pad-bottom">
+          <form role="form">
+            <div class="form-group col-sm-2 height-50">
+              <label class="control-label">选择行业：</label>
+              <select class="form-control" style="width:100%" ng-model="queryDitem.industryType" ng-options="x.id as x.text for x in industryList" selectdata="industryList" select2>
+              </select>
+            </div>
+            <div class="form-group col-sm-2 height-50">
+              <label class="control-label">选择企业：</label>
+              <select class="form-control" style="width:100%" ng-model="queryDitem.enterpriseId" ng-options="op.id as op.text for op in allEnterprises| filter:{ industryType : queryDitem.industryType}" selectdata="allEnterprises" select2>
+              </select>
+            </div>
+            <div class="form-group col-sm-2">
+              <label class="control-label">周期类型：</label>
+              <select class="form-control" style="width:100%" placeholder="请选择..." ng-model="queryDitem.statisticsType" ng-options="x.id as x.text for x in [{'id':'MONTH','text':'月'},{'id':'QUARTER','text':'季度'},{'id':'YEAR','text':'年'}]">
+              </select>
+            </div>
+            <div class="form-group col-sm-2 height-50">
+              <label class="control-label">开始时间：</label>
+              <input type="text" class="form-control input-sm" style="background-color: #fff;" readonly='readonly' autocomplete="off" ng-model="queryDitem.startTime" drops="down" date-time-picker>
+            </div>
+            <div class="form-group col-sm-2 height-50">
+              <label class="control-label">结束时间：</label>
+              <input type="text" class="form-control input-sm" style="background-color: #fff;" readonly='readonly' autocomplete="off" ng-model="queryDitem.endTime" drops="down" date-time-picker>
+            </div>
+            <div class="form-group col-sm-2 height-50">
+              <label class="col-sm-12 control-label font-white">操作：</label>
+              <div class="btn-group">
+                <button ng-click="goSearch(queryDitem)" type="button" class="btn btn-primary btn-sm"><i class="fa fa-search"></i><span class="hidden-sm">查询</span></button>
+                <button ng-click="goClear()" type="button" class="btn btn-default btn-sm"><i class="fa fa-close"></i><span class="hidden-sm">清除</span></button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="box-footer no-padding">
+          <div class="box box-solid" style="margin-bottom:1px">
+            <div class="box-header">
+              <h3 class="box-title">雷达图</h3>
+              <!-- <input type="text" class="form-control input-sm" style="background-color: #fff;display: inline-block;width: 14%;margin-left: 10px;" readonly='readonly' autocomplete="off" ng-model="queryDitem.time" ng-click="timeFun" drops="down" placeholder="选择时间" date-time-picker> -->
+              <div class="box-tools pull-right">
+                <button id="viewrandar1" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div id="radarView" style="height: 450px; width: 1000px; margin-left:30px;"></div>
+            </div>
+          </div>
+          <div class="box box-solid" style="margin-bottom:1px">
+            <div class="box-header">
+              <h3 class="box-title">趋势图</h3>
+              <!-- <input type="text" class="form-control input-sm" style="background-color: #fff;display: inline-block;width: 14%;margin-left: 10px;" readonly='readonly' autocomplete="off" ng-model="queryDitem.startTime" drops="down" placeholder="开始时间" date-time-picker> -->
+              <!-- <input type="text" class="form-control input-sm" style="background-color: #fff;display: inline-block;width: 14%;margin-left: 10px;" readonly='readonly' autocomplete="off" ng-model="queryDitem.endTime" ng-click="endFun" drops="down" placeholder="结束时间" date-time-picker> -->
+              <div class="box-tools pull-right">
+                <button id="viewrandar2" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div id="tendencyView" style="height: 450px; width: 1000px; margin-left:30px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

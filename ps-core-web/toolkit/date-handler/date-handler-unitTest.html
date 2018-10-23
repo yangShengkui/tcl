@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <link rel="stylesheet" href="../jasmine-standalone-2.9.1/lib/jasmine-2.9.1/jasmine.css">
+    <script src="../jasmine-standalone-2.9.1/lib/jasmine-2.9.1/jasmine.js"></script>
+    <script src="../jasmine-standalone-2.9.1/lib/jasmine-2.9.1/jasmine-html.js"></script>
+    <script src="../jasmine-standalone-2.9.1/lib/jasmine-2.9.1/boot.js"></script>
+    <script src="../date-handler/date-handler.js"></script>
+    <script>
+      var dh = dateHandler('2017-10-8,14:36:27.036');
+      var addYear = 3;
+      describe("dateHandler启动", function() {
+        it("测试用日期2017-10-8,14:36:27.036", function() {
+          expect(typeof dateHandler).toBe('function');
+        });
+        describe("dh.addYear(" + addYear + ", true)方法测试", function() {
+          var clone = dh.addYear(addYear, true);
+          it("年份返回正确", function() {
+            expect(clone.getYear()).toBe(2020);
+          });
+          it("时间对象年份正确", function() {
+            expect(clone.getDate().getFullYear()).toBe(2020);
+          });
+        });
+        describe("dh.addMonth(num,true)方法运算结果通过", function() {
+          it("原本时间对象不变结果不变", function() {
+            expect(dh.getDateString("yy-MM-dd")).toBe("2017-10-08");
+          });
+          it("增加3个月结果为2018-01", function() {
+            var clone = dh.addMonth(3, true);
+            expect(clone.getDateString("yy-MM")).toBe("2018-01");
+          });
+          it("增加2个月结果为2017-12", function() {
+            var clone = dh.addMonth(2, true);
+            expect(clone.getDateString("yy-MM")).toBe("2017-12");
+          });
+          it("增加12个月结果为2018-10", function() {
+            var clone = dh.addMonth(12, true);
+            expect(clone.getDateString("yy-MM")).toBe("2018-10");
+          })
+          it("减少10个月结果为2016-12", function() {
+            var clone = dh.addMonth(-10, true);
+            expect(clone.getDateString("yy-MM")).toBe("2016-12");
+          });
+          it("减少20个月结果为2016-2", function() {
+            var clone = dh.addMonth(-20, true);
+            expect(clone.getDateString("yy-MM")).toBe("2016-02");
+          });
+        });
+        describe("dh.addDay(num,true)方法运算结果通过", function() {
+          it("原本时间对象不变结果不变", function() {
+            expect(dh.getDateString("yy-MM-dd")).toBe("2017-10-08");
+          });
+          it("增加1天结果为2017-10-09", function() {
+            var clone = dh.addDay(1, true);
+            expect(clone.getDateString("yy-MM-dd")).toBe("2017-10-09");
+          });
+          it("减少1天结果为2017-10-07", function() {
+            var clone = dh.addDay(-1, true);
+            expect(clone.getDateString("yy-MM-dd")).toBe("2017-10-07");
+          });
+        });
+        describe("dh.addHour(num,true)方法运算结果通过", function() {
+          it("原本时间对象不变结果不变", function() {
+            expect(dh.getDateString("yy-MM-dd")).toBe("2017-10-08");
+          });
+          it("增加6小时果为2017-10-08,20", function() {
+            var clone = dh.addHour(6, true);
+            expect(clone.getDateString("yy-MM-dd,hh")).toBe("2017-10-08,20");
+          });
+          it("减少6小时结果为2017-10-08,08", function() {
+            var clone = dh.addHour(-6, true);
+            expect(clone.getDateString("yy-MM-dd,hh")).toBe("2017-10-08,08");
+          });
+        });
+        describe("dh.addMinute(num,true)方法运算结果通过", function() {
+          it("原本时间对象不变结果不变", function() {
+            expect(dh.getDateString("yy-MM-dd")).toBe("2017-10-08");
+          });
+          it("增加6分钟果为2017-10-08,14:42", function() {
+            var clone = dh.addMinute(6, true);
+            expect(clone.getDateString("yy-MM-dd,hh:mm")).toBe("2017-10-08,14:42");
+          });
+          it("减少6分钟结果为2017-10-08,14:30", function() {
+            var clone = dh.addMinute(-6, true);
+            expect(clone.getDateString("yy-MM-dd,hh:mm")).toBe("2017-10-08,14:30");
+          });
+        });
+        describe("dh.addSecond(num,true)方法运算结果通过", function() {
+          it("原本时间对象不变结果不变", function() {
+            expect(dh.getDateString("yy-MM-dd")).toBe("2017-10-08");
+          });
+          it("增加6秒钟果为2017-10-08,14:36:33", function() {
+            var clone = dh.addSecond(6, true);
+            expect(clone.getDateString("yy-MM-dd,hh:mm:ss")).toBe("2017-10-08,14:36:33");
+          });
+          it("减少6秒钟结果为2017-10-08,14:36:21", function() {
+            var clone = dh.addSecond(-6, true);
+            expect(clone.getDateString("yy-MM-dd,hh:mm:ss")).toBe("2017-10-08,14:36:21");
+          });
+        });
+        describe("dh.addTimeStamp(num,true)方法运算结果通过", function() {
+          it("原本时间对象不变结果不变", function() {
+            expect(dh.getDateString("yy-MM-dd")).toBe("2017-10-08");
+          });
+          it("增加6毫秒果为2017-10-08,14:36:27.042", function() {
+            var clone = dh.addTimeStamp(6, true);
+            expect(clone.getDateString("yy-MM-dd,hh:mm:ss.nn")).toBe("2017-10-08,14:36:27.042");
+          });
+          it("减少6毫秒结果为2017-10-08,14:27:21.030", function() {
+            var clone = dh.addTimeStamp(-6, true);
+            expect(clone.getDateString("yy-MM-dd,hh:mm:ss.nn")).toBe("2017-10-08,14:36:27.030");
+          });
+        });
+        describe("dh.trimmToYear(true)方法运算结果通过", function() {
+          it("原本时间对象不变结果不变", function() {
+            expect(dh.getDateString("yy-MM-dd")).toBe("2017-10-08");
+          });
+          it("取得本年第一天" + dh.trimmToYear(true).getDateString(), function() {
+            expect(true).toBe(true);
+          });
+        });
+        describe("dh.trimmToMonth(true)方法运算结果通过", function() {
+          it("原本时间对象不变结果不变", function() {
+            expect(dh.getDateString("yy-MM-dd")).toBe("2017-10-08");
+          });
+          it("取得本月第一天" + dh.trimmToMonth(true).getDateString(), function() {
+            expect(true).toBe(true);
+          });
+        });
+        describe("dh.trimmToWeek(true)方法运算结果通过", function() {
+          it("原本时间对象不变结果不变", function() {
+            expect(dh.getDateString("yy-MM-dd")).toBe("2017-10-08");
+          });
+          it("取得本周第一天" + dh.trimmToWeek(true).getDateString(), function() {
+            expect(true).toBe(true);
+          });
+        });
+        describe("dh.trimmToDate(true)方法运算结果通过", function() {
+          it("原本时间对象不变结果不变", function() {
+            expect(dh.getDateString("yy-MM-dd")).toBe("2017-10-08");
+          });
+          it("精确到日" + dh.trimmToDate(true).getDateString(), function() {
+            expect(true).toBe(true);
+          });
+        });
+        describe("dh.trimmToHour(true)方法运算结果通过", function() {
+          it("原本时间对象不变结果不变", function() {
+            expect(dh.getDateString("yy-MM-dd")).toBe("2017-10-08");
+          });
+          it("精确到小时" + dh.trimmToHour(true).getDateString(), function() {
+            expect(true).toBe(true);
+          });
+        });
+        describe("dh.trimmToMinute(true)方法运算结果通过", function() {
+          it("原本时间对象不变结果不变", function() {
+            expect(dh.getDateString("yy-MM-dd")).toBe("2017-10-08");
+          });
+          it("精确到分钟" + dh.trimmToMinute(true).getDateString(), function() {
+            expect(true).toBe(true);
+          });
+        });
+        describe("dh.trimmToSecond(true)方法运算结果通过", function() {
+          it("原本时间对象不变结果不变", function() {
+            expect(dh.getDateString("yy-MM-dd")).toBe("2017-10-08");
+          });
+          it("精确到秒钟" + dh.trimmToSecond(true).getDateString(), function() {
+            expect(true).toBe(true);
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!--添加解析协议模态框-->
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeParams();" class="close">×</a>
+        <h4 class="modal-title info-box-number">报表数据源设置</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <div class="box-body col-sm-12  table-responsive margin-bottom-20 bg-write table-overflow">
+          <table class="table table-hover dataTable">
+            <thead>
+              <tr role="row">
+                <th>数据源名</th>
+                <th>驱动名</th>
+                <th>URL地址</th>
+                <th>数据库用户名称</th>
+                <th>数据库用户密码</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody ng-repeat="param in dataSources">
+              <tr>
+                <td>
+                  <input type="text" ng-disabled="!param.isEdit" ng-model="param.name" class="form-control padding-left-5 no-pad input-sm cursor-def" />
+                </td>
+                <td>
+                  <input type="text" ng-disabled="!param.isEdit" ng-model="param.driver" class="form-control padding-left-5 no-pad input-sm cursor-def" />
+                </td>
+                <td>
+                  <input type="text" ng-disabled="!param.isEdit" ng-model="param.url" class="form-control padding-left-5 no-pad input-sm cursor-def" />
+                </td>
+                <td>
+                  <input type="text" ng-disabled="!param.isEdit" ng-model="param.userName" class="form-control padding-left-5 no-pad input-sm cursor-def" />
+                </td>
+                <td>
+                  <input type="text" ng-disabled="!param.isEdit" ng-model="param.passWord" class="form-control padding-left-5 no-pad input-sm cursor-def" />
+                </td>
+                <td>
+                  <div style="width: 40px;">
+                    <a href="" title="保存" ng-show="param.id == 0 || param.isEdit" ng-click="saveDataSource(param);"><span class="glyphicon glyphicon-saved"></span></a>
+                    <a href="" title="编辑" ng-show="!param.isEdit" ng-click="editDataSource(param);"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="" title="删除" ng-click="delDataSource(param);"><span class="glyphicon glyphicon-trash"></span></a>
+                  </div>
+                  
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="addDataSource();">新加数据源</button>
+        <button class="btn btn-default" ng-click="closeParams();">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>

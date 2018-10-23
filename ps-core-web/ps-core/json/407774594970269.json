@@ -1,0 +1,29 @@
+{
+  "type": "absolute",
+  "setting": {
+    "viewTitle": "青岛展厅视图1112",
+    "description": "青岛展厅视图1112",
+    "cls": "qingdao1112"
+  },
+  "data": [
+    {
+      "type": "times",
+      "position": {
+        "top": 346,
+        "left": "70.75520833333333%",
+        "width": "6.822916666666666%",
+        "height": 100
+      },
+      "attributes": {
+        "width": 200,
+        "height": 50,
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "format": "yyyy-MM-dd",
+        "real": "false"
+      }}
+  ]
+}

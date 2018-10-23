@@ -1,0 +1,58 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <div class="nav-tabs-custom">
+                        <!-- Tabs within a box -->
+                        <ul class="nav nav-tabs pull-left">
+                            <li class="active"><a href="#store-form" id="store" name="store" data-toggle="tab">出入库</a></li>
+                            <li><a href="#stats-form" id="stats" name="stats" data-toggle="tab">统计</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <!-- Morris chart - Sales -->
+                            <form id="store-form" class="form-horizontal tab-pane active" role="form">
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <div class="form-group no-margin">
+                                            <label>型号：</label>
+                                            <input autocomplete="off" class="form-control" type="text" ng-model="spareData.type" value="{{spareData.type}}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group no-margin">
+                                            <label>名称：</label>
+                                            <input autocomplete="off" class="form-control" type="text" ng-model="spareData.label" value="{{spareData.label}}" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12 align-center">
+                                        <a id="save-btn" ng-click="saveRecords()" style="margin-right: 15px;" class="btn btn-default btn-sm">
+                                            <i class="fa fa-search"></i>
+                                            <span class="hidden-xs ng-binding"> 查询</span></a>
+                                        <a id="cancel-btn" ng-click="cancelRecords()" class="btn btn-default btn-sm"><i class="fa fa-close"></i><span class="hidden-xs ng-binding"> 取消</span></a>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table width="100%" class="table table-hover" id="storetable" store-table>
+                                    </table>
+                                </div>
+                            </form>
+                            <form id="stats-form" class="form-horizontal tab-pane " role="form">
+                                <!-- <div class="table-responsive">
+                                    <table width="100%" class="table table-hover" id="statstable" stats-table>
+                                    </table>
+                                </div> -->
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+</section>

@@ -1,0 +1,27 @@
+<config injector="$timeout"
+></config>
+<script type="text/javascript">
+  export default function(timeout){
+    function scopeService(scope, callback){
+      function getValue(node, attribute){
+        while(node){
+          if(node[attribute]){
+            return node[attribute];
+          }
+          node = node.$parent;
+        }
+        return null;
+      }
+      timeout(()=>{
+        let $$customParentScope = scope["$$customParentScope"] = getValue(scope, "$$customParentScope");
+        scope.$$customRootScope = getValue(scope, "$$customRootScope");
+        if(scope.option.scope){
+          $$customParentScope[scope.option.scope] = scope;
+          scope.$$customParentScope = scope;
+        }
+        typeof callback === "function" && callback();
+      });
+    };
+    return scopeService;
+  }
+</script>

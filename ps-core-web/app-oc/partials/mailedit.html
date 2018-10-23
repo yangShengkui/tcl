@@ -1,0 +1,35 @@
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box">
+        <form class="tab-pane form-horizontal">
+          <div class="box-header">
+            <div class="form-group col-sm-8 ">
+              <div class="col-sm-6">
+                <label class="control-label col-sm-4">消息标题：</label>
+                <div class="col-sm-8 no-padding">
+                  <input class="form-control input-sm" maxlength="20" type="text" name="deviceName"
+                         ng-model="msgModel.title"/>
+                </div>
+              </div>
+            </div>
+            <div class="text-center pull-right">
+              <div class="text-center pull-right" style="display: inherit;">
+                <a  ng-click="msgSave()" class="btn btn-default btn-sm"><i class="fa fa-save"></i><span class="hidden-xs"> 保存</span></a>
+                <a href="#/system" class="btn btn-default btn-sm"><i class="fa fa-times"></i><span class="hidden-xs"> 返回</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="box-body">
+            <textarea name="editor1" id="editor1"  rows="10" class="full-width" ng-model="msgModel.content"  ng-bind-html="TrustAsHtml(msgModel.content)" ckeditor>正在初始化编辑工具</textarea>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.row -->
+</section>

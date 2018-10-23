@@ -1,0 +1,71 @@
+<div class="rappid">
+  <div class="paper-container paper-container-full">
+  </div>
+  <!--
+  	
+  <div class="paper-echart-container paper-container-full">
+    <div class="paper-echart" style="height: {{data.height}}px;width: {{data.width}}px;">
+      <div class="nav-tabs-custom " ng-repeat="item in data.groupAry" style="pointer-events: auto;position: absolute !important;top:{{item.y}}px;left:{{item.x}}px">
+        <ul class="nav nav-tabs nav-echart">
+          <li ng-class="{true:'active'}[$index == 0]" ng-repeat="view in item.echartAry">
+            <a href="#{{view.id}}" data-toggle="tab">{{view.attrs.text.text}}</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div ng-repeat="view in item.echartAry" class="chart tab-pane" ng-class="{true:'active'}[$index == 0]" id="{{view.id}}">
+            <div style="height: {{view.size.height}}px;width:{{item.width}}px;" ng-controller="ConfigureChartsCtrl" name="{{view.echartViewId}}" echarts3-dom>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="free-board" class="whole" style="position:absolute;pointer-events: all">
+        <div class="col-md-12"
+             instance="instance"
+             f-board></div>
+      </div>
+      <div class="echart-content" ng-show="instance==undefined" style="pointer-events: auto;position: absolute !important;height: {{view.size.height}}px;width:{{view.size.width}}px;top:{{view.position.y}}px;left:{{view.position.x}}px" ng-repeat="view in data.echartAry" ng-controller="ConfigureChartsCtrl" name="{{view.echartViewId}}" echarts3-dom></div>
+      
+    </div>
+  </div>
+  -->
+  <div class="toolbar-container toolbar-container-full">
+    <ol class="breadcrumb">
+      <li>
+        <a href="../app-oc/index.html#/views/configure">组态视图管理</a>
+      </li>
+      <li ng-repeat="view in data.viewRoutes">
+        <a ng-click="data.viewChange(view)">{{view.viewTitle}}</a>
+      </li>
+      <li class="active">{{data.viewTitle}}</li>
+    </ol>
+  </div>
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+      <li class="active">
+        <a href="#control-sidebar-home-tab" data-toggle="tab" ><i class="fa fa-gears"> 指令</i></a>
+      </li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- Home tab content -->
+      <div class="tab-pane active" id="control-sidebar-home-tab">
+        <form role="form">
+          <div class="form-group" ng-repeat="dir in $parent.directiveList">
+            <label>{{dir.name}}:</label>
+            <div class="col-sm-10 no-padding-lr form-group">
+              <input type="text" class="form-control input-sm" ng-model="dir.value">
+            </div>
+            <div class="col-sm-2 no-padding-lr">
+              <button class="btn btn-primary btn-sm" ng-click="$parent.$parent.sendItemDir(dir)">发送</button>
+            </div>
+          </div>
+          
+        </form>
+      </div>
+      <!-- /.tab-pane -->
+    </div>
+  </aside>
+
+</div>

@@ -1,0 +1,8174 @@
+#free-board .Solar .tab-content {
+  border: 1px solid #073642;
+  background-color: #002b36
+}
+
+.Solar {
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #a9c0c3;
+  background-color: #011a20;
+  min-height: 100vh;
+  /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
+}
+
+.Solar .block {
+  border: 1px solid #073642;
+  background-color: #002b36
+}
+
+.Solar .block {
+  border: 1px solid #073642;
+  background-color: #002b36
+}
+
+.Solar .block {
+  border: 1px solid #073642;
+  background-color: #002b36
+}
+
+.Solar .box {
+  background-color: #002b36;
+  border: 1px solid #073642
+}
+
+.Solar .box-header {
+  border-bottom: 1px solid #073642
+}
+
+.Solar .box-footer {
+  border-top: 1px solid #073642;
+  background-color: #002b36
+}
+
+.Solar .border-right {
+  border-right: 1px solid #073642
+}
+
+.Solar article,
+.Solar aside,
+.Solar details,
+.Solar figcaption,
+.Solar figure,
+.Solar footer,
+.Solar header,
+.Solar hgroup,
+.Solar main,
+.Solar menu,
+.Solar nav,
+.Solar section,
+.Solar summary {
+  display: block
+}
+
+.Solar audio,
+.Solar canvas,
+.Solar progress,
+.Solar video {
+  display: inline-block;
+  vertical-align: baseline
+}
+
+.Solar audio:not([controls]) {
+  display: none;
+  height: 0
+}
+
+.Solar [hidden],
+.Solar template {
+  display: none
+}
+
+.Solar a {
+  background-color: transparent
+}
+
+.Solar a:active,
+.Solar a:hover {
+  outline: 0
+}
+
+.Solar abbr[title] {
+  border-bottom: 1px dotted
+}
+
+.Solar b,
+.Solar strong {
+  font-weight: bold
+}
+
+.Solar dfn {
+  font-style: italic
+}
+
+.Solar h1 {
+  font-size: 2em;
+  margin: .67em 0
+}
+
+.Solar mark {
+  background: #ff0;
+  color: #000
+}
+
+.Solar small {
+  font-size: 80%
+}
+
+.Solar sub,
+.Solar sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline
+}
+
+.Solar sup {
+  top: -0.5em
+}
+
+.Solar sub {
+  bottom: -0.25em
+}
+
+.Solar img {
+  border: 0
+}
+
+.Solar svg:not(:root) {
+  overflow: hidden
+}
+
+.Solar figure {
+  margin: 1em 40px
+}
+
+.Solar hr {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0
+}
+
+.Solar pre {
+  overflow: auto
+}
+
+.Solar code,
+.Solar kbd,
+.Solar pre,
+.Solar samp {
+  font-family: monospace, monospace;
+  font-size: 1em
+}
+
+.Solar button,
+.Solar input,
+.Solar optgroup,
+.Solar select,
+.Solar textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0
+}
+
+.Solar button {
+  overflow: visible
+}
+
+.Solar button,
+.Solar select {
+  text-transform: none
+}
+
+.Solar button,
+.Solar html input[type="button"],
+.Solar input[type="reset"],
+.Solar input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer
+}
+
+.Solar button[disabled],
+.Solar html input[disabled] {
+  cursor: default
+}
+
+.Solar button::-moz-focus-inner,
+.Solar input::-moz-focus-inner {
+  border: 0;
+  padding: 0
+}
+
+.Solar input {
+  line-height: normal
+}
+
+.Solar input[type="checkbox"],
+.Solar input[type="radio"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0
+}
+
+.Solar input[type="number"]::-webkit-inner-spin-button,
+.Solar input[type="number"]::-webkit-outer-spin-button {
+  height: auto
+}
+
+.Solar input[type="search"] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box
+}
+
+.Solar input[type="search"]::-webkit-search-cancel-button,
+.Solar input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none
+}
+
+.Solar fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: .35em .625em .75em
+}
+
+.Solar legend {
+  border: 0;
+  padding: 0
+}
+
+.Solar textarea {
+  overflow: auto
+}
+
+.Solar optgroup {
+  font-weight: bold
+}
+
+.Solar table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+.Solar td,
+.Solar th {
+  padding: 0
+}
+
+@media print {
+  .Solar *,
+  .Solar *:before,
+  .Solar *:after {
+    background: transparent !important;
+    color: #000 !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important
+  }
+  .Solar a,
+  .Solar a:visited {
+    text-decoration: underline
+  }
+  .Solar a[href]:after {
+    content: " (" attr(href) ")"
+  }
+  .Solar abbr[title]:after {
+    content: " (" attr(title) ")"
+  }
+  .Solar a[href^="#"]:after,
+  .Solar a[href^="javascript:"]:after {
+    content: ""
+  }
+  .Solar pre,
+  .Solar blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid
+  }
+  .Solar thead {
+    display: table-header-group
+  }
+  .Solar tr,
+  .Solar img {
+    page-break-inside: avoid
+  }
+  .Solar img {
+    max-width: 100% !important
+  }
+  .Solar p,
+  .Solar h2,
+  .Solar h3 {
+    orphans: 3;
+    widows: 3
+  }
+  .Solar h2,
+  .Solar h3 {
+    page-break-after: avoid
+  }
+  .Solar .navbar {
+    display: none
+  }
+  .Solar .btn>.caret,
+  .Solar .dropup>.btn>.caret {
+    border-top-color: #000 !important
+  }
+  .Solar .label {
+    border: 1px solid #000
+  }
+  .Solar .table {
+    border-collapse: collapse !important
+  }
+  .Solar .table td,
+  .Solar .table th {
+    background-color: #fff !important
+  }
+  .Solar .table-bordered th,
+  .Solar .table-bordered td {
+    border: 1px solid #ddd !important
+  }
+}
+/**
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg')
+}
+*/
+.Solar .glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
+}
+
+.Solar .glyphicon-asterisk:before {
+  content: "\002a"
+}
+
+.Solar .glyphicon-plus:before {
+  content: "\002b"
+}
+
+.Solar .glyphicon-euro:before,
+.Solar .glyphicon-eur:before {
+  content: "\20ac"
+}
+
+.Solar .glyphicon-minus:before {
+  content: "\2212"
+}
+
+.Solar .glyphicon-cloud:before {
+  content: "\2601"
+}
+
+.Solar .glyphicon-envelope:before {
+  content: "\2709"
+}
+
+.Solar .glyphicon-pencil:before {
+  content: "\270f"
+}
+
+.Solar .glyphicon-glass:before {
+  content: "\e001"
+}
+
+.Solar .glyphicon-music:before {
+  content: "\e002"
+}
+
+.Solar .glyphicon-search:before {
+  content: "\e003"
+}
+
+.Solar .glyphicon-heart:before {
+  content: "\e005"
+}
+
+.Solar .glyphicon-star:before {
+  content: "\e006"
+}
+
+.Solar .glyphicon-star-empty:before {
+  content: "\e007"
+}
+
+.Solar .glyphicon-user:before {
+  content: "\e008"
+}
+
+.Solar .glyphicon-film:before {
+  content: "\e009"
+}
+
+.Solar .glyphicon-th-large:before {
+  content: "\e010"
+}
+
+.Solar .glyphicon-th:before {
+  content: "\e011"
+}
+
+.Solar .glyphicon-th-list:before {
+  content: "\e012"
+}
+
+.Solar .glyphicon-ok:before {
+  content: "\e013"
+}
+
+.Solar .glyphicon-remove:before {
+  content: "\e014"
+}
+
+.Solar .glyphicon-zoom-in:before {
+  content: "\e015"
+}
+
+.Solar .glyphicon-zoom-out:before {
+  content: "\e016"
+}
+
+.Solar .glyphicon-off:before {
+  content: "\e017"
+}
+
+.Solar .glyphicon-signal:before {
+  content: "\e018"
+}
+
+.Solar .glyphicon-cog:before {
+  content: "\e019"
+}
+
+.Solar .glyphicon-trash:before {
+  content: "\e020"
+}
+
+.Solar .glyphicon-home:before {
+  content: "\e021"
+}
+
+.Solar .glyphicon-file:before {
+  content: "\e022"
+}
+
+.Solar .glyphicon-time:before {
+  content: "\e023"
+}
+
+.Solar .glyphicon-road:before {
+  content: "\e024"
+}
+
+.Solar .glyphicon-download-alt:before {
+  content: "\e025"
+}
+
+.Solar .glyphicon-download:before {
+  content: "\e026"
+}
+
+.Solar .glyphicon-upload:before {
+  content: "\e027"
+}
+
+.Solar .glyphicon-inbox:before {
+  content: "\e028"
+}
+
+.Solar .glyphicon-play-circle:before {
+  content: "\e029"
+}
+
+.Solar .glyphicon-repeat:before {
+  content: "\e030"
+}
+
+.Solar .glyphicon-refresh:before {
+  content: "\e031"
+}
+
+.Solar .glyphicon-list-alt:before {
+  content: "\e032"
+}
+
+.Solar .glyphicon-lock:before {
+  content: "\e033"
+}
+
+.Solar .glyphicon-flag:before {
+  content: "\e034"
+}
+
+.Solar .glyphicon-headphones:before {
+  content: "\e035"
+}
+
+.Solar .glyphicon-volume-off:before {
+  content: "\e036"
+}
+
+.Solar .glyphicon-volume-down:before {
+  content: "\e037"
+}
+
+.Solar .glyphicon-volume-up:before {
+  content: "\e038"
+}
+
+.Solar .glyphicon-qrcode:before {
+  content: "\e039"
+}
+
+.Solar .glyphicon-barcode:before {
+  content: "\e040"
+}
+
+.Solar .glyphicon-tag:before {
+  content: "\e041"
+}
+
+.Solar .glyphicon-tags:before {
+  content: "\e042"
+}
+
+.Solar .glyphicon-book:before {
+  content: "\e043"
+}
+
+.Solar .glyphicon-bookmark:before {
+  content: "\e044"
+}
+
+.Solar .glyphicon-print:before {
+  content: "\e045"
+}
+
+.Solar .glyphicon-camera:before {
+  content: "\e046"
+}
+
+.Solar .glyphicon-font:before {
+  content: "\e047"
+}
+
+.Solar .glyphicon-bold:before {
+  content: "\e048"
+}
+
+.Solar .glyphicon-italic:before {
+  content: "\e049"
+}
+
+.Solar .glyphicon-text-height:before {
+  content: "\e050"
+}
+
+.Solar .glyphicon-text-width:before {
+  content: "\e051"
+}
+
+.Solar .glyphicon-align-left:before {
+  content: "\e052"
+}
+
+.Solar .glyphicon-align-center:before {
+  content: "\e053"
+}
+
+.Solar .glyphicon-align-right:before {
+  content: "\e054"
+}
+
+.Solar .glyphicon-align-justify:before {
+  content: "\e055"
+}
+
+.Solar .glyphicon-list:before {
+  content: "\e056"
+}
+
+.Solar .glyphicon-indent-left:before {
+  content: "\e057"
+}
+
+.Solar .glyphicon-indent-right:before {
+  content: "\e058"
+}
+
+.Solar .glyphicon-facetime-video:before {
+  content: "\e059"
+}
+
+.Solar .glyphicon-picture:before {
+  content: "\e060"
+}
+
+.Solar .glyphicon-map-marker:before {
+  content: "\e062"
+}
+
+.Solar .glyphicon-adjust:before {
+  content: "\e063"
+}
+
+.Solar .glyphicon-tint:before {
+  content: "\e064"
+}
+
+.Solar .glyphicon-edit:before {
+  content: "\e065"
+}
+
+.Solar .glyphicon-share:before {
+  content: "\e066"
+}
+
+.Solar .glyphicon-check:before {
+  content: "\e067"
+}
+
+.Solar .glyphicon-move:before {
+  content: "\e068"
+}
+
+.Solar .glyphicon-step-backward:before {
+  content: "\e069"
+}
+
+.Solar .glyphicon-fast-backward:before {
+  content: "\e070"
+}
+
+.Solar .glyphicon-backward:before {
+  content: "\e071"
+}
+
+.Solar .glyphicon-play:before {
+  content: "\e072"
+}
+
+.Solar .glyphicon-pause:before {
+  content: "\e073"
+}
+
+.Solar .glyphicon-stop:before {
+  content: "\e074"
+}
+
+.Solar .glyphicon-forward:before {
+  content: "\e075"
+}
+
+.Solar .glyphicon-fast-forward:before {
+  content: "\e076"
+}
+
+.Solar .glyphicon-step-forward:before {
+  content: "\e077"
+}
+
+.Solar .glyphicon-eject:before {
+  content: "\e078"
+}
+
+.Solar .glyphicon-chevron-left:before {
+  content: "\e079"
+}
+
+.Solar .glyphicon-chevron-right:before {
+  content: "\e080"
+}
+
+.Solar .glyphicon-plus-sign:before {
+  content: "\e081"
+}
+
+.Solar .glyphicon-minus-sign:before {
+  content: "\e082"
+}
+
+.Solar .glyphicon-remove-sign:before {
+  content: "\e083"
+}
+
+.Solar .glyphicon-ok-sign:before {
+  content: "\e084"
+}
+
+.Solar .glyphicon-question-sign:before {
+  content: "\e085"
+}
+
+.Solar .glyphicon-info-sign:before {
+  content: "\e086"
+}
+
+.Solar .glyphicon-screenshot:before {
+  content: "\e087"
+}
+
+.Solar .glyphicon-remove-circle:before {
+  content: "\e088"
+}
+
+.Solar .glyphicon-ok-circle:before {
+  content: "\e089"
+}
+
+.Solar .glyphicon-ban-circle:before {
+  content: "\e090"
+}
+
+.Solar .glyphicon-arrow-left:before {
+  content: "\e091"
+}
+
+.Solar .glyphicon-arrow-right:before {
+  content: "\e092"
+}
+
+.Solar .glyphicon-arrow-up:before {
+  content: "\e093"
+}
+
+.Solar .glyphicon-arrow-down:before {
+  content: "\e094"
+}
+
+.Solar .glyphicon-share-alt:before {
+  content: "\e095"
+}
+
+.Solar .glyphicon-resize-full:before {
+  content: "\e096"
+}
+
+.Solar .glyphicon-resize-small:before {
+  content: "\e097"
+}
+
+.Solar .glyphicon-exclamation-sign:before {
+  content: "\e101"
+}
+
+.Solar .glyphicon-gift:before {
+  content: "\e102"
+}
+
+.Solar .glyphicon-leaf:before {
+  content: "\e103"
+}
+
+.Solar .glyphicon-fire:before {
+  content: "\e104"
+}
+
+.Solar .glyphicon-eye-open:before {
+  content: "\e105"
+}
+
+.Solar .glyphicon-eye-close:before {
+  content: "\e106"
+}
+
+.Solar .glyphicon-warning-sign:before {
+  content: "\e107"
+}
+
+.Solar .glyphicon-plane:before {
+  content: "\e108"
+}
+
+.Solar .glyphicon-calendar:before {
+  content: "\e109"
+}
+
+.Solar .glyphicon-random:before {
+  content: "\e110"
+}
+
+.Solar .glyphicon-comment:before {
+  content: "\e111"
+}
+
+.Solar .glyphicon-magnet:before {
+  content: "\e112"
+}
+
+.Solar .glyphicon-chevron-up:before {
+  content: "\e113"
+}
+
+.Solar .glyphicon-chevron-down:before {
+  content: "\e114"
+}
+
+.Solar .glyphicon-retweet:before {
+  content: "\e115"
+}
+
+.Solar .glyphicon-shopping-cart:before {
+  content: "\e116"
+}
+
+.Solar .glyphicon-folder-close:before {
+  content: "\e117"
+}
+
+.Solar .glyphicon-folder-open:before {
+  content: "\e118"
+}
+
+.Solar .glyphicon-resize-vertical:before {
+  content: "\e119"
+}
+
+.Solar .glyphicon-resize-horizontal:before {
+  content: "\e120"
+}
+
+.Solar .glyphicon-hdd:before {
+  content: "\e121"
+}
+
+.Solar .glyphicon-bullhorn:before {
+  content: "\e122"
+}
+
+.Solar .glyphicon-bell:before {
+  content: "\e123"
+}
+
+.Solar .glyphicon-certificate:before {
+  content: "\e124"
+}
+
+.Solar .glyphicon-thumbs-up:before {
+  content: "\e125"
+}
+
+.Solar .glyphicon-thumbs-down:before {
+  content: "\e126"
+}
+
+.Solar .glyphicon-hand-right:before {
+  content: "\e127"
+}
+
+.Solar .glyphicon-hand-left:before {
+  content: "\e128"
+}
+
+.Solar .glyphicon-hand-up:before {
+  content: "\e129"
+}
+
+.Solar .glyphicon-hand-down:before {
+  content: "\e130"
+}
+
+.Solar .glyphicon-circle-arrow-right:before {
+  content: "\e131"
+}
+
+.Solar .glyphicon-circle-arrow-left:before {
+  content: "\e132"
+}
+
+.Solar .glyphicon-circle-arrow-up:before {
+  content: "\e133"
+}
+
+.Solar .glyphicon-circle-arrow-down:before {
+  content: "\e134"
+}
+
+.Solar .glyphicon-globe:before {
+  content: "\e135"
+}
+
+.Solar .glyphicon-wrench:before {
+  content: "\e136"
+}
+
+.Solar .glyphicon-tasks:before {
+  content: "\e137"
+}
+
+.Solar .glyphicon-filter:before {
+  content: "\e138"
+}
+
+.Solar .glyphicon-briefcase:before {
+  content: "\e139"
+}
+
+.Solar .glyphicon-fullscreen:before {
+  content: "\e140"
+}
+
+.Solar .glyphicon-dashboard:before {
+  content: "\e141"
+}
+
+.Solar .glyphicon-paperclip:before {
+  content: "\e142"
+}
+
+.Solar .glyphicon-heart-empty:before {
+  content: "\e143"
+}
+
+.Solar .glyphicon-link:before {
+  content: "\e144"
+}
+
+.Solar .glyphicon-phone:before {
+  content: "\e145"
+}
+
+.Solar .glyphicon-pushpin:before {
+  content: "\e146"
+}
+
+.Solar .glyphicon-usd:before {
+  content: "\e148"
+}
+
+.Solar .glyphicon-gbp:before {
+  content: "\e149"
+}
+
+.Solar .glyphicon-sort:before {
+  content: "\e150"
+}
+
+.Solar .glyphicon-sort-by-alphabet:before {
+  content: "\e151"
+}
+
+.Solar .glyphicon-sort-by-alphabet-alt:before {
+  content: "\e152"
+}
+
+.Solar .glyphicon-sort-by-order:before {
+  content: "\e153"
+}
+
+.Solar .glyphicon-sort-by-order-alt:before {
+  content: "\e154"
+}
+
+.Solar .glyphicon-sort-by-attributes:before {
+  content: "\e155"
+}
+
+.Solar .glyphicon-sort-by-attributes-alt:before {
+  content: "\e156"
+}
+
+.Solar .glyphicon-unchecked:before {
+  content: "\e157"
+}
+
+.Solar .glyphicon-expand:before {
+  content: "\e158"
+}
+
+.Solar .glyphicon-collapse-down:before {
+  content: "\e159"
+}
+
+.Solar .glyphicon-collapse-up:before {
+  content: "\e160"
+}
+
+.Solar .glyphicon-log-in:before {
+  content: "\e161"
+}
+
+.Solar .glyphicon-flash:before {
+  content: "\e162"
+}
+
+.Solar .glyphicon-log-out:before {
+  content: "\e163"
+}
+
+.Solar .glyphicon-new-window:before {
+  content: "\e164"
+}
+
+.Solar .glyphicon-record:before {
+  content: "\e165"
+}
+
+.Solar .glyphicon-save:before {
+  content: "\e166"
+}
+
+.Solar .glyphicon-open:before {
+  content: "\e167"
+}
+
+.Solar .glyphicon-saved:before {
+  content: "\e168"
+}
+
+.Solar .glyphicon-import:before {
+  content: "\e169"
+}
+
+.Solar .glyphicon-export:before {
+  content: "\e170"
+}
+
+.Solar .glyphicon-send:before {
+  content: "\e171"
+}
+
+.Solar .glyphicon-floppy-disk:before {
+  content: "\e172"
+}
+
+.Solar .glyphicon-floppy-saved:before {
+  content: "\e173"
+}
+
+.Solar .glyphicon-floppy-remove:before {
+  content: "\e174"
+}
+
+.Solar .glyphicon-floppy-save:before {
+  content: "\e175"
+}
+
+.Solar .glyphicon-floppy-open:before {
+  content: "\e176"
+}
+
+.Solar .glyphicon-credit-card:before {
+  content: "\e177"
+}
+
+.Solar .glyphicon-transfer:before {
+  content: "\e178"
+}
+
+.Solar .glyphicon-cutlery:before {
+  content: "\e179"
+}
+
+.Solar .glyphicon-header:before {
+  content: "\e180"
+}
+
+.Solar .glyphicon-compressed:before {
+  content: "\e181"
+}
+
+.Solar .glyphicon-earphone:before {
+  content: "\e182"
+}
+
+.Solar .glyphicon-phone-alt:before {
+  content: "\e183"
+}
+
+.Solar .glyphicon-tower:before {
+  content: "\e184"
+}
+
+.Solar .glyphicon-stats:before {
+  content: "\e185"
+}
+
+.Solar .glyphicon-sd-video:before {
+  content: "\e186"
+}
+
+.Solar .glyphicon-hd-video:before {
+  content: "\e187"
+}
+
+.Solar .glyphicon-subtitles:before {
+  content: "\e188"
+}
+
+.Solar .glyphicon-sound-stereo:before {
+  content: "\e189"
+}
+
+.Solar .glyphicon-sound-dolby:before {
+  content: "\e190"
+}
+
+.Solar .glyphicon-sound-5-1:before {
+  content: "\e191"
+}
+
+.Solar .glyphicon-sound-6-1:before {
+  content: "\e192"
+}
+
+.Solar .glyphicon-sound-7-1:before {
+  content: "\e193"
+}
+
+.Solar .glyphicon-copyright-mark:before {
+  content: "\e194"
+}
+
+.Solar .glyphicon-registration-mark:before {
+  content: "\e195"
+}
+
+.Solar .glyphicon-cloud-download:before {
+  content: "\e197"
+}
+
+.Solar .glyphicon-cloud-upload:before {
+  content: "\e198"
+}
+
+.Solar .glyphicon-tree-conifer:before {
+  content: "\e199"
+}
+
+.Solar .glyphicon-tree-deciduous:before {
+  content: "\e200"
+}
+
+.Solar .glyphicon-cd:before {
+  content: "\e201"
+}
+
+.Solar .glyphicon-save-file:before {
+  content: "\e202"
+}
+
+.Solar .glyphicon-open-file:before {
+  content: "\e203"
+}
+
+.Solar .glyphicon-level-up:before {
+  content: "\e204"
+}
+
+.Solar .glyphicon-copy:before {
+  content: "\e205"
+}
+
+.Solar .glyphicon-paste:before {
+  content: "\e206"
+}
+
+.Solar .glyphicon-alert:before {
+  content: "\e209"
+}
+
+.Solar .glyphicon-equalizer:before {
+  content: "\e210"
+}
+
+.Solar .glyphicon-king:before {
+  content: "\e211"
+}
+
+.Solar .glyphicon-queen:before {
+  content: "\e212"
+}
+
+.Solar .glyphicon-pawn:before {
+  content: "\e213"
+}
+
+.Solar .glyphicon-bishop:before {
+  content: "\e214"
+}
+
+.Solar .glyphicon-knight:before {
+  content: "\e215"
+}
+
+.Solar .glyphicon-baby-formula:before {
+  content: "\e216"
+}
+
+.Solar .glyphicon-tent:before {
+  content: "\26fa"
+}
+
+.Solar .glyphicon-blackboard:before {
+  content: "\e218"
+}
+
+.Solar .glyphicon-bed:before {
+  content: "\e219"
+}
+
+.Solar .glyphicon-apple:before {
+  content: "\f8ff"
+}
+
+.Solar .glyphicon-erase:before {
+  content: "\e221"
+}
+
+.Solar .glyphicon-hourglass:before {
+  content: "\231b"
+}
+
+.Solar .glyphicon-lamp:before {
+  content: "\e223"
+}
+
+.Solar .glyphicon-duplicate:before {
+  content: "\e224"
+}
+
+.Solar .glyphicon-piggy-bank:before {
+  content: "\e225"
+}
+
+.Solar .glyphicon-scissors:before {
+  content: "\e226"
+}
+
+.Solar .glyphicon-bitcoin:before {
+  content: "\e227"
+}
+
+.Solar .glyphicon-btc:before {
+  content: "\e227"
+}
+
+.Solar .glyphicon-xbt:before {
+  content: "\e227"
+}
+
+.Solar .glyphicon-yen:before {
+  content: "\00a5"
+}
+
+.Solar .glyphicon-jpy:before {
+  content: "\00a5"
+}
+
+.Solar .glyphicon-ruble:before {
+  content: "\20bd"
+}
+
+.Solar .glyphicon-rub:before {
+  content: "\20bd"
+}
+
+.Solar .glyphicon-scale:before {
+  content: "\e230"
+}
+
+.Solar .glyphicon-ice-lolly:before {
+  content: "\e231"
+}
+
+.Solar .glyphicon-ice-lolly-tasted:before {
+  content: "\e232"
+}
+
+.Solar .glyphicon-education:before {
+  content: "\e233"
+}
+
+.Solar .glyphicon-option-horizontal:before {
+  content: "\e234"
+}
+
+.Solar .glyphicon-option-vertical:before {
+  content: "\e235"
+}
+
+.Solar .glyphicon-menu-hamburger:before {
+  content: "\e236"
+}
+
+.Solar .glyphicon-modal-window:before {
+  content: "\e237"
+}
+
+.Solar .glyphicon-oil:before {
+  content: "\e238"
+}
+
+.Solar .glyphicon-grain:before {
+  content: "\e239"
+}
+
+.Solar .glyphicon-sunglasses:before {
+  content: "\e240"
+}
+
+.Solar .glyphicon-text-size:before {
+  content: "\e241"
+}
+
+.Solar .glyphicon-text-color:before {
+  content: "\e242"
+}
+
+.Solar .glyphicon-text-background:before {
+  content: "\e243"
+}
+
+.Solar .glyphicon-object-align-top:before {
+  content: "\e244"
+}
+
+.Solar .glyphicon-object-align-bottom:before {
+  content: "\e245"
+}
+
+.Solar .glyphicon-object-align-horizontal:before {
+  content: "\e246"
+}
+
+.Solar .glyphicon-object-align-left:before {
+  content: "\e247"
+}
+
+.Solar .glyphicon-object-align-vertical:before {
+  content: "\e248"
+}
+
+.Solar .glyphicon-object-align-right:before {
+  content: "\e249"
+}
+
+.Solar .glyphicon-triangle-right:before {
+  content: "\e250"
+}
+
+.Solar .glyphicon-triangle-left:before {
+  content: "\e251"
+}
+
+.Solar .glyphicon-triangle-bottom:before {
+  content: "\e252"
+}
+
+.Solar .glyphicon-triangle-top:before {
+  content: "\e253"
+}
+
+.Solar .glyphicon-console:before {
+  content: "\e254"
+}
+
+.Solar .glyphicon-superscript:before {
+  content: "\e255"
+}
+
+.Solar .glyphicon-subscript:before {
+  content: "\e256"
+}
+
+.Solar .glyphicon-menu-left:before {
+  content: "\e257"
+}
+
+.Solar .glyphicon-menu-right:before {
+  content: "\e258"
+}
+
+.Solar .glyphicon-menu-down:before {
+  content: "\e259"
+}
+
+.Solar .glyphicon-menu-up:before {
+  content: "\e260"
+}
+
+.Solar * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+.Solar *:before,
+.Solar *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+.Solar html {
+  font-size: 10px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+
+.Solar input,
+.Solar button,
+.Solar select,
+.Solar textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit
+}
+
+.Solar a {
+  color: #2aa198;
+  text-decoration: none
+}
+
+.Solar a:hover,
+.Solar a:focus {
+  color: #2aa198;
+  text-decoration: underline
+}
+
+.Solar a:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px
+}
+
+.Solar figure {
+  margin: 0
+}
+
+.Solar img {
+  vertical-align: middle
+}
+
+.Solar .img-responsive,
+.Solar .thumbnail>img,
+.Solar .thumbnail a>img,
+.Solar .carousel-inner>.item>img,
+.Solar .carousel-inner>.item>a>img {
+  display: block;
+  max-width: 100%;
+  height: auto
+}
+
+.Solar .img-rounded {
+  border-radius: 6px
+}
+
+.Solar .img-thumbnail {
+  padding: 4px;
+  line-height: 1.42857143;
+  background-color: #002b36;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  -webkit-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  display: inline-block;
+  max-width: 100%;
+  height: auto
+}
+
+.Solar .img-circle {
+  border-radius: 50%
+}
+
+.Solar hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #fdf6e3
+}
+
+.Solar .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0
+}
+
+.Solar .sr-only-focusable:active,
+.Solar .sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto
+}
+
+.Solar [role="button"] {
+  cursor: pointer
+}
+
+.Solar h1,
+.Solar h2,
+.Solar h3,
+.Solar h4,
+.Solar h5,
+.Solar h6,
+.Solar .h1,
+.Solar .h2,
+.Solar .h3,
+.Solar .h4,
+.Solar .h5,
+.Solar .h6 {
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit
+}
+
+.Solar h1 small,
+.Solar h2 small,
+.Solar h3 small,
+.Solar h4 small,
+.Solar h5 small,
+.Solar h6 small,
+.Solar .h1 small,
+.Solar .h2 small,
+.Solar .h3 small,
+.Solar .h4 small,
+.Solar .h5 small,
+.Solar .h6 small,
+.Solar h1 .small,
+.Solar h2 .small,
+.Solar h3 .small,
+.Solar h4 .small,
+.Solar h5 .small,
+.Solar h6 .small,
+.Solar .h1 .small,
+.Solar .h2 .small,
+.Solar .h3 .small,
+.Solar .h4 .small,
+.Solar .h5 .small,
+.Solar .h6 .small {
+  font-weight: normal;
+  line-height: 1;
+  color: #839496
+}
+
+.Solar h1,
+.Solar .h1,
+.Solar h2,
+.Solar .h2,
+.Solar h3,
+.Solar .h3 {
+  margin-top: 20px;
+  margin-bottom: 10px
+}
+
+.Solar h1 small,
+.Solar .h1 small,
+.Solar h2 small,
+.Solar .h2 small,
+.Solar h3 small,
+.Solar .h3 small,
+.Solar h1 .small,
+.Solar .h1 .small,
+.Solar h2 .small,
+.Solar .h2 .small,
+.Solar h3 .small,
+.Solar .h3 .small {
+  font-size: 65%
+}
+
+.Solar h4,
+.Solar .h4,
+.Solar h5,
+.Solar .h5,
+.Solar h6,
+.Solar .h6 {
+  margin-top: 10px;
+  margin-bottom: 10px
+}
+
+.Solar h4 small,
+.Solar .h4 small,
+.Solar h5 small,
+.Solar .h5 small,
+.Solar h6 small,
+.Solar .h6 small,
+.Solar h4 .small,
+.Solar .h4 .small,
+.Solar h5 .small,
+.Solar .h5 .small,
+.Solar h6 .small,
+.Solar .h6 .small {
+  font-size: 75%
+}
+
+.Solar h1,
+.Solar .h1 {
+  font-size: 36px
+}
+
+.Solar h2,
+.Solar .h2 {
+  font-size: 30px
+}
+
+.Solar h3,
+.Solar .h3 {
+  font-size: 24px
+}
+
+.Solar h4,
+.Solar .h4 {
+  font-size: 18px
+}
+
+.Solar h5,
+.Solar .h5 {
+  font-size: 14px
+}
+
+.Solar h6,
+.Solar .h6 {
+  font-size: 12px
+}
+
+.Solar p {
+  margin: 0 0 10px
+}
+
+.Solar .lead {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4
+}
+
+@media (min-width:768px) {
+  .Solar .lead {
+    font-size: 21px
+  }
+}
+
+.Solar small,
+.Solar .small {
+  font-size: 85%
+}
+
+.Solar mark,
+.Solar .mark {
+  background-color: #cb4b16;
+  padding: .2em
+}
+
+.Solar .text-left {
+  text-align: left
+}
+
+.Solar .text-right {
+  text-align: right
+}
+
+.Solar .text-center {
+  text-align: center
+}
+
+.Solar .text-justify {
+  text-align: justify
+}
+
+.Solar .text-nowrap {
+  white-space: nowrap
+}
+
+.Solar .text-lowercase {
+  text-transform: lowercase
+}
+
+.Solar .text-uppercase {
+  text-transform: uppercase
+}
+
+.Solar .text-capitalize {
+  text-transform: capitalize
+}
+
+.Solar .text-muted {
+  color: #eee8d5
+}
+
+.Solar .text-primary {
+  color: #b58900
+}
+
+.Solar a.text-primary:hover,
+.Solar a.text-primary:focus {
+  color: #826200
+}
+
+.Solar .text-success {
+  color: #ffffff
+}
+
+.Solar a.text-success:hover,
+.Solar a.text-success:focus {
+  color: #e6e6e6
+}
+
+.Solar .text-info {
+  color: #ffffff
+}
+
+.Solar a.text-info:hover,
+.Solar a.text-info:focus {
+  color: #e6e6e6
+}
+
+.Solar .text-warning {
+  color: #ffffff
+}
+
+.Solar a.text-warning:hover,
+.Solar a.text-warning:focus {
+  color: #e6e6e6
+}
+
+.Solar .text-danger {
+  color: #ffffff
+}
+
+.Solar a.text-danger:hover,
+.Solar a.text-danger:focus {
+  color: #e6e6e6
+}
+
+.Solar .bg-primary {
+  color: #fff;
+  background-color: #b58900
+}
+
+.Solar a.bg-primary:hover,
+.Solar a.bg-primary:focus {
+  background-color: #826200
+}
+
+.Solar .bg-success {
+  background-color: #2aa198
+}
+
+.Solar a.bg-success:hover,
+.Solar a.bg-success:focus {
+  background-color: #1f7972
+}
+
+.Solar .bg-info {
+  background-color: #268bd2
+}
+
+.Solar a.bg-info:hover,
+.Solar a.bg-info:focus {
+  background-color: #1e6ea7
+}
+
+.Solar .bg-warning {
+  background-color: #cb4b16
+}
+
+.Solar a.bg-warning:hover,
+.Solar a.bg-warning:focus {
+  background-color: #9d3a11
+}
+
+.Solar .bg-danger {
+  background-color: #d33682
+}
+
+.Solar a.bg-danger:hover,
+.Solar a.bg-danger:focus {
+  background-color: #b02669
+}
+
+.Solar .page-header {
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+  border-bottom: 1px solid #073642
+}
+
+.Solar ul,
+.Solar ol {
+  margin-top: 0;
+  margin-bottom: 10px
+}
+
+.Solar ul ul,
+.Solar ol ul,
+.Solar ul ol,
+.Solar ol ol {
+  margin-bottom: 0
+}
+
+.Solar .list-unstyled {
+  padding-left: 0;
+  list-style: none
+}
+
+.Solar .list-inline {
+  padding-left: 0;
+  list-style: none;
+  margin-left: -5px
+}
+
+.Solar .list-inline>li {
+  display: inline-block;
+  padding-left: 5px;
+  padding-right: 5px
+}
+
+.Solar dl {
+  margin-top: 0;
+  margin-bottom: 20px
+}
+
+.Solar dt,
+.Solar dd {
+  line-height: 1.42857143
+}
+
+.Solar dt {
+  font-weight: bold
+}
+
+.Solar dd {
+  margin-left: 0
+}
+
+@media (min-width:768px) {
+  .Solar .dl-horizontal dt {
+    float: left;
+    width: 160px;
+    clear: left;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+  }
+  .Solar .dl-horizontal dd {
+    margin-left: 180px
+  }
+}
+
+.Solar abbr[title],
+.Solar abbr[data-original-title] {
+  cursor: help;
+  border-bottom: 1px dotted #073642
+}
+
+.Solar .initialism {
+  font-size: 90%;
+  text-transform: uppercase
+}
+
+.Solar blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 17.5px;
+  border-left: 5px solid #073642
+}
+
+.Solar blockquote p:last-child,
+.Solar blockquote ul:last-child,
+.Solar blockquote ol:last-child {
+  margin-bottom: 0
+}
+
+.Solar blockquote footer,
+.Solar blockquote small,
+.Solar blockquote .small {
+  display: block;
+  font-size: 80%;
+  line-height: 1.42857143;
+  color: #839496
+}
+
+.Solar blockquote footer:before,
+.Solar blockquote small:before,
+.Solar blockquote .small:before {
+  content: '\2014 \00A0'
+}
+
+.Solar .blockquote-reverse,
+.Solar blockquote.pull-right {
+  padding-right: 15px;
+  padding-left: 0;
+  border-right: 5px solid #073642;
+  border-left: 0;
+  text-align: right
+}
+
+.Solar .blockquote-reverse footer:before,
+.Solar blockquote.pull-right footer:before,
+.Solar .blockquote-reverse small:before,
+.Solar blockquote.pull-right small:before,
+.Solar .blockquote-reverse .small:before,
+.Solar blockquote.pull-right .small:before {
+  content: ''
+}
+
+.Solar .blockquote-reverse footer:after,
+.Solar blockquote.pull-right footer:after,
+.Solar .blockquote-reverse small:after,
+.Solar blockquote.pull-right small:after,
+.Solar .blockquote-reverse .small:after,
+.Solar blockquote.pull-right .small:after {
+  content: '\00A0 \2014'
+}
+
+.Solar address {
+  margin-bottom: 20px;
+  font-style: normal;
+  line-height: 1.42857143
+}
+
+.Solar code,
+.Solar kbd,
+.Solar pre,
+.Solar samp {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace
+}
+
+.Solar code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px
+}
+
+.Solar kbd {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #ffffff;
+  background-color: #333333;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25)
+}
+
+.Solar kbd kbd {
+  padding: 0;
+  font-size: 100%;
+  font-weight: bold;
+  -webkit-box-shadow: none;
+  box-shadow: none
+}
+
+.Solar pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  word-break: break-all;
+  word-wrap: break-word;
+  color: #073642;
+  background-color: #f5f5f5;
+  border: 1px solid #cccccc;
+  border-radius: 4px
+}
+
+.Solar pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  white-space: pre-wrap;
+  background-color: transparent;
+  border-radius: 0
+}
+
+.Solar .pre-scrollable {
+  max-height: 340px;
+  overflow-y: scroll
+}
+
+.Solar .container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px
+}
+
+@media (min-width:768px) {
+  .Solar .container {
+    width: 750px
+  }
+}
+
+@media (min-width:992px) {
+  .Solar .container {
+    width: 970px
+  }
+}
+
+@media (min-width:1200px) {
+  .Solar .container {
+    width: 1170px
+  }
+}
+
+.Solar .container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px
+}
+
+.Solar .row {
+  margin-left: -15px;
+  margin-right: -15px
+}
+
+.Solar .col-xs-1,
+.Solar .col-sm-1,
+.Solar .col-md-1,
+.Solar .col-lg-1,
+.Solar .col-xs-2,
+.Solar .col-sm-2,
+.Solar .col-md-2,
+.Solar .col-lg-2,
+.Solar .col-xs-3,
+.Solar .col-sm-3,
+.Solar .col-md-3,
+.Solar .col-lg-3,
+.Solar .col-xs-4,
+.Solar .col-sm-4,
+.Solar .col-md-4,
+.Solar .col-lg-4,
+.Solar .col-xs-5,
+.Solar .col-sm-5,
+.Solar .col-md-5,
+.Solar .col-lg-5,
+.Solar .col-xs-6,
+.Solar .col-sm-6,
+.Solar .col-md-6,
+.Solar .col-lg-6,
+.Solar .col-xs-7,
+.Solar .col-sm-7,
+.Solar .col-md-7,
+.Solar .col-lg-7,
+.Solar .col-xs-8,
+.Solar .col-sm-8,
+.Solar .col-md-8,
+.Solar .col-lg-8,
+.Solar .col-xs-9,
+.Solar .col-sm-9,
+.Solar .col-md-9,
+.Solar .col-lg-9,
+.Solar .col-xs-10,
+.Solar .col-sm-10,
+.Solar .col-md-10,
+.Solar .col-lg-10,
+.Solar .col-xs-11,
+.Solar .col-sm-11,
+.Solar .col-md-11,
+.Solar .col-lg-11,
+.Solar .col-xs-12,
+.Solar .col-sm-12,
+.Solar .col-md-12,
+.Solar .col-lg-12 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px
+}
+
+.Solar .col-xs-1,
+.Solar .col-xs-2,
+.Solar .col-xs-3,
+.Solar .col-xs-4,
+.Solar .col-xs-5,
+.Solar .col-xs-6,
+.Solar .col-xs-7,
+.Solar .col-xs-8,
+.Solar .col-xs-9,
+.Solar .col-xs-10,
+.Solar .col-xs-11,
+.Solar .col-xs-12 {
+  float: left
+}
+
+.Solar .col-xs-12 {
+  width: 100%
+}
+
+.Solar .col-xs-11 {
+  width: 91.66666667%
+}
+
+.Solar .col-xs-10 {
+  width: 83.33333333%
+}
+
+.Solar .col-xs-9 {
+  width: 75%
+}
+
+.Solar .col-xs-8 {
+  width: 66.66666667%
+}
+
+.Solar .col-xs-7 {
+  width: 58.33333333%
+}
+
+.Solar .col-xs-6 {
+  width: 50%
+}
+
+.Solar .col-xs-5 {
+  width: 41.66666667%
+}
+
+.Solar .col-xs-4 {
+  width: 33.33333333%
+}
+
+.Solar .col-xs-3 {
+  width: 25%
+}
+
+.Solar .col-xs-2 {
+  width: 16.66666667%
+}
+
+.Solar .col-xs-1 {
+  width: 8.33333333%
+}
+
+.Solar .col-xs-pull-12 {
+  right: 100%
+}
+
+.Solar .col-xs-pull-11 {
+  right: 91.66666667%
+}
+
+.Solar .col-xs-pull-10 {
+  right: 83.33333333%
+}
+
+.Solar .col-xs-pull-9 {
+  right: 75%
+}
+
+.Solar .col-xs-pull-8 {
+  right: 66.66666667%
+}
+
+.Solar .col-xs-pull-7 {
+  right: 58.33333333%
+}
+
+.Solar .col-xs-pull-6 {
+  right: 50%
+}
+
+.Solar .col-xs-pull-5 {
+  right: 41.66666667%
+}
+
+.Solar .col-xs-pull-4 {
+  right: 33.33333333%
+}
+
+.Solar .col-xs-pull-3 {
+  right: 25%
+}
+
+.Solar .col-xs-pull-2 {
+  right: 16.66666667%
+}
+
+.Solar .col-xs-pull-1 {
+  right: 8.33333333%
+}
+
+.Solar .col-xs-pull-0 {
+  right: auto
+}
+
+.Solar .col-xs-push-12 {
+  left: 100%
+}
+
+.Solar .col-xs-push-11 {
+  left: 91.66666667%
+}
+
+.Solar .col-xs-push-10 {
+  left: 83.33333333%
+}
+
+.Solar .col-xs-push-9 {
+  left: 75%
+}
+
+.Solar .col-xs-push-8 {
+  left: 66.66666667%
+}
+
+.Solar .col-xs-push-7 {
+  left: 58.33333333%
+}
+
+.Solar .col-xs-push-6 {
+  left: 50%
+}
+
+.Solar .col-xs-push-5 {
+  left: 41.66666667%
+}
+
+.Solar .col-xs-push-4 {
+  left: 33.33333333%
+}
+
+.Solar .col-xs-push-3 {
+  left: 25%
+}
+
+.Solar .col-xs-push-2 {
+  left: 16.66666667%
+}
+
+.Solar .col-xs-push-1 {
+  left: 8.33333333%
+}
+
+.Solar .col-xs-push-0 {
+  left: auto
+}
+
+.Solar .col-xs-offset-12 {
+  margin-left: 100%
+}
+
+.Solar .col-xs-offset-11 {
+  margin-left: 91.66666667%
+}
+
+.Solar .col-xs-offset-10 {
+  margin-left: 83.33333333%
+}
+
+.Solar .col-xs-offset-9 {
+  margin-left: 75%
+}
+
+.Solar .col-xs-offset-8 {
+  margin-left: 66.66666667%
+}
+
+.Solar .col-xs-offset-7 {
+  margin-left: 58.33333333%
+}
+
+.Solar .col-xs-offset-6 {
+  margin-left: 50%
+}
+
+.Solar .col-xs-offset-5 {
+  margin-left: 41.66666667%
+}
+
+.Solar .col-xs-offset-4 {
+  margin-left: 33.33333333%
+}
+
+.Solar .col-xs-offset-3 {
+  margin-left: 25%
+}
+
+.Solar .col-xs-offset-2 {
+  margin-left: 16.66666667%
+}
+
+.Solar .col-xs-offset-1 {
+  margin-left: 8.33333333%
+}
+
+.Solar .col-xs-offset-0 {
+  margin-left: 0
+}
+
+@media (min-width:768px) {
+  .Solar .col-sm-1,
+  .Solar .col-sm-2,
+  .Solar .col-sm-3,
+  .Solar .col-sm-4,
+  .Solar .col-sm-5,
+  .Solar .col-sm-6,
+  .Solar .col-sm-7,
+  .Solar .col-sm-8,
+  .Solar .col-sm-9,
+  .Solar .col-sm-10,
+  .Solar .col-sm-11,
+  .Solar .col-sm-12 {
+    float: left
+  }
+  .Solar .col-sm-12 {
+    width: 100%
+  }
+  .Solar .col-sm-11 {
+    width: 91.66666667%
+  }
+  .Solar .col-sm-10 {
+    width: 83.33333333%
+  }
+  .Solar .col-sm-9 {
+    width: 75%
+  }
+  .Solar .col-sm-8 {
+    width: 66.66666667%
+  }
+  .Solar .col-sm-7 {
+    width: 58.33333333%
+  }
+  .Solar .col-sm-6 {
+    width: 50%
+  }
+  .Solar .col-sm-5 {
+    width: 41.66666667%
+  }
+  .Solar .col-sm-4 {
+    width: 33.33333333%
+  }
+  .Solar .col-sm-3 {
+    width: 25%
+  }
+  .Solar .col-sm-2 {
+    width: 16.66666667%
+  }
+  .Solar .col-sm-1 {
+    width: 8.33333333%
+  }
+  .Solar .col-sm-pull-12 {
+    right: 100%
+  }
+  .Solar .col-sm-pull-11 {
+    right: 91.66666667%
+  }
+  .Solar .col-sm-pull-10 {
+    right: 83.33333333%
+  }
+  .Solar .col-sm-pull-9 {
+    right: 75%
+  }
+  .Solar .col-sm-pull-8 {
+    right: 66.66666667%
+  }
+  .Solar .col-sm-pull-7 {
+    right: 58.33333333%
+  }
+  .Solar .col-sm-pull-6 {
+    right: 50%
+  }
+  .Solar .col-sm-pull-5 {
+    right: 41.66666667%
+  }
+  .Solar .col-sm-pull-4 {
+    right: 33.33333333%
+  }
+  .Solar .col-sm-pull-3 {
+    right: 25%
+  }
+  .Solar .col-sm-pull-2 {
+    right: 16.66666667%
+  }
+  .Solar .col-sm-pull-1 {
+    right: 8.33333333%
+  }
+  .Solar .col-sm-pull-0 {
+    right: auto
+  }
+  .Solar .col-sm-push-12 {
+    left: 100%
+  }
+  .Solar .col-sm-push-11 {
+    left: 91.66666667%
+  }
+  .Solar .col-sm-push-10 {
+    left: 83.33333333%
+  }
+  .Solar .col-sm-push-9 {
+    left: 75%
+  }
+  .Solar .col-sm-push-8 {
+    left: 66.66666667%
+  }
+  .Solar .col-sm-push-7 {
+    left: 58.33333333%
+  }
+  .Solar .col-sm-push-6 {
+    left: 50%
+  }
+  .Solar .col-sm-push-5 {
+    left: 41.66666667%
+  }
+  .Solar .col-sm-push-4 {
+    left: 33.33333333%
+  }
+  .Solar .col-sm-push-3 {
+    left: 25%
+  }
+  .Solar .col-sm-push-2 {
+    left: 16.66666667%
+  }
+  .Solar .col-sm-push-1 {
+    left: 8.33333333%
+  }
+  .Solar .col-sm-push-0 {
+    left: auto
+  }
+  .Solar .col-sm-offset-12 {
+    margin-left: 100%
+  }
+  .Solar .col-sm-offset-11 {
+    margin-left: 91.66666667%
+  }
+  .Solar .col-sm-offset-10 {
+    margin-left: 83.33333333%
+  }
+  .Solar .col-sm-offset-9 {
+    margin-left: 75%
+  }
+  .Solar .col-sm-offset-8 {
+    margin-left: 66.66666667%
+  }
+  .Solar .col-sm-offset-7 {
+    margin-left: 58.33333333%
+  }
+  .Solar .col-sm-offset-6 {
+    margin-left: 50%
+  }
+  .Solar .col-sm-offset-5 {
+    margin-left: 41.66666667%
+  }
+  .Solar .col-sm-offset-4 {
+    margin-left: 33.33333333%
+  }
+  .Solar .col-sm-offset-3 {
+    margin-left: 25%
+  }
+  .Solar .col-sm-offset-2 {
+    margin-left: 16.66666667%
+  }
+  .Solar .col-sm-offset-1 {
+    margin-left: 8.33333333%
+  }
+  .Solar .col-sm-offset-0 {
+    margin-left: 0
+  }
+}
+
+@media (min-width:992px) {
+  .Solar .col-md-1,
+  .Solar .col-md-2,
+  .Solar .col-md-3,
+  .Solar .col-md-4,
+  .Solar .col-md-5,
+  .Solar .col-md-6,
+  .Solar .col-md-7,
+  .Solar .col-md-8,
+  .Solar .col-md-9,
+  .Solar .col-md-10,
+  .Solar .col-md-11,
+  .Solar .col-md-12 {
+    float: left
+  }
+  .Solar .col-md-12 {
+    width: 100%
+  }
+  .Solar .col-md-11 {
+    width: 91.66666667%
+  }
+  .Solar .col-md-10 {
+    width: 83.33333333%
+  }
+  .Solar .col-md-9 {
+    width: 75%
+  }
+  .Solar .col-md-8 {
+    width: 66.66666667%
+  }
+  .Solar .col-md-7 {
+    width: 58.33333333%
+  }
+  .Solar .col-md-6 {
+    width: 50%
+  }
+  .Solar .col-md-5 {
+    width: 41.66666667%
+  }
+  .Solar .col-md-4 {
+    width: 33.33333333%
+  }
+  .Solar .col-md-3 {
+    width: 25%
+  }
+  .Solar .col-md-2 {
+    width: 16.66666667%
+  }
+  .Solar .col-md-1 {
+    width: 8.33333333%
+  }
+  .Solar .col-md-pull-12 {
+    right: 100%
+  }
+  .Solar .col-md-pull-11 {
+    right: 91.66666667%
+  }
+  .Solar .col-md-pull-10 {
+    right: 83.33333333%
+  }
+  .Solar .col-md-pull-9 {
+    right: 75%
+  }
+  .Solar .col-md-pull-8 {
+    right: 66.66666667%
+  }
+  .Solar .col-md-pull-7 {
+    right: 58.33333333%
+  }
+  .Solar .col-md-pull-6 {
+    right: 50%
+  }
+  .Solar .col-md-pull-5 {
+    right: 41.66666667%
+  }
+  .Solar .col-md-pull-4 {
+    right: 33.33333333%
+  }
+  .Solar .col-md-pull-3 {
+    right: 25%
+  }
+  .Solar .col-md-pull-2 {
+    right: 16.66666667%
+  }
+  .Solar .col-md-pull-1 {
+    right: 8.33333333%
+  }
+  .Solar .col-md-pull-0 {
+    right: auto
+  }
+  .Solar .col-md-push-12 {
+    left: 100%
+  }
+  .Solar .col-md-push-11 {
+    left: 91.66666667%
+  }
+  .Solar .col-md-push-10 {
+    left: 83.33333333%
+  }
+  .Solar .col-md-push-9 {
+    left: 75%
+  }
+  .Solar .col-md-push-8 {
+    left: 66.66666667%
+  }
+  .Solar .col-md-push-7 {
+    left: 58.33333333%
+  }
+  .Solar .col-md-push-6 {
+    left: 50%
+  }
+  .Solar .col-md-push-5 {
+    left: 41.66666667%
+  }
+  .Solar .col-md-push-4 {
+    left: 33.33333333%
+  }
+  .Solar .col-md-push-3 {
+    left: 25%
+  }
+  .Solar .col-md-push-2 {
+    left: 16.66666667%
+  }
+  .Solar .col-md-push-1 {
+    left: 8.33333333%
+  }
+  .Solar .col-md-push-0 {
+    left: auto
+  }
+  .Solar .col-md-offset-12 {
+    margin-left: 100%
+  }
+  .Solar .col-md-offset-11 {
+    margin-left: 91.66666667%
+  }
+  .Solar .col-md-offset-10 {
+    margin-left: 83.33333333%
+  }
+  .Solar .col-md-offset-9 {
+    margin-left: 75%
+  }
+  .Solar .col-md-offset-8 {
+    margin-left: 66.66666667%
+  }
+  .Solar .col-md-offset-7 {
+    margin-left: 58.33333333%
+  }
+  .Solar .col-md-offset-6 {
+    margin-left: 50%
+  }
+  .Solar .col-md-offset-5 {
+    margin-left: 41.66666667%
+  }
+  .Solar .col-md-offset-4 {
+    margin-left: 33.33333333%
+  }
+  .Solar .col-md-offset-3 {
+    margin-left: 25%
+  }
+  .Solar .col-md-offset-2 {
+    margin-left: 16.66666667%
+  }
+  .Solar .col-md-offset-1 {
+    margin-left: 8.33333333%
+  }
+  .Solar .col-md-offset-0 {
+    margin-left: 0
+  }
+}
+
+@media (min-width:1200px) {
+  .Solar .col-lg-1,
+  .Solar .col-lg-2,
+  .Solar .col-lg-3,
+  .Solar .col-lg-4,
+  .Solar .col-lg-5,
+  .Solar .col-lg-6,
+  .Solar .col-lg-7,
+  .Solar .col-lg-8,
+  .Solar .col-lg-9,
+  .Solar .col-lg-10,
+  .Solar .col-lg-11,
+  .Solar .col-lg-12 {
+    float: left
+  }
+  .Solar .col-lg-12 {
+    width: 100%
+  }
+  .Solar .col-lg-11 {
+    width: 91.66666667%
+  }
+  .Solar .col-lg-10 {
+    width: 83.33333333%
+  }
+  .Solar .col-lg-9 {
+    width: 75%
+  }
+  .Solar .col-lg-8 {
+    width: 66.66666667%
+  }
+  .Solar .col-lg-7 {
+    width: 58.33333333%
+  }
+  .Solar .col-lg-6 {
+    width: 50%
+  }
+  .Solar .col-lg-5 {
+    width: 41.66666667%
+  }
+  .Solar .col-lg-4 {
+    width: 33.33333333%
+  }
+  .Solar .col-lg-3 {
+    width: 25%
+  }
+  .Solar .col-lg-2 {
+    width: 16.66666667%
+  }
+  .Solar .col-lg-1 {
+    width: 8.33333333%
+  }
+  .Solar .col-lg-pull-12 {
+    right: 100%
+  }
+  .Solar .col-lg-pull-11 {
+    right: 91.66666667%
+  }
+  .Solar .col-lg-pull-10 {
+    right: 83.33333333%
+  }
+  .Solar .col-lg-pull-9 {
+    right: 75%
+  }
+  .Solar .col-lg-pull-8 {
+    right: 66.66666667%
+  }
+  .Solar .col-lg-pull-7 {
+    right: 58.33333333%
+  }
+  .Solar .col-lg-pull-6 {
+    right: 50%
+  }
+  .Solar .col-lg-pull-5 {
+    right: 41.66666667%
+  }
+  .Solar .col-lg-pull-4 {
+    right: 33.33333333%
+  }
+  .Solar .col-lg-pull-3 {
+    right: 25%
+  }
+  .Solar .col-lg-pull-2 {
+    right: 16.66666667%
+  }
+  .Solar .col-lg-pull-1 {
+    right: 8.33333333%
+  }
+  .Solar .col-lg-pull-0 {
+    right: auto
+  }
+  .Solar .col-lg-push-12 {
+    left: 100%
+  }
+  .Solar .col-lg-push-11 {
+    left: 91.66666667%
+  }
+  .Solar .col-lg-push-10 {
+    left: 83.33333333%
+  }
+  .Solar .col-lg-push-9 {
+    left: 75%
+  }
+  .Solar .col-lg-push-8 {
+    left: 66.66666667%
+  }
+  .Solar .col-lg-push-7 {
+    left: 58.33333333%
+  }
+  .Solar .col-lg-push-6 {
+    left: 50%
+  }
+  .Solar .col-lg-push-5 {
+    left: 41.66666667%
+  }
+  .Solar .col-lg-push-4 {
+    left: 33.33333333%
+  }
+  .Solar .col-lg-push-3 {
+    left: 25%
+  }
+  .Solar .col-lg-push-2 {
+    left: 16.66666667%
+  }
+  .Solar .col-lg-push-1 {
+    left: 8.33333333%
+  }
+  .Solar .col-lg-push-0 {
+    left: auto
+  }
+  .Solar .col-lg-offset-12 {
+    margin-left: 100%
+  }
+  .Solar .col-lg-offset-11 {
+    margin-left: 91.66666667%
+  }
+  .Solar .col-lg-offset-10 {
+    margin-left: 83.33333333%
+  }
+  .Solar .col-lg-offset-9 {
+    margin-left: 75%
+  }
+  .Solar .col-lg-offset-8 {
+    margin-left: 66.66666667%
+  }
+  .Solar .col-lg-offset-7 {
+    margin-left: 58.33333333%
+  }
+  .Solar .col-lg-offset-6 {
+    margin-left: 50%
+  }
+  .Solar .col-lg-offset-5 {
+    margin-left: 41.66666667%
+  }
+  .Solar .col-lg-offset-4 {
+    margin-left: 33.33333333%
+  }
+  .Solar .col-lg-offset-3 {
+    margin-left: 25%
+  }
+  .Solar .col-lg-offset-2 {
+    margin-left: 16.66666667%
+  }
+  .Solar .col-lg-offset-1 {
+    margin-left: 8.33333333%
+  }
+  .Solar .col-lg-offset-0 {
+    margin-left: 0
+  }
+}
+
+.Solar table {
+  background-color: transparent
+}
+
+.Solar caption {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: #eee8d5;
+  text-align: left
+}
+
+.Solar th {
+  text-align: left
+}
+
+.Solar .table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px
+}
+
+.Solar .table>thead>tr>th,
+.Solar .table>tbody>tr>th,
+.Solar .table>tfoot>tr>th,
+.Solar .table>thead>tr>td,
+.Solar .table>tbody>tr>td,
+.Solar .table>tfoot>tr>td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #073642
+}
+
+.Solar .table>thead>tr>th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #073642
+}
+
+.Solar .table>caption+thead>tr:first-child>th,
+.Solar .table>colgroup+thead>tr:first-child>th,
+.Solar .table>thead:first-child>tr:first-child>th,
+.Solar .table>caption+thead>tr:first-child>td,
+.Solar .table>colgroup+thead>tr:first-child>td,
+.Solar .table>thead:first-child>tr:first-child>td {
+  border-top: 0
+}
+
+.Solar .table>tbody+tbody {
+  border-top: 2px solid #073642
+}
+
+.Solar .table .table {
+  background-color: #002b36
+}
+
+.Solar .table-condensed>thead>tr>th,
+.Solar .table-condensed>tbody>tr>th,
+.Solar .table-condensed>tfoot>tr>th,
+.Solar .table-condensed>thead>tr>td,
+.Solar .table-condensed>tbody>tr>td,
+.Solar .table-condensed>tfoot>tr>td {
+  padding: 5px
+}
+
+.Solar .table-bordered {
+  border: 1px solid #073642
+}
+
+.Solar .table-bordered>thead>tr>th,
+.Solar .table-bordered>tbody>tr>th,
+.Solar .table-bordered>tfoot>tr>th,
+.Solar .table-bordered>thead>tr>td,
+.Solar .table-bordered>tbody>tr>td,
+.Solar .table-bordered>tfoot>tr>td {
+  border: 1px solid #073642
+}
+
+.Solar .table-bordered>thead>tr>th,
+.Solar .table-bordered>thead>tr>td {
+  border-bottom-width: 2px
+}
+
+.Solar .table-striped>tbody>tr:nth-of-type(odd) {
+  background-color: #073642
+}
+
+.Solar .table-hover>tbody>tr:hover {
+  background-color: rgba(255, 255, 255, 0.075)
+}
+
+.Solar table col[class*="col-"] {
+  position: static;
+  float: none;
+  display: table-column
+}
+
+.Solar table td[class*="col-"],
+.Solar table th[class*="col-"] {
+  position: static;
+  float: none;
+  display: table-cell
+}
+
+.Solar .table>thead>tr>td.active,
+.Solar .table>tbody>tr>td.active,
+.Solar .table>tfoot>tr>td.active,
+.Solar .table>thead>tr>th.active,
+.Solar .table>tbody>tr>th.active,
+.Solar .table>tfoot>tr>th.active,
+.Solar .table>thead>tr.active>td,
+.Solar .table>tbody>tr.active>td,
+.Solar .table>tfoot>tr.active>td,
+.Solar .table>thead>tr.active>th,
+.Solar .table>tbody>tr.active>th,
+.Solar .table>tfoot>tr.active>th {
+  background-color: rgba(255, 255, 255, 0.075)
+}
+
+.Solar .table-hover>tbody>tr>td.active:hover,
+.Solar .table-hover>tbody>tr>th.active:hover,
+.Solar .table-hover>tbody>tr.active:hover>td,
+.Solar .table-hover>tbody>tr:hover>.active,
+.Solar .table-hover>tbody>tr.active:hover>th {
+  background-color: rgba(242, 242, 242, 0.075)
+}
+
+.Solar .table>thead>tr>td.success,
+.Solar .table>tbody>tr>td.success,
+.Solar .table>tfoot>tr>td.success,
+.Solar .table>thead>tr>th.success,
+.Solar .table>tbody>tr>th.success,
+.Solar .table>tfoot>tr>th.success,
+.Solar .table>thead>tr.success>td,
+.Solar .table>tbody>tr.success>td,
+.Solar .table>tfoot>tr.success>td,
+.Solar .table>thead>tr.success>th,
+.Solar .table>tbody>tr.success>th,
+.Solar .table>tfoot>tr.success>th {
+  background-color: #2aa198
+}
+
+.Solar .table-hover>tbody>tr>td.success:hover,
+.Solar .table-hover>tbody>tr>th.success:hover,
+.Solar .table-hover>tbody>tr.success:hover>td,
+.Solar .table-hover>tbody>tr:hover>.success,
+.Solar .table-hover>tbody>tr.success:hover>th {
+  background-color: #258d85
+}
+
+.Solar .table>thead>tr>td.info,
+.Solar .table>tbody>tr>td.info,
+.Solar .table>tfoot>tr>td.info,
+.Solar .table>thead>tr>th.info,
+.Solar .table>tbody>tr>th.info,
+.Solar .table>tfoot>tr>th.info,
+.Solar .table>thead>tr.info>td,
+.Solar .table>tbody>tr.info>td,
+.Solar .table>tfoot>tr.info>td,
+.Solar .table>thead>tr.info>th,
+.Solar .table>tbody>tr.info>th,
+.Solar .table>tfoot>tr.info>th {
+  background-color: #268bd2
+}
+
+.Solar .table-hover>tbody>tr>td.info:hover,
+.Solar .table-hover>tbody>tr>th.info:hover,
+.Solar .table-hover>tbody>tr.info:hover>td,
+.Solar .table-hover>tbody>tr:hover>.info,
+.Solar .table-hover>tbody>tr.info:hover>th {
+  background-color: #227dbc
+}
+
+.Solar .table>thead>tr>td.warning,
+.Solar .table>tbody>tr>td.warning,
+.Solar .table>tfoot>tr>td.warning,
+.Solar .table>thead>tr>th.warning,
+.Solar .table>tbody>tr>th.warning,
+.Solar .table>tfoot>tr>th.warning,
+.Solar .table>thead>tr.warning>td,
+.Solar .table>tbody>tr.warning>td,
+.Solar .table>tfoot>tr.warning>td,
+.Solar .table>thead>tr.warning>th,
+.Solar .table>tbody>tr.warning>th,
+.Solar .table>tfoot>tr.warning>th {
+  background-color: #cb4b16
+}
+
+.Solar .table-hover>tbody>tr>td.warning:hover,
+.Solar .table-hover>tbody>tr>th.warning:hover,
+.Solar .table-hover>tbody>tr.warning:hover>td,
+.Solar .table-hover>tbody>tr:hover>.warning,
+.Solar .table-hover>tbody>tr.warning:hover>th {
+  background-color: #b44214
+}
+
+.Solar .table>thead>tr>td.danger,
+.Solar .table>tbody>tr>td.danger,
+.Solar .table>tfoot>tr>td.danger,
+.Solar .table>thead>tr>th.danger,
+.Solar .table>tbody>tr>th.danger,
+.Solar .table>tfoot>tr>th.danger,
+.Solar .table>thead>tr.danger>td,
+.Solar .table>tbody>tr.danger>td,
+.Solar .table>tfoot>tr.danger>td,
+.Solar .table>thead>tr.danger>th,
+.Solar .table>tbody>tr.danger>th,
+.Solar .table>tfoot>tr.danger>th {
+  background-color: #d33682
+}
+
+.Solar .table-hover>tbody>tr>td.danger:hover,
+.Solar .table-hover>tbody>tr>th.danger:hover,
+.Solar .table-hover>tbody>tr.danger:hover>td,
+.Solar .table-hover>tbody>tr:hover>.danger,
+.Solar .table-hover>tbody>tr.danger:hover>th {
+  background-color: #c42b75
+}
+
+.Solar .table-responsive {
+  overflow-x: auto;
+  min-height: .01%
+}
+
+@media screen and (max-width:767px) {
+  .Solar .table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: 1px solid #073642
+  }
+  .Solar .table-responsive>.table {
+    margin-bottom: 0
+  }
+  .Solar .table-responsive>.table>thead>tr>th,
+  .Solar .table-responsive>.table>tbody>tr>th,
+  .Solar .table-responsive>.table>tfoot>tr>th,
+  .Solar .table-responsive>.table>thead>tr>td,
+  .Solar .table-responsive>.table>tbody>tr>td,
+  .Solar .table-responsive>.table>tfoot>tr>td {
+    white-space: nowrap
+  }
+  .Solar .table-responsive>.table-bordered {
+    border: 0
+  }
+  .Solar .table-responsive>.table-bordered>thead>tr>th:first-child,
+  .Solar .table-responsive>.table-bordered>tbody>tr>th:first-child,
+  .Solar .table-responsive>.table-bordered>tfoot>tr>th:first-child,
+  .Solar .table-responsive>.table-bordered>thead>tr>td:first-child,
+  .Solar .table-responsive>.table-bordered>tbody>tr>td:first-child,
+  .Solar .table-responsive>.table-bordered>tfoot>tr>td:first-child {
+    border-left: 0
+  }
+  .Solar .table-responsive>.table-bordered>thead>tr>th:last-child,
+  .Solar .table-responsive>.table-bordered>tbody>tr>th:last-child,
+  .Solar .table-responsive>.table-bordered>tfoot>tr>th:last-child,
+  .Solar .table-responsive>.table-bordered>thead>tr>td:last-child,
+  .Solar .table-responsive>.table-bordered>tbody>tr>td:last-child,
+  .Solar .table-responsive>.table-bordered>tfoot>tr>td:last-child {
+    border-right: 0
+  }
+  .Solar .table-responsive>.table-bordered>tbody>tr:last-child>th,
+  .Solar .table-responsive>.table-bordered>tfoot>tr:last-child>th,
+  .Solar .table-responsive>.table-bordered>tbody>tr:last-child>td,
+  .Solar .table-responsive>.table-bordered>tfoot>tr:last-child>td {
+    border-bottom: 0
+  }
+}
+
+.Solar fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  min-width: 0
+}
+
+.Solar legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 20px;
+  font-size: 21px;
+  line-height: inherit;
+  color: #839496;
+  border: 0;
+  border-bottom: 1px solid #073642
+}
+
+.Solar label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold
+}
+
+.Solar input[type="search"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+.Solar input[type="radio"],
+.Solar input[type="checkbox"] {
+  margin: 4px 0 0;
+  margin-top: 1px \9;
+  line-height: normal
+}
+
+.Solar input[type="file"] {
+  display: block
+}
+
+.Solar input[type="range"] {
+  display: block;
+  width: 100%
+}
+
+.Solar select[multiple],
+.Solar select[size] {
+  height: auto
+}
+
+.Solar input[type="file"]:focus,
+.Solar input[type="radio"]:focus,
+.Solar input[type="checkbox"]:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px
+}
+
+.Solar output {
+  display: block;
+  padding-top: 7px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #073642
+}
+
+.Solar .form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #073642;
+  background-color: #a9bdbd;
+  background-image: none;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
+}
+
+.Solar .form-control:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6)
+}
+
+.Solar .form-control::-moz-placeholder {
+  color: #657b83;
+  opacity: 1
+}
+
+.Solar .form-control:-ms-input-placeholder {
+  color: #657b83
+}
+
+.Solar .form-control::-webkit-input-placeholder {
+  color: #657b83
+}
+
+.Solar .form-control::-ms-expand {
+  border: 0;
+  background-color: transparent
+}
+
+.Solar .form-control[disabled],
+.Solar .form-control[readonly],
+.Solar fieldset[disabled] .form-control {
+  background-color: #657b83;
+  opacity: 1
+}
+
+.Solar .form-control[disabled],
+.Solar fieldset[disabled] .form-control {
+  cursor: not-allowed
+}
+
+.Solar textarea.form-control {
+  height: auto
+}
+
+.Solar input[type="search"] {
+  -webkit-appearance: none
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .Solar input[type="date"].form-control,
+  .Solar input[type="time"].form-control,
+  .Solar input[type="datetime-local"].form-control,
+  .Solar input[type="month"].form-control {
+    line-height: 34px
+  }
+  .Solar input[type="date"].input-sm,
+  .Solar input[type="time"].input-sm,
+  .Solar input[type="datetime-local"].input-sm,
+  .Solar input[type="month"].input-sm,
+  .Solar .input-group-sm input[type="date"],
+  .Solar .input-group-sm input[type="time"],
+  .Solar .input-group-sm input[type="datetime-local"],
+  .Solar .input-group-sm input[type="month"] {
+    line-height: 30px
+  }
+  .Solar input[type="date"].input-lg,
+  .Solar input[type="time"].input-lg,
+  .Solar input[type="datetime-local"].input-lg,
+  .Solar input[type="month"].input-lg,
+  .Solar .input-group-lg input[type="date"],
+  .Solar .input-group-lg input[type="time"],
+  .Solar .input-group-lg input[type="datetime-local"],
+  .Solar .input-group-lg input[type="month"] {
+    line-height: 46px
+  }
+}
+
+.Solar .form-group {
+  margin-bottom: 15px
+}
+
+.Solar .radio,
+.Solar .checkbox {
+  position: relative;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px
+}
+
+.Solar .radio label,
+.Solar .checkbox label {
+  min-height: 20px;
+  padding-left: 20px;
+  margin-bottom: 0;
+  font-weight: normal;
+  cursor: pointer
+}
+
+.Solar .radio input[type="radio"],
+.Solar .radio-inline input[type="radio"],
+.Solar .checkbox input[type="checkbox"],
+.Solar .checkbox-inline input[type="checkbox"] {
+  position: absolute;
+  margin-left: -20px;
+  margin-top: 4px \9
+}
+
+.Solar .radio+.radio,
+.Solar .checkbox+.checkbox {
+  margin-top: -5px
+}
+
+.Solar .radio-inline,
+.Solar .checkbox-inline {
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;
+  margin-bottom: 0;
+  vertical-align: middle;
+  font-weight: normal;
+  cursor: pointer
+}
+
+.Solar .radio-inline+.radio-inline,
+.Solar .checkbox-inline+.checkbox-inline {
+  margin-top: 0;
+  margin-left: 10px
+}
+
+.Solar input[type="radio"][disabled],
+.Solar input[type="checkbox"][disabled],
+.Solar input[type="radio"].disabled,
+.Solar input[type="checkbox"].disabled,
+.Solar fieldset[disabled] input[type="radio"],
+.Solar fieldset[disabled] input[type="checkbox"] {
+  cursor: not-allowed
+}
+
+.Solar .radio-inline.disabled,
+.Solar .checkbox-inline.disabled,
+.Solar fieldset[disabled] .radio-inline,
+.Solar fieldset[disabled] .checkbox-inline {
+  cursor: not-allowed
+}
+
+.Solar .radio.disabled label,
+.Solar .checkbox.disabled label,
+.Solar fieldset[disabled] .radio label,
+.Solar fieldset[disabled] .checkbox label {
+  cursor: not-allowed
+}
+
+.Solar .form-control-static {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-bottom: 0;
+  min-height: 34px
+}
+
+.Solar .form-control-static.input-lg,
+.Solar .form-control-static.input-sm {
+  padding-left: 0;
+  padding-right: 0
+}
+
+.Solar .input-sm {
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px
+}
+
+.Solar select.input-sm {
+  height: 30px;
+  line-height: 30px
+}
+
+.Solar textarea.input-sm,
+.Solar select[multiple].input-sm {
+  height: auto
+}
+
+.Solar .form-group-sm .form-control {
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px
+}
+
+.Solar .form-group-sm select.form-control {
+  height: 30px;
+  line-height: 30px
+}
+
+.Solar .form-group-sm textarea.form-control,
+.Solar .form-group-sm select[multiple].form-control {
+  height: auto
+}
+
+.Solar .form-group-sm .form-control-static {
+  height: 30px;
+  min-height: 32px;
+  padding: 6px 10px;
+  font-size: 12px;
+  line-height: 1.5
+}
+
+.Solar .input-lg {
+  height: 46px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px
+}
+
+.Solar select.input-lg {
+  height: 46px;
+  line-height: 46px
+}
+
+.Solar textarea.input-lg,
+.Solar select[multiple].input-lg {
+  height: auto
+}
+
+.Solar .form-group-lg .form-control {
+  height: 46px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px
+}
+
+.Solar .form-group-lg select.form-control {
+  height: 46px;
+  line-height: 46px
+}
+
+.Solar .form-group-lg textarea.form-control,
+.Solar .form-group-lg select[multiple].form-control {
+  height: auto
+}
+
+.Solar .form-group-lg .form-control-static {
+  height: 46px;
+  min-height: 38px;
+  padding: 11px 16px;
+  font-size: 18px;
+  line-height: 1.3333333
+}
+
+.Solar .has-feedback {
+  position: relative
+}
+
+.Solar .has-feedback .form-control {
+  padding-right: 42.5px
+}
+
+.Solar .form-control-feedback {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  pointer-events: none
+}
+
+.Solar .input-lg+.form-control-feedback,
+.Solar .input-group-lg+.form-control-feedback,
+.Solar .form-group-lg .form-control+.form-control-feedback {
+  width: 46px;
+  height: 46px;
+  line-height: 46px
+}
+
+.Solar .input-sm+.form-control-feedback,
+.Solar .input-group-sm+.form-control-feedback,
+.Solar .form-group-sm .form-control+.form-control-feedback {
+  width: 30px;
+  height: 30px;
+  line-height: 30px
+}
+
+.Solar .has-success .help-block,
+.Solar .has-success .control-label,
+.Solar .has-success .radio,
+.Solar .has-success .checkbox,
+.Solar .has-success .radio-inline,
+.Solar .has-success .checkbox-inline,
+.Solar .has-success.radio label,
+.Solar .has-success.checkbox label,
+.Solar .has-success.radio-inline label,
+.Solar .has-success.checkbox-inline label {
+  color: #ffffff
+}
+
+.Solar .has-success .form-control {
+  border-color: #ffffff;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+}
+
+.Solar .has-success .form-control:focus {
+  border-color: #e6e6e6;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ffffff;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ffffff
+}
+
+.Solar .has-success .input-group-addon {
+  color: #ffffff;
+  border-color: #ffffff;
+  background-color: #2aa198
+}
+
+.Solar .has-success .form-control-feedback {
+  color: #ffffff
+}
+
+.Solar .has-warning .help-block,
+.Solar .has-warning .control-label,
+.Solar .has-warning .radio,
+.Solar .has-warning .checkbox,
+.Solar .has-warning .radio-inline,
+.Solar .has-warning .checkbox-inline,
+.Solar .has-warning.radio label,
+.Solar .has-warning.checkbox label,
+.Solar .has-warning.radio-inline label,
+.Solar .has-warning.checkbox-inline label {
+  color: #ffffff
+}
+
+.Solar .has-warning .form-control {
+  border-color: #ffffff;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+}
+
+.Solar .has-warning .form-control:focus {
+  border-color: #e6e6e6;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ffffff;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ffffff
+}
+
+.Solar .has-warning .input-group-addon {
+  color: #ffffff;
+  border-color: #ffffff;
+  background-color: #cb4b16
+}
+
+.Solar .has-warning .form-control-feedback {
+  color: #ffffff
+}
+
+.Solar .has-error .help-block,
+.Solar .has-error .control-label,
+.Solar .has-error .radio,
+.Solar .has-error .checkbox,
+.Solar .has-error .radio-inline,
+.Solar .has-error .checkbox-inline,
+.Solar .has-error.radio label,
+.Solar .has-error.checkbox label,
+.Solar .has-error.radio-inline label,
+.Solar .has-error.checkbox-inline label {
+  color: #ffffff
+}
+
+.Solar .has-error .form-control {
+  border-color: #ffffff;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+}
+
+.Solar .has-error .form-control:focus {
+  border-color: #e6e6e6;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ffffff;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ffffff
+}
+
+.Solar .has-error .input-group-addon {
+  color: #ffffff;
+  border-color: #ffffff;
+  background-color: #d33682
+}
+
+.Solar .has-error .form-control-feedback {
+  color: #ffffff
+}
+
+.Solar .has-feedback label~.form-control-feedback {
+  top: 25px
+}
+
+.Solar .has-feedback label.sr-only~.form-control-feedback {
+  top: 0
+}
+
+.Solar .help-block {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: #c8d0d0
+}
+
+@media (min-width:768px) {
+  .Solar .form-inline .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle
+  }
+  .Solar .form-inline .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle
+  }
+  .Solar .form-inline .form-control-static {
+    display: inline-block
+  }
+  .Solar .form-inline .input-group {
+    display: inline-table;
+    vertical-align: middle
+  }
+  .Solar .form-inline .input-group .input-group-addon,
+  .Solar .form-inline .input-group .input-group-btn,
+  .Solar .form-inline .input-group .form-control {
+    width: auto
+  }
+  .Solar .form-inline .input-group>.form-control {
+    width: 100%
+  }
+  .Solar .form-inline .control-label {
+    margin-bottom: 0;
+    vertical-align: middle
+  }
+  .Solar .form-inline .radio,
+  .Solar .form-inline .checkbox {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
+    vertical-align: middle
+  }
+  .Solar .form-inline .radio label,
+  .Solar .form-inline .checkbox label {
+    padding-left: 0
+  }
+  .Solar .form-inline .radio input[type="radio"],
+  .Solar .form-inline .checkbox input[type="checkbox"] {
+    position: relative;
+    margin-left: 0
+  }
+  .Solar .form-inline .has-feedback .form-control-feedback {
+    top: 0
+  }
+}
+
+.Solar .form-horizontal .radio,
+.Solar .form-horizontal .checkbox,
+.Solar .form-horizontal .radio-inline,
+.Solar .form-horizontal .checkbox-inline {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 7px
+}
+
+.Solar .form-horizontal .radio,
+.Solar .form-horizontal .checkbox {
+  min-height: 27px
+}
+
+.Solar .form-horizontal .form-group {
+  margin-left: -15px;
+  margin-right: -15px
+}
+
+@media (min-width:768px) {
+  .Solar .form-horizontal .control-label {
+    text-align: right;
+    margin-bottom: 0;
+    padding-top: 7px
+  }
+}
+
+.Solar .form-horizontal .has-feedback .form-control-feedback {
+  right: 15px
+}
+
+@media (min-width:768px) {
+  .Solar .form-horizontal .form-group-lg .control-label {
+    padding-top: 11px;
+    font-size: 18px
+  }
+}
+
+@media (min-width:768px) {
+  .Solar .form-horizontal .form-group-sm .control-label {
+    padding-top: 6px;
+    font-size: 12px
+  }
+}
+
+.Solar .btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none
+}
+
+.Solar .btn:focus,
+.Solar .btn:active:focus,
+.Solar .btn.active:focus,
+.Solar .btn.focus,
+.Solar .btn:active.focus,
+.Solar .btn.active.focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px
+}
+
+.Solar .btn:hover,
+.Solar .btn:focus,
+.Solar .btn.focus {
+  color: #ffffff;
+  text-decoration: none
+}
+
+.Solar .btn:active,
+.Solar .btn.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125)
+}
+
+.Solar .btn.disabled,
+.Solar .btn[disabled],
+.Solar fieldset[disabled] .btn {
+  cursor: not-allowed;
+  opacity: .65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none
+}
+
+.Solar a.btn.disabled,
+.Solar fieldset[disabled] a.btn {
+  pointer-events: none
+}
+
+.Solar .btn-default {
+  color: #ffffff;
+  background-color: #586e75;
+  border-color: #586e75
+}
+
+.Solar .btn-default:focus,
+.Solar .btn-default.focus {
+  color: #ffffff;
+  background-color: #425358;
+  border-color: #212a2c
+}
+
+.Solar .btn-default:hover {
+  color: #ffffff;
+  background-color: #425358;
+  border-color: #3e4d52
+}
+
+.Solar .btn-default:active,
+.Solar .btn-default.active,
+.Solar .open>.dropdown-toggle.btn-default {
+  color: #ffffff;
+  background-color: #425358;
+  border-color: #3e4d52
+}
+
+.Solar .btn-default:active:hover,
+.Solar .btn-default.active:hover,
+.Solar .open>.dropdown-toggle.btn-default:hover,
+.Solar .btn-default:active:focus,
+.Solar .btn-default.active:focus,
+.Solar .open>.dropdown-toggle.btn-default:focus,
+.Solar .btn-default:active.focus,
+.Solar .btn-default.active.focus,
+.Solar .open>.dropdown-toggle.btn-default.focus {
+  color: #ffffff;
+  background-color: #333f44;
+  border-color: #212a2c
+}
+
+.Solar .btn-default:active,
+.Solar .btn-default.active,
+.Solar .open>.dropdown-toggle.btn-default {
+  background-image: none
+}
+
+.Solar .btn-default.disabled:hover,
+.Solar .btn-default[disabled]:hover,
+.Solar fieldset[disabled] .btn-default:hover,
+.Solar .btn-default.disabled:focus,
+.Solar .btn-default[disabled]:focus,
+.Solar fieldset[disabled] .btn-default:focus,
+.Solar .btn-default.disabled.focus,
+.Solar .btn-default[disabled].focus,
+.Solar fieldset[disabled] .btn-default.focus {
+  background-color: #586e75;
+  border-color: #586e75
+}
+
+.Solar .btn-default .badge {
+  color: #586e75;
+  background-color: #ffffff
+}
+
+.Solar .btn-primary {
+  color: #ffffff;
+  background-color: #b58900;
+  border-color: #b58900
+}
+
+.Solar .btn-primary:focus,
+.Solar .btn-primary.focus {
+  color: #ffffff;
+  background-color: #826200;
+  border-color: #362800
+}
+
+.Solar .btn-primary:hover {
+  color: #ffffff;
+  background-color: #826200;
+  border-color: #785b00
+}
+
+.Solar .btn-primary:active,
+.Solar .btn-primary.active,
+.Solar .open>.dropdown-toggle.btn-primary {
+  color: #ffffff;
+  background-color: #826200;
+  border-color: #785b00
+}
+
+.Solar .btn-primary:active:hover,
+.Solar .btn-primary.active:hover,
+.Solar .open>.dropdown-toggle.btn-primary:hover,
+.Solar .btn-primary:active:focus,
+.Solar .btn-primary.active:focus,
+.Solar .open>.dropdown-toggle.btn-primary:focus,
+.Solar .btn-primary:active.focus,
+.Solar .btn-primary.active.focus,
+.Solar .open>.dropdown-toggle.btn-primary.focus {
+  color: #ffffff;
+  background-color: #5e4700;
+  border-color: #362800
+}
+
+.Solar .btn-primary:active,
+.Solar .btn-primary.active,
+.Solar .open>.dropdown-toggle.btn-primary {
+  background-image: none
+}
+
+.Solar .btn-primary.disabled:hover,
+.Solar .btn-primary[disabled]:hover,
+.Solar fieldset[disabled] .btn-primary:hover,
+.Solar .btn-primary.disabled:focus,
+.Solar .btn-primary[disabled]:focus,
+.Solar fieldset[disabled] .btn-primary:focus,
+.Solar .btn-primary.disabled.focus,
+.Solar .btn-primary[disabled].focus,
+.Solar fieldset[disabled] .btn-primary.focus {
+  background-color: #b58900;
+  border-color: #b58900
+}
+
+.Solar .btn-primary .badge {
+  color: #b58900;
+  background-color: #ffffff
+}
+
+.Solar .btn-success {
+  color: #ffffff;
+  background-color: #2aa198;
+  border-color: #2aa198
+}
+
+.Solar .btn-success:focus,
+.Solar .btn-success.focus {
+  color: #ffffff;
+  background-color: #1f7972;
+  border-color: #103c39
+}
+
+.Solar .btn-success:hover {
+  color: #ffffff;
+  background-color: #1f7972;
+  border-color: #1d706a
+}
+
+.Solar .btn-success:active,
+.Solar .btn-success.active,
+.Solar .open>.dropdown-toggle.btn-success {
+  color: #ffffff;
+  background-color: #1f7972;
+  border-color: #1d706a
+}
+
+.Solar .btn-success:active:hover,
+.Solar .btn-success.active:hover,
+.Solar .open>.dropdown-toggle.btn-success:hover,
+.Solar .btn-success:active:focus,
+.Solar .btn-success.active:focus,
+.Solar .open>.dropdown-toggle.btn-success:focus,
+.Solar .btn-success:active.focus,
+.Solar .btn-success.active.focus,
+.Solar .open>.dropdown-toggle.btn-success.focus {
+  color: #ffffff;
+  background-color: #185c57;
+  border-color: #103c39
+}
+
+.Solar .btn-success:active,
+.Solar .btn-success.active,
+.Solar .open>.dropdown-toggle.btn-success {
+  background-image: none
+}
+
+.Solar .btn-success.disabled:hover,
+.Solar .btn-success[disabled]:hover,
+.Solar fieldset[disabled] .btn-success:hover,
+.Solar .btn-success.disabled:focus,
+.Solar .btn-success[disabled]:focus,
+.Solar fieldset[disabled] .btn-success:focus,
+.Solar .btn-success.disabled.focus,
+.Solar .btn-success[disabled].focus,
+.Solar fieldset[disabled] .btn-success.focus {
+  background-color: #2aa198;
+  border-color: #2aa198
+}
+
+.Solar .btn-success .badge {
+  color: #2aa198;
+  background-color: #ffffff
+}
+
+.Solar .btn-info {
+  color: #ffffff;
+  background-color: #268bd2;
+  border-color: #268bd2
+}
+
+.Solar .btn-info:focus,
+.Solar .btn-info.focus {
+  color: #ffffff;
+  background-color: #1e6ea7;
+  border-color: #124466
+}
+
+.Solar .btn-info:hover {
+  color: #ffffff;
+  background-color: #1e6ea7;
+  border-color: #1d699e
+}
+
+.Solar .btn-info:active,
+.Solar .btn-info.active,
+.Solar .open>.dropdown-toggle.btn-info {
+  color: #ffffff;
+  background-color: #1e6ea7;
+  border-color: #1d699e
+}
+
+.Solar .btn-info:active:hover,
+.Solar .btn-info.active:hover,
+.Solar .open>.dropdown-toggle.btn-info:hover,
+.Solar .btn-info:active:focus,
+.Solar .btn-info.active:focus,
+.Solar .open>.dropdown-toggle.btn-info:focus,
+.Solar .btn-info:active.focus,
+.Solar .btn-info.active.focus,
+.Solar .open>.dropdown-toggle.btn-info.focus {
+  color: #ffffff;
+  background-color: #195a89;
+  border-color: #124466
+}
+
+.Solar .btn-info:active,
+.Solar .btn-info.active,
+.Solar .open>.dropdown-toggle.btn-info {
+  background-image: none
+}
+
+.Solar .btn-info.disabled:hover,
+.Solar .btn-info[disabled]:hover,
+.Solar fieldset[disabled] .btn-info:hover,
+.Solar .btn-info.disabled:focus,
+.Solar .btn-info[disabled]:focus,
+.Solar fieldset[disabled] .btn-info:focus,
+.Solar .btn-info.disabled.focus,
+.Solar .btn-info[disabled].focus,
+.Solar fieldset[disabled] .btn-info.focus {
+  background-color: #268bd2;
+  border-color: #268bd2
+}
+
+.Solar .btn-info .badge {
+  color: #268bd2;
+  background-color: #ffffff
+}
+
+.Solar .btn-warning {
+  color: #ffffff;
+  background-color: #cb4b16;
+  border-color: #cb4b16
+}
+
+.Solar .btn-warning:focus,
+.Solar .btn-warning.focus {
+  color: #ffffff;
+  background-color: #9d3a11;
+  border-color: #58210a
+}
+
+.Solar .btn-warning:hover {
+  color: #ffffff;
+  background-color: #9d3a11;
+  border-color: #943710
+}
+
+.Solar .btn-warning:active,
+.Solar .btn-warning.active,
+.Solar .open>.dropdown-toggle.btn-warning {
+  color: #ffffff;
+  background-color: #9d3a11;
+  border-color: #943710
+}
+
+.Solar .btn-warning:active:hover,
+.Solar .btn-warning.active:hover,
+.Solar .open>.dropdown-toggle.btn-warning:hover,
+.Solar .btn-warning:active:focus,
+.Solar .btn-warning.active:focus,
+.Solar .open>.dropdown-toggle.btn-warning:focus,
+.Solar .btn-warning:active.focus,
+.Solar .btn-warning.active.focus,
+.Solar .open>.dropdown-toggle.btn-warning.focus {
+  color: #ffffff;
+  background-color: #7d2e0e;
+  border-color: #58210a
+}
+
+.Solar .btn-warning:active,
+.Solar .btn-warning.active,
+.Solar .open>.dropdown-toggle.btn-warning {
+  background-image: none
+}
+
+.Solar .btn-warning.disabled:hover,
+.Solar .btn-warning[disabled]:hover,
+.Solar fieldset[disabled] .btn-warning:hover,
+.Solar .btn-warning.disabled:focus,
+.Solar .btn-warning[disabled]:focus,
+.Solar fieldset[disabled] .btn-warning:focus,
+.Solar .btn-warning.disabled.focus,
+.Solar .btn-warning[disabled].focus,
+.Solar fieldset[disabled] .btn-warning.focus {
+  background-color: #cb4b16;
+  border-color: #cb4b16
+}
+
+.Solar .btn-warning .badge {
+  color: #cb4b16;
+  background-color: #ffffff
+}
+
+.Solar .btn-danger {
+  color: #ffffff;
+  background-color: #d33682;
+  border-color: #d33682
+}
+
+.Solar .btn-danger:focus,
+.Solar .btn-danger.focus {
+  color: #ffffff;
+  background-color: #b02669;
+  border-color: #711943
+}
+
+.Solar .btn-danger:hover {
+  color: #ffffff;
+  background-color: #b02669;
+  border-color: #a72564
+}
+
+.Solar .btn-danger:active,
+.Solar .btn-danger.active,
+.Solar .open>.dropdown-toggle.btn-danger {
+  color: #ffffff;
+  background-color: #b02669;
+  border-color: #a72564
+}
+
+.Solar .btn-danger:active:hover,
+.Solar .btn-danger.active:hover,
+.Solar .open>.dropdown-toggle.btn-danger:hover,
+.Solar .btn-danger:active:focus,
+.Solar .btn-danger.active:focus,
+.Solar .open>.dropdown-toggle.btn-danger:focus,
+.Solar .btn-danger:active.focus,
+.Solar .btn-danger.active.focus,
+.Solar .open>.dropdown-toggle.btn-danger.focus {
+  color: #ffffff;
+  background-color: #922057;
+  border-color: #711943
+}
+
+.Solar .btn-danger:active,
+.Solar .btn-danger.active,
+.Solar .open>.dropdown-toggle.btn-danger {
+  background-image: none
+}
+
+.Solar .btn-danger.disabled:hover,
+.Solar .btn-danger[disabled]:hover,
+.Solar fieldset[disabled] .btn-danger:hover,
+.Solar .btn-danger.disabled:focus,
+.Solar .btn-danger[disabled]:focus,
+.Solar fieldset[disabled] .btn-danger:focus,
+.Solar .btn-danger.disabled.focus,
+.Solar .btn-danger[disabled].focus,
+.Solar fieldset[disabled] .btn-danger.focus {
+  background-color: #d33682;
+  border-color: #d33682
+}
+
+.Solar .btn-danger .badge {
+  color: #d33682;
+  background-color: #ffffff
+}
+
+.Solar .btn-link {
+  color: #2aa198;
+  font-weight: normal;
+  border-radius: 0
+}
+
+.Solar .btn-link,
+.Solar .btn-link:active,
+.Solar .btn-link.active,
+.Solar .btn-link[disabled],
+.Solar fieldset[disabled] .btn-link {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none
+}
+
+.Solar .btn-link,
+.Solar .btn-link:hover,
+.Solar .btn-link:focus,
+.Solar .btn-link:active {
+  border-color: transparent
+}
+
+.Solar .btn-link:hover,
+.Solar .btn-link:focus {
+  color: #2aa198;
+  text-decoration: underline;
+  background-color: transparent
+}
+
+.Solar .btn-link[disabled]:hover,
+.Solar fieldset[disabled] .btn-link:hover,
+.Solar .btn-link[disabled]:focus,
+.Solar fieldset[disabled] .btn-link:focus {
+  color: #eee8d5;
+  text-decoration: none
+}
+
+.Solar .btn-lg,
+.Solar .btn-group-lg>.btn {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px
+}
+
+.Solar .btn-sm,
+.Solar .btn-group-sm>.btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px
+}
+
+.Solar .btn-xs,
+.Solar .btn-group-xs>.btn {
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px
+}
+
+.Solar .btn-block {
+  display: block;
+  width: 100%
+}
+
+.Solar .btn-block+.btn-block {
+  margin-top: 5px
+}
+
+.Solar input[type="submit"].btn-block,
+.Solar input[type="reset"].btn-block,
+.Solar input[type="button"].btn-block {
+  width: 100%
+}
+
+.Solar .fade {
+  opacity: 0;
+  -webkit-transition: opacity .15s linear;
+  -o-transition: opacity .15s linear;
+  transition: opacity .15s linear
+}
+
+.Solar .fade.in {
+  opacity: 1
+}
+
+.Solar .collapse {
+  display: none
+}
+
+.Solar .collapse.in {
+  display: block
+}
+
+.Solar tr.collapse.in {
+  display: table-row
+}
+
+.Solar tbody.collapse.in {
+  display: table-row-group
+}
+
+.Solar .collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition-property: height, visibility;
+  -o-transition-property: height, visibility;
+  transition-property: height, visibility;
+  -webkit-transition-duration: .35s;
+  -o-transition-duration: .35s;
+  transition-duration: .35s;
+  -webkit-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease
+}
+
+.Solar .caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid \9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent
+}
+
+.Solar .dropup,
+.Solar .dropdown {
+  position: relative
+}
+
+.Solar .dropdown-toggle:focus {
+  outline: 0
+}
+
+.Solar .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 14px;
+  text-align: left;
+  background-color: #073642;
+  border: 1px solid #cccccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box
+}
+
+.Solar .dropdown-menu.pull-right {
+  right: 0;
+  left: auto
+}
+
+.Solar .dropdown-menu .divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #002b36
+}
+
+.Solar .dropdown-menu>li>a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #839496;
+  white-space: nowrap
+}
+
+.Solar .dropdown-menu>li>a:hover,
+.Solar .dropdown-menu>li>a:focus {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.75);
+  background-color: #002b36
+}
+
+.Solar .dropdown-menu>.active>a,
+.Solar .dropdown-menu>.active>a:hover,
+.Solar .dropdown-menu>.active>a:focus {
+  color: #ffffff;
+  text-decoration: none;
+  outline: 0;
+  background-color: #073642
+}
+
+.Solar .dropdown-menu>.disabled>a,
+.Solar .dropdown-menu>.disabled>a:hover,
+.Solar .dropdown-menu>.disabled>a:focus {
+  color: #eee8d5
+}
+
+.Solar .dropdown-menu>.disabled>a:hover,
+.Solar .dropdown-menu>.disabled>a:focus {
+  text-decoration: none;
+  background-color: transparent;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  cursor: not-allowed
+}
+
+.Solar .open>.dropdown-menu {
+  display: block
+}
+
+.Solar .open>a {
+  outline: 0
+}
+
+.Solar .dropdown-menu-right {
+  left: auto;
+  right: 0
+}
+
+.Solar .dropdown-menu-left {
+  left: 0;
+  right: auto
+}
+
+.Solar .dropdown-header {
+  display: block;
+  padding: 3px 20px;
+  font-size: 12px;
+  line-height: 1.42857143;
+  color: #eee8d5;
+  white-space: nowrap
+}
+
+.Solar .dropdown-backdrop {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 990
+}
+
+.Solar .pull-right>.dropdown-menu {
+  right: 0;
+  left: auto
+}
+
+.Solar .dropup .caret,
+.Solar .navbar-fixed-bottom .dropdown .caret {
+  border-top: 0;
+  border-bottom: 4px dashed;
+  border-bottom: 4px solid \9;
+  content: ""
+}
+
+.Solar .dropup .dropdown-menu,
+.Solar .navbar-fixed-bottom .dropdown .dropdown-menu {
+  top: auto;
+  bottom: 100%;
+  margin-bottom: 2px
+}
+
+@media (min-width:768px) {
+  .Solar .navbar-right .dropdown-menu {
+    left: auto;
+    right: 0
+  }
+  .Solar .navbar-right .dropdown-menu-left {
+    left: 0;
+    right: auto
+  }
+}
+
+.Solar .btn-group,
+.Solar .btn-group-vertical {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle
+}
+
+.Solar .btn-group>.btn,
+.Solar .btn-group-vertical>.btn {
+  position: relative;
+  float: left
+}
+
+.Solar .btn-group>.btn:hover,
+.Solar .btn-group-vertical>.btn:hover,
+.Solar .btn-group>.btn:focus,
+.Solar .btn-group-vertical>.btn:focus,
+.Solar .btn-group>.btn:active,
+.Solar .btn-group-vertical>.btn:active,
+.Solar .btn-group>.btn.active,
+.Solar .btn-group-vertical>.btn.active {
+  z-index: 2
+}
+
+.Solar .btn-group .btn+.btn,
+.Solar .btn-group .btn+.btn-group,
+.Solar .btn-group .btn-group+.btn,
+.Solar .btn-group .btn-group+.btn-group {
+  margin-left: -1px
+}
+
+.Solar .btn-toolbar {
+  margin-left: -5px
+}
+
+.Solar .btn-toolbar .btn,
+.Solar .btn-toolbar .btn-group,
+.Solar .btn-toolbar .input-group {
+  float: left
+}
+
+.Solar .btn-toolbar>.btn,
+.Solar .btn-toolbar>.btn-group,
+.Solar .btn-toolbar>.input-group {
+  margin-left: 5px
+}
+
+.Solar .btn-group>.btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-radius: 0
+}
+
+.Solar .btn-group>.btn:first-child {
+  margin-left: 0
+}
+
+.Solar .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0
+}
+
+.Solar .btn-group>.btn:last-child:not(:first-child),
+.Solar .btn-group>.dropdown-toggle:not(:first-child) {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0
+}
+
+.Solar .btn-group>.btn-group {
+  float: left
+}
+
+.Solar .btn-group>.btn-group:not(:first-child):not(:last-child)>.btn {
+  border-radius: 0
+}
+
+.Solar .btn-group>.btn-group:first-child:not(:last-child)>.btn:last-child,
+.Solar .btn-group>.btn-group:first-child:not(:last-child)>.dropdown-toggle {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0
+}
+
+.Solar .btn-group>.btn-group:last-child:not(:first-child)>.btn:first-child {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0
+}
+
+.Solar .btn-group .dropdown-toggle:active,
+.Solar .btn-group.open .dropdown-toggle {
+  outline: 0
+}
+
+.Solar .btn-group>.btn+.dropdown-toggle {
+  padding-left: 8px;
+  padding-right: 8px
+}
+
+.Solar .btn-group>.btn-lg+.dropdown-toggle {
+  padding-left: 12px;
+  padding-right: 12px
+}
+
+.Solar .btn-group.open .dropdown-toggle {
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125)
+}
+
+.Solar .btn-group.open .dropdown-toggle.btn-link {
+  -webkit-box-shadow: none;
+  box-shadow: none
+}
+
+.Solar .btn .caret {
+  margin-left: 0
+}
+
+.Solar .btn-lg .caret {
+  border-width: 5px 5px 0;
+  border-bottom-width: 0
+}
+
+.Solar .dropup .btn-lg .caret {
+  border-width: 0 5px 5px
+}
+
+.Solar .btn-group-vertical>.btn,
+.Solar .btn-group-vertical>.btn-group,
+.Solar .btn-group-vertical>.btn-group>.btn {
+  display: block;
+  float: none;
+  width: 100%;
+  max-width: 100%
+}
+
+.Solar .btn-group-vertical>.btn-group>.btn {
+  float: none
+}
+
+.Solar .btn-group-vertical>.btn+.btn,
+.Solar .btn-group-vertical>.btn+.btn-group,
+.Solar .btn-group-vertical>.btn-group+.btn,
+.Solar .btn-group-vertical>.btn-group+.btn-group {
+  margin-top: -1px;
+  margin-left: 0
+}
+
+.Solar .btn-group-vertical>.btn:not(:first-child):not(:last-child) {
+  border-radius: 0
+}
+
+.Solar .btn-group-vertical>.btn:first-child:not(:last-child) {
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0
+}
+
+.Solar .btn-group-vertical>.btn:last-child:not(:first-child) {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px
+}
+
+.Solar .btn-group-vertical>.btn-group:not(:first-child):not(:last-child)>.btn {
+  border-radius: 0
+}
+
+.Solar .btn-group-vertical>.btn-group:first-child:not(:last-child)>.btn:last-child,
+.Solar .btn-group-vertical>.btn-group:first-child:not(:last-child)>.dropdown-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0
+}
+
+.Solar .btn-group-vertical>.btn-group:last-child:not(:first-child)>.btn:first-child {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0
+}
+
+.Solar .btn-group-justified {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate
+}
+
+.Solar .btn-group-justified>.btn,
+.Solar .btn-group-justified>.btn-group {
+  float: none;
+  display: table-cell;
+  width: 1%
+}
+
+.Solar .btn-group-justified>.btn-group .btn {
+  width: 100%
+}
+
+.Solar .btn-group-justified>.btn-group .dropdown-menu {
+  left: auto
+}
+
+.Solar [data-toggle="buttons"]>.btn input[type="radio"],
+.Solar [data-toggle="buttons"]>.btn-group>.btn input[type="radio"],
+.Solar [data-toggle="buttons"]>.btn input[type="checkbox"],
+.Solar [data-toggle="buttons"]>.btn-group>.btn input[type="checkbox"] {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  pointer-events: none
+}
+
+.Solar .input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate
+}
+
+.Solar .input-group[class*="col-"] {
+  float: none;
+  padding-left: 0;
+  padding-right: 0
+}
+
+.Solar .input-group .form-control {
+  position: relative;
+  z-index: 2;
+  float: left;
+  width: 100%;
+  margin-bottom: 0
+}
+
+.Solar .input-group .form-control:focus {
+  z-index: 3
+}
+
+.Solar .input-group-lg>.form-control,
+.Solar .input-group-lg>.input-group-addon,
+.Solar .input-group-lg>.input-group-btn>.btn {
+  height: 46px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px
+}
+
+.Solar select.input-group-lg>.form-control,
+.Solar select.input-group-lg>.input-group-addon,
+.Solar select.input-group-lg>.input-group-btn>.btn {
+  height: 46px;
+  line-height: 46px
+}
+
+.Solar textarea.input-group-lg>.form-control,
+.Solar textarea.input-group-lg>.input-group-addon,
+.Solar textarea.input-group-lg>.input-group-btn>.btn,
+.Solar select[multiple].input-group-lg>.form-control,
+.Solar select[multiple].input-group-lg>.input-group-addon,
+.Solar select[multiple].input-group-lg>.input-group-btn>.btn {
+  height: auto
+}
+
+.Solar .input-group-sm>.form-control,
+.Solar .input-group-sm>.input-group-addon,
+.Solar .input-group-sm>.input-group-btn>.btn {
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px
+}
+
+.Solar select.input-group-sm>.form-control,
+.Solar select.input-group-sm>.input-group-addon,
+.Solar select.input-group-sm>.input-group-btn>.btn {
+  height: 30px;
+  line-height: 30px
+}
+
+.Solar textarea.input-group-sm>.form-control,
+.Solar textarea.input-group-sm>.input-group-addon,
+.Solar textarea.input-group-sm>.input-group-btn>.btn,
+.Solar select[multiple].input-group-sm>.form-control,
+.Solar select[multiple].input-group-sm>.input-group-addon,
+.Solar select[multiple].input-group-sm>.input-group-btn>.btn {
+  height: auto
+}
+
+.Solar .input-group-addon,
+.Solar .input-group-btn,
+.Solar .input-group .form-control {
+  display: table-cell
+}
+
+.Solar .input-group-addon:not(:first-child):not(:last-child),
+.Solar .input-group-btn:not(:first-child):not(:last-child),
+.Solar .input-group .form-control:not(:first-child):not(:last-child) {
+  border-radius: 0
+}
+
+.Solar .input-group-addon,
+.Solar .input-group-btn {
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle
+}
+
+.Solar .input-group-addon {
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1;
+  color: #073642;
+  text-align: center;
+  background-color: #073642;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px
+}
+
+.Solar .input-group-addon.input-sm {
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 3px
+}
+
+.Solar .input-group-addon.input-lg {
+  padding: 10px 16px;
+  font-size: 18px;
+  border-radius: 6px
+}
+
+.Solar .input-group-addon input[type="radio"],
+.Solar .input-group-addon input[type="checkbox"] {
+  margin-top: 0
+}
+
+.Solar .input-group .form-control:first-child,
+.Solar .input-group-addon:first-child,
+.Solar .input-group-btn:first-child>.btn,
+.Solar .input-group-btn:first-child>.btn-group>.btn,
+.Solar .input-group-btn:first-child>.dropdown-toggle,
+.Solar .input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle),
+.Solar .input-group-btn:last-child>.btn-group:not(:last-child)>.btn {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0
+}
+
+.Solar .input-group-addon:first-child {
+  border-right: 0
+}
+
+.Solar .input-group .form-control:last-child,
+.Solar .input-group-addon:last-child,
+.Solar .input-group-btn:last-child>.btn,
+.Solar .input-group-btn:last-child>.btn-group>.btn,
+.Solar .input-group-btn:last-child>.dropdown-toggle,
+.Solar .input-group-btn:first-child>.btn:not(:first-child),
+.Solar .input-group-btn:first-child>.btn-group:not(:first-child)>.btn {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0
+}
+
+.Solar .input-group-addon:last-child {
+  border-left: 0
+}
+
+.Solar .input-group-btn {
+  position: relative;
+  font-size: 0;
+  white-space: nowrap
+}
+
+.Solar .input-group-btn>.btn {
+  position: relative
+}
+
+.Solar .input-group-btn>.btn+.btn {
+  margin-left: -1px
+}
+
+.Solar .input-group-btn>.btn:hover,
+.Solar .input-group-btn>.btn:focus,
+.Solar .input-group-btn>.btn:active {
+  z-index: 2
+}
+
+.Solar .input-group-btn:first-child>.btn,
+.Solar .input-group-btn:first-child>.btn-group {
+  margin-right: -1px
+}
+
+.Solar .input-group-btn:last-child>.btn,
+.Solar .input-group-btn:last-child>.btn-group {
+  z-index: 2;
+  margin-left: -1px
+}
+
+.Solar .nav {
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none
+}
+
+.Solar .nav>li {
+  position: relative;
+  display: block
+}
+
+.Solar .nav>li>a {
+  position: relative;
+  display: block;
+  padding: 10px 15px
+}
+
+.Solar .nav>li>a:hover,
+.Solar .nav>li>a:focus {
+  text-decoration: none;
+  background-color: transparent
+}
+
+.Solar .nav>li.disabled>a {
+  color: #839496
+}
+
+.Solar .nav>li.disabled>a:hover,
+.Solar .nav>li.disabled>a:focus {
+  color: #839496;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: not-allowed
+}
+
+.Solar .nav .open>a,
+.Solar .nav .open>a:hover,
+.Solar .nav .open>a:focus {
+  background-color: transparent;
+  border-color: #2aa198
+}
+
+.Solar .nav .nav-divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5
+}
+
+.Solar .nav>li>a>img {
+  max-width: none
+}
+
+.Solar .nav-tabs {
+  border-bottom: 1px solid #073642
+}
+
+.Solar .nav-tabs>li {
+  float: left;
+  margin-bottom: -1px
+}
+
+.Solar .nav-tabs>li>a {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0
+}
+
+.Solar .nav-tabs>li>a:hover {
+  border-color: #073642 #073642 #073642
+}
+
+.Solar .nav-tabs>li.active>a,
+.Solar .nav-tabs>li.active>a:hover,
+.Solar .nav-tabs>li.active>a:focus {
+  color: #ffffff;
+  background-color: #002b36;
+  border: 1px solid #073642;
+  border-bottom-color: transparent;
+  cursor: default
+}
+
+.Solar .nav-tabs.nav-justified {
+  width: 100%;
+  border-bottom: 0
+}
+
+.Solar .nav-tabs.nav-justified>li {
+  float: none
+}
+
+.Solar .nav-tabs.nav-justified>li>a {
+  text-align: center;
+  margin-bottom: 5px
+}
+
+.Solar .nav-tabs.nav-justified>.dropdown .dropdown-menu {
+  top: auto;
+  left: auto
+}
+
+@media (min-width:768px) {
+  .Solar .nav-tabs.nav-justified>li {
+    display: table-cell;
+    width: 1%
+  }
+  .Solar .nav-tabs.nav-justified>li>a {
+    margin-bottom: 0
+  }
+}
+
+.Solar .nav-tabs.nav-justified>li>a {
+  margin-right: 0;
+  border-radius: 4px
+}
+
+.Solar .nav-tabs.nav-justified>.active>a,
+.Solar .nav-tabs.nav-justified>.active>a:hover,
+.Solar .nav-tabs.nav-justified>.active>a:focus {
+  border: 1px solid #073642
+}
+
+@media (min-width:768px) {
+  .Solar .nav-tabs.nav-justified>li>a {
+    border-bottom: 1px solid #073642;
+    border-radius: 4px 4px 0 0
+  }
+  .Solar .nav-tabs.nav-justified>.active>a,
+  .Solar .nav-tabs.nav-justified>.active>a:hover,
+  .Solar .nav-tabs.nav-justified>.active>a:focus {
+    border-bottom-color: #002b36
+  }
+}
+
+.Solar .nav-pills>li {
+  float: left
+}
+
+.Solar .nav-pills>li>a {
+  border-radius: 4px
+}
+
+.Solar .nav-pills>li+li {
+  margin-left: 2px
+}
+
+.Solar .nav-pills>li.active>a,
+.Solar .nav-pills>li.active>a:hover,
+.Solar .nav-pills>li.active>a:focus {
+  color: #ffffff;
+  background-color: #073642
+}
+
+.Solar .nav-stacked>li {
+  float: none
+}
+
+.Solar .nav-stacked>li+li {
+  margin-top: 2px;
+  margin-left: 0
+}
+
+.Solar .nav-justified {
+  width: 100%
+}
+
+.Solar .nav-justified>li {
+  float: none
+}
+
+.Solar .nav-justified>li>a {
+  text-align: center;
+  margin-bottom: 5px
+}
+
+.Solar .nav-justified>.dropdown .dropdown-menu {
+  top: auto;
+  left: auto
+}
+
+@media (min-width:768px) {
+  .Solar .nav-justified>li {
+    display: table-cell;
+    width: 1%
+  }
+  .Solar .nav-justified>li>a {
+    margin-bottom: 0
+  }
+}
+
+.Solar .nav-tabs-justified {
+  border-bottom: 0
+}
+
+.Solar .nav-tabs-justified>li>a {
+  margin-right: 0;
+  border-radius: 4px
+}
+
+.Solar .nav-tabs-justified>.active>a,
+.Solar .nav-tabs-justified>.active>a:hover,
+.Solar .nav-tabs-justified>.active>a:focus {
+  border: 1px solid #073642
+}
+
+@media (min-width:768px) {
+  .Solar .nav-tabs-justified>li>a {
+    border-bottom: 1px solid #073642;
+    border-radius: 4px 4px 0 0
+  }
+  .Solar .nav-tabs-justified>.active>a,
+  .Solar .nav-tabs-justified>.active>a:hover,
+  .Solar .nav-tabs-justified>.active>a:focus {
+    border-bottom-color: #002b36
+  }
+}
+
+.Solar .tab-content>.tab-pane {
+  display: none
+}
+
+.Solar .tab-content>.active {
+  display: block
+}
+
+.Solar .nav-tabs .dropdown-menu {
+  margin-top: -1px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0
+}
+
+.Solar .navbar {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 20px;
+  border: 1px solid transparent
+}
+
+@media (min-width:768px) {
+  .Solar .navbar {
+    border-radius: 4px
+  }
+}
+
+@media (min-width:768px) {
+  .Solar .navbar-header {
+    float: left
+  }
+}
+
+.Solar .navbar-collapse {
+  overflow-x: visible;
+  padding-right: 15px;
+  padding-left: 15px;
+  border-top: 1px solid transparent;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  -webkit-overflow-scrolling: touch
+}
+
+.Solar .navbar-collapse.in {
+  overflow-y: auto
+}
+
+@media (min-width:768px) {
+  .Solar .navbar-collapse {
+    width: auto;
+    border-top: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none
+  }
+  .Solar .navbar-collapse.collapse {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important
+  }
+  .Solar .navbar-collapse.in {
+    overflow-y: visible
+  }
+  .Solar .navbar-fixed-top .navbar-collapse,
+  .Solar .navbar-static-top .navbar-collapse,
+  .Solar .navbar-fixed-bottom .navbar-collapse {
+    padding-left: 0;
+    padding-right: 0
+  }
+}
+
+.Solar .navbar-fixed-top .navbar-collapse,
+.Solar .navbar-fixed-bottom .navbar-collapse {
+  max-height: 340px
+}
+
+@media (max-device-width:480px) and (orientation:landscape) {
+  .Solar .navbar-fixed-top .navbar-collapse,
+  .Solar .navbar-fixed-bottom .navbar-collapse {
+    max-height: 200px
+  }
+}
+
+.Solar .container>.navbar-header,
+.Solar .container-fluid>.navbar-header,
+.Solar .container>.navbar-collapse,
+.Solar .container-fluid>.navbar-collapse {
+  margin-right: -15px;
+  margin-left: -15px
+}
+
+@media (min-width:768px) {
+  .Solar .container>.navbar-header,
+  .Solar .container-fluid>.navbar-header,
+  .Solar .container>.navbar-collapse,
+  .Solar .container-fluid>.navbar-collapse {
+    margin-right: 0;
+    margin-left: 0
+  }
+}
+
+.Solar .navbar-static-top {
+  z-index: 1000;
+  border-width: 0 0 1px
+}
+
+@media (min-width:768px) {
+  .Solar .navbar-static-top {
+    border-radius: 0
+  }
+}
+
+.Solar .navbar-fixed-top,
+.Solar .navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030
+}
+
+@media (min-width:768px) {
+  .Solar .navbar-fixed-top,
+  .Solar .navbar-fixed-bottom {
+    border-radius: 0
+  }
+}
+
+.Solar .navbar-fixed-top {
+  top: 0;
+  border-width: 0 0 1px
+}
+
+.Solar .navbar-fixed-bottom {
+  bottom: 0;
+  margin-bottom: 0;
+  border-width: 1px 0 0
+}
+
+.Solar .navbar-brand {
+  float: left;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+  height: 50px
+}
+
+.Solar .navbar-brand:hover,
+.Solar .navbar-brand:focus {
+  text-decoration: none
+}
+
+.Solar .navbar-brand>img {
+  display: block
+}
+
+@media (min-width:768px) {
+  .Solar .navbar>.container .navbar-brand,
+  .Solar .navbar>.container-fluid .navbar-brand {
+    margin-left: -15px
+  }
+}
+
+.Solar .navbar-toggle {
+  position: relative;
+  float: right;
+  margin-right: 15px;
+  padding: 9px 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px
+}
+
+.Solar .navbar-toggle:focus {
+  outline: 0
+}
+
+.Solar .navbar-toggle .icon-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px
+}
+
+.Solar .navbar-toggle .icon-bar+.icon-bar {
+  margin-top: 4px
+}
+
+@media (min-width:768px) {
+  .Solar .navbar-toggle {
+    display: none
+  }
+}
+
+.Solar .navbar-nav {
+  margin: 7.5px -15px
+}
+
+.Solar .navbar-nav>li>a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 20px
+}
+
+@media (max-width:767px) {
+  .Solar .navbar-nav .open .dropdown-menu {
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none
+  }
+  .Solar .navbar-nav .open .dropdown-menu>li>a,
+  .Solar .navbar-nav .open .dropdown-menu .dropdown-header {
+    padding: 5px 15px 5px 25px
+  }
+  .Solar .navbar-nav .open .dropdown-menu>li>a {
+    line-height: 20px
+  }
+  .Solar .navbar-nav .open .dropdown-menu>li>a:hover,
+  .Solar .navbar-nav .open .dropdown-menu>li>a:focus {
+    background-image: none
+  }
+}
+
+@media (min-width:768px) {
+  .Solar .navbar-nav {
+    float: left;
+    margin: 0
+  }
+  .Solar .navbar-nav>li {
+    float: left
+  }
+  .Solar .navbar-nav>li>a {
+    padding-top: 15px;
+    padding-bottom: 15px
+  }
+}
+
+.Solar .navbar-form {
+  margin-left: -15px;
+  margin-right: -15px;
+  padding: 10px 15px;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
+  margin-top: 8px;
+  margin-bottom: 8px
+}
+
+@media (min-width:768px) {
+  .Solar .navbar-form .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle
+  }
+  .Solar .navbar-form .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle
+  }
+  .Solar .navbar-form .form-control-static {
+    display: inline-block
+  }
+  .Solar .navbar-form .input-group {
+    display: inline-table;
+    vertical-align: middle
+  }
+  .Solar .navbar-form .input-group .input-group-addon,
+  .Solar .navbar-form .input-group .input-group-btn,
+  .Solar .navbar-form .input-group .form-control {
+    width: auto
+  }
+  .Solar .navbar-form .input-group>.form-control {
+    width: 100%
+  }
+  .Solar .navbar-form .control-label {
+    margin-bottom: 0;
+    vertical-align: middle
+  }
+  .Solar .navbar-form .radio,
+  .Solar .navbar-form .checkbox {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
+    vertical-align: middle
+  }
+  .Solar .navbar-form .radio label,
+  .Solar .navbar-form .checkbox label {
+    padding-left: 0
+  }
+  .Solar .navbar-form .radio input[type="radio"],
+  .Solar .navbar-form .checkbox input[type="checkbox"] {
+    position: relative;
+    margin-left: 0
+  }
+  .Solar .navbar-form .has-feedback .form-control-feedback {
+    top: 0
+  }
+}
+
+@media (max-width:767px) {
+  .Solar .navbar-form .form-group {
+    margin-bottom: 5px
+  }
+  .Solar .navbar-form .form-group:last-child {
+    margin-bottom: 0
+  }
+}
+
+@media (min-width:768px) {
+  .Solar .navbar-form {
+    width: auto;
+    border: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none
+  }
+}
+
+.Solar .navbar-nav>li>.dropdown-menu {
+  margin-top: 0;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0
+}
+
+.Solar .navbar-fixed-bottom .navbar-nav>li>.dropdown-menu {
+  margin-bottom: 0;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0
+}
+
+.Solar .navbar-btn {
+  margin-top: 8px;
+  margin-bottom: 8px
+}
+
+.Solar .navbar-btn.btn-sm {
+  margin-top: 10px;
+  margin-bottom: 10px
+}
+
+.Solar .navbar-btn.btn-xs {
+  margin-top: 14px;
+  margin-bottom: 14px
+}
+
+.Solar .navbar-text {
+  margin-top: 15px;
+  margin-bottom: 15px
+}
+
+@media (min-width:768px) {
+  .Solar .navbar-text {
+    float: left;
+    margin-left: 15px;
+    margin-right: 15px
+  }
+}
+
+@media (min-width:768px) {
+  .Solar .navbar-left {
+    float: left !important
+  }
+  .Solar .navbar-right {
+    float: right !important;
+    margin-right: -15px
+  }
+  .Solar .navbar-right~.navbar-right {
+    margin-right: 0
+  }
+}
+
+.Solar .navbar-default {
+  background-color: #073642;
+  border-color: transparent
+}
+
+.Solar .navbar-default .navbar-brand {
+  color: #ffffff
+}
+
+.Solar .navbar-default .navbar-brand:hover,
+.Solar .navbar-default .navbar-brand:focus {
+  color: #ffffff;
+  background-color: transparent
+}
+
+.Solar .navbar-default .navbar-text {
+  color: #839496
+}
+
+.Solar .navbar-default .navbar-nav>li>a {
+  color: rgba(255, 255, 255, 0.5)
+}
+
+.Solar .navbar-default .navbar-nav>li>a:hover,
+.Solar .navbar-default .navbar-nav>li>a:focus {
+  color: rgba(255, 255, 255, 0.75);
+  background-color: transparent
+}
+
+.Solar .navbar-default .navbar-nav>.active>a,
+.Solar .navbar-default .navbar-nav>.active>a:hover,
+.Solar .navbar-default .navbar-nav>.active>a:focus {
+  color: #ffffff;
+  background-color: #062d36
+}
+
+.Solar .navbar-default .navbar-nav>.disabled>a,
+.Solar .navbar-default .navbar-nav>.disabled>a:hover,
+.Solar .navbar-default .navbar-nav>.disabled>a:focus {
+  color: rgba(255, 255, 255, 0.25);
+  background-color: transparent
+}
+
+.Solar .navbar-default .navbar-toggle {
+  border-color: rgba(255, 255, 255, 0.25)
+}
+
+.Solar .navbar-default .navbar-toggle:hover,
+.Solar .navbar-default .navbar-toggle:focus {
+  background-color: rgba(255, 255, 255, 0.5)
+}
+
+.Solar .navbar-default .navbar-toggle .icon-bar {
+  background-color: rgba(255, 255, 255, 0.5)
+}
+
+.Solar .navbar-default .navbar-collapse,
+.Solar .navbar-default .navbar-form {
+  border-color: transparent
+}
+
+.Solar .navbar-default .navbar-nav>.open>a,
+.Solar .navbar-default .navbar-nav>.open>a:hover,
+.Solar .navbar-default .navbar-nav>.open>a:focus {
+  background-color: #062d36;
+  color: #ffffff
+}
+
+@media (max-width:767px) {
+  .Solar .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+    color: rgba(255, 255, 255, 0.5)
+  }
+  .Solar .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,
+  .Solar .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+    color: rgba(255, 255, 255, 0.75);
+    background-color: transparent
+  }
+  .Solar .navbar-default .navbar-nav .open .dropdown-menu>.active>a,
+  .Solar .navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover,
+  .Solar .navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus {
+    color: #ffffff;
+    background-color: #062d36
+  }
+  .Solar .navbar-default .navbar-nav .open .dropdown-menu>.disabled>a,
+  .Solar .navbar-default .navbar-nav .open .dropdown-menu>.disabled>a:hover,
+  .Solar .navbar-default .navbar-nav .open .dropdown-menu>.disabled>a:focus {
+    color: rgba(255, 255, 255, 0.25);
+    background-color: transparent
+  }
+}
+
+.Solar .navbar-default .navbar-link {
+  color: rgba(255, 255, 255, 0.5)
+}
+
+.Solar .navbar-default .navbar-link:hover {
+  color: rgba(255, 255, 255, 0.75)
+}
+
+.Solar .navbar-default .btn-link {
+  color: rgba(255, 255, 255, 0.5)
+}
+
+.Solar .navbar-default .btn-link:hover,
+.Solar .navbar-default .btn-link:focus {
+  color: rgba(255, 255, 255, 0.75)
+}
+
+.Solar .navbar-default .btn-link[disabled]:hover,
+.Solar fieldset[disabled] .navbar-default .btn-link:hover,
+.Solar .navbar-default .btn-link[disabled]:focus,
+.Solar fieldset[disabled] .navbar-default .btn-link:focus {
+  color: rgba(255, 255, 255, 0.25)
+}
+
+.Solar .navbar-inverse {
+  background-color: #b58900;
+  border-color: #826200
+}
+
+.Solar .navbar-inverse .navbar-brand {
+  color: #ffffff
+}
+
+.Solar .navbar-inverse .navbar-brand:hover,
+.Solar .navbar-inverse .navbar-brand:focus {
+  color: #ffffff;
+  background-color: transparent
+}
+
+.Solar .navbar-inverse .navbar-text {
+  color: #ffffff
+}
+
+.Solar .navbar-inverse .navbar-nav>li>a {
+  color: rgba(255, 255, 255, 0.5)
+}
+
+.Solar .navbar-inverse .navbar-nav>li>a:hover,
+.Solar .navbar-inverse .navbar-nav>li>a:focus {
+  color: rgba(255, 255, 255, 0.75);
+  background-color: transparent
+}
+
+.Solar .navbar-inverse .navbar-nav>.active>a,
+.Solar .navbar-inverse .navbar-nav>.active>a:hover,
+.Solar .navbar-inverse .navbar-nav>.active>a:focus {
+  color: #ffffff;
+  background-color: #826200
+}
+
+.Solar .navbar-inverse .navbar-nav>.disabled>a,
+.Solar .navbar-inverse .navbar-nav>.disabled>a:hover,
+.Solar .navbar-inverse .navbar-nav>.disabled>a:focus {
+  color: rgba(255, 255, 255, 0.25);
+  background-color: transparent
+}
+
+.Solar .navbar-inverse .navbar-toggle {
+  border-color: rgba(255, 255, 255, 0.25)
+}
+
+.Solar .navbar-inverse .navbar-toggle:hover,
+.Solar .navbar-inverse .navbar-toggle:focus {
+  background-color: rgba(255, 255, 255, 0.5)
+}
+
+.Solar .navbar-inverse .navbar-toggle .icon-bar {
+  background-color: rgba(255, 255, 255, 0.5)
+}
+
+.Solar .navbar-inverse .navbar-collapse,
+.Solar .navbar-inverse .navbar-form {
+  border-color: #916e00
+}
+
+.Solar .navbar-inverse .navbar-nav>.open>a,
+.Solar .navbar-inverse .navbar-nav>.open>a:hover,
+.Solar .navbar-inverse .navbar-nav>.open>a:focus {
+  background-color: #826200;
+  color: #ffffff
+}
+
+@media (max-width:767px) {
+  .Solar .navbar-inverse .navbar-nav .open .dropdown-menu>.dropdown-header {
+    border-color: #826200
+  }
+  .Solar .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
+    background-color: #826200
+  }
+  .Solar .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+    color: rgba(255, 255, 255, 0.5)
+  }
+  .Solar .navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover,
+  .Solar .navbar-inverse .navbar-nav .open .dropdown-menu>li>a:focus {
+    color: rgba(255, 255, 255, 0.75);
+    background-color: transparent
+  }
+  .Solar .navbar-inverse .navbar-nav .open .dropdown-menu>.active>a,
+  .Solar .navbar-inverse .navbar-nav .open .dropdown-menu>.active>a:hover,
+  .Solar .navbar-inverse .navbar-nav .open .dropdown-menu>.active>a:focus {
+    color: #ffffff;
+    background-color: #826200
+  }
+  .Solar .navbar-inverse .navbar-nav .open .dropdown-menu>.disabled>a,
+  .Solar .navbar-inverse .navbar-nav .open .dropdown-menu>.disabled>a:hover,
+  .Solar .navbar-inverse .navbar-nav .open .dropdown-menu>.disabled>a:focus {
+    color: rgba(255, 255, 255, 0.25);
+    background-color: transparent
+  }
+}
+
+.Solar .navbar-inverse .navbar-link {
+  color: rgba(255, 255, 255, 0.5)
+}
+
+.Solar .navbar-inverse .navbar-link:hover {
+  color: rgba(255, 255, 255, 0.75)
+}
+
+.Solar .navbar-inverse .btn-link {
+  color: rgba(255, 255, 255, 0.5)
+}
+
+.Solar .navbar-inverse .btn-link:hover,
+.Solar .navbar-inverse .btn-link:focus {
+  color: rgba(255, 255, 255, 0.75)
+}
+
+.Solar .navbar-inverse .btn-link[disabled]:hover,
+.Solar fieldset[disabled] .navbar-inverse .btn-link:hover,
+.Solar .navbar-inverse .btn-link[disabled]:focus,
+.Solar fieldset[disabled] .navbar-inverse .btn-link:focus {
+  color: rgba(255, 255, 255, 0.25)
+}
+
+.Solar .breadcrumb {
+  padding: 8px 15px;
+  margin-bottom: 20px;
+  list-style: none;
+  background-color: #073642;
+  border-radius: 4px
+}
+
+.Solar .breadcrumb>li {
+  display: inline-block
+}
+
+.Solar .breadcrumb>li+li:before {
+  content: "/\00a0";
+  padding: 0 5px;
+  color: #839496
+}
+
+.Solar .breadcrumb>.active {
+  color: #839496
+}
+
+.Solar .pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 20px 0;
+  border-radius: 4px
+}
+
+.Solar .pagination>li {
+  display: inline
+}
+
+.Solar .pagination>li>a,
+.Solar .pagination>li>span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  line-height: 1.42857143;
+  text-decoration: none;
+  color: #2aa198;
+  background-color: transparent;
+  border: 1px solid #073642;
+  margin-left: -1px
+}
+
+.Solar .pagination>li:first-child>a,
+.Solar .pagination>li:first-child>span {
+  margin-left: 0;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px
+}
+
+.Solar .pagination>li:last-child>a,
+.Solar .pagination>li:last-child>span {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px
+}
+
+.Solar .pagination>li>a:hover,
+.Solar .pagination>li>span:hover,
+.Solar .pagination>li>a:focus,
+.Solar .pagination>li>span:focus {
+  z-index: 2;
+  color: #2aa198;
+  background-color: #073642;
+  border-color: #073642
+}
+
+.Solar .pagination>.active>a,
+.Solar .pagination>.active>span,
+.Solar .pagination>.active>a:hover,
+.Solar .pagination>.active>span:hover,
+.Solar .pagination>.active>a:focus,
+.Solar .pagination>.active>span:focus {
+  z-index: 3;
+  color: rgba(255, 255, 255, 0.75);
+  background-color: #073642;
+  border-color: #073642;
+  cursor: default
+}
+
+.Solar .pagination>.disabled>span,
+.Solar .pagination>.disabled>span:hover,
+.Solar .pagination>.disabled>span:focus,
+.Solar .pagination>.disabled>a,
+.Solar .pagination>.disabled>a:hover,
+.Solar .pagination>.disabled>a:focus {
+  color: #073642;
+  background-color: transparent;
+  border-color: #073642;
+  cursor: not-allowed
+}
+
+.Solar .pagination-lg>li>a,
+.Solar .pagination-lg>li>span {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333
+}
+
+.Solar .pagination-lg>li:first-child>a,
+.Solar .pagination-lg>li:first-child>span {
+  border-bottom-left-radius: 6px;
+  border-top-left-radius: 6px
+}
+
+.Solar .pagination-lg>li:last-child>a,
+.Solar .pagination-lg>li:last-child>span {
+  border-bottom-right-radius: 6px;
+  border-top-right-radius: 6px
+}
+
+.Solar .pagination-sm>li>a,
+.Solar .pagination-sm>li>span {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5
+}
+
+.Solar .pagination-sm>li:first-child>a,
+.Solar .pagination-sm>li:first-child>span {
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px
+}
+
+.Solar .pagination-sm>li:last-child>a,
+.Solar .pagination-sm>li:last-child>span {
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px
+}
+
+.Solar .pager {
+  padding-left: 0;
+  margin: 20px 0;
+  list-style: none;
+  text-align: center
+}
+
+.Solar .pager li {
+  display: inline
+}
+
+.Solar .pager li>a,
+.Solar .pager li>span {
+  display: inline-block;
+  padding: 5px 14px;
+  background-color: transparent;
+  border: 1px solid #073642;
+  border-radius: 15px
+}
+
+.Solar .pager li>a:hover,
+.Solar .pager li>a:focus {
+  text-decoration: none;
+  background-color: #073642
+}
+
+.Solar .pager .next>a,
+.Solar .pager .next>span {
+  float: right
+}
+
+.Solar .pager .previous>a,
+.Solar .pager .previous>span {
+  float: left
+}
+
+.Solar .pager .disabled>a,
+.Solar .pager .disabled>a:hover,
+.Solar .pager .disabled>a:focus,
+.Solar .pager .disabled>span {
+  color: #073642;
+  background-color: transparent;
+  cursor: not-allowed
+}
+
+.Solar .label {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em
+}
+
+.Solar a.label:hover,
+.Solar a.label:focus {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer
+}
+
+.Solar .label:empty {
+  display: none
+}
+
+.Solar .btn .label {
+  position: relative;
+  top: -1px
+}
+
+.Solar .label-default {
+  background-color: #586e75
+}
+
+.Solar .label-default[href]:hover,
+.Solar .label-default[href]:focus {
+  background-color: #425358
+}
+
+.Solar .label-primary {
+  background-color: #b58900
+}
+
+.Solar .label-primary[href]:hover,
+.Solar .label-primary[href]:focus {
+  background-color: #826200
+}
+
+.Solar .label-success {
+  background-color: #2aa198
+}
+
+.Solar .label-success[href]:hover,
+.Solar .label-success[href]:focus {
+  background-color: #1f7972
+}
+
+.Solar .label-info {
+  background-color: #268bd2
+}
+
+.Solar .label-info[href]:hover,
+.Solar .label-info[href]:focus {
+  background-color: #1e6ea7
+}
+
+.Solar .label-warning {
+  background-color: #cb4b16
+}
+
+.Solar .label-warning[href]:hover,
+.Solar .label-warning[href]:focus {
+  background-color: #9d3a11
+}
+
+.Solar .label-danger {
+  background-color: #d33682
+}
+
+.Solar .label-danger[href]:hover,
+.Solar .label-danger[href]:focus {
+  background-color: #b02669
+}
+
+.Solar .badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #586e75;
+  border-radius: 10px
+}
+
+.Solar .badge:empty {
+  display: none
+}
+
+.Solar .btn .badge {
+  position: relative;
+  top: -1px
+}
+
+.Solar .btn-xs .badge,
+.Solar .btn-group-xs>.btn .badge {
+  top: 0;
+  padding: 1px 5px
+}
+
+.Solar a.badge:hover,
+.Solar a.badge:focus {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer
+}
+
+.Solar .list-group-item.active>.badge,
+.Solar .nav-pills>.active>a>.badge {
+  color: #ffffff;
+  background-color: #586e75
+}
+
+.Solar .list-group-item>.badge {
+  float: right
+}
+
+.Solar .list-group-item>.badge+.badge {
+  margin-right: 5px
+}
+
+.Solar .nav-pills>li>a>.badge {
+  margin-left: 3px
+}
+
+.Solar .jumbotron {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  color: inherit;
+  background-color: #073642
+}
+
+.Solar .jumbotron h1,
+.Solar .jumbotron .h1 {
+  color: inherit
+}
+
+.Solar .jumbotron p {
+  margin-bottom: 15px;
+  font-size: 21px;
+  font-weight: 200
+}
+
+.Solar .jumbotron>hr {
+  border-top-color: #021014
+}
+
+.Solar .container .jumbotron,
+.Solar .container-fluid .jumbotron {
+  border-radius: 6px;
+  padding-left: 15px;
+  padding-right: 15px
+}
+
+.Solar .jumbotron .container {
+  max-width: 100%
+}
+
+@media screen and (min-width:768px) {
+  .Solar .jumbotron {
+    padding-top: 48px;
+    padding-bottom: 48px
+  }
+  .Solar .container .jumbotron,
+  .Solar .container-fluid .jumbotron {
+    padding-left: 60px;
+    padding-right: 60px
+  }
+  .Solar .jumbotron h1,
+  .Solar .jumbotron .h1 {
+    font-size: 63px
+  }
+}
+
+.Solar .thumbnail {
+  display: block;
+  padding: 4px;
+  margin-bottom: 20px;
+  line-height: 1.42857143;
+  background-color: #002b36;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  -webkit-transition: border .2s ease-in-out;
+  -o-transition: border .2s ease-in-out;
+  transition: border .2s ease-in-out
+}
+
+.Solar .thumbnail>img,
+.Solar .thumbnail a>img {
+  margin-left: auto;
+  margin-right: auto
+}
+
+.Solar a.thumbnail:hover,
+.Solar a.thumbnail:focus,
+.Solar a.thumbnail.active {
+  border-color: #2aa198
+}
+
+.Solar .thumbnail .caption {
+  padding: 9px;
+  color: #839496
+}
+
+.Solar .alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px
+}
+
+.Solar .alert h4 {
+  margin-top: 0;
+  color: inherit
+}
+
+.Solar .alert .alert-link {
+  font-weight: bold
+}
+
+.Solar .alert>p,
+.Solar .alert>ul {
+  margin-bottom: 0
+}
+
+.Solar .alert>p+p {
+  margin-top: 5px
+}
+
+.Solar .alert-dismissable,
+.Solar .alert-dismissible {
+  padding-right: 35px
+}
+
+.Solar .alert-dismissable .close,
+.Solar .alert-dismissible .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  color: inherit
+}
+
+.Solar .alert-success {
+  background-color: #2aa198;
+  border-color: #2aa198;
+  color: #ffffff
+}
+
+.Solar .alert-success hr {
+  border-top-color: #258d85
+}
+
+.Solar .alert-success .alert-link {
+  color: #e6e6e6
+}
+
+.Solar .alert-info {
+  background-color: #268bd2;
+  border-color: #268bd2;
+  color: #ffffff
+}
+
+.Solar .alert-info hr {
+  border-top-color: #227dbc
+}
+
+.Solar .alert-info .alert-link {
+  color: #e6e6e6
+}
+
+.Solar .alert-warning {
+  background-color: #cb4b16;
+  border-color: #cb4b16;
+  color: #ffffff
+}
+
+.Solar .alert-warning hr {
+  border-top-color: #b44214
+}
+
+.Solar .alert-warning .alert-link {
+  color: #e6e6e6
+}
+
+.Solar .alert-danger {
+  background-color: #d33682;
+  border-color: #d33682;
+  color: #ffffff
+}
+
+.Solar .alert-danger hr {
+  border-top-color: #c42b75
+}
+
+.Solar .alert-danger .alert-link {
+  color: #e6e6e6
+}
+
+@-webkit-keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0
+  }
+  to {
+    background-position: 0 0
+  }
+}
+
+@-o-keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0
+  }
+  to {
+    background-position: 0 0
+  }
+}
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 40px 0
+  }
+  to {
+    background-position: 0 0
+  }
+}
+
+.Solar .progress {
+  overflow: hidden;
+  height: 20px;
+  margin-bottom: 20px;
+  background-color: #073642;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1)
+}
+
+.Solar .progress-bar {
+  float: left;
+  width: 0;
+  height: 100%;
+  font-size: 12px;
+  line-height: 20px;
+  color: #ffffff;
+  text-align: center;
+  background-color: #b58900;
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  -webkit-transition: width .6s ease;
+  -o-transition: width .6s ease;
+  transition: width .6s ease
+}
+
+.Solar .progress-striped .progress-bar,
+.Solar .progress-bar-striped {
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  -webkit-background-size: 40px 40px;
+  background-size: 40px 40px
+}
+
+.Solar .progress.active .progress-bar,
+.Solar .progress-bar.active {
+  -webkit-animation: progress-bar-stripes 2s linear infinite;
+  -o-animation: progress-bar-stripes 2s linear infinite;
+  animation: progress-bar-stripes 2s linear infinite
+}
+
+.Solar .progress-bar-success {
+  background-color: #2aa198
+}
+
+.Solar .progress-striped .progress-bar-success {
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+}
+
+.Solar .progress-bar-info {
+  background-color: #268bd2
+}
+
+.Solar .progress-striped .progress-bar-info {
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+}
+
+.Solar .progress-bar-warning {
+  background-color: #cb4b16
+}
+
+.Solar .progress-striped .progress-bar-warning {
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+}
+
+.Solar .progress-bar-danger {
+  background-color: #d33682
+}
+
+.Solar .progress-striped .progress-bar-danger {
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent)
+}
+
+.Solar .media {
+  margin-top: 15px
+}
+
+.Solar .media:first-child {
+  margin-top: 0
+}
+
+.Solar .media,
+.Solar .media-body {
+  zoom: 1;
+  overflow: hidden
+}
+
+.Solar .media-body {
+  width: 10000px
+}
+
+.Solar .media-object {
+  display: block
+}
+
+.Solar .media-object.img-thumbnail {
+  max-width: none
+}
+
+.Solar .media-right,
+.Solar .media>.pull-right {
+  padding-left: 10px
+}
+
+.Solar .media-left,
+.Solar .media>.pull-left {
+  padding-right: 10px
+}
+
+.Solar .media-left,
+.Solar .media-right,
+.Solar .media-body {
+  display: table-cell;
+  vertical-align: top
+}
+
+.Solar .media-middle {
+  vertical-align: middle
+}
+
+.Solar .media-bottom {
+  vertical-align: bottom
+}
+
+.Solar .media-heading {
+  margin-top: 0;
+  margin-bottom: 5px
+}
+
+.Solar .media-list {
+  padding-left: 0;
+  list-style: none
+}
+
+.Solar .list-group {
+  margin-bottom: 20px;
+  padding-left: 0
+}
+
+.Solar .list-group-item {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: transparent;
+  border: 1px solid #073642
+}
+
+.Solar .list-group-item:first-child {
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px
+}
+
+.Solar .list-group-item:last-child {
+  margin-bottom: 0;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px
+}
+
+.Solar a.list-group-item,
+.Solar button.list-group-item {
+  color: #839496
+}
+
+.Solar a.list-group-item .list-group-item-heading,
+.Solar button.list-group-item .list-group-item-heading {
+  color: #839496
+}
+
+.Solar a.list-group-item:hover,
+.Solar button.list-group-item:hover,
+.Solar a.list-group-item:focus,
+.Solar button.list-group-item:focus {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #073642
+}
+
+.Solar button.list-group-item {
+  width: 100%;
+  text-align: left
+}
+
+.Solar .list-group-item.disabled,
+.Solar .list-group-item.disabled:hover,
+.Solar .list-group-item.disabled:focus {
+  background-color: transparent;
+  color: #073642;
+  cursor: not-allowed
+}
+
+.Solar .list-group-item.disabled .list-group-item-heading,
+.Solar .list-group-item.disabled:hover .list-group-item-heading,
+.Solar .list-group-item.disabled:focus .list-group-item-heading {
+  color: inherit
+}
+
+.Solar .list-group-item.disabled .list-group-item-text,
+.Solar .list-group-item.disabled:hover .list-group-item-text,
+.Solar .list-group-item.disabled:focus .list-group-item-text {
+  color: #073642
+}
+
+.Solar .list-group-item.active,
+.Solar .list-group-item.active:hover,
+.Solar .list-group-item.active:focus {
+  z-index: 2;
+  color: #ffffff;
+  background-color: #073642;
+  border-color: #073642
+}
+
+.Solar .list-group-item.active .list-group-item-heading,
+.Solar .list-group-item.active:hover .list-group-item-heading,
+.Solar .list-group-item.active:focus .list-group-item-heading,
+.Solar .list-group-item.active .list-group-item-heading>small,
+.Solar .list-group-item.active:hover .list-group-item-heading>small,
+.Solar .list-group-item.active:focus .list-group-item-heading>small,
+.Solar .list-group-item.active .list-group-item-heading>.small,
+.Solar .list-group-item.active:hover .list-group-item-heading>.small,
+.Solar .list-group-item.active:focus .list-group-item-heading>.small {
+  color: inherit
+}
+
+.Solar .list-group-item.active .list-group-item-text,
+.Solar .list-group-item.active:hover .list-group-item-text,
+.Solar .list-group-item.active:focus .list-group-item-text {
+  color: #ffffff
+}
+
+.Solar .list-group-item-success {
+  color: #ffffff;
+  background-color: #2aa198
+}
+
+.Solar a.list-group-item-success,
+.Solar button.list-group-item-success {
+  color: #ffffff
+}
+
+.Solar a.list-group-item-success .list-group-item-heading,
+.Solar button.list-group-item-success .list-group-item-heading {
+  color: inherit
+}
+
+.Solar a.list-group-item-success:hover,
+.Solar button.list-group-item-success:hover,
+.Solar a.list-group-item-success:focus,
+.Solar button.list-group-item-success:focus {
+  color: #ffffff;
+  background-color: #258d85
+}
+
+.Solar a.list-group-item-success.active,
+.Solar button.list-group-item-success.active,
+.Solar a.list-group-item-success.active:hover,
+.Solar button.list-group-item-success.active:hover,
+.Solar a.list-group-item-success.active:focus,
+.Solar button.list-group-item-success.active:focus {
+  color: #fff;
+  background-color: #ffffff;
+  border-color: #ffffff
+}
+
+.Solar .list-group-item-info {
+  color: #ffffff;
+  background-color: #268bd2
+}
+
+.Solar a.list-group-item-info,
+.Solar button.list-group-item-info {
+  color: #ffffff
+}
+
+.Solar a.list-group-item-info .list-group-item-heading,
+.Solar button.list-group-item-info .list-group-item-heading {
+  color: inherit
+}
+
+.Solar a.list-group-item-info:hover,
+.Solar button.list-group-item-info:hover,
+.Solar a.list-group-item-info:focus,
+.Solar button.list-group-item-info:focus {
+  color: #ffffff;
+  background-color: #227dbc
+}
+
+.Solar a.list-group-item-info.active,
+.Solar button.list-group-item-info.active,
+.Solar a.list-group-item-info.active:hover,
+.Solar button.list-group-item-info.active:hover,
+.Solar a.list-group-item-info.active:focus,
+.Solar button.list-group-item-info.active:focus {
+  color: #fff;
+  background-color: #ffffff;
+  border-color: #ffffff
+}
+
+.Solar .list-group-item-warning {
+  color: #ffffff;
+  background-color: #cb4b16
+}
+
+.Solar a.list-group-item-warning,
+.Solar button.list-group-item-warning {
+  color: #ffffff
+}
+
+.Solar a.list-group-item-warning .list-group-item-heading,
+.Solar button.list-group-item-warning .list-group-item-heading {
+  color: inherit
+}
+
+.Solar a.list-group-item-warning:hover,
+.Solar button.list-group-item-warning:hover,
+.Solar a.list-group-item-warning:focus,
+.Solar button.list-group-item-warning:focus {
+  color: #ffffff;
+  background-color: #b44214
+}
+
+.Solar a.list-group-item-warning.active,
+.Solar button.list-group-item-warning.active,
+.Solar a.list-group-item-warning.active:hover,
+.Solar button.list-group-item-warning.active:hover,
+.Solar a.list-group-item-warning.active:focus,
+.Solar button.list-group-item-warning.active:focus {
+  color: #fff;
+  background-color: #ffffff;
+  border-color: #ffffff
+}
+
+.Solar .list-group-item-danger {
+  color: #ffffff;
+  background-color: #d33682
+}
+
+.Solar a.list-group-item-danger,
+.Solar button.list-group-item-danger {
+  color: #ffffff
+}
+
+.Solar a.list-group-item-danger .list-group-item-heading,
+.Solar button.list-group-item-danger .list-group-item-heading {
+  color: inherit
+}
+
+.Solar a.list-group-item-danger:hover,
+.Solar button.list-group-item-danger:hover,
+.Solar a.list-group-item-danger:focus,
+.Solar button.list-group-item-danger:focus {
+  color: #ffffff;
+  background-color: #c42b75
+}
+
+.Solar a.list-group-item-danger.active,
+.Solar button.list-group-item-danger.active,
+.Solar a.list-group-item-danger.active:hover,
+.Solar button.list-group-item-danger.active:hover,
+.Solar a.list-group-item-danger.active:focus,
+.Solar button.list-group-item-danger.active:focus {
+  color: #fff;
+  background-color: #ffffff;
+  border-color: #ffffff
+}
+
+.Solar .list-group-item-heading {
+  margin-top: 0;
+  margin-bottom: 5px
+}
+
+.Solar .list-group-item-text {
+  margin-bottom: 0;
+  line-height: 1.3
+}
+
+.Solar .panel {
+  margin-bottom: 20px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05)
+}
+
+.Solar .panel-body {
+  padding: 15px
+}
+
+.Solar .panel-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px
+}
+
+.Solar .panel-heading>.dropdown .dropdown-toggle {
+  color: inherit
+}
+
+.Solar .panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 16px;
+  color: inherit
+}
+
+.Solar .panel-title>a,
+.Solar .panel-title>small,
+.Solar .panel-title>.small,
+.Solar .panel-title>small>a,
+.Solar .panel-title>.small>a {
+  color: inherit
+}
+
+.Solar .panel-footer {
+  padding: 10px 15px;
+  background-color: #073642;
+  border-top: 1px solid #073642;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px
+}
+
+.Solar .panel>.list-group,
+.Solar .panel>.panel-collapse>.list-group {
+  margin-bottom: 0
+}
+
+.Solar .panel>.list-group .list-group-item,
+.Solar .panel>.panel-collapse>.list-group .list-group-item {
+  border-width: 1px 0;
+  border-radius: 0
+}
+
+.Solar .panel>.list-group:first-child .list-group-item:first-child,
+.Solar .panel>.panel-collapse>.list-group:first-child .list-group-item:first-child {
+  border-top: 0;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px
+}
+
+.Solar .panel>.list-group:last-child .list-group-item:last-child,
+.Solar .panel>.panel-collapse>.list-group:last-child .list-group-item:last-child {
+  border-bottom: 0;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px
+}
+
+.Solar .panel>.panel-heading+.panel-collapse>.list-group .list-group-item:first-child {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0
+}
+
+.Solar .panel-heading+.list-group .list-group-item:first-child {
+  border-top-width: 0
+}
+
+.Solar .list-group+.panel-footer {
+  border-top-width: 0
+}
+
+.Solar .panel>.table,
+.Solar .panel>.table-responsive>.table,
+.Solar .panel>.panel-collapse>.table {
+  margin-bottom: 0
+}
+
+.Solar .panel>.table caption,
+.Solar .panel>.table-responsive>.table caption,
+.Solar .panel>.panel-collapse>.table caption {
+  padding-left: 15px;
+  padding-right: 15px
+}
+
+.Solar .panel>.table:first-child,
+.Solar .panel>.table-responsive:first-child>.table:first-child {
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px
+}
+
+.Solar .panel>.table:first-child>thead:first-child>tr:first-child,
+.Solar .panel>.table-responsive:first-child>.table:first-child>thead:first-child>tr:first-child,
+.Solar .panel>.table:first-child>tbody:first-child>tr:first-child,
+.Solar .panel>.table-responsive:first-child>.table:first-child>tbody:first-child>tr:first-child {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px
+}
+
+.Solar .panel>.table:first-child>thead:first-child>tr:first-child td:first-child,
+.Solar .panel>.table-responsive:first-child>.table:first-child>thead:first-child>tr:first-child td:first-child,
+.Solar .panel>.table:first-child>tbody:first-child>tr:first-child td:first-child,
+.Solar .panel>.table-responsive:first-child>.table:first-child>tbody:first-child>tr:first-child td:first-child,
+.Solar .panel>.table:first-child>thead:first-child>tr:first-child th:first-child,
+.Solar .panel>.table-responsive:first-child>.table:first-child>thead:first-child>tr:first-child th:first-child,
+.Solar .panel>.table:first-child>tbody:first-child>tr:first-child th:first-child,
+.Solar .panel>.table-responsive:first-child>.table:first-child>tbody:first-child>tr:first-child th:first-child {
+  border-top-left-radius: 3px
+}
+
+.Solar .panel>.table:first-child>thead:first-child>tr:first-child td:last-child,
+.Solar .panel>.table-responsive:first-child>.table:first-child>thead:first-child>tr:first-child td:last-child,
+.Solar .panel>.table:first-child>tbody:first-child>tr:first-child td:last-child,
+.Solar .panel>.table-responsive:first-child>.table:first-child>tbody:first-child>tr:first-child td:last-child,
+.Solar .panel>.table:first-child>thead:first-child>tr:first-child th:last-child,
+.Solar .panel>.table-responsive:first-child>.table:first-child>thead:first-child>tr:first-child th:last-child,
+.Solar .panel>.table:first-child>tbody:first-child>tr:first-child th:last-child,
+.Solar .panel>.table-responsive:first-child>.table:first-child>tbody:first-child>tr:first-child th:last-child {
+  border-top-right-radius: 3px
+}
+
+.Solar .panel>.table:last-child,
+.Solar .panel>.table-responsive:last-child>.table:last-child {
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px
+}
+
+.Solar .panel>.table:last-child>tbody:last-child>tr:last-child,
+.Solar .panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child,
+.Solar .panel>.table:last-child>tfoot:last-child>tr:last-child,
+.Solar .panel>.table-responsive:last-child>.table:last-child>tfoot:last-child>tr:last-child {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px
+}
+
+.Solar .panel>.table:last-child>tbody:last-child>tr:last-child td:first-child,
+.Solar .panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child td:first-child,
+.Solar .panel>.table:last-child>tfoot:last-child>tr:last-child td:first-child,
+.Solar .panel>.table-responsive:last-child>.table:last-child>tfoot:last-child>tr:last-child td:first-child,
+.Solar .panel>.table:last-child>tbody:last-child>tr:last-child th:first-child,
+.Solar .panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child th:first-child,
+.Solar .panel>.table:last-child>tfoot:last-child>tr:last-child th:first-child,
+.Solar .panel>.table-responsive:last-child>.table:last-child>tfoot:last-child>tr:last-child th:first-child {
+  border-bottom-left-radius: 3px
+}
+
+.Solar .panel>.table:last-child>tbody:last-child>tr:last-child td:last-child,
+.Solar .panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child td:last-child,
+.Solar .panel>.table:last-child>tfoot:last-child>tr:last-child td:last-child,
+.Solar .panel>.table-responsive:last-child>.table:last-child>tfoot:last-child>tr:last-child td:last-child,
+.Solar .panel>.table:last-child>tbody:last-child>tr:last-child th:last-child,
+.Solar .panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child th:last-child,
+.Solar .panel>.table:last-child>tfoot:last-child>tr:last-child th:last-child,
+.Solar .panel>.table-responsive:last-child>.table:last-child>tfoot:last-child>tr:last-child th:last-child {
+  border-bottom-right-radius: 3px
+}
+
+.Solar .panel>.panel-body+.table,
+.Solar .panel>.panel-body+.table-responsive,
+.Solar .panel>.table+.panel-body,
+.Solar .panel>.table-responsive+.panel-body {
+  border-top: 1px solid #073642
+}
+
+.Solar .panel>.table>tbody:first-child>tr:first-child th,
+.Solar .panel>.table>tbody:first-child>tr:first-child td {
+  border-top: 0
+}
+
+.Solar .panel>.table-bordered,
+.Solar .panel>.table-responsive>.table-bordered {
+  border: 0
+}
+
+.Solar .panel>.table-bordered>thead>tr>th:first-child,
+.Solar .panel>.table-responsive>.table-bordered>thead>tr>th:first-child,
+.Solar .panel>.table-bordered>tbody>tr>th:first-child,
+.Solar .panel>.table-responsive>.table-bordered>tbody>tr>th:first-child,
+.Solar .panel>.table-bordered>tfoot>tr>th:first-child,
+.Solar .panel>.table-responsive>.table-bordered>tfoot>tr>th:first-child,
+.Solar .panel>.table-bordered>thead>tr>td:first-child,
+.Solar .panel>.table-responsive>.table-bordered>thead>tr>td:first-child,
+.Solar .panel>.table-bordered>tbody>tr>td:first-child,
+.Solar .panel>.table-responsive>.table-bordered>tbody>tr>td:first-child,
+.Solar .panel>.table-bordered>tfoot>tr>td:first-child,
+.Solar .panel>.table-responsive>.table-bordered>tfoot>tr>td:first-child {
+  border-left: 0
+}
+
+.Solar .panel>.table-bordered>thead>tr>th:last-child,
+.Solar .panel>.table-responsive>.table-bordered>thead>tr>th:last-child,
+.Solar .panel>.table-bordered>tbody>tr>th:last-child,
+.Solar .panel>.table-responsive>.table-bordered>tbody>tr>th:last-child,
+.Solar .panel>.table-bordered>tfoot>tr>th:last-child,
+.Solar .panel>.table-responsive>.table-bordered>tfoot>tr>th:last-child,
+.Solar .panel>.table-bordered>thead>tr>td:last-child,
+.Solar .panel>.table-responsive>.table-bordered>thead>tr>td:last-child,
+.Solar .panel>.table-bordered>tbody>tr>td:last-child,
+.Solar .panel>.table-responsive>.table-bordered>tbody>tr>td:last-child,
+.Solar .panel>.table-bordered>tfoot>tr>td:last-child,
+.Solar .panel>.table-responsive>.table-bordered>tfoot>tr>td:last-child {
+  border-right: 0
+}
+
+.Solar .panel>.table-bordered>thead>tr:first-child>td,
+.Solar .panel>.table-responsive>.table-bordered>thead>tr:first-child>td,
+.Solar .panel>.table-bordered>tbody>tr:first-child>td,
+.Solar .panel>.table-responsive>.table-bordered>tbody>tr:first-child>td,
+.Solar .panel>.table-bordered>thead>tr:first-child>th,
+.Solar .panel>.table-responsive>.table-bordered>thead>tr:first-child>th,
+.Solar .panel>.table-bordered>tbody>tr:first-child>th,
+.Solar .panel>.table-responsive>.table-bordered>tbody>tr:first-child>th {
+  border-bottom: 0
+}
+
+.Solar .panel>.table-bordered>tbody>tr:last-child>td,
+.Solar .panel>.table-responsive>.table-bordered>tbody>tr:last-child>td,
+.Solar .panel>.table-bordered>tfoot>tr:last-child>td,
+.Solar .panel>.table-responsive>.table-bordered>tfoot>tr:last-child>td,
+.Solar .panel>.table-bordered>tbody>tr:last-child>th,
+.Solar .panel>.table-responsive>.table-bordered>tbody>tr:last-child>th,
+.Solar .panel>.table-bordered>tfoot>tr:last-child>th,
+.Solar .panel>.table-responsive>.table-bordered>tfoot>tr:last-child>th {
+  border-bottom: 0
+}
+
+.Solar .panel>.table-responsive {
+  border: 0;
+  margin-bottom: 0
+}
+
+.Solar .panel-group {
+  margin-bottom: 20px
+}
+
+.Solar .panel-group .panel {
+  margin-bottom: 0;
+  border-radius: 4px
+}
+
+.Solar .panel-group .panel+.panel {
+  margin-top: 5px
+}
+
+.Solar .panel-group .panel-heading {
+  border-bottom: 0
+}
+
+.Solar .panel-group .panel-heading+.panel-collapse>.panel-body,
+.Solar .panel-group .panel-heading+.panel-collapse>.list-group {
+  border-top: 1px solid #073642
+}
+
+.Solar .panel-group .panel-footer {
+  border-top: 0
+}
+
+.Solar .panel-group .panel-footer+.panel-collapse .panel-body {
+  border-bottom: 1px solid #073642
+}
+
+.Solar .panel-default {
+  border-color: #073642
+}
+
+.Solar .panel-default>.panel-heading {
+  color: #ffffff;
+  background-color: #073642;
+  border-color: #073642
+}
+
+.Solar .panel-default>.panel-heading+.panel-collapse>.panel-body {
+  border-top-color: #073642
+}
+
+.Solar .panel-default>.panel-heading .badge {
+  color: #073642;
+  background-color: #ffffff
+}
+
+.Solar .panel-default>.panel-footer+.panel-collapse>.panel-body {
+  border-bottom-color: #073642
+}
+
+.Solar .panel-primary {
+  border-color: #b58900
+}
+
+.Solar .panel-primary>.panel-heading {
+  color: #ffffff;
+  background-color: #b58900;
+  border-color: #b58900
+}
+
+.Solar .panel-primary>.panel-heading+.panel-collapse>.panel-body {
+  border-top-color: #b58900
+}
+
+.Solar .panel-primary>.panel-heading .badge {
+  color: #b58900;
+  background-color: #ffffff
+}
+
+.Solar .panel-primary>.panel-footer+.panel-collapse>.panel-body {
+  border-bottom-color: #b58900
+}
+
+.Solar .panel-success {
+  border-color: #2aa198
+}
+
+.Solar .panel-success>.panel-heading {
+  color: #ffffff;
+  background-color: #2aa198;
+  border-color: #2aa198
+}
+
+.Solar .panel-success>.panel-heading+.panel-collapse>.panel-body {
+  border-top-color: #2aa198
+}
+
+.Solar .panel-success>.panel-heading .badge {
+  color: #2aa198;
+  background-color: #ffffff
+}
+
+.Solar .panel-success>.panel-footer+.panel-collapse>.panel-body {
+  border-bottom-color: #2aa198
+}
+
+.Solar .panel-info {
+  border-color: #268bd2
+}
+
+.Solar .panel-info>.panel-heading {
+  color: #ffffff;
+  background-color: #268bd2;
+  border-color: #268bd2
+}
+
+.Solar .panel-info>.panel-heading+.panel-collapse>.panel-body {
+  border-top-color: #268bd2
+}
+
+.Solar .panel-info>.panel-heading .badge {
+  color: #268bd2;
+  background-color: #ffffff
+}
+
+.Solar .panel-info>.panel-footer+.panel-collapse>.panel-body {
+  border-bottom-color: #268bd2
+}
+
+.Solar .panel-warning {
+  border-color: #cb4b16
+}
+
+.Solar .panel-warning>.panel-heading {
+  color: #ffffff;
+  background-color: #cb4b16;
+  border-color: #cb4b16
+}
+
+.Solar .panel-warning>.panel-heading+.panel-collapse>.panel-body {
+  border-top-color: #cb4b16
+}
+
+.Solar .panel-warning>.panel-heading .badge {
+  color: #cb4b16;
+  background-color: #ffffff
+}
+
+.Solar .panel-warning>.panel-footer+.panel-collapse>.panel-body {
+  border-bottom-color: #cb4b16
+}
+
+.Solar .panel-danger {
+  border-color: #d33682
+}
+
+.Solar .panel-danger>.panel-heading {
+  color: #ffffff;
+  background-color: #d33682;
+  border-color: #d33682
+}
+
+.Solar .panel-danger>.panel-heading+.panel-collapse>.panel-body {
+  border-top-color: #d33682
+}
+
+.Solar .panel-danger>.panel-heading .badge {
+  color: #d33682;
+  background-color: #ffffff
+}
+
+.Solar .panel-danger>.panel-footer+.panel-collapse>.panel-body {
+  border-bottom-color: #d33682
+}
+
+.Solar .embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden
+}
+
+.Solar .embed-responsive .embed-responsive-item,
+.Solar .embed-responsive iframe,
+.Solar .embed-responsive embed,
+.Solar .embed-responsive object,
+.Solar .embed-responsive video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  border: 0
+}
+
+.Solar .embed-responsive-16by9 {
+  padding-bottom: 56.25%
+}
+
+.Solar .embed-responsive-4by3 {
+  padding-bottom: 75%
+}
+
+.Solar .well {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #083e4b;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05)
+}
+
+.Solar .well blockquote {
+  border-color: #ddd;
+  border-color: rgba(0, 0, 0, 0.15)
+}
+
+.Solar .well-lg {
+  padding: 24px;
+  border-radius: 6px
+}
+
+.Solar .well-sm {
+  padding: 9px;
+  border-radius: 3px
+}
+
+.Solar .close {
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  color: #839496;
+  text-shadow: none;
+  opacity: .2;
+  filter: alpha(opacity=20)
+}
+
+.Solar .close:hover,
+.Solar .close:focus {
+  color: #839496;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: .5;
+  filter: alpha(opacity=50)
+}
+
+.Solar button.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none
+}
+
+.Solar .modal-open {
+  overflow: hidden
+}
+
+.Solar .modal {
+  display: none;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  -webkit-overflow-scrolling: touch;
+  outline: 0
+}
+
+.Solar .modal.fade .modal-dialog {
+  -webkit-transform: translate(0, -25%);
+  -ms-transform: translate(0, -25%);
+  -o-transform: translate(0, -25%);
+  transform: translate(0, -25%);
+  -webkit-transition: -webkit-transform .3s ease-out;
+  -o-transition: -o-transform .3s ease-out;
+  transition: transform .3s ease-out
+}
+
+.Solar .modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0)
+}
+
+.Solar .modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto
+}
+
+.Solar .modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px
+}
+
+.Solar .modal-content {
+  position: relative;
+  background-color: #073642;
+  border: 1px solid #999999;
+  border: 1px solid #002b36;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  outline: 0
+}
+
+.Solar .modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000000
+}
+
+.Solar .modal-backdrop.fade {
+  opacity: 0;
+  filter: alpha(opacity=0)
+}
+
+.Solar .modal-backdrop.in {
+  opacity: .5;
+  filter: alpha(opacity=50)
+}
+
+.Solar .modal-header {
+  padding: 15px;
+  border-bottom: 1px solid #002b36
+}
+
+.Solar .modal-header .close {
+  margin-top: -2px
+}
+
+.Solar .modal-title {
+  margin: 0;
+  line-height: 1.42857143
+}
+
+.Solar .modal-body {
+  position: relative;
+  padding: 15px
+}
+
+.Solar .modal-footer {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #002b36
+}
+
+.Solar .modal-footer .btn+.btn {
+  margin-left: 5px;
+  margin-bottom: 0
+}
+
+.Solar .modal-footer .btn-group .btn+.btn {
+  margin-left: -1px
+}
+
+.Solar .modal-footer .btn-block+.btn-block {
+  margin-left: 0
+}
+
+.Solar .modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll
+}
+
+@media (min-width:768px) {
+  .Solar .modal-dialog {
+    width: 600px;
+    margin: 30px auto
+  }
+  .Solar .modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5)
+  }
+  .Solar .modal-sm {
+    width: 300px
+  }
+}
+
+@media (min-width:992px) {
+  .Solar .modal-lg {
+    width: 900px
+  }
+}
+
+.Solar .tooltip {
+  position: absolute;
+  z-index: 1070;
+  display: block;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-break: auto;
+  line-height: 1.42857143;
+  text-align: left;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  white-space: normal;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  font-size: 12px;
+  opacity: 0;
+  filter: alpha(opacity=0)
+}
+
+.Solar .tooltip.in {
+  opacity: .9;
+  filter: alpha(opacity=90)
+}
+
+.Solar .tooltip.top {
+  margin-top: -3px;
+  padding: 5px 0
+}
+
+.Solar .tooltip.right {
+  margin-left: 3px;
+  padding: 0 5px
+}
+
+.Solar .tooltip.bottom {
+  margin-top: 3px;
+  padding: 5px 0
+}
+
+.Solar .tooltip.left {
+  margin-left: -3px;
+  padding: 0 5px
+}
+
+.Solar .tooltip-inner {
+  max-width: 200px;
+  padding: 3px 8px;
+  color: #ffffff;
+  text-align: center;
+  background-color: #000000;
+  border-radius: 4px
+}
+
+.Solar .tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid
+}
+
+.Solar .tooltip.top .tooltip-arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px 5px 0;
+  border-top-color: #000000
+}
+
+.Solar .tooltip.top-left .tooltip-arrow {
+  bottom: 0;
+  right: 5px;
+  margin-bottom: -5px;
+  border-width: 5px 5px 0;
+  border-top-color: #000000
+}
+
+.Solar .tooltip.top-right .tooltip-arrow {
+  bottom: 0;
+  left: 5px;
+  margin-bottom: -5px;
+  border-width: 5px 5px 0;
+  border-top-color: #000000
+}
+
+.Solar .tooltip.right .tooltip-arrow {
+  top: 50%;
+  left: 0;
+  margin-top: -5px;
+  border-width: 5px 5px 5px 0;
+  border-right-color: #000000
+}
+
+.Solar .tooltip.left .tooltip-arrow {
+  top: 50%;
+  right: 0;
+  margin-top: -5px;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #000000
+}
+
+.Solar .tooltip.bottom .tooltip-arrow {
+  top: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 0 5px 5px;
+  border-bottom-color: #000000
+}
+
+.Solar .tooltip.bottom-left .tooltip-arrow {
+  top: 0;
+  right: 5px;
+  margin-top: -5px;
+  border-width: 0 5px 5px;
+  border-bottom-color: #000000
+}
+
+.Solar .tooltip.bottom-right .tooltip-arrow {
+  top: 0;
+  left: 5px;
+  margin-top: -5px;
+  border-width: 0 5px 5px;
+  border-bottom-color: #000000
+}
+
+.Solar .popover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1060;
+  display: none;
+  max-width: 276px;
+  padding: 1px;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-break: auto;
+  line-height: 1.42857143;
+  text-align: left;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  white-space: normal;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  font-size: 14px;
+  background-color: #073642;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #cccccc;
+  border: 1px solid #002b36;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2)
+}
+
+.Solar .popover.top {
+  margin-top: -10px
+}
+
+.Solar .popover.right {
+  margin-left: 10px
+}
+
+.Solar .popover.bottom {
+  margin-top: 10px
+}
+
+.Solar .popover.left {
+  margin-left: -10px
+}
+
+.Solar .popover-title {
+  margin: 0;
+  padding: 8px 14px;
+  font-size: 14px;
+  background-color: #073642;
+  border-bottom: 1px solid #05232b;
+  border-radius: 5px 5px 0 0
+}
+
+.Solar .popover-content {
+  padding: 9px 14px
+}
+
+.Solar .popover>.arrow,
+.Solar .popover>.arrow:after {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid
+}
+
+.Solar .popover>.arrow {
+  border-width: 11px
+}
+
+.Solar .popover>.arrow:after {
+  border-width: 10px;
+  content: ""
+}
+
+.Solar .popover.top>.arrow {
+  left: 50%;
+  margin-left: -11px;
+  border-bottom-width: 0;
+  border-top-color: #999999;
+  border-top-color: #002b36;
+  bottom: -11px
+}
+
+.Solar .popover.top>.arrow:after {
+  content: " ";
+  bottom: 1px;
+  margin-left: -10px;
+  border-bottom-width: 0;
+  border-top-color: #073642
+}
+
+.Solar .popover.right>.arrow {
+  top: 50%;
+  left: -11px;
+  margin-top: -11px;
+  border-left-width: 0;
+  border-right-color: #999999;
+  border-right-color: #002b36
+}
+
+.Solar .popover.right>.arrow:after {
+  content: " ";
+  left: 1px;
+  bottom: -10px;
+  border-left-width: 0;
+  border-right-color: #073642
+}
+
+.Solar .popover.bottom>.arrow {
+  left: 50%;
+  margin-left: -11px;
+  border-top-width: 0;
+  border-bottom-color: #999999;
+  border-bottom-color: #002b36;
+  top: -11px
+}
+
+.Solar .popover.bottom>.arrow:after {
+  content: " ";
+  top: 1px;
+  margin-left: -10px;
+  border-top-width: 0;
+  border-bottom-color: #073642
+}
+
+.Solar .popover.left>.arrow {
+  top: 50%;
+  right: -11px;
+  margin-top: -11px;
+  border-right-width: 0;
+  border-left-color: #999999;
+  border-left-color: #002b36
+}
+
+.Solar .popover.left>.arrow:after {
+  content: " ";
+  right: 1px;
+  border-right-width: 0;
+  border-left-color: #073642;
+  bottom: -10px
+}
+
+.Solar .carousel {
+  position: relative
+}
+
+.Solar .carousel-inner {
+  position: relative;
+  overflow: hidden;
+  width: 100%
+}
+
+.Solar .carousel-inner>.item {
+  display: none;
+  position: relative;
+  -webkit-transition: .6s ease-in-out left;
+  -o-transition: .6s ease-in-out left;
+  transition: .6s ease-in-out left
+}
+
+.Solar .carousel-inner>.item>img,
+.Solar .carousel-inner>.item>a>img {
+  line-height: 1
+}
+
+@media all and (transform-3d),
+(-webkit-transform-3d) {
+  .Solar .carousel-inner>.item {
+    -webkit-transition: -webkit-transform .6s ease-in-out;
+    -o-transition: -o-transform .6s ease-in-out;
+    transition: transform .6s ease-in-out;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    perspective: 1000px
+  }
+  .Solar .carousel-inner>.item.next,
+  .Solar .carousel-inner>.item.active.right {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    left: 0
+  }
+  .Solar .carousel-inner>.item.prev,
+  .Solar .carousel-inner>.item.active.left {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    left: 0
+  }
+  .Solar .carousel-inner>.item.next.left,
+  .Solar .carousel-inner>.item.prev.right,
+  .Solar .carousel-inner>.item.active {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    left: 0
+  }
+}
+
+.Solar .carousel-inner>.active,
+.Solar .carousel-inner>.next,
+.Solar .carousel-inner>.prev {
+  display: block
+}
+
+.Solar .carousel-inner>.active {
+  left: 0
+}
+
+.Solar .carousel-inner>.next,
+.Solar .carousel-inner>.prev {
+  position: absolute;
+  top: 0;
+  width: 100%
+}
+
+.Solar .carousel-inner>.next {
+  left: 100%
+}
+
+.Solar .carousel-inner>.prev {
+  left: -100%
+}
+
+.Solar .carousel-inner>.next.left,
+.Solar .carousel-inner>.prev.right {
+  left: 0
+}
+
+.Solar .carousel-inner>.active.left {
+  left: -100%
+}
+
+.Solar .carousel-inner>.active.right {
+  left: 100%
+}
+
+.Solar .carousel-control {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 15%;
+  opacity: .5;
+  filter: alpha(opacity=50);
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0)
+}
+
+.Solar .carousel-control.left {
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.0001)));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1)
+}
+
+.Solar .carousel-control.right {
+  left: auto;
+  right: 0;
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.5) 100%);
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.5) 100%);
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.0001)), to(rgba(0, 0, 0, 0.5)));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.5) 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1)
+}
+
+.Solar .carousel-control:hover,
+.Solar .carousel-control:focus {
+  outline: 0;
+  color: #ffffff;
+  text-decoration: none;
+  opacity: .9;
+  filter: alpha(opacity=90)
+}
+
+.Solar .carousel-control .icon-prev,
+.Solar .carousel-control .icon-next,
+.Solar .carousel-control .glyphicon-chevron-left,
+.Solar .carousel-control .glyphicon-chevron-right {
+  position: absolute;
+  top: 50%;
+  margin-top: -10px;
+  z-index: 5;
+  display: inline-block
+}
+
+.Solar .carousel-control .icon-prev,
+.Solar .carousel-control .glyphicon-chevron-left {
+  left: 50%;
+  margin-left: -10px
+}
+
+.Solar .carousel-control .icon-next,
+.Solar .carousel-control .glyphicon-chevron-right {
+  right: 50%;
+  margin-right: -10px
+}
+
+.Solar .carousel-control .icon-prev,
+.Solar .carousel-control .icon-next {
+  width: 20px;
+  height: 20px;
+  line-height: 1;
+  font-family: serif
+}
+
+.Solar .carousel-control .icon-prev:before {
+  content: '\2039'
+}
+
+.Solar .carousel-control .icon-next:before {
+  content: '\203a'
+}
+
+.Solar .carousel-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  z-index: 15;
+  width: 60%;
+  margin-left: -30%;
+  padding-left: 0;
+  list-style: none;
+  text-align: center
+}
+
+.Solar .carousel-indicators li {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 1px;
+  text-indent: -999px;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #000 \9;
+  background-color: rgba(0, 0, 0, 0)
+}
+
+.Solar .carousel-indicators .active {
+  margin: 0;
+  width: 12px;
+  height: 12px;
+  background-color: #ffffff
+}
+
+.Solar .carousel-caption {
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  bottom: 20px;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6)
+}
+
+.Solar .carousel-caption .btn {
+  text-shadow: none
+}
+
+@media screen and (min-width:768px) {
+  .Solar .carousel-control .glyphicon-chevron-left,
+  .Solar .carousel-control .glyphicon-chevron-right,
+  .Solar .carousel-control .icon-prev,
+  .Solar .carousel-control .icon-next {
+    width: 30px;
+    height: 30px;
+    margin-top: -10px;
+    font-size: 30px
+  }
+  .Solar .carousel-control .glyphicon-chevron-left,
+  .Solar .carousel-control .icon-prev {
+    margin-left: -10px
+  }
+  .Solar .carousel-control .glyphicon-chevron-right,
+  .Solar .carousel-control .icon-next {
+    margin-right: -10px
+  }
+  .Solar .carousel-caption {
+    left: 20%;
+    right: 20%;
+    padding-bottom: 30px
+  }
+  .Solar .carousel-indicators {
+    bottom: 20px
+  }
+}
+
+.Solar .clearfix:before,
+.Solar .clearfix:after,
+.Solar .dl-horizontal dd:before,
+.Solar .dl-horizontal dd:after,
+.Solar .container:before,
+.Solar .container:after,
+.Solar .container-fluid:before,
+.Solar .container-fluid:after,
+.Solar .row:before,
+.Solar .row:after,
+.Solar .form-horizontal .form-group:before,
+.Solar .form-horizontal .form-group:after,
+.Solar .btn-toolbar:before,
+.Solar .btn-toolbar:after,
+.Solar .btn-group-vertical>.btn-group:before,
+.Solar .btn-group-vertical>.btn-group:after,
+.Solar .nav:before,
+.Solar .nav:after,
+.Solar .navbar:before,
+.Solar .navbar:after,
+.Solar .navbar-header:before,
+.Solar .navbar-header:after,
+.Solar .navbar-collapse:before,
+.Solar .navbar-collapse:after,
+.Solar .pager:before,
+.Solar .pager:after,
+.Solar .panel-body:before,
+.Solar .panel-body:after,
+.Solar .modal-header:before,
+.Solar .modal-header:after,
+.Solar .modal-footer:before,
+.Solar .modal-footer:after {
+  content: " ";
+  display: table
+}
+
+.Solar .clearfix:after,
+.Solar .dl-horizontal dd:after,
+.Solar .container:after,
+.Solar .container-fluid:after,
+.Solar .row:after,
+.Solar .form-horizontal .form-group:after,
+.Solar .btn-toolbar:after,
+.Solar .btn-group-vertical>.btn-group:after,
+.Solar .nav:after,
+.Solar .navbar:after,
+.Solar .navbar-header:after,
+.Solar .navbar-collapse:after,
+.Solar .pager:after,
+.Solar .panel-body:after,
+.Solar .modal-header:after,
+.Solar .modal-footer:after {
+  clear: both
+}
+
+.Solar .center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.Solar .pull-right {
+  float: right !important
+}
+
+.Solar .pull-left {
+  float: left !important
+}
+
+.Solar .hide {
+  display: none !important
+}
+
+.Solar .show {
+  display: block !important
+}
+
+.Solar .invisible {
+  visibility: hidden
+}
+
+.Solar .text-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0
+}
+
+.Solar .hidden {
+  display: none !important
+}
+
+.Solar .affix {
+  position: fixed
+}
+
+@-ms-viewport {
+  width: device-width
+}
+
+.Solar .visible-xs,
+.Solar .visible-sm,
+.Solar .visible-md,
+.Solar .visible-lg {
+  display: none !important
+}
+
+.Solar .visible-xs-block,
+.Solar .visible-xs-inline,
+.Solar .visible-xs-inline-block,
+.Solar .visible-sm-block,
+.Solar .visible-sm-inline,
+.Solar .visible-sm-inline-block,
+.Solar .visible-md-block,
+.Solar .visible-md-inline,
+.Solar .visible-md-inline-block,
+.Solar .visible-lg-block,
+.Solar .visible-lg-inline,
+.Solar .visible-lg-inline-block {
+  display: none !important
+}
+
+@media (max-width:767px) {
+  .Solar .visible-xs {
+    display: block !important
+  }
+  .Solar table.visible-xs {
+    display: table !important
+  }
+  .Solar tr.visible-xs {
+    display: table-row !important
+  }
+  .Solar th.visible-xs,
+  .Solar td.visible-xs {
+    display: table-cell !important
+  }
+}
+
+@media (max-width:767px) {
+  .Solar .visible-xs-block {
+    display: block !important
+  }
+}
+
+@media (max-width:767px) {
+  .Solar .visible-xs-inline {
+    display: inline !important
+  }
+}
+
+@media (max-width:767px) {
+  .Solar .visible-xs-inline-block {
+    display: inline-block !important
+  }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+  .Solar .visible-sm {
+    display: block !important
+  }
+  .Solar table.visible-sm {
+    display: table !important
+  }
+  .Solar tr.visible-sm {
+    display: table-row !important
+  }
+  .Solar th.visible-sm,
+  .Solar td.visible-sm {
+    display: table-cell !important
+  }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+  .Solar .visible-sm-block {
+    display: block !important
+  }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+  .Solar .visible-sm-inline {
+    display: inline !important
+  }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+  .Solar .visible-sm-inline-block {
+    display: inline-block !important
+  }
+}
+
+@media (min-width:992px) and (max-width:1199px) {
+  .Solar .visible-md {
+    display: block !important
+  }
+  .Solar table.visible-md {
+    display: table !important
+  }
+  .Solar tr.visible-md {
+    display: table-row !important
+  }
+  .Solar th.visible-md,
+  .Solar td.visible-md {
+    display: table-cell !important
+  }
+}
+
+@media (min-width:992px) and (max-width:1199px) {
+  .Solar .visible-md-block {
+    display: block !important
+  }
+}
+
+@media (min-width:992px) and (max-width:1199px) {
+  .Solar .visible-md-inline {
+    display: inline !important
+  }
+}
+
+@media (min-width:992px) and (max-width:1199px) {
+  .Solar .visible-md-inline-block {
+    display: inline-block !important
+  }
+}
+
+@media (min-width:1200px) {
+  .Solar .visible-lg {
+    display: block !important
+  }
+  .Solar table.visible-lg {
+    display: table !important
+  }
+  .Solar tr.visible-lg {
+    display: table-row !important
+  }
+  .Solar th.visible-lg,
+  .Solar td.visible-lg {
+    display: table-cell !important
+  }
+}
+
+@media (min-width:1200px) {
+  .Solar .visible-lg-block {
+    display: block !important
+  }
+}
+
+@media (min-width:1200px) {
+  .Solar .visible-lg-inline {
+    display: inline !important
+  }
+}
+
+@media (min-width:1200px) {
+  .Solar .visible-lg-inline-block {
+    display: inline-block !important
+  }
+}
+
+@media (max-width:767px) {
+  .Solar .hidden-xs {
+    display: none !important
+  }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+  .Solar .hidden-sm {
+    display: none !important
+  }
+}
+
+@media (min-width:992px) and (max-width:1199px) {
+  .Solar .hidden-md {
+    display: none !important
+  }
+}
+
+@media (min-width:1200px) {
+  .Solar .hidden-lg {
+    display: none !important
+  }
+}
+
+.Solar .visible-print {
+  display: none !important
+}
+
+@media print {
+  .Solar .visible-print {
+    display: block !important
+  }
+  .Solar table.visible-print {
+    display: table !important
+  }
+  .Solar tr.visible-print {
+    display: table-row !important
+  }
+  .Solar th.visible-print,
+  .Solar td.visible-print {
+    display: table-cell !important
+  }
+}
+
+.Solar .visible-print-block {
+  display: none !important
+}
+
+@media print {
+  .Solar .visible-print-block {
+    display: block !important
+  }
+}
+
+.Solar .visible-print-inline {
+  display: none !important
+}
+
+@media print {
+  .Solar .visible-print-inline {
+    display: inline !important
+  }
+}
+
+.Solar .visible-print-inline-block {
+  display: none !important
+}
+
+@media print {
+  .Solar .visible-print-inline-block {
+    display: inline-block !important
+  }
+}
+
+@media print {
+  .Solar .hidden-print {
+    display: none !important
+  }
+}
+
+.Solar .text-primary,
+.Solar .text-primary:hover {
+  color: #b58900
+}
+
+.Solar .text-success,
+.Solar .text-success:hover {
+  color: #2aa198
+}
+
+.Solar .text-danger,
+.Solar .text-danger:hover {
+  color: #d33682
+}
+
+.Solar .text-warning,
+.Solar .text-warning:hover {
+  color: #cb4b16
+}
+
+.Solar .text-info,
+.Solar .text-info:hover {
+  color: #268bd2
+}
+
+.Solar .bg-success,
+.Solar .bg-info,
+.Solar .bg-warning,
+.Solar .bg-danger {
+  color: #fff
+}
+
+.Solar table .success td,
+.Solar .table .success td,
+.Solar table .info td,
+.Solar .table .info td,
+.Solar table .warning td,
+.Solar .table .warning td,
+.Solar table .danger td,
+.Solar .table .danger td,
+.Solar table .success th,
+.Solar .table .success th,
+.Solar table .info th,
+.Solar .table .info th,
+.Solar table .warning th,
+.Solar .table .warning th,
+.Solar table .danger th,
+.Solar .table .danger th {
+  color: #fff
+}
+
+.Solar .has-warning .help-block,
+.Solar .has-warning .control-label,
+.Solar .has-warning .radio,
+.Solar .has-warning .checkbox,
+.Solar .has-warning .radio-inline,
+.Solar .has-warning .checkbox-inline,
+.Solar .has-warning.radio label,
+.Solar .has-warning.checkbox label,
+.Solar .has-warning.radio-inline label,
+.Solar .has-warning.checkbox-inline label,
+.Solar .has-warning .form-control-feedback {
+  color: #cb4b16
+}
+
+.Solar .has-warning .form-control,
+.Solar .has-warning .form-control:focus,
+.Solar .has-warning .input-group-addon {
+  border-color: #cb4b16
+}
+
+.Solar .has-error .help-block,
+.Solar .has-error .control-label,
+.Solar .has-error .radio,
+.Solar .has-error .checkbox,
+.Solar .has-error .radio-inline,
+.Solar .has-error .checkbox-inline,
+.Solar .has-error.radio label,
+.Solar .has-error.checkbox label,
+.Solar .has-error.radio-inline label,
+.Solar .has-error.checkbox-inline label,
+.Solar .has-error .form-control-feedback {
+  color: #d33682
+}
+
+.Solar .has-error .form-control,
+.Solar .has-error .form-control:focus,
+.Solar .has-error .input-group-addon {
+  border-color: #d33682
+}
+
+.Solar .has-success .help-block,
+.Solar .has-success .control-label,
+.Solar .has-success .radio,
+.Solar .has-success .checkbox,
+.Solar .has-success .radio-inline,
+.Solar .has-success .checkbox-inline,
+.Solar .has-success.radio label,
+.Solar .has-success.checkbox label,
+.Solar .has-success.radio-inline label,
+.Solar .has-success.checkbox-inline label,
+.Solar .has-success .form-control-feedback {
+  color: #2aa198
+}
+
+.Solar .has-success .form-control,
+.Solar .has-success .form-control:focus,
+.Solar .has-success .input-group-addon {
+  border-color: #2aa198
+}
+
+.Solar .input-group-addon {
+  color: #839496
+}
+
+
+/*# sourceMappingURL=Solar.css.map */

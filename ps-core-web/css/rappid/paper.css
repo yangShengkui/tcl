@@ -1,0 +1,59 @@
+/*! Rappid v2.0.1 - HTML5 Diagramming Framework
+
+Copyright (c) 2015 client IO
+
+ 2016-12-02 
+
+
+This Source Code Form is subject to the terms of the Rappid License
+, v. 2.0. If a copy of the Rappid License was not distributed with this
+file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
+ or from the Rappid archive as was distributed by client IO. See the LICENSE file.*/
+
+.joint-paper-scroller {
+  /*这里会导致组态多一个灰色背景，会影响组态展示效果，找到更好解决办法之前先注释。*/
+  /*background-color: hsla(220, 11%, 97%, .95);*/
+}
+
+.joint-paper-scroller>.joint-paper {
+  /* Grid background image */
+  background-color: white;  
+  background-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAHUlEQVQYV2NkYGAwBuKzQIwXMBJSAJMfVUidcAQAnUQBC6jEGBUAAAAASUVORK5CYII=');
+  background-position: left top, left top; 
+  background-repeat: repeat, no-repeat;
+  background-size:auto,contain;
+  box-shadow: 0 0 2px lightgray;
+}
+
+.joint-element.basic.Rect rect,
+.joint-element.basic.Circle circle,
+.joint-element.devs.Atomic rect {
+  -webkit-svg-shadow: 2px 2px 5px gray;
+}
+
+.joint-element.basic.Path path {
+  -webkit-svg-shadow: 1px 1px 2px gray;
+}
+
+.halo.toolbar .handle:after {
+  left: 1px;
+}
+
+.halo.toolbar .handle:hover:after {}
+
+.halo.surrounding .box {
+  display: none;
+}
+
+.halo.toolbar .box {
+  display: none;
+}
+
+.paper-echart {
+  position: relative;
+  margin: 0 auto;
+}
+
+.nav-echart>li>a {
+  padding: 4px 8px;
+}

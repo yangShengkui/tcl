@@ -1,0 +1,127 @@
+<section class="content" id="alerts" loading>
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Application buttons -->
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active">
+                <a>测点查询</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div  class="box-body no-padding-left no-pad-bottom">
+          <form role="form" name="alertForm" id="alert-form" >
+            <div class="form-group col-sm-2 height-50">
+              <label class="control-label">所属域：</label>
+              <div autocomplete="off" placeholder="请选择..." class="dropdowntree" ng-model="selectedItem.domain" change="getDevices(selectedItem.domain);clearSearch('domain');" options="domainListTree" key="domainPath" mark="nodes">
+              </div>
+            </div>
+            <div class="form-group col-sm-2 height-50"  ng-show="baseConfig.customerConfig.display && !userInfo.subDomain">
+              <label class="control-label">{{menuitems['S12'].label?menuitems['S12'].label:'客户'}}：</label>
+              <select select2 class="form-control"  ng-model="selectedItem.customerId" ng-change="customerChange();clearSearch('customers');" ng-options="value.id as value.text for value in customersList | filter:{ domainPath :selectedItem.domain}" selectdata="customersList">
+                <option value="">请选择...</option>
+              </select>
+            </div>
+            <div class="form-group col-sm-2 height-50" ng-show="baseConfig.projectConfig.display && !userInfo.subDomain">
+              <label class="control-label">{{menuitems['S13'].label?menuitems['S13'].label:'项目'}}：</label>
+              <select select2 class="form-control"  ng-model="selectedItem.projectId"  ng-change="projectChange();clearSearch('project');" ng-options="value.id as value.text for value in projectsList | filter:{ customerId :selectedItem.customerId}" selectdata="projectsList">
+                <option value="">请选择...</option>
+              </select>
+            </div>
+            <div class="form-group col-sm-2 height-50 ">
+              <label class="control-label">设备模板：</label>
+              <select select2 class="form-control" ng-model="selectedItem.modelId" ng-change="getDeviceByDeviceType(selectedItem.modelId);" ng-options="value.id as value.label for value in modelListSelect" selectdata="modelListSelect">
+                <option value="">请选择...</option>
+              </select>
+            </div>
+            <div class="form-group col-sm-2 height-50">
+              <label class="control-label">设备：</label>
+              <select class="form-control" select2 ng-model="selectedItem.nodeId" ng-options="value.id as value.label for value in selectedDitem.devices |filter: {projectId: selectedItem.projectId,customerId: selectedItem.customerId} " ng-change="getselectedDevice(selectedItem.nodeId)" selectdata="selectedDitem.devices">
+                <option value="">请选择...</option>
+              </select>
+            </div>
+            <!--angel strat ps-multiselect 2018/8/15-->
+            <div class="form-group col-sm-2 height-50">
+              <font color='red'>*</font>
+              <label class="control-label no-padding-left ">测点：</label>
+              <div class="multiselect-group">
+                <ps-multiselect
+                        class="mulsel"
+                        ng-model="selectedItem.kpiId"
+                        ng-change="getKpi(selectedItem.kpiId)"
+                        data-options="value.id as value.label for value in selectedDitem.kpis">
+                </ps-multiselect>
+              </div>
+            </div>
+            <!--angel end-->
+
+            <!--最初的-->
+            <!--<div class="form-group col-sm-2 height-50">-->
+              <!--<font color='red'>*</font>-->
+              <!--<label class="control-label no-padding-left ">测点：</label>-->
+              <!--<div class="multiselect-group">-->
+                <!--<select class="form-control" buttonclass='btn btn-default full-width' nonselectedtext="请选择..." numberdisplayed="1" multiple="multiple" bootstrap-multiselect ng-model="selectedItem.kpiId" enablefiltering=true ng-change="getKpi(selectedItem.kpiId)"-->
+                        <!--ng-options="value.id as value.label for value in selectedDitem.kpis">-->
+                <!--</select>-->
+              <!--</div>-->
+            <!--</div>-->
+            <div class="form-group col-sm-2 height-50">
+              <label class="control-label no-padding-left ">开始时间：</label>
+              <div class="multiselect-group">
+                <input type="text" class="form-control input-sm"  readonly='readonly' autocomplete="off" drops="down" ng-model="selectedItem.startTime" timepicker="true" date-time-picker >
+
+              </div>
+            </div>
+            <div class="form-group col-sm-2 height-50">
+              <label class="control-label no-padding-left ">结束时间：</label>
+              <div class="multiselect-group">
+                <input type="text" class="form-control input-sm"  readonly='readonly' autocomplete="off" drops="down" ng-model="selectedItem.endTime" timepicker="true" date-time-picker >
+              </div>
+            </div>
+
+            <div class="form-group col-sm-4 height-50  no-padding-right" >
+              <label class=" control-label col-sm-12 font-white">操作：</label>
+              <div class="btn-group">
+                <button ng-click="searchData()" type="button" class="btn btn-primary btn-sm" ng-disabled="!selectedItem.kpiId || selectedItem.kpiId.length <= 0"><i class="fa fa-search"></i><span class="hidden-sm"> 查询</span></button>
+                <button  ng-show="menuitems['A01_S07']" ng-click="exportClick()" type="button" class="btn btn-primary btn-sm" ng-disabled="!selectedItem.startTime || !selectedItem.endTime || !selectedItem.nodeId"><i class=" fa fa-arrow-circle-o-down"></i><span class="hidden-sm"> 导出</span></button>
+                <button ng-click="cancelRecords();" type="button" class="btn btn-default btn-sm"><i class="fa fa-close"></i><span class="hidden-sm"> 清除</span></button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="box-footer">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs pull-left">
+              <li class="active" ng-class="{true:'active',false:''}[activeListTab == 'tab1']"><a name="tab1" href="#" data-toggle="tab"><i class="fa fa-list"></i><span class="hidden-xs"> 列表</span></a></li>
+              <li ng-class="{true:'active',false:''}[activeListTab == 'tab2']"><a name="tab2" href="#" data-toggle="tab"><i class="fa fa-line-chart"></i><span class="hidden-xs"> 视图</span></a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="box" ng-show="activeListTab == 'tab1'">
+                <!--<div class="box-header no-pad-top no-pad-bottom no-padding-right">
+                  <ol class="breadcrumb breadcrumb2">
+                    <div class="text-center pull-right" style="display: inherit;">
+                      <a class="btn btn-default btn-sm" ng-click="excelImp()"><i class="fa fa-download"></i><span class="hidden-xs"> 导出查询结果</span></a>
+                      <a class="btn btn-default btn-sm"><i class="fa fa-area-chart"></i><span class="hidden-xs"> 导出历史数据</span></a>
+                    </div>
+                  </ol>
+                </div>-->
+                <div class="box-body table-responsive" >
+                  <table width="100%" class="table table-hover" device-data-table></table>
+                </div>
+              </div>
+              <div class="chart" ng-show="activeListTab == 'tab2' && (selectedItem.nodeId && selectedItem.kpiId.length > 0) && showDeviceData.length > 0" ng-repeat="kpi in selectedItem.kpiId" name="{{kpi}}" style="height: 300px;" echarts3-dom>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>

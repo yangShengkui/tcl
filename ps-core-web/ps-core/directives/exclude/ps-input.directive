@@ -1,0 +1,103 @@
+<config injector=""
+></config>
+<template>
+    <div>
+      <div class="wrap">
+        <input class="form-control"/>
+        <span class="instruction"></span>
+      </div>
+    </div>
+</template>
+<script type="text/javascript">
+  export default function(){
+    return {
+      scope : {
+        ngModel : "=?",
+        config : "=?",
+          options: "@",
+      },
+      require : '?ngModel',
+      link(scope, element, attr, ngModel) {
+        var $dom = element.find('input'),
+            dom = $dom[0],//get有的版本不支持
+            $p = element.find('span'),
+            domP = $p[0],
+            defaultConfig = {
+              placeholder: '请输入...',
+              validInput: '',
+              maxlength: 1/0,
+              required:false
+            },
+            config = $.extend({},defaultConfig,scope.config || {}),//如果不传config 默认为空
+            validInput = config.validInput,
+            mLength = config.maxlength;
+        dom.placeholder = config.placeholder;
+        dom.onkeyup = function() {
+          if(this.value.length > mLength) {
+            domP.innerText = '*最多输入'+mLength+'位';
+            domP.style.backgroundColor = 'red';
+            this.value = this.value.substring(0,mLength);
+          }
+        }
+        dom.onfocus = function () {
+          domP.innerText = '';
+        }
+        dom.onblur = function() {
+            var val = this.text;
+            if(!this.value && config.required){
+              domP.innerText = '*不能为空';
+              domP.style.backgroundColor = 'red';
+            }else {//传入正则
+              if(validInput && typeof validInput === 'string') {
+                var reg = new RegExp(validInput).test(this.value);
+                if(reg) {
+                  ngModel.$setViewValue(this.value);
+                  domP.innerText = '验证通过';
+                  domP.style.backgroundColor = 'green';
+                }else {
+                  domP.innerText = '*只能输入数字';
+                  domP.style.backgroundColor = 'red';
+                  return;
+                }
+              }else if(validInput && typeof validInput == 'function') {//传入函数
+                val = this.value;
+                validInput(this.value,function (successMsg){
+                  ngModel.$setViewValue(val);
+                  domP.innerText = successMsg;
+                  domP.style.backgroundColor = 'green';
+                },function (errorMsg) {
+                  domP.innerText = errorMsg;
+                  domP.style.backgroundColor = 'red';
+                  return;
+                });
+              }else {//什么都不传
+                if(!validInput){
+                  ngModel.$setViewValue(this.value);
+                  domP.innerText = '';
+                }
+              }
+            }
+          }
+          ngModel.$render = function (e) {//如果modelvalue改变 两条管道都走完 自动触发$render 因为默认$render空函数 则需要手动赋值
+              //最后渲染页面对文本输入框赋值
+              dom.value = ngModel.$viewValue || '';
+          }
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+  .wrap{
+    position : relative;
+    .instruction {
+      top : 20px;
+      left : 25px;
+      position : absolute;
+      color: red;
+      font-size: 12px;
+      background-color : red;
+      color : #fff;
+      border-radius : 3px;
+    }
+  }
+</style>

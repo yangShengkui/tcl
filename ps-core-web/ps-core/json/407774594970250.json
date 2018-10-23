@@ -1,0 +1,56 @@
+{
+  "type": "relative",
+  "setting": {
+    "viewTitle": "六条备注"
+  },
+  "data": [
+    {
+      "type": "title",
+      "attributes": {
+        "text": "-",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "-",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "-",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "-",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "10℃改20℃",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "出水温度高",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    }
+  ]
+}

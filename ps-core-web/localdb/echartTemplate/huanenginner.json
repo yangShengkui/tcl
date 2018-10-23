@@ -1,0 +1,5739 @@
+{
+  "version" : "V_2",
+  "src" : "url(images/template1.jpg)",
+  "title" : "华能内页",
+  "layout": {
+	"type": "column",
+	"children": [
+	  {
+		"type": "tab",
+		"children": [
+		  {
+			"tabName": "监测数据",
+			"tabId": "0",
+			"type": "tabItem",
+			"children": [
+			  {
+				"label": "控制板1",
+				"type": "block",
+				"source": "BLOCK",
+				"children": [
+				  {
+					"type": "column",
+					"col": 12,
+					"children": [
+					  {
+						"type": "row",
+						"children": [
+						  {
+							"type": "column",
+							"children": [
+							  {
+								"label": "控制板1",
+								"type": "block",
+								"source": "BLOCK",
+								"children": [
+								  {
+									"type": "column",
+									"col": 12,
+									"children": []
+								  }
+								],
+								"style": {
+								  "margin": 0,
+								  "border": "1px solid #aaa",
+								  "background-color": "",
+								  "border-color": "#93C47D",
+								  "border-width": 0
+								}
+							  },
+							  {
+								"label": "图片",
+								"type": "image",
+								"source": "IMAGE",
+								"parameters": {
+								  "imgSrc": "../images/machine/machine2.png"
+								},
+								"style": {
+								  "height": "400",
+								  "margin": "10px",
+								  "background-color": "rgba(0,0,0,.1)",
+								  "border": "0px solid #ccc"
+								},
+								"$index": [
+								  1,
+								  0
+								]
+							  }
+							],
+							"col": 5
+						  },
+						  {
+							"type": "column",
+							"children": [
+							  {
+								"label": "文字",
+								"type": "text",
+								"source": "TEXT",
+								"data": {
+								  "applied": false,
+								  "model": {
+									"id": 204
+								  },
+								  "resource": [],
+								  "text": {
+									"manual": "机组汽动给水泵",
+									"bind": "(function (source){\n  return source.getSeries();\n})"
+								  },
+								  "modelDisable": false,
+								  "series": {}
+								},
+								"style": {
+								  "margin": "15px",
+								  "padding": "0",
+								  "font-size": "23px",
+								  "font-weight": "bold",
+								  "background-color": "rgb(255, 255, 255)",
+								  "color": "rgb(68, 68, 68)",
+								  "line-height": "75px",
+								  "text-align": "left"
+								},
+								"advance": {
+								  "getfunction": "kpiDataService.getValueList",
+								  "category": "ci",
+								  "condition": [
+									"kpi",
+									"{object:kpiQueryModel}"
+								  ]
+								},
+								"$index": [
+								  2,
+								  0
+								]
+							  },
+							  {
+								"label": "控制板1",
+								"type": "block",
+								"source": "BLOCK",
+								"children": [
+								  {
+									"type": "column",
+									"col": 12,
+									"children": [
+									  {
+										"type": "kpilist",
+										"data": {
+										  "applied": true,
+										  "model": {
+											"id": 204
+										  },
+										  "kpi": [
+											3236,
+											3237,
+											3238,
+											3239,
+											3231,
+											3232,
+											3234,
+											3235,
+											2004,
+											2005,
+											2006,
+											2007
+										  ],
+										  "resource": [
+											"rootCi"
+										  ]
+										},
+										"$index": [
+										  0,
+										  0
+										]
+									  }
+									]
+								  }
+								],
+								"style": {
+								  "margin": "10px 10px 5px 5px",
+								  "border": "0px solid #aaa",
+								  "background-color": ""
+								},
+								"$index": [
+								  1,
+								  0
+								]
+							  }
+							],
+							"col": 7
+						  }
+						]
+					  }
+					]
+				  }
+				],
+				"style": {
+				  "margin": 0,
+				  "border": "0px solid #aaa",
+				  "background-color": "rgb(255, 255, 255)"
+				},
+				"$index": [
+				  0,
+				  0
+				]
+			  },
+			  {
+				"label": "控制板1",
+				"type": "block",
+				"source": "BLOCK",
+				"children": [
+				  {
+					"type": "column",
+					"col": 12,
+					"children": [
+					  {
+						"type": "row",
+						"children": [
+						  {
+							"type": "column",
+							"children": [
+							  {
+								"label": "控制板1",
+								"type": "tab",
+								"source": "TAB",
+								"children": [
+								  {
+									"tabName": "温度",
+									"tabId": 0,
+									"display": "none",
+									"type": "tabItem",
+									"children": [
+									  {
+										"type": "row",
+										"children": [
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "进水口温度",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "16px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(255, 255, 255)",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(68, 68, 68)",
+												  "line-height": "40px",
+												  "text-align": "left"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  },
+											  {
+												"label": "仪表盘",
+												"type": "echart",
+												"source": "GAUGECHART",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 204
+												  },
+												  "resource": [
+													"rootCi"
+												  ],
+												  "series": {
+													"manual": "[\n  {\n    \"name\" : \"进水口温度\",\n    \"data\": [\n      {\n        \"name\": \"设备A\",\n        \"value\": \"22\"\n      }\n    ]\n  }\n]",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "legend": {
+													"manual": [
+													  "设备A"
+													]
+												  }
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "time",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												},
+												"parameters": {
+												  "title": "基础柱状图",
+												  "subtitle": ""
+												},
+												"style": {
+												  "margin": "auto",
+												  "width": "100%",
+												  "height": "500px"
+												},
+												"echart": {
+												  "general": {},
+												  "title": {
+													"show": false,
+													"textStyle": {
+													  "fontWeight": "bold",
+													  "fontSize": 16
+													},
+													"textAlign": "middle",
+													"padding": 30,
+													"left": "50%",
+													"text": "基础饼图",
+													"subtext": ""
+												  },
+												  "tooltip": {
+													"trigger": "item"
+												  },
+												  "series": [
+													{
+													  "type": "gauge",
+													  "center": [
+														"50%",
+														"50%"
+													  ],
+													  "label": {
+														"normal": {
+														  "show": false
+														}
+													  },
+													  "markPoint": {
+														"data": []
+													  }
+													},
+													{
+													  "type": "gauge",
+													  "startAngle": "315",
+													  "endAngle": "45",
+													  "center": [
+														"30%",
+														"50%"
+													  ],
+													  "radius": "55%",
+													  "markPoint": {
+														"data": []
+													  }
+													},
+													{
+													  "type": "gauge",
+													  "startAngle": "135",
+													  "endAngle": "-135",
+													  "center": [
+														"70%",
+														"50%"
+													  ],
+													  "radius": "55%",
+													  "markPoint": {
+														"data": []
+													  }
+													}
+												  ]
+												},
+												"$index": [
+												  4,
+												  3
+												]
+											  }
+											],
+											"col": 6
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "出水口温度",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "16px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(255, 255, 255)",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(68, 68, 68)",
+												  "line-height": "40px",
+												  "text-align": "left"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  },
+											  {
+												"label": "仪表盘",
+												"type": "echart",
+												"source": "GAUGECHART",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 204
+												  },
+												  "resource": [
+													"rootCi"
+												  ],
+												  "series": {
+													"manual": "[\n  {\n    \"name\" : \"进水口温度\",\n    \"data\": [\n      {\n        \"name\": \"设备A\",\n        \"value\": \"22\"\n      }\n    ]\n  }\n]",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "legend": {
+													"manual": [
+													  "设备A"
+													]
+												  }
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "time",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												},
+												"parameters": {
+												  "title": "基础柱状图",
+												  "subtitle": ""
+												},
+												"style": {
+												  "margin": "auto",
+												  "width": "100%",
+												  "height": "500px"
+												},
+												"echart": {
+												  "general": {},
+												  "title": {
+													"show": false,
+													"textStyle": {
+													  "fontWeight": "bold",
+													  "fontSize": 16
+													},
+													"textAlign": "middle",
+													"padding": 30,
+													"left": "50%",
+													"text": "基础饼图",
+													"subtext": ""
+												  },
+												  "tooltip": {
+													"trigger": "item"
+												  },
+												  "series": [
+													{
+													  "type": "gauge",
+													  "center": [
+														"50%",
+														"50%"
+													  ],
+													  "label": {
+														"normal": {
+														  "show": false
+														}
+													  },
+													  "markPoint": {
+														"data": []
+													  }
+													},
+													{
+													  "type": "gauge",
+													  "startAngle": "315",
+													  "endAngle": "45",
+													  "center": [
+														"30%",
+														"50%"
+													  ],
+													  "radius": "55%",
+													  "markPoint": {
+														"data": []
+													  }
+													},
+													{
+													  "type": "gauge",
+													  "startAngle": "135",
+													  "endAngle": "-135",
+													  "center": [
+														"70%",
+														"50%"
+													  ],
+													  "radius": "55%",
+													  "markPoint": {
+														"data": []
+													  }
+													}
+												  ]
+												},
+												"$index": [
+												  4,
+												  3
+												]
+											  }
+											],
+											"col": 6
+										  }
+										]
+									  }
+									]
+								  },
+								  {
+									"tabName": "密封液体",
+									"tabId": 0,
+									"type": "tabItem",
+									"display": "none",
+									"children": [
+									  {
+										"type": "row",
+										"children": [
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "进水端密封液体进水温度",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "16px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(255, 255, 255)",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(68, 68, 68)",
+												  "line-height": "40px",
+												  "text-align": "left"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  },
+											  {
+												"label": "仪表盘",
+												"type": "echart",
+												"source": "GAUGECHART",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 204
+												  },
+												  "resource": [
+													"rootCi"
+												  ],
+												  "series": {
+													"manual": {
+													  "0": {
+														"data": [
+														  {
+															"name": "设备A",
+															"value": "22"
+														  }
+														]
+													  }
+													},
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "legend": {
+													"manual": [
+													  "设备A"
+													]
+												  }
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "time",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												},
+												"parameters": {
+												  "title": "基础柱状图",
+												  "subtitle": ""
+												},
+												"style": {
+												  "margin": "auto",
+												  "width": "100%",
+												  "height": "500px"
+												},
+												"echart": {
+												  "general": {},
+												  "title": {
+													"show": false,
+													"textStyle": {
+													  "fontWeight": "bold",
+													  "fontSize": 16
+													},
+													"textAlign": "middle",
+													"padding": 30,
+													"left": "50%",
+													"text": "基础饼图",
+													"subtext": ""
+												  },
+												  "tooltip": {
+													"trigger": "item"
+												  },
+												  "series": [
+													{
+													  "type": "gauge",
+													  "center": [
+														"50%",
+														"50%"
+													  ],
+													  "label": {
+														"normal": {
+														  "show": false
+														}
+													  },
+													  "markPoint": {
+														"data": []
+													  }
+													},
+													{
+													  "type": "gauge",
+													  "startAngle": "315",
+													  "endAngle": "45",
+													  "center": [
+														"30%",
+														"50%"
+													  ],
+													  "radius": "55%",
+													  "markPoint": {
+														"data": []
+													  }
+													},
+													{
+													  "type": "gauge",
+													  "startAngle": "135",
+													  "endAngle": "-135",
+													  "center": [
+														"70%",
+														"50%"
+													  ],
+													  "radius": "55%",
+													  "markPoint": {
+														"data": []
+													  }
+													}
+												  ]
+												},
+												"$index": [
+												  4,
+												  3
+												]
+											  }
+											],
+											"col": 6
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "出水端密封液体进水温度",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "16px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(255, 255, 255)",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(68, 68, 68)",
+												  "line-height": "40px",
+												  "text-align": "left"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  },
+											  {
+												"label": "仪表盘",
+												"type": "echart",
+												"source": "GAUGECHART",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 204
+												  },
+												  "resource": [
+													"rootCi"
+												  ],
+												  "series": {
+													"manual": {
+													  "0": {
+														"data": [
+														  {
+															"name": "设备A",
+															"value": "22"
+														  }
+														]
+													  }
+													},
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "legend": {
+													"manual": [
+													  "设备A"
+													]
+												  }
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "time",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												},
+												"parameters": {
+												  "title": "基础柱状图",
+												  "subtitle": ""
+												},
+												"style": {
+												  "margin": "auto",
+												  "width": "100%",
+												  "height": "500px"
+												},
+												"echart": {
+												  "general": {},
+												  "title": {
+													"show": false,
+													"textStyle": {
+													  "fontWeight": "bold",
+													  "fontSize": 16
+													},
+													"textAlign": "middle",
+													"padding": 30,
+													"left": "50%",
+													"text": "基础饼图",
+													"subtext": ""
+												  },
+												  "tooltip": {
+													"trigger": "item"
+												  },
+												  "series": [
+													{
+													  "type": "gauge",
+													  "center": [
+														"50%",
+														"50%"
+													  ],
+													  "label": {
+														"normal": {
+														  "show": false
+														}
+													  },
+													  "markPoint": {
+														"data": []
+													  }
+													},
+													{
+													  "type": "gauge",
+													  "startAngle": "315",
+													  "endAngle": "45",
+													  "center": [
+														"30%",
+														"50%"
+													  ],
+													  "radius": "55%",
+													  "markPoint": {
+														"data": []
+													  }
+													},
+													{
+													  "type": "gauge",
+													  "startAngle": "135",
+													  "endAngle": "-135",
+													  "center": [
+														"70%",
+														"50%"
+													  ],
+													  "radius": "55%",
+													  "markPoint": {
+														"data": []
+													  }
+													}
+												  ]
+												},
+												"$index": [
+												  4,
+												  3
+												]
+											  }
+											],
+											"col": 6
+										  }
+										]
+									  }
+									]
+								  },
+								  {
+									"tabName": "径向轴承",
+									"tabId": 1,
+									"type": "tabItem",
+									"display": "block",
+									"children": [
+									  {
+										"type": "row",
+										"children": [
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "进水端径向轴承温度",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "16px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(255, 255, 255)",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(68, 68, 68)",
+												  "line-height": "40px",
+												  "text-align": "left"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  },
+											  {
+												"label": "仪表盘",
+												"type": "echart",
+												"source": "GAUGECHART",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 204
+												  },
+												  "resource": [
+													"rootCi"
+												  ],
+												  "series": {
+													"manual": {
+													  "0": {
+														"data": [
+														  {
+															"name": "设备A",
+															"value": "22"
+														  }
+														]
+													  }
+													},
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "legend": {
+													"manual": [
+													  "设备A"
+													]
+												  }
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "time",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												},
+												"parameters": {
+												  "title": "基础柱状图",
+												  "subtitle": ""
+												},
+												"style": {
+												  "margin": "auto",
+												  "width": "100%",
+												  "height": "500px"
+												},
+												"echart": {
+												  "general": {},
+												  "title": {
+													"show": false,
+													"textStyle": {
+													  "fontWeight": "bold",
+													  "fontSize": 16
+													},
+													"textAlign": "middle",
+													"padding": 30,
+													"left": "50%",
+													"text": "基础饼图",
+													"subtext": ""
+												  },
+												  "tooltip": {
+													"trigger": "item"
+												  },
+												  "series": [
+													{
+													  "type": "gauge",
+													  "center": [
+														"50%",
+														"50%"
+													  ],
+													  "label": {
+														"normal": {
+														  "show": false
+														}
+													  },
+													  "markPoint": {
+														"data": []
+													  }
+													},
+													{
+													  "type": "gauge",
+													  "startAngle": "315",
+													  "endAngle": "45",
+													  "center": [
+														"30%",
+														"50%"
+													  ],
+													  "radius": "55%",
+													  "markPoint": {
+														"data": []
+													  }
+													},
+													{
+													  "type": "gauge",
+													  "startAngle": "135",
+													  "endAngle": "-135",
+													  "center": [
+														"70%",
+														"50%"
+													  ],
+													  "radius": "55%",
+													  "markPoint": {
+														"data": []
+													  }
+													}
+												  ]
+												},
+												"$index": [
+												  4,
+												  3
+												]
+											  }
+											],
+											"col": 6
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "出水端径向轴承温度",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "16px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(255, 255, 255)",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(68, 68, 68)",
+												  "line-height": "40px",
+												  "text-align": "left"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  },
+											  {
+												"label": "仪表盘",
+												"type": "echart",
+												"source": "GAUGECHART",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 204
+												  },
+												  "resource": [
+													"rootCi"
+												  ],
+												  "series": {
+													"manual": {
+													  "0": {
+														"data": [
+														  {
+															"name": "设备A",
+															"value": "22"
+														  }
+														]
+													  }
+													},
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "legend": {
+													"manual": [
+													  "设备A"
+													]
+												  }
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "time",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												},
+												"parameters": {
+												  "title": "基础柱状图",
+												  "subtitle": ""
+												},
+												"style": {
+												  "margin": "auto",
+												  "width": "100%",
+												  "height": "500px"
+												},
+												"echart": {
+												  "general": {},
+												  "title": {
+													"show": false,
+													"textStyle": {
+													  "fontWeight": "bold",
+													  "fontSize": 16
+													},
+													"textAlign": "middle",
+													"padding": 30,
+													"left": "50%",
+													"text": "基础饼图",
+													"subtext": ""
+												  },
+												  "tooltip": {
+													"trigger": "item"
+												  },
+												  "series": [
+													{
+													  "type": "gauge",
+													  "center": [
+														"50%",
+														"50%"
+													  ],
+													  "label": {
+														"normal": {
+														  "show": false
+														}
+													  },
+													  "markPoint": {
+														"data": []
+													  }
+													},
+													{
+													  "type": "gauge",
+													  "startAngle": "315",
+													  "endAngle": "45",
+													  "center": [
+														"30%",
+														"50%"
+													  ],
+													  "radius": "55%",
+													  "markPoint": {
+														"data": []
+													  }
+													},
+													{
+													  "type": "gauge",
+													  "startAngle": "135",
+													  "endAngle": "-135",
+													  "center": [
+														"70%",
+														"50%"
+													  ],
+													  "radius": "55%",
+													  "markPoint": {
+														"data": []
+													  }
+													}
+												  ]
+												},
+												"$index": [
+												  4,
+												  3
+												]
+											  }
+											],
+											"col": 6
+										  }
+										]
+									  }
+									]
+								  }
+								],
+								"tabInx": "2",
+								"": "",
+								"parameters": {
+								  "align": "horizental"
+								},
+								"style": {
+								  "margin": "5px"
+								}
+							  }
+							],
+							"col": 5
+						  },
+						  {
+							"type": "column",
+							"children": [
+							  {
+								"label": "控制板1",
+								"type": "tab",
+								"source": "TAB",
+								"children": [
+								  {
+									"tabName": "温度",
+									"tabId": 0,
+									"display": "block",
+									"type": "tabItem",
+									"children": [
+									  {
+										"label": "文字",
+										"type": "text",
+										"source": "TEXT",
+										"data": {
+										  "applied": false,
+										  "model": {
+											"id": 1011004
+										  },
+										  "resource": [],
+										  "text": {
+											"manual": "温度指标统计",
+											"bind": "(function (source){\n  return source.getSeries();\n})"
+										  },
+										  "modelDisable": false,
+										  "maxKpi": 1,
+										  "series": {}
+										},
+										"style": {
+										  "margin": "5px auto",
+										  "padding": "0",
+										  "font-size": "16px",
+										  "font-weight": "bold",
+										  "background-color": "rgb(255, 255, 255)",
+										  "border-color": "#93C47D",
+										  "border-width": "0px",
+										  "border-style": "solid",
+										  "color": "rgb(68, 68, 68)",
+										  "line-height": "40px",
+										  "text-align": "left"
+										},
+										"advance": {
+										  "getfunction": "kpiDataService.getValueList",
+										  "category": "ci",
+										  "condition": [
+											"kpi",
+											"{object:kpiQueryModel}"
+										  ]
+										}
+									  },
+									  {
+										"type": "row",
+										"children": [
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "数据统计标签",
+												"type": "totalItem",
+												"source": "TOTALITEM",
+												"data": {
+												  "applied": false,
+												  "resource": [
+													"rootCi"
+												  ],
+												  "modelDisable": true,
+												  "series": {
+													"manual": [
+													  {
+														"data": [
+														  {
+															"name": "进水端径向轴承温度",
+															"unit": "C",
+															"value": "42"
+														  }
+														]
+													  }
+													],
+													"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+												  },
+												  "maxKpi": 1,
+												  "model": {
+													"id": 204
+												  }
+												},
+												"parameters": {
+												  "icon": {
+													"id": "24",
+													"perfix": "proudsmart",
+													"css": "ps-air-temperature"
+												  }
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ],
+												  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+												},
+												"style": {
+												  "color": "#fff",
+												  "background-color": "rgb(118, 165, 175)",
+												  "margin": "5px"
+												}
+											  },
+											  {
+												"label": "数据统计标签",
+												"type": "totalItem",
+												"source": "TOTALITEM",
+												"data": {
+												  "applied": false,
+												  "resource": [
+													"rootCi"
+												  ],
+												  "modelDisable": true,
+												  "series": {
+													"manual": [
+													  {
+														"data": [
+														  {
+															"name": "进水端密封液体出水温度",
+															"unit": "C",
+															"value": "56"
+														  }
+														]
+													  }
+													],
+													"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+												  },
+												  "maxKpi": 1,
+												  "model": {
+													"id": 204
+												  }
+												},
+												"parameters": {
+												  "icon": {
+													"id": "24",
+													"perfix": "proudsmart",
+													"css": "ps-air-temperature"
+												  }
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ],
+												  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+												},
+												"style": {
+												  "color": "#fff",
+												  "background-color": "rgb(118, 165, 175)",
+												  "margin": "5px"
+												}
+											  },
+											  {
+												"label": "数据统计标签",
+												"type": "totalItem",
+												"source": "TOTALITEM",
+												"data": {
+												  "applied": false,
+												  "resource": [
+													"rootCi"
+												  ],
+												  "modelDisable": true,
+												  "series": {
+													"manual": [
+													  {
+														"data": [
+														  {
+															"name": "进水端径向轴承温度",
+															"unit": "C",
+															"value": "42"
+														  }
+														]
+													  }
+													],
+													"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+												  },
+												  "maxKpi": 1,
+												  "model": {
+													"id": 204
+												  }
+												},
+												"parameters": {
+												  "icon": {
+													"id": "24",
+													"perfix": "proudsmart",
+													"css": "ps-air-temperature"
+												  }
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ],
+												  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+												},
+												"style": {
+												  "color": "#fff",
+												  "background-color": "rgb(118, 165, 175)",
+												  "margin": "5px"
+												}
+											  },
+											  {
+												"label": "数据统计标签",
+												"type": "totalItem",
+												"source": "TOTALITEM",
+												"data": {
+												  "applied": false,
+												  "resource": [
+													"rootCi"
+												  ],
+												  "modelDisable": true,
+												  "series": {
+													"manual": [
+													  {
+														"data": [
+														  {
+															"name": "进水端径向轴承温度",
+															"unit": "C",
+															"value": "42"
+														  }
+														]
+													  }
+													],
+													"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+												  },
+												  "maxKpi": 1,
+												  "model": {
+													"id": 204
+												  }
+												},
+												"parameters": {
+												  "icon": {
+													"id": "24",
+													"perfix": "proudsmart",
+													"css": "ps-air-temperature"
+												  }
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ],
+												  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+												},
+												"style": {
+												  "color": "#fff",
+												  "background-color": "rgb(118, 165, 175)",
+												  "margin": "5px"
+												}
+											  }
+											],
+											"col": 6
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "数据统计标签",
+												"type": "totalItem",
+												"source": "TOTALITEM",
+												"data": {
+												  "applied": false,
+												  "resource": [
+													"rootCi"
+												  ],
+												  "modelDisable": true,
+												  "series": {
+													"manual": [
+													  {
+														"data": [
+														  {
+															"name": "出水端径向轴承温度",
+															"unit": "C",
+															"value": "35"
+														  }
+														]
+													  }
+													],
+													"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+												  },
+												  "maxKpi": 1,
+												  "model": {
+													"id": 204
+												  }
+												},
+												"parameters": {
+												  "icon": {
+													"id": "24",
+													"perfix": "proudsmart",
+													"css": "ps-air-temperature"
+												  }
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ],
+												  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+												},
+												"style": {
+												  "color": "#fff",
+												  "background-color": "rgb(118, 165, 175)",
+												  "margin": "5px"
+												}
+											  },
+											  {
+												"label": "数据统计标签",
+												"type": "totalItem",
+												"source": "TOTALITEM",
+												"data": {
+												  "applied": false,
+												  "resource": [
+													"rootCi"
+												  ],
+												  "modelDisable": true,
+												  "series": {
+													"manual": [
+													  {
+														"data": [
+														  {
+															"name": "出水端密封液体出水温度",
+															"unit": "C",
+															"value": "62"
+														  }
+														]
+													  }
+													],
+													"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+												  },
+												  "maxKpi": 1,
+												  "model": {
+													"id": 204
+												  }
+												},
+												"parameters": {
+												  "icon": {
+													"id": "24",
+													"perfix": "proudsmart",
+													"css": "ps-air-temperature"
+												  }
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ],
+												  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+												},
+												"style": {
+												  "color": "#fff",
+												  "background-color": "rgb(118, 165, 175)",
+												  "margin": "5px"
+												}
+											  },
+											  {
+												"label": "数据统计标签",
+												"type": "totalItem",
+												"source": "TOTALITEM",
+												"data": {
+												  "applied": false,
+												  "resource": [
+													"rootCi"
+												  ],
+												  "modelDisable": true,
+												  "series": {
+													"manual": [
+													  {
+														"data": [
+														  {
+															"name": "进水端径向轴承温度",
+															"unit": "C",
+															"value": "42"
+														  }
+														]
+													  }
+													],
+													"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+												  },
+												  "maxKpi": 1,
+												  "model": {
+													"id": 204
+												  }
+												},
+												"parameters": {
+												  "icon": {
+													"id": "24",
+													"perfix": "proudsmart",
+													"css": "ps-air-temperature"
+												  }
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ],
+												  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+												},
+												"style": {
+												  "color": "#fff",
+												  "background-color": "rgb(118, 165, 175)",
+												  "margin": "5px"
+												}
+											  },
+											  {
+												"label": "数据统计标签",
+												"type": "totalItem",
+												"source": "TOTALITEM",
+												"data": {
+												  "applied": false,
+												  "resource": [
+													"rootCi"
+												  ],
+												  "modelDisable": true,
+												  "series": {
+													"manual": [
+													  {
+														"data": [
+														  {
+															"name": "进水端径向轴承温度",
+															"unit": "C",
+															"value": "42"
+														  }
+														]
+													  }
+													],
+													"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+												  },
+												  "maxKpi": 1,
+												  "model": {
+													"id": 204
+												  }
+												},
+												"parameters": {
+												  "icon": {
+													"id": "24",
+													"perfix": "proudsmart",
+													"css": "ps-air-temperature"
+												  }
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ],
+												  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+												},
+												"style": {
+												  "color": "#fff",
+												  "background-color": "rgb(118, 165, 175)",
+												  "margin": "5px"
+												}
+											  }
+											],
+											"col": 6
+										  }
+										]
+									  }
+									]
+								  },
+								  {
+									"tabName": "压力",
+									"tabId": 0,
+									"type": "tabItem",
+									"display": "none",
+									"children": [
+									  {
+										"label": "文字",
+										"type": "text",
+										"source": "TEXT",
+										"data": {
+										  "applied": false,
+										  "model": {
+											"id": 1011004
+										  },
+										  "resource": [],
+										  "text": {
+											"manual": "压力分布图",
+											"bind": "(function (source){\n  return source.getSeries();\n})"
+										  },
+										  "modelDisable": false,
+										  "maxKpi": 1,
+										  "series": {}
+										},
+										"style": {
+										  "margin": "5px auto",
+										  "padding": "0",
+										  "font-size": "16px",
+										  "font-weight": "bold",
+										  "background-color": "rgb(255, 255, 255)",
+										  "border-color": "#93C47D",
+										  "border-width": "0px",
+										  "border-style": "solid",
+										  "color": "rgb(68, 68, 68)",
+										  "line-height": "40px",
+										  "text-align": "left"
+										},
+										"advance": {
+										  "getfunction": "kpiDataService.getValueList",
+										  "category": "ci",
+										  "condition": [
+											"kpi",
+											"{object:kpiQueryModel}"
+										  ]
+										}
+									  },
+									  {
+										"label": "饼图",
+										"type": "echart",
+										"source": "PIECHART",
+										"data": {
+										  "applied": false,
+										  "model": {
+											"id": 204
+										  },
+										  "resource": [
+											"rootCi"
+										  ],
+										  "legend": {
+											"manual": [
+											  "设备A",
+											  "设备B",
+											  "设备C",
+											  "设备D"
+											],
+											"bind": "(function (source){\n console.log(source)\n return source.ci.getLegend();\n})"
+										  },
+										  "series": {
+											"manual": {
+											  "0": {
+												"data": [
+												  {
+													"name": "设备A",
+													"value": "6"
+												  },
+												  {
+													"name": "设备B",
+													"value": "5"
+												  },
+												  {
+													"name": "设备C",
+													"value": "10"
+												  },
+												  {
+													"name": "设备D",
+													"value": "2"
+												  }
+												]
+											  }
+											},
+											"bind": "(function (source){\n  return source.ci.getSeries();\n})"
+										  },
+										  "modelDisable": true,
+										  "timeSpan": 3600,
+										  "category": [
+											"ci"
+										  ]
+										},
+										"advance": {
+										  "getfunction": "kpiDataService.getValueList",
+										  "category": "time",
+										  "condition": [
+											"kpi",
+											"{object:kpiQueryModel}"
+										  ]
+										},
+										"parameters": {
+										  "title": "基础饼图",
+										  "subtitle": ""
+										},
+										"style": {
+										  "margin": "auto",
+										  "width": "100%",
+										  "height": "400px"
+										},
+										"echart": {
+										  "general": {},
+										  "title": {
+											"show": false,
+											"textStyle": {
+											  "fontWeight": "bold",
+											  "fontSize": 16
+											},
+											"textAlign": "middle",
+											"padding": 30,
+											"left": "50%",
+											"text": "基础饼图",
+											"subtext": ""
+										  },
+										  "tooltip": {
+											"trigger": "item"
+										  },
+										  "legend": {
+											"left": "1%",
+											"top": "2%",
+											"orient": "vertical"
+										  },
+										  "series": [
+											{
+											  "name": "数据1",
+											  "center": [
+												"50%",
+												"50%"
+											  ],
+											  "radius": [
+												0,
+												"65%"
+											  ],
+											  "type": "pie"
+											},
+											{
+											  "name": "数据2",
+											  "center": [
+												"70%",
+												"50%"
+											  ],
+											  "radius": [
+												0,
+												"75%"
+											  ],
+											  "type": "pie"
+											}
+										  ]
+										}
+									  }
+									]
+								  }
+								],
+								"tabInx": "0",
+								"": "",
+								"parameters": {
+								  "align": "horizental"
+								},
+								"style": {
+								  "margin": "5px"
+								}
+							  }
+							],
+							"col": 7
+						  }
+						]
+					  }
+					]
+				  }
+				],
+				"style": {
+				  "margin": "5px",
+				  "border": "0px solid #aaa",
+				  "background-color": "rgb(255, 255, 255)"
+				},
+				"$index": [
+				  1,
+				  0
+				]
+			  },
+			  {
+				"label": "控制板1",
+				"type": "block",
+				"source": "BLOCK",
+				"children": [
+				  {
+					"type": "column",
+					"col": 12,
+					"children": [
+					  {
+						"label": "控制板1",
+						"type": "tab",
+						"source": "TAB",
+						"children": [
+						  {
+							"tabName": "进水口温度统计",
+							"tabId": 0,
+							"display": "none",
+							"type": "tabItem",
+							"children": [
+							  {
+								"label": "文字",
+								"type": "text",
+								"source": "TEXT",
+								"data": {
+								  "applied": false,
+								  "model": {
+									"id": 1011004
+								  },
+								  "resource": [],
+								  "text": {
+									"manual": "进水口温度",
+									"bind": "(function (source){\n  return source.getSeries();\n})"
+								  },
+								  "modelDisable": false,
+								  "maxKpi": 1,
+								  "series": {}
+								},
+								"style": {
+								  "margin": "5px auto",
+								  "padding": "0",
+								  "font-size": "23px",
+								  "font-weight": "bold",
+								  "background-color": "rgb(255, 255, 255)",
+								  "border-color": "#93C47D",
+								  "border-width": "0px",
+								  "border-style": "solid",
+								  "color": "rgb(68, 68, 68)",
+								  "line-height": "75px",
+								  "text-align": "left"
+								},
+								"advance": {
+								  "getfunction": "kpiDataService.getValueList",
+								  "category": "ci",
+								  "condition": [
+									"kpi",
+									"{object:kpiQueryModel}"
+								  ]
+								}
+							  },
+							  {
+								"type": "row",
+								"children": [
+								  {
+									"type": "column",
+									"children": [
+									  {
+										"label": "线图",
+										"type": "echart",
+										"source": "LINECHART",
+										"data": {
+										  "applied": false,
+										  "model": {
+											"id": 204
+										  },
+										  "resource": [
+											"rootCi"
+										  ],
+										  "modelDisable": false,
+										  "timespan": {
+											"value": 168,
+											"unit": "hour"
+										  },
+										  "frequency": {
+											"value": 86400,
+											"unit": "second"
+										  },
+										  "format": "年月日",
+										  "legend": {
+											"manual": "[\n  \"出水口温度\",\n]",
+											"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+										  },
+										  "xAxisType": "category",
+										  "xAxis": {
+											"manual": [
+											  [
+												"2016/6/1",
+												"2016/6/2",
+												"2016/6/3",
+												"2016/6/4",
+												"2016/6/5",
+												"2016/6/6",
+												"2016/6/7",
+												"2016/6/8",
+												"2016/6/9",
+												"2016/6/10",
+												"2016/6/11",
+												"2016/6/12",
+												"2016/6/13",
+												"2016/6/14",
+												"2016/6/15",
+												"2016/6/16",
+												"2016/6/17"
+											  ]
+											],
+											"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+										  },
+										  "yAxisType": "value",
+										  "yAxis": {
+											"manual": [
+											  [
+												"第一个数据",
+												"第二个数据",
+												"第三个数据",
+												"第四个数据",
+												"第五个数据",
+												"第六个数据"
+											  ]
+											],
+											"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+										  },
+										  "series": {
+											"manual": "[{\n  \"name\" : \"出水口温度\",\n  \"data\" : [29,19,15,16,14,18,13,19,23,15,17,14,13,11]\n}]",
+											"bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+										  }
+										},
+										"advance": {
+										  "getfunction": "kpiDataService.getValueList",
+										  "category": "time",
+										  "condition": [
+											"kpi",
+											"{object:kpiQueryModel}"
+										  ]
+										},
+										"parameters": {
+										  "title": "进水口温度",
+										  "subtitle": ""
+										},
+										"style": {
+										  "margin": "auto",
+										  "width": "100%",
+										  "height": "400px"
+										},
+										"echart": {
+										  "general": {},
+										  "title": {
+											"padding": 30,
+											"text": "草莓大棚温度变化",
+											"textStyle": {
+											  "fontWeight": "bold",
+											  "fontSize": 16
+											}
+										  },
+										  "tooltip": {
+											"trigger": "axis"
+										  },
+										  "legend": {
+											"data": [
+											  "数据1",
+											  "数据2",
+											  "数据3"
+											]
+										  },
+										  "grid": [
+											{}
+										  ],
+										  "xAxis": [
+											{
+											  "boundaryGap": false,
+											  "axisLine": {
+												"lineStyle": {
+												  "color": "#b0b0b0"
+												}
+											  }
+											}
+										  ],
+										  "yAxis": [
+											{
+											  "boundaryGap": false,
+											  "axisLine": {
+												"lineStyle": {
+												  "color": "#b0b0b0"
+												}
+											  }
+											}
+										  ],
+										  "series": [
+											{
+											  "type": "line",
+											  "name": "数据1",
+											  "areaStyle": {
+												"normal": {
+												  "color": "rgb(224, 102, 102)"
+												}
+											  },
+											  "lineStyle": {
+												"normal": {
+												  "color": "rgb(224, 102, 102)"
+												}
+											  },
+											  "markPoint": {
+												"data": []
+											  }
+											},
+											{
+											  "type": "line",
+											  "name": "数据2",
+											  "markPoint": {
+												"data": []
+											  }
+											},
+											{
+											  "type": "line",
+											  "name": "数据3",
+											  "markPoint": {
+												"data": [
+												  {
+													"name": "最大值",
+													"type": "max"
+												  },
+												  {
+													"name": "最小值",
+													"type": "min"
+												  }
+												]
+											  }
+											}
+										  ]
+										},
+										"$index": [
+										  2,
+										  0
+										]
+									  }
+									],
+									"col": 5
+								  },
+								  {
+									"type": "column",
+									"children": [
+									  {
+										"label": "文字",
+										"type": "text",
+										"source": "TEXT",
+										"data": {
+										  "applied": false,
+										  "model": {
+											"id": 204
+										  },
+										  "resource": [
+											"rootCi"
+										  ],
+										  "text": {
+											"manual": "进水口温度周统计",
+											"bind": "(function (source){\n  return source.getSeries();\n})"
+										  },
+										  "modelDisable": true,
+										  "maxKpi": 1,
+										  "series": {}
+										},
+										"style": {
+										  "margin": "5px auto",
+										  "padding": "0",
+										  "font-size": "14px",
+										  "font-weight": "bold",
+										  "border-color": "#93C47D",
+										  "border-width": "0px",
+										  "border-style": "solid",
+										  "color": "#333",
+										  "line-height": "14px",
+										  "text-align": "left"
+										},
+										"advance": {
+										  "getfunction": "kpiDataService.getValueList",
+										  "category": "ci",
+										  "condition": [
+											"kpi",
+											"{object:kpiQueryModel}"
+										  ]
+										}
+									  },
+									  {
+										"label": "表格",
+										"type": "excel",
+										"source": "EXCEL",
+										"style": {
+										  "margin": "5px"
+										},
+										"parameters": {
+										  "excelData": [
+											[
+											  "标题1",
+											  "标题2",
+											  "标题3",
+											  "标题4",
+											  "标题5"
+											],
+											[
+											  "12",
+											  "14",
+											  "10",
+											  "51",
+											  "5"
+											],
+											[
+											  "9",
+											  "53",
+											  "14",
+											  "12",
+											  "16"
+											],
+											[
+											  "16",
+											  "3",
+											  "4",
+											  "7",
+											  "12"
+											]
+										  ]
+										}
+									  }
+									],
+									"col": 7
+								  }
+								]
+							  }
+							]
+						  },
+						  {
+							"tabName": "出水口温度统计",
+							"tabId": 0,
+							"type": "tabItem",
+							"display": "block",
+							"children": [
+							  {
+								"label": "文字",
+								"type": "text",
+								"source": "TEXT",
+								"data": {
+								  "applied": false,
+								  "model": {
+									"id": 1011004
+								  },
+								  "resource": [],
+								  "text": {
+									"manual": "出水口温度",
+									"bind": "(function (source){\n  return source.getSeries();\n})"
+								  },
+								  "modelDisable": false,
+								  "maxKpi": 1,
+								  "series": {}
+								},
+								"style": {
+								  "margin": "5px auto",
+								  "padding": "0",
+								  "font-size": "23px",
+								  "font-weight": "bold",
+								  "background-color": "rgb(255, 255, 255)",
+								  "border-color": "#93C47D",
+								  "border-width": "0px",
+								  "border-style": "solid",
+								  "color": "rgb(68, 68, 68)",
+								  "line-height": "75px",
+								  "text-align": "left"
+								},
+								"advance": {
+								  "getfunction": "kpiDataService.getValueList",
+								  "category": "ci",
+								  "condition": [
+									"kpi",
+									"{object:kpiQueryModel}"
+								  ]
+								}
+							  },
+							  {
+								"type": "row",
+								"children": [
+								  {
+									"type": "column",
+									"children": [
+									  {
+										"label": "柱图",
+										"type": "echart",
+										"source": "BARCHART",
+										"data": {
+										  "applied": false,
+										  "model": {
+											"id": 204
+										  },
+										  "resource": [
+											"rootCi"
+										  ],
+										  "modelDisable": false,
+										  "timespan": {
+											"value": 168,
+											"unit": "hour"
+										  },
+										  "frequency": {
+											"value": 86400,
+											"unit": "second"
+										  },
+										  "format": "年月日",
+										  "legend": {
+											"manual": "[\n  \"设备\",\n]",
+											"bind": "(function (source){\n  return source.time.getLegend();\n})"
+										  },
+										  "xAxisType": "category",
+										  "xAxis": {
+											"manual": [
+											  [
+												"2016/6/1",
+												"2016/6/2",
+												"2016/6/3",
+												"2016/6/4",
+												"2016/6/5",
+												"2016/6/6",
+												"2016/6/7"
+											  ]
+											],
+											"bind": "(function (source){\n  return source.time.getxAxis();\n})"
+										  },
+										  "series": {
+											"manual": "[{\n  \"name\" : \"设备\",\n  \"data\" : [15,13,16,12,15,17,16]\n}]",
+											"bind": ""
+										  },
+										  "yAxisType": "value",
+										  "yAxis": {
+											"manual": [
+											  [
+												"第一个数据",
+												"第二个数据",
+												"第三个数据",
+												"第四个数据",
+												"第五个数据",
+												"第六个数据"
+											  ]
+											],
+											"bind": "(function (source){\n  return source.time.getxAxis();\n})"
+										  }
+										},
+										"advance": {
+										  "getfunction": "kpiDataService.getValueList",
+										  "category": "time",
+										  "condition": [
+											"kpi",
+											"{object:kpiQueryModel}"
+										  ]
+										},
+										"parameters": {
+										  "title": "出水口温度",
+										  "subtitle": ""
+										},
+										"style": {
+										  "margin": "auto",
+										  "width": "100%",
+										  "height": "400px"
+										},
+										"echart": {
+										  "general": {},
+										  "title": {
+											"padding": 30,
+											"text": "草莓大棚温度变化",
+											"textStyle": {
+											  "fontWeight": "bold",
+											  "fontSize": 16
+											}
+										  },
+										  "tooltip": {
+											"trigger": "axis"
+										  },
+										  "legend": {
+											"data": [
+											  "数据1",
+											  "数据2",
+											  "数据3"
+											]
+										  },
+										  "grid": [
+											{}
+										  ],
+										  "xAxis": [
+											{
+											  "axisLine": {
+												"lineStyle": {
+												  "color": "#b0b0b0"
+												}
+											  }
+											}
+										  ],
+										  "yAxis": [
+											{
+											  "axisLine": {
+												"lineStyle": {
+												  "color": "#b0b0b0"
+												}
+											  }
+											}
+										  ],
+										  "series": [
+											{
+											  "type": "bar",
+											  "name": "数据1",
+											  "markPoint": {
+												"data": []
+											  }
+											},
+											{
+											  "type": "bar",
+											  "name": "数据2",
+											  "markPoint": {
+												"data": []
+											  }
+											},
+											{
+											  "type": "bar",
+											  "name": "数据3",
+											  "markPoint": {
+												"data": []
+											  }
+											}
+										  ]
+										},
+										"$index": [
+										  0,
+										  0
+										]
+									  }
+									],
+									"col": 5
+								  },
+								  {
+									"type": "column",
+									"children": [
+									  {
+										"label": "文字",
+										"type": "text",
+										"source": "TEXT",
+										"data": {
+										  "applied": false,
+										  "model": {
+											"id": 204
+										  },
+										  "resource": [
+											"rootCi"
+										  ],
+										  "text": {
+											"manual": "出水口温度周统计",
+											"bind": "(function (source){\n  return source.getSeries();\n})"
+										  },
+										  "modelDisable": true,
+										  "maxKpi": 1,
+										  "series": {}
+										},
+										"style": {
+										  "margin": "5px auto",
+										  "padding": "0",
+										  "font-size": "14px",
+										  "font-weight": "bold",
+										  "border-color": "#93C47D",
+										  "border-width": "0px",
+										  "border-style": "solid",
+										  "color": "#333",
+										  "line-height": "14px",
+										  "text-align": "left"
+										},
+										"advance": {
+										  "getfunction": "kpiDataService.getValueList",
+										  "category": "ci",
+										  "condition": [
+											"kpi",
+											"{object:kpiQueryModel}"
+										  ]
+										}
+									  },
+									  {
+										"label": "表格",
+										"type": "excel",
+										"source": "EXCEL",
+										"style": {
+										  "margin": "5px"
+										},
+										"parameters": {
+										  "excelData": [
+											[
+											  "标题1",
+											  "标题2",
+											  "标题3",
+											  "标题4",
+											  "标题5"
+											],
+											[
+											  "12",
+											  "14",
+											  "10",
+											  "51",
+											  "5"
+											],
+											[
+											  "9",
+											  "53",
+											  "14",
+											  "12",
+											  "16"
+											],
+											[
+											  "16",
+											  "3",
+											  "4",
+											  "7",
+											  "12"
+											]
+										  ]
+										}
+									  }
+									],
+									"col": 7
+								  }
+								]
+							  }
+							]
+						  }
+						],
+						"tabInx": "1",
+						"": "",
+						"parameters": {
+						  "align": "horizental"
+						},
+						"style": {
+						  "margin": "5px"
+						}
+					  }
+					]
+				  }
+				],
+				"style": {
+				  "margin": "5px",
+				  "border": "0px solid #aaa",
+				  "background-color": "rgb(255, 255, 255)"
+				},
+				"$index": [
+				  0,
+				  0
+				]
+			  }
+			],
+			"display": "none"
+		  },
+		  {
+			"tabName": "实验数据",
+			"tabId": "1",
+			"type": "tabItem",
+			"children": [
+			  {
+				"label": "文字",
+				"type": "text",
+				"source": "TEXT",
+				"data": {
+				  "applied": false,
+				  "model": {
+					"id": 204
+				  },
+				  "resource": [],
+				  "text": {
+					"manual": "机组汽动给水泵",
+					"bind": "(function (source){\n  return source.getSeries();\n})"
+				  },
+				  "modelDisable": false,
+				  "series": {}
+				},
+				"style": {
+				  "margin": "5px 10px",
+				  "padding": "0",
+				  "font-size": "23px",
+				  "font-weight": "bold",
+				  "color": "#333",
+				  "line-height": "75px",
+				  "text-align": "left"
+				},
+				"advance": {
+				  "getfunction": "kpiDataService.getValueList",
+				  "category": "ci",
+				  "condition": [
+					"kpi",
+					"{object:kpiQueryModel}"
+				  ]
+				},
+				"$index": [
+				  0,
+				  0
+				]
+			  },
+			  {
+				"label": "文字",
+				"type": "text",
+				"source": "TEXT",
+				"data": {
+				  "applied": false,
+				  "model": {
+					"id": 204
+				  },
+				  "resource": [],
+				  "text": {
+					"manual": "华能海南东方电厂新建工程(2*350MW超临界燃煤机组)",
+					"bind": "(function (source){\n  return source.getSeries();\n})"
+				  },
+				  "modelDisable": false,
+				  "series": {}
+				},
+				"style": {
+				  "margin": "5px 10px",
+				  "padding": "0",
+				  "font-size": "14px",
+				  "font-weight": "bold",
+				  "color": "rgb(153, 153, 153)",
+				  "line-height": "24px",
+				  "text-align": "left"
+				},
+				"advance": {
+				  "getfunction": "kpiDataService.getValueList",
+				  "category": "ci",
+				  "condition": [
+					"kpi",
+					"{object:kpiQueryModel}"
+				  ]
+				},
+				"$index": [
+				  2,
+				  0
+				]
+			  },
+			  {
+				"label": "控制板1",
+				"type": "block",
+				"source": "BLOCK",
+				"children": [
+				  {
+					"type": "column",
+					"col": 12,
+					"children": [
+					  {
+						"label": "控制板1",
+						"type": "block",
+						"source": "BLOCK",
+						"children": [
+						  {
+							"type": "column",
+							"col": 12,
+							"children": [
+							  {
+								"type": "row",
+								"children": [
+								  {
+									"type": "column",
+									"children": [
+									  {
+										"type": "row",
+										"children": [
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "流量 Q",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "left"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 4
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "1298.2\tm³/h",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(238, 238, 238)",
+												  "border-color": "#93C47D",
+												  "border-radius": "4%",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "center"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 6
+										  },
+										  {
+											"type": "column",
+											"children": [],
+											"col": 2
+										  }
+										]
+									  },
+									  {
+										"type": "row",
+										"children": [
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "试验标准",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "left"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 4
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "合同协定",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(238, 238, 238)",
+												  "border-color": "#93C47D",
+												  "border-radius": "4%",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "center"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 6
+										  },
+										  {
+											"type": "column",
+											"children": [],
+											"col": 2
+										  }
+										]
+									  },
+									  {
+										"type": "row",
+										"children": [
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "运动粘度υ",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "left"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 4
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "0.8694",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(238, 238, 238)",
+												  "border-color": "#93C47D",
+												  "border-radius": "4%",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "center"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 6
+										  },
+										  {
+											"type": "column",
+											"children": [],
+											"col": 2
+										  }
+										]
+									  }
+									],
+									"col": 3
+								  },
+								  {
+									"type": "column",
+									"children": [
+									  {
+										"type": "row",
+										"children": [
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "轴功率 P",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "left"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 4
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "12200\tkW",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(238, 238, 238)",
+												  "border-color": "#93C47D",
+												  "border-radius": "4%",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "center"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 6
+										  },
+										  {
+											"type": "column",
+											"children": [],
+											"col": 2
+										  }
+										]
+									  },
+									  {
+										"type": "row",
+										"children": [
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "扬程 H",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "left"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 4
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "3256\tm",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(238, 238, 238)",
+												  "border-color": "#93C47D",
+												  "border-radius": "4%",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "center"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 6
+										  },
+										  {
+											"type": "column",
+											"children": [],
+											"col": 2
+										  }
+										]
+									  },
+									  {
+										"type": "row",
+										"children": [
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "温度 T：",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "left"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 4
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "27",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(238, 238, 238)",
+												  "border-color": "#93C47D",
+												  "border-radius": "4%",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "center"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 6
+										  },
+										  {
+											"type": "column",
+											"children": [],
+											"col": 2
+										  }
+										]
+									  }
+									],
+									"col": 3
+								  },
+								  {
+									"type": "column",
+									"children": [
+									  {
+										"type": "row",
+										"children": [
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "泵效率  h",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "left"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 4
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "84\t%",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(238, 238, 238)",
+												  "border-color": "#93C47D",
+												  "border-radius": "4%",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "center"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 6
+										  },
+										  {
+											"type": "column",
+											"children": [],
+											"col": 2
+										  }
+										]
+									  },
+									  {
+										"type": "row",
+										"children": [
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "转速  n",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "left"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 4
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "5737\tr.p.m",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(238, 238, 238)",
+												  "border-color": "#93C47D",
+												  "border-radius": "4%",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "center"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 6
+										  },
+										  {
+											"type": "column",
+											"children": [],
+											"col": 2
+										  }
+										]
+									  }
+									],
+									"col": 3
+								  },
+								  {
+									"type": "column",
+									"children": [
+									  {
+										"type": "row",
+										"children": [
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "汽蚀余量NPSH",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "left"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 4
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "46.8\tm",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(238, 238, 238)",
+												  "border-color": "#93C47D",
+												  "border-radius": "4%",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "center"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 6
+										  },
+										  {
+											"type": "column",
+											"children": [],
+											"col": 2
+										  }
+										]
+									  },
+									  {
+										"type": "row",
+										"children": [
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "介质密度 r",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "left"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 4
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "889\tkg/m³",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(238, 238, 238)",
+												  "border-color": "#93C47D",
+												  "border-radius": "4%",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "rgb(102, 102, 102)",
+												  "line-height": "25px",
+												  "text-align": "center"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 6
+										  },
+										  {
+											"type": "column",
+											"children": [],
+											"col": 2
+										  }
+										]
+									  }
+									],
+									"col": 3
+								  }
+								]
+							  }
+							]
+						  }
+						],
+						"style": {
+						  "margin": "10px",
+						  "border": "1px solid #aaa",
+						  "background-color": "",
+						  "padding": "10px"
+						},
+						"$index": [
+						  0,
+						  0
+						]
+					  }
+					]
+				  }
+				],
+				"style": {
+				  "margin": 0,
+				  "border": "1px solid #aaa",
+				  "background-color": "",
+				  "border-color": "#93C47D",
+				  "border-width": 0
+				}
+			  },
+			  {
+				"type": "row",
+				"children": [
+				  {
+					"type": "column",
+					"children": [
+					  {
+						"label": "控制板1",
+						"type": "block",
+						"source": "BLOCK",
+						"children": [
+						  {
+							"type": "column",
+							"col": 12,
+							"children": [
+							  {
+								"label": "文字",
+								"type": "text",
+								"source": "TEXT",
+								"data": {
+								  "applied": false,
+								  "model": {
+									"id": 204
+								  },
+								  "resource": [],
+								  "text": {
+									"manual": "流量分析数据",
+									"bind": "(function (source){\n  return source.getSeries();\n})"
+								  },
+								  "modelDisable": false,
+								  "series": {}
+								},
+								"style": {
+								  "margin": "5px 10px",
+								  "padding": "0",
+								  "font-size": "16px",
+								  "font-weight": "bold",
+								  "background-color": "rgb(255, 255, 255)",
+								  "color": "rgb(102, 102, 102)",
+								  "line-height": "30px",
+								  "text-align": "left"
+								},
+								"advance": {
+								  "getfunction": "kpiDataService.getValueList",
+								  "category": "ci",
+								  "condition": [
+									"kpi",
+									"{object:kpiQueryModel}"
+								  ]
+								},
+								"$index": [
+								  2,
+								  0
+								]
+							  },
+							  {
+								"label": "数据列表",
+								"type": "datalist",
+								"source": "DATALIST",
+								"data": {
+								  "applied": false,
+								  "model": {
+									"id": 204
+								  },
+								  "resource": [],
+								  "timespan": {
+									"value": 24,
+									"unit": "hour"
+								  },
+								  "format": "年月日",
+								  "frequency": {
+									"value": 30,
+									"unit": "minute"
+								  },
+								  "legend": {
+									"manual": [
+									  "第一组",
+									  "第二组",
+									  "第三组"
+									],
+									"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+								  },
+								  "xAxis": {
+									"manual": "[\n  [\n    \"1\",\n    \"2\",\n    \"3\",\n    \"4\",\n    \"5\",\n    \"6\",\n    \"7\",\n    \"8\",\n    \"9\",\n    \"10\",\n    \"11\",\n    \"12\"\n  ]\n]",
+									"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+								  },
+								  "xAxisType": "category",
+								  "series": {
+									"manual": "[\n  {\n    \"name\": \"第一组\",\n    \"data\": [\n      120,\n      85,\n      64,\n      130,\n      152,\n      87,\n      120,\n      85,\n      64,\n      130,\n      152,\n      87\n    ]\n  },\n  {\n    \"name\": \"第二组\",\n    \"data\": [\n      88,\n      120,\n      180,\n      78,\n      232,\n      140,\n      88,\n      120,\n      180,\n      78,\n      232,\n      140\n    ]\n  },\n  {\n    \"name\": \"第三组\",\n    \"data\": [\n      50,\n      80,\n      140,\n      60,\n      70,\n      90,\n      50,\n      80,\n      140,\n      60,\n      70,\n      90\n    ]\n  }\n]",
+									"bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+								  },
+								  "modelDisable": false
+								},
+								"$index": [
+								  0,
+								  0
+								],
+								"advance": {
+								  "getfunction": "kpiDataService.getValueList",
+								  "category": "time",
+								  "condition": [
+									"kpi",
+									"{object:kpiQueryModel}"
+								  ]
+								},
+								"style": {
+								  "margin": "10px",
+								  "height": "150px"
+								}
+							  }
+							]
+						  }
+						],
+						"style": {
+						  "margin": "10px",
+						  "border": "1px solid #aaa",
+						  "background-color": "rgb(255, 255, 255)"
+						},
+						"$index": [
+						  2,
+						  0
+						]
+					  }
+					],
+					"col": 12
+				  }
+				]
+			  },
+			  {
+				"label": "控制板1",
+				"type": "block",
+				"source": "BLOCK",
+				"children": [
+				  {
+					"type": "column",
+					"col": 12,
+					"children": [
+					  {
+						"label": "文字",
+						"type": "text",
+						"source": "TEXT",
+						"data": {
+						  "applied": false,
+						  "model": {
+							"id": 204
+						  },
+						  "resource": [],
+						  "text": {
+							"manual": "流量 / 扬程分布曲线",
+							"bind": "(function (source){\n  return source.getSeries();\n})"
+						  },
+						  "modelDisable": false,
+						  "series": {}
+						},
+						"style": {
+						  "margin": "5px 10px",
+						  "padding": "0",
+						  "font-size": "16px",
+						  "font-weight": "bold",
+						  "background-color": "rgb(255, 255, 255)",
+						  "color": "rgb(102, 102, 102)",
+						  "line-height": "30px",
+						  "text-align": "left"
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "ci",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"$index": [
+						  2,
+						  0
+						]
+					  },
+					  {
+						"label": "线图",
+						"type": "echart",
+						"source": "LINECHART",
+						"data": {
+						  "applied": false,
+						  "resource": [],
+						  "timespan": {
+							"value": 168,
+							"unit": "hour"
+						  },
+						  "format": "年月日",
+						  "frequency": {
+							"value": 86400,
+							"unit": "second"
+						  },
+						  "legend": {
+							"manual": [
+							  "第一组",
+							  "第二组",
+							  "第三组"
+							],
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+						  },
+						  "xAxis": {
+							"manual": [
+							  [
+								"325.92",
+								"538.39",
+								"664.46",
+								"825.24",
+								"928.84",
+								"1037.46",
+								"1209.03",
+								"1299.75",
+								"1471.54",
+								"1629.56"
+							  ]
+							],
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+						  },
+						  "xAxisType": "category",
+						  "yAxis": {
+							"manual": [
+							  [
+								"第一个数据",
+								"第二个数据",
+								"第三个数据",
+								"第四个数据",
+								"第五个数据",
+								"第六个数据"
+							  ]
+							],
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+						  },
+						  "yAxisType": "value",
+						  "series": {
+							"manual": [{
+							  "name": "扬程",
+							  "data": [
+								"4207.67",
+								"4101.44",
+								"4013.89",
+								"3888.31",
+								"3790.94",
+								"3651.03",
+								"3410.50",
+								"3271.80",
+								"2989.73",
+								"2698.93"
+							  ]
+							}],
+							"bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+						  },
+						  "model": {
+							"id": 204
+						  },
+						  "modelDisable": false
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "time",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"parameters": {
+						  "title": "",
+						  "subtitle": ""
+						},
+						"style": {
+						  "margin": "auto",
+						  "width": "100%",
+						  "height": "400px"
+						},
+						"echart": {
+						  "general": {},
+						  "title": {
+							"textStyle": {
+							  "fontWeight": "bold",
+							  "fontSize": 16
+							},
+							"padding": 30
+						  },
+						  "tooltip": {
+							"trigger": "axis"
+						  },
+						  "legend": {
+							"data": [
+							  "数据1",
+							  "数据2",
+							  "数据3"
+							]
+						  },
+						  "grid": [
+							{}
+						  ],
+						  "xAxis": [
+							{
+							  "boundaryGap": false,
+							  "axisLine": {
+								"lineStyle": {
+								  "color": "#b0b0b0"
+								}
+							  }
+							}
+						  ],
+						  "yAxis": [
+							{
+							  "boundaryGap": false,
+							  "axisLine": {
+								"lineStyle": {
+								  "color": "#b0b0b0"
+								}
+							  }
+							}
+						  ],
+						  "series": [
+							{
+							  "type": "line",
+							  "name": "数据1",
+							  "lineStyle": {
+								"normal": {
+								  "color": "rgb(224, 102, 102)"
+								}
+							  },
+							  "markPoint": {
+								"data": []
+							  }
+							},
+							{
+							  "type": "line",
+							  "name": "数据2",
+							  "markPoint": {
+								"data": []
+							  }
+							},
+							{
+							  "type": "line",
+							  "name": "数据3",
+							  "markPoint": {
+								"data": [
+								  {
+									"name": "最大值",
+									"type": "max"
+								  },
+								  {
+									"name": "最小值",
+									"type": "min"
+								  }
+								]
+							  }
+							}
+						  ]
+						},
+						"$index": [
+						  2,
+						  0
+						]
+					  },
+					  {
+						"label": "数据列表",
+						"type": "datalist",
+						"source": "DATALIST",
+						"data": {
+						  "applied": false,
+						  "model": {
+							"id": 204
+						  },
+						  "resource": [],
+						  "timespan": {
+							"value": 24,
+							"unit": "hour"
+						  },
+						  "format": "年月日",
+						  "frequency": {
+							"value": 30,
+							"unit": "minute"
+						  },
+						  "legend": {
+							"manual": "[\n  \"扬程\"\n]",
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+						  },
+						  "xAxis": {
+							"manual": "[\n  [\n    \"325.92\",\n    \"538.39\",\n    \"664.46\",\n    \"825.24\",\n    \"928.84\",\n    \"1037.46\",\n    \"1209.03\",\n    \"1299.75\",\n    \"1471.54\",\n    \"1629.56\"\n  ]\n]",
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+						  },
+						  "xAxisType": "category",
+						  "series": {
+							"manual": "{\n  \"0\": {\n    \"name\": \"扬程\",\n    \"data\": [\n      \"4207.67\",\n      \"4101.44\",\n      \"4013.89\",\n      \"3888.31\",\n      \"3790.94\",\n      \"3651.03\",\n      \"3410.50\",\n      \"3271.80\",\n      \"2989.73\",\n      \"2698.93\"\n    ]\n  }\n}",
+							"bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+						  },
+						  "modelDisable": false
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "time",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"style": {
+						  "margin": "10px"
+						},
+						"$index": [
+						  0,
+						  0
+						]
+					  }
+					]
+				  }
+				],
+				"style": {
+				  "margin": "10px",
+				  "border": "1px solid #aaa",
+				  "background-color": "rgb(255, 255, 255)"
+				},
+				"$index": [
+				  2,
+				  0
+				]
+			  },
+			  {
+				"label": "控制板1",
+				"type": "block",
+				"source": "BLOCK",
+				"children": [
+				  {
+					"type": "column",
+					"col": 12,
+					"children": [
+					  {
+						"label": "文字",
+						"type": "text",
+						"source": "TEXT",
+						"data": {
+						  "applied": false,
+						  "model": {
+							"id": 204
+						  },
+						  "resource": [],
+						  "text": {
+							"manual": "流量分析数据",
+							"bind": "(function (source){\n  return source.getSeries();\n})"
+						  },
+						  "modelDisable": false,
+						  "series": {}
+						},
+						"style": {
+						  "margin": "5px 10px",
+						  "padding": "0",
+						  "font-size": "16px",
+						  "font-weight": "bold",
+						  "background-color": "rgb(255, 255, 255)",
+						  "color": "rgb(102, 102, 102)",
+						  "line-height": "30px",
+						  "text-align": "left"
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "ci",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"$index": [
+						  2,
+						  0
+						]
+					  },
+					  {
+						"label": "线图",
+						"type": "echart",
+						"source": "LINECHART",
+						"data": {
+						  "applied": false,
+						  "resource": [],
+						  "timespan": {
+							"value": 168,
+							"unit": "hour"
+						  },
+						  "format": "年月日",
+						  "frequency": {
+							"value": 86400,
+							"unit": "second"
+						  },
+						  "legend": {
+							"manual": [
+							  "第一组",
+							  "第二组",
+							  "第三组"
+							],
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+						  },
+						  "xAxis": {
+							"manual": [
+							  [
+								"325.92",
+								"538.39",
+								"664.46",
+								"825.24",
+								"928.84",
+								"1037.46",
+								"1209.03",
+								"1299.75",
+								"1471.54",
+								"1629.56"
+							  ]
+							],
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+						  },
+						  "xAxisType": "category",
+						  "yAxis": {
+							"manual": [
+							  [
+								"第一个数据",
+								"第二个数据",
+								"第三个数据",
+								"第四个数据",
+								"第五个数据",
+								"第六个数据"
+							  ]
+							],
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+						  },
+						  "yAxisType": "value",
+						  "series": {
+							"manual": {
+							  "0": {
+								"name": "扬汽蚀余量",
+								"data": [
+								  "692.14",
+								  "695.18",
+								  "697.75",
+								  "699.80",
+								  "696.11",
+								  "699.13",
+								  "698.61",
+								  "701.48",
+								  "704.03",
+								  "707.22"
+								]
+							  }
+							},
+							"bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+						  },
+						  "model": {
+							"id": 204
+						  },
+						  "modelDisable": false
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "time",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"parameters": {
+						  "title": "",
+						  "subtitle": ""
+						},
+						"style": {
+						  "margin": "auto",
+						  "width": "100%",
+						  "height": "400px"
+						},
+						"echart": {
+						  "general": {},
+						  "title": {
+							"textStyle": {
+							  "fontWeight": "bold",
+							  "fontSize": 16
+							},
+							"padding": 30
+						  },
+						  "tooltip": {
+							"trigger": "axis"
+						  },
+						  "legend": {
+							"data": [
+							  "数据1",
+							  "数据2",
+							  "数据3"
+							]
+						  },
+						  "grid": [
+							{}
+						  ],
+						  "xAxis": [
+							{
+							  "boundaryGap": false,
+							  "axisLine": {
+								"lineStyle": {
+								  "color": "#b0b0b0"
+								}
+							  }
+							}
+						  ],
+						  "yAxis": [
+							{
+							  "boundaryGap": false,
+							  "axisLine": {
+								"lineStyle": {
+								  "color": "#b0b0b0"
+								}
+							  }
+							}
+						  ],
+						  "series": [
+							{
+							  "type": "line",
+							  "name": "数据1",
+							  "lineStyle": {
+								"normal": {
+								  "color": "rgb(246, 178, 107)"
+								}
+							  },
+							  "markPoint": {
+								"data": []
+							  }
+							},
+							{
+							  "type": "line",
+							  "name": "数据2",
+							  "markPoint": {
+								"data": []
+							  }
+							},
+							{
+							  "type": "line",
+							  "name": "数据3",
+							  "markPoint": {
+								"data": [
+								  {
+									"name": "最大值",
+									"type": "max"
+								  },
+								  {
+									"name": "最小值",
+									"type": "min"
+								  }
+								]
+							  }
+							}
+						  ]
+						},
+						"$index": [
+						  2,
+						  0
+						]
+					  },
+					  {
+						"label": "数据列表",
+						"type": "datalist",
+						"source": "DATALIST",
+						"data": {
+						  "applied": false,
+						  "model": {
+							"id": 204
+						  },
+						  "resource": [],
+						  "timespan": {
+							"value": 24,
+							"unit": "hour"
+						  },
+						  "format": "年月日",
+						  "frequency": {
+							"value": 30,
+							"unit": "minute"
+						  },
+						  "legend": {
+							"manual": "[\n  \"扬汽蚀余量\"\n]",
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+						  },
+						  "xAxis": {
+							"manual": "[\n  [\n    \"325.92\",\n    \"538.39\",\n    \"664.46\",\n    \"825.24\",\n    \"928.84\",\n    \"1037.46\",\n    \"1209.03\",\n    \"1299.75\",\n    \"1471.54\",\n    \"1629.56\"\n  ]\n]",
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+						  },
+						  "xAxisType": "category",
+						  "series": {
+							"manual": "{\n  \"0\": {\n    \"name\": \"扬汽蚀余量\",\n    \"data\": [\n      \"692.14\",\n      \"695.18\",\n      \"697.75\",\n      \"699.80\",\n      \"696.11\",\n      \"699.13\",\n      \"698.61\",\n      \"701.48\",\n      \"704.03\",\n      \"707.22\"\n    ]\n  }\n}",
+							"bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+						  },
+						  "modelDisable": false
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "time",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"style": {
+						  "margin": "10px"
+						},
+						"$index": [
+						  0,
+						  0
+						]
+					  }
+					]
+				  }
+				],
+				"style": {
+				  "margin": "5px 10px",
+				  "border": "1px solid #aaa",
+				  "background-color": "rgb(255, 255, 255)"
+				},
+				"$index": [
+				  2,
+				  0
+				]
+			  },
+			  {
+				"label": "控制板1",
+				"type": "block",
+				"source": "BLOCK",
+				"children": [
+				  {
+					"type": "column",
+					"col": 12,
+					"children": [
+					  {
+						"label": "文字",
+						"type": "text",
+						"source": "TEXT",
+						"data": {
+						  "applied": false,
+						  "model": {
+							"id": 204
+						  },
+						  "resource": [],
+						  "text": {
+							"manual": "流量分析数据",
+							"bind": "(function (source){\n  return source.getSeries();\n})"
+						  },
+						  "modelDisable": false,
+						  "series": {}
+						},
+						"style": {
+						  "margin": "5px 10px",
+						  "padding": "0",
+						  "font-size": "16px",
+						  "font-weight": "bold",
+						  "background-color": "rgb(255, 255, 255)",
+						  "color": "rgb(102, 102, 102)",
+						  "line-height": "30px",
+						  "text-align": "left"
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "ci",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"$index": [
+						  2,
+						  0
+						]
+					  },
+					  {
+						"label": "线图",
+						"type": "echart",
+						"source": "LINECHART",
+						"data": {
+						  "applied": false,
+						  "resource": [],
+						  "timespan": {
+							"value": 168,
+							"unit": "hour"
+						  },
+						  "format": "年月日",
+						  "frequency": {
+							"value": 86400,
+							"unit": "second"
+						  },
+						  "legend": {
+							"manual": "[\n  \"输入功率\"\n]",
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+						  },
+						  "xAxis": {
+							"manual": [
+							  [
+								"325.92",
+								"538.39",
+								"664.46",
+								"825.24",
+								"928.84",
+								"1037.46",
+								"1209.03",
+								"1299.75",
+								"1471.54",
+								"1629.56"
+							  ]
+							],
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+						  },
+						  "xAxisType": "category",
+						  "yAxis": {
+							"manual": [
+							  [
+								"第一个数据",
+								"第二个数据",
+								"第三个数据",
+								"第四个数据",
+								"第五个数据",
+								"第六个数据"
+							  ]
+							],
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+						  },
+						  "yAxisType": "value",
+						  "series": {
+							"manual": {
+							  "0": {
+								"name": "输入功率",
+								"data": [
+								  "7379.19",
+								  "8487.92",
+								  "9174.19",
+								  "10060.46",
+								  "10645.32",
+								  "11283.19",
+								  "12238.67",
+								  "12757.83",
+								  "13788.21",
+								  "14576.20"
+								]
+							  }
+							},
+							"bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+						  },
+						  "model": {
+							"id": 204
+						  },
+						  "modelDisable": false
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "time",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"parameters": {
+						  "title": "",
+						  "subtitle": ""
+						},
+						"style": {
+						  "margin": "auto",
+						  "width": "100%",
+						  "height": "400px"
+						},
+						"echart": {
+						  "general": {},
+						  "title": {
+							"textStyle": {
+							  "fontWeight": "bold",
+							  "fontSize": 16
+							},
+							"padding": 30
+						  },
+						  "tooltip": {
+							"trigger": "axis"
+						  },
+						  "legend": {
+							"data": [
+							  "数据1",
+							  "数据2",
+							  "数据3"
+							]
+						  },
+						  "grid": [
+							{}
+						  ],
+						  "xAxis": [
+							{
+							  "boundaryGap": false,
+							  "axisLine": {
+								"lineStyle": {
+								  "color": "#b0b0b0"
+								}
+							  }
+							}
+						  ],
+						  "yAxis": [
+							{
+							  "boundaryGap": false,
+							  "axisLine": {
+								"lineStyle": {
+								  "color": "#b0b0b0"
+								}
+							  }
+							}
+						  ],
+						  "series": [
+							{
+							  "type": "line",
+							  "name": "数据1",
+							  "lineStyle": {
+								"normal": {
+								  "color": "rgb(147, 196, 125)"
+								}
+							  },
+							  "markPoint": {
+								"data": []
+							  }
+							},
+							{
+							  "type": "line",
+							  "name": "数据2",
+							  "markPoint": {
+								"data": []
+							  }
+							},
+							{
+							  "type": "line",
+							  "name": "数据3",
+							  "markPoint": {
+								"data": [
+								  {
+									"name": "最大值",
+									"type": "max"
+								  },
+								  {
+									"name": "最小值",
+									"type": "min"
+								  }
+								]
+							  }
+							}
+						  ]
+						},
+						"$index": [
+						  1,
+						  0
+						]
+					  },
+					  {
+						"label": "数据列表",
+						"type": "datalist",
+						"source": "DATALIST",
+						"data": {
+						  "applied": false,
+						  "model": {
+							"id": 204
+						  },
+						  "resource": [],
+						  "timespan": {
+							"value": 24,
+							"unit": "hour"
+						  },
+						  "format": "年月日",
+						  "frequency": {
+							"value": 30,
+							"unit": "minute"
+						  },
+						  "legend": {
+							"manual": "[\n  \"输入功率\"\n]",
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+						  },
+						  "xAxis": {
+							"manual": "[\n  [\n    \"325.92\",\n    \"538.39\",\n    \"664.46\",\n    \"825.24\",\n    \"928.84\",\n    \"1037.46\",\n    \"1209.03\",\n    \"1299.75\",\n    \"1471.54\",\n    \"1629.56\"\n  ]\n]",
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+						  },
+						  "xAxisType": "category",
+						  "series": {
+							"manual": "{\n  \"0\": {\n    \"name\": \"输入功率\",\n    \"data\": [\n      \"7379.19\",\n      \"8487.92\",\n      \"9174.19\",\n      \"10060.46\",\n      \"10645.32\",\n      \"11283.19\",\n      \"12238.67\",\n      \"12757.83\",\n      \"13788.21\",\n      \"14576.20\"\n    ]\n  }\n}",
+							"bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+						  },
+						  "modelDisable": false
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "time",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"style": {
+						  "margin": "10px"
+						},
+						"$index": [
+						  0,
+						  0
+						]
+					  }
+					]
+				  }
+				],
+				"style": {
+				  "margin": "10px",
+				  "border": "1px solid #aaa",
+				  "background-color": "rgb(255, 255, 255)"
+				},
+				"$index": [
+				  2,
+				  0
+				]
+			  },
+			  {
+				"label": "控制板1",
+				"type": "block",
+				"source": "BLOCK",
+				"children": [
+				  {
+					"type": "column",
+					"col": 12,
+					"children": [
+					  {
+						"label": "文字",
+						"type": "text",
+						"source": "TEXT",
+						"data": {
+						  "applied": false,
+						  "model": {
+							"id": 204
+						  },
+						  "resource": [],
+						  "text": {
+							"manual": "流量分析数据",
+							"bind": "(function (source){\n  return source.getSeries();\n})"
+						  },
+						  "modelDisable": false,
+						  "series": {}
+						},
+						"style": {
+						  "margin": "5px 10px",
+						  "padding": "0",
+						  "font-size": "16px",
+						  "font-weight": "bold",
+						  "background-color": "rgb(255, 255, 255)",
+						  "color": "rgb(102, 102, 102)",
+						  "line-height": "30px",
+						  "text-align": "left"
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "ci",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"$index": [
+						  2,
+						  0
+						]
+					  },
+					  {
+						"label": "线图",
+						"type": "echart",
+						"source": "LINECHART",
+						"data": {
+						  "applied": false,
+						  "resource": [],
+						  "timespan": {
+							"value": 168,
+							"unit": "hour"
+						  },
+						  "format": "年月日",
+						  "frequency": {
+							"value": 86400,
+							"unit": "second"
+						  },
+						  "legend": {
+							"manual": [
+							  "第一组",
+							  "第二组",
+							  "第三组"
+							],
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+						  },
+						  "xAxis": {
+							"manual": [
+							  [
+								"325.92",
+								"538.39",
+								"664.46",
+								"825.24",
+								"928.84",
+								"1037.46",
+								"1209.03",
+								"1299.75",
+								"1471.54",
+								"1629.56"
+							  ]
+							],
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+						  },
+						  "xAxisType": "category",
+						  "yAxis": {
+							"manual": [
+							  [
+								"第一个数据",
+								"第二个数据",
+								"第三个数据",
+								"第四个数据",
+								"第五个数据",
+								"第六个数据"
+							  ]
+							],
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+						  },
+						  "yAxisType": "value",
+						  "series": {
+							"manual": {
+							  "0": {
+								"name": "泵效率",
+								"data": [
+								  "45.02",
+								  "63.02",
+								  "70.43",
+								  "77.27",
+								  "80.13",
+								  "81.32",
+								  "81.62",
+								  "80.75",
+								  "77.30",
+								  "73.09"
+								]
+							  }
+							},
+							"bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+						  },
+						  "model": {
+							"id": 204
+						  },
+						  "modelDisable": false
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "time",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"parameters": {
+						  "title": "",
+						  "subtitle": ""
+						},
+						"style": {
+						  "margin": "auto",
+						  "width": "100%",
+						  "height": "400px"
+						},
+						"echart": {
+						  "general": {},
+						  "title": {
+							"textStyle": {
+							  "fontWeight": "bold",
+							  "fontSize": 16
+							},
+							"padding": 30
+						  },
+						  "tooltip": {
+							"trigger": "axis"
+						  },
+						  "legend": {
+							"data": [
+							  "数据1",
+							  "数据2",
+							  "数据3"
+							]
+						  },
+						  "grid": [
+							{}
+						  ],
+						  "xAxis": [
+							{
+							  "boundaryGap": false,
+							  "axisLine": {
+								"lineStyle": {
+								  "color": "#b0b0b0"
+								}
+							  }
+							}
+						  ],
+						  "yAxis": [
+							{
+							  "boundaryGap": false,
+							  "axisLine": {
+								"lineStyle": {
+								  "color": "#b0b0b0"
+								}
+							  }
+							}
+						  ],
+						  "series": [
+							{
+							  "type": "line",
+							  "name": "数据1",
+							  "lineStyle": {
+								"normal": {
+								  "color": "rgb(118, 165, 175)"
+								}
+							  },
+							  "markPoint": {
+								"data": []
+							  }
+							},
+							{
+							  "type": "line",
+							  "name": "数据2",
+							  "markPoint": {
+								"data": []
+							  }
+							},
+							{
+							  "type": "line",
+							  "name": "数据3",
+							  "markPoint": {
+								"data": [
+								  {
+									"name": "最大值",
+									"type": "max"
+								  },
+								  {
+									"name": "最小值",
+									"type": "min"
+								  }
+								]
+							  }
+							}
+						  ]
+						},
+						"$index": [
+						  2,
+						  0
+						]
+					  },
+					  {
+						"label": "数据列表",
+						"type": "datalist",
+						"source": "DATALIST",
+						"data": {
+						  "applied": false,
+						  "model": {
+							"id": 204
+						  },
+						  "resource": [],
+						  "timespan": {
+							"value": 24,
+							"unit": "hour"
+						  },
+						  "format": "年月日",
+						  "frequency": {
+							"value": 30,
+							"unit": "minute"
+						  },
+						  "legend": {
+							"manual": "[\n  \"泵效率\",\n]",
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+						  },
+						  "xAxis": {
+							"manual": "[\n  [\n    \"325.92\",\n    \"538.39\",\n    \"664.46\",\n    \"825.24\",\n    \"928.84\",\n    \"1037.46\",\n    \"1209.03\",\n    \"1299.75\",\n    \"1471.54\",\n    \"1629.56\"\n  ]\n]",
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+						  },
+						  "xAxisType": "category",
+						  "series": {
+							"manual": "{\n  \"0\": {\n    \"name\": \"泵效率\",\n    \"data\": [\n      \"45.02\",\n      \"63.02\",\n      \"70.43\",\n      \"77.27\",\n      \"80.13\",\n      \"81.32\",\n      \"81.62\",\n      \"80.75\",\n      \"77.30\",\n      \"73.09\"\n    ]\n  }\n}",
+							"bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+						  },
+						  "modelDisable": false
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "time",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"style": {
+						  "margin": "10px"
+						},
+						"$index": [
+						  1,
+						  0
+						]
+					  }
+					]
+				  }
+				],
+				"style": {
+				  "margin": "10px",
+				  "border": "1px solid #aaa",
+				  "background-color": "rgb(255, 255, 255)"
+				},
+				"$index": [
+				  2,
+				  0
+				]
+			  }
+			],
+			"display": "block"
+		  },
+		  {
+			"tabName": "诊断分析",
+			"tabId": "2",
+			"type": "tabItem",
+			"children": [
+			  {
+				"label": "控制板1",
+				"type": "block",
+				"source": "BLOCK",
+				"children": [
+				  {
+					"type": "column",
+					"col": 12,
+					"children": [
+					  {
+						"label": "文字",
+						"type": "text",
+						"source": "TEXT",
+						"data": {
+						  "applied": false,
+						  "model": {
+							"id": 204
+						  },
+						  "resource": [],
+						  "text": {
+							"manual": "机组汽动给水泵－分析结果",
+							"bind": "(function (source){\n  return source.getSeries();\n})"
+						  },
+						  "modelDisable": false,
+						  "series": {}
+						},
+						"style": {
+						  "margin": "5px 10px",
+						  "padding": "0",
+						  "font-size": "23px",
+						  "font-weight": "bold",
+						  "color": "#333",
+						  "line-height": "75px",
+						  "text-align": "left"
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "ci",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"$index": [
+						  2,
+						  0
+						]
+					  },
+					  {
+						"type": "row",
+						"children": [
+						  {
+							"type": "column",
+							"children": [
+							  {
+								"label": "控制板1",
+								"type": "block",
+								"source": "BLOCK",
+								"children": [
+								  {
+									"type": "column",
+									"col": 12,
+									"children": [
+									  {
+										"label": "文字",
+										"type": "text",
+										"source": "TEXT",
+										"data": {
+										  "applied": false,
+										  "model": {
+											"id": 204
+										  },
+										  "resource": [
+											"rootCi"
+										  ],
+										  "text": {
+											"manual": "径向轴承温度",
+											"bind": "(function (source){\n  return source.getSeries();\n})"
+										  },
+										  "modelDisable": false,
+										  "maxKpi": 1,
+										  "series": {}
+										},
+										"style": {
+										  "margin": "5px auto",
+										  "padding": "0",
+										  "font-size": "14px",
+										  "font-weight": "bold",
+										  "border-color": "#93C47D",
+										  "border-width": "0px",
+										  "border-style": "solid",
+										  "color": "#333",
+										  "line-height": "20px",
+										  "text-align": "center"
+										},
+										"advance": {
+										  "getfunction": "kpiDataService.getValueList",
+										  "category": "ci",
+										  "condition": [
+											"kpi",
+											"{object:kpiQueryModel}"
+										  ]
+										}
+									  },
+									  {
+										"type": "row",
+										"children": [
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "进水端温度(实测值)",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "#333",
+												  "line-height": "30px",
+												  "text-align": "center"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 3
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 204
+												  },
+												  "resource": [
+													"rootCi"
+												  ],
+												  "text": {
+													"manual": "69.5",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(238, 238, 238)",
+												  "border-color": "#93C47D",
+												  "border-radius": "4%",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "#333",
+												  "line-height": "30px",
+												  "text-align": "center"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 3
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "进水端温度(估计值)",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "#333",
+												  "line-height": "30px",
+												  "text-align": "center"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 3
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 204
+												  },
+												  "resource": [
+													"rootCi"
+												  ],
+												  "text": {
+													"manual": "70",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(238, 238, 238)",
+												  "border-color": "#93C47D",
+												  "border-radius": "4%",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "#333",
+												  "line-height": "30px",
+												  "text-align": "center"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 3
+										  }
+										]
+									  },
+									  {
+										"type": "row",
+										"children": [
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "出水端温度(实测值)",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "#333",
+												  "line-height": "30px",
+												  "text-align": "center"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 3
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 204
+												  },
+												  "resource": [
+													"rootCi"
+												  ],
+												  "text": {
+													"manual": "88.4",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(238, 238, 238)",
+												  "border-color": "#93C47D",
+												  "border-radius": "4%",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "#333",
+												  "line-height": "30px",
+												  "text-align": "center"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 3
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 1011004
+												  },
+												  "resource": [],
+												  "text": {
+													"manual": "出水端温度(估计值)",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "border-color": "#93C47D",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "#333",
+												  "line-height": "30px",
+												  "text-align": "center"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 3
+										  },
+										  {
+											"type": "column",
+											"children": [
+											  {
+												"label": "文字",
+												"type": "text",
+												"source": "TEXT",
+												"data": {
+												  "applied": false,
+												  "model": {
+													"id": 204
+												  },
+												  "resource": [
+													"rootCi"
+												  ],
+												  "text": {
+													"manual": "88",
+													"bind": "(function (source){\n  return source.getSeries();\n})"
+												  },
+												  "modelDisable": false,
+												  "maxKpi": 1,
+												  "series": {}
+												},
+												"style": {
+												  "margin": "5px auto",
+												  "padding": "0",
+												  "font-size": "14px",
+												  "font-weight": "bold",
+												  "background-color": "rgb(238, 238, 238)",
+												  "border-color": "#93C47D",
+												  "border-radius": "4%",
+												  "border-width": "0px",
+												  "border-style": "solid",
+												  "color": "#333",
+												  "line-height": "30px",
+												  "text-align": "center"
+												},
+												"advance": {
+												  "getfunction": "kpiDataService.getValueList",
+												  "category": "ci",
+												  "condition": [
+													"kpi",
+													"{object:kpiQueryModel}"
+												  ]
+												}
+											  }
+											],
+											"col": 3
+										  }
+										]
+									  }
+									]
+								  }
+								],
+								"style": {
+								  "margin": "10px",
+								  "border": "1px solid #aaa",
+								  "background-color": "rgb(255, 255, 255)",
+								  "padding": "10px"
+								},
+								"$index": [
+								  0,
+								  0
+								]
+							  }
+							],
+							"col": 6
+						  },
+						  {
+							"type": "column",
+							"children": [],
+							"col": 6
+						  }
+						]
+					  },
+					  {
+						"label": "控制板1",
+						"type": "block",
+						"source": "BLOCK",
+						"children": [
+						  {
+							"type": "column",
+							"col": 12,
+							"children": [
+							  {
+								"label": "文字",
+								"type": "text",
+								"source": "TEXT",
+								"data": {
+								  "applied": false,
+								  "text": {
+									"manual": "进水端波动偏差预警",
+									"bind": "(function (source){\n  return source.getSeries();\n})"
+								  },
+								  "model": {
+									"id": 204
+								  },
+								  "resource": [
+									"rootCi"
+								  ],
+								  "series": {},
+								  "modelDisable": false
+								},
+								"style": {
+								  "margin": "15px",
+								  "padding": "0",
+								  "font-size": "15px",
+								  "font-weight": "bold",
+								  "color": "#333",
+								  "line-height": "14px",
+								  "text-align": "left"
+								},
+								"advance": {
+								  "getfunction": "kpiDataService.getValueList",
+								  "category": "ci",
+								  "condition": [
+									"kpi",
+									"{object:kpiQueryModel}"
+								  ]
+								},
+								"$index": [
+								  2,
+								  0
+								]
+							  },
+							  {
+								"type": "featurechart",
+								"parameters": {
+								  "type": 1
+								},
+								"style": {
+								  "height": "400px"
+								}
+							  }
+							]
+						  }
+						],
+						"style": {
+						  "margin": "10px",
+						  "border": "1px solid #aaa",
+						  "background-color": "rgb(255, 255, 255)"
+						},
+						"$index": [
+						  0,
+						  0
+						]
+					  },
+					  {
+						"label": "控制板1",
+						"type": "block",
+						"source": "BLOCK",
+						"children": [
+						  {
+							"type": "column",
+							"col": 12,
+							"children": [
+							  {
+								"label": "文字",
+								"type": "text",
+								"source": "TEXT",
+								"data": {
+								  "applied": false,
+								  "text": {
+									"manual": "出水端边缘工况预警",
+									"bind": "(function (source){\n  return source.getSeries();\n})"
+								  },
+								  "model": {
+									"id": 204
+								  },
+								  "resource": [
+									"rootCi"
+								  ],
+								  "series": {},
+								  "modelDisable": false
+								},
+								"style": {
+								  "margin": "15px",
+								  "padding": "0",
+								  "font-size": "15px",
+								  "font-weight": "bold",
+								  "color": "#333",
+								  "line-height": "14px",
+								  "text-align": "left"
+								},
+								"advance": {
+								  "getfunction": "kpiDataService.getValueList",
+								  "category": "ci",
+								  "condition": [
+									"kpi",
+									"{object:kpiQueryModel}"
+								  ]
+								},
+								"$index": [
+								  2,
+								  0
+								]
+							  },
+							  {
+								"type": "featurechart",
+								"parameters": {
+								  "type": 1
+								},
+								"style": {
+								  "height": "400px"
+								}
+							  }
+							]
+						  }
+						],
+						"style": {
+						  "margin": "10px",
+						  "border": "1px solid #aaa",
+						  "background-color": "rgb(255, 255, 255)"
+						},
+						"$index": [
+						  0,
+						  0
+						]
+					  }
+					]
+				  }
+				],
+				"style": {
+				  "margin": 0,
+				  "border": "1px solid #aaa",
+				  "background-color": "",
+				  "border-color": "#93C47D",
+				  "border-width": 0
+				}
+			  }
+			],
+			"display": "none"
+		  },
+		  {
+			"tabName": "组态图",
+			"tabId": "3",
+			"type": "tabItem",
+			"children": [
+			  {
+				"label": "图片",
+				"type": "image",
+				"source": "IMAGE",
+				"parameters": {
+				  "imgSrc": "../images/machine/machine2.png"
+				},
+				"style": {
+				  "height": 300,
+				  "margin": "10px",
+				  "background-color": "rgba(0,0,0,.1)",
+				  "border": "1px solid #ccc"
+				},
+				"$index": [
+				  1,
+				  0
+				]
+			  }
+			],
+			"display": "none"
+		  }
+		],
+		"tabInx": "1",
+		"source": "TAB",
+		"label": "控制板1",
+		"": "",
+		"parameters": {
+		  "align": "horizental"
+		},
+		"style": {
+		  "margin": "5px"
+		},
+		"$index": [
+		  1,
+		  0
+		]
+	  }
+	],
+	"col": 12
+  }
+}

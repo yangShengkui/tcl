@@ -1,0 +1,1314 @@
+{
+  "bgimages": [
+    {
+      "label": "工业实验室",
+      "url": "../images/tongjilib/bg.png"
+    }, {
+      "label": "大棚",
+      "url": "../images/nongye/topo_bg.png"
+    }, {
+      "label": "临江水厂全景",
+      "url": "../images/linjiangshuichang/1991418186.jpg"
+    }, {
+      "label": "一泵房",
+      "url": "../images/linjiangshuichang/yibenfang_9-29.svg"
+    }, {
+      "label": "一泵房低配室",
+      "url": "../images/linjiangshuichang/dipeishi_9-29.svg"
+    }, {
+      "label": "二泵房",
+      "url": "../images/linjiangshuichang/erbenfang_9-29.svg"
+    }, {
+      "label": "二泵房控制室",
+      "url": "../images/linjiangshuichang/kongzhishi_9-29.svg"
+    }, {
+      "label": "小水厂",
+      "url": "../images/linjiangshuichang/xiaoshuichang_9-29.svg"
+    }, {
+      "label": "高配房",
+      "url": "../images/linjiangshuichang/gaopeifang_9-29.svg"
+    }, {
+      "label": "6KV开关室",
+      "url": "../images/linjiangshuichang/6kv_9-29.svg"
+    }, {
+      "label": "临江水厂地图",
+      "url": "../images/linjiangshuichang/new_linjiangmap.svg"
+    }, {
+      "label": "沿桥水厂地图",
+      "url": "../images/linjiangshuichang/new_yanpiaomap.svg"
+    }, {
+      "label": "临江仓库",
+      "url": "../images/linjiangshuichang/cangku_9-29.svg"
+    }, {
+      "label": "宝钢背景",
+      "url": "../images/baogang/baogang.png"
+    },{
+      "label": "宝钢厂区",
+      "url": "../images/baogang/baogangbg.jpg"
+    },{
+      "label": "宝钢产线",
+      "url": "../images/baogang/prodline.svg"
+    }, {
+      "label": "华能组态",
+      "url": "../images/ksb/pic_hd.jpg"
+    }, {
+      "label": "欧科系统组态图",
+      "url": "../images/ouke/device_system.jpg"
+    }, {
+      "label": "欧科水冷单系统",
+      "url": "../images/ouke/device_topo1.jpg"
+    }, {
+      "label": "欧科水冷单系统",
+      "url": "../images/ouke/device_topo2.jpg"
+    }, {
+      "label": "欧科风冷单系统",
+      "url": "../images/ouke/device_topo3.jpg"
+    }, {
+      "label": "欧科风冷双系统",
+      "url": "../images/ouke/device_topo4.jpg"
+    }, {
+      "label": "宝钢地图背景",
+      "url": "../images/baogang/map.png"
+    }, {
+      "label": "宝钢产线动画",
+      "url": "../images/baogang/baogang_line_animation.gif"
+    }
+  ],
+  "fillType": {
+    "basic.Rect": "rect",
+    "basic.Circle": "circle",
+    "basic.Rhombus": "path",
+    "basic.Path": "path",
+    "basic.Polygon": "polygon"
+  },
+
+  "stencil": {
+    "groups": {
+      "basic": {
+        "index": 1,
+        "label": "基础组件"
+      },
+      "expand": {
+        "index": 2,
+        "label": "扩展组件"
+      },
+      "enterprise": {
+        "index": 3,
+        "label": "自定义组件"
+      },
+      "customer": {
+        "index": 4,
+        "label": "通用组件"
+      }
+    },
+
+    "shapes": {
+      "basic": [
+        {
+          "type": "basic.Text",
+          "size": {
+            "width": 60,
+            "height": 48
+          },
+          "attrs": {
+            "text": {
+              "text": "标签",
+              "font-family": "Microsoft YaHei"
+            }
+          }
+        }, {
+          "type": "basic.Rect",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "rect": {
+              "rx": 2,
+              "ry": 2,
+              "fill": "#00b9b2"
+            },
+            "text": {
+              "text": "方形",
+              "font-size": 12,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Circle",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "circle": {
+              "fill": "#00b9b2"
+            },
+            "text": {
+              "text": "圆形",
+              "font-size": 12,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Path",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "path": {
+              "d": "M 0 0 L 60 0 30 60 z",
+              "fill": "#00b9b2"
+            },
+            "text": {
+              "text": "三角形",
+              "font-family": "Microsoft YaHei",
+              "font-size": 12,
+              "ref-y": 0.5,
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Rhombus",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "path": {
+              "fill": "#00b9b2"
+            },
+            "text": {
+              "text": "菱形",
+              "font-family": "Microsoft YaHei",
+              "font-size": 12,
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Polygon",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "polygon": {
+              "points": "30,0 60,15 60,45 30,60 0,45 0,15",
+              "fill": "#00b9b2"
+            },
+            "text": {
+              "text": "六边形",
+              "font-family": "Microsoft YaHei",
+              "font-size": 12,
+              "ref-y": 0.5,
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }
+      ],
+      "expand": [
+        {
+          "type": "chart.Plot",
+          "position": {
+            "x": 50,
+            "y": 50
+          },
+          "size": {
+            "width": 60,
+            "height": 48
+          },
+          "attrs": {
+            ".background text": {
+              "opacity": 0
+            }
+          },
+          "series": [
+            {
+              "name": "性能视图",
+              "data": []
+            }
+          ]
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "extend": "alert",
+          "attrs": {
+            "image": {
+              "width": 60,
+              "height": 60,
+              "xlink:href": "../images/topo/alert.svg"
+            },
+            "text": {
+              "text": "告警扩展",
+              "font-size": 12,
+              "ref-y": 0.5,
+              "stroke": "#ffffff",
+              "stroke-width": 0,
+              "font-family": "Microsoft YaHei"
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "extend": "value",
+          "attrs": {
+            "image": {
+              "width": 60,
+              "height": 60,
+              "xlink:href": "../images/topo/value.svg"
+            },
+            "text": {
+              "text": "指标值扩展",
+              "font-size": 12,
+              "ref-y": 0.5,
+              "stroke": "#ffffff",
+              "stroke-width": 0,
+              "font-family": "Microsoft YaHei"
+            }
+          }
+        }, {
+          "type": "basic.Rect",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "extend": "level",
+          "attrs": {
+            "rect": {
+              "stroke-width": 0,
+              "fill": "#28aee6"
+            },
+            "text": {
+              "text": "液位",
+              "font-size": 12,
+              "ref-y": 0.5,
+              "stroke": "#ffffff",
+              "stroke-width": 0,
+              "font-family": "Microsoft YaHei"
+            }
+          }
+        }, {
+          "type": "basic.Rect",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "extend": "angle",
+          "attrs": {
+            "rect": {
+              "stroke-width": 0,
+              "fill": "#28aee6"
+            },
+            "text": {
+              "text": "开度",
+              "font-size": 12,
+              "ref-y": 0.5,
+              "stroke": "#ffffff",
+              "stroke-width": 0,
+              "font-family": "Microsoft YaHei"
+            }
+          }
+        }, {
+          "type": "basic.Rect",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "extend": "directive",
+          "attrs": {
+            "rect": {
+              "stroke-width": 0,
+              "fill": "#28aee6"
+            },
+            "text": {
+              "text": "指令",
+              "font-size": 12,
+              "ref-y": 0.5,
+              "stroke": "#ffffff",
+              "stroke-width": 0,
+              "font-family": "Microsoft YaHei"
+            }
+          }
+        }, {
+          "type": "basic.Rect",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "extend": "domain",
+          "attrs": {
+            "rect": {
+              "stroke-width": 0,
+              "fill": "#28aee6"
+            },
+            "text": {
+              "text": "管理域",
+              "font-size": 12,
+              "ref-y": 0.5,
+              "stroke": "#ffffff",
+              "stroke-width": 0,
+              "font-family": "Microsoft YaHei"
+            }
+          }
+        }
+      ],
+      "enterprise": [],
+      "customer": [
+         {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 512,
+              "height": 512,
+              "xlink:href": "../images/ouke/jz12.png"
+            },
+            "text": {
+              "text": "机组1.2",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 512,
+              "height": 512,
+              "xlink:href": "../images/tongjilib/switch_green2.png"
+            },
+            "text": {
+              "text": "同济开关(开)",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 512,
+              "height": 512,
+              "xlink:href": "../images/tongjilib/switch_red2.png"
+            },
+            "text": {
+              "text": "同济开关(关)",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        },{
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 512,
+              "height": 512,
+              "xlink:href": "../images/ouke/jz34.png"
+            },
+            "text": {
+              "text": "机组3.4",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 512,
+              "height": 512,
+              "xlink:href": "../images/ouke/ldb.png"
+            },
+            "text": {
+              "text": "冷冻泵",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 512,
+              "height": 512,
+              "xlink:href": "../images/ouke/lqb.png"
+            },
+            "text": {
+              "text": "冷却泵",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 512,
+              "height": 512,
+              "xlink:href": "../images/ouke/lqt.png"
+            },
+            "text": {
+              "text": "冷却塔",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 512,
+              "height": 512,
+              "xlink:href": "../images/ouke/pzsx.png"
+            },
+            "text": {
+              "text": "膨胀水箱",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 512,
+              "height": 512,
+              "xlink:href": "../images/ouke/ycpt.svg"
+            },
+            "text": {
+              "text": "压差旁通",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 512,
+              "height": 512,
+              "xlink:href": "../images/ouke/A.B.C.png"
+            },
+            "text": {
+              "text": "A.B.C区",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 173,
+              "height": 41,
+              "xlink:href": "../images/ouke/fsq.jsq.svg"
+            },
+            "text": {
+              "text": "分水器集水器",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 128,
+              "height": 84,
+              "xlink:href": "../images/ouke/compressor.svg"
+            },
+            "text": {
+              "text": "压缩器",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 128,
+              "height": 84,
+              "xlink:href": "../images/ouke/condenser.svg"
+            },
+            "text": {
+              "text": "冷凝器",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 128,
+              "height": 84,
+              "xlink:href": "../images/ouke/evaporator.svg"
+            },
+            "text": {
+              "text": "蒸发器",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 128,
+              "height": 84,
+              "xlink:href": "../images/ouke/exchanger.svg"
+            },
+            "text": {
+              "text": "交换器",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 128,
+              "height": 84,
+              "xlink:href": "../images/ouke/extension.svg"
+            },
+            "text": {
+              "text": "膨胀器",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 60,
+              "height": 60,
+              "xlink:href": "../images/linjiangshuichang/pop.svg"
+            },
+            "text": {
+              "text": "水厂提示",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "label": "温度",
+          "attrs": {
+            "image": {
+              "width": 60,
+              "height": 60,
+              "xlink:href": "../images/linjiangshuichang/wendu.svg"
+            },
+            "text": {
+              "text": "温度",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "label": "湿度",
+          "attrs": {
+            "image": {
+              "width": 60,
+              "height": 60,
+              "xlink:href": "../images/linjiangshuichang/shidu.svg"
+            },
+            "text": {
+              "text": "湿度",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "label": "烟感有",
+          "attrs": {
+            "image": {
+              "width": 60,
+              "height": 60,
+              "xlink:href": "../images/linjiangshuichang/smoke_detector.svg"
+            },
+            "text": {
+              "text": "烟感有",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "label": "烟感无",
+          "attrs": {
+            "image": {
+              "width": 60,
+              "height": 60,
+              "xlink:href": "../images/linjiangshuichang/smoke_detector_a.svg"
+            },
+            "text": {
+              "text": "烟感无",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "label": "水浸有",
+          "attrs": {
+            "image": {
+              "width": 60,
+              "height": 60,
+              "xlink:href": "../images/linjiangshuichang/water_logging_a.svg"
+            },
+            "text": {
+              "text": "水浸有",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "label": "水浸无",
+          "attrs": {
+            "image": {
+              "width": 60,
+              "height": 60,
+              "xlink:href": "../images/linjiangshuichang/water_logging.svg"
+            },
+            "text": {
+              "text": "水浸无",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "label": "门磁关",
+          "attrs": {
+            "image": {
+              "width": 60,
+              "height": 60,
+              "xlink:href": "../images/linjiangshuichang/door_close.svg"
+            },
+            "text": {
+              "text": "门磁关",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "label": "门磁开",
+          "attrs": {
+            "image": {
+              "width": 60,
+              "height": 60,
+              "xlink:href": "../images/linjiangshuichang/door_open.svg"
+            },
+            "text": {
+              "text": "门磁开",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "label": "气体密度",
+          "attrs": {
+            "image": {
+              "width": 50,
+              "height": 50,
+              "xlink:href": "../images/linjiangshuichang/qitimidu.svg"
+            },
+            "text": {
+              "text": "气体密度",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 50,
+              "height": 57,
+              "xlink:href": "../images/linjiangshuichang/bianyaqi_9-28.png"
+            },
+            "text": {
+              "text": "变压器",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 50,
+              "height": 194,
+              "xlink:href": "../images/linjiangshuichang/dianjigui_9-28.png"
+            },
+            "text": {
+              "text": "电机柜",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 50,
+              "height": 153,
+              "xlink:href": "../images/linjiangshuichang/2-kongzhigui_9-28.png"
+            },
+            "text": {
+              "text": "二泵房-2#机泵控制柜",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 50,
+              "height": 105,
+              "xlink:href": "../images/linjiangshuichang/8-kongzhigui_9-28.png"
+            },
+            "text": {
+              "text": "二泵房-8#机泵控制柜",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 50,
+              "height": 110,
+              "xlink:href": "../images/linjiangshuichang/2-shuiben_9-28.png"
+            },
+            "text": {
+              "text": "二泵房-水泵",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 50,
+              "height": 48,
+              "xlink:href": "../images/linjiangshuichang/1-shuiben_9-28.png"
+            },
+            "text": {
+              "text": "一泵房-水泵",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 50,
+              "height": 161,
+              "xlink:href": "../images/linjiangshuichang/kongzhigui_9-28.png"
+            },
+            "text": {
+              "text": "控制柜",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 50,
+              "height": 141,
+              "xlink:href": "../images/linjiangshuichang/licishi_9-28.png"
+            },
+            "text": {
+              "text": "励磁室",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 1026,
+              "height": 1930,
+              "xlink:href": "../images/linjiangshuichang/dev2.svg"
+            },
+            "text": {
+              "text": "设备2",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 50,
+              "height": 50,
+              "xlink:href": "../images/linjiangshuichang/dev3.png"
+            },
+            "text": {
+              "text": "设备3",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 146,
+              "height": 656,
+              "xlink:href": "../images/linjiangshuichang/cabinet1.png"
+            },
+            "text": {
+              "text": "机柜1",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 146,
+              "height": 656,
+              "xlink:href": "../images/linjiangshuichang/cabinet2.png"
+            },
+            "text": {
+              "text": "机柜2",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 36,
+              "height": 114,
+              "xlink:href": "../images/linjiangshuichang/cabinet_part.png"
+            },
+            "text": {
+              "text": "机柜卡扣",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 128,
+              "height": 128,
+              "xlink:href": "../images/ziguang/ziguang_guanzi.svg"
+            },
+            "text": {
+              "text": "罐子",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 128,
+              "height": 128,
+              "xlink:href": "../images/ziguang/ziguang_jiantou.svg"
+            },
+            "text": {
+              "text": "箭头",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 128,
+              "height": 128,
+              "xlink:href": "../images/ziguang/ziguang_sanreqi.svg"
+            },
+            "text": {
+              "text": "散热器",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 128,
+              "height": 128,
+              "xlink:href": "../images/ziguang/ziguang_shuibiao.svg"
+            },
+            "text": {
+              "text": "水表",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }, {
+          "type": "basic.Image",
+          "size": {
+            "width": 60,
+            "height": 60
+          },
+          "attrs": {
+            "image": {
+              "width": 128,
+              "height": 84,
+              "xlink:href": "../images/ziguang/ziguang_shuibeng.svg"
+            },
+            "text": {
+              "text": "水泵",
+              "font-size": 12,
+              "ref-dy": 10,
+              "font-family": "Microsoft YaHei",
+              "stroke": "#000000",
+              "stroke-width": 0
+            }
+          }
+        }
+      ]
+    },
+
+    "search": {
+      "*": [
+        "attrs/text/text"
+      ]
+    }
+  }
+}

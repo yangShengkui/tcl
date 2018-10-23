@@ -1,0 +1,45 @@
+<config injector="$rootScope,$timeout,$compile" type="factory"
+></config>
+<script type="text/javascript">
+  import { screenOffset } from "ps-ultility";
+  export default function(rootScope,timeout,compile){
+    function createDrop(target, data, postion){
+      const scope = rootScope.$new(),
+        template = `<ul class="dropdown-menu" ng-class="state" role="menu" style="position:absolute;">
+        <li ng-click="op.click(op, $index)" ng-repeat="op in options"><a role="button" ng-bind="op.label"></a></li>
+      </ul>`,
+        bodyClick = function(e){
+          destroy();
+          document.body.removeEventListener("click", bodyClick);
+        };
+      let dom = document.createElement("div"),
+        offset = screenOffset(target);
+      dom.setAttribute("class", "open");
+      dom.style.position = "fixed";
+      dom.style.zIndex = 9999;
+      dom.innerHTML = template;
+      scope.options = data;
+      document.body.appendChild(dom);
+      timeout(function(){
+        dom.style.top = offset.top + target.clientHeight + "px";
+        dom.style.left = ( postion === "left" ? offset.left  : ( offset.left - dom.children[0].clientWidth + target.clientWidth ) ) + "px";
+        document.body.addEventListener("click", bodyClick);
+      })
+      compile(dom)(scope);
+      function destroy(){
+        dom.remove();
+        scope.$destroy();
+        dom = null;
+      }
+      /**
+      return {
+        destroy : destroy,
+        submit : submit,
+        close : close
+      }**/
+    }
+    return {
+      createDrop : createDrop
+    }
+  }
+</script>

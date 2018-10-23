@@ -1,0 +1,78 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">线体信息</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal row" name="projectForm">
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger">*</span> <span>工厂归属：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input class="form-control input-sm" ng-if="linebodyInfo.id && linebodyInfo.id >0" ng-disabled="linebodyInfo.id && linebodyInfo.id >0" value="{{domainListDic[linebodyInfo.domainPath].name}}" />
+              <div ng-if="!linebodyInfo.id || linebodyInfo.id == -1" class="dropdowntree select-sm" placeholder="请选择..." autocomplete="off" ng-model="linebodyInfo.domainPath" change="" key="domainPath" options="domainListTree" mark="nodes" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">工厂名称：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <select ng-model="linebodyInfo.customerId" class="form-control input-sm" selectdata="CustomerList" ng-options="value.id as value.text for value in CustomerList | filter:{ domainPath :  linebodyInfo.domainPath}" select2 required></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">车间名称：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <select ng-model="linebodyInfo.projectId" class="form-control input-sm" selectdata="WorkshopList" ng-options="value.id as value.text for value in WorkshopList | filter:{ customerId :  linebodyInfo.customerId}" select2 required></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span><span class="ng-binding">线体名称：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="text" class="form-control input-sm" ng-model="linebodyInfo.productionLineName" maxlength="32" required>
+            </div>
+          </div>
+
+          <div ng-if="extendTableColumns.length ==0">
+
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">线体安装时间：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <input type="text" class="form-control input-sm" style="background-color: #fff;" readonly='readonly' autocomplete="off" ng-model="linebodyInfo.installDate" date-time-picker required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">调试完成时间：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <input type="text" class="form-control input-sm" style="background-color: #fff;" readonly='readonly' autocomplete="off" ng-click="alertFun" ng-model="linebodyInfo.debugFinishDate" date-time-picker required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">质保截止时间：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <input type="text" class="form-control input-sm" style="background-color: #fff;" readonly='readonly' autocomplete="off" ng-model="linebodyInfo.qualityCloseDate" date-time-picker required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">线体生产说明：</span></label>
+
+              <div class="col-sm-4 padding-left-5">
+                <input id="fileName" style="display:none" class="form-control" type="file" nv-file-select="" uploader="uploader" multiple  >
+                <input type="hidden" readonly="readonly" class="form-control dialog-inp-text  input-sm"  ng-model="linebodyInfo.productionDescription">
+                <input type="text" readonly="readonly" class="form-control dialog-inp-text  input-sm" ng-model="linebodyDescDisplay" required="required">
+
+                <span onclick="$('#fileName').click()" style="position: absolute;top: 10%;right: 15%;"><i class="proudsmart ps-add"></i></span>
+                <span ng-show="docError.name == 'error'" style="font-size: 12px;"  ng-bind="docError.conter" class="help-block text-danger text-muted" ng-cloak></span>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button class="btn btn-primary" ng-disabled="projectForm.$invalid" ng-click="saveData()">确定</button>
+          <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

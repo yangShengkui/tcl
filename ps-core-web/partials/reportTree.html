@@ -1,0 +1,149 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box" ng-show="searchShow == 'yes'">
+        <div class="box-header">
+          <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs pull-left">
+              <li ng-class="{true:'active'}[showMainTab == 'start']"><a href="#start-form" name="start" data-toggle="tab">开机时长</a></li>
+              <li ng-class="{true:'active'}[showMainTab == 'day']"><a href="#day-form" name="day" data-toggle="tab">机台当日产量</a></li>
+            </ul>
+            <div class="tab-content">
+              <!--<div ng-show="showMainTab == 'start'">-->
+              <form id="start-form" class="form-horizontal tab-pane active" role="form">
+                <table width="100%" class="table table-hover" yield-table>
+                  <tfoot>
+                    <tr>
+                      <th>总计</th>
+                      <th>{{yieldGridData.totaldata.dayRunTime}}</th>
+                      <th>{{yieldGridData.totaldata.weekRunTime}}</th>
+                      <th>{{yieldGridData.totaldata.monthRunTime}}</th>
+                      <th>{{yieldGridData.totaldata.monthBootRate}}</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </form>
+              <!--</div>-->
+              <!--<div ng-show="showMainTab == 'day'">-->
+              <form id="day-form" class="form-horizontal tab-pane" role="form">
+                <table width="100%" class="table table-hover" duration-table>
+                  <tfoot>
+                    <tr>
+                      <th>总计</th>
+                      <th>{{durationGridData.totaldata.figure_day_output}}</th>
+                      <th></th>
+                      <th>{{durationGridData.totaldata.tasks_number}}</th>
+                      <th>{{durationGridData.totaldata.number_produced}}</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </form>
+              <!--</div>-->
+            </div>
+          </div>
+        </div>
+        <!-- /.box-header -->
+      </div>
+      <div class="box" ng-show="showTab == '1000' ">
+        <div class="box-header with-border">
+          <h3 class="box-title">客户编号统计</h3>
+          <div ng-show="searchShow == 'yes'" class="text-center pull-right">
+            <a class="btn btn-default btn-sm" ng-click="closeTable();">
+              <i class="fa fa-times"></i><span class="hidden-xs"> 取消</span>
+            </a>
+          </div>
+        </div>
+        <div class="box-body table-responsive">
+          <table width="100%" class="table table-hover">
+            <thead>
+              <tr role="row">
+                <th>
+                  客户编号
+                </th>
+                <th>
+                  花样名称
+                </th>
+                <th>
+                  机台编号
+                </th>
+                <th>
+                  花样任务
+                </th>
+                <th>
+                  累计产量
+                </th>
+                <th>
+                  剩余小时
+                </th>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr role="row" ng-repeat="report in report2customer">
+                <td rowspan={{filterSum}}>{{report.customer_id}}</td>
+                <td>{{report.figure_name}}</td>
+                <td>{{report.externalDevId}}</td>
+                <td>{{report.tasks_number}}</td>
+                <td>{{report.number_produced}}</td>
+                <td>{{report.how_long_to_finish}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- /.box -->
+        </div>
+      </div>
+      <div class="box" ng-show="showTab == '1001' ">
+        <div class="box-header with-border">
+          <h3 class="box-title">花样名统计</h3>
+          <div ng-show="searchShow == 'yes'" class="text-center pull-right">
+            <a class="btn btn-default btn-sm" ng-click="closeTable();">
+              <i class="fa fa-times"></i><span class="hidden-xs"> 取消</span>
+            </a>
+          </div>
+        </div>
+        <div class="box-body table-responsive">
+          <table width="100%" class="table table-hover">
+            <thead>
+              <tr role="row">
+                <th>
+                  花样名称
+                </th>
+                <th>
+                  机台编号
+                </th>
+                <th>
+                  客户编号
+                </th>
+                <th>
+                  花样任务
+                </th>
+                <th>
+                  累计产量
+                </th>
+                <th>
+                  剩余小时
+                </th>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr role="row" ng-repeat="report in report2figure">
+                <td rowspan={{filterSum}}>{{report.figure_name}}</td>
+                <td>{{report.externalDevId}}</td>
+                <td>{{report.customer_id}}</td>
+                <td>{{report.tasks_number}}</td>
+                <td>{{report.number_produced}}</td>
+                <td>{{report.how_long_to_finish}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- /.box -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

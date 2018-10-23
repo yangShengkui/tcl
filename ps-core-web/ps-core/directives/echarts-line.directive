@@ -1,0 +1,189 @@
+<config injector=""></config>
+<template>
+    <div>
+        <echarts-base class="echarts-base-wrap"></echarts-base>
+    </div>
+
+</template>
+<script type="text/javascript">
+export default function () {
+  return {
+    scope: {
+      option: '=?'
+    },
+    link (scope, element, attr) {
+      let option = scope.option;
+      let lineType = option.type ? option.type : 'CUSTOMER'
+      let chartOption = {
+        title: {
+          text: option.title || '',
+          left: '3%',
+          textStyle: {
+            color: option.titleFontColor || '#aac3ff',
+            fontSize: option.titleFontSize || 18
+          }
+        },
+        color: Array.isArray(option.color) ? option.color : ['#5a97ff', '#64d1fa', '#bd7bf8', '#f0b974'],
+        legend: {
+          show: true,
+          itemWidth: 12,
+          itemHeight: 21,
+          itemGap: 20,
+          textStyle: {
+            color: '#fff'
+          },
+          right: '4%'
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true,
+        },
+        xAxis: {
+          type: 'category',
+          axisLine: {
+            lineStyle: {
+              color: '#35446a'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          axisLabel: {
+            color: '#e2e3e7'
+          },
+          splitLine: {
+            show: false
+          }
+        },
+        yAxis: {
+          type: 'value',
+          axisTick: {
+            show: false
+          },
+          axisLabel: {
+            color: '#e2e3e7',
+            margin: 40,
+            align: 'left',
+            formatter: function (a, b) {
+              if (b === 0) {
+                return a + ' (' + (option.yAxisUnit || '%') + ')';
+              }
+              return a
+            }
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: '#35446a'
+            }
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#35436b'
+            }
+          }
+        },
+        series: []
+      };
+      switch (lineType) {
+        case 'NORMAL':
+          if (Array.isArray(option.data)) {
+            chartOption.legend.data = chartOption.legend.data || [];
+            chartOption.series = chartOption.series || [];
+            chartOption.xAxis.data = chartOption.xAxis.data || [];
+            let xAxisDataObj = [];
+            option.data.forEach(function (item) {
+              chartOption.legend.data.push({
+                name: item.name,
+                icon: 'path://M200,200 A100 100 0 1 1 200,201z M380,200 A80 80 0 1 0 380,201z'
+              });
+              chartOption.series.push({
+                type: 'line',
+                symbolSize: 10,
+                symbol: 'circle',
+                itemStyle: {
+                  borderWidth: 3,
+                  borderColor: '#fff'
+                },
+                emphasis: {
+                  label: {
+                    show: true,
+                    color: '#fff',
+                    backgroundColor: '#333',
+                    borderWidth: 2,
+                    borderColor: 'auto',
+                    padding: [4, 6],
+                    borderRadius: 3
+                  }
+                },
+                name: item.name,
+                data: item.data
+              });
+              item.data.forEach(function (itemName) {
+                xAxisDataObj[itemName.name] = itemName.name;
+              });
+            });
+            chartOption.xAxis.data = Object.keys(xAxisDataObj);
+          }
+          break;
+        case 'AREA':
+          if (Array.isArray(option.data)) {
+            chartOption.xAxis.boundaryGap = false;
+            chartOption.series = chartOption.series || [];
+            chartOption.xAxis.data = chartOption.xAxis.data || [];
+            chartOption.legend.data = chartOption.legend.data || [];
+            let xAxisDataObj = [];
+            option.data.forEach(function (item) {
+              chartOption.legend.data.push({
+                name: item.name,
+                icon: 'path://M200,200 A100 100 0 1 1 200,201z M380,200 A80 80 0 1 0 380,201z'
+              });
+              chartOption.series.push({
+                type: 'line',
+                smooth: true,
+                symbol: 'circle',
+                symbolSize: '1',
+                areaStyle: {
+                  opacity: 0.05
+                },
+                emphasis: {
+                  label: {
+                    show: true,
+                    color: '#fff',
+                    backgroundColor: '#333',
+                    borderWidth: 2,
+                    borderColor: 'auto',
+                    padding: [4, 6],
+                    borderRadius: 3
+                  }
+                },
+                name: item.name,
+                data: item.data
+              });
+              item.data.forEach(function (itemName) {
+                xAxisDataObj[itemName.name] = itemName.name;
+              });
+            });
+            chartOption.xAxis.data = Object.keys(xAxisDataObj);
+          }
+          break;
+        case 'CUSTOMER':
+          chartOption = option.chartOption;
+          break;
+      }
+      console.log(JSON.stringify(chartOption))
+      scope.$broadcast('ECHARTS_BASE_INIT', {
+        option: chartOption
+      });
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+.echarts-base-wrap {
+    width: 100%;
+    height: 100%;
+}
+</style>

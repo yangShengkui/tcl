@@ -1,0 +1,74 @@
+{
+  "layout": {
+    "type": "column",
+    "children": [
+      {
+        "label": "文字",
+        "type": "text",
+        "source": "TEXT",
+        "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+        "data": {
+          "applied": false,
+          "multipleCi": false,
+          "multipleKpi": false,
+          "resource": [],
+          "modelType": 300,
+          "resfilltype": "parameter",
+          "series": {
+            "manual": "新建文字",
+            "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+          },
+          "modelDisable": true
+        },
+        "style": {
+          "margin": "5px",
+          "padding": "10px",
+          "font-size": "12px",
+          "font-weight": "bold",
+          "background-color": "rgb(243, 243, 243)"
+        },
+        "advance": {
+          "getfunction": "kpiDataService.getValueList",
+          "category": "ci",
+          "condition": [
+            "kpi",
+            "{object:kpiQueryModel}"
+          ],
+          "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"调试工具\")\n        }\n    },\n    changePopupTitle : function(event){\n        var target = event.target;\n        var text = target.getPoupData(\"console/title\")\n        target.setText(text)\n    }\n}"
+        },
+        "parameters": {}
+      },
+      {
+        "label": "控件组",
+        "type": "ctrlgroup",
+        "source": "CTRLGROUP",
+        "advance": {
+          "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n       [{\n          type : \"button\",\n          value : \"清空\",\n          icon : \"glyphicon glyphicon-trash\",\n          btnclass : \"btn btn-primary\",\n          class : \"col-md-12\",\n          on : {\n            click : function(elem){\n              global.fire(\"clearPopupCode\");\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+        },
+        "style": {
+          "margin": "5px",
+          "font-size": "12px"
+        },
+        "help": "../pdf/ctrlgroup.pdf"
+      },
+      {
+        "label": "代码编辑器",
+        "type": "aceeditor",
+        "source": "ACEEDITOR",
+        "style": {
+          "margin": "5px",
+          "padding": "0",
+          "height": "300px"
+        },
+        "advance": {
+          "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            var text = target.getPopupData();\n            target.render();\n            target.insert(text);\n        },\n        clearPopupCode : function(event){\n            var target = event.target;\n            target.setText(\"\");\n            target.setConsoleText(\"\");\n        }\n    }\n}"
+        },
+        "parameters": {}
+      }
+    ],
+    "col": 12
+  },
+  "setting": {
+    "padding": 15
+  }
+}

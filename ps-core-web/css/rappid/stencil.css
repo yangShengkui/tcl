@@ -1,0 +1,155 @@
+/*! Rappid v2.0.1 - HTML5 Diagramming Framework
+
+Copyright (c) 2015 client IO
+
+ 2016-12-02 
+
+
+This Source Code Form is subject to the terms of the Rappid License
+, v. 2.0. If a copy of the Rappid License was not distributed with this
+file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
+ or from the Rappid archive as was distributed by client IO. See the LICENSE file.*/
+
+.stencil-container {
+  /*
+   border-top: 1px solid #4f4f4f;
+   border-right: 1px solid lightgray;
+   background-color: hsla(220,11%,97%,.95);
+   */
+  color: #bcbcbc;
+}
+
+.stencil-container>label {
+  display: block;
+  text-align: center;
+  background-color: #50575b;
+  font-size: 10px;
+  line-height: 20px;
+  height: 20px;
+  text-shadow: 0 -1px 0 #000;
+}
+
+.stencil-container>.btn-expand,
+.stencil-container>.btn-collapse {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background: none;
+  border: none;
+  outline: none;
+  color: #bcbcbc;
+  cursor: pointer;
+  width: 20px;
+  height: 16px;
+  line-height: 16px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #4f4f4f;
+}
+
+.stencil-container>.btn-collapse {
+  left: 25px;
+}
+
+.joint-stencil {
+  border-bottom: 0px !important;
+  border-top: 0px !important;
+  border-left: 0px !important;
+  background: #50575b;
+}
+
+.joint-stencil>.content {
+  padding: 0px;
+  /*background: hsla(220, 11%, 97%, .95);*/
+}
+
+.joint-stencil .search {
+  text-shadow: none;
+  background: #3d4347;
+  border: none;
+  /*background: transparent;*/
+}
+
+.joint-stencil .search:focus {
+  outline: none;
+}
+
+.joint-stencil.searchable>.content {
+  top: 49px;
+}
+
+.joint-stencil .group {
+  max-height: 5000px;
+  padding-left: 0px;
+  margin-bottom: 0px;
+}
+.joint-stencil .group.closed {
+  height: 44px !important;
+  max-height: 44px !important;
+}
+
+.joint-stencil .group > .group-label,
+.joint-stencil .group.closed > .group-label:hover {
+  padding: 12px 5px 17px 8px;
+  position: relative;
+  left: 0px;
+  margin-right: 0px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 14px !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-top: 0;
+  border-bottom: 0;
+  background: #5d6973;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.joint-stencil .group.closed > .group-label {
+  padding: 12px 5px 17px 8px;
+  position: relative;
+  left: 0px;
+  margin-right: 0px;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-top: 0;
+  border-bottom: 0;
+  background: transparent;
+  cursor: pointer;
+  color: #b8c7ce;
+}
+
+.stencil .group .elements {
+  /*margin-left: -10px;*/
+  /*background: transparent;*/
+  background-color: #747d85;
+}
+.joint-stencil .group .joint-elements {
+  margin-left: -10px;
+  background: transparent;
+}
+
+
+/* Hide some nodes of elements in stencil. */
+
+.joint-stencil .joint-elements .joint-element.basic.Image text,
+.joint-stencil .joint-elements .joint-element.devs.Atomic .inPorts text,
+.joint-stencil .joint-elements .joint-element.devs.Atomic .outPorts text,
+.joint-stencil .joint-elements .joint-element.pn.Transition text {
+  display: none;
+}
+
+
+/* filter */
+
+.joint-stencil .joint-element.unmatched {
+  display: none;
+}
+
+.joint-stencil .group.unmatched {
+  display: none;
+}

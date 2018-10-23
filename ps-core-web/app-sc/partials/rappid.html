@@ -1,0 +1,52 @@
+<div id="bootstrap-dialog" class="modal bootstrap-dialog type-primary fade size-normal in" ng-if="dialogBox" style="display : block;">
+  <div class="modal-dialog type-primary">
+    <div class="modal-content" style="border-radius : 4px;">
+      <div class="modal-header">
+        <div class="bootstrap-dialog-header">
+          <div class="bootstrap-dialog-close-button" style="display: none;"><button class="close">×</button></div>
+          <div class="bootstrap-dialog-title" ng-bind="dialogBox.title.label"></div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="bootstrap-dialog-body">
+          <div class="bootstrap-dialog-message" ng-bind="dialogBox.description.label"></div>
+          <div ng-if="dialogBox.input" class="row">
+            <div class="col-md-3" style="line-height: 35px;">
+              <span class="box-title" ng-bind="dialogBox.input.label"  ng-if="dialogBox.input"></span>
+            </div>
+            <div class="col-md-9">
+              <input ng-model="dialogBox.input.value"
+                     ng-change="dialogBox.input.onChange()"
+                     ng-attr-placeholder="{{dialogBox.input.placeholder}}"
+                     class="form-control"/>
+            </div>
+          </div>
+          <div ng-if="dialogBox.select" class="row">
+            <div class="col-md-3" style="line-height: 35px;">
+              <span class="box-title" ng-bind="dialogBox.select.label"></span>
+            </div>
+            <div class="col-md-9">
+              <select ng-model="dialogBox.select.value"
+                     ng-options="item as item.viewTitle for item in dialogBox.select.options"
+                     class="form-control"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="display: block;">
+        <div class="bootstrap-dialog-footer">
+          <div class="bootstrap-dialog-footer-buttons">
+            <button ng-class="btn.icon"
+                    ng-repeat="btn in dialogBox.fnlist"
+                    ng-click="btn.fn()"
+                    ng-bind="btn.label"
+                    ng-class="btn.icon;"
+                    ng-disabled = "btn.disabled">
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<rappid source="../localdb/basic.json"></rappid>

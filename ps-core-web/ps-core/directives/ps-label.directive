@@ -1,0 +1,25 @@
+<config injector="psScope"
+></config>
+<template>
+  <div>
+    <span ng-bind="config.label"></span>
+  </div>
+</template>
+<script type="text/javascript">
+  export default function(psScope){
+    return {
+      scope : {
+        config : "="
+      },
+      link(scope, element, attr, ngModel) {
+        console.log(scope.config);
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+  span{
+    line-height : 28px;
+    font-size : 12px;
+  }
+</style>

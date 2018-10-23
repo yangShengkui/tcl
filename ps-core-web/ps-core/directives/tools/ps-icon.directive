@@ -1,0 +1,204 @@
+<config injector="$q, $timeout, $location"
+></config>
+<template>
+        <div class="ps_icon">
+            <div class="it">
+                <input class="ipt">
+                <span class="spa">
+            </span>
+            </div>
+        </div>
+
+</template>
+<script type="text/javascript">
+
+  export default function($q, $timeout, $location){
+    return {
+      restrict: 'E',
+      scope : {
+        ngModel : "=?",
+        config : "=?",
+          data : '='
+      },
+      replace: true,
+      require : '?ngModel',
+      link(scope, element, attr, ngModel) {
+          var div = element[0],
+              inp = div.getElementsByTagName('input')[0],
+              iconDiv,
+              spa = div.getElementsByTagName('span')[0],
+              defaultConfig = {
+                  width: "400px",
+                  placeholder: '请选择...'
+              };
+
+          scope.config = angular.extend({},defaultConfig,scope.config||{});
+          div.style.width = scope.config.width;
+          inp.placeholder = scope.config.placeholder;
+
+          inp.onfocus = function(){
+              inp.placeholder = "";
+          };
+          inp.onblur = function(){
+              if(!spa.className){
+                  inp.placeholder = scope.config.placeholder;
+              }else {
+                  inp.placeholder = "";
+              }
+          };
+          //利用捕获特性处理
+          document.addEventListener('scroll',function (e) {
+              document._ICON_SCROLL_EVENT = arguments.callee;
+              if(e.target !== iconDiv ) {
+                  destroyeIconDiv();
+              }
+          },true);
+
+          //点击document  不可以用onclick事件  会覆盖
+          document.addEventListener('click', function (e) {
+              document._ICON_CLICK_EVENT = arguments.callee;
+              var target = e.target;
+              if(target == inp || target == spa){
+                  e.stopPropagation();
+                  if($(inp).hasClass('open')){
+                      destroyeIconDiv();
+                  }else{
+                      renderIconDiv();
+                  }
+              } else if(iconDiv && target.tagName === 'I' && iconDiv.contains(target)){
+                  createIconDiv();
+                  spa.className = target.className;
+                  ngModel.$setViewValue(spa.className);
+              } else if(iconDiv && !iconDiv.contains(target)) {
+                  destroyeIconDiv();
+              }
+          });
+          //获取元素的位置
+          function getElPosition (element) {
+              return element.getBoundingClientRect();
+          }
+          Array.prototype.push.call(ngModel.$parsers, function (n, o) {
+              if (!n) {
+                  return;
+              }
+              return n;
+          });
+          scope.$on('$destroy',function () {
+              div = null;
+              iconDiv = null;
+              $('.ib').remove();
+              spa = null;
+              inp = null;
+              inp.onfocus = null;
+              inp.onblur = null;
+              scope.config = null;
+              document.removeEventListener('click',document._ICON_CLICK_EVENT);
+              document.removeEventListener('scroll',document._ICON_SCROLL_EVENT);
+          });
+          function destroyeIconDiv(){
+              $('.ib').remove();
+              iconDiv = null;
+              $(inp).removeClass('open');
+          }
+          //渲染 input
+          function renderInputVal () {
+              return $timeout(function () {
+                  spa.className = ngModel.$$lastCommittedViewValue;
+                  if(spa.className){
+                      inp.placeholder = "";
+                  }
+              })
+
+          }
+          // 渲染ul icon图标
+          function renderIconDiv() {
+              return $timeout(function () {
+                  $(div).append('<ul class="ib"></ul>');
+                  createIconDiv();
+              });
+          }
+          function createIconDiv(){
+              var str = '';
+              scope.$parent.data.forEach(function (value) {
+                  str += `<li><a href="javascript:;"><i class= "${value}"></i></a></li>`;
+              });
+              iconDiv = document.getElementsByClassName('ib')[0];
+              iconDiv.innerHTML = str;
+              iconDiv.style.left = getElPosition(inp).left + 'px';
+              iconDiv.style.top = (getElPosition(inp).top + inp.offsetHeight + 2) +'px';
+              $(inp).addClass('open');
+          }
+          renderInputVal();
+      }
+    }
+  }
+
+</script>
+<style type="less" scoped="true">
+    ul,li {
+        list-style: none;
+    }
+    .ps_icon {
+        width: 300px;
+        height: 40px;
+        margin: 10px auto;
+    }
+    .it {
+        width: 50%;
+        /*height: 12%;*/
+        position: relative;
+        span{
+            position: absolute;
+            left: 2px;
+            top: 3px;
+            width: 30px;
+            height: 30px;
+            display: block;
+            text-align: center;
+            line-height: 30px;
+            color: #3c8dbc;
+        }
+    }
+    input.ipt {
+        width: 100%;
+        height: 40px;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+    .ib {
+        position: fixed;
+        left: 0;
+        top:0;
+        width: 300px;
+        height: 240px;
+        padding: 10px;
+        border: 1px solid #000;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        background-color: #ffffff;
+        li {
+            width: 30px;
+            height: 30px;
+            margin: 5px;
+            float: left;
+            font-size: 23px;
+            background-color: #3c8dbc;
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid #5fa9cf;
+            line-height: 30px;
+            &:hover {
+                background-color: #fff;
+                a i {
+                    color: #3c8dbc;
+                }
+            }
+            a i{
+                color: #fff;
+                font-size: 23px;
+                line-height: 1;
+            }
+        }
+    }
+</style>

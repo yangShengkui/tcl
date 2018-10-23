@@ -1,0 +1,155 @@
+<config router="prod_test"
+        injector="$scope,$q,resourceUIService,viewFlexService,apiService"
+></config>
+<template>
+  <proudsmart-base>
+    <dat-table-dom data-source="source"></dat-table-dom>
+  </proudsmart-base>
+</template>
+<script type="text/javascript">
+  import { urlparser, dateparser } from "ps-ultility";
+  export default function(scope,q,resourceUIService,viewFlexService,api){
+    scope.navigators = [{
+      id : 0,
+      label : `仪表板`,
+      active : true
+    },{
+      id : 1,
+      label : `第二个菜单`
+    }];
+    function getResourceById(id) {
+      return api(resourceUIService.getResourceById)
+        .send(id)
+        .cache("resourceId." + id)
+    }
+    function getManagedViewsByTypeAndRole(viewType) {
+      return api(viewFlexService.getManagedViewsByTypeAndRole)
+        .send(viewType)
+        .cache("views")
+        .cacheEach((n) => {
+          return "viewIds." + n.viewId
+        })
+    }
+    function getViewById(id) {
+      return api(viewFlexService.getViewById)
+        .send(id)
+        .cache("viewIds." + id)
+        .cacheEach((n) => {
+          return n.viewId
+        })
+    }
+    function getDomain(rid){
+      var defer = q.defer();
+      getResourceById(rid).then((res) => {
+        defer.resolve(res);
+      }).catch((e) => {
+        defer.reject(e);
+      })
+      return defer.promise;
+    }
+    function getTemplate(temp){
+      let defer = q.defer(), obj = {};
+      if(temp){
+        obj.keyValue = temp.keyValue;
+        if(temp.resourceType == "project"){
+          getResourceById(temp.projectId).then((d) => {
+            obj.templabel = d.label;
+            defer.resolve(obj);
+          }).catch((e) => {
+            defer.resolve(obj);
+          })
+        } else {
+          defer.resolve(obj)
+        }
+      } else {
+        defer.resolve(obj);
+      }
+      return defer.promise;
+    }
+    function remapView(views){
+      let defers = views.map((v) => {
+        let defer = q.defer(),
+          rid = /\/([^\/]+)\/?$/g.exec(v.domainPath);
+        if(rid){
+          getDomain(rid[1]).then((res) => {
+            v.domainLabel = res.label;
+            return getTemplate(v.template);
+          }).then((d) => {
+            v.templateStr = d.templateStr || "普通";
+            v.keyValue = d.keyValue || "普通"
+            defer.resolve(v);
+          }).catch((e) => {
+            console.error("invalid domainPath");
+            defer.reject(v)
+          })
+        } else {
+          defer.reject("invalid domainPath");
+        }
+        return defer.promise;
+      });
+      return q.all(defers);
+    }
+    function renderTable(d){
+      scope.source = {
+        data: d,
+        body: {
+          viewTitle: "视图名称",
+          templateStr : "视图类别",
+          releaseStatus : {
+            label : "发布状态",
+            bind(row){
+              return row.releaseStatus ? "已发布" : "未发布"
+            }
+          },
+          createTime : {
+            label : "创建时间",
+            bind(row){
+              return dateparser(row.createTime).getDateString("yy年MM月dd日,hh:mm");
+            }
+          },
+          updateTime : {
+            label : "修改时间",
+            bind(row){
+              return dateparser(row.updateTime).getDateString("yy年MM月dd日,hh:mm");
+            }
+          },
+          domainLabel : "管理域",
+        },
+        bodyButtons : [{
+          label : "修改",
+          class : "btn btn-primary",
+          on : {
+            click(row){
+              console.log(row);
+            }
+          }
+        },{
+          label : "删除",
+          class : "btn btn-default",
+          on : {
+            click(row){
+              console.log(row);
+            }
+          }
+        }]
+      }
+    }
+    getManagedViewsByTypeAndRole("dashboard")
+      .then((d) => {
+        return remapView(d);
+      }).then((d) => {
+      renderTable(d);
+    }).catch((e) => {
+      console.log(e);
+    });
+  }
+</script>
+<style type="less" scoped="true">
+  .wrap{
+    margin : 5px;
+    padding : 10px;
+    color : #333;
+    background-color : #eee;
+    border : 1px solid #ddd;
+  }
+</style>

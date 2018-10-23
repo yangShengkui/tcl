@@ -1,0 +1,66 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">采集日志</h4>
+      </div>
+      <div class="margin-top-2 alert-info-dialog t-sty" >
+        <i class="proudsmart ps-fail c-f29047  i-con"></i>
+        <b bo-text="'msg.cm.lb.tips'|translate">提醒：</b>
+        <span class="c-f29047" style="font-size: 12px;" >如果要关闭浏览器或者不需要查看的时候请点击停止，要不然会一直在执行</span>
+      </div>
+      <div class="modal-body clearfix row margin-left-10  ">
+        <form role="form" class="form-horizontal" name="clientOtherForm">
+          <div class="form-group col-sm-3  padding-right-30" >
+            <label class="dialog-control-label">是否推送：</label>
+            <select class="form-control input-sm" ng-model="logObj.push">
+              <option>请选择...</option>
+              <option  value="true" >是</option>
+              <option  value="false" >否</option>
+            </select>
+          </div>
+          <div class="form-group col-sm-3  padding-right-30" >
+            <label class="dialog-control-label">是否生成日志：</label>
+            <select class="form-control input-sm" ng-model="logObj.generate">
+              <option>请选择...</option>
+              <option  value="true" >是</option>
+              <option  value="false" >否</option>
+            </select>
+          </div>
+          <div class="form-group col-sm-3  padding-right-30"  >
+            <label class="dialog-control-label">日志级别：</label>
+            <select class="form-control input-sm" ng-model="logObj.level">
+              <option>请选择...</option>
+              <option  value="DEBUG" >DEBUG</option>
+              <option  value="WARN" >WARN</option>
+              <option  value="INFO" >INFO</option>
+              <option  value="ERROR" >ERROR</option>
+              <option  value="TRACE" >TRACE</option>
+            </select>
+          </div>
+          <div class="form-group col-sm-5   ">
+            <label class="col-sm-12 control-label font-white">操作：</label>
+            <div class="btn-group">
+              <button ng-click="logDoAction('start')" type="button" class="btn btn-primary btn-sm">
+                <span class="hidden-sm"> 开始</span>
+              </button>
+              <button ng-disabled="!logUUid" ng-click="logDoAction('end')"  type="button" class="btn btn-default btn-sm">
+                <span class="hidden-sm"> 停止</span>
+              </button>
+              <button ng-disabled="!logObj.gateway.saveLog" ng-click="logDoAction('download')"  type="button" class="btn btn-default btn-sm">
+                <span class="hidden-sm"> 下载</span>
+              </button>
+              <button ng-disabled="!logObj.message" ng-click="logObj.message = ''"  type="button" class="btn btn-default btn-sm">
+                <span class="hidden-sm"> 清空</span>
+              </button>
+            </div>
+          </div>
+        </form>
+        <div class="form-group col-sm-12 no-padding-left">
+          <textarea  ng-model="logObj.message" rows="15" cols="10" readonly class="form-control  input-sm "></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

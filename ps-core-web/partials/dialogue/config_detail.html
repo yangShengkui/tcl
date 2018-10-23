@@ -1,0 +1,62 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <h4 class="modal-title info-box-number">配置项信息</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal" name="attrForm">
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">配置组显示名：</span>
+            </label>
+            <div class="col-sm-4 padding-left-5">
+              <select class="form-control input-sm" ng-change="typeChange()"  placeholder="请选择..."  ng-model="newconfig.groupName" ng-options="d.name  as d.label for d in configGroups" selectdata="configGroups" select2  required="required">
+                <option value="">请选择</option>
+              </select>
+             </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">配置项名：</span>
+            </label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="text" class="form-control input-sm"  maxlength="32" autocomplete="off" ng-model="newconfig.label" name="Name" required="required">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">配置项值：</span>
+            </label>
+            <div  ng-show="configGroupsDic[newconfig.groupName].type != 'file'"  class="col-sm-4 padding-left-5 ">
+              <textarea  ng-model="newconfig.value"  rows="3" class="form-control" name="Name" required="required"></textarea>
+            </div>
+            <div ng-show="configGroupsDic[newconfig.groupName].type == 'file' && newconfig.fileType == 'uploader'"  class="col-sm-4 padding-left-5">
+              <uploader-div/>
+            </div>
+            <div ng-show="configGroupsDic[newconfig.groupName].type == 'file' && newconfig.fileType == 'look'"  class="col-sm-4 padding-left-5">
+              <input class="form-control input-sm"  ng-model="newconfig.value" type="text"  disabled/>
+            </div>
+            <div ng-show="configGroupsDic[newconfig.groupName].type == 'file'" class="col-sm-2  padding-left-5  margin-top-5">
+              <a  href="javascript:void(0);" ng-click="newconfig.fileType == 'look' ? newconfig.fileType= 'uploader' : newconfig.fileType = 'look' " ng-bind="newconfig.fileType == 'look' ? '选择文件' : '查看路径'"></a>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">描述：</span>
+            </label>
+            <div class="col-sm-4 padding-left-5" >
+              <textarea  ng-model="newconfig.keyDesc"  rows="3" class="form-control" name="Name"></textarea>
+
+            </div>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button class="btn btn-primary" ng-disabled="attrForm.$invalid " ng-click="doAction('configSave',newconfig,'')" >确定</button>
+          <button class="btn btn-default" ng-click="closeDialog();clearUpload();">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

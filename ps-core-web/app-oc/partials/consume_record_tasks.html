@@ -1,0 +1,50 @@
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Application buttons -->
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active">
+                <a role="button" ng-bind="tableInit.header.label"></a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body">
+          <input type="text" class="input-sm" style="background-color: #fff;" drops="down" readonly='readonly' autocomplete="off" ng-hide="ifshowState" ng-model="tableInit.header.time" placeholder="请选择时间" date-time-picker>
+          <button ng-hide="ifshowState" ng-click="tableInit.event.timeImport()" type="button" class="btn btn-default btn-sm"><i class="fa fa-arrow-circle-o-up"></i><span class="hidden-sm">新建任务</span></button>
+          <button ng-click="tableInit.event.import(selectedCount)" type="button" class="btn btn-default btn-sm"><i class="fa fa-arrow-circle-o-up"></i><span class="hidden-sm">导入能耗数据</span></button>
+          <input id="nv-file-select-task" style="display:none" class="form-control input-sm" type="file" nv-file-select="" uploader="uploader">
+          <button ng-click="tableInit.event.export(selectedCount)" ng-disabled="selectedCount == 0" type="button" class="btn btn-default btn-sm"><i class="fa fa-arrow-circle-o-down"></i><span class="hidden-sm">导出能耗数据</span></button>
+          <div class="combined-query pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                {{queryLabel?queryLabel:'查询条件'}} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a role="button" ng-hide="userType==1000" ng-click="queryState=1;queryLabel='企业名称';tableInit.event.goClear()">企业名称</a></li>
+                <li><a role="button" ng-click="queryState=2;queryLabel='统计周期类型';tableInit.event.goClear()">统计周期类型</a></li>
+                <li><a role="button" ng-click="queryState=3;queryLabel='记录状态';tableInit.event.goClear()">记录状态</a></li>
+                <li><a role="button" ng-hide="userType==1000" ng-click="queryState=4;queryLabel='是否超时';tableInit.event.goClear()">是否超时</a></li>
+              </ul>
+            </div>
+            <input class="form-control input-sm" ng-show="!queryState ||queryState == 1" maxlength="32" type="text" ng-model="tableInit.select.enterpriseName" type="text" />
+            <select class="form-control input-sm" ng-show="queryState == 2" ng-model="tableInit.select.statisticsType" ng-options="value.id as value.label for value in [{id:'YEAR',label:'年'},{id:'MONTH',label:'月'},{id:'QUARTER',label:'季度'}]"></select>
+            <select class="form-control input-sm" ng-show="queryState == 3" ng-model="tableInit.select.state" ng-options="value.id as value.label for value in state"></select>
+            <select class="form-control input-sm" ng-show="queryState == 4" ng-model="tableInit.select.overdue" ng-options="value.id as value.label for value in [{id:'no',label:'未超期'},{id:'yes',label:'超期'}]"></select>
+            <button class="btn btn-primary btn-sm" ng-click="searchData()" type="button"><i class="fa fa-search"></i><span class="hidden-sm">查询</span></button>
+          </div>
+        </div>
+        <div class="box-footer  margin-bottom-10">
+          <table width="100%" class="table table-hover" id="usertable" record-task-table>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

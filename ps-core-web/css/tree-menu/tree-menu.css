@@ -1,0 +1,105 @@
+.tree-menu {
+    width: 100%;
+}
+.tree-menu a:link,
+.tree-menu a:visited {
+  text-decoration: none;
+}
+.tree-menu .btn.btn-default {
+  padding: 0 12px;
+}
+.tree-menu .btn.btn-primary {
+  padding: 0 12px;
+}
+.tree-menu .checkbox {
+  display: inline-block;
+  padding: 0 2px;
+  margin: 0 5px;
+  border: 1px dashed #ccc;
+  background-color: #fff;
+}
+.tree-menu .plusminus {
+  display: inline-block;
+  padding: 0 4px;
+  margin: 0 5px;
+  border: 1px dashed #ccc;
+}
+.tree-menu .searchbox {
+  display: inline-block;
+  padding: 0 4px;
+  margin: 0 5px;
+  border: 1px dashed #ccc;
+}
+.tree-menu .description {
+  color: #999;
+  margin: 0 5px;
+}
+.tree-menu .li {
+  position: relative;
+}
+.tree-menu .li .folder_1 {
+  float: right;
+  border: 0;
+  color: #888;
+}
+.tree-menu .li .circle {
+  top: 13px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: #425b6d;
+}
+.tree-menu .li .hline {
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  background-color: #425b6d;
+}
+.tree-menu .li .vline {
+  top: 15px;
+  width: 10px;
+  height: 1px;
+  position: absolute;
+  background-color: #425b6d;
+}
+.tree-menu .li .hline_short {
+  width: 1px;
+  height: 15px;
+  position: absolute;
+  background-color: #425b6d;
+}
+.tree-menu .li.all-checked > .item {
+  padding: 5px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.tree-menu .li.all-checked > .item.focus {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.tree-menu .li.some-checked > .item {
+  padding: 5px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.tree-menu .li.some-checked > .item.focus {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.tree-menu .li .item {
+  padding: 5px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(250, 250, 250, 0.2);
+}
+.tree-menu .li .item.focus {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.tree-menu .li .item.highlight {
+  background-color: rgba(250, 250, 250, 0.2);
+  color: #fff;
+}
+.tree-menu .li.active > .wrap {
+  display: block;
+}
+.tree-menu .li > .wrap {
+  display: none;
+}

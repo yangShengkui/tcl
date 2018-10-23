@@ -1,0 +1,51 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block; overflow: auto;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="dialog.button[1].fn();" class="close">×</a>
+        <h4 class="modal-title info-box-number" ng-bind="dialog.title"></h4>
+      </div>
+      <div class="modal-body clearfix row" slim-scroll>
+        <form role="form" class="form-horizontal energyConsumeForm row" name="energyConsumeForm">
+          <div class="col-sm-8 col-sm-offset-2 padding-left-5">
+            <div class="box-body table-responsive">
+              <table width="100%" class="table table-hover text-center" border="1" style="border: 1px solid #eee;">
+                <thead>
+                  <tr role="row">
+                    <th>
+                      能耗节点
+                    </th>
+                    <th>
+                      能耗类型
+                    </th>
+                    <th>
+                      能耗值
+                    </th>
+                    <th>
+                      单位
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr role="row" ng-repeat="record in energyConsumeRecords">
+                    <td>{{record.energyConsumeTreeNodeName}}</td>
+                    <td>{{record.energyTypeName}}</td>
+                    <td>
+                      <input type="number" ng-disabled="record.dataSourceType =='collect' ||ifView" class="form-control input-sm" ng-model="record.energyConsumeValue" name="energyConsumeValue" maxlength="32" autocomplete="off" ng-change="verifyFun(record.energyConsumeValue,'energyConsumeValue')" required>
+                      <span style="color:red" ng-show="energyConsumeForm.energyConsumeValue.$dirty && mistakeMesg.energyConsumeValue">请输入正确的当量系数</span>
+                    </td>
+                    <td>{{record.energyTypeUnit}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-hide="ifView" ng-click="dialog.button[0].fn();" ng-disabled="energyConsumeForm.$invalid" disabled="disabled">确定</button>
+        <button class="btn btn-default" ng-hide="ifView" ng-click="dialog.button[1].fn();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,319 @@
+{
+  "layout": {
+    "type": "column",
+    "children": [
+      {
+        "type": "row",
+        "source": "ROW",
+        "parameters": {
+          "alignment": "bootstrap"
+        },
+        "style": {},
+        "children": [
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "文字",
+                "type": "text",
+                "source": "TEXT",
+                "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                "style": {
+                  "margin": "5px",
+                  "padding": "0",
+                  "font-size": "12px",
+                  "font-weight": "bold"
+                },
+                "advance": {
+                  "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"新建文字\")\n        }\n    }\n}"
+                },
+                "data": {
+                  "modelType": 300,
+                  "resfilltype": "parameter",
+                  "modelDisable": true
+                },
+                "template": [
+                  {
+                    "type": "text",
+                    "style": {
+                      "margin": "auto",
+                      "padding": "0",
+                      "font-size": "10px",
+                      "font-weight": "bold",
+                      "color": "#333"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "style": {
+                      "margin": "auto",
+                      "padding": "0",
+                      "font-size": "16px",
+                      "font-weight": "bold",
+                      "color": "#666",
+                      "text-align": "center"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "style": {
+                      "width": "60px",
+                      "height": "60px",
+                      "margin": "auto",
+                      "padding": "0",
+                      "font-size": "12px",
+                      "line-height": "60px",
+                      "font-weight": "bold",
+                      "color": "#fff",
+                      "text-align": "center",
+                      "border-radius": "50%",
+                      "background-color": "#3c8dbc"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "style": {
+                      "width": "140px",
+                      "height": "60px",
+                      "margin": "auto",
+                      "padding": "0",
+                      "font-size": "12px",
+                      "line-height": "60px",
+                      "font-weight": "bold",
+                      "color": "#fff",
+                      "text-align": "center",
+                      "border-radius": "4px",
+                      "background-color": "#3c8dbc"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "style": {
+                      "width": "140px",
+                      "height": "60px",
+                      "margin": "auto",
+                      "padding": "0",
+                      "font-size": "12px",
+                      "line-height": "60px",
+                      "font-weight": "bold",
+                      "color": "#444",
+                      "text-align": "center",
+                      "border-radius": "4px",
+                      "background-color": "#eee"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "style": {
+                      "margin": "auto",
+                      "padding": "5px",
+                      "font-size": "18px",
+                      "font-weight": "bold",
+                      "color": "#444",
+                      "text-align": "center",
+                      "border-radius": "0px",
+                      "background-color": "#eee"
+                    }
+                  }
+                ],
+                "id": "jdkP6BEByjcErQQs2i2b7kQ3ftXk85Ds"
+              }
+            ],
+            "col": 3,
+            "id": "h2aad2sJrYsdKFNa3jCkfwYt3jFnCKPd"
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "伪TAB样式",
+                "type": "faketab",
+                "source": "FAKETAB",
+                "advance": {
+                  "getfunction": "kpiDataService.getValueList",
+                  "category": "ci",
+                  "condition": [
+                    "kpi",
+                    "{object:kpiQueryModel}"
+                  ],
+                  "expression": "expression = {\n  \"on\" : {\n    \"init\" : function(event){\n      var target = event.target;\n      var editMode = true;\n      var tabs = [{\n        id : 0,\n        label : \"综合趋势\",\n        default : \"baogang/analysis/general\",\n        icon : \"glyphicon glyphicon-home\",\n      },{\n        id : 1,\n        label : \"特征趋势\",\n        default : \"baogang/analysis/feature\",\n        icon : \"glyphicon glyphicon-home\",\n      },{\n        id : 2,\n        label : \"时域分析\",\n        default : \"baogang/analysis/time\",\n        icon : \"glyphicon glyphicon-home\",\n      },{\n        id : 3,\n        label : \"频域波形\",\n        default : \"baogang/analysis/frequence\",\n        icon : \"glyphicon glyphicon-home\",\n      },{\n        id : 4,\n        label : \"诊断履历\",\n        default : \"baogang/analysis/diagnose\",\n        icon : \"glyphicon glyphicon-home\",\n      }];\n      var subTabs = [];\n      var updateNaviList = function(){\n        var obj = {\n          tabs : tabs,\n          subTabs : subTabs,\n          editMode : editMode\n        };\n        target.saveEditorStatus(\"controlPanelAnalysisNavigation\", obj);\n      }\n      var select = function(item){\n        var viewId = item.viewId;\n        target.trigger(\"analysisviewchange\", item);\n      };\n      var saveView = function(item, callback){\n        var viewTitle = item.label;\n        var viewType = \"dashboard\";\n        var viewId = item.viewId;\n        if(viewId){\n          target.updateView({\n            viewId : viewId,\n            viewTitle : item.label,\n            viewType : \"dashboard\"\n          }, function(data){\n            callback(data);\n          })\n        } else {\n          var run = function(json){\n              console.log(\"run\", json);\n            target.addView({\n              viewTitle : item.label,\n              viewType : \"dashboard\",\n              content : json ? json : null,\n            }, function(data){\n              item.viewId = data.data.viewId;\n              callback(data);\n            })\n          };\n          if(item.default){\n            target.Info(\"../../localdb/echartTemplate/\" + item.default + \".json\", function(json){\n              run(JSON.stringify(json));\n            })\n          } else {\n            run();\n          }\n        }\n      };\n      var deleteView = function(item){\n        if(item.viewId){\n          target.deleteView(item.viewId);\n        };\n      }\n      target.getEditorStatus(\"controlPanelAnalysisNavigation\", function(status){\n        var configGroupFound = function(){\n          if(status){\n            editMode = (status.editMode == undefined) ? true : status.editMode;\n            \n            for(var i in tabs){\n                var find = status.tabs.find(function(elem){\n                    return elem.id == tabs[i].id;\n                })\n                if(find){\n                    tabs[i] = find;\n                }\n            };\n            Array.prototype.push.apply(subTabs, status.subTabs);\n          };\n          var render = function(view){\n            var tabFilter = tabs.filter(function(elem){\n              return elem.show || editMode;\n            })\n            var tabsClone = tabFilter.map(function(elem){\n              var clone = elem.$clone();\n              clone.on = {\n                click : function(el){\n                  target.tabInx = tabFilter.indexOf(elem);\n                  target.trigger(\"analysisviewchange\", elem);\n                  render();\n                }\n              };\n              if(editMode){\n                clone.addOn = [{\n                  icon : \"glyphicon glyphicon-scale\",\n                  on : {\n                    click : function(el){\n                      var run = function(){\n                        var viewId = elem.viewId;\n                        target.linkTo(\"../app-freeboard/index.html#/freeboard/view/dashboard/\" + elem.viewId + \"/0\");\n                      }\n                      if(!elem.viewId){\n                        saveView(elem, function(){\n                          updateNaviList();\n                          run();\n                        });\n                      } else {\n                        run();\n                      }\n                    }\n                  }\n                },{\n                  icon : \"glyphicon glyphicon-refresh\",\n                  on : {\n                    click : function(event){\n                      deleteView(elem);\n                      delete elem.viewId;\n                      target.trigger(\"analysisviewchange\", elem);\n                      updateNaviList();\n                      render();\n                    }\n                  }\n                }]\n              };\n              return clone;\n            });\n            var subTabsFilter = subTabs.filter(function(elem){\n              return elem.show || editMode;\n            })\n            var subTabsClone = subTabsFilter.map(function(elem){\n              var clone = elem.$clone();\n              clone.on = {\n                click : function(el){\n                  target.tabInx = tabFilter.length + subTabsFilter.indexOf(elem);\n                  select(elem)\n                  render();\n                }\n              }\n              if(editMode){\n                clone.$extension({\n                  addOn : [{\n                    icon : \"glyphicon glyphicon-edit\",\n                    on : {\n                      click : function(){\n                        target.createPopupBypath(\"popup\", {\n                          title : \"编辑工作台\",\n                          theme : \"system\",\n                          width : 500,\n                          on : {\n                            submit : function(item){\n                              elem.label = item.name;\n                              elem.id = item.id;\n                              saveView(elem, function(){\n                                updateNaviList();\n                                render();\n                              });\n                            }\n                          }\n                        }, elem);\n                      }\n                    }\n                  },{\n                    icon : \"glyphicon glyphicon-scale\",\n                    on : {\n                      click : function(event){\n                        target.linkTo(\"../app-freeboard/index.html#/freeboard/view/dashboard/\" + elem.viewId + \"/0\");\n                      }\n                    }\n                  },{\n                    icon : \"proudsmart ps-delete-02\",\n                    on : {\n                      click : function(event){\n                        var inx = subTabs.indexOf(elem);\n                        subTabs.splice(inx, 1);\n                        deleteView(elem);\n                        updateNaviList();\n                        render();\n                      }\n                    }\n                  }]\n                });\n              }\n              return clone;\n            });\n            var concat = tabFilter.concat(subTabsFilter);\n            \n            if(view){\n                target.tabInx = concat.indexOf(view);\n            };\n            if(target.tabInx > concat.length - 1){\n                target.tabInx = concat.length - 1\n                select(concat[target.tabInx]);\n            }\n            target.trigger(\"analysisviewchange\", concat[target.tabInx]);\n            if(editMode){\n              var clist = tabsClone.concat(subTabsClone).concat([{\n                id : -1,\n                label : \"\",\n                icon : \"glyphicon glyphicon-plus\",\n                on : {\n                  click : function(elem){\n                    target.createPopupBypath(\"popup\", {\n                      title : \"新建工作台\",\n                      theme : \"system\",\n                      width : 500,\n                      on : {\n                        submit : function(item){\n                          var item = {\n                            id : item.id,\n                            label : item.name\n                          };\n                          saveView(item, function(){\n                            subTabs.push(item);\n                            updateNaviList();\n                            render();\n                          });\n                        }\n                      }\n                    });\n                  }\n                }\n              },{\n                id : -1,\n                label : \"\",\n                icon : \"glyphicon glyphicon-cog\",\n                on : {\n                  click : function(elem){\n                    console.log(\"editMode\", editMode);\n                    target.createPopupBypath(\"setting\", {\n                      title : \"设置\",\n                      theme : \"system\",\n                      width : 500,\n                      on : {\n                        submit : function(data){\n                          tabs = data.tabs;\n                          editMode = data.editMode;\n                          subTabs = data.subTabs;\n                          updateNaviList();\n                          render();\n                        }\n                      }\n                    }, {\n                      editMode : editMode,\n                      tabs : tabs,\n                      subTabs : subTabs\n                    });\n                  }\n                }\n              }])\n            } else {\n              var clist = tabsClone.concat(subTabsClone).concat([{\n                id : -1,\n                label : \"\",\n                icon : \"glyphicon glyphicon-cog\",\n                on : {\n                  click : function(elem){\n                    console.log(\"editMode\", editMode);\n                    target.createPopupBypath(\"setting\", {\n                      title : \"设置\",\n                      theme : \"system\",\n                      width : 500,\n                      on : {\n                        submit : function(data){\n                          tabs = data.tabs;\n                          editMode = data.editMode;\n                          subTabs = data.subTabs;\n                          updateNaviList();\n                          render();\n                        }\n                      }\n                    }, {\n                      editMode : editMode,\n                      tabs : tabs,\n                      subTabs : subTabs\n                    });\n                  }\n                }\n              }]);\n            }\n            target.render(clist);\n          };\n          target.on(\"analysisnaviTo\", function(id){\n              var concat = tabs.concat(subTabs);\n              var find = concat.find(function(elem){\n                  return elem.id == id;\n              });\n              render(find);\n              if(find){\n                select(find);   \n              }\n          })\n          render();\n        }\n        if(!status){\n          target.saveConfigGroup({\n            name : \"controlPanelLevel1Navigation\",\n            label : \"工作台导航\",\n            type : \"string\"\n          }, function(data){\n            configGroupFound();\n          })\n        } else {\n          configGroupFound();\n        }\n      });\n    }\n  },\n  \"format\" : {\n    \"id\" : \"id\",\n    \"label\" : \"label\"\n  }\n};",
+                  "customCategory": ""
+                },
+                "style": {
+                  "color": "#fff",
+                  "background-color": "#3c8dbc",
+                  "margin": "5px"
+                },
+                "parameters": {},
+                "url": "images/map/map1.png",
+                "template": [
+                  {
+                    "label": "普通样式",
+                    "type": "faketab",
+                    "source": "FAKETAB",
+                    "advance": {
+                      "getfunction": "kpiDataService.getValueList",
+                      "category": "ci",
+                      "condition": [
+                        "kpi",
+                        "{object:kpiQueryModel}"
+                      ],
+                      "expression": "{\n  \"on\" : {\n    \"init\" : function(event){\n      var tabs = [];\n      for(var i=0; i<4; i++){\n        tabs.push({\n          id : i,\n        \tlabel : \"标签页\" + i\n        })\n      }\n      event.target.render(tabs);\n    },\n    \"click\" : function(event){\n      console.log(event);\n    }\n  },\n  \"format\" : {\n    \"id\" : \"id\",\n    \"label\" : \"label\"\n  }\n}"
+                    },
+                    "style": {
+                      "color": "#fff",
+                      "background-color": "#3c8dbc",
+                      "margin": "5px"
+                    },
+                    "tabInx": 0,
+                    "url": "images/map/map1.png"
+                  },
+                  {
+                    "label": "可删减TAB",
+                    "type": "faketab",
+                    "source": "FAKETAB",
+                    "advance": {
+                      "expression": "{\n  \"on\" : {\n    \"init\" : function(event){\n      var target = event.target;\n      var data = [];\n      for(var i=0; i<4; i++) {\n        data.push({\n          id: i,\n          label: \"标签页\" + i\n        })\n      };\n      var render = function(){\n        var tabs = [];\n        var createItem = function(inx, item){\n          var rs = {\n            id : item.id,\n            label : item.label,\n            on : {\n              click : function(event){\n                target.tabInx = inx;\n                render();\n              }\n            },\n            addOn : [{\n              icon : \"glyphicon glyphicon-remove\",\n              on : {\n                click  : function(event){\n                  data.splice(inx, 1);\n                  if(target.tabInx > data.length - 1){\n                      target.tabInx = data.length - 1;\n                  };\n                  render();\n                }\n              }\n            }]\n          };\n          return rs;\n        };\n        for(var i in data){\n          tabs.push(createItem(i, data[i]))\n        };\n        event.target.render(tabs);\n      };\n      render();\n    }\n  },\n  \"format\" : {\n    \"id\" : \"id\",\n    \"label\" : \"label\"\n  }\n}"
+                    },
+                    "style": {
+                      "color": "#fff",
+                      "background-color": "#3c8dbc",
+                      "margin": "5px"
+                    },
+                    "tabInx": 0,
+                    "url": "images/map/map1.png"
+                  },
+                  {
+                    "label": "所有项目",
+                    "type": "faketab",
+                    "source": "FAKETAB",
+                    "advance": {
+                      "getfunction": "kpiDataService.getValueList",
+                      "category": "ci",
+                      "condition": [
+                        "kpi",
+                        "{object:kpiQueryModel}"
+                      ],
+                      "expression": "{\n  \"on\" : {\n    \"init\" : function(event){\n      event.target.getDomainsByFilter({\n        modelIds : [302]\n      }, function(projects){\n        event.target.render(projects);\n      })\n    },\n    \"click\" : function(event){\n      console.log(event);\n    }\n  },\n  \"format\" : {\n    \"id\" : \"id\",\n    \"label\" : \"label\"\n  }\n}"
+                    },
+                    "style": {
+                      "color": "#fff",
+                      "background-color": "#3c8dbc",
+                      "margin": "5px"
+                    },
+                    "tabInx": 0,
+                    "url": "images/map/map1.png"
+                  }
+                ],
+                "id": "m3jSWH4YXaGKY7eijbAQapjEFaTDENCG",
+                "tabInx": 0
+              },
+              {
+                "label": "控制板1",
+                "type": "block",
+                "source": "BLOCK",
+                "style": {
+                  "padding": "5px",
+                  "min-height": "calc(100vh - 100px)"
+                },
+                "advance": {
+                  "expression": {}
+                },
+                "children": [
+                  {
+                    "type": "column",
+                    "col": 12,
+                    "children": [
+                      {
+                        "label": "视图嵌入",
+                        "type": "injector",
+                        "source": "INJECTOR",
+                        "parameters": {
+                          "icon": {
+                            "id": 0,
+                            "perfix": "ion",
+                            "css": "ion-ios-gear-outline"
+                          }
+                        },
+                        "advance": {
+                          "getfunction": "",
+                          "expression": "expression = {\n  on : {\n    init : function(event){\n        var json;\n      var target = event.target;\n      target.on(\"analysismoveTo\", function(path){\n          var find = json.groups.find(function(elem){\n              return elem.path == path;\n          });\n          json.layout = find.layout;\n          target.render(json);\n      });\n      target.on(\"analysisviewchange\", function(view){\n        var viewId = view.viewId;\n        if(viewId){\n            target.setValue(\"global/viewId\", viewId);\n            target.getViewById(viewId, function(view){\n              var content = view.content;\n              if(content){\n                json = JSON.parse(content);\n                target.render(json);\n              } else {\n                  target.Info('../../localdb/echartTemplate/baogang/nographe.json', function(nographe){\n                      target.render(nographe);\n                  });\n              }\n            });\n        } else {\n            var viewPath = view.default;\n            console.log(viewPath);\n            target.Info('../../localdb/echartTemplate/' + view.default + \".json\", function(json){\n                target.render(json);\n            });\n        };\n      })\n    }\n  }\n}"
+                        },
+                        "style": {},
+                        "children": [],
+                        "id": "2RAnTnkCJJcMHZpdETad3QPsNpQfxdxM"
+                      }
+                    ],
+                    "id": "4aT7mtBRdabnMEjWWbjSwHmpyr5jZH5t"
+                  }
+                ],
+                "url": "images/map/map1.png",
+                "template": [
+                  {
+                    "type": "css",
+                    "style": {
+                      "padding": "10px",
+                      "margin": "5px",
+                      "border": "0",
+                      "box-shadow": "0px 0px 0px 0px rgba(0,0,0,0)",
+                      "background-color": "rgba(250,250,250,0)"
+                    }
+                  },
+                  {
+                    "type": "css",
+                    "style": {
+                      "padding": "5px",
+                      "margin": "5px",
+                      "border": "1px solid #ccc",
+                      "background-color": "#fff",
+                      "border-top": "0"
+                    }
+                  },
+                  {
+                    "type": "css",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "5px",
+                      "background-color": "#efdcaf",
+                      "border": "1px solid #c2ad7a"
+                    }
+                  },
+                  {
+                    "type": "css",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "5px",
+                      "background-color": "#f0c0a4",
+                      "border": "1px solid #e5671b"
+                    }
+                  },
+                  {
+                    "type": "css",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "5px",
+                      "background-color": "#ffb3b3",
+                      "border": "1px solid #db2222"
+                    }
+                  }
+                ],
+                "id": "dZ4Qtwbbi8cmZ7xE7SHeBjD3xKaZYRKz"
+              }
+            ],
+            "col": 9,
+            "id": "mFnCN3jHyephTArBKTsfJGPYB674xTWG"
+          }
+        ],
+        "id": "Ef8MP6fpei8MWbaAJjDWr2DGpAZPP6Jp"
+      }
+    ],
+    "col": 12,
+    "id": "AAAm6bATf2RXXcyTRNjJim6xfwWc7N3Y"
+  },
+  "setting": {
+    "showNavi": false,
+    "style": {
+      "padding": "15px"
+    }
+  }
+}

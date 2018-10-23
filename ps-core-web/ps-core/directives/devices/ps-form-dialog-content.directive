@@ -1,0 +1,32 @@
+<config injector="$timeout, psScope, psUltility"
+></config>
+<template>
+  <div>
+    <div class="form-group margin-bottom-10">
+      <div class="col-sm-4 dialog-control-label no-padding-right dialog-control-h" style="height:auto;">
+        <span class="text-danger ng-scope" ng-if="option.composory">*</span>
+        <span ng-bind="option.label + ':'"></span>
+      </div>
+      <div class="col-sm-4 padding-left-5 dialog-control-h" style="height:auto;">
+        <ps-tools data-option="option"></ps-tools>
+      </div>
+    </div>
+  </div>
+</template>
+<script type="text/javascript">
+  import { findElement } from "ps-ultility";
+  export default function(timeout, psScope, psUltility){
+    return {
+      restrict: 'E',
+      scope: {
+        option : "="
+      },
+      replace: true,
+      link: function (scope, element) {
+        psUltility.registerCurrentScope(scope);
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+</style>

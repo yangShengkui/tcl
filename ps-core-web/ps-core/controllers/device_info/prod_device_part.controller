@@ -1,0 +1,39 @@
+<config injector="$scope,ajax,$location,psDialog,$routeParams" params="/:id?">
+</config>
+<template>
+  <proudsmart-base>
+    <ps-layout data-option="layout"></ps-layout>
+  </proudsmart-base>
+</template>
+<script type="text/javascript">
+  export default function (scope, ajax, location,psDialog,routeParams) {
+    scope.layout = {
+      label : "部位",
+      children : [{
+          label : "部位",
+          type : "panel",
+          children : [
+              {
+                  type : "tree",
+                  label : "树结构",
+                  __key : "desc",
+                  options : [{
+                      id : 0,
+                      label : "a",
+                      children : [{
+                          id : 1,
+                          label : "b",
+                          children : [{
+                              id : 2,
+                              label : "c"
+                          }]
+                      }]
+                  }]
+              }
+          ]
+      }]
+    }
+  };
+</script>
+<style type="less">
+</style>

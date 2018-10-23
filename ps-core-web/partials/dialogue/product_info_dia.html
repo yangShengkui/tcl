@@ -1,0 +1,54 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="dialog.button[1].fn();" class="close">×</a>
+        <h4 class="modal-title info-box-number" ng-bind="dialog.title"></h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal row" name="enterpriseForm">
+          <!-- <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger">*</span> <span>企业域：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input class="form-control input-sm" disabled="true" ng-if="dialog.input.id && dialog.input.id >0" value="{{domainListDic[dialog.input.domainPath].name}}" />
+              <div ng-if="!dialog.input.id || dialog.input.id == -1" class="dropdowntree select-sm" autocomplete="off" ng-model="dialog.input.domainPath" change="" key="domainPath" options="domainListTree" mark="nodes" required>
+              </div>
+            </div>
+          </div> -->
+          <div class="form-group" ng-if="ifShowEnter">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">企业名称：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <select select2 class="form-control input-sm" ng-model="dialog.input.enterpriseId" selectdata="enterpriseList" ng-options="value.id as value.text for value in enterpriseList" required>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">产品名称：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="text" class="form-control input-sm" ng-model="dialog.input.name" name="name" maxlength="32" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"> <span class="ng-binding">产品描述：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <textarea type="text" class="form-control input-sm" ng-model="dialog.input.desc" name="name" maxlength="32"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">产品单位：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="text" class="form-control input-sm" ng-model="dialog.input.unit" name="name" maxlength="32" required>
+              <!-- <select class="form-control input-sm" autocomplete="off" style="border: solid 1px #e8e8e8;" ng-model="dialog.input.unit" ng-options="item.unitCode as item.unitName for item in unitList" required="required">
+                <option>请选择...</option>
+              </select> -->
+            </div>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button class="btn btn-primary" ng-click="dialog.button[0].fn();" ng-disabled="enterpriseForm.$invalid" disabled="disabled">确定</button>
+          <button class="btn btn-default" ng-click="dialog.button[1].fn();">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

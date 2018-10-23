@@ -1,0 +1,23 @@
+<config injector="$compile, psScope"
+></config>
+<template>
+  <div></div>
+</template>
+<script type="text/javascript">
+  export default function(compile, psScope){
+    return {
+      restrict: 'E',
+      replace : true,
+      link: function (scope, element) {
+        let $el = element[0],
+          type = scope.op.type,
+          dom = document.createElement("ps-" + type);
+        dom.setAttribute("data-option", "op");
+        $el.append(dom);
+        compile(dom)(scope);
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+</style>

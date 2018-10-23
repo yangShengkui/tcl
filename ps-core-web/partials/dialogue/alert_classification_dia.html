@@ -1,0 +1,44 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">告警类别</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal" name="dealerForm" id="dealerForm">
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">类别名称：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <input type="text" class="form-control input-sm" ng-model="alertClassifyInfo.label" maxlength="32" required>
+              </div>
+            </div>
+          </div>
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+                <!-- <span class="text-danger ng-binding">*</span>  -->
+                <span class="ng-binding"> 告警码：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <input type="text" class="form-control input-sm" ng-model="alertClassifyInfo.name" maxlength="32">
+              </div>
+            </div>
+          </div>
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="ng-binding">类别描述：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <textarea type="text" class="form-control input-sm" ng-model="alertClassifyInfo.description" maxlength="200"></textarea>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="dealerForm.$invalid" ng-click="saveData()" disabled="disabled">确定</button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

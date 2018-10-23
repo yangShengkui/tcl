@@ -1,0 +1,152 @@
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active" name="tab1"><a role="button" data-toggle="tab">维保记录详情</a></li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();" role="button"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <!--<div class="box-body">-->
+          <!--<button class="btn btn-primary btn-sm" ng-click="saveCondition();"><i class="fa fa-save"></i><span class="hidden-sm"> 保存</span></button>-->
+       <!--</div>-->
+        <div class="box-footer no-pad-top no-border  margin-top-15">
+          <div class="bk-scope bk-theme-mini" >
+            <dl class="bk-group">
+              <dt class="bk-group-title"><span>基础信息</span></dt>
+              <dd class="bk-group-detail">
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name">任务名称：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input class="bk-form-input bk-form-input-l2" disabled="true"  value="{{recordList.taskName}}"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name">维保类型：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input class="bk-form-input bk-form-input-l2" disabled="true"  value="{{processTypeDic[recordList.type].name}}"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name">服务类别：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input ng-show="recordList.serverType == 0" class="bk-form-input bk-form-input-l2" disabled="true"  value="保内"/>
+                      <input ng-show="recordList.serverType == 1" class="bk-form-input bk-form-input-l2" disabled="true"  value="保外"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name">设备模板：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input class="bk-form-input bk-form-input-l2" disabled="true"  value="{{recordList.modelId}}"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name">设备名称：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input class="bk-form-input bk-form-input-l2" disabled="true"  value="{{devicesListDic[recordList.deviceId].label}}"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name">维保时间：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input class="bk-form-input bk-form-input-l2" disabled="true"  value="{{recordList.maintenanceTime | date:'yyyy-MM-dd HH:mm:ss'}}"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name">执行人：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input class="bk-form-input bk-form-input-l2" disabled="true"  value="{{enterpriseListDic[recordList.executioner].userName}}"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name">处理说明：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li col-md-5 ">
+                      <textarea class=" form-control" style="height:100px;resize: none;" ng-model="recordList.description"  name="discription" maxlength="500" type="text" disabled placeholder="最多可输入500字"></textarea>
+                    </div>
+                  </div>
+                </div>
+               <!-- <div class="bk-form-row">
+                  <label class="bk-form-row-name">备注：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li col-md-5 ">
+                      <textarea class=" form-control" style="height:100px;resize: none;" ng-model="recordList.remarks"  name="discription" maxlength="500" type="text" placeholder="最多可输入500字"></textarea>
+                    </div>
+                  </div>
+                </div>-->
+              </dd>
+            </dl>
+            <dl ng-show="templateAddress == 'Inspection'" class="bk-group">
+              <dt class="bk-group-title"><span>检查项目</span></dt>
+              <dd class="bk-group-detail">
+                <div class="row">
+                  <div class="col-md-12  margin-bottom-20">
+                    <table class="table  table-hover dataTable">
+                      <thead>
+                      <tr role="row">
+                        <th>序号</th>
+                        <th>{{menuitems['S13'].label?menuitems['S13'].label:'项目'}}名称</th>
+                        <th>检查结果</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr ng-if="recordList.content.length > 0 " ng-repeat="devices in recordList.content">
+                        <td>{{devices.serialNum}}</td>
+                        <td>
+                          {{devices.item}}
+                        </td>
+                        <td>
+                          <span ng-if="devices.status == 0">正常</span><span ng-if="devices.status == 1 ">异常</span>
+                        </td>
+                      </tr>
+                      <tr ng-if="recordList.content.length <= 0 ">
+                        <td valign="top" colspan="5" class="dataTables_empty"><i class="fa fa-success text-danger"></i>没有符合条件的记录</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </dd>
+            </dl>
+            <dl ng-show="templateAddress == 'Inspection'" class="bk-group">
+              <dt class="bk-group-title"><span>处理图片</span></dt>
+              <dd class="bk-group-detail">
+                <div class="box-header margin-bottom-10">
+                  <a target="blank" ng-show="recordList.images.length > 0" ng-repeat="imgs in recordList.images" href="{{urlService}}{{imgs}}"><img style="width:70px;height:70px; margin-right:5px;" src="{{urlService}}{{imgs}}" alt=""></a>
+                </div>
+              </dd>
+            </dl>
+            <dl ng-show="templateAddress == 'spare'" class="bk-group">
+              <dt class="bk-group-title"><span>设备备件</span></dt>
+              <dd class="bk-group-detail">
+                <div class="box">
+                  <table width="100%" class="table table-hover" name="major" major-device-table></table>
+                </div>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

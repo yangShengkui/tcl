@@ -1,0 +1,121 @@
+<config injector="$rootScope,$timeout,psScope" type="factory"
+></config>
+<script type="text/javascript">
+  import { stringify, isString, attribute } from "ps-ultility";
+  export default function(rootScope,timeout,psScope){
+    function trimngOptions(scope, str){
+      let reg = /(?:(?:([\w\[\]\d\.\"\']+)\s+as\s+)?([\w\[\]\d\.\"\']+)\s+for\s+)?(\w+)\s+in\s+([\w\[\]\.\"\']+)/g,
+        match = reg.exec(scope[str || 'options']),
+        options = match[4],
+        item = match[3],
+        label = match[2] || item,
+        id = match[1] || value,
+        dataOptions = eval(`scope.$parent.${options}`),
+        each = new Function("scope", "options", "callback",
+          `for(var i = 0; i < options.length; i++){
+              let ${item} = options[i];
+              callback(${id}, ${label}, ${item});
+            }`
+        );
+      function getItemName(str){
+        let regex = /[\w]+(?:\.|\[)([\w]+)\]?/g;
+        return regex.exec(str)[1]
+      }
+      return {
+        id : getItemName(id),
+        label : getItemName(label),
+        rawOptions : dataOptions,
+        options : (function(){
+          var rs = [];
+          each(scope, dataOptions, function(id, label, item){
+            rs.push([id, label, item]);
+          })
+          return rs;
+        })(),
+        each : function(callback){
+          each(scope, dataOptions, callback);
+        }
+      };
+    }
+    const dic = {
+      "." : "_A0_",
+      "[" : "_B0_",
+      "]" : "_B1_",
+      "'" : "_C0_",
+      "\"" : "_C1_"
+    };
+    function encode(code){
+      for(var i in dic){
+        while(code.indexOf(i) !== -1){
+          code = code.replace(i, dic[i]);
+        }
+      }
+      return code;
+    }
+    function decode(code){
+      for(var i in dic){
+        while(code.indexOf(dic[i]) !== -1){
+          code = code.replace(dic[i], i);
+        }
+      }
+      return code;
+    }
+    function keyPattern(str){
+      return `FREEBOARD_____VALUE_____${encode(str)}`;
+    }
+    function decodePattern(str){
+      return decode(str);
+    }
+    function getScopeByName(node, name){
+      while(node){
+        if(node[name]){
+          return node[name];
+        }
+        node = node.$parent;
+      }
+      return null;
+    }
+    function getRootScope(node){
+      return getScopeByName(node, "$$customRootScope");
+    }
+    function getParentScope(node){
+      return getScopeByName(node, "$$customParentScope");
+    }
+    function registerCurrentScope(scope){
+      let key = scope.option["key"],
+        value = scope.option["value"],
+        optionsKey = scope.option["optionKey"],
+        _optionsKey = isString(optionsKey) ? keyPattern(optionsKey) : null,
+        _key = isString(key) ? keyPattern(key) : null,
+        _value = keyPattern(value);
+      if(!isString(key)){
+        throw new Error("没有配Key属性，请检查" + JSON.stringify(scope.option));
+        return;
+      }
+      psScope(scope, ()=>{
+        scope.$watch(`option.${_key}`, (n, o, s)=>{
+          attribute(s.$$customParentScope, key, n);
+          scope.option[_value] = n;
+        });
+        optionsKey && scope.$watch(`option.options`, (n, o, s)=>{
+          if(typeof n === "object"){
+            s.$$customParentScope[optionsKey] = n;
+            scope.option[_optionsKey] = n;
+          }
+        });
+      });
+      scope.$on("$destroy", function(){
+        scope.$$customParentScope[key] = null;
+      });
+    }
+    return {
+      getRootScope : getRootScope,
+      decodePattern : decodePattern,
+      getParentScope : getParentScope,
+      getScopeByName : getScopeByName,
+      trimngOptions : trimngOptions,
+      keyPattern : keyPattern,
+      registerCurrentScope : registerCurrentScope
+    }
+  }
+</script>

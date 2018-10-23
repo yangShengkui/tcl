@@ -1,0 +1,90 @@
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <div class="box-tools pull-left nav-tabs-header">
+                        <ul class="nav nav-tabs" id="deploy">
+                            <li class="active" name="tab1"><a role="button" data-toggle="tab">修改密码</a></li>
+                        </ul>
+                    </div>
+                    <div class="box-tools pull-right">
+                    <span class="history-btn"  data-toggle="返回" title=""
+                          data-original-title="返回"  onclick="window.history.back();" role="button">
+                        <i class="proudsmart ps-back-01"></i>
+                    </span>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <button   ng-click="updatePassWord();" class="btn btn-primary btn-sm"><i class="fa fa-save"></i><span class="hidden-sm"> 保存密码</span></button>
+                </div>
+                <div class="box-footer no-pad-top no-border">
+                    <form name="formname">
+                        <div class="bk-scope bk-theme-mini">
+                            <dl class="bk-group">
+                                <dt class="bk-group-title"><span>修改密码</span></dt>
+                                <dd class="bk-group-detail">
+                                    <div class="bk-form-row">
+                                        <label class="bk-form-row-name"><span class="text-red">*</span>旧密码：</label>
+                                        <div class="bk-form-row-cell">
+                                            <div class="bk-form-row-li">
+                                                <input name="regPwd" autocomplete="off" ng-model="pwdList.configPwd" class="bk-form-input bk-form-input-l2" type="password" />
+                                            </div>
+                                            <div class="bk-form-status bk-form-error bk-form-row-txt">
+                                                <span  ng-cloak ng-show="confirmShow == 1010" class="bk-form-status-message ng-binding">旧密码不能为空！</span>
+                                                <span  ng-cloak ng-show="confirmShow == 2011" class="bk-form-status-message ng-binding">您的旧密码输入错误，请重新输入！</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bk-form-row">
+                                        <label class="bk-form-row-name"><span class="text-red">*</span>新密码：</label>
+                                        <div class="bk-form-row-cell">
+                                            <div class="bk-form-row-li ">
+                                                <input name="newPwd" ng-pattern="/((?=.*\d)(?=.*\D)|(?=.*[a-zA-Z])(?=.*[^a-zA-Z]))^.{6,20}$/"
+                                                       autocomplete="off" ng-model="pwdList.newPwd" class="bk-form-input bk-form-input-l2" type="password" />
+                                                <span class="bk-form-row-li-info bk-ml2">6到20位 由数字、字母、特殊字符2种以上组成</span>
+                                            </div>
+                                            <div class="bk-form-status bk-form-error bk-form-row-txt">
+                                                <span  ng-cloak ng-show="confirmShow == 1011" class="bk-form-status-message ng-binding">新密码不能为空！</span>
+                                                <span  ng-cloak ng-show="formname.newPwd.$error.pattern" class="bk-form-status-message ng-binding">6到20位 由数字、字母、特殊字符2种以上组成</span>
+                                                <span  ng-cloak ng-show="configError == 2022" class="bk-form-status-message ng-binding">旧密码不能跟新密码相同，请重新输入！</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bk-form-row">
+                                        <label class="bk-form-row-name"><span class="text-red">*</span>确认密码：</label>
+                                        <div class="bk-form-row-cell">
+                                            <div class="bk-form-row-li">
+                                                <input name="regPwd" ng-model="pwdList.regPwd" class="bk-form-input bk-form-input-l2 " type="password">
+                                            </div>
+                                            <div class="bk-form-status bk-form-error bk-form-row-txt">
+                                                <span   ng-cloak ng-show="confirmShow == 1016" class="bk-form-status-message ng-binding">确认密码不能为空！</span>
+                                                <span  ng-cloak ng-show="confirmShow == 1" class="bk-form-status-message ng-binding">两次密码输入不一致！</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bk-form-row">
+                                        <label class="bk-form-row-name"><span class="text-red">*</span>验证码：</label>
+                                        <div class="bk-form-row-cell">
+                                            <div class="bk-form-row-li">
+                                                <input ng-model="identifyName" class="bk-form-input bk-form-input-l2 " type="text"/>
+                                                <image style="height: 36px;" ng-click="blindClick();"
+                                                       ng-src="data:image/png;base64,{{imgCode}}"/>
+                                                <span style="cursor: pointer;" ng-click="blindClick();">看不清？换一张 </span>
+                                            </div>
+                                            <div class="bk-form-status bk-form-error bk-form-row-txt">
+                                                <span   ng-cloak ng-show="confirmShow == 1017" class="bk-form-status-message ng-binding">验证码不能为空！</span>
+                                                <span  ng-cloak ng-show="confirmShow == 3" class="bk-form-status-message ng-binding">验证码输入错误，请重新输入</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

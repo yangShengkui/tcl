@@ -1,0 +1,92 @@
+<config injector=""></config>
+<template>
+    <div>
+        <echarts-base class="echarts-base-wrap"></echarts-base>
+    </div>
+
+</template>
+<script type="text/javascript">
+export default function () {
+  return {
+    scope: {
+      option: '=?'
+    },
+    link (scope, element, attr) {
+      let sumArray = function (arr) {
+        let ret = 0;
+        arr.forEach(function (i) {
+          ret += i;
+        });
+        return ret;
+      }
+      let option = scope.option;
+      let barType = option.type ? option.type : 'CUSTOMER'
+      let chartOption = {};
+      switch (barType) {
+        case 'NORMAL':
+          chartOption = {
+            series: {
+              type: 'gauge',
+              startAngle: 150,
+              endAngle: 30,
+              splitNumber: 5,
+              axisLine: {
+                lineStyle: {
+                  color: [[0.2, '#679fff'], [0.8, '#bd7bf8'], [1, '#f6648b']],
+                  width: 15
+                }
+              },
+              splitLine: {
+                length: 15
+              },
+              axisTick: {
+                length: 4
+              },
+              axisLabel: {
+                distance: -35,
+                color: '#fff'
+              },
+              pointer: {
+                length: '70%',
+                width: 4
+              },
+              itemStyle: {
+                color: '#679fff'
+              },
+              detail: {
+                formatter: '{contentStyle|' + option.title + '}  {otherStyle|{value}%}',
+                rich: {
+                  contentStyle: {
+                    color: '#679fff',
+                    fontSize: 24
+                  },
+                  otherStyle: {
+                    color: '#fff',
+                    fontSize: 24
+                  }
+                }
+              },
+              data: [{
+                value: option.value
+              }]
+            }
+          };
+          break;
+        case 'CUSTOMER':
+          chartOption = option.chartOption;
+          break;
+      }
+      console.log(JSON.stringify(chartOption))
+      scope.$broadcast('ECHARTS_BASE_INIT', {
+        option: chartOption
+      });
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+.echarts-base-wrap {
+    width: 100%;
+    height: 100%;
+}
+</style>

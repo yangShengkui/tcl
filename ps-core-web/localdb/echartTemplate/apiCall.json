@@ -1,0 +1,427 @@
+{
+  "layout": {
+    "type": "column",
+    "children": [
+      {
+        "label": "控制板1",
+        "type": "block",
+        "source": "BLOCK",
+        "style": {
+          "padding": "10px",
+          "margin": "5px",
+          "background-color": "#3c8dbc"
+        },
+        "advance": {
+          "expression": {}
+        },
+        "children": [
+          {
+            "type": "column",
+            "col": 12,
+            "children": [
+              {
+                "label": "文字",
+                "type": "text",
+                "source": "TEXT",
+                "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                "data": {
+                  "applied": false,
+                  "kpi": [],
+                  "modelType": 300,
+                  "resfilltype": "parameter",
+                  "resource": [],
+                  "multipleCi": false,
+                  "multipleKpi": false,
+                  "series": {
+                    "manual": "拷贝图标样式到剪切板",
+                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                  },
+                  "modelDisable": true
+                },
+                "style": {
+                  "font-size": "16px",
+                  "font-weight": "bold",
+                  "text-align": "left",
+                  "color": "rgb(255, 255, 255)"
+                },
+                "advance": {
+                  "getfunction": "kpiDataService.getValueList",
+                  "category": "ci",
+                  "condition": [
+                    "kpi",
+                    "{object:kpiQueryModel}"
+                  ],
+                  "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"API调用\")\n        }\n    }\n}"
+                },
+                "url": "images/map/map1.png"
+              }
+            ]
+          }
+        ],
+        "url": "images/map/map1.png"
+      },
+      {
+        "type": "row",
+        "source": "ROW",
+        "parameters": {
+          "alignment": "bootstrap"
+        },
+        "style": {},
+        "children": [
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "控制板1",
+                "type": "block",
+                "source": "BLOCK",
+                "style": {
+                  "padding": "5px",
+                  "margin": "5px",
+                  "border": "1px solid #ccc",
+                  "background": "#fff",
+                  "box-shadow": "1px 1px 10px 1px rgba(0,0,0,.1)"
+                },
+                "children": [
+                  {
+                    "type": "column",
+                    "col": 12,
+                    "children": [
+                      {
+                        "label": "控件组",
+                        "type": "ctrlgroup",
+                        "source": "CTRLGROUP",
+                        "advance": {
+                          "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n        [{\n            type : \"label\",\n            value : \"通过选择设备指标生成表达式\",\n            class : \"col-md-10\"\n        },{\n          type : \"button\",\n          value : \"生成表达式\",\n          class : \"col-md-2\",\n          btnclass : \"btn btn-primary\",\n          btnStyle : {\n              float : \"right\"\n          },\n          on : {\n            click : function(event){\n                  console.log(target.getValue(\"model\"),target.getValue(\"resources\"), target.getValue(\"kpis\"));\n                  global.fire(\"apiChange2\", {\n                      params : target.getValue(\"params\"),\n                      funName : target.getValue(\"funName\"),\n                      model : target.getValue(\"model\"),\n                      resources : target.getValue(\"resources\"),\n                      kpis : target.getValue(\"kpis\")\n                  });\n              }\n          }\n        }]\n      ];\n      target.render(ctrlGroups);\n    }\n  }\n}",
+                          "variable": ""
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "font-size": "12px"
+                        },
+                        "help": "../pdf/ctrlgroup.pdf",
+                        "parameters": {},
+                        "abc": 4444
+                      },
+                      {
+                        "label": "控制板1",
+                        "type": "block",
+                        "source": "BLOCK",
+                        "style": {
+                          "padding": "5px",
+                          "margin": "5px",
+                          "border": "1px solid #ddd",
+                          "background-color": "#fff"
+                        },
+                        "advance": {
+                          "expression": {}
+                        },
+                        "children": [
+                          {
+                            "type": "column",
+                            "col": 12,
+                            "children": [
+                              {
+                                "label": "文字",
+                                "type": "text",
+                                "source": "TEXT",
+                                "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                                "data": {
+                                  "applied": false,
+                                  "multipleCi": false,
+                                  "multipleKpi": false,
+                                  "resource": [],
+                                  "modelType": 300,
+                                  "resfilltype": "parameter",
+                                  "series": {
+                                    "manual": "新建文字",
+                                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                                  },
+                                  "modelDisable": true
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "5px",
+                                  "font-size": "14px",
+                                  "font-weight": "bold",
+                                  "line-height": "30px",
+                                  "background-color": "rgb(243, 243, 243)"
+                                },
+                                "advance": {
+                                  "getfunction": "kpiDataService.getValueList",
+                                  "category": "ci",
+                                  "condition": [
+                                    "kpi",
+                                    "{object:kpiQueryModel}"
+                                  ],
+                                  "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"查询API接口函数\")\n        }\n    }\n}"
+                                }
+                              },
+                              {
+                                "label": "控件组",
+                                "type": "ctrlgroup",
+                                "source": "CTRLGROUP",
+                                "advance": {
+                                  "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var apiCalObject = {};\n      var rs = [];\n      for(var i in target.__proto__){\n        rs.push({\n          id : i,\n          label : i\n        });\n      };\n      function setParamValue(obj){\n          console.log(\"setParamValue\", obj)\n          var regExp = /function ?\\((.*)\\) ?\\{/;\n          var funStr = target.__proto__[obj.id].toString();\n          var rs = regExp.exec(funStr);\n          target.setValue(\"params\", rs[1]);\n          target.setValue(\"funName\", obj.label);\n          apiCalObject.funName = obj.label;\n      };\n      target.getEditorStatus(\"APICALL\", function(data){\n          apiCalObject = data || {};\n          target.setValue(\"apiCalObject\", apiCalObject);\n          var find = rs.find(function(elem){\n            return elem.id == apiCalObject.funName;\n          }) || rs[0];\n          var ctrlGroups = [\n            [{\n              type : \"label\",\n              value : \"选择API\",\n              class : \"col-md-2\",\n              style : {\n                  \"text-align\" : \"center\"\n              }\n            },{\n              type : \"select\",\n              value : find.id,\n              options : rs,\n              class : \"col-md-10\",\n              on : {\n                change : function(elem){\n                  setParamValue(elem.value);\n                }\n              },\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\",\n                \"searchkey\" : \"label\"\n              }\n            }]\n          ];\n          target.render(ctrlGroups);\n          setTimeout(function(){\n            setParamValue(find); \n          });\n      });\n    }\n  }\n}",
+                                  "variable": ""
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "font-size": "12px"
+                                },
+                                "help": "../pdf/ctrlgroup.pdf",
+                                "parameters": {},
+                                "abc": 4444
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "advance": {
+                  "expression": "{}"
+                }
+              },
+              {
+                "label": "控制板1",
+                "type": "block",
+                "source": "BLOCK",
+                "style": {
+                  "padding": "5px",
+                  "margin": "5px",
+                  "border": "1px solid #ccc",
+                  "background": "#fff",
+                  "box-shadow": "1px 1px 10px 1px rgba(0,0,0,.1)"
+                },
+                "children": [
+                  {
+                    "type": "column",
+                    "col": 12,
+                    "children": [
+                      {
+                        "label": "控制板1",
+                        "type": "block",
+                        "source": "BLOCK",
+                        "style": {
+                          "padding": "5px",
+                          "margin": "5px",
+                          "border": "1px solid #ddd",
+                          "background-color": "#fff"
+                        },
+                        "advance": {
+                          "expression": {}
+                        },
+                        "children": [
+                          {
+                            "type": "column",
+                            "col": 12,
+                            "children": [
+                              {
+                                "label": "文字",
+                                "type": "text",
+                                "source": "TEXT",
+                                "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                                "data": {
+                                  "applied": false,
+                                  "multipleCi": false,
+                                  "multipleKpi": false,
+                                  "resource": [],
+                                  "modelType": 300,
+                                  "resfilltype": "parameter",
+                                  "series": {
+                                    "manual": "新建文字",
+                                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                                  },
+                                  "modelDisable": true
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "5px",
+                                  "font-size": "14px",
+                                  "font-weight": "bold",
+                                  "line-height": "30px",
+                                  "background-color": "rgb(243, 243, 243)"
+                                },
+                                "advance": {
+                                  "getfunction": "kpiDataService.getValueList",
+                                  "category": "ci",
+                                  "condition": [
+                                    "kpi",
+                                    "{object:kpiQueryModel}"
+                                  ],
+                                  "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"选择模型设备指标\")\n        }\n    }\n}"
+                                }
+                              },
+                              {
+                                "label": "控件组",
+                                "type": "ctrlgroup",
+                                "source": "CTRLGROUP",
+                                "advance": {
+                                  "expression": "expression = {\n  on : {\n    changeModel2 : function(event){\n      var target = event.target;\n      var global = event.global;\n      var model = target.getValue(\"model\") || undefined;\n      target.getModels(function(models){\n          Array.prototype.unshift.apply(models, [{\n              id : 300,\n              label : \"管理域\"\n          },{\n              id : 301,\n              label : \"客户\"\n          },{\n              id : 302,\n              label : \"项目\"\n          }])\n        var cmodel = model || models[0];\n        target.setValue(\"model\", cmodel);\n        target.getResourceByModelId(cmodel.id, function(resources){\n          target.getKpisByModelId(cmodel.id, function(kpis){\n            var ctrlGroups = [\n              [{\n                type : \"label\",\n                value : \"选择模型\",\n                style : {\n                  \"text-align\" : \"center\"\n                },\n                class : \"col-md-1\"\n              },{\n                type : \"select\",\n                value : cmodel.id,\n                on : {\n                  change : function(elem){\n                    target.setValue(\"model\", elem.value);\n                    global.fire(\"changeModel2\");\n                  }\n                },\n                style : {\n                  width : \"40%\"\n                },\n                class : \"col-md-5\",\n                options : models,\n                format : {\n                  \"id\" : \"id\",\n                  \"label\" : \"label\"\n                }\n              }],[{\n                type : \"label\",\n                value : \"选择设备\",\n                style : {\n                  \"text-align\" : \"center\"\n                },\n                class : \"col-md-1\"\n              },{\n                type : \"multiSelect\",\n                value : \"选择设备\",\n                style : {\n                  width : \"40%\"\n                },\n                class : \"col-md-5\",\n                on : {\n                  change : function(elem){\n                     target.setValue(\"resources\", elem.values);\n                  }\n                },\n                options : resources,\n                format : {\n                  \"id\" : \"id\",\n                  \"label\" : \"label\"\n                }\n              }],[{\n                type : \"label\",\n                value : \"选择指标\",\n                style : {\n                  \"text-align\" : \"center\"\n                }\n              },{\n                type : \"multiSelect\",\n                value : \"选择指标\",\n                on : {\n                  change : function(elem){\n                    target.setValue(\"kpis\", elem.values);\n                  }\n                },\n                options : kpis,\n                format : {\n                  \"id\" : \"id\",\n                  \"label\" : \"label\"\n                }\n              }]\n            ];\n            target.render(ctrlGroups);\n          })\n        })\n      });\n    },\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      target.setValue(\"resources\", []);\n      target.setValue(\"kpis\", []);\n      console.log(\"valueSettled!!\");\n      global.fire(\"changeModel2\");\n    }\n  }\n}",
+                                  "variable": ""
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "font-size": "12px"
+                                },
+                                "help": "../pdf/ctrlgroup.pdf",
+                                "parameters": {},
+                                "abc": 4444
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "advance": {
+                  "expression": "{}"
+                }
+              },
+              {
+                "label": "控制板1",
+                "type": "block",
+                "source": "BLOCK",
+                "style": {
+                  "padding": "5px",
+                  "margin": "5px",
+                  "border": "1px solid #ccc",
+                  "background": "#fff",
+                  "box-shadow": "1px 1px 10px 1px rgba(0,0,0,.1)"
+                },
+                "children": [
+                  {
+                    "type": "column",
+                    "col": 12,
+                    "children": [
+                      {
+                        "label": "控件组",
+                        "type": "ctrlgroup",
+                        "source": "CTRLGROUP",
+                        "advance": {
+                          "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var rs = [];\n      for(var i in target.__proto__){\n        rs.push({\n          id : i,\n          label : i\n        });\n      }\n      var ctrlGroups = [\n        [{\n            type : \"label\",\n            value : \"运行代码\",\n            class : \"col-md-4\"\n        },{\n          type : \"buttonGroup\",\n          class : \"col-md-8\",\n          tdStyle : {\n              float : \"right\"\n          },\n          content : [{\n              type : \"button\",\n              value : \"缓存代码\",\n              icon : \"glyphicon glyphicon-save\",\n              btnclass : \"btn btn-default\",\n              on : {\n                click : function(evnt){\n                  var apiCalObject = target.getValue(\"apiCalObject\");\n                  var expression = target.getValue(\"expression\");\n                  var funName = apiCalObject.funName;\n                  if(!apiCalObject.funs){\n                      apiCalObject.funs = {};\n                  }\n                  apiCalObject.funs[funName] = expression;\n                  target.growl(\"缓存完成\");\n                  target.saveEditorStatus(\"APICALL\", apiCalObject);\n                }\n              }\n          },{\n              type : \"button\",\n              value : \"返回默认\",\n              icon : \"glyphicon glyphicon-circle\",\n              btnclass : \"btn btn-default\",\n              on : {\n                click : function(evnt){\n                  \n                }\n              }\n          },{\n              type : \"button\",\n              value : \"运行代码\",\n              btnclass : \"btn btn-primary\",\n              on : {\n                click : function(evnt){\n                  var expression = target.getValue(\"expression\");\n                  var expFn = target.runExpression(expression);\n                  try{\n                    expFn(event); \n                  } catch(e){\n                      target.growl(e.message, \"error\"); \n                  }\n                }\n              }\n          }]\n        }]\n      ];\n      target.render(ctrlGroups);\n    }\n  }\n}",
+                          "variable": ""
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "font-size": "12px"
+                        },
+                        "help": "../pdf/ctrlgroup.pdf",
+                        "parameters": {},
+                        "abc": 4444
+                      },
+                      {
+                        "label": "代码编辑器",
+                        "type": "aceeditor",
+                        "source": "ACEEDITOR",
+                        "style": {
+                          "margin": "5px",
+                          "padding": "0",
+                          "height": "360px",
+                          "border": "1px solid #ddd"
+                        },
+                        "advance": {
+                          "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var blank = function(num){\n        var rs = \"\";\n        for(var i=0; i<num; i++){\n          rs += \"    \"\n        }\n        return rs;\n      }\n      target.getEditorStatus(\"APICALL\", function(data){\n          if(data){\n            apiCalObject = data;\n            var funName = apiCalObject.funName;\n            var exp = apiCalObject.funs[funName];\n            var expression = \"function init( event ){\\n\";\n            expression += blank(1) + \"var target = event.target;\\n\";\n            expression += blank(1) + \"var global = event.global;\\n\";\n            expression += blank(1) + \"global.fire(\\\"renderList\\\", \\\"创建代码\\\");\\n\";\n            expression += \"}\";\n            exp = exp || expression;\n            target.render(exp);\n          } else {\n            target.render(\"/** 请选择生成表达式 */\");\n          };\n      });\n    },\n    change : function(event){\n      var target = event.target;\n      var global = event.global;\n      target.setValue(\"expression\", event.value);\n    },\n    apiChange2 : function(event){\n      var target = event.target;\n      var global = event.global;\n      var pa = event.params;\n      var funName = pa.funName;\n      var params = pa.params;\n      var arr = params ? params.split(\", \") : [];\n      var kpis = pa.kpis;\n      var resources = pa.resources;\n      var model = pa.model;\n      var blank = function(num){\n        var rs = \"\";\n        for(var i=0; i<num; i++){\n          rs += \"    \"\n        }\n        return rs;\n      }\n      var expression = blank(0) + \"function init( event ){\\n\";\n      expression += blank(1) + \"var target = event.target;\\n\";\n      expression += blank(1) + \"var global = event.global;\\n\";\n      for(var i in arr){\n        if(arr[i] == \"modelId\"){\n          expression += blank(1) + \"var modelId = \" + model.id + \";\\n\";\n        } else if(arr[i] == \"ci\"){\n          if(resources.length > 0){\n            expression += blank(1) + \"var ci = [\" + resources.map(function(elem){\n                return elem.id\n              }).toString() + \"];\\n\";\n            expression += blank(1) + \"var ciNames = [\" + resources.map(function(elem){\n                return \"\\\"\" + elem.label + \"\\\"\"\n              }).toString() + \"];\\n\";\n          } else {\n            expression += blank(1) + \"var ci = [];\\n\";\n          }\n        } else if(arr[i] == \"kpi\"){\n          if(kpis.length > 0){\n            expression += blank(1) + \"var kpi = [\" + kpis.map(function(elem){\n                return elem.id\n              }).toString() + \"];\\n\";\n            expression += blank(1) + \"var kpiNames = [\" + kpis.map(function(elem){\n                return \"\\\"\" + elem.label + \"\\\"\"\n              }).toString() + \"];\\n\";\n          } else {\n            expression += blank(1) + \"var kpi = [];\\n\";\n          };\n        } else if(arr[i] == \"extension\"){\n          expression += blank(1) + \"var extension = {};\\n\";\n        } else if(arr[i] == \"callback\"){\n\n        } else {\n          expression += blank(1) + \"var \" + arr[i] + \" = \\\"\\\";\\n\";\n        }\n      };\n      if(arr.indexOf(\"callback\") != -1){\n        expression += blank(1) + \"target.\" + funName + \"(\";\n        for(var i in arr){\n          if(arr[i] == \"callback\"){\n            expression += \"function(returnData){\" + \"\\n\";\n            expression += blank(2) + \"global.fire(\\\"renderList\\\", returnData)\\n\";\n            expression += blank(1) + \"}\";\n          } else {\n            expression += arr[i]\n          }\n          if(i < arr.length - 1){\n            expression += \",\";\n          } else {\n            expression += \")\\n\";\n          }\n        }\n      } else {\n        expression += blank(1) + \"var data = target.\" + funName + \"(\";\n        if(arr.length > 0){\n            for(var i in arr){\n              expression += arr[i];\n              if(i < arr.length - 1){\n                expression += \",\";\n              } else {\n                expression += \");\\n\";\n              }\n            };\n        } else {\n          expression += \");\\n\";  \n        };\n      };\n      if(arr.indexOf(\"callback\") == -1){\n          expression += blank(1) + \"global.fire(\\\"renderList\\\", data);\\n\";\n      };\n      expression += blank(0) + \"}\";\n      target.setText(expression);\n      target.setValue(\"expression\", expression);\n    }\n  }\n}"
+                        },
+                        "parameters": {}
+                      }
+                    ]
+                  }
+                ],
+                "advance": {
+                  "expression": "{}"
+                }
+              }
+            ],
+            "col": 6
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "控制板1",
+                "type": "block",
+                "source": "BLOCK",
+                "style": {
+                  "padding": "5px",
+                  "margin": "5px",
+                  "border": "1px solid #ccc",
+                  "background": "#fff",
+                  "box-shadow": "1px 1px 10px 1px rgba(0,0,0,.1)"
+                },
+                "children": [
+                  {
+                    "type": "column",
+                    "col": 12,
+                    "children": [
+                      {
+                        "label": "文字",
+                        "type": "text",
+                        "source": "TEXT",
+                        "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                        "data": {
+                          "applied": false,
+                          "multipleCi": false,
+                          "multipleKpi": false,
+                          "resource": [],
+                          "modelType": 300,
+                          "resfilltype": "parameter",
+                          "series": {
+                            "manual": "新建文字",
+                            "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                          },
+                          "modelDisable": true
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "padding": "5px",
+                          "font-size": "14px",
+                          "font-weight": "bold",
+                          "line-height": "30px",
+                          "background-color": "rgb(243, 243, 243)"
+                        },
+                        "advance": {
+                          "getfunction": "kpiDataService.getValueList",
+                          "category": "ci",
+                          "condition": [
+                            "kpi",
+                            "{object:kpiQueryModel}"
+                          ],
+                          "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"运行结果\")\n        }\n    }\n}"
+                        }
+                      },
+                      {
+                        "label": "代码编辑器",
+                        "type": "aceeditor",
+                        "source": "ACEEDITOR",
+                        "style": {
+                          "margin": "5px",
+                          "padding": "0",
+                          "height": "713px"
+                        },
+                        "advance": {
+                          "expression": "expression = {\n\t\"on\" : {\n     \"renderList\" : function(event){\n         var params = event.params;\n         var target = event.target;\n      \t var global = event.target;\n      \t target.setText(JSON.stringify(params, null, 2));\n     }\n  }\n}"
+                        },
+                        "parameters": {}
+                      }
+                    ]
+                  }
+                ],
+                "advance": {
+                  "expression": "{}"
+                }
+              }
+            ],
+            "col": 6
+          }
+        ],
+        "url": "images/map/map1.png"
+      }
+    ],
+    "col": 12
+  },
+  "setting": "{\n  \"showNavi\": false,\n  \"style\": {\n    \"padding\": \"5px\",\n    \"background-color\": \"#eee\"\n  }\n}"
+}

@@ -1,0 +1,239 @@
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" id="deploy">
+              <li ng-class="{'active' : tab == 'tab1'}" name="tab1"><a role="button" data-toggle="tab">按区域预测</a></li>
+              <li ng-class="{'active' : tab == 'tab2'}" name="tab2"><a role="button" data-toggle="tab">按行业预测</a></li>
+              <li ng-class="{'active' : tab == 'tab5'}" name="tab5"><a role="button" data-toggle="tab">按企业预测</a></li>
+              <li ng-class="{ 'active' : tab == 'tab3'}" name="tab3"><a role="button" data-toggle="tab">按能源预测</a></li>
+              <li ng-class="{ 'active' : tab == 'tab4'}" name="tab4"><a role="button" data-toggle="tab">按设备类型预测</a></li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div ng-show="tab == 'tab1'" class="box-footer no-pad-top no-border">
+          <div class="box-body no-padding-left no-pad-bottom">
+            <form role="form">
+              <div class="form-group col-sm-2">
+                <label class="control-label">区域名称：</label>
+                <select class="form-control" ng-model="queryDitem.area" ng-options="op.label as op.label for op in area">
+                </select>
+              </div>
+              <div class="form-group col-sm-2">
+                <label class="control-label">选择周期：</label>
+                <select class="form-control" style="width: 100%;" ng-model="queryDitem.statisticsType1" ng-options="op.id as op.text for op in statisticsTypeList" selectdata="statisticsTypeList" select2>
+                </select>
+              </div>
+              <div class="form-group col-sm-2">
+                <label class="col-sm-12 control-label font-white">操作：</label>
+                <div class="btn-group">
+                  <button ng-click="goSearch(queryDitem)" type="button" class="btn btn-primary btn-sm"><i class="fa fa-search"></i><span class="hidden-sm">查询</span></button>
+                  <button ng-click="goClear()" type="button" class="btn btn-default btn-sm"><i class="fa fa-close"></i><span class="hidden-sm">清除</span></button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="box-footer no-padding">
+            <div class="box box-solid" style="margin-bottom:1px">
+              <div class="box-header">
+                <h3 class="box-title">区域预测</h3>
+                <div class="box-tools pull-right">
+                  <button id="viewcollapse" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+              </div>
+              <div class="box-body">
+                <div class="col-sm-6">
+                  <!-- <div style="height: 300px;" echarts3-dom></div> -->
+                  <div id="areaview" style="height: 500px; width: 1000px; margin-left:30px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div ng-show="tab == 'tab2'" class="box-footer no-pad-top no-border">
+          <div class="box-body no-padding-left no-pad-bottom">
+            <form role="form">
+              <div class="form-group col-sm-2">
+                <label class="control-label">行业名称：</label>
+                <select class="form-control" style="width: 100%;" ng-model="queryDitem.industry" ng-options="op.id as op.text for op in industryShortType" selectdata="industryShortType" select2>
+                </select>
+              </div>
+              <div class="form-group col-sm-2">
+                <label class="control-label">选择周期：</label>
+                <select class="form-control" style="width: 100%;" ng-model="queryDitem.statisticsType2" ng-options="op.id as op.text for op in statisticsTypeList" selectdata="statisticsTypeList" select2>
+                </select>
+              </div>
+              <div class="form-group col-sm-2">
+                <label class="col-sm-12 control-label font-white">操作：</label>
+                <div class="btn-group">
+                  <button ng-click="goSearch(queryDitem)" type="button" class="btn btn-primary btn-sm"><i class="fa fa-search"></i><span class="hidden-sm">查询</span></button>
+                  <button ng-click="goClear()" type="button" class="btn btn-default btn-sm"><i class="fa fa-close"></i><span class="hidden-sm">清除</span></button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="box-footer no-padding">
+            <div class="box box-solid" style="margin-bottom:1px">
+              <div class="box-header">
+                <h3 class="box-title">行业预测</h3>
+                <div class="box-tools pull-right">
+                  <button id="viewcollapse" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+              </div>
+              <div class="box-body">
+                <div class="col-sm-6">
+                  <!-- <div style="height: 300px;" echarts3-dom></div> -->
+                  <div id="industryview" style="height: 500px; width: 1000px; margin-left:30px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div ng-show="tab == 'tab5'" class="box-footer no-pad-top no-border">
+          <div class="box-body no-padding-left no-pad-bottom">
+            <form role="form">
+              <div class="form-group col-sm-2">
+                <label class="control-label">选择公司：</label>
+                <select class="form-control" style="width: 100%;" ng-model="queryDitem.enterpriseId5" ng-options="op.id as op.text for op in allEnterprises" itemchange="filterStatistic" selectdata="allEnterprises" select2>
+                </select>
+              </div>
+              <div class="form-group col-sm-2">
+                <label class="control-label">选择周期：</label>
+                <select class="form-control" style="width: 100%;" disabled="true" ng-model="queryDitem.statisticsType5" ng-options="op.id as op.text for op in statisticsTypeList">
+                </select>
+              </div>
+              <div class="form-group col-sm-2">
+                <label class="col-sm-12 control-label font-white">操作：</label>
+                <div class="btn-group">
+                  <button ng-click="goSearch(queryDitem)" type="button" class="btn btn-primary btn-sm"><i class="fa fa-search"></i><span class="hidden-sm">查询</span></button>
+                  <button ng-click="goClear()" type="button" class="btn btn-default btn-sm"><i class="fa fa-close"></i><span class="hidden-sm">清除</span></button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="box-footer no-padding">
+            <div class="box box-solid" style="margin-bottom:1px">
+              <div class="box-header">
+                <h3 class="box-title">企业预测</h3>
+                <div class="box-tools pull-right">
+                  <button id="viewcollapse" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+              </div>
+              <div class="box-body">
+                <div class="box-header">
+                  <div id="enterpriseView" style="height: 500px; width: 1000px; margin-left:30px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div ng-show="tab == 'tab3'" class="box-footer no-pad-top no-border">
+          <div class="box-body no-padding-left no-pad-bottom">
+            <form role="form">
+              <div class="form-group col-sm-2">
+                <label class="control-label">选择公司：</label>
+                <select class="form-control" style="width: 100%;" ng-model="queryDitem.enterpriseId2" ng-options="op.id as op.text for op in allEnterprises" itemchange="filterStatistic" selectdata="allEnterprises" select2>
+                </select>
+              </div>
+              <!-- <div class="form-group col-sm-2">
+                <label class="control-label">能源名称：</label>
+                <select class="form-control" style="width: 100%;" ng-model="queryDitem.energy" ng-options="op.id as op.text for op in energyType" selectdata="energyType" select2>
+                </select>
+              </div> -->
+              <div class="form-group col-sm-2">
+                <label class="control-label">选择周期：</label>
+                <select class="form-control" style="width: 100%;" disabled="true" ng-model="queryDitem.statisticsType3" ng-options="op.id as op.text for op in statisticsTypeList">
+                </select>
+              </div>
+              <div class="form-group col-sm-2">
+                <label class="col-sm-12 control-label font-white">操作：</label>
+                <div class="btn-group">
+                  <button ng-click="goSearch(queryDitem)" type="button" class="btn btn-primary btn-sm"><i class="fa fa-search"></i><span class="hidden-sm">查询</span></button>
+                  <button ng-click="goClear()" type="button" class="btn btn-default btn-sm"><i class="fa fa-close"></i><span class="hidden-sm">清除</span></button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="box-footer no-padding">
+            <div class="box box-solid" style="margin-bottom:1px">
+              <div class="box-header">
+                <h3 class="box-title">能源预测</h3>
+                <div class="box-tools pull-right">
+                  <button id="viewcollapse" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+              </div>
+              <div class="box-body" ng-show="showEnergyTitle">
+                <div class="box-header">
+                  <h3 class="box-title">指标：能源类型的工业附加值能耗</h3>
+                  <div id="energyview1" style="height: 500px; width: 1000px; margin-left:30px;"></div>
+                </div>
+                <div class="box-header">
+                  <h3 class="box-title">指标：能源类型的GDP能耗</h3>
+                  <div id="energyview2" style="height: 500px; width: 1000px; margin-left:30px;"></div>
+                </div>
+                <div class="box-header">
+                  <h3 class="box-title">指标：能源类型的综合能耗</h3>
+                  <div id="energyview3" style="height: 500px; width: 1000px; margin-left:30px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div ng-show="tab == 'tab4'" class="box-footer no-pad-top no-border">
+          <div class="box-body no-padding-left no-pad-bottom">
+            <form role="form">
+              <div class="form-group col-sm-2">
+                <label class="control-label">选择公司：</label>
+                <select class="form-control" style="width: 100%;" ng-model="queryDitem.enterpriseId" ng-options="op.id as op.text for op in allEnterprises" itemchange="filterModel" selectdata="allEnterprises" select2>
+                </select>
+              </div>
+              <div class="form-group col-sm-2">
+                <label class="control-label">选择设备：</label>
+                <select class="form-control" style="width: 100%;" ng-model="queryDitem.modelId" ng-options="op.id as op.text for op in flterDeviceList" selectdata="flterDeviceList" itemchange="filterNodeId" select2>
+                </select>
+              </div>
+              <div class="form-group col-sm-2">
+                <label class="control-label">选择节点：</label>
+                <select class="form-control" style="width: 100%;" ng-disabled="!(queryDitem.modelId && queryDitem.enterpriseId)" ng-model="queryDitem.nodeId" ng-options="op.id as op.text for op in filterNodes" selectdata="filterNodes" select2>
+                </select>
+              </div>
+              <div class="form-group col-sm-2">
+                <label class="control-label">选择周期：</label>
+                <select class="form-control" style="width: 100%;" disabled="true" ng-model="queryDitem.statisticsType4" ng-options="op.id as op.text for op in statisticsTypeList">
+                </select>
+              </div>
+              <div class="form-group col-sm-2">
+                <label class="col-sm-12 control-label font-white">操作：</label>
+                <div class="btn-group">
+                  <button ng-click="goSearch(queryDitem)" type="button" class="btn btn-primary btn-sm"><i class="fa fa-search"></i><span class="hidden-sm">查询</span></button>
+                  <button ng-click="goClear()" type="button" class="btn btn-default btn-sm"><i class="fa fa-close"></i><span class="hidden-sm">清除</span></button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="box-footer no-padding">
+            <div class="box box-solid" style="margin-bottom:1px">
+              <div class="box-header">
+                <h3 class="box-title">设备预测</h3>
+                <div class="box-tools pull-right">
+                  <button id="viewcollapse" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+              </div>
+              <div class="box-body">
+                <div class="col-sm-6">
+                  <!-- <div style="height: 300px;" echarts3-dom></div> -->
+                  <div id="deviceView" style="height: 500px; width: 1000px; margin-left:30px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

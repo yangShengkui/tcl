@@ -1,0 +1,246 @@
+{
+  "version": "V_2",
+  "groups": [
+    {
+      "id": "0",
+      "label": "默认页",
+      "path": "index",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "type": "row",
+            "source": "ROW",
+            "parameters": {
+              "alignment": "bootstrap"
+            },
+            "style": {},
+            "children": [
+              {
+                "type": "column",
+                "children": [
+                  {
+                    "label": "控制板1",
+                    "type": "block",
+                    "source": "BLOCK",
+                    "style": {
+                      "padding": "5px",
+                      "border": "0",
+                      "min-height": "calc(100vh - 150px)",
+                      "background": "rgba(0,0,0,.6)"
+                    },
+                    "advance": {
+                      "expression": {}
+                    },
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "控件组",
+                            "type": "ctrlgroup",
+                            "source": "CTRLGROUP",
+                            "advance": {
+                              "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var kpiOption = [{\n          id : 1002,\n          label : \"报警数量\"\n        },{\n          id : 1003,\n          label : \"报警准确率\"\n        },{\n          id : 1004,\n          label : \"判断及时率\"\n        },{\n          id : 1005,\n          label : \"诊断准确率\"\n        }];\n        var valKpi = [kpiOption[0]];\n        target.setValue(\"decider/kpi\", valKpi);\n        var render = function(){\n          var ctrlGroups = [\n            [{\n              type : \"label\",\n              value : \"指标\"\n            }],\n            [{\n              type : \"checkboxlist\",\n              multiselect : false,\n              value : valKpi.map(function(elem){\n                return elem.id;\n              }),\n              on : {\n                change : function(elem){\n                  valKpi = elem.value;\n                  target.setValue(\"decider/kpi\", valKpi);\n                  render();\n                }\n              },\n              options : kpiOption\n            }]\n          ];\n          target.render(ctrlGroups);\n        }\n        render();\n    }\n  }\n}"
+                            },
+                            "style": {
+                              "margin": "5px",
+                              "font-size": "12px"
+                            },
+                            "help": "../pdf/ctrlgroup.pdf",
+                            "parameters": {},
+                            "url": "images/map/map1.png"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "col": 2
+              },
+              {
+                "type": "column",
+                "children": [
+                  {
+                    "label": "控制板1",
+                    "type": "block",
+                    "source": "BLOCK",
+                    "style": {
+                      "padding": "15px",
+                      "margin": "5px"
+                    },
+                    "advance": {
+                      "expression": "{}"
+                    },
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "控件组",
+                            "type": "ctrlgroup",
+                            "source": "CTRLGROUP",
+                            "advance": {
+                              "expression": "expression = {\n  bootstrap : false,\n  width : \"auto\",\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var CURRENTDATE = target.dateHandler(new Date());\n      var FROMTODAY = target.dateHandler(CURRENTDATE.trimmToDate());\n      var FROMWEEK = target.dateHandler(CURRENTDATE.trimmToWeek());\n      var FROMMONTH = target.dateHandler(CURRENTDATE.trimmToMonth());\n      var currentBase = {}, currentArea = {}, currentLine = {}, time = [FROMTODAY, CURRENTDATE];\n      var model;\n      target.off(\"startSearch\");\n      target.off(\"startcompare\");\n      var isSame = function(time, arr){\n        var t1 = time[0].getTime();\n        var t2 = time[1].getTime();\n        var a1 = arr[0].getTime();\n        var a2 = arr[1].getTime();\n        return t1 == a1 && t2 == a2;\n      }\n      var bases = [];\n      var areas = [];\n      var lines = [];\n      target.queryDomainTree(function(domaintree){\n        target.getModels(function(models){\n          target.getResourceByModelId(301, function(customers){\n            model = models[0];\n            var repeat = function(node){\n              if(node.domainInfos){\n                for(var i in node.domainInfos){\n                  repeat(node.domainInfos[i]);\n                }\n              } else {\n                node.domainInfos = customers.filter(function(customer){\n                  return customer.domains.indexOf(node.domains) != -1;\n                });\n              }\n            }\n            repeat(domaintree[0]);\n            bases = domaintree[0].domainInfos;\n            currentBase = bases[0];\n            areas = currentBase.domainInfos\n            currentArea = areas[0];\n            lines = currentArea.domainInfos;\n            currentLine = lines[0];\n            var timeStr = time.map(function(elem){\n              return elem.getDate();\n            });\n            target.setValue(\"decider/searchlist\", [{\n              base : currentBase,\n              area : currentArea,\n              line : currentLine\n            }])\n            var render = function(){\n              target.setValue(\"decider/base\", currentBase);\n              target.setValue(\"decider/area\", currentArea);\n              target.setValue(\"decider/line\", currentLine);\n              target.setValue(\"decider/time\", time);\n              target.setValue(\"decider/model\", model);\n              var searchlist = target.getValue(\"decider/searchlist\");\n              var first = searchlist[0];\n              var baseGr = bases.map(function(base){\n                var rs = base.$clone();\n                rs.type = \"button\";\n                //rs.class = \"col-md-2\";\n                rs.btnclass = currentBase.id == base.id ? \"btn btn-primary\" : \"btn btn-default\";\n                rs.btnStyle = {\n                  width : \"150px\"\n                };\n                rs.format = {\n                  id : \"id\",\n                  label : \"label\"\n                };\n                rs.on = {\n                  click : function(event){\n                    currentBase = event.current;\n                    lines = [];\n                    currentLine = {};\n                    if(currentBase.id != 0){\n                      areas = currentBase.domainInfos\n                      currentArea = {};\n                    } else {\n                      areas = [];\n                    };\n                    render();\n                  }\n                }\n                return rs;\n              });\n              var areaGr = areas.map(function(area){\n                var rs = area.$clone();\n                rs.type = \"button\";\n                rs.btnclass = currentArea.id == area.id ? \"btn btn-primary\" : \"btn btn-default\";\n                rs.format = {\n                  id : \"id\",\n                  label : \"label\"\n                };\n                rs.btnStyle = {\n                  width : \"150px\"\n                };\n                //rs.class = \"col-md-2\";\n                rs.on = {\n                  click : function(event){\n                    currentArea = event.current;\n                    if(currentArea.id != 0){\n                      lines = currentArea.domainInfos;\n                      currentLine = {};\n                    } else {\n                      lines = [];\n                    };\n                    render();\n                  }\n                }\n                return rs;\n              });\n              var lineGr = lines.map(function(line){\n                var rs = line.$clone();\n                rs.type = \"button\";\n                rs.btnStyle = {\n                  width : \"150px\"\n                };\n                rs.btnclass = currentLine.id == line.id ? \"btn btn-primary\" : \"btn btn-default\";\n                rs.format = {\n                  id : \"id\",\n                  label : \"label\"\n                };\n                //rs.class = \"col-md-2\";\n                rs.on = {\n                  click : function(event){\n                    currentLine = event.current;\n                    render();\n                  }\n                }\n                return rs;\n              });\n\n              var ctrlGroups = [\n                [{\n                  type : \"button\",\n                  value : \"\",\n                  rowSpan : 10,\n                  icon : \"glyphicon glyphicon-plus\",\n                  btnclass : \"btn btn-primary\",\n                  style : {\n                    \"text-align\" : \"center\",\n                    \"padding\" : \"10px 0\"\n                  },\n                  btnStyle : {\n                    \"background-color\" : \"#1370cb\",\n                    \"font-size\" : \"30px\",\n                    \"padding\" : \"3px 12px\",\n                    \"border-radius\" : \"10px\",\n                    \"border\" : 0,\n                    \"margin\" : \"auto\"\n                  },\n                  class : \"col-md-2\",\n                  on : {\n                    click : function(elem){\n                      var check = function(){\n                        if(searchlist.length > 0){\n                          var last;\n                          if(searchlist[0].area.id == undefined){\n                            last = searchlist[0].base;\n                            return last.id != currentBase.id && currentBase.id != undefined;\n                          };\n                          if(searchlist[0].line.id == undefined){\n                            last = searchlist[0].area;\n                            return last.id != currentArea.id && currentArea.id != undefined;\n                          }\n                          last = searchlist[0].line;\n                          return last.id != currentLine.id && currentLine.id != undefined;\n                        }\n                        return true\n                      }\n                      if(check()){\n                        searchlist.push({\n                          base : currentBase,\n                          area : currentArea,\n                          line : currentLine\n                        });\n                        render();\n                        target.trigger(\"startSearch\");\n                      } else {\n                        target.growl(\"选择范围与已选不匹配或重复，不能进行比较！\", \"error\");\n                      }\n                    }\n                  }\n                },{\n                  type : \"label\",\n                  value : \"基地\",\n                  //class : \"col-md-1\"\n                }].concat(baseGr)\n              ];\n              if(areaGr.length > 0){\n                if(first){\n                  if(first.area.id){\n                    var are = [{\n                      type : \"label\",\n                      value : \"区域\",\n                      //class : \"col-md-1\"\n                    }].concat(areaGr)\n                    ctrlGroups.push(are);\n                  }\n                } else {\n                  var are = [{\n                    type : \"label\",\n                    value : \"区域\",\n                    //class : \"col-md-1\"\n                  }].concat(areaGr)\n                  ctrlGroups.push(are);\n                }\n              };\n              if(lineGr.length > 0){\n                if(first){\n                  if(first.line.id){\n                    var li = [{\n                      type : \"label\",\n                      value : \"产线\",\n                      //class : \"col-md-1\"\n                    }].concat(lineGr)\n                    ctrlGroups.push(li);\n                  }\n                } else {\n                  var li = [{\n                    type : \"label\",\n                    value : \"产线\",\n                    //class : \"col-md-1\"\n                  }].concat(lineGr)\n                  ctrlGroups.push(li);\n                }\n              }\n              var modelSelector = [];\n              var a = {\n                type : \"label\",\n                value : \"类型\"\n              };\n              var i = 0;\n              var repeat = function(inx){\n                debugger;\n                var row = Math.floor(inx / 6);\n                if(models[inx]){\n                  modelSelector[row] = modelSelector[row] || (row ? [{\n                      type : \"label\",\n                      value : \"\"\n                    }] : [{\n                      type : \"label\",\n                      value : \"类型\"\n                    }]);\n                  modelSelector[row].push({\n                    type : \"button\",\n                    value : models[inx].label,\n                    btnStyle : {\n                      width : \"150px\"\n                    },\n                    btnclass : model.id == models[inx].id ? \"btn btn-primary\" : \"btn btn-default\",\n                    on : {\n                      click : function(event){\n                        model = models[i];\n                        render();\n                      }\n                    }\n                  });\n                  repeat(inx+1);\n                };\n              }\n              repeat(i);\n              Array.prototype.push.apply(ctrlGroups, modelSelector);\n              var timeSelector =  [{\n                type : \"label\",\n                value : \"时间\"\n              },{\n                type : \"button\",\n                value : \"当日\",\n                btnStyle : {\n                  width : \"150px\"\n                },\n                btnclass : isSame(time,[FROMTODAY, CURRENTDATE]) ? \"btn btn-primary\" : \"btn btn-default\",\n                on : {\n                  click : function(event){\n                    time = [FROMTODAY, CURRENTDATE];\n                    render();\n                  }\n                }\n              },{\n                type : \"button\",\n                value : \"本周\",\n                btnStyle : {\n                  width : \"150px\"\n                },\n                btnclass :isSame(time,[FROMWEEK, CURRENTDATE]) ? \"btn btn-primary\" : \"btn btn-default\",\n                on : {\n                  click : function(event){\n                    time = [FROMWEEK, CURRENTDATE];\n                    render();\n                  }\n                }\n              },{\n                type : \"button\",\n                value : \"本月\",\n                btnStyle : {\n                  width : \"150px\"\n                },\n                btnclass : isSame(time,[FROMMONTH, CURRENTDATE]) ? \"btn btn-primary\" : \"btn btn-default\",\n                on : {\n                  click : function(event){\n                    time = [FROMMONTH, CURRENTDATE];\n                    render();\n                  }\n                }\n              },{\n                type : \"dateRangePicker\",\n                colSpan : 4,\n                value : time.map(function(elem){\n                  var rs = elem.getDate();\n                  return rs;\n                }),\n                on : {\n                  change : function(event){\n                    time = [target.dateHandler(event.value.start),target.dateHandler(event.value.end)];\n                    render();\n                  }\n                },\n                style : {\n                  width : \"250px\"\n                }\n              }]\n              ctrlGroups.push(timeSelector);\n              target.render(ctrlGroups);\n            };\n            render();\n            target.wait(function(){\n              var events = target.getEvents();\n              return events['startcompare'] && events['startSearch']['list'] && events['startSearch']['text'];\n            }, function(){\n              target.trigger(\"startSearch\");\n              target.trigger(\"startcompare\");\n            });\n          })\n        })\n\n      });\n    }\n  }\n}"
+                            },
+                            "style": {
+                              "margin": "5px",
+                              "font-size": "12px"
+                            },
+                            "help": "../pdf/ctrlgroup.pdf",
+                            "parameters": {}
+                          }
+                        ]
+                      }
+                    ],
+                    "parameters": {}
+                  },
+                  {
+                    "label": "控制板1",
+                    "type": "block",
+                    "source": "BLOCK",
+                    "style": {
+                      "padding": "15px",
+                      "margin": "5px"
+                    },
+                    "advance": {
+                      "expression": {}
+                    },
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "文字",
+                            "type": "text",
+                            "source": "TEXT",
+                            "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                            "style": {
+                              "padding": "0",
+                              "font-size": "14px",
+                              "font-weight": "bold"
+                            },
+                            "advance": {
+                              "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"查询结果\")\n        }\n    }\n}"
+                            },
+                            "data": {
+                              "modelType": 300,
+                              "resfilltype": "parameter",
+                              "modelDisable": true
+                            }
+                          },
+                          {
+                            "label": "控件组",
+                            "type": "ctrlgroup",
+                            "source": "CTRLGROUP",
+                            "advance": {
+                              "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var render = function(str){\n          var ctrlGroups = [\n           [{\n               type : \"label\",\n               value : str,\n               class : \"col-md-8\",\n           },{\n              type : \"button\",\n              value : \"开始对比\",\n              icon : \"glyphicon glyphicon-transfer\",\n              btnclass : \"btn btn-primary pull-right\",\n              class : \"col-md-4\",\n              on : {\n                click : function(elem){\n                  target.trigger(\"startcompare\")\n                }\n              }\n            }]\n          ];\n          target.render(ctrlGroups);\n      };\n      render(\"全部\");\n      target.on(\"startSearch.text\", function(){\n        var decider = target.getValue(\"decider\");\n        var getString = function(){\n          var base = decider.base;\n          var area = decider.area;\n          var line = decider.line;\n          if(base.id == 0){\n            str = \"全部\";\n            return str;\n          } else {\n            str  = base.label;\n          }\n          if(area.id == 0){\n            str += \" / 全部\"\n            return str\n          } else {\n            str  += \" / \" + area.label;\n          }\n          if(line.id == 0){\n            str += \" / 全部\"\n            return str\n          } else {\n            str += \" / \" + line.label;\n          }\n          return str;\n        }\n        var kpi = decider.kpi;\n        var str = getString();\n        if(kpi.length > 0){\n          str += \"   (\" + kpi.map(function(elem){\n              return elem.label\n            }).toString() + \")   \";\n        };\n        var time = decider.time;\n        str += time.map(function(elem){\n            return elem.getDateString(\"yy/MM/dd\");\n        }).toString().replace(\",\",\"  -  \");\n        render(str);\n      });\n    }\n  }\n}"
+                            },
+                            "style": {
+                              "margin": "5px",
+                              "font-size": "12px"
+                            },
+                            "help": "../pdf/ctrlgroup.pdf",
+                            "parameters": {}
+                          },
+                          {
+                            "label": "高级列表",
+                            "type": "dataTableAdvance",
+                            "source": "DATATABLEADVANCE",
+                            "parameters": {
+                              "col": 1,
+                              "pageSize": 10,
+                              "listbottom": "standard"
+                            },
+                            "advance": {
+                              "expression": "expression = {\n  \"on\" : {\n    \"init\" : function(event){\n      var target = event.target;\n      target.off(\"startSearch.list\");\n      target.on(\"startSearch.list\", function(){\n          debugger;\n        var render = function(){\n          var model = target.getValue(\"decider/model\");\n          var time = target.getValue(\"decider/time\");\n          var Dic = {\n            base : \"基地\",\n            area : \"区域\",\n            line : \"产线\",\n            model : \"模型\",\n            time : \"时间段\"\n          }\n          var searchlist = target.getValue(\"decider/searchlist\");\n          var inx = 0;\n          var list = searchlist.map(function(elem){\n            var rs = {};\n            rs.index = inx\n            rs.base = elem.base.label;\n            if(elem.area.id){\n              rs.area = elem.area.label;\n            };\n            if(elem.line.id){\n              rs.line = elem.line.label;\n            };\n            rs.model = model.label;\n            rs.time = time.map(function(elem){\n                return elem.getDateString(\"yy/MM/dd\")\n            }).toString();\n            inx++;\n            return rs;\n          })\n          var first = searchlist[0];\n          var format = [];\n          for(var i in Dic){\n            format.push({\n                type : \"text\",\n                value : i,\n                name : Dic[i]\n              });\n          };\n          format.push({\n            type : \"button\",\n            name : \"操作\",\n            label : \"删除\",\n            class : \"btn btn-primary\",\n            icon : \"glyphicon glyphicon-remove\",\n            on : {\n              click : function(event){\n                var index = event.row.index;\n                searchlist.splice(index,1);\n                render();\n              }\n            }\n          });\n          debugger;\n          target.render({\n            data : list,\n            format : format\n          });\n        }\n        render();\n      });\n    }\n  }\n}"
+                            },
+                            "style": {
+                              "margin": "5px",
+                              "font-size": "12px"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "label": "控制板1",
+                    "type": "block",
+                    "source": "BLOCK",
+                    "style": {
+                      "padding": "15px",
+                      "margin": "5px"
+                    },
+                    "advance": {
+                      "expression": {}
+                    },
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "高级视图",
+                            "type": "advanceEchart",
+                            "source": "ADVANCEECHART",
+                            "parameters": {
+                              "theme": "auto"
+                            },
+                            "advance": {
+                              "expression": "express = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var NUMBER = 10;\n      target.off(\"startcompare\");\n      target.on(\"startcompare\", function(){\n        var decider = target.getValue(\"decider\");\n        var searchlist = target.getValue(\"decider/searchlist\");\n        var time = target.getValue(\"decider/time\");\n        debugger;\n        if(searchlist.length > 0){\n          var last = \"base\";\n          if(searchlist[0].area.id){\n            last = \"area\"\n          }\n          if(searchlist[0].line.id){\n            last = \"line\";\n          }\n        }\n        var start = time[0];\n        var startClone = start.clone();\n        var end = time[1];\n        var dif = target.dateHandler(end.minus(start)).getTime() / (NUMBER - 1);\n        var xAxis = [];\n        while(startClone.before(end)){\n          var clone = startClone.clone();\n          startClone.addTimeStamp(dif);\n          xAxis.push(clone);\n        };\n        var simData = {\n          name : function(inx, target){\n            return searchlist.map(function(elem){\n              return elem[last].label\n            })[inx % searchlist.length]\n          },\n          value : function(inx, target){\n            return target.random(100, 2);\n          }\n        };\n        target.getSimulateApi(simData, NUMBER * searchlist.length, function(data){\n          var option = {\n            tooltip: {\n              trigger : \"axis\"\n            },\n            legend: {\n              data:searchlist.map(function(elem){\n                return elem[last].label\n              })\n            },\n            xAxis: {\n              data: xAxis.map(function(elem){\n                return elem.getDateString(\"yy年MM月dd日\")\n              })\n            },\n            yAxis: {},\n            series: searchlist.map(function(elem){\n              var rs = {};\n              rs.name = elem[last].label;\n              rs.type = \"line\";\n              rs.data = data.filter(function(el){\n                return el.name == elem[last].label;\n              }).map(function(elem){\n                return elem.value;\n              })\n              return rs\n            })\n          };\n          debugger;\n          target.render(option);\n        })\n      });\n    }\n  }\n}"
+                            },
+                            "style": {
+                              "margin": "auto",
+                              "width": "100%",
+                              "height": "300px"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "col": 10
+              }
+            ]
+          }
+        ],
+        "col": 12
+      },
+      "$$hashKey": "object:1319"
+    },
+    {
+      "label": "弹出窗",
+      "path": "popup",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "高级视图",
+            "type": "advanceEchart",
+            "source": "ADVANCEECHART",
+            "parameters": {
+              "theme": "auto"
+            },
+            "advance": {
+              "expression": "express = {\n  on : {\n    init : function(event){\n      var NUMBER = 10;\n      var target = event.target;\n      var input = target.getPopupData();\n      var time = input.time;\n      var start = time[0];\n      var startClone = start.clone();\n      var end = time[1];\n      var dif = target.dateHandler(end.minus(start)).getTime() / NUMBER;\n      var xAxis = [];\n      while(startClone.before(end)){\n        var clone = startClone.clone();\n        startClone.addTimeStamp(dif);\n        xAxis.push(clone);\n      };\n      var domains = input.domains;\n      var attribute = input.attribute;\n      debugger;\n      var simData = {\n        nodeId : function(inx, target){\n          return domains[inx % 2].id\n        },\n        value : function(inx, target){\n          return target.random(100, 2);\n        },\n        arrisingTime : function(inx, target){\n          var d = Math.floor(inx / 2);\n          return xAxis[d].getDateString(\"yy/MM/dd,hh:mm:ss\");\n        }\n      }\n      target.getSimulateApi(simData, NUMBER * 2, function(data){\n        var series = domains.map(function(elem){\n          var rs = {\n            name : elem.label,\n            type : \"line\",\n            data : data.filter(function(el){\n              return el.nodeId == elem.id;\n            }).map(function(e){\n              return e.value;\n            })\n          }\n          return rs;\n        });\n        var option = {\n          tooltip: {\n                trigger : \"axis\"\n            },\n          legend: {\n            data:domains.map(function(elem){\n              return elem.label;\n            })\n          },\n          xAxis: {\n            triggerEvent : \"xAxis\",\n            boundaryGap : false,\n            data: xAxis.map(function(elem){\n              return elem.getDateString(\"yy年MM月dd日,hh时\");\n            })\n          },\n          yAxis: {},\n          series: series\n        };\n        debugger;\n        target.render(option);\n      });\n    }\n  }\n}"
+            },
+            "style": {
+              "margin": "auto",
+              "width": "100%",
+              "height": "300px"
+            }
+          }
+        ],
+        "col": 12
+      },
+      "id": "1",
+      "$$hashKey": "object:1353"
+    }
+  ],
+  "setting": "{\n  \"theme\": \"steel\"\n}"
+}

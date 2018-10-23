@@ -1,0 +1,106 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+<section class="content">
+  <div class="row">
+    <div class="col-lg-3 col-xs-6">
+      <div class="small-box" style="background-color:#00e765;color: #fff;" ng-class="{1: 'bg-lime-active',2:'bg-green',3:'bg-green',4:'bg-green'}[orderUser.resourceType]" >
+        <div class="inner" >
+          <h3>{{device}}</h3>
+          <p>管理设备数</p>
+        </div>
+        <div  style="position: absolute;top: -10px;right: 10px;font-size: 90px;color: rgba(0, 0, 0, 0.15);">
+          <i class="proudsmart ps-management"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+      <div  style="background-color:#00b9b2;color: #fff;" class="small-box" ng-class="{2: 'bg-lime-active',1:'bg-green',3:'bg-green',4:'bg-green'}[orderUser.resourceType]" >
+        <div class="inner" >
+          <h3>{{gather}}</h3>
+          <p>数据采集点</p>
+        </div>
+        <div  style="position: absolute;top: -10px;right: 10px;font-size: 90px;color: rgba(0, 0, 0, 0.15);">
+          <i class="proudsmart ps-collection_point"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+      <div  style="background-color:#39cccc;color: #fff;" ng-class="{3: 'bg-lime-active',1:'bg-green',2:'bg-green',4:'bg-green'}[orderUser.resourceType]"  class="small-box" >
+        <div class="inner" >
+          <h3>{{pass}}</h3>
+          <p>上传消息数</p>
+        </div>
+        <div  style="position: absolute;top: -10px;right: 10px;font-size: 90px;color: rgba(0, 0, 0, 0.15);">
+          <i class="proudsmart ps-message"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+      <div  style="background-color:#25bce7;color: #fff;"  class="small-box " ng-class="{4: 'bg-lime-active',3:'bg-green',2:'bg-green',1:'bg-green'}[orderUser.resourceType]">
+        <div class="inner" >
+          <h3>{{client}}</h3>
+          <p>客户数量</p>
+        </div>
+        <div  style="position: absolute;top: -10px;right: 10px;font-size: 90px;color: rgba(0, 0, 0, 0.15);">
+          <i class="proudsmart ps-customer"></i>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="box box-default">
+    <form class="form-inline">
+      <div class="box-body">
+        <div class="form-group p form-group-sm col-sm-4">
+          <label class="control-label">资费方式：</label>
+          <p class="form-control-static" ng-if="orderUser.resourceType == 1">接入设备数量</p>
+          <p class="form-control-static" ng-if="orderUser.resourceType == 2">采集监控点数量</p>
+          <p class="form-control-static" ng-if="orderUser.resourceType == 3">交互的消息数量</p>
+        </div>
+
+        <div class="form-group p form-group-sm col-sm-4">
+          <label class="control-label">数量：</label>
+          <p class="form-control-static" ng-if="orderUser.resourceType == 1 || orderUser.resourceType == 2">{{orderUser.resourceCount}}个</p>
+          <p class="form-control-static" ng-if="orderUser.resourceType == 3">{{orderUser.resourceCount}}条</p>
+
+        </div>
+        <div class="form-group p form-group-sm col-sm-4">
+          <label class="control-label">付费模式：</label>
+          <p class="form-control-static" >月</p>
+          <!--<p class="form-control-static" ng-if="orderUser.durationUnit == 1">月</p>-->
+          <!--<p class="form-control-static" ng-if="orderUser.durationUnit == 2">年</p>-->
+        </div>
+
+      </div>
+      <div  class="box-body">
+
+
+        <div class="form-group p form-group-sm col-sm-4">
+          <label class="control-label">开通时长：</label>
+          <p class="form-control-static" >{{orderUser.duration}}月</p>
+          <!--<p class="form-control-static" ng-if="orderUser.durationUnit == 1">{{orderUser.duration}}月</p>-->
+          <!--<p class="form-control-static" ng-if="orderUser.durationUnit == 2">{{orderUser.duration}}年</p>-->
+        </div>
+        <div class="form-group p form-group-sm col-sm-4">
+          <label class="control-label">到期时间：</label>
+          <p class="form-control-static" ng-if="orderUser != '' && orderUser != null">{{orderUser.endValidDate | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+        </div>
+        <div class="form-group p form-group-sm col-sm-4">
+          <label class="control-label">剩余天数：</label>
+          <p class="form-control-static"  ng-if="orderUser != '' && orderUser != null">{{orderUser.surplusDayCount}}天</p>
+        </div>
+      </div>
+    </form>
+
+    <div class="box-header">
+      <ol class="breadcrumb">
+        <div class="text-center pull-right" style="display: inherit;">
+          <a href="#/renew" class="btn btn-default btn-sm"><i style="float: left;margin-top: 4px;margin-right: 3px;" class="proudsmart ps-renewal"></i><span class="hidden-xs"> 缴费</span></a>
+        </div>
+      </ol>
+    </div>
+  </div>
+</section>
+
+
+

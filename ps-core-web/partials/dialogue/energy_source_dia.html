@@ -1,0 +1,65 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="dialog.button[1].fn();" class="close">×</a>
+        <h4 class="modal-title info-box-number">能耗计量点</h4>
+      </div>
+      <div class="modal-body clearfix row">
+        <form role="form" class="form-horizontal enterpriseOperateForm row" name="enterpriseOperateForm">
+          <div ng-hide="($parent.$parent.energyStrucInfo.ifShow && dialog.view)" class="form-group" style="margin-bottom: 10px;">
+            <button ng-click="dialog.event.addClick()" type="button" style="margin: -2% 0 -2% 7%;" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i><span class="hidden-sm">添加计量点</span></button><span style="color:red;margin-left:5px;">需要至少添加一条计量点</span>
+          </div>
+          <div class="col-sm-12" style="margin-left: 5px;padding-right: 25px;">
+            <div class="box-body table-responsive" slim-scroll height="280px">
+              <table width="100%" class="table table-hover text-center" name="enterpriseForm" border="1" style="border: 1px solid #eee;">
+                <thead>
+                  <tr role="row">
+                    <th>
+                      能源类型
+                    </th>
+                    <th>
+                      数据来源
+                    </th>
+                    <th>
+                      关联设备
+                    </th>
+                    <th>
+                      kpi指标
+                    </th>
+                    <th ng-hide="($parent.$parent.energyStrucInfo.ifShow && dialog.view)">
+                      操作
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr role="row" ng-repeat="meter in dialog.title.consumeMeters">
+                    <td>
+                      <select class="input-sm" style="margin: -16px;width: 80px;" ng-model="meter.energyType" ng-disabled="$parent.$parent.$parent.energyStrucInfo.ifShow && dialog.view" ng-options="value.valueCode as value.label for value in dialog.select.energyTypeList" ng-change="dialog.event.energyTypeClick(meter.energyType)" required></select>
+                    </td>
+                    <td>
+                      <select class="input-sm" style="margin: -16px;width: 80px;" ng-model="meter.dataSourceType" ng-disabled="$parent.$parent.$parent.energyStrucInfo.ifShow && dialog.view" ng-options="value.valueCode as value.label for value in dialog.select.dataSourceTypeList" required></select>
+                    </td>
+                    <td>
+                      <select class="input-sm" style="margin: -30px;width: 120px;" ng-if="meter.dataSourceType == 'collect'" ng-disabled="$parent.$parent.$parent.energyStrucInfo.ifShow && dialog.view" ng-model="meter.deviceId" ng-options="value.id as value.text for value in allDeveicesList" selectdata="allDeveicesList" itemchange="querykpisByModelId" select2></select>
+                    </td>
+                    <td>
+                      <select class="input-sm" style="margin: -16px;width: 80px;" ng-if="meter.dataSourceType == 'collect'" ng-disabled="$parent.$parent.$parent.energyStrucInfo.ifShow && dialog.view" ng-model="meter.kpiId" ng-options="value.id as value.text for value in kpis" selectdata="kpis" select2></select>
+                    </td>
+                    <td ng-hide="($parent.$parent.$parent.energyStrucInfo.ifShow && dialog.view)">
+                      <button class="btn btn-sm btn-primary" style="margin: 0 -16px 0 -16px;" ng-click="dialog.event.delClick(meter)" ng-disabled="enterpriseForm.$invalid">删除</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </form>
+        <div class="modal-footer" ng-hide="($parent.$parent.energyStrucInfo.ifShow && dialog.view)">
+          <button class="btn btn-primary" ng-click="dialog.button[0].fn(dialog);" ng-disabled="enterpriseForm.$invalid" disabled="disabled">确定</button>
+          <button class="btn btn-default" ng-click="dialog.button[1].fn();">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

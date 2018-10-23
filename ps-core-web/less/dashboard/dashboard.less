@@ -1,0 +1,657 @@
+.ui-menu
+{
+  height : 200px;
+}
+#btitle
+{
+  position:relative;
+  top : 3px;
+  height : 21px;
+}
+.selWrap
+{
+  width : 183px;
+  min-height : 90px;
+  left : 20px;
+  border : 1px solid #999;
+  box-shadow : 1px 1px 4px #000;
+  background-color : #eee;
+  position : absolute;
+  display : none;
+  z-index: 999999;
+  .icon
+  {
+    width : 25px;
+    height : 25px;
+    color : #000;
+    border-radius : 50%;
+    background-color : #000;
+  }
+}
+.bg-white
+{
+  background-color : #fff;
+  color : #555;
+}
+.helper{
+  width : 600px;
+  background-color: #fff;
+  border : 1px dashed #555;
+  pointer-events: none;
+  opacity : .6;
+  margin : 0;
+  padding : 10px;
+  .inner
+  {
+    height : 100px;
+    background-color: #eee;
+    border : 1px dashed #aaa;
+  }
+}
+.help_wrap
+{
+  width : 500px;
+  padding : 20px;
+  border : 1px dashed #555;
+  background-color: #fff;
+  .column{
+    height : 130px;
+    background-color: #fff;
+  }
+}
+.rowWrap
+{
+  .toolbar
+  {
+    height : 26px;
+    background-color : #aaa;
+    .titleWrap
+    {
+      float : left;
+    }
+    .moveBtn
+    {
+      width : 50px;
+      height : 20px;
+      line-height : 20px;
+      background-color : #000;
+      color : #fff;
+      float : right;
+      margin-top : 2px;
+      margin-right : 10px;
+      cursor : move;
+      text-align : center;
+    }
+    .deleteBtn {
+      cursor : pointer;
+      width : 50px;
+      height: 20px;
+      line-height: 20px;
+      background-color: #000;
+      color: #fff;
+      margin-top: 2px;
+      margin-right: 10px;
+      float: right;
+      text-align : center;
+    }
+    .showOutter{
+      float: right;
+      width : 80px;
+      color : #fff;
+    }
+  }
+  .column
+  {
+    //min-height : 100px;
+    padding : 0 30px;
+    &::before
+    {
+      content : '';
+      display : block;
+      position : absolute;
+      width : 100%;
+      height : 100%;
+      border : 0px dashed #eee;
+      pointer-events : none;
+    }
+  }
+  .insert_before
+  {
+    position : relative;
+    display : block;
+    height : 30px;
+    margin : 0;
+    &.drophover{
+      &::before{
+        content : "";
+        display : block;
+        height : 30px;
+      }
+      &::after{
+        content : "";
+        display : block;
+        height : 130px;
+        width : 100%;
+        border : 1px dashed #999;
+        background-color : #eee;
+      }
+      margin : 0;
+      height : 190px;
+    }
+  }
+  .insert_after
+  {
+    position : relative;
+    display : block;
+    height : 30px;
+    margin : 0;
+    &.drophover{
+      &::before{
+        content : "";
+        display : block;
+        height : 30px;
+      }
+      &::after{
+        content : "";
+        display : block;
+        height : 130px;
+        width : 100%;
+        border : 1px dashed #999;
+        background-color : #eee;
+      }
+      margin : 0;
+      height : 190px;
+    }
+  }
+  .innerContent
+  {
+    background-color : #fff;
+    border : 1px dashed #aaa;
+  }
+}
+.leftPart{
+  display: block;
+  position: static;
+  float : left;
+  width : 0px;
+  height : ~'calc(100vh - 101px)';
+  background-color : #6F787D;
+  overflow : hidden;
+  .head-item
+  {
+    color : #fff;
+    background-color : rgba(0,0,0,.3);
+    cursor : pointer;
+    border-bottom : 1px solid #777;
+    padding : 6px;
+    &.active
+    {
+      background-color : #3c8dbc;
+    }
+  }
+  .bootinputfree
+  {
+    width : 160px;
+    float : left;
+    input
+    {
+      letter-spacing: 5px;
+      text-align : center;
+      color : #378cbe;
+      font-size : 16px;
+      font-weight : bold;
+      background-color : #eee;
+      border : 1px solid #fff;
+      width : 100%;
+    }
+  }
+  .bootinput
+  {
+    width : 160px;
+    float : left;
+    &::after{
+      display: block;
+      content : '';
+      height : 1px;
+      clear : both;
+    }
+    .bootShow
+    {
+      &.row
+      {
+        margin : 1px;
+        .cwrap
+        {
+          margin : 1px;
+        }
+        padding : 0;
+        .colNum
+        {
+          width : ~'calc(100% - 16px)';
+          border : 0;
+          background-color: transparent;
+          font-size : 16px;
+          font-weight : bold;
+          color : #378cbe;
+          text-align: center;
+          top : 2px;
+          position : absolute;
+        }
+        [class*=col-]
+        {
+          margin : 0;
+          padding : 0;
+          .inner
+          {
+            margin : 0 2px;
+            padding : 0 2px;
+            .bwrap
+            {
+              float : left;
+              .block
+              {
+                height : 19px;
+                background-color : #ddd;
+                margin : 3px 1px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &.open{
+    width : 230px;
+    overflow-x : hidden;
+    overflow-y : auto;
+  }
+  .dragItem
+  {
+    padding : 5px;
+    min-width : 230px;
+    label
+    {
+      color : #ddd; line-height: 25px;
+    }
+    &::after
+    {
+      content : '';
+      clear : both;
+      display : block;
+    }
+    .icon
+    {
+      width : 30px;
+      height : 30px;
+      background-color: #000;
+      border-radius : 50%;
+      display : inline-block;
+      cursor : pointer;
+      position : relative;
+    }
+    .small-box{
+      cursor : pointer;
+      display : inline-block;
+      width : 16px;
+      height : 16px;
+      margin : 5px;
+      border : 2px solid #ddd;
+    }
+    .ui-selectmenu-text{
+      font-size : 12px;
+    }
+    .handler
+    {
+      width : 25px;
+      height : 25px;
+      border-radius: 3px;
+      background-color : #3c8dbc;
+      color : #fff;
+      padding : 1px 0px;
+      margin-right: 20px;
+      float : right;
+      cursor : move;
+      text-align : center;
+      span
+      {
+        margin-top : 4px;
+      }
+    }
+    .deleteBtn
+    {
+      margin-left : -14px;
+    }
+  }
+}
+.rightPart{
+  width : 100%;
+  height : ~'calc(100vh - 101px)';
+  display: block;
+  position: relative;
+  float : left;
+  padding-right : 14px;
+  overflow-x : hidden;
+  overflow-y : auto;
+  &.fold{
+    width : ~'calc(100% - 230px)';
+  }
+  #dropBody
+  {
+    width : 96%;
+    margin : 0 2%;
+    .insert_before
+    {
+      position : relative;
+      display : block;
+      height : 30px;
+      margin : 0;
+      &.drophover{
+        &::before{
+          content : "";
+          display : block;
+          height : 30px;
+        }
+        &::after{
+          content : "";
+          display : block;
+          height : 130px;
+          width : 100%;
+          border : 1px dashed #999;
+          background-color : #eee;
+        }
+        margin : 0;
+        height : 190px;
+      }
+    }
+    .insert_after
+    {
+      position : relative;
+      display : block;
+      height : 60px;
+      margin : 0;
+      &.drophover{
+        &::before{
+          content : "";
+          display : block;
+          height : 30px;
+        }
+        &::after{
+          content : "";
+          display : block;
+          height : 130px;
+          width : 100%;
+          border : 1px dashed #999;
+          background-color : #eee;
+        }
+        margin : 0;
+        height : 190px;
+      }
+    }
+    .visibleWhenView
+    {
+      display : block;
+    }
+    .hideWhenView
+    {
+      display : none;
+    }
+    &.edit{
+      margin : 20px;
+      .visibleWhenView
+      {
+        display : none;
+      }
+      .hideWhenView
+      {
+        display : block;
+      }
+      .box
+      {
+        border : 0;
+        box-shadow : 0 0 0 transparent;
+        background-color : transparent;
+        margin-bottom : 0;
+        .box-header
+        {
+          display : none;
+        }
+        .box-body{
+          padding : 10px !important;
+        }
+      }
+      .row
+      {
+        margin : 0;
+        padding : 0;
+        .col
+        {
+          padding : 10px;
+        }
+      }
+      &.boot-mouseOver
+      {
+
+      }
+      .rowWrap
+      {
+        &.hideWrap
+        {
+          .innerContent
+          {
+            background-color : #fff !important;
+          }
+        }
+        &.boot-mouseOver
+        {
+          .toolbar
+          {
+            opacity : 1;
+          }
+          .innerContent
+          {
+            border : 1px dashed #aaa;
+            .innerWrap
+            {
+              opacity : 1;
+              .small-box
+              {
+                pointer-events: none;
+              }
+              .designView
+              {
+                pointer-events: none;
+              }
+              table
+              {
+                pointer-events: none;
+              }
+            }
+          }
+        }
+        .toolbar
+        {
+          height : 26px;
+          position : relative;
+          background-color : #aaa;
+          display : block;
+          opacity : .5;
+          .moveBtn
+          {
+            width : 25px;
+            height : 20px;
+            line-height : 20px;
+            background-color : #3c8dbc;
+            border-radius : 3px;
+            color : #fff;
+            float : right;
+            margin-top : 2px;
+            margin-right : 10px;
+            cursor : move;
+            text-align : center;
+          }
+          .deleteBtn {
+            cursor : pointer;
+            width : 25px;
+            height: 20px;
+            line-height: 20px;
+            border-radius : 3px;
+            background-color: #b52846;
+            color: #fff;
+            margin-top: 2px;
+            margin-right: 10px;
+            float: right;
+            text-align : center;
+          }
+        }
+        .column
+        {
+          &::before
+          {
+            content : '';
+            display : block;
+            position : absolute;
+            width : 100%;
+            height : 100%;
+            border : 1px dashed #eee;
+            pointer-events : none;
+          }
+        }
+        .insert_before
+        {
+          position : relative;
+          display : block;
+          height : 30px;
+          margin : 0;
+          &.drophover{
+            &::before{
+              content : "";
+              display : block;
+              height : 30px;
+            }
+            &::after{
+              content : "";
+              display : block;
+              height : 130px;
+              width : 100%;
+              border : 1px dashed #999;
+              background-color : #eee;
+            }
+            margin : 0;
+            height : 190px;
+          }
+        }
+        .insert_after
+        {
+          position : relative;
+          display : block;
+          height : 30px;
+          margin : 0;
+          &.drophover{
+            &::before{
+              content : "";
+              display : block;
+              height : 30px;
+            }
+            &::after{
+              content : "";
+              display : block;
+              height : 130px;
+              width : 100%;
+              border : 1px dashed #999;
+              background-color : #eee;
+            }
+            margin : 0;
+            height : 190px;
+          }
+        }
+        .innerContent
+        {
+          opacity : 1;
+          background-color : #fff;
+          border : 1px dashed #efefef;
+          position : relative;
+          .innerWrap
+          {
+            opacity : .5;
+          }
+        }
+      }
+    }
+    .row
+    {
+      margin : 1px;
+      .col
+      {
+
+      }
+    }
+    .rowWrap
+    {
+      &.hideWrap
+      {
+        background-color: transparent;
+        margin : 0;
+        .box
+        {
+          border : 0;
+          box-shadow : 0 0 0 transparent;
+          background-color : transparent;
+          margin-bottom : 0;
+          .box-header
+          {
+            display : none;
+          }
+          .innerContent
+          {
+            background-color: transparent;
+          }
+          .box-body{
+            padding : 0;
+          }
+        }
+      }
+      .toolbar
+      {
+        display : none;
+      }
+      .column
+      {
+        border : 0;
+        padding : 0;
+      }
+      .insert_before
+      {
+        display : none;
+      }
+      .insert_after
+      {
+        display : none;
+      }
+      .innerContent
+      {
+        background-color : #fff;
+        border : 0;
+        .small-box{
+          margin : 5px;
+        }
+        .designView
+        {
+          width : 100%;
+          min-height : 100px;
+          .rowCls{
+            &:after{
+              content : '';
+              display : block;
+              height : 1px;
+              clear : both;
+            }
+            .colCls{
+              padding : 10px;
+              float : left;
+            }
+          }
+        }
+      }
+    }
+  }
+}

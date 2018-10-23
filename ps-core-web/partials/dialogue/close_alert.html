@@ -1,0 +1,34 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">报警关闭</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal" name="dirForm">
+
+          <div class="form-group col-sm-6 height-50"  style="margin-left:10px;">
+            <label class="control-label">关闭原因：</label>
+            <select class="form-control" buttonclass='btn btn-default full-width' ng-model="closeAlarmData.disposeType" ng-init="selectedAlertitem.alarmTimeOut=''">
+              <option value="" selected>请选择</option>
+              <option value="10" >转产</option>
+              <option value="20" >误报警</option>
+            </select>
+          </div>
+          <div style='clear:left;margin-left:10px;' class="form-group col-sm-6  height-50">
+            <label class=\"control-label\">备注：</label>
+            <textarea  ng-model="closeAlarmData.remark"  style="height:50px;" maxlength="300" rows="3" colspan="3" class="form-control dialog-inp-text input-sm " name="Name"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+
+        <button class="btn btn-primary" ng-disabled=""  ng-click="confirmCloseAlarm()" >
+          确认
+        </button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">报警导出</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal" name="dirForm">
+
+          <div class="form-group col-sm-6 height-50" style="margin-left:10px;">
+            <label class="control-label">导出规则：</label>
+            <select class="form-control" buttonclass='btn btn-default full-width' ng-model="exportAlertData.week" numberdisplayed="6" multiple="multiple" bootstrap-multiselect>
+            <!--<select class="form-control" buttonclass='btn btn-default full-width' ng-model="exportAlertData.reason" multiple ng-init="selectedAlertitem.alarmTimeOut=''">-->
+              <option value="" selected>请选择</option>
+              <option value="1" >周一</option>
+              <option value="2" >周二</option>
+              <option value="3" >周三</option>
+              <option value="4" >周四</option>
+              <option value="5" >周五</option>
+              <option value="6" >周六</option>
+              <option value="7" >周日</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+
+        <button class="btn btn-primary" ng-disabled=""  ng-click="exportAlertsubmit()" >
+          确认
+        </button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

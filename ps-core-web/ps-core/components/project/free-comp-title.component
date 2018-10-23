@@ -1,0 +1,50 @@
+<config injector="$q,viewFlexService"
+></config>
+<properties>
+  <script type="text/javascript">
+    function properties(){
+      return [{
+        label : "基本设定",
+        attributes : {
+          text : ["文字", "input", "标题文字"],
+          fontSize : ["字体大小","input","16px"],
+          color : ["颜色","input","#000000"]
+        }
+      }];
+    }
+    export { properties }
+  </script>
+</properties>
+<template>
+  <div>
+    <span class="title" ng-bind="title" ng-style="mystyle"></span>
+  </div>
+</template>
+<script type="text/javascript">
+  export default function(q,viewFlexService){
+    return {
+      scope : {
+        option : "="
+      },
+      link(scope, element, attr, ngModel) {
+        scope.$watch("option", (n, o, s) => {
+          if(n !== undefined){
+            scope.title = n.attributes.text;
+            var obj = {};
+            obj["color"] = n.attributes.color;
+            obj["font-size"] = n.attributes.fontSize;
+            scope.mystyle = obj;
+          }
+        })
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+  .title{
+    line-height:30px;
+    margin : 15px;
+    font-weight : lighter;
+    color : #87aafc;
+  }
+</style>

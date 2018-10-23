@@ -1,0 +1,48 @@
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" id="deploy">
+              <li ng-class="{'active' : tab == 'tab1'}" name="tab1"><a role="button" data-toggle="tab">节能指标</a></li>
+              <!-- <li ng-class="{'disabled' : modelId == 0, 'active' : tab == 'tab2'}" name="tab2"><a role="button" data-toggle="tab">完成情况</a></li> -->
+              <li ng-class="{'disabled' : modelId == 0, 'active' : tab == 'tab3'}" name="tab3"><a role="button" data-toggle="tab">预测结果</a></li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();" role="button"><i
+              class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body">
+          <button ng-click="tableInit.event.addClick()" ng-if="!ifEnterprise" ng-show="tab == 'tab1'" type="button" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i><span class="hidden-sm">发布</span></button>
+          <button ng-click="tableInit.event.forecastClick()" ng-if="!ifEnterprise" ng-show="tab == 'tab3'" type="button" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i><span class="hidden-sm">发布</span></button>
+          <div ng-hide="ifEnterprise" class="combined-query pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                {{queryLabel?queryLabel:'查询条件'}} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a role="button" ng-click="queryState=1;queryLabel='企业名称';tableInit.event.goClear()">企业名称</a></li>
+                <!-- <li><a role="button" ng-click="queryState=2;queryLabel='节能周期';tableInit.event.goClear()">节能周期</a></li> -->
+              </ul>
+            </div>
+            <select ng-model="tableInit.select.enterpriseId" ng-show="!queryState ||queryState == 1" class="form-control input-sm" ng-options="value.id as value.text for value in queryEnterpriseList" selectdata="queryEnterpriseList" select2></select>
+            <!-- <select ng-model="tableInit.select.reducePeriod" ng-show="queryState == 2" class="form-control input-sm" ng-options="value.id as value.text for value in [{id:'draft',text:'草稿'},{id:'effect',text:'生效'},{id:'ineffect',text:'失效'}]"></select> -->
+            <button class="btn btn-primary btn-sm" ng-click="searchDate()" type="button"><i class="fa fa-search"></i><span class="hidden-sm">查询</span></button>
+          </div>
+        </div>
+        <div ng-show="tab == 'tab1'" class="box-footer no-pad-top no-border">
+          <table width="100%" class="table table-hover" publish-info-table>
+          </table>
+        </div>
+        <div ng-show="tab == 'tab3'" class="box-footer no-pad-top no-border">
+          <table width="100%" class="table table-hover" forecast-info-table>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

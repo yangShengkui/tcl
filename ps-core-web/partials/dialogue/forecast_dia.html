@@ -1,0 +1,51 @@
+<!--添加数据项模态框-->
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">{{dialog2.title}}</h4>
+      </div>
+      <div class="modal-body clearfix row" height="400px" slim-scroll>
+        <form role="form" class="form-horizontal" name="dataForm">
+          <label ng-show="!ifView" class="col-sm-12 margin-left-5">基本信息</label>
+          <div ng-show="!ifView" class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">企业名称：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <select ng-model="dialog2.param.enterpriseId" class="form-control input-sm" selectdata="allEnterprises" ng-options="value.id as value.text for value in allEnterprises" itemchange="queryEnterpriseById" select2 required></select>
+            </div>
+          </div>
+          <div ng-show="!ifView" class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">周期类型：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <select ng-model="statisticsType" class="form-control input-sm" ng-disabled="true" ng-options="value.id as value.text for value in [{id:'YEAR',text:'年'},{id:'MONTH',text:'月'},{id:'QUARTER',text:'季度'}]"></select>
+            </div>
+          </div>
+          <div ng-show="!ifView" class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">综合能耗预测值（单位：吨标煤）：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="number" string-to-number class="form-control input-sm" ng-disabled="true" ng-model="dialog2.param.allEnergyForecastData">
+            </div>
+          </div>
+          <label class="col-sm-12 margin-left-5 margin-bottom-20">各能源类型预测值</label>
+          <div>
+            <div class="form-group col-sm-6" ng-repeat="item in dialog2.param.energyTypeForecastData">
+              <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+                <span class="ng-binding">{{item.energyType}}：</span>
+              </label>
+              <div class="col-sm-8">
+                <input type="text" ng-disabled="true" class="form-control input-sm select2-input" autocomplete="off" ng-model="item.value">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div ng-hide="ifView" class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="dataForm.$invalid  || isLoading" ng-click="dialog2.button[0].fn()" disabled="disabled">
+          确定
+        </button>
+        <button class="btn btn-default" ng-click="dialog2.button[1].fn();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,370 @@
+{
+  "version": "V_2",
+  "groups": [
+    {
+      "id": "0",
+      "label": "区域中心",
+      "path": "index",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "控制板1",
+            "type": "block",
+            "source": "BLOCK",
+            "style": {
+              "border": "0",
+              "border-top": "2px solid #e1bf52",
+              "background": "-webkit-linear-gradient(#082741, #396487)"
+            },
+            "advance": {
+              "expression": "{}"
+            },
+            "children": [
+              {
+                "type": "column",
+                "col": 12,
+                "children": [
+                  {
+                    "label": "伪TAB样式",
+                    "type": "faketab",
+                    "source": "FAKETAB",
+                    "advance": {
+                      "getfunction": "kpiDataService.getValueList",
+                      "category": "ci",
+                      "condition": "[\n  \"kpi\",\n  \"{object:kpiQueryModel}\"\n]",
+                      "expression": "expression = {\n  \"on\" : {\n    \"init\" : function(event){\n      var target = event.target;\n      // -------------- 初始化内容在这里设置;\n      // 0 \"报警管理工作台\";\n      // 1 \"诊断分析工作台\";\n      // 2 \"协同分析工作台\";\n      // 3 \"审核工作台\";\n      // 4 \"决策管理者\";\n      // 5 \"点检管理工作台\"\n      var ROLE = 4;\n      if(ROLE == 0){\n          var tabs = [{\n            id : 0,\n            label : \"我的首页\",\n            default : \"baogang/alert/home\"\n          },{\n            id : 1,\n            label : \"区域态势\",\n            default : \"baogang/alert/area\"\n          }];\n      } else if(ROLE == 1){\n          var tabs = [{\n            id : 0,\n            label : \"我的首页\",\n            default : \"baogang/home\"\n          },{\n            id : 1,\n            label : \"实时状态\",\n            default : \"baogang/device\"\n          },{\n            id : 2,\n            label : \"专业分析\",\n            default : \"baogang/analysis\"\n          },{\n            id : 3,\n            label : \"综合诊断\",\n            default : \"baogang/diagnose\"\n          },{\n            id : 4,\n            label : \"设备履历\",\n            default : \"baogang/history\"\n          }];\n      } else if(ROLE == 2){\n          var tabs = [{\n            id : 0,\n            label : \"我的首页\",\n            default : \"baogang/corporation/home\"\n          },{\n            id : 1,\n            label : \"专业分析\",\n            default : \"baogang/analysis\"\n          }];\n      }  else if(ROLE == 3){\n          var tabs = [{\n            id : 0,\n            label : \"我的首页\",\n            default : \"baogang/home\"\n          },{\n            id : 1,\n            label : \"审核\",\n            default : \"baogang/critisize\"\n          },{\n            id : 2,\n            label : \"实时状态\",\n            default : \"baogang/device\"\n          },{\n            id : 3,\n            label : \"专业分析\",\n            default : \"baogang/analysis\"\n          },{\n            id : 4,\n            label : \"综合诊断\",\n            default : \"baogang/diagnose\"\n          },{\n            id : 5,\n            label : \"设备履历\",\n            default : \"baogang/history\"\n          }];\n      } else if(ROLE == 4){\n          var tabs = [{\n            id : 0,\n            label : \"区域态势\",\n            default : \"baogang/decider/home\"\n          },{\n            id : 1,\n            label : \"关键指标跟踪\",\n            default : \"baogang/decider/kpitracker\"\n          },{\n            id : 2,\n            label : \"关键指标对比\",\n            default : \"baogang/decider/kpicompare\"\n          }];\n      }else if(ROLE == 5){\n          var tabs = [{\n            id : 0,\n            label : \"我的首页\",\n            default : \"baogang/checker/home\"\n          },{\n            id : 1,\n            label : \"标准维护\",\n            default : \"baogang/checker/biaozhunweihu\"\n          },{\n            id : 2,\n            label : \"点检计划\",\n            default : \"baogang/checker/dianjianjihua\"\n          },{\n            id : 3,\n            label : \"故障管理\",\n            default : \"baogang/checker/guzhangguanli\"\n          },{\n            id : 4,\n            label : \"检修委托\",\n            default : \"baogang/checker/jianxiuweituo\"\n          },{\n            id : 5,\n            label : \"备修委托\",\n            default : \"baogang/checker/beixiuweituo\"\n          },{\n            id : 6,\n            label : \"统计分析\",\n            default : \"baogang/checker/tongjifenxi\"\n          }];\n      };\n      var CACHEDVALUENAME = \"controlPanelLevel1Navigation\";\n      if(ROLE != 1){\n          CACHEDVALUENAME += \"_\" + ROLE;\n      }\n      var CHANGENAVEEVENT = \"lv1viewchange\";\n      var MOVETOEVENT = \"lv1moveTo\";\n      var NAVIGATETO = \"navigateTo\";\n      // ------------------- 初始化内容在这里设置\n      target.setScopeValue(\"CACHEDVALUENAME\", CACHEDVALUENAME);\n      target.setScopeValue(\"CHANGENAVEEVENT\", CHANGENAVEEVENT);\n      target.setScopeValue(\"MOVETOEVENT\", MOVETOEVENT);\n      var param = target.getParameter(\"main\");\n      var main, path;\n      if(param instanceof Array){\n          main = param[0];\n          path = param[1];\n      } else {\n          main = param\n      }\n      var editMode = true;\n      var subTabs = [];\n      var updateNaviList = function(){\n        var obj = {\n          tabs : tabs,\n          subTabs : subTabs,\n          editMode : editMode\n        };\n        console.log(obj);\n        target.saveEditorStatus(CACHEDVALUENAME, obj);\n      }\n      var select = function(item, path){\n        var viewId = item.viewId;\n        target.trigger(CHANGENAVEEVENT, {\n            item : item,\n            path : path\n        });\n      };\n      var saveView = function(item, callback){\n        var viewTitle = item.label;\n        var viewType = \"dashboard\";\n        var viewId = item.viewId;\n        if(viewId){\n          target.updateView({\n            viewId : viewId,\n            viewTitle : item.label,\n            viewType : \"dashboard\"\n          }, function(data){\n            callback(data);\n          })\n        } else {\n          var run = function(json){\n              //console.log(\"run\", json);\n              var viewTitle = item.label + \"(\" + (item.default || \"自定义\")  + \")\";\n              target.getAllMyViews(function(views){\n                 var find = views.find(function(view){\n                     viewTitle == view.viewTitle;\n                 });\n                 if(find){\n                     item.viewId = find.viewId;\n                     callback(find);\n                 } else {\n                    target.addView({\n                      viewTitle : item.label + \"(\" + (item.default || \"自定义\")  + \")\",\n                      viewType : \"dashboard\",\n                      content : json ? json : null,\n                    }, function(data){\n                      item.viewId = data.data.viewId;\n                      callback(data);\n                    }) \n                 }\n              });\n            \n          };\n          if(item.default){\n            target.Info(\"../../localdb/echartTemplate/\" + item.default + \".json\", function(json){\n              run(JSON.stringify(json));\n            })\n          } else {\n            run();\n          }\n        }\n      };\n      var deleteView = function(item){\n        if(item.viewId){\n          target.deleteView(item.viewId);\n        };\n      }\n      target.getEditorStatus(CACHEDVALUENAME, function(status){\n        var configGroupFound = function(){\n          if(status){\n            editMode = (status.editMode == undefined) ? true : status.editMode;\n            for(var i in tabs){\n                var find = status.tabs.find(function(elem){\n                    return elem.id == tabs[i].id;\n                })\n                //console.log(\"find\", find);\n                if(find){\n                    tabs[i].viewId = find.viewId;\n                }\n            };\n            Array.prototype.push.apply(subTabs, status.subTabs);\n          };\n          var render = function(view){\n            var tabFilter = tabs.filter(function(elem){\n              return elem.show != false || editMode;\n            })\n            //console.log(tabs);\n            var tabsClone = tabFilter.map(function(elem){\n              var clone = elem.$clone();\n              clone.on = {\n                click : function(el){\n                    target.navigateTo(\"index\", {\n                        main : elem.id\n                    }, \"self\")\n                  //target.tabInx = tabFilter.indexOf(elem);\n                  //render();\n                }\n              };\n              if(editMode){\n                clone.addOn = [{\n                  icon : \"glyphicon glyphicon-scale\",\n                  on : {\n                    click : function(el){\n                      var run = function(){\n                        var viewId = elem.viewId;\n                        target.linkTo(\"../app-freeboard/index.html#/freeboard/view/dashboard/\" + elem.viewId + \"/0\");\n                      }\n                      if(!elem.viewId){\n                        saveView(elem, function(){\n                          updateNaviList();\n                          run();\n                        });\n                      } else {\n                        run();\n                      }\n                    }\n                  }\n                },{\n                  icon : \"glyphicon glyphicon-edit\",\n                  on : {\n                    click : function(event){\n                      target.createPopupBypath(\"info\", {\n                          title : \"工作台信息\",\n                          theme : \"system\",\n                          width : 500,\n                          on : {\n                            submit : function(item){\n                             \n                            }\n                          }\n                        }, elem);\n                    }\n                  }\n                }/**,{\n                  icon : \"glyphicon glyphicon-refresh\",\n                  on : {\n                    click : function(event){\n                      deleteView(elem);\n                      delete elem.viewId;\n                      updateNaviList();\n                      render();\n                    }\n                  }\n                }*/]\n              };\n              return clone;\n            });\n            var subTabsFilter = subTabs.filter(function(elem){\n              return elem.show || editMode;\n            })\n            var subTabsClone = subTabsFilter.map(function(elem){\n              var clone = elem.$clone();\n              clone.on = {\n                click : function(el){\n                  target.tabInx = tabFilter.length + subTabsFilter.indexOf(elem);\n                  render();\n                }\n              }\n              if(editMode){\n                clone.$extension({\n                  addOn : [{\n                    icon : \"glyphicon glyphicon-edit\",\n                    on : {\n                      click : function(){\n                        target.createPopupBypath(\"popup\", {\n                          title : \"编辑工作台\",\n                          theme : \"system\",\n                          width : 500,\n                          on : {\n                            submit : function(item){\n                              elem.label = item.name;\n                              elem.id = item.id;\n                              saveView(elem, function(){\n                                updateNaviList();\n                                render();\n                              });\n                            }\n                          }\n                        }, elem);\n                      }\n                    }\n                  },{\n                    icon : \"glyphicon glyphicon-scale\",\n                    on : {\n                      click : function(event){\n                        target.linkTo(\"../app-freeboard/index.html#/freeboard/view/dashboard/\" + elem.viewId + \"/0\");\n                      }\n                    }\n                  },{\n                    icon : \"proudsmart ps-delete-02\",\n                    on : {\n                      click : function(event){\n                        var inx = subTabs.indexOf(elem);\n                        subTabs.splice(inx, 1);\n                        deleteView(elem);\n                        updateNaviList();\n                        render();\n                      }\n                    }\n                  }]\n                });\n              }\n              return clone;\n            });\n            var concat = tabFilter.concat(subTabsFilter);\n            if(view){\n                target.tabInx = concat.indexOf(view);\n            };\n            var find = concat.find(function(elem){\n                return elem.id == main;\n            });\n            if(find){\n                target.tabInx = concat.indexOf(find);\n            };\n            if(target.tabInx > concat.length - 1){\n                target.tabInx = concat.length - 1;\n            };\n            select(concat[target.tabInx], path);\n            //selece(contact[])\n            if(editMode){\n              var clist = tabsClone.concat(subTabsClone).concat([{\n                id : -1,\n                label : \"\",\n                icon : \"glyphicon glyphicon-plus\",\n                on : {\n                  click : function(elem){\n                    target.createPopupBypath(\"popup\", {\n                      title : \"新建工作台\",\n                      theme : \"system\",\n                      width : 500,\n                      on : {\n                        submit : function(item){\n                          var item = {\n                            id : item.id,\n                            label : item.name\n                          };\n                          saveView(item, function(){\n                            subTabs.push(item);\n                            updateNaviList();\n                            render();\n                          });\n                        }\n                      }\n                    });\n                  }\n                }\n              },{\n                id : -1,\n                label : \"\",\n                icon : \"glyphicon glyphicon-cog\",\n                on : {\n                  click : function(elem){\n                    //console.log(\"editMode\", editMode);\n                    target.createPopupBypath(\"setting\", {\n                      title : \"设置\",\n                      theme : \"system\",\n                      width : 500,\n                      on : {\n                        submit : function(data){\n                          tabs = data.tabs;\n                          editMode = data.editMode;\n                          subTabs = data.subTabs;\n                          updateNaviList();\n                          render();\n                        }\n                      }\n                    }, {\n                      editMode : editMode,\n                      tabs : tabs,\n                      subTabs : subTabs\n                    });\n                  }\n                }\n              },{\n                id : -2,\n                label : \"\",\n                icon : \"glyphicon glyphicon-transfer\",\n                on : {\n                  click : function(elem){\n                    //console.log(\"editMode\", editMode);\n                    target.createPopupBypath(\"viewpare\", {\n                      title : \"配置区域，产线，设备对应的组太视图\",\n                      theme : \"system\",\n                      width : 700,\n                      on : {\n                        submit : function(data){\n                          \n                        }\n                      }\n                    });\n                  }\n                }\n              }])\n            } else {\n              var clist = tabsClone.concat(subTabsClone).concat([{\n                id : -1,\n                label : \"\",\n                icon : \"glyphicon glyphicon-cog\",\n                on : {\n                  click : function(elem){\n                    //console.log(\"editMode\", editMode);\n                    target.createPopupBypath(\"setting\", {\n                      title : \"设置\",\n                      theme : \"system\",\n                      width : 500,\n                      on : {\n                        submit : function(data){\n                          tabs = data.tabs;\n                          editMode = data.editMode;\n                          subTabs = data.subTabs;\n                          updateNaviList();\n                          render();\n                        }\n                      }\n                    }, {\n                      editMode : editMode,\n                      tabs : tabs,\n                      subTabs : subTabs\n                    });\n                  }\n                }\n              }]);\n            }\n            target.render(clist, {\n                class : \"steelNavi\"\n            });\n          };\n          target.on(\"navigateTo\", function(id){\n              var concat = tabs.concat(subTabs);\n              var find = concat.find(function(elem){\n                  return elem.id == id;\n              });\n              render(find);\n              if(find){\n                select(find);   \n              }\n          })\n          render();\n        }\n        configGroupFound();\n      });\n    }\n  },\n  \"format\" : {\n    \"id\" : \"id\",\n    \"label\" : \"label\"\n  }\n};",
+                      "customCategory": ""
+                    },
+                    "style": {
+                      "color": "#fff",
+                      "background-color": "#3c8dbc",
+                      "margin": "5px"
+                    },
+                    "parameters": {}
+                  }
+                ]
+              }
+            ],
+            "url": "images/map/map1.png"
+          },
+          {
+            "label": "控制板1",
+            "type": "block",
+            "source": "BLOCK",
+            "style": {
+              "border": "0",
+              "box-shadow": "0px 0px 0px 0px rgba(0,0,0,0)",
+              "background-color": "rgba(250,250,250,0)",
+              "min-height": "calc( 100vh - 123px )"
+            },
+            "advance": {
+              "expression": "{}"
+            },
+            "children": [
+              {
+                "type": "column",
+                "col": 12,
+                "children": [
+                  {
+                    "label": "视图嵌入",
+                    "type": "injector",
+                    "source": "INJECTOR",
+                    "parameters": {
+                      "icon": {
+                        "id": 0,
+                        "perfix": "ion",
+                        "css": "ion-ios-gear-outline"
+                      }
+                    },
+                    "advance": {
+                      "getfunction": "",
+                      "expression": "expression = {\n  on : {\n    init : function(event){\n      var json;\n      var target = event.target;\n      var CHANGENAVEEVENT;\n      var MOVETOEVENT;\n      target.wait(function(){\n          CHANGENAVEEVENT = target.getScopeValue(\"CHANGENAVEEVENT\");\n          MOVETOEVENT = target.getScopeValue(\"MOVETOEVENT\");\n          return CHANGENAVEEVENT && CHANGENAVEEVENT;\n      }, function success(){\n          /**\n          target.off(MOVETOEVENT);\n          target.on(MOVETOEVENT, function(path){\n            \n            target.render(json);\n          });*/\n          target.off(CHANGENAVEEVENT);\n          target.on(CHANGENAVEEVENT, function(data){\n            var view = data.item;\n            var path = data.path;\n            var viewId = view.viewId;\n            //console.log(\"viewId\", viewId);\n            if(viewId){\n              target.getViewById(viewId, function(view){\n                var content = view.content;\n                //console.log(\"content\", content);\n                if(content){\n                  json = JSON.parse(content);\n                  if(path){\n                      var find = json.groups.find(function(elem){\n                        return elem.path == path;\n                      });\n                      json.layout = find.layout;\n                  }\n                  target.render(json);\n                } else {\n                  target.Info('../../localdb/echartTemplate/baogang/nographe.json', function(nographe){\n                    target.render(nographe);\n                  });\n                }\n              });\n            } else {\n              var viewPath = view.default;\n              target.Info('../../localdb/echartTemplate/' + view.default + \".json\", function(json){\n                  if(path){\n                      var find = json.groups.find(function(elem){\n                        return elem.path == path;\n                      });\n                      json.layout = find.layout;\n                  }\n                target.render(json);\n              });\n            };\n          })\n      });\n    }\n  }\n}"
+                    },
+                    "style": {},
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "col": 12,
+        "CACHEDVALUENAME": "controlPanelLevel1Navigation",
+        "CHANGENAVEEVENT": "lv1viewchange",
+        "MOVETOEVENT": "lv1moveTo"
+      },
+      "$$hashKey": "object:2138"
+    },
+    {
+      "label": "导航页",
+      "path": "popup",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "控件组",
+            "type": "ctrlgroup",
+            "source": "CTRLGROUP",
+            "advance": {
+              "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      console.log(\"ppd\",target.getPopupData());\n      var item = target.getPopupData() || { name : \"新建工作台\", id : Math.uuid()};\n      var ctrlGroups = [\n       [{\n          type : \"label\",\n          value : \"工作台名\",\n          class : \"col-md-2\"\n        },{\n          type : \"input\",\n          value : item.name,\n          class : \"col-md-10\",\n          on : {\n            change : function(elem){\n              item.name = elem.value;\n            }\n          }\n        }],\n         [{\n          type : \"label\",\n          value : \"路径ID\",\n          class : \"col-md-2\"\n        },{\n          type : \"label\",\n          value : item.id,\n          class : \"col-md-10\"\n        }],\n        [{\n          type : \"label\",\n          value : \"\",\n          class : \"col-md-2\"\n        },{\n          type : \"button\",\n          value : \"确定\",\n          style : {\n              \"text-align\" : \"right\"\n          },\n          icon : \"glyphicon glyphicon-ok\",\n          btnclass : \"btn btn-primary\",\n          class : \"col-md-12\",\n          on : {\n            click : function(elem){\n              target.submit(item);\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+            },
+            "style": {
+              "margin": "5px",
+              "font-size": "12px"
+            },
+            "help": "../pdf/ctrlgroup.pdf",
+            "url": "images/map/map1.png",
+            "parameters": {}
+          }
+        ],
+        "col": 12
+      },
+      "id": "1",
+      "$$hashKey": "object:2145"
+    },
+    {
+      "label": "编辑窗口",
+      "path": "setting",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "控件组",
+            "type": "ctrlgroup",
+            "source": "CTRLGROUP",
+            "advance": {
+              "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var obj = target.getPopupData() || {};\n      console.log(obj);\n      var tabs = obj.tabs || [];\n      var subTabs = obj.subTabs || [];\n      var editMode = obj.editMode;\n      var options = tabs.concat(subTabs).map(function(elem){\n          if(elem.show == undefined){\n              elem.show = true;\n          }\n          return elem\n      });\n      var name = target.getPopupData() || \"新建工作台\";\n      var ctrlGroups = [\n       [{\n          type : \"label\",\n          value : \"启用编辑模式\",\n          class : \"col-md-3\"\n        },{\n          type : \"toggle\",\n          value : editMode,\n          class : \"col-md-10\",\n          on : {\n            change : function(elem){\n              editMode = elem.value;\n            }\n          }\n        }],[{\n          type : \"label\",\n          value : \"显示项\",\n          class : \"col-md-2\"\n        },{\n          type : \"multiSelect\",\n          value : name,\n          class : \"col-md-9\",\n          on : {\n            change : function(elem){\n                var values = elem.values;\n             console.log(values);\n             for(var i in tabs){\n                 var some = values.some(function(elem){\n                     return tabs[i].id == elem.id;\n                 });\n                 tabs[i].show = some;\n             };\n             for(var i in subTabs){\n                 var some = values.some(function(elem){\n                     return subTabs[i].id == elem.id;\n                 });\n                 subTabs[i].show = some;\n             }\n            }\n          },\n          options : options,\n          format : {\n              id : \"id\",\n              label : \"label\",\n              value : \"show\"\n          }\n        }],[{\n          type : \"label\",\n          value : \"\",\n          class : \"col-md-2\"\n        },{\n          type : \"button\",\n          value : \"确定\",\n          style : {\n              \"text-align\" : \"right\"\n          },\n          icon : \"glyphicon glyphicon-ok\",\n          btnclass : \"btn btn-primary\",\n          class : \"col-md-12\",\n          on : {\n            click : function(elem){\n              target.submit({\n                  editMode : editMode,\n                  tabs : tabs,\n                  subTabs : subTabs\n              });\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+            },
+            "style": {
+              "margin": "5px",
+              "font-size": "12px"
+            },
+            "help": "../pdf/ctrlgroup.pdf",
+            "url": "images/map/map1.png",
+            "parameters": {}
+          }
+        ],
+        "col": 12
+      },
+      "id": "2",
+      "$$hashKey": "object:5017"
+    },
+    {
+      "label": "控制台属性界面",
+      "path": "info",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "控件组",
+            "type": "ctrlgroup",
+            "source": "CTRLGROUP",
+            "advance": {
+              "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      console.log(\"ppd\",target.getPopupData());\n      var item = target.getPopupData() || { name : \"新建工作台\", id : Math.uuid()};\n      var ctrlGroups = [\n       [{\n          type : \"label\",\n          value : \"工作台名\",\n          class : \"col-md-2\"\n        },{\n          type : \"label\",\n          value : item.label,\n          class : \"col-md-10\"\n        }],\n         [{\n          type : \"label\",\n          value : \"路径ID\",\n          class : \"col-md-2\"\n        },{\n          type : \"label\",\n          value : item.id,\n          class : \"col-md-10\"\n        }],\n        [{\n          type : \"label\",\n          value : \"保存路径\",\n          class : \"col-md-2\"\n        },{\n          type : \"label\",\n          value : item.default,\n          class : \"col-md-10\"\n        }],\n        [{\n          type : \"label\",\n          value : \"\",\n          class : \"col-md-2\"\n        },{\n          type : \"button\",\n          value : \"确定\",\n          style : {\n              \"text-align\" : \"right\"\n          },\n          icon : \"glyphicon glyphicon-ok\",\n          btnclass : \"btn btn-primary\",\n          class : \"col-md-12\",\n          on : {\n            click : function(elem){\n              target.submit(item);\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+            },
+            "style": {
+              "margin": "5px",
+              "font-size": "12px"
+            },
+            "help": "../pdf/ctrlgroup.pdf",
+            "url": "images/map/map1.png",
+            "parameters": {}
+          }
+        ],
+        "col": 12
+      },
+      "id": "3",
+      "$$hashKey": "object:1135"
+    },
+    {
+      "label": "对应视图设置",
+      "path": "viewpare",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "控制板1",
+            "type": "block",
+            "source": "BLOCK",
+            "style": {
+              "padding": "0px",
+              "margin": "0px",
+              "border": "0",
+              "box-shadow": "0px 0px 0px 0px rgba(0,0,0,0)",
+              "background-color": "rgba(250,250,250,0)",
+              "overflow": "auto",
+              "max-height": "400px"
+            },
+            "advance": {
+              "expression": "{}"
+            },
+            "children": [
+              {
+                "type": "column",
+                "col": 12,
+                "children": [
+                  {
+                    "label": "数结构目录",
+                    "type": "treemenu",
+                    "source": "TREEMENU",
+                    "advance": {
+                      "expression": "var expressiont = {\n  on : {\n    init : function(event){\n      var models = {}\n      var target = event.target;\n      target.getDomainAreaLineTree(function(domaintree){\n        target.setValue(\"domainAreaLineTree/domaintree\", domaintree);\n        domaintree.traverse(function(node){\n          if(node.parent){\n            node.description = node.view ? \" - \" + node.view.viewTitle : \"\";\n            node.triggerEvent = \"fold\";\n            node.buttons = [{\n              icon : node.view ? \"glyphicon glyphicon-edit\" : \"glyphicon glyphicon-plus\",\n              label : node.view ? \"编辑\" : \"添加\",\n              class : node.view ? \"btn btn-default\" : \"btn btn-primary\",\n              on : {\n                click : function(node){\n                  target.createPopupBypath(\"selecttopo\", {\n                    title : \"选择组太视图\",\n                    theme : \"system\",\n                    width : 900,\n                    on : {\n                      submit : function(view){\n                        debugger;\n                        node.view = view;\n                        console.log(domaintree);\n                        node.buttons[0].label = \"编辑\";\n                        node.description = \" - \" +  view.viewTitle;\n                        node.buttons[0].icon = \"glyphicon glyphicon-edit\";\n                        node.buttons[0].class = \"btn btn-default\";\n                        node.buttons[1].disabled = false;\n                        node.update();\n                      }\n                    }\n                  }, node.view);\n                }\n              }\n            },{\n              icon : \"glyphicon glyphicon-remove\",\n              disabled : node.view ? false : true,\n              class : \"btn btn-default\",\n              label : \"删除\",\n              on : {\n                click : function(node){\n\n                }\n              }\n            }]\n          } else {\n            node.showfold = false;\n          }\n        })\n        var treeDataMap = target.render(domaintree);\n        treeDataMap.traverse(function(node){\n          if(node.level > 2){\n            if(node.close){\n              node.close();\n            };\n          } else {\n            if(node.open){\n              node.open();\n            }\n          }\n        })\n      })\n    }\n  }\n}"
+                    },
+                    "style": {
+                      "padding": "5px",
+                      "min-height": "100px"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "控制板1",
+            "type": "block",
+            "source": "BLOCK",
+            "style": {
+              "padding": "20px 2px",
+              "margin": "0px",
+              "border": "0",
+              "box-shadow": "0px 0px 0px 0px rgba(0,0,0,0)",
+              "background-color": "rgba(250,250,250,0)",
+              "overflow": "auto",
+              "max-height": "400px"
+            },
+            "advance": {
+              "expression": "{}"
+            },
+            "children": [
+              {
+                "type": "column",
+                "col": 12,
+                "children": [
+                  {
+                    "label": "控件组",
+                    "type": "ctrlgroup",
+                    "source": "CTRLGROUP",
+                    "advance": {
+                      "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n        [{\n          type : \"buttonGroup\",\n          class : \"col-md-12\",\n          groupStyle : {\n             float : \"right\"\n            },\n          content : [{\n            type : \"button\",\n            value : \"保存\",\n            icon : \"glyphicon glyphicon-save\",\n            btnclass : \"btn btn-primary\",\n            on : {\n              click : function(elem){\n                 var domaintree = target.getValue(\"domainAreaLineTree/domaintree\");\n                 target.saveDomainAreaLineTree(domaintree);\n                 target.growl(\"对应的组太视图保存成功。\")\n              }\n            }\n          },{\n            type : \"button\",\n            value : \"取消\",\n            icon : \"glyphicon glyphicon-remove\",\n            btnclass : \"btn btn-default\",\n            on : {\n              click : function(elem){\n                  target.cancel();\n              }\n            }\n          }]\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                    },
+                    "style": {
+                      "margin": "5px",
+                      "font-size": "12px"
+                    },
+                    "help": "../pdf/ctrlgroup.pdf"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "col": 12
+      },
+      "id": "4",
+      "$$hashKey": "object:1468"
+    },
+    {
+      "label": "选择组太视图",
+      "path": "selecttopo",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "type": "row",
+            "source": "ROW",
+            "parameters": {
+              "alignment": "bootstrap"
+            },
+            "style": {},
+            "children": [
+              {
+                "type": "column",
+                "children": [
+                  {
+                    "label": "控制板1",
+                    "type": "block",
+                    "source": "BLOCK",
+                    "style": {
+                      "padding": "10px",
+                      "margin": "5px",
+                      "border": "0",
+                      "box-shadow": "0px 0px 0px 0px rgba(0,0,0,0)",
+                      "background-color": "rgba(250,250,250,0)"
+                    },
+                    "advance": {
+                      "expression": {}
+                    },
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "控件组",
+                            "type": "ctrlgroup",
+                            "source": "CTRLGROUP",
+                            "advance": {
+                              "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var view = target.getPopupData();\n      if(view){\n         view = [view];\n      }\n      target.getAllMyViews(function(views){\n        views = views.filter(function(view){\n            return view.viewType == \"configure\";\n        })\n        view = view || [views[0]];\n        var render = function(){\n          target.setValue(\"domainAreaLineTree/view\", view[0]);\n          target.trigger(\"topoViewChange\", view[0].viewId);\n          var ctrlGroups = [\n            [{\n              type : \"checkboxlist\",\n              multiselect : false,\n              value : [view[0].viewId],\n              on : {\n                change : function(elem){\n                  view = elem.value;\n                  debugger;\n                  render();\n                }\n              },\n              options : views,\n              format : {\n                \"id\" : \"viewId\",\n                \"label\" : \"viewTitle\"\n              }\n            }]\n          ];\n          debugger;\n          target.render(ctrlGroups);\n        }\n        render();\n      });\n    }\n  }\n}"
+                            },
+                            "style": {
+                              "margin": "5px",
+                              "font-size": "12px"
+                            },
+                            "help": "../pdf/ctrlgroup.pdf",
+                            "parameters": {},
+                            "url": "images/map/map1.png"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "col": 3
+              },
+              {
+                "type": "column",
+                "children": [
+                  {
+                    "label": "组态视图",
+                    "type": "topo",
+                    "source": "TOPO",
+                    "advance": {
+                      "variable": "",
+                      "expression": "expression = {\n\t\"on\" : {\n        \"init\" : function(event){\n            var target = event.target;\n            target.off(\"topoViewChange\");\n            target.on(\"topoViewChange\", function(viewId){\n                debugger;\n                target.getViewById(viewId, function(view){\n                    if(view.content){\n                        var dt = JSON.parse(view.content);\n                        target.render(dt);\n                    }\n                })\n            });\n        }\n    }\n}"
+                    },
+                    "style": {
+                      "margin": "5px",
+                      "height": "400px",
+                      "font-size": "12px",
+                      "background-repeat": "no-repeat"
+                    },
+                    "viewId": 546900339506066
+                  }
+                ],
+                "col": 9
+              }
+            ]
+          },
+          {
+            "label": "控件组",
+            "type": "ctrlgroup",
+            "source": "CTRLGROUP",
+            "advance": {
+              "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n        [{\n          type : \"buttonGroup\",\n          class : \"col-md-12\",\n          groupStyle : {\n             float : \"right\"\n            },\n          content : [{\n            type : \"button\",\n            value : \"确定\",\n            icon : \"glyphicon glyphicon-save\",\n            btnclass : \"btn btn-primary\",\n            on : {\n              click : function(elem){\n                  var view = target.getValue(\"domainAreaLineTree/view\");\n                  debugger;\n                  target.submit(view);\n              }\n            }\n          },{\n            type : \"button\",\n            value : \"取消\",\n            icon : \"glyphicon glyphicon-remove\",\n            btnclass : \"btn btn-default\",\n            on : {\n              click : function(elem){\n                  target.cancel();\n              }\n            }\n          }]\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+            },
+            "style": {
+              "margin": "5px",
+              "font-size": "12px"
+            },
+            "help": "../pdf/ctrlgroup.pdf"
+          }
+        ],
+        "col": 12
+      },
+      "id": "5",
+      "$$hashKey": "object:1382"
+    }
+  ],
+  "setting": "{\n  \"showNavi\": false,\n  \"theme\": \"steel\"\n}"
+}

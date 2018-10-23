@@ -1,0 +1,35 @@
+<config injector="$timeout, psScope, psUltility"
+></config>
+<template>
+  <div>
+    <div class="bk-form-row">
+      <label class="bk-form-row-name">
+        <span class="text-red">*</span>
+        <span ng-bind="option.label"></span>
+      </label>
+      <div class="bk-form-row-cell">
+        <div class="bk-form-row-li">
+          <ps-tools data-option="option"></ps-tools>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script type="text/javascript">
+  import { findElement } from "ps-ultility";
+  export default function(timeout, psScope, psUltility){
+    return {
+      restrict: 'E',
+      scope: {
+        option : "="
+      },
+      replace: true,
+      link: function (scope, element) {
+        psUltility.registerCurrentScope(scope);
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+
+</style>

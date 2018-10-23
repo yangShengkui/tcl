@@ -1,0 +1,155 @@
+{
+  "layout": {
+    "type": "column",
+    "children": [
+      {
+        "type": "row",
+        "source": "ROW",
+        "parameters": {
+          "alignment": "bootstrap"
+        },
+        "style": {},
+        "children": [
+          {
+            "type": "column",
+            "children": [],
+            "col": 3
+          },
+          {
+            "type": "column",
+            "children": [],
+            "col": 3
+          },
+          {
+            "type": "column",
+            "children": [],
+            "col": 3
+          },
+          {
+            "type": "column",
+            "children": [],
+            "col": 3
+          }
+        ],
+        "url": "images/map/map1.png"
+      },
+      {
+        "label": "控制板1",
+        "type": "block",
+        "source": "BLOCK",
+        "style": {
+          "padding": "10px",
+          "margin": "5px"
+        },
+        "advance": {
+          "expression": {}
+        },
+        "children": [
+          {
+            "type": "column",
+            "col": 12,
+            "children": [
+              {
+                "label": "控件组",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  on: {\n    init: function (event) {\n      var target = event.target;\n      var global = event.global;\n      //-----------\n      var attr = ['examdevice', 'tech', 'arrisingTime'];\n      var options1 = [{\n          id : 0,\n          label : \"助燃风机\"\n      }];\n      var options2 = [{\n          id : 0,\n          label : \"振动监测\"\n      }];\n      var timeSpan = null;\n      var opt1 = [options1[0]];\n      var opt2 = [options2[0]];\n      //-----------\n      target.setScopeValue(\"search\", {});\n      var render = function(){\n        target.setScopeValue(\"search/\" + attr[0], {\n          type : \"inside\",\n          value : opt1\n        });\n        target.setScopeValue(\"search/\" + attr[1], {\n          type : \"inside\",\n          value : opt2\n        });\n        target.setScopeValue(\"search/\" + attr[2], {\n          type : \"between\",\n          value : timeSpan\n        });\n        var ctrlGroups = [\n          [\n            {\n              type: \"label\",\n              value: \"检测对象\",\n              class: \"col-md-1\",\n              style: {\n                textAlign: \"center\"\n              }\n            },{\n            type: \"select\",\n            value: opt1[0].id,\n            class: \"col-md-2\",\n            on: {\n              change: function (elem) {\n                opt1 = [elem.value];\n                render();\n              }\n            },\n            options: options1,\n            format: {\n              \"id\": \"domains\",\n              \"label\": \"label\"\n            }\n          }, {\n            type: \"label\",\n            value: \"检测技术\",\n            class: \"col-md-1\",\n            style: {\n              textAlign: \"center\"\n            }\n          }, {\n            type: \"select\",\n            value: opt2[0].id,\n            class: \"col-md-2\",\n            on: {\n              change: function (elem) {\n                opt2 = [elem.value];\n                render();\n              }\n            },\n            options: options2,\n            format: {\n              \"id\": \"id\",\n              \"label\": \"label\"\n            },\n          }, {\n            type: \"label\",\n            value: \"起始时间\",\n            class: \"col-md-1\",\n            style: {\n\n              textAlign: \"center\"\n            }\n          }, {\n            type: \"dateRangePicker\",\n            value: timeSpan,\n            class: \"col-md-3\",\n            on: {\n              change: function (elem) {\n                //var start = target.dateHandler(elem.value.start);\n                //var end = target.dateHandler(elem.value.end);\n                timeSpan = [elem.value.start, elem.value.end];\n                render();\n              }\n            },\n          }, {\n            type: \"button\",\n            class: \"col-md-1 col-md-offset-1\",\n            btnclass: \"btn btn-primary\",\n            value: \"查 询\",\n            btnStyle: {\n              width: \"100px\",\n            },\n            on : {\n              click : function(){\n                target.trigger(\"search_toDolist\");\n              }\n            }\n          }]\n        ];\n        target.render(ctrlGroups);\n      }\n      render();\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px"
+                },
+                "help": "../pdf/ctrlgroup.pdf",
+                "url": "images/map/map1.png",
+                "parameters": {}
+              }
+            ]
+          }
+        ],
+        "url": "images/map/map1.png"
+      },
+      {
+        "label": "控制板1",
+        "type": "block",
+        "source": "BLOCK",
+        "style": {
+          "padding": "10px",
+          "margin": "5px"
+        },
+        "advance": {
+          "expression": {}
+        },
+        "children": [
+          {
+            "type": "column",
+            "col": 12,
+            "children": [
+              {
+                "label": "文字",
+                "type": "text",
+                "source": "TEXT",
+                "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                "data": {
+                  "applied": false,
+                  "multipleCi": false,
+                  "multipleKpi": false,
+                  "resource": [],
+                  "modelType": 300,
+                  "resfilltype": "parameter",
+                  "series": {
+                    "manual": "新建文字",
+                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                  },
+                  "modelDisable": true
+                },
+                "style": {
+                  "margin": "auto",
+                  "padding": "0",
+                  "font-size": "16px",
+                  "font-weight": "bold",
+                  "color": "rgb(255, 255, 255)",
+                  "text-align": "left"
+                },
+                "advance": {
+                  "getfunction": "kpiDataService.getValueList",
+                  "category": "ci",
+                  "condition": [
+                    "kpi",
+                    "{object:kpiQueryModel}"
+                  ],
+                  "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"待办事项\")\n        }\n    }\n}"
+                },
+                "parameters": {},
+                "echart": {},
+                "url": "images/map/map1.png"
+              },
+              {
+                "label": "高级列表",
+                "type": "dataTableAdvance",
+                "source": "DATATABLEADVANCE",
+                "parameters": {
+                  "col": 1,
+                  "pageSize": 5,
+                  "listbottom": "standard"
+                },
+                "advance": {
+                  "expression": "expression = {\n  \"theme\" : \"dark\",\n  \"on\" : {\n    \"init\" : function(event){\n      var target = event.target;\n      //自定义输入\n      var Dictionary = {\n        equipment :  \"设备编号\",\n        examdevice : \"检测对象\",\n        arrisingTime : \"告警时间\",\n        from : \"异常信息来源\",\n        tech : \"检测技术\",\n        status : \"工艺状况\",\n        abnormal : \"异常现象\",\n        position : \"检测部位\",\n        kpi : \"速度有效值\"\n      };\n      var simulate = {\n        equipment :  function(inx, elem, attr){\n          return \"690530M05\" + inx\n        },\n        examdevice : function(inx, elem, attr){\n          //return elem.random(5,0)\n          return elem.randomText(['助燃风机']);\n        },\n        arrisingTime : function(inx, elem, attr){\n          var current = target.dateHandler(new Date()).addDay(-10);\n          return current.addHour(parseInt(inx) * 24).getDateString(\"yy/MM/dd,hh:mm:ss\");\n        },\n        from : function(inx, elem, attr){\n          return elem.randomText(['系统自动']);\n        },\n        tech : function(inx, elem, attr){\n          return elem.randomText(['振动监测']);\n        },\n        status : function(inx, elem, attr){\n          return elem.randomText(['额定工况']);\n        },\n        abnormal :  function(inx, elem, attr){\n          return elem.randomText(['振动值超标，轴承存在异音', '风机垂直振动值严重超标', '传动轴轴承座振动超标']);\n        },\n        position : function(inx, elem, attr){\n          return elem.randomText(['泵', '轴承座']);\n        },\n        kpi : function(inx, elem, attr){\n          return elem.randomText(['速度有效值']);\n        }\n      };\n      //自定义输入\n      setTimeout(function(){\n        target.getSimulateApi(simulate, 10, function(datas){\n          var render = function(){\n            var format = [];\n            for(var i in Dictionary){\n              var item = target.explainDic(i, Dictionary[i]);\n              format.push(item);\n            }\n            var search = target.getScopeValue(\"search\");\n            var filter = datas.filter(function(elem){\n              for(var i in search){\n                var type = search[i].type;\n                var value = search[i].value;\n                if(type == \"between\"){\n                  if(value){\n                    var dt = target.dateHandler(elem[i]);\n                    var dt0 = value[0];\n                    var dt1 = value[1];\n                    var rs = (dt0 ? dt.after(dt0) : true) && (dt1 ? dt.before(dt1) : true);\n                    if(!rs){\n                      return false;\n                    };\n                  } else {\n                    return true;\n                  }\n\n                } else if(type == \"inside\"){\n                  var some = value.some(function(el){\n                    return elem[i] == el.title || elem[i] == el.label;\n                  });\n                  if(!some){\n                    return false;\n                  }\n                } else if(type == \"domains\"){\n                  return elem.domains.indexOf(value.domains) != -1;\n                }\n              };\n              return true;\n            })\n            format.push({\n              name : \"处理\",\n              type: \"buttonGroup\",\n              content : [{\n                label : \"详情\",\n                icon: \"null\",\n                class: \"btn btn-default btn-sm\",\n                on : {\n                  click : function(elem){\n                    target.navigateTo(\"device\", {\n                      tabLabel : elem.label\n                    });\n\n                  }\n                }\n              },{\n                label : \"状态\",\n                icon: \"null\",\n                class: \"btn btn-default btn-sm\",\n                on : {\n                  click : function(elem){\n                    target.navigateTo(\"diagnose\", {\n                      tabLabel : elem.label\n                    });\n                  }\n                }\n              }],\n              render : function(){\n                return \"\"\n              }\n            });\n            target.render({\n              data : filter,\n              on : {\n                rowClick : function(event){\n                  target.createPopupBypath('analysis', {\n                    title: \"诊断分析\",\n                    theme : \"system\",\n                    width: \"80%\"\n                  }, {\n                    message: \"诊断分析\"\n                  })\n                }\n              },\n              format : format\n            });\n          };\n          target.off(\"search_toDolist\");\n          target.on(\"search_toDolist\", function(){\n            render();\n          });\n          render();\n        });\n      })\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px"
+                },
+                "url": "images/map/map1.png",
+                "echart": {}
+              }
+            ]
+          }
+        ],
+        "url": "images/map/map1.png"
+      }
+    ],
+    "col": 12
+  },
+  "setting": "{\n  \"theme\": \"default\"\n}"
+}

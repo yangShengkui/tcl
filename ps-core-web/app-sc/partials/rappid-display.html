@@ -1,0 +1,45 @@
+<div id="serviceCenter" class="rappid" ng-click="wholeClick()">
+  <div class="toolbar-container" style="left:50px;">
+    <ol class="breadcrumb">
+      <li>
+        <a href="../app-sc/index_configure.html#/display/all/service">服务中心</a>
+      </li>
+      <li ng-repeat="detail in details" ng-if="details.length > 0">
+        <a ng-attr-href="{{'../app-sc/index_configure.html#/display/' + detail.viewId + '/service'}}"  ng-bind="detail.viewTitle"></a>
+      </li>
+      <li class="dropdown" ng-class="{true:'open',false:''}[open==true]" style="cursor:pointer;">
+        <a ng-bind="data.viewTitle"
+           ng-click="open=true;$event.stopPropagation();"></a>
+        <ul id="menu1" class="dropdown-menu" aria-labelledby="drop4">
+          <li ng-repeat="item in lv1views"
+              ng-click="lv1viewsclick(item)"
+              style="cursor: pointer;"
+              ><a ng-bind="item.viewTitle"></a></li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+  <div class="wrap">
+    <div class="paper-container paper-container-full" style="overflow:visible;top:0;">
+    </div>
+    <div class="paper-echart-container paper-container-full" style="overflow:visible;top:0;">
+      <div class="paper-echart" style="height: {{data.height}}px;width: {{data.width}}px;">
+        <div class="nav-tabs-custom " ng-repeat="item in data.groupAry"
+             ng-style="{ 'pointer-events' : 'auto', 'position' : 'absolute', 'top' : item.y + 'px', 'left' : item.x + 'px' }">
+          <ul class="nav nav-tabs nav-echart">
+            <li ng-class="{true:'active'}[$index == 0]" ng-repeat="view in item.echartAry">
+              <a href="#{{view.id}}" data-toggle="tab">{{view.attrs.text.text}}</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div ng-repeat="view in item.echartAry" class="chart tab-pane" ng-class="{true:'active'}[$index == 0]" id="{{view.id}}">
+              <div ng-style="{'height' : view.size.height + 'px', 'width' : item.width + 'px'}" ng-controller="ConfigureChartsCtrl" echarts3-dom></div>
+            </div>
+          </div>
+        </div>
+        <!-- 单个不存在tab的时候-->
+        <div class="echart-content" style="ng-stylepointer-events: auto;position: absolute !important;height: {{view.size.height}}px;width:{{view.size.width}}px;top:{{view.position.y}}px;left:{{view.position.x}}px" ng-repeat="view in data.echartAry" ng-controller="ConfigureChartsCtrl" echarts3-dom></div>
+      </div>
+    </div>
+  </div>
+</div>

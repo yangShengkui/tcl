@@ -1,0 +1,172 @@
+<config injector="$filter"
+></config>
+<template>
+    <div class="wrap">
+      <input type="text" />&nbsp;&nbsp;&nbsp;&nbsp;到&nbsp;<input type="text"/>
+      <span style="color: red;font-size: 12px; margin-left: 10px;"></span>
+    </div>
+</template>
+<script type="text/javascript">
+  export default function($filter){
+    return {
+      scope : {
+          ngModel: '=?',
+          config: '=?',
+
+      },
+      require : '?ngModel',
+      link(scope, element, attr, ngModel) {
+
+          var val, val1,
+                  $dom = element.find('input'),
+                  dom1 = $dom[0],
+                  dom2 = $dom[1],
+                  bool = false,//触发事件开
+                  $spa = element.find('span'),
+                  //格式转化
+                  formatDate = function (date) {
+
+                      if(date){//M/d/yy h:mm:ss a
+                          return $filter('date')(date, 'yyyy-MM-dd HH:mm:ss');//转为日期字符串
+                      }else {
+                          return '';
+                      }
+                  },
+                  //用于设置中文
+                  locale = {
+                      "format": 'YYYY-MM-DD HH:mm:ss',
+                      "applyLabel": "确定",
+                      "cancelLabel": "取消",
+//                      "fromLabel": "起始时间",
+//                      "toLabel": "结束时间'",
+                      "customRangeLabel": "自定义",
+                      "weekLabel": "W",
+                      "daysOfWeek": ["日", "一", "二", "三", "四", "五", "六"],
+                      "monthNames": ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+                      "firstDay": 1
+                  },
+                  defaultConfig = {
+                      placeholder: '---请选择---',
+                      timePicker: true,
+                      timePickerIncrement: 1,
+                      timePicker24Hour: true,
+                      timePickerSeconds: true,
+                      opens: 'right',
+                      locale: locale,
+                      separator: ' - ',
+                      singleDatePicker: true,
+                      width: '200px',
+                      height: '30px',
+                      pos: 'center',
+                      err: '*开始日期超出了结束日期，请重新选择',
+                      // startDate: "07/27/2018",
+                      // endDate: "08/02/2018",
+                      // minDate:"07/27/2016",
+                      // maxDate:"07/27/2020",
+                      // `timePickerIncrement`: (number) time选择递增数
+                      //
+                      // `timePicker12Hour`: (boolean) 是否12小时制
+                      //
+                      // `opens`: (string: 'left'/'right') 显示在元素左边还是右边
+                      //
+                      // `buttonClasses`: (array) 按钮样式
+                      //
+                      // `applyClass`: (string) 应用按钮样式
+                      //
+                      // `cancelClass`: (string) 取消按钮样式
+                      //
+                      // `format`: (string) date/time格式
+                      //
+                      // `separator`: (string) 分隔符
+                      //
+                      // `locale`: (object) 本地设置
+                      //
+                      // `singleDatePicker`: (boolean) 是否是单个时间选择器
+                      //
+                      // `parentEl`: (string) 将控件放到哪个元素内，默认body
+
+                  };
+          scope.config = $.extend({},defaultConfig,scope.config || {});
+          dom1.placeholder = scope.config.placeholder;
+          dom2.placeholder = scope.config.placeholder;
+          if(scope.ngModel){
+              dom1.value = formatDate(scope.ngModel[0]);
+              dom2.value =formatDate(scope.ngModel[1]);
+          }else {
+              dom1.value = formatDate(new Date());
+              dom2.value =formatDate(new Date());
+          }
+          $dom.css({'width':scope.config.width,'height':scope.config.height,'text-align':scope.config.pos});
+          //引包
+          window["require"](['bootstrap-daterangepicker'],()=>{
+              $(dom1).daterangepicker(scope.config);
+              $(dom2).daterangepicker(scope.config);
+
+          });
+          //清除校验
+          function clearSpan() {
+              $spa.text('');
+          }
+          dom1.onfocus = clearSpan;
+          dom2.onfocus = clearSpan;
+          dom1.onchange = function() {//点击第一个为false
+              bool = false;
+              val = new Date(dom1.value).getTime();
+              val1 = new Date(dom2.value).getTime();
+              if(!this.value) {
+                  $spa.text('');
+                  return;
+              }else {
+                  if(val && val1 && (val - val1<0)){
+
+                      ngModel.$setViewValue( new Date(this.value));
+                  }else {
+                      $spa.text(scope.config.err);
+                      return;
+                  }
+              }
+          };
+          dom2.onchange = function() {//点击第二个为true
+              bool = true;
+              val = new Date(dom1.value).getTime();
+              val1 = new Date(dom2.value).getTime();
+              if(!this.value) {
+                  $spa.text('');
+                  return;
+              }else {
+                  if(val && val1 && (val - val1<0)){
+                      ngModel.$setViewValue(new Date(this.value));
+                  }else {
+                      $spa.text(scope.config.err);
+                      return;
+                  }
+              }
+          };
+          Array.prototype.push.call(ngModel.$parsers,function(n,o){
+              if(!n) {
+                  return;
+              }else {
+                  var arr = [];
+                  if(bool) {//点击第二个true
+                      arr.push(new Date(dom1.value));
+                      arr.push(new Date(n));
+                  }else {//点击第一个true
+                      arr.push(new Date(n));
+                      arr.push(new Date(dom2.value));
+                  }
+                  return arr;
+              }
+          });
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+  .wrap{
+    margin : 5px;
+    padding : 10px;
+    color : #333;
+    background-color : #eee;
+    border : 1px solid #ddd;
+  }
+</style>

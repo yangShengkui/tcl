@@ -1,0 +1,32 @@
+<config injector="$timeout, psScope"
+></config>
+<template>
+  <div>
+    <div class="tab-content" style="min-height : 100px;">
+      <div class="bk-group-detail">
+        <ps-recursive data-option="op" ng-repeat="op in option.children">
+        </ps-recursive>
+      </div>
+    </div>
+  </div>
+</template>
+<script type="text/javascript">
+  export default function(timeout, psScope){
+    return {
+      restrict: 'E',
+      scope: {
+        label: '=?',
+        option : "="
+      },
+      replace: true,
+      link: function (scope, element) {
+        psScope(scope);
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+  .bk-group-detail{
+    display : block;
+  }
+</style>

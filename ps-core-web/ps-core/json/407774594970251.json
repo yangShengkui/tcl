@@ -1,0 +1,56 @@
+{
+  "type": "relative",
+  "setting": {
+    "viewTitle": "六条信息"
+  },
+  "data": [
+    {
+      "type": "title",
+      "attributes": {
+        "text": "报警输出；",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "燃烧器故障；",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "缺水报警：出水温度高；",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "报警输出；",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "谁就断水22：机组增压：机组超温33",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "出水温度高",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    }
+  ]
+}

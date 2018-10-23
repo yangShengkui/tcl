@@ -1,0 +1,56 @@
+<config injector="$rootScope,$timeout,$compile" type="factory"
+></config>
+<script type="text/javascript">
+  import ultiltiy from "ps-ultility";
+  export default function(rootScope,timeout,compile){
+    const obj = {};
+    function register(name, handleObj){
+      obj[name] = handleObj;
+    }
+    function get(name){
+      return obj[name];
+    }
+    register("online", {
+      url: "kpiDataFlexService.getKpiValueList",
+        before: "id",
+        param: function (source) {
+        return ["kpi", {
+          category: "ci",
+          isRealTimeData: true,
+          timePeriod: 0,
+          nodeIds: source,
+          kpiCodes: [999998],
+          startTime: null,
+          endTime: null,
+          timeRange: "",
+          statisticType: "psiot",
+          condList: []
+        }]
+      },
+      after: "online:nodeId"
+    });
+    register("state", {
+      url: "kpiDataFlexService.getKpiValueList",
+      before: "id",
+      param: function (source) {
+        return ["kpi", {
+          category: "ci",
+          isRealTimeData: true,
+          timePeriod: 0,
+          nodeIds: source,
+          kpiCodes: [999999],
+          startTime: null,
+          endTime: null,
+          timeRange: "",
+          statisticType: "psiot",
+          condList: []
+        }]
+      },
+      after: "state:nodeId"
+    });
+    return {
+      get : get,
+      register : register
+    }
+  }
+</script>

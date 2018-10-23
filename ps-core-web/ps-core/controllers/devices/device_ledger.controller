@@ -1,0 +1,45 @@
+<config injector="$scope,ajax">
+</config>
+<template>
+    <ps-table config="config"></ps-table>
+</template>
+<script type="text/javascript">
+export default function (scope, ajax) {
+    ajax.config({});
+    scope.config = {
+        title: "设备台账",
+        attributes: {
+            "domains": ["设备位置", "text"],
+            "label": ["设备名称", "text"],
+            "id": ["设备编码","text"],
+            "sn": ["规格型号","text"],
+            "assets.brand": ["品牌","text"],
+            "assets.assetType": ["资产类型","text"],
+            "assets.assetCategory": ["资产分类","text"],
+            "assets.useDepartment": ["使用部门","text"],
+            "assets.costCenter": ["成本中心","text"],
+            "assets.buyTime": ["购买日期","text"],
+            "from": ["来源渠道","text"],
+            "assets.filePath": ["台账文件","text"],
+            "assets.remark": ["备注","text"],
+        },
+        search: {
+            body: []
+        },
+        grid: {
+            body: ["domains", "label","id","sn","assets.brand","assets.assetType","assets.assetCategory","assets.useDepartment","assets.costCenter","assets.buyTime","from","assets.filePath","assets.remark"],
+            config: {
+                url: 'resourceUIService.getDevicesByConditionWithPage',
+                parameter: [{},{}],
+                showIndex: false,
+                showSelector: false,
+                showSearch: false
+            },
+            options: []
+        }
+    };
+
+};
+</script>
+<style type="less">
+</style>

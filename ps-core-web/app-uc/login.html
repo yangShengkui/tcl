@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>普奥云平台</title>
+  <link rel="shortcut icon" href="" type="image/vnd.microsoft.icon">
+  <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Bootstrap 样式-->
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/admin-lte/AdminLTE.css">
+  <link href="../bower_components/bootstrap3-dialog/dist/css/bootstrap-dialog.css" rel="stylesheet">
+
+  <style type="text/css">
+    @charset "UTF-8";
+    [ng\:cloak],
+    [ng-cloak],
+    [data-ng-cloak],
+    [x-ng-cloak],
+    .ng-cloak,
+    .x-ng-cloak,
+    .ng-hide {
+      display: none !important;
+    }
+
+    ng\:form {
+      display: block;
+    }
+
+    .ng-animate-start {
+      clip: rect(0, auto, auto, 0);
+      -ms-zoom: 1.0001;
+    }
+
+    .ng-animate-active {
+      clip: rect(-1px, auto, auto, 0);
+      -ms-zoom: 1;
+    }
+  </style>
+</head>
+
+<body style="background-color: #ffffff;" ng-controller="loginController">
+<nav class="navbar navbar-fixed-top navbar-blue">
+  <a class="navbar-brand" href="../app-oc/index.html"><img height="26" src="../images/enterprise/logo.svg" type="image/svg+xml"></a>
+  <ul class="nav navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link router-link-active" href="javascript:void(0);">普奥登录</a>
+    </li>
+  </ul>
+</nav>
+<div class="container">
+  <div class="row">
+    <h6 class="text-sm-center">为更好体验我们的系统，请如实填写如下信息！</h6>
+    <form class="col-sm-12 col-lg-6  col-lg-offset-3 form-horizontal" id="myForm"  name="myForm">
+      <div class="form-group row">
+        <label class="col-sm-3 form-control-label pad-lab mobile-cla1 pad-f" style="text-align: right;"><span class="text-danger">*</span>手机号码:</label>
+        <div class="col-sm-7 mobile-cla">
+          <input class="form-control form-control-sm  ng-pristine ng-valid " ng-pattern="/^((1[3,5,8][0-9])|(14[5,7])|(17[0,6,7,8]))\d{8}$/" ng-model="mobile" id="mobilePhone" name="mobilePhone" maxlength="11">
+          <div class="msg-cnt" style="color: red;" ng-cloak style="margin-top: 5px;" ng-show="myForm.mobilePhone.$dirty && myForm.mobilePhone.$invalid">
+            输入的手机号码格式不对,请重新输入！
+          </div>
+          <div class="msg-cnt msg-type-error error-class" style="color: red;"  ng-cloak style="margin-top: 5px;" ng-show="codeError == 1003">
+            手机号码不能为空！
+          </div>
+        </div>
+        <div class="col-sm-2 mobile-cla2" style="padding: 0;">
+          <a class="btn btn-info btn-sm pull-sm-right" id="charge" name="charge"  ng-click="codeClick();">发送验证码</a>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-3 form-control-label pad-lab pad-d"  style="text-align: right;"><span class="text-danger">*</span>短信验证码:</label>
+        <div class="col-sm-9 pad-inp">
+          <input class="form-control form-control-sm ng-pristine ng-valid ng-touched" ng-model="verify" id="phoneValidation" maxlength="6">
+
+          <div class="msg-cnt msg-type-error error-class" style="color: red;"  ng-cloak style="margin-top: 5px;" ng-show="codeError == 1004">
+            验证码不能为空！
+          </div>
+          <div class="msg-cnt msg-type-error error-class" style="color: red;"  ng-cloak style="margin-top: 5px;" ng-show="codeError == 2001">
+            验证码输入错误！
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-3 form-control-label pad-lab pad-d"  style="text-align: right;"><span class="text-danger">*</span>解决方案:</label>
+        <div class="col-sm-9 pad-inp">
+          <select class="form-control form-control-sm" ng-options="item as item for item in industryList" ng-model="industry" id="industry">
+            <option value="">请选择</option>
+          </select>
+          <div class="msg-cnt msg-type-error error-class" style="color: red;"  ng-cloak style="margin-top: 5px;" ng-show="codeError == 1005">
+            解决方案不能为空！
+          </div>
+        </div>
+      </div>
+      <div class="form-group row  btn-div">
+        <button class="btn btn-info btn-sm col-sm-4 col-sm-offset-4 mobile-btn" ng-click="loginSave();" type="button">登录</button>
+      </div>
+    </form>
+  </div>
+</div>
+<script src="../bower_components/requirejs/require.js" data-main="js/main"></script>
+</body>
+</html>

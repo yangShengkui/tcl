@@ -1,0 +1,151 @@
+<!--创建采集组模态框-->
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">数据授权</h4>
+      </div>
+      <div class="modal-body padding-top-10 no-pad-bottom">
+        <form role="form form-inline" class="form-horizontal" name="userForm">
+          <div class="simple-form-field" class="row">
+            <ul class="nav nav-tabs">
+              <li ng-click="accredit = 'domain'" role="presentation"
+                  ng-class="{true:'active',false:''}[accredit == 'domain']">
+                <a style="cursor:pointer;">域授权</a>
+              </li>
+              <li ng-click="accredit = 'device';queryDevice(domainList[0].domains)" role="presentation"
+                  ng-class="{true:'active',false:''}[accredit == 'device']">
+                <a style="cursor:pointer;">设备授权</a>
+              </li>
+            </ul>
+            <div ng-if="accredit == 'domain'" style="margin: 20px auto; min-height: 300px;">
+              <div class="col-sm-8 margin-bottom-10 padding-left-5 dialog-control-h" style="height:auto;">
+                <div class="col-sm-3 dialog-control-label no-padding-left no-padding-right dialog-control-h"
+                     style="height:auto;">
+                  <span>域选择：</span>
+                </div>
+                <div class="col-sm-7  no-padding-left no-padding-right dialog-control-h"
+                     style="height:auto;">
+                  <div class="dropdowntree" ng-model="domainObj.domainIds" key="domainPath"
+                       options="allDomainTree" mark="nodes" change="defaultDomainAction('','add')">
+                  </div>
+                </div>
+
+              </div>
+              <div slim-scroll height="400px" width="100%"
+                   class="box-body col-sm-10   table-responsive table-overflow">
+
+                <table class="table table-hover text-center" border="1" style="border: 1px solid #eee;"
+                       width="100%">
+                  <thead>
+                  <tr role="row">
+                    <th>
+                      <span>域名称</span>
+                    </th>
+                    <th>
+                      <span>域描述</span>
+                    </th>
+                    <th style="width: 80px;">
+                      <span>操作</span>
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr role="row" style="width: 300px;" ng-repeat="option in domainList">
+                    <td>
+                      {{option.label}}
+                    </td>
+                    <td>
+                      {{option.description}}
+                    </td>
+                    <td class="optioncol2">
+                      <div class="btn-group btn-group-sm">
+                        <button class="btn btn-default"
+                                ng-disabled="domainObj.domainPath == option.domainPath"
+                                ng-click="defaultDomainAction(option,'del')">
+                          <i class="fa fa-trash  hidden-lg hidden-md hidden-sm"></i>
+                          <span class="hidden-xs"> 删除</span>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div ng-if="accredit == 'device'" style="margin: 20px auto; min-height: 300px;">
+              <div class="col-md-12 margin-bottom-10 padding-left-5" style="height:auto;">
+                <div class="col-md-2 dialog-control-label no-padding-left no-padding-right dialog-control-h"
+                     style="height:auto;">
+                  <span>扩展域：</span>
+                </div>
+                <div class="col-md-2  no-padding-left no-padding-right dialog-control-h"
+                     style="height:auto;">
+                  <select class="input-md" style="width: 120px"
+                          ng-model="department"
+                          ng-options="value.domains as value.label for value in domainList"
+                          select2>
+                    <option value="">请选择...</option>
+                  </select>
+                  <!--&lt;!&ndash;<div class="dropdowntree" ng-model="domainObj.departmentDode" key="domainPath"  options="domainList" mark="nodes">&ndash;&gt;-->
+                </div>
+                <div class="col-md-2 dialog-control-label no-padding-left no-padding-right">
+                  <span>设备名称：</span>
+                </div>
+                <div class="col-md-2 dialog-control-label no-padding-left no-padding-right">
+                  <input width="100px" ng-model="deviceName">
+                </div>
+                <div class="col-md-3 dialog-control-label no-padding-left no-padding-right">
+                  <button class="btn btn-default btn-sm" ng-click="queryDevice(department,deviceName)">查询</button>
+                  <button class="btn btn-primary btn-sm" ng-click="defaultDomainAction(department,'save')">保存</button>
+                </div>
+
+              </div>
+              <div slim-scroll height="400px" width="100%"
+                   class="box-body col-sm-10   table-responsive table-overflow">
+                <table class="table table-hover text-center" border="1" style="border: 1px solid #eee;"
+                       width="100%">
+                  <thead>
+                  <tr role="row">
+                    <th>
+                    </th>
+                    <th>
+                      <span>设备名称</span>
+                    </th>
+                    <th>
+                      <span>域名称</span>
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <!--  | filter:{ domainPath :domainObj.departmentDode}-->
+                  <tr role="row" style="width: 300px;" ng-repeat="item in devices">
+                    <td>
+                      <input type="checkbox" ng-model="item.check"/>
+                    </td>
+                    <td>
+                      {{item.label}}
+                    </td>
+                    <td>
+                      {{item.customName}}
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+
+          </div>
+        </form>
+      </div>
+      <div ng-if="accredit == 'domain'" class="modal-footer">
+        <button class="btn btn-primary" ng-click="defaultDomainAction('','save')">
+          确定
+        </button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

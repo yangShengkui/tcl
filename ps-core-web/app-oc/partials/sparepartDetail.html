@@ -1,0 +1,192 @@
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Application buttons -->
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+
+              <li  ng-class="{true: 'active',false:''}[queryState == 1]"><a role="button" ng-click="getEvent(queryState=1)">备件信息</a></li>
+              <li ng-class="{true: 'active',false:''}[queryState == 2]"><a role="button" ng-click="getEvent(queryState=2)">出入库明细</a></li>
+
+            </ul>
+          </div>
+
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+
+        <div class="box-body" ng-show="queryState == 1">
+          <div class="box-footer no-pad-top no-border">
+            <div class="bk-scope bk-theme-mini">
+              <dl class="bk-group">
+                <dt class="bk-group-title"><span>备件信息</span></dt>
+                <dd class="bk-group-detail">
+                  <div class="bk-form-row" ng-show="!choseGateWayTab || choseGateWayTab == 1">
+                    <label class="bk-form-row-name"><span class="text-red">*</span>厂      部：</label>
+                    <div class="bk-form-row-cell">
+                      <div class="bk-form-row-li">
+                        <span class="bk-form-row-li-info bk-ml2">{{customerName}}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bk-form-row" ng-show="!choseGateWayTab || choseGateWayTab == 1">
+                    <label class="bk-form-row-name"><span class="text-red">*</span>使用设备类型：</label>
+                    <div class="bk-form-row-cell">
+                      <div class="bk-form-row-li">
+                        <span class="bk-form-row-li-info bk-ml2">{{deviceName}}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bk-form-row" ng-show="!choseGateWayTab || choseGateWayTab == 1">
+                    <label class="bk-form-row-name"><span class="text-red">*</span>备件类型：</label>
+                    <div class="bk-form-row-cell">
+                      <div class="bk-form-row-li">
+                        <span class="bk-form-row-li-info bk-ml2">{{sparePartDetail.model}}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bk-form-row" ng-show="!choseGateWayTab || choseGateWayTab == 1">
+                    <label class="bk-form-row-name"><span class="text-red">*</span>备件名称：</label>
+                    <div class="bk-form-row-cell">
+                      <div class="bk-form-row-li">
+                        <span class="bk-form-row-li-info bk-ml2">{{sparePartDetail.label}}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bk-form-row" ng-show="!choseGateWayTab || choseGateWayTab == 1">
+                    <label class="bk-form-row-name"><span class="text-red">*</span>备件编号：</label>
+                    <div class="bk-form-row-cell">
+                      <div class="bk-form-row-li">
+                        <span class="bk-form-row-li-info bk-ml2">{{sparePartDetail.name}}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bk-form-row" ng-show="!choseGateWayTab || choseGateWayTab == 1">
+                    <label class="bk-form-row-name"><span class="text-red">*</span>规格型号：</label>
+                    <div class="bk-form-row-cell">
+                      <div class="bk-form-row-li">
+                        <span class="bk-form-row-li-info bk-ml2">{{sparePartDetail.specification}}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bk-form-row" ng-show="!choseGateWayTab || choseGateWayTab == 1">
+                    <label class="bk-form-row-name"><span class="text-red">*</span>生产厂家：</label>
+                    <div class="bk-form-row-cell">
+                      <div class="bk-form-row-li">
+                        <span class="bk-form-row-li-info bk-ml2">{{sparePartDetail.manufacturer}}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bk-form-row" ng-show="!choseGateWayTab || choseGateWayTab == 1">
+                    <label class="bk-form-row-name"><span class="text-red">*</span>参考使用寿命：</label>
+                    <div class="bk-form-row-cell">
+                      <div class="bk-form-row-li">
+                        <span class="bk-form-row-li-info bk-ml2">{{sparePartDetail.lowerLimit}}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bk-form-row" ng-show="!choseGateWayTab || choseGateWayTab == 1">
+                    <label class="bk-form-row-name"><span class="text-red">*</span>实际库存：</label>
+                    <div class="bk-form-row-cell">
+                      <div class="bk-form-row-li">
+                        <span class="bk-form-row-li-info bk-ml2">{{sparePartDetail.stockNumber}}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bk-form-row" ng-show="!choseGateWayTab || choseGateWayTab == 1">
+                    <label class="bk-form-row-name"><span class="text-red">*</span>安全库存：</label>
+                    <div class="bk-form-row-cell">
+                      <div class="bk-form-row-li">
+                        <span class="bk-form-row-li-info bk-ml2">{{sparePartDetail.originalNumber}}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bk-form-row" ng-show="!choseGateWayTab || choseGateWayTab == 1">
+                    <label class="bk-form-row-name"><span class="text-red">*</span>附      件：</label>
+                    <div class="bk-form-row-cell">
+                      <div class="bk-form-row-li">
+                        <span class="bk-form-row-li-info bk-ml2">{{sparePartDetail.imageUrl}}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </dd>
+              </dl>
+            </div>
+            <table class="table table-hover" ng-if="activeListTab == 'tab2'"  name="cmdb3-table" width="100%" cmdb3-table></table>
+            <table class="table table-hover" ng-if="activeListTab == 'tab3'"  name="not-confirmed-table" width="100%" not-confirmed-table></table>
+          </div>
+        </div>
+        <div class="box-body"    ng-show="queryState == 2">
+          <form class="form-horizontal padding-top-10" role="form" name="spareDetail">
+
+              <div class="combined-query" style="display: inline-block">
+                <label class="control-label">
+                  操作类型
+                </label>
+
+                    <select  class="form-control" ng-model="stockQueryDataItem.category">
+                      <option>
+                        请选择
+                      </option>
+                        <option value="InStock" >
+                          入库调整
+                        </option>
+                      <option value="InStock">
+                        出库调整
+                      </option>
+                      <option value="deviceUse">
+                        设备使用
+                      </option>
+                    </select>
+
+              </div>
+               <div class="combined-query" style="display: inline-block">
+                  <label class="control-label">操作时间</label>
+
+                 <input class="form-control"   type="text" ng-model="stockQueryDataItem.startTime"  readonly='readonly' autocomplete="off" drops="down"  timepicker="true" date-time-picker  />
+
+                  <label class="control-label">
+                    ---
+                  </label>
+
+                 <input class="form-control"  type="text" ng-model="stockQueryDataItem.endTime"   readonly='readonly' autocomplete="off" drops="down" timepicker="true" date-time-picker  />
+
+               </div>
+              <div class="combined-query" style="display: inline-block">
+                <div type="button" class="btn-primary btn btn-sm"><span class="hidden-sm" ng-click="getStockInOutDetail(id)"> 查询</span></div>
+              </div>
+            <div class="combined-query" style="display: inline-block">
+              <div type="button" class="btn-primary btn btn-sm" ng-click="exportStockOrderItems();"><span class="hidden-sm">导出</span></div>
+            </div>
+
+
+
+        </form>
+
+        </div>
+
+        <div class="box-body">
+
+        </div>
+
+        <div class="box-footer margin-bottom-20 " ng-show="queryState==2">
+          <table width="90% " class="table table-hover " name="stock-info-table" stock-info-table></table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

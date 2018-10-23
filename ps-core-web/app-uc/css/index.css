@@ -1,0 +1,241 @@
+.img-tit {
+  width: 40px;
+}
+
+.txt-list {
+  display: inline-block;
+  height: 230px;
+  overflow: hidden;
+  width: 100%;
+  margin-left: 40px;
+}
+.app-list li {
+  width: 20%;
+}
+.pic {
+    text-align: center;
+    padding-top: 10px;
+}
+.pic>img{
+    width: 160px;
+    height: 120px;
+}
+.pad-top{
+    padding-top: 10px;
+}
+.wrap-div{
+     border: 2px solid #ccc;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.wrap-div > h4{
+    font-weight: 700;
+}
+.btn-warp{
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+.btn-warp >button{
+    width: 100px;
+    margin: auto;
+}
+.offline{
+    width: 120px;
+    margin: 20px 20px 5px 20px;
+}
+.offline-txt{
+    width: 160px;
+    height: 120px;
+    float: left;
+    margin-left: 5%;
+    margin-right: 30px;
+}
+.message{
+    padding-top: 10px;
+    display: inline-block;
+}
+.detail-title{
+    margin-top: 3%;
+}
+.necessary li .tupian>img{
+    width: 70px;
+    height: 70px;
+}
+.necessary li .tupian1>img{
+    width: 70px;
+    height: 70px;
+}
+/*h4{*/
+    /*width: 80%;*/
+    /*margin: auto;*/
+    /*line-height: 18px;*/
+    /*font-size: 14px;*/
+    /*color: #444;*/
+    /*text-align: center;*/
+    /*padding-bottom: 20px;*/
+/*}*/
+.btn-primary{
+    margin: 10px 0 0 10px;
+}
+.y-row {
+    margin-left: 20px;
+    margin-right: auto;
+    zoom: 1;
+    width: 48%;
+    display: inline-block;
+}
+.y-row h3 {
+    height: 56px;
+    line-height: 56px;
+    font-size: 18px;
+    color: #000;
+    font-weight: 700;
+}
+.necessary li {
+    width: 30%;
+    height: 230px;
+    background-color: #fff;
+    float: left;
+    position: relative;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+}
+.necessary li a {
+    display: block;
+    height: 185px;
+    cursor: pointer;
+    padding-top: 20px;
+}
+.necessary li .biaoti {
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 17px;
+}
+
+.necessary li .tupian {
+    width: 84px;
+    height: 65px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+.necessary li .tupian1 {
+    width: 84px;
+    height: 65px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    display: none;
+}
+.necessary li .remark {
+    font-size: 12px;
+    text-align: center;
+    /*width: 210px;*/
+    height: 34px;
+    margin-left: 30px;
+    margin-right: 30px;
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #000;
+}
+.necessary li >span {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background-color: #eaeaea;
+    top: 0;
+    left: 0;
+}
+.necessary li:hover {
+    background-color: #45aeff;
+}
+.necessary li:hover .biaoti {
+    color: #fff;
+}
+.necessary li:hover .tupian {
+    display: none;
+}
+.necessary li:hover .tupian1 {
+    display: block;
+}
+.necessary li:hover .remark {
+    color: #fff;
+}
+
+.necessary li:hover .remark {
+    color: #fff;
+}
+
+.button a {
+    font-size: 12px;
+    color: #fff;
+    height: 24px;
+    line-height: 24px;
+    float: left;
+    padding: 0 26px;
+    background-color: #ff7300;
+    display: block;
+}
+.edit-tit{
+    height: 28px;
+    line-height: 28px;
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 17px
+}
+.gray9 {
+    color: #999;
+}
+.gray3 {
+    color: #333;
+}
+.edit-type{
+    float: left;
+    margin-right: 20px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+.nav-tabs-custom > .tab-content{
+    min-height: 300px;
+}
+.my-tit{
+    width: 60px;
+    float: left;
+}
+.my-detail{
+    display: inline-block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+}
+.edit-trash{
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+}
+@media screen and (max-width:1200px) {
+    .y-row{
+        width: 90%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

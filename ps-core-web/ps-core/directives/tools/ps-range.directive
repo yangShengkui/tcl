@@ -1,0 +1,165 @@
+<config injector=""
+></config>
+<template>
+    <div>
+        <div class="scroll">
+            <div class="bar">
+            </div>
+            <div class="mask"></div>
+            <span class="min"></span>
+            <span class="max"></span>
+        </div>
+    </div>
+</template>
+<script type="text/javascript">
+    export default function(){
+        return {
+            restrict: 'E',
+            template: `<div class="scroll">
+                            <div class="bar">
+                            </div>
+                            <div class="mask"></div>
+                            <span class="min"></span>
+                            <span class="max"></span>
+                        </div>`,
+            require: '?ngModel',
+            scope: {
+                ngModel: '=?',
+                config: '=?'
+            },
+            replace: true,
+            link: function (scope, element, attr, ngModel) {
+                var scroll = element[0].children[0],
+                    bar = scroll.children[0],
+                    mask = scroll.children[1],
+                    min = scroll.children[2],
+                    max = scroll.children[3],
+                    totalDistance = scroll.offsetWidth,
+                    percent = 0,
+                    barleft = scope.ngModel * (totalDistance) /100 || 0,
+                    defaultConfig ={
+                        min: 10,
+                        max: 90,
+                        minColor: 'red',
+                        normalColor: 'rgb(62, 221, 167)',
+                        maxColor: 'orange'
+                    };
+                scope.config = angular.extend({},defaultConfig,scope.config||{});
+                scroll.style.width = scope.config.width;
+                scroll.style.height = scope.config.height;
+                scroll.style.borderRadius = scope.config.borderRadius;
+                bar.style.left = (barleft - bar.offsetWidth/2)+ "px";
+                mask.style.width = barleft + 'px';
+                min.innerHTML = scope.config.min + '%';
+                max.innerHTML = scope.config.max + '%';
+                min.style.left = (scope.config.min * totalDistance / 100 - min.offsetWidth/2) +'px';
+                max.style.left = (scope.config.max * totalDistance / 100 - max.offsetWidth/2) +'px';
+                //鼠标按下事件
+                bar.onmousedown = function(event){
+                    var event = event || window.event,
+                        leftVal = event.clientX - this.offsetLeft,
+                        that = this;
+                    // 鼠标按下之后 拖动事件
+                    document.onmousemove = function(event){
+                        var event = event || window.event;
+                        barleft = event.clientX - leftVal;
+                        if(barleft < 0)
+                            barleft = 0;
+                        else if(barleft > totalDistance)
+                            barleft = totalDistance;
+                        mask.style.width = barleft +'px' ;
+                        that.style.left = (barleft - bar.offsetWidth/2)+ "px";
+                        percent =  barleft === 0 ? 0 : parseInt(barleft/(totalDistance) * 100);
+                        if(percent <= scope.config.min) {
+                            mask.style.backgroundColor = scope.config.minColor;
+                        }else if (percent >= scope.config.max ) {
+                            mask.style.backgroundColor = scope.config.maxColor;
+                        }else {
+                            mask.style.backgroundColor = scope.config.normalColor;
+                        }
+                        ngModel.$setViewValue(percent);
+                        //防止选择内容--当拖动鼠标过快时候，弹起鼠标，bar也会移动，修复bug
+                        window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+                    }
+                    document.onmouseup = function(event){
+                        document.onmousemove = null; //弹起鼠标不做任何操作
+                    }
+                    bar.onclick = function (event) {
+                        event.stopPropagation();
+                        percent = parseInt(mask.style.width.split('px')[0]/totalDistance*100);
+                        ngModel.$setViewValue(percent);
+                    }
+                }
+                scope.$on('destroy',function () {
+                    scroll = null;
+                    bar = null;
+                    mask = null;
+                    min = null;
+                    max = null;
+                    barleft = null;
+                    totalDistance = null;
+                    percent = null;
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+
+                })
+                Array.prototype.push.call(ngModel.$parsers, function (n,o) {
+                    //undefined ""  0 null
+                    if(typeof n === "undefined"){
+                        return;
+                    }else {
+                        return n;
+                    }
+                });
+
+            }
+        }
+    }
+</script>
+<style type="less" scoped="true">
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .scroll{
+        margin:20px;
+        width: 498px;
+        height: 22px;
+        background: #fff;
+        position: relative;
+        -webkit-border-radius: 9px;
+        -moz-border-radius: 9px;
+        border-radius: 9px;
+        border: 1px solid #c5c5c5;
+    }
+    .bar{
+        width: 22px;
+        height: 22px;
+        background: rgb(0, 159, 120);;
+        position: absolute;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+        z-index: 2;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+    }
+    .mask{
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: rgb(62, 221, 167);
+        width: 0;
+        height: 22px;
+        -webkit-border-radius: 9px 0 0 9px;
+        -moz-border-radius: 9px 0 0 9px;
+        border-radius: 9px 0 0 9px;
+    }
+    .min, .max {
+        position: absolute;
+        top: -120%;
+        left: 0;
+    }
+
+</style>

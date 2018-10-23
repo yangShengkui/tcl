@@ -1,0 +1,67 @@
+<config router="prod_pstable"
+        injector="$scope,$q,resourceUIService,viewFlexService,apiService"
+></config>
+<template>
+    <div class="wrap">
+        <div>计划排程</div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>产线</th>
+                        <th>计划完成时间</th>
+                        <th>计划偏离状态</th>
+                        <th>实际完成</th>
+                        <th>完成比例</th>
+                    </tr>
+                </thead>
+            <tbody>
+                <tr ng-repeat="d in data">
+                    <td ng-bind="d.prodline"></td>
+                    <td ng-bind="d.time"></td>
+                    <td ng-bind="d.status"></td>
+                    <td ng-bind="d.finish"></td>
+                    <td ng-bind="d.percent"></td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+</template>
+<script type="text/javascript">
+    export default function(scope,q,resourceUIService,viewFlexService,api){
+        scope.data = [{
+            prodline: "装配",
+            time:"7月1日 15:30",
+            status:"正常",
+            finish: 2050,
+            percent: "87%"
+        },{
+            prodline: "差壳",
+            time:"7月2日 15:30",
+            status:"正常",
+            finish: 2000,
+            percent: "100%"
+        },{
+            prodline: "减壳",
+            time:"7月3日 15:30",
+            status:"正常",
+            finish: 450,
+            percent: "45%"
+        },{
+            prodline: "齿轮",
+            time:"7月4日 15:30",
+            status:"正常",
+            finish: 2500,
+            percent: "72%"
+        }]
+    };
+</script>
+<style type="less" scoped="true">
+    .wrap {
+        width: 500px;
+        div:first-child {
+            font-weight: bold;
+        }
+    }
+</style>

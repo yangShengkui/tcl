@@ -1,0 +1,390 @@
+{
+  "layout": {
+    "type": "column",
+    "children": [
+      {
+        "label": "重复单元",
+        "type": "repeater",
+        "source": "REPEATER",
+        "parameters": {
+          "col": 4
+        },
+        "advance": {
+          "getListTable": "allprojects",
+          "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            var list = [{\n                label : \"待诊断任务数\",\n                value : 23,\n                icon : \"proudsmart ps-gongdanguanli\",\n                css : {\n                    \"background-color\" : \"#0c466d\",\n                    \"border\" : \"1px solid #21a6fb\"\n                }\n            },{\n                label : \"诊断中任务数\",\n                value : 45,\n                icon : \"glyphicon glyphicon-briefcase\",\n                css : {\n                    \"background-color\" : \"#484b2f\",\n                    \"border\" : \"1px solid #e7b52b\"\n                }\n            },{\n                label : \"综合诊断任务数\",\n                value : 37,\n                icon : \"glyphicon glyphicon-duplicate\",\n                css : {\n                    \"background-color\" : \"#472d3c\",\n                    \"border\" : \"1px solid #e55057\"\n                }\n            },{\n                label : \"协同诊断任务数\",\n                value : 42,\n                icon : \"proudsmart ps-innovate\",\n                css : {\n                    \"background-color\" : \"#0c466d\",\n                    \"border\" : \"1px solid #21a6fb\"\n                }\n            }];\n            target.render(list);\n        }\n    }\n}"
+        },
+        "children": [
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "控制板1",
+                "type": "block",
+                "source": "BLOCK",
+                "style": {
+                  "padding": "10px",
+                  "margin": "5px"
+                },
+                "advance": {
+                  "expression": "expression = {\n    on : {\n        repeat : function(event){\n            var target = event.target;\n            var data = target.$repeatData;\n            var css = data.css;\n            target.setCss(css);\n        }\n    }\n}"
+                },
+                "children": [
+                  {
+                    "type": "column",
+                    "col": 12,
+                    "children": [
+                      {
+                        "label": "控件组",
+                        "type": "ctrlgroup",
+                        "source": "CTRLGROUP",
+                        "advance": {
+                          "expression": "expression = {\n  on : {\n    repeat : function(event){\n        \n      var target = event.target;\n      var global = event.global;\n      var data = target.$repeatData;\n      var ctrlGroups = [\n           [{\n          type : \"icon\",\n          class : \"col-md-12\",\n          style : {\n              \"font-size\" : \"60px\"\n          },\n          tdStyle : {\n              \"text-align\" : \"center\"\n          },\n          icon : data.icon\n        }],\n          [{\n          type : \"label\",\n          value : data.value,\n          style : {\n              \"font-size\" : \"30px\",\n              \"text-align\" : \"center\"\n          },\n          class : \"col-md-12\"\n        }],\n        [{\n          type : \"label\",\n          value : data.label,\n          class : \"col-md-12\",\n          style : {\n              \"font-size\" : \"12px\",\n              \"text-align\" : \"center\"\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "font-size": "12px"
+                        },
+                        "help": "../pdf/ctrlgroup.pdf",
+                        "parameters": {}
+                      }
+                    ]
+                  }
+                ],
+                "url": "images/map/map1.png"
+              }
+            ],
+            "col": 3
+          }
+        ],
+        "style": {}
+      },
+      {
+        "type": "row",
+        "source": "ROW",
+        "parameters": {
+          "alignment": "bootstrap"
+        },
+        "style": {},
+        "children": [
+          {
+            "type": "column",
+            "children": [],
+            "col": 3
+          },
+          {
+            "type": "column",
+            "children": [],
+            "col": 3
+          },
+          {
+            "type": "column",
+            "children": [],
+            "col": 3
+          },
+          {
+            "type": "column",
+            "children": [],
+            "col": 3
+          }
+        ],
+        "url": "images/map/map1.png"
+      },
+      {
+        "label": "控制板1",
+        "type": "block",
+        "source": "BLOCK",
+        "style": {
+          "padding": "10px",
+          "margin": "5px"
+        },
+        "advance": {
+          "expression": {}
+        },
+        "children": [
+          {
+            "type": "column",
+            "col": 12,
+            "children": [
+              {
+                "label": "控件组",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  width:\"auto\",\n  on : {\n    init : function(event){\n      //----------------------------自定义内容----------------------------\n      //要进行搜索的变量名，对应列表里相应的变量\n      var attr = \"sendTime\";\n      var list = [{\n        id : -1,\n        title : \"所有时段\",\n        value : 1\n      },{\n        id : 0,\n        title : \"当日计划\",\n        value : 0\n      },{\n        id : 1,\n        title : \"周计划\",\n        value : 0\n      },{\n        id : 2,\n        title : \"月计划\",\n        value : 0\n      }]\n      //----------------------------自定义内容----------------------------\n      //注意，下面内容别动！！！\n      var target = event.target;\n      var global = event.global;\n      target.setScopeValue(\"search/\" + attr, {\n        type : \"between\",\n        value : [null, null]\n      });\n      var timeBetween = function(item){\n        if(item.id == -1){\n          return null;\n        } else if(item.id == 0){\n          return target.dateHandler(new Date()).addDay(-1);\n        } else if(item.id == 1){\n          return target.dateHandler(new Date()).addDay(-7);\n        } else if(item.id == 2){\n          return target.dateHandler(new Date()).addMonth(-1);\n        }\n      }\n      var render = function(){\n        var ctrlGroups = [\n          [{\n            type : \"label\",\n            value : \"时 间:\",\n            style:{\n              textAlign:\"center\",\n              width:\"62px\"\n            }\n          }]\n        ];\n        for(var i in list){\n          if(list[i].type==\"query\"){\n            ctrlGroups[0].push({\n              id : list[i].id,\n              type : \"button\",\n              value : list[i].title,\n              btnclass:\"btn btn-primary\",\n              btnStyle:{\n                \"width\":\"100px\",\n                \"border\":\"#10a4fb solid 1px\",\n                \"borderRadius\":\"10px\"\n              },\n              on : {\n                click : function(elem){\n                  console.log(elem)\n                  render()\n                }\n              }\n            });\n          }else if(list[i].type==\"label\"){\n            ctrlGroups[0].push({\n              id : list[i].id,\n              type : \"label\",\n              value : list[i].title,\n            });\n          }else{\n            ctrlGroups[0].push({\n              id : list[i].id,\n              type : \"button\",\n              value : list[i].title,\n              btnclass:list[i].value==1 ? \"btn btn-primary\" : \"btn btn-default\",\n              btnStyle:{\n                \"width\":\"100px\",\n                \"border\":\"#10a4fb solid 1px\"\n              },\n              on : {\n                click : function(elem){\n                  elem.current.btnclass = \"btn btn-default\";\n                  var id = elem.current.id;\n                  var find;\n                  for(var i in list){\n                    if(list[i].id == id){\n                        list[i].value = 1;\n                        find = list[i];\n                      } else {\n                        list[i].value = 0;\n                      }\n                  }\n                  target.setScopeValue(\"search/\" + attr, {\n                    type : \"between\",\n                    value : [timeBetween(find), null]\n                  });\n                  target.trigger(\"hideAdvance\");\n                  target.trigger(\"search_toDolist\");\n                  render()\n                }\n              }\n            });\n          }\n        }\n        event.target.render(ctrlGroups);\n      }\n      render()\n    }\n  }\n}"
+                },
+                "style": {
+                  "font-size": "12px",
+                  "text-align": "left",
+                  "line-height": "30px"
+                },
+                "help": "../pdf/ctrlgroup.pdf",
+                "parameters": {},
+                "url": "images/map/map1.png"
+              },
+              {
+                "label": "控件组",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  width:\"auto\",\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var showAdvance = false;\n      //-------------------------------自定义内容-----------------------------\n      //要进行搜索的变量名，对应列表里相应的变量\n      var attr = \"modelName\"; //对应列表里要过滤的属性名\n      target.getModels(function(models){\n        var inx = -1;\n        var list = models.map(function(elem){\n          inx++;\n          return {\n            id : inx,\n            title : elem.label,\n            value : true,\n            type : \"mult-group\"\n          }\n        });\n        success(list);\n      })\n       //-------------------------------自定义内容-----------------------------\n       //注意，下面内容别动！！！\n      function success(list){\n          list.push({\n              title : \"高级\",\n              type : \"query\"\n          })\n        target.setScopeValue(\"search/\" + attr, {\n          type : \"inside\",\n          value : list\n        });\n        var render = function(){\n          var ctrlGroups = [\n            [{\n              id : 3,\n              value : \"设备类型\",\n              type:\"label\"\n            }]\n          ];\n          for(var i in list){\n            if(list[i].type==\"query\"){\n              ctrlGroups[0].push({\n                id : list[i].id,\n                type : \"button\",\n                value : list[i].title,\n                btnclass:\"btn btn-primary\",\n                btnStyle:{\n                  \"width\":\"100px\",\n                  \"border\":\"#10a4fb solid 1px\",\n                  \"borderRadius\":\"10px\"\n                },\n                on : {\n                  click : function(elem){\n                    target.trigger(\"toggle\");\n                    render()\n                  }\n                }\n              });\n            }else if(list[i].type==\"label\"){\n              ctrlGroups[0].push({\n                id : list[i].id,\n                type : \"label\",\n                value : list[i].title,\n              });\n            }else if(list[i].type==\"mult-group\"){\n              ctrlGroups[0].push({\n                id : list[i].id,\n                type : \"button\",\n                value : list[i].title,\n                btnclass:list[i].value ? \"btn btn-primary\" : \"btn btn-default\",\n                btnStyle:{\n                  \"width\":\"100px\",\n                  \"border\":\"#10a4fb solid 1px\"\n                },\n                on : {\n                  click : function(elem){\n                    var id = elem.current.id;\n                    for(var i in list){\n                      if(list[i].id == id){\n                        list[i].value = !list[i].value\n                      }\n                    }\n                    target.setScopeValue(\"search/\" + attr, {\n                      type : \"inside\",\n                      value : list.filter(function(elem){\n                        return elem.value;\n                      })\n                    });\n                    target.trigger(\"hideAdvance\");\n                    target.trigger(\"search_toDolist\");\n                    render()\n                  }\n                }\n              });\n            }\n          }\n          event.target.render(ctrlGroups);\n        }\n        render();\n      }\n    }\n  }\n}"
+                },
+                "style": {
+                  "font-size": "12px",
+                  "text-align": "center",
+                  "line-height": "30px"
+                },
+                "help": "../pdf/ctrlgroup.pdf",
+                "parameters": {},
+                "url": "images/map/map1.png"
+              },
+              {
+                "label": "控件组",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  on: {\n    init: function (event) {\n      var target = event.target;\n      var global = event.global;\n      var attr = ['domains', 'sendTime'];\n      //*下面内容别动\n      target.hide();\n      var showAdvance = false;\n      target.off(\"showAdvance\");\n      target.on(\"showAdvance\", function(){\n        target.show();\n        showAdvance = true;\n      });\n      target.off(\"hideAdvance\");\n      target.on(\"hideAdvance\", function(){\n        target.hide();\n        showAdvance = false;\n      });\n      target.off(\"toggle\");\n      target.on(\"toggle\", function(){\n        console.log(\"toggle\", showAdvance);\n        if(showAdvance){\n          target.trigger(\"hideAdvance\");\n        } else {\n          target.trigger(\"showAdvance\");\n        }\n      });\n      target.setScopeValue(\"advanceSearch\", {});\n      var areas = [], lines = [];\n      var area, line = {};\n      target.queryDomainTree(function(domain){\n        for(var i in domain[0].domainInfos){\n          for(var j in domain[0].domainInfos[i].domainInfos){\n            areas.push(domain[0].domainInfos[i].domainInfos[j]);\n          }\n        };\n        target.getResourceByModelId(301, function(customers){\n          var render = function(){\n            for(var i in areas){\n              var filter = customers.filter(function(customer){\n                return customer.domains.indexOf(areas[i].domains) != -1;\n              });\n              areas[i].domainInfos = filter;\n            }\n            area = area || areas[0];\n\n            lines = area.domainInfos || [];\n            var find = lines.find(function(elem){\n              return elem.id == line.id\n            });\n            line = find ? find : lines[0];\n            line = line || {};\n            target.setScopeValue(\"advanceSearch/\" + attr[0], {\n                      type : \"domains\",\n                      value : line\n                    });\n            var ctrlGroups = [\n              [\n                {\n                  type: \"label\",\n                  value: \"高级\",\n\n                  style: {\n                    width:\"55px\",\n                    textAlign: \"center\"\n                  }\n                },{\n                type: \"label\",\n                value: \"厂区\",\n                class: \"col-md-1\",\n                style: {\n                  textAlign: \"center\"\n                }\n              }, {\n                type: \"select\",\n                value: area.id,\n                class: \"col-md-2\",\n                on: {\n                  change: function (elem) {\n                    area = elem.value;\n                    render();\n                  }\n                },\n                options: areas,\n                format: {\n                  \"id\": \"domains\",\n                  \"label\": \"label\"\n                }\n              }, {\n                type: \"label\",\n                value: \"产线\",\n                class: \"col-md-1\",\n                style: {\n                  textAlign: \"center\"\n                }\n              }, {\n                type: \"select\",\n                value: line.id,\n                class: \"col-md-2\",\n                on: {\n                  change: function (elem) {\n                    target.setScopeValue(\"advanceSearch/\" + attr[0], {\n                      type : \"domains\",\n                      value : elem.value\n                    });\n                  }\n                },\n                options: lines,\n                format: {\n                  \"id\": \"id\",\n                  \"label\": \"label\"\n                },\n              }, {\n                type: \"label\",\n                value: \"起始时间\",\n                class: \"col-md-1\",\n                style: {\n\n                  textAlign: \"center\"\n                }\n              }, {\n                type: \"dateRangePicker\",\n                value: \"\",\n                class: \"col-md-3\",\n                on: {\n                  change: function (elem) {\n                    var start = target.dateHandler(elem.value.start);\n                    var end = target.dateHandler(elem.value.end);\n                    var timeSpan = [start, end];\n                    target.setScopeValue(\"advanceSearch/\" + attr[1], {\n                      type : \"between\",\n                      value : timeSpan\n                    });\n                  }\n                },\n              }, {\n                type: \"button\",\n                class: \"col-md-1 col-md-offset-1\",\n                btnclass: \"btn btn-primary\",\n                value: \"查 询\",\n                btnStyle: {\n                  width: \"100px\",\n                },\n                on : {\n                  click : function(){\n                    console.log(target.getScopeValue(\"advanceSearch\"));\n                    target.trigger(\"advance_search_toDolist\");\n                  }\n                }\n              }]\n            ];\n            target.render(ctrlGroups);\n          }\n          render();\n        });\n      });\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px"
+                },
+                "help": "../pdf/ctrlgroup.pdf",
+                "url": "images/map/map1.png",
+                "parameters": {}
+              }
+            ]
+          }
+        ],
+        "url": "images/map/map1.png"
+      },
+      {
+        "label": "控制板1",
+        "type": "block",
+        "source": "BLOCK",
+        "style": {
+          "padding": "10px",
+          "margin": "5px"
+        },
+        "advance": {
+          "expression": {}
+        },
+        "children": [
+          {
+            "type": "column",
+            "col": 12,
+            "children": [
+              {
+                "label": "文字",
+                "type": "text",
+                "source": "TEXT",
+                "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                "data": {
+                  "applied": false,
+                  "multipleCi": false,
+                  "multipleKpi": false,
+                  "resource": [],
+                  "modelType": 300,
+                  "resfilltype": "parameter",
+                  "series": {
+                    "manual": "新建文字",
+                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                  },
+                  "modelDisable": true
+                },
+                "style": {
+                  "margin": "auto",
+                  "padding": "0",
+                  "font-size": "16px",
+                  "font-weight": "bold",
+                  "color": "rgb(255, 255, 255)",
+                  "text-align": "left"
+                },
+                "advance": {
+                  "getfunction": "kpiDataService.getValueList",
+                  "category": "ci",
+                  "condition": [
+                    "kpi",
+                    "{object:kpiQueryModel}"
+                  ],
+                  "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"待办事项\")\n        }\n    }\n}"
+                },
+                "parameters": {},
+                "echart": {},
+                "url": "images/map/map1.png"
+              },
+              {
+                "label": "高级列表",
+                "type": "dataTableAdvance",
+                "source": "DATATABLEADVANCE",
+                "parameters": {
+                  "col": 1,
+                  "pageSize": 5,
+                  "listbottom": "standard"
+                },
+                "advance": {
+                  "expression": "expression = {\n  \"theme\" : \"dark\",\n  \"on\" : {\n    \"init\" : function(event){\n      var target = event.target;\n      //--------------------------自定义输入-----------------------------\n      //从结果返回数据中的一组，拷贝过来作为参照，使用完之后删掉\n      var sample = {\n        \"eventId\": 535525503136141,\n        \"alertId\": 539798222666082,\n        \"srcEventId\": null,\n        \"alertCode\": 528961739176064,\n        \"nodeId\": 536144518346064,\n        \"domains\": \"/0/515445641576227/515445641576264/515445641576272/524031514586065/524031514586068/\",\n        \"nodeTypes\": \"/0/1/9/526443915616064/526443915616065/\",\n        \"devName\": \"宝武模板设备\",\n        \"appName\": \"宝武模板设备\",\n        \"relatedNodeId\": 0,\n        \"instance\": null,\n        \"instance2\": null,\n        \"kpiValue\": \"4\",\n        \"kpiCode\": 100001,\n        \"kpiUnit\": \"m/s\",\n        \"severity\": 1,\n        \"title\": \"流程测试01\",\n        \"message\": \"速度波形:4.0 [2] 异常\",\n        \"arisingTime\": \"2017-11-09T07:11:10.322+0000\",\n        \"receiveTime\": \"2017-11-09T07:11:10.322+0000\",\n        \"agentId\": \"RULE:533248633216064\",\n        \"filtered\": false,\n        \"tags\": null,\n        \"classified\": false,\n        \"domainList\": [\n          \"0\",\n          \"515445641576227\",\n          \"515445641576264\",\n          \"515445641576272\",\n          \"524031514586065\",\n          \"524031514586068\"\n        ],\n        \"nodeTypeList\": [\n          \"0\",\n          \"1\",\n          \"9\",\n          \"526443915616064\",\n          \"526443915616065\"\n        ],\n        \"tagList\": null,\n        \"count\": 2,\n        \"state\": 20,\n        \"causeAlertId\": 0,\n        \"related\": false,\n        \"firstArisingTime\": \"2017-11-09T07:10:10.343+0000\",\n        \"oldSeverity\": 1,\n        \"updateTime\": \"2017-11-09T15:07:40.236+0000\",\n        \"openTime\": null,\n        \"closeTime\": \"2017-11-09T07:12:47.758+0000\",\n        \"openBy\": null,\n        \"closeBy\": \"诊断中心系统管理员\",\n        \"owner\": \"诊断中心系统管理员\",\n        \"orderId\": null,\n        \"orderStatus\": null,\n        \"comments\": \"\",\n        \"incidentId\": 0,\n        \"claimTime\": null,\n        \"claimBy\": null,\n        \"upgradeTime\": null,\n        \"upgradeCount\": 0,\n        \"activeState\": 2\n      }\n      //从结果返回数据中的一组，拷贝过来作为参照，使用完之后删掉\n      var Dictionary = {\n        projectName :  \"产线\",\n        devName :  \"设备信息\",\n        message : \"报警消息\",\n        modelName : \"设备模型\",\n        ticketPriorityCode : {\n          label : \"报警级别\",\n          type : \"priority\"\n        },\n        firstArisingTime : {\n          label : \"报警时间\",\n          type : \"label\",\n        },\n        activeState : \"报警状态\",\n      };\n      target.queryFromDb({},function(alerts){\n          target.getResourceByModelId(301, function(projects){\n              var inx = 0;\n              var repeat = function(i){\n                  if(alerts[i]){\n                       var find = projects.find(function(project){\n                          return alerts[i].domains.indexOf(project.domains) != -1;\n                      });\n                      if(find){\n                          alerts[i].projectName = find.label;\n                      }\n                      var nodeId = alerts[i].nodeId;\n                      target.getResourceById(nodeId, function(resource){\n                          if(resource){\n                              var modelId = resource.modelId;\n                              target.getModelByIds([modelId], function(model){\n                                  alerts[i].modelName = model[0].label;\n                                  repeat(i+1);\n                              })\n                          } else {\n                              alerts[i].modelName = \"\";\n                              repeat(i+1);\n                          }\n                      });\n                  } else {\n                      success(alerts)\n                  }\n              }\n              repeat(inx);\n          });\n      });\n      //--------------------------自定义输入-----------------------------\n      //注意，下面内容别动！！！\n      function success(datas){\n        var render = function(advsearch){\n          var format = [];\n          for(var i in Dictionary){\n            var item = target.explainDic(i, Dictionary[i]);\n            format.push(item);\n          }\n          var search = target.getScopeValue(\"search\");\n          for(var i in advsearch){\n            search[i] = advsearch[i];\n          };\n          console.log(search, advsearch);\n          var filter = datas.filter(function(elem){\n            for(var i in search){\n              var type = search[i].type;\n              var value = search[i].value;\n              if(type == \"between\"){\n                var dt = target.dateHandler(elem[i]);\n                var dt0 = value[0];\n                var dt1 = value[1];\n                var rs = (dt0 ? dt.after(dt0) : true) && (dt1 ? dt.before(dt1) : true);\n                if(!rs){\n                  return false;\n                };\n              } else if(type == \"inside\"){\n                var some = value.some(function(el){\n                  return elem[i] == el.title;\n                });\n                if(!some){\n                  return false;\n                }\n              } else if(type == \"domains\"){\n                  console.log(elem.domains, value.domains);\n                return elem.domains.indexOf(value.domains) != -1;\n              }\n            };\n            return true;\n          })\n          format.push({\n            name : \"处理\",\n            type: \"buttonGroup\",\n            content : [{\n              label : \"详情\",\n              icon: \"null\",\n              class: \"btn btn-default btn-sm\",\n              on : {\n                click : function(elem){\n                  target.navigateTo(\"device\", {\n                    tabLabel : elem.label\n                  });\n\n                }\n              }\n            },{\n              label : \"状态\",\n              icon: \"null\",\n              class: \"btn btn-default btn-sm\",\n              on : {\n                click : function(elem){\n                  target.navigateTo(\"diagnose\", {\n                    tabLabel : elem.label\n                  });\n\n                }\n              }\n            }],\n            render : function(){\n              return \"\"\n            }\n          });\n          target.render({\n            data : filter,\n            on : {\n              rowClick : function(event){\n                target.createPopupBypath('analysis', {\n                  title: \"诊断分析\",\n                  theme : \"system\",\n                  width: \"80%\"\n                }, {\n                  message: \"诊断分析\"\n                })\n              }\n            },\n            format : format\n          });\n        };\n        target.off(\"search_toDolist\");\n        target.on(\"search_toDolist\", function(){\n          render();\n        });\n        target.off(\"advance_search_toDolist\");\n        target.on(\"advance_search_toDolist\", function(){\n          var advance = target.getScopeValue(\"advanceSearch\")\n          render(advance);\n        });\n        render();\n      };\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px"
+                },
+                "url": "images/map/map1.png",
+                "echart": {}
+              }
+            ]
+          }
+        ],
+        "url": "images/map/map1.png"
+      },
+      {
+        "label": "控制板1",
+        "type": "block",
+        "source": "BLOCK",
+        "style": {
+          "padding": "10px",
+          "margin": "5px"
+        },
+        "advance": {
+          "expression": {}
+        },
+        "children": [
+          {
+            "type": "column",
+            "col": 12,
+            "children": [
+              {
+                "label": "控件组",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  width:\"auto\",\n  on : {\n    init : function(event){\n      //----------------------------自定义内容----------------------------\n      //要进行搜索的变量名，对应列表里相应的变量\n      var attr = \"sendTime\";\n      var list = [{\n        id : -1,\n        title : \"所有时段\",\n        value : 1\n      },{\n        id : 0,\n        title : \"当日计划\",\n        value : 0\n      },{\n        id : 1,\n        title : \"周计划\",\n        value : 0\n      },{\n        id : 2,\n        title : \"月计划\",\n        value : 0\n      }]\n      //----------------------------自定义内容----------------------------\n      //注意，下面内容别动！！！\n      var target = event.target;\n      var global = event.global;\n      target.setScopeValue(\"search/\" + attr, {\n        type : \"between\",\n        value : [null, null]\n      });\n      var timeBetween = function(item){\n        if(item.id == -1){\n          return null;\n        } else if(item.id == 0){\n          return target.dateHandler(new Date()).addDay(-1);\n        } else if(item.id == 1){\n          return target.dateHandler(new Date()).addDay(-7);\n        } else if(item.id == 2){\n          return target.dateHandler(new Date()).addMonth(-1);\n        }\n      }\n      var render = function(){\n        var ctrlGroups = [\n          [{\n            type : \"label\",\n            value : \"时 间:\",\n            style:{\n              textAlign:\"center\",\n              width:\"62px\"\n            }\n          }]\n        ];\n        for(var i in list){\n          if(list[i].type==\"query\"){\n            ctrlGroups[0].push({\n              id : list[i].id,\n              type : \"button\",\n              value : list[i].title,\n              btnclass:\"btn btn-primary\",\n              btnStyle:{\n                \"width\":\"100px\",\n                \"border\":\"#10a4fb solid 1px\",\n                \"borderRadius\":\"10px\"\n              },\n              on : {\n                click : function(elem){\n                  console.log(elem)\n                  render()\n                }\n              }\n            });\n          }else if(list[i].type==\"label\"){\n            ctrlGroups[0].push({\n              id : list[i].id,\n              type : \"label\",\n              value : list[i].title,\n            });\n          }else{\n            ctrlGroups[0].push({\n              id : list[i].id,\n              type : \"button\",\n              value : list[i].title,\n              btnclass:list[i].value==1 ? \"btn btn-primary\" : \"btn btn-default\",\n              btnStyle:{\n                \"width\":\"100px\",\n                \"border\":\"#10a4fb solid 1px\"\n              },\n              on : {\n                click : function(elem){\n                  elem.current.btnclass = \"btn btn-default\";\n                  var id = elem.current.id;\n                  var find;\n                  for(var i in list){\n                    if(list[i].id == id){\n                        list[i].value = 1;\n                        find = list[i];\n                      } else {\n                        list[i].value = 0;\n                      }\n                  }\n                  target.setScopeValue(\"search/\" + attr, {\n                    type : \"between\",\n                    value : [timeBetween(find), null]\n                  });\n                  target.trigger(\"hideAdvance\");\n                  target.trigger(\"search_toDolist\");\n                  render()\n                }\n              }\n            });\n          }\n        }\n        event.target.render(ctrlGroups);\n      }\n      render()\n    }\n  }\n}"
+                },
+                "style": {
+                  "font-size": "12px",
+                  "text-align": "left",
+                  "line-height": "30px"
+                },
+                "help": "../pdf/ctrlgroup.pdf",
+                "parameters": {},
+                "url": "images/map/map1.png"
+              },
+              {
+                "label": "控件组",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  width:\"auto\",\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var showAdvance = false;\n      //-------------------------------自定义内容-----------------------------\n      //要进行搜索的变量名，对应列表里相应的变量\n      var attr = \"modelName\"; //对应列表里要过滤的属性名\n      target.getModels(function(models){\n        var inx = -1;\n        var list = models.map(function(elem){\n          inx++;\n          return {\n            id : inx,\n            title : elem.label,\n            value : true,\n            type : \"mult-group\"\n          }\n        });\n        success(list);\n      })\n       //-------------------------------自定义内容-----------------------------\n       //注意，下面内容别动！！！\n      function success(list){\n          list.push({\n              title : \"高级\",\n              type : \"query\"\n          })\n        target.setScopeValue(\"search/\" + attr, {\n          type : \"inside\",\n          value : list\n        });\n        var render = function(){\n          var ctrlGroups = [\n            [{\n              id : 3,\n              value : \"设备类型\",\n              type:\"label\"\n            }]\n          ];\n          for(var i in list){\n            if(list[i].type==\"query\"){\n              ctrlGroups[0].push({\n                id : list[i].id,\n                type : \"button\",\n                value : list[i].title,\n                btnclass:\"btn btn-primary\",\n                btnStyle:{\n                  \"width\":\"100px\",\n                  \"border\":\"#10a4fb solid 1px\",\n                  \"borderRadius\":\"10px\"\n                },\n                on : {\n                  click : function(elem){\n                    target.trigger(\"toggle\");\n                    render()\n                  }\n                }\n              });\n            }else if(list[i].type==\"label\"){\n              ctrlGroups[0].push({\n                id : list[i].id,\n                type : \"label\",\n                value : list[i].title,\n              });\n            }else if(list[i].type==\"mult-group\"){\n              ctrlGroups[0].push({\n                id : list[i].id,\n                type : \"button\",\n                value : list[i].title,\n                btnclass:list[i].value ? \"btn btn-primary\" : \"btn btn-default\",\n                btnStyle:{\n                  \"width\":\"100px\",\n                  \"border\":\"#10a4fb solid 1px\"\n                },\n                on : {\n                  click : function(elem){\n                    var id = elem.current.id;\n                    for(var i in list){\n                      if(list[i].id == id){\n                        list[i].value = !list[i].value\n                      }\n                    }\n                    target.setScopeValue(\"search/\" + attr, {\n                      type : \"inside\",\n                      value : list.filter(function(elem){\n                        return elem.value;\n                      })\n                    });\n                    target.trigger(\"hideAdvance\");\n                    target.trigger(\"search_toDolist\");\n                    render()\n                  }\n                }\n              });\n            }\n          }\n          event.target.render(ctrlGroups);\n        }\n        render();\n      }\n    }\n  }\n}"
+                },
+                "style": {
+                  "font-size": "12px",
+                  "text-align": "center",
+                  "line-height": "30px"
+                },
+                "help": "../pdf/ctrlgroup.pdf",
+                "parameters": {},
+                "url": "images/map/map1.png"
+              },
+              {
+                "label": "控件组",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  on: {\n    init: function (event) {\n      var target = event.target;\n      var global = event.global;\n      var attr = ['domains', 'sendTime'];\n      //*下面内容别动\n      target.hide();\n      var showAdvance = false;\n      target.off(\"showAdvance\");\n      target.on(\"showAdvance\", function(){\n        target.show();\n        showAdvance = true;\n      });\n      target.off(\"hideAdvance\");\n      target.on(\"hideAdvance\", function(){\n        target.hide();\n        showAdvance = false;\n      });\n      target.off(\"toggle\");\n      target.on(\"toggle\", function(){\n        console.log(\"toggle\", showAdvance);\n        if(showAdvance){\n          target.trigger(\"hideAdvance\");\n        } else {\n          target.trigger(\"showAdvance\");\n        }\n      });\n      target.setScopeValue(\"advanceSearch\", {});\n      var areas = [], lines = [];\n      var area, line = {};\n      target.queryDomainTree(function(domain){\n        for(var i in domain[0].domainInfos){\n          for(var j in domain[0].domainInfos[i].domainInfos){\n            areas.push(domain[0].domainInfos[i].domainInfos[j]);\n          }\n        };\n        target.getResourceByModelId(301, function(customers){\n          var render = function(){\n            for(var i in areas){\n              var filter = customers.filter(function(customer){\n                return customer.domains.indexOf(areas[i].domains) != -1;\n              });\n              areas[i].domainInfos = filter;\n            }\n            area = area || areas[0];\n\n            lines = area.domainInfos || [];\n            var find = lines.find(function(elem){\n              return elem.id == line.id\n            });\n            line = find ? find : lines[0];\n            line = line || {};\n            target.setScopeValue(\"advanceSearch/\" + attr[0], {\n                      type : \"domains\",\n                      value : line\n                    });\n            var ctrlGroups = [\n              [\n                {\n                  type: \"label\",\n                  value: \"高级\",\n\n                  style: {\n                    width:\"55px\",\n                    textAlign: \"center\"\n                  }\n                },{\n                type: \"label\",\n                value: \"厂区\",\n                class: \"col-md-1\",\n                style: {\n                  textAlign: \"center\"\n                }\n              }, {\n                type: \"select\",\n                value: area.id,\n                class: \"col-md-2\",\n                on: {\n                  change: function (elem) {\n                    area = elem.value;\n                    render();\n                  }\n                },\n                options: areas,\n                format: {\n                  \"id\": \"domains\",\n                  \"label\": \"label\"\n                }\n              }, {\n                type: \"label\",\n                value: \"产线\",\n                class: \"col-md-1\",\n                style: {\n                  textAlign: \"center\"\n                }\n              }, {\n                type: \"select\",\n                value: line.id,\n                class: \"col-md-2\",\n                on: {\n                  change: function (elem) {\n                    target.setScopeValue(\"advanceSearch/\" + attr[0], {\n                      type : \"domains\",\n                      value : elem.value\n                    });\n                  }\n                },\n                options: lines,\n                format: {\n                  \"id\": \"id\",\n                  \"label\": \"label\"\n                },\n              }, {\n                type: \"label\",\n                value: \"起始时间\",\n                class: \"col-md-1\",\n                style: {\n\n                  textAlign: \"center\"\n                }\n              }, {\n                type: \"dateRangePicker\",\n                value: \"\",\n                class: \"col-md-3\",\n                on: {\n                  change: function (elem) {\n                    var start = target.dateHandler(elem.value.start);\n                    var end = target.dateHandler(elem.value.end);\n                    var timeSpan = [start, end];\n                    target.setScopeValue(\"advanceSearch/\" + attr[1], {\n                      type : \"between\",\n                      value : timeSpan\n                    });\n                  }\n                },\n              }, {\n                type: \"button\",\n                class: \"col-md-1 col-md-offset-1\",\n                btnclass: \"btn btn-primary\",\n                value: \"查 询\",\n                btnStyle: {\n                  width: \"100px\",\n                },\n                on : {\n                  click : function(){\n                    console.log(target.getScopeValue(\"advanceSearch\"));\n                    target.trigger(\"advance_search_toDolist\");\n                  }\n                }\n              }]\n            ];\n            target.render(ctrlGroups);\n          }\n          render();\n        });\n      });\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px"
+                },
+                "help": "../pdf/ctrlgroup.pdf",
+                "url": "images/map/map1.png",
+                "parameters": {}
+              }
+            ]
+          }
+        ],
+        "url": "images/map/map1.png"
+      },
+      {
+        "label": "控制板1",
+        "type": "block",
+        "source": "BLOCK",
+        "style": {
+          "padding": "10px",
+          "margin": "5px"
+        },
+        "advance": {
+          "expression": {}
+        },
+        "children": [
+          {
+            "type": "column",
+            "col": 12,
+            "children": [
+              {
+                "label": "文字",
+                "type": "text",
+                "source": "TEXT",
+                "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                "data": {
+                  "applied": false,
+                  "multipleCi": false,
+                  "multipleKpi": false,
+                  "resource": [],
+                  "modelType": 300,
+                  "resfilltype": "parameter",
+                  "series": {
+                    "manual": "新建文字",
+                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                  },
+                  "modelDisable": true
+                },
+                "style": {
+                  "margin": "auto",
+                  "padding": "0",
+                  "font-size": "16px",
+                  "font-weight": "bold",
+                  "color": "rgb(255, 255, 255)",
+                  "text-align": "left"
+                },
+                "advance": {
+                  "getfunction": "kpiDataService.getValueList",
+                  "category": "ci",
+                  "condition": [
+                    "kpi",
+                    "{object:kpiQueryModel}"
+                  ],
+                  "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"待办事项\")\n        }\n    }\n}"
+                },
+                "parameters": {},
+                "echart": {},
+                "url": "images/map/map1.png"
+              },
+              {
+                "label": "高级列表",
+                "type": "dataTableAdvance",
+                "source": "DATATABLEADVANCE",
+                "parameters": {
+                  "col": 1,
+                  "pageSize": 5,
+                  "listbottom": "standard"
+                },
+                "advance": {
+                  "expression": "expression = {\n  \"theme\" : \"dark\",\n  \"on\" : {\n    \"init\" : function(event){\n      var target = event.target;\n      //--------------------------自定义输入-----------------------------\n      //从结果返回数据中的一组，拷贝过来作为参照，使用完之后删掉\n      var sample = {\n        \"id\": 536097740826067,\n        \"desc\": null,\n        \"handlerId\": 515445641576226,\n        \"handlerName\": \"诊断中心系统管理员\",\n        \"taskStatus\": 10,\n        \"ticketPriorityCode\": 100,\n        \"taskConfigName\": \"用户任务\",\n        \"ticketNo\": \"2017110820192800001\",\n        \"ticketTitle\": \"流程测试类别\",\n        \"processTaskId\": \"307545\",\n        \"processDefinitionId\": 526893405316065,\n        \"senderId\": 515445641576226,\n        \"senderName\": \"诊断中心系统管理员\",\n        \"sendTime\": \"2017-11-08T12:19:28.553+0000\",\n        \"finishedTime\": null,\n        \"taskStep\": 0,\n        \"attributeDefinitions\": null,\n        \"values\": null,\n        \"variables\": {\n          \"ticketNo\": \"2017110820192800001\",\n          \"faultId\": 0,\n          \"deviceId\": 528961739176066\n        },\n        \"taskDefinitionId\": \"idc6dc9e29-8eac-4a2e-b8d8-02a4838e398a\",\n        \"templateURL\": \"\",\n        \"stockOrderId\": 0,\n        \"deviceId\": 528961739176066,\n        \"maintenanceTaskId\": 0,\n        \"maintenanceContent\": null,\n        \"images\": null,\n        \"domainPath\": \"/0/515445641576227/\"\n      }\n      //从结果返回数据中的一组，拷贝过来作为参照，使用完之后删掉\n      var Dictionary = {\n        handlerId :  \"诊断编号\",\n        deviceId :  \"设备编号\",\n        modelName : \"设备模型\",\n        taskStatus : \"报警类型\",\n        ticketPriorityCode : {\n          label : \"报警级别\",\n          type : \"priority\"\n        },\n        sendTime : {\n          label : \"申请时间\",\n          type : \"label\",\n        },\n        senderName : \"告警管理员\",\n        handlerName : \"诊断管理员\",\n        taskStep : \"诊断状态\"\n      };\n      target.postService(\"ticketTaskService\", \"getAllTicketTasks\", [], function(tc){\n          var data = tc.data;\n          var inx = 0;\n          var repeat = function(inx){\n              if(data[inx]){\n                  var deviceId = data[inx].deviceId;\n                  target.getResourceById(deviceId, function(device){\n                      if(device){\n                          var modelId = device.modelId;\n                          data[inx].domains = device.domains;\n                          target.getModelByIds([modelId], function(model){\n                              data[inx].modelName = model[0].label;\n                              repeat(inx + 1);\n                          });\n                      } else {\n                          data[inx].modelName = \"无使用权限\";\n                          data[inx].domains = \"\";\n                          repeat(inx + 1);\n                      };\n                  });\n              } else {\n                  success(data)\n              }\n          }\n        repeat(inx);\n      });\n      //--------------------------自定义输入-----------------------------\n      //注意，下面内容别动！！！\n      function success(datas){\n        var render = function(advsearch){\n          var format = [];\n          for(var i in Dictionary){\n            var item = target.explainDic(i, Dictionary[i]);\n            format.push(item);\n          }\n          var search = target.getScopeValue(\"search\");\n          for(var i in advsearch){\n            search[i] = advsearch[i];\n          };\n          console.log(search, advsearch);\n          var filter = datas.filter(function(elem){\n            for(var i in search){\n              var type = search[i].type;\n              var value = search[i].value;\n              if(type == \"between\"){\n                var dt = target.dateHandler(elem[i]);\n                var dt0 = value[0];\n                var dt1 = value[1];\n                var rs = (dt0 ? dt.after(dt0) : true) && (dt1 ? dt.before(dt1) : true);\n                if(!rs){\n                  return false;\n                };\n              } else if(type == \"inside\"){\n                var some = value.some(function(el){\n                  return elem[i] == el.title;\n                });\n                if(!some){\n                  return false;\n                }\n              } else if(type == \"domains\"){\n                  console.log(elem.domains, value.domains);\n                return elem.domains.indexOf(value.domains) != -1;\n              }\n            };\n            return true;\n          })\n          format.push({\n            name : \"处理\",\n            type: \"buttonGroup\",\n            content : [{\n              label : \"详情\",\n              icon: \"null\",\n              class: \"btn btn-default btn-sm\",\n              on : {\n                click : function(elem){\n                  target.navigateTo(\"device\", {\n                    tabLabel : elem.label\n                  });\n\n                }\n              }\n            },{\n              label : \"状态\",\n              icon: \"null\",\n              class: \"btn btn-default btn-sm\",\n              on : {\n                click : function(elem){\n                  target.navigateTo(\"diagnose\", {\n                    tabLabel : elem.label\n                  });\n\n                }\n              }\n            }],\n            render : function(){\n              return \"\"\n            }\n          });\n          target.render({\n            data : filter,\n            on : {\n              rowClick : function(event){\n                target.createPopupBypath('analysis', {\n                  title: \"诊断分析\",\n                  theme : \"system\",\n                  width: \"80%\"\n                }, {\n                  message: \"诊断分析\"\n                })\n              }\n            },\n            format : format\n          });\n        };\n        target.off(\"search_toDolist\");\n        target.on(\"search_toDolist\", function(){\n          render();\n        });\n        target.off(\"advance_search_toDolist\");\n        target.on(\"advance_search_toDolist\", function(){\n          var advance = target.getScopeValue(\"advanceSearch\")\n          render(advance);\n        });\n        render();\n      };\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px"
+                },
+                "url": "images/map/map1.png",
+                "echart": {}
+              }
+            ]
+          }
+        ],
+        "url": "images/map/map1.png"
+      }
+    ],
+    "col": 12
+  },
+  "setting": "{\n  \"theme\": \"default\"\n}"
+}

@@ -1,0 +1,128 @@
+<div class="warning-list" ng-model="warninglist">
+  <div class="backBtn" ng-click="backBtnClick()"></div>
+  <div class="warning-title">故障诊断预警</div>
+  <div class="warning-wrap">
+    <div class="warning-top">
+      <ul class="legend">
+        <li>
+          <div class="square" style="background-color: #dea959;"></div>
+          <div class="text">确认</div>
+        </li>
+        <li>
+          <div class="square" style="background-color: #3ca3da;"></div>
+          <div class="text">前传</div>
+        </li>
+        <li>
+          <div class="square" style="background-color: #89ca67;"></div>
+          <div class="text">解决</div>
+        </li>
+      </ul>
+      <ul class="search">
+        <li>
+          <div class="square" style="background-image: url(images/icon1.png)"></div>
+          <div class="text">复制文本</div>
+        </li>
+        <li>
+          <div class="square" style="background-image: url(images/icon2.png)"></div>
+          <div class="text">未标记</div>
+        </li>
+        <li>
+          <div class="square" style="background-image: url(images/icon3.png)"></div>
+          <div class="text">暂停</div>
+        </li>
+        <li>
+          <input class="search-input"/>
+          <div class="search-icon"></div>
+        </li>
+      </ul>
+    </div>
+    <table class="table_warning">
+      <tr>
+        <th>状态</th>
+        <th>CI名称</th>
+        <th>应用名称</th>
+        <th>级别</th>
+        <th>消息内容</th>
+        <th>最近告警时间</th>
+        <th>接收时间</th>
+        <th>次数</th>
+        <th>采集系统</th>
+        <th>子告警</th>
+        <th>处理人</th>
+        <th>升级次数</th>
+        <th>工单编号</th>
+        <th>工单状态</th>
+      </tr>
+      <tr ng-repeat="item in warninglist" ng-class="{true:'odd', false:''}[$index%2==0]" data-order="$index" anim-tr>
+        <td>
+          <div ng-class="'status status_' + item.status"></div>
+        </td>
+        <td ng-bind="item.ciname">
+        </td>
+        <td ng-bind="item.appname">
+        </td>
+        <td>
+          <div ng-class="'level level_' + item.status" ng-style="{'background-image':'url(images/level' + item.level + '.png)'}"></div>
+        </td>
+        <td ng-bind="item.message">
+        </td>
+        <td ng-bind="item.warningTime">
+        </td>
+        <td ng-bind="item.receiveTime">
+        </td>
+        <td ng-bind="item.num">
+        </td>
+        <td ng-bind="item.system">
+        </td>
+        <td ng-bind="item.subWarning">
+        </td>
+        <td ng-bind="item.handler">
+        </td>
+        <td ng-bind="item.update">
+        </td>
+        <td ng-bind="item.workOrder">
+        </td>
+        <td ng-bind="item.workOrderStatus">
+        </td>
+      </tr>
+    </table>
+    <div class="warning-top">
+      <ul class="legend-level">
+        <li>
+          <div class="text">已链接</div>
+        </li>
+        <li>
+          <div class="level level_1 block pull-left block-padding" style="background-image: url(images/level1.png)"></div>
+          <div class="text">7/7</div>
+        </li>
+        <li>
+          <div class="level level_2 block pull-left block-padding" style="background-image: url(images/level2.png)"></div>
+          <div class="text">18/18</div>
+        </li>
+        <li>
+          <div class="level level_3 block pull-left block-padding" style="background-image: url(images/level3.png)"></div>
+          <div class="text">96/96</div>
+        </li>
+        <li>
+          <div class="level level_4 block pull-left block-padding" style="background-image: url(images/level4.png)"></div>
+          <div class="text">334/334</div>
+        </li>
+        <li>
+          <div class="level level_5 block pull-left block-padding" style="background-image: url(images/level5.png)"></div>
+          <div class="text">19/19</div>
+        </li>
+      </ul>
+      <ul class="search">
+        <li>
+          <div class="text" style="padding-right:20px;">当前告警数</div>
+        </li>
+        <li>
+          <div class="text" style="padding-right:20px;">475/475</div>
+        </li>
+        <li>
+          <div class="text">更多</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

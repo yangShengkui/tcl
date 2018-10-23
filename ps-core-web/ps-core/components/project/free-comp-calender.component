@@ -1,0 +1,357 @@
+<config injector="$q, kpiDataService, $interval"
+></config>
+<properties>
+    <script type="text/javascript">
+    function properties () {
+      return [{
+        label: "基本设定",
+        attributes: {
+          height: ["高度", "input", 300],
+          blockwidth: ["中心宽度", "input", 40],
+          blockheight: ["中心高度", "input", 30]
+        }
+      }]
+    }
+
+    export {properties}
+    </script>
+</properties>
+<template>
+    <div>
+        <div id="calend">
+            <div id="calend-title">安全绿十字</div>
+            <div id="calend-table">
+                <span id="calend-month">{{getMonth()}}</span>
+                <div id="calend-middle" ng-style="calendMiddleStyle">
+                    <ul id="calend-top">
+                        <li ng-repeat="x in cTop"
+                            ng-style="getBgColor(x.value)">
+                            <table class="calend-txt-table">
+                                <td>{{x.text}}</td>
+                            </table>
+                        </li>
+                    </ul>
+                    <ul id="calend-center">
+                        <li ng-repeat="x in cCenter"
+                            ng-style="getBgColor(x.value)">
+                            <table class="calend-txt-table">
+                                <td>{{x.text}}</td>
+                            </table>
+                        </li>
+                    </ul>
+                    <ul id="calend-bottom">
+                        <li ng-repeat="x in cBottom track by $index"
+                            ng-style="getBgColor(x.value)">
+                            <table class="calend-txt-table">
+                                <td>{{x.text}}</td>
+                            </table>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <ul id="calend-direction">
+                <li ng-repeat=" s in dataStatus">
+                    <i ng-style="{'border': '2px solid {{s.statusColor}}'}"></i>
+                    <span ng-bind="s.text"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</template>
+<script type="text/javascript">
+export default function (q, kpiDataService, $interval) {
+  return {
+    scope: {
+      option: "="
+    },
+    link (scope, element, attr, ngModel) {
+      let mouthDict = {
+        0: '一月',
+        1: '二月',
+        2: '三月',
+        3: '四月',
+        4: '五月',
+        5: '六月',
+        6: '七月',
+        7: '八月',
+        8: '九月',
+        9: '十月',
+        10: '十一月',
+        11: '十二月'
+      };
+      let getValue = () => {
+        let defer = q.defer(),
+          now = new Date(),
+          startTime = new Date(now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + '01 00:00:00:000'),
+          endTime = new Date(now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + now.getDate() + ' 00:00:00:000');
+        kpiDataService.getValueList(['kpi', {
+          "isRealTimeData": false,
+          "nodeIds": [403471445038759],
+          "kpiCodes": [109],
+          "includeInstance": true,
+          "endTime": endTime,
+          "startTime": startTime
+        }], ret => {
+          if (ret.code == 0) {
+            defer.resolve(ret.data);
+          }
+        });
+
+        return defer.promise;
+      }
+      let render = function (n) {
+        getValue().then(function (d) {
+          d.forEach(item => {
+            let day = new Date(item.arisingTime).getDate();
+            if (day < 7) {
+              scope.cTop[day - 1].value = item.value;
+            } else if (day > 6 && day < 28) {
+              scope.cCenter[day - 7].value = item.value;
+            } else {
+              if (day == 31) {
+                scope.cBottom[day - 27].value = item.value;
+              } else {
+                scope.cBottom[day - 28].value = item.value;
+              }
+            }
+          });
+        });
+      };
+      let cArr = (start, end) => {
+        var newArr = [];
+        if (end - start < 5) {
+          for (var i = start; i < end; i++) {
+            newArr.push({
+              text: i,
+              value: 0
+            });
+          }
+          newArr.push({
+            text: '',
+            value: 0
+          });
+          newArr.push({
+            text: end,
+            value: 0
+          });
+          newArr.push({
+            text: '',
+            value: 0
+          });
+        } else {
+          for (var i = start; i <= end; i++) {
+            newArr.push({
+              text: i,
+              value: 0
+            });
+          }
+        }
+        return newArr;
+      }
+      scope.calendMiddleStyle = {
+        width: 0,
+        height: 0
+      };
+      scope.cTop = cArr(1, 6);
+      scope.cCenter = cArr(7, 27);
+      scope.cBottom = cArr(28, 31);
+      scope.getMonth = () => {
+        return mouthDict[new Date().getMonth()];
+      };
+      scope.valueColor = {
+        2: '#F2BB75',
+        3: '#5A97FF',
+        4: '#F6648A',
+        5: '#8D959B',
+        1: '#09B298'
+      };
+      scope.dataStatus = [{
+        statusColor: '#F2BB75',
+        text: '损失工作日'
+      }, {
+        statusColor: '#5A97FF',
+        text: '可记录事故'
+      }, {
+        statusColor: '#F6648A',
+        text: '急救事故'
+      }, {
+        statusColor: '#8D959B',
+        text: '肇事事故'
+      }, {
+        statusColor: '#09B298',
+        text: '无事故'
+      }];
+      scope.getBgColor = function (value) {
+        return {
+          'background-color': scope.valueColor[value]
+        };
+      }
+
+      scope.$watch("option", (n, o, s) => {
+        if (typeof n != 'undefined') {
+          element[0].style.height = n.attributes.height + "px";
+          scope.calendMiddleStyle = {
+            width: n.attributes.blockwidth + "%",
+            height: n.attributes.blockheight + "%"
+          };
+          render(n.attributes);
+          $interval(render, 3 * 60 * 1000);
+        }
+      })
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+.calend-txt-table {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    td {
+        color: white;
+        vertical-align: middle;
+        text-align: center;
+    }
+}
+
+#calend {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    ul {
+        padding: 0;
+        li {
+            list-style: none;
+        }
+    }
+    #calend-title {
+        position: absolute;
+        height: 14px;
+        width: 100%;
+        color: #94AAE1;
+        font-family: '微软雅黑';
+        top: 10px;
+        left: 10px;
+    }
+    #calend-table {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        #calend-month {
+            position: absolute;
+            left: 16%;
+            top: 24%;
+            color: #fff;
+            font-family: '微软雅黑';
+        }
+        #calend-middle {
+            width: 30%;
+            height: 30%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            li {
+                background-color: #1C434B;
+                position: relative;
+                border-right: 1px solid #fff;
+                border-bottom: 1px solid #fff;
+                span {
+                    display: block;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    color: #fff;
+                    text-align: center;
+                    margin-top: -6px;
+                    margin-left: -6px;
+                }
+            }
+            #calend-top {
+                position: absolute;
+                width: 100%;
+                height: 66.6%;
+                top: -66.6%;
+                left: 0;
+                border-top: 1px solid #fff;
+                border-left: 1px solid #fff;
+                li {
+                    position: relative;
+                    width: 33.3%;
+                    float: left;
+                    height: 50%;
+                    &:nth-last-child(-n+3) {
+                        border-bottom: none;
+                    }
+                }
+            }
+            #calend-center {
+                position: absolute;
+                width: 233.2%;
+                height: 100%;
+                top: 0;
+                left: -66.6%;
+                border-top: 1px solid #fff;
+                border-left: 1px solid #fff;
+                li {
+                    width: 14.28%;
+                    display: block;
+                    float: left;
+                    height: 33.3%;
+                }
+            }
+            #calend-bottom {
+                position: absolute;
+                width: 100%;
+                height: 66.6%;
+                bottom: -66.5%;
+                left: 0;
+                border-left: 1px solid #fff;
+                li {
+                    width: 33.3%;
+                    float: left;
+                    height: 50%;
+                }
+            }
+        }
+    }
+    #calend-direction {
+        position: absolute;
+        overflow: hidden;
+        bottom: 5%;
+        left: 10px;
+        width: 100%;
+        &:after {
+            content: "";
+            display: block;
+            height: 1px;
+            clear: both;
+            width: 100%;
+        }
+        li {
+            float: left;
+            height: 100%;
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            margin-right: 15px;
+            span {
+                color: #fff;
+                font-size: 18px;
+            }
+            i {
+                width: 15px;
+                height: 15px;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                border-radius: 50%;
+                display: inline-block;
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+</style>

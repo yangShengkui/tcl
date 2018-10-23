@@ -1,0 +1,118 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box">
+        <div  class="box-body">
+          <form name="formEdit" class="form-horizontal">
+            <div class="form-group" ><label class="col-sm-3 control-label">资费方式:</label>
+
+              <div class="col-sm-9 controls">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <select  class="form-control" ng-model="orderList.resourceType"  ng-disabled=" orderUser == 'order'"  ng-change="typeClick();">
+                      <option value="1">接入设备数量</option>
+                      <option value="2">采集监控点数量</option>
+                      <option value="3">交互消息数量</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group"><label class="col-sm-3 control-label">付费模式:</label>
+
+              <div class="col-sm-9 controls">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <div class="radio">
+                      <label>
+                        <input value="1"    ng-disabled="orderUser == 'order'"  ng-model="orderList.durationUnit" type="radio" name="r1" class="minimal"   ng-checked="true" >月
+                      </label>
+                      <label>
+                        <input value="2"   ng-disabled="orderUser == 'order'"  ng-model="orderList.durationUnit" type="radio" name="r1" class="minimal">年
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group"><label class="col-sm-3 control-label">数量:</label>
+
+              <div class="col-sm-9 controls">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <select class="form-control"   ng-disabled=" orderUser == 'order'"  ng-change="countClick()"  ng-model="orderList.resourceCount" ng-options="item.resourceCount as (item.resourceCount + dict) for item in product  | filter: {durationUnit:orderList.durationUnit , resourceType: orderList.resourceType}">
+                      <option value="" >请选择</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group"  ng-if="orderList.totalAmount != 'undefined'"><label class="col-sm-3 control-label">单价:</label>
+
+              <div class="col-sm-9 controls">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <p  class="form-control-static">{{orderList.totalAmount}}元/{{unit}}</p>
+                </div>
+              </div>
+              </div>
+            </div>
+            <div class="form-group" ><label class="col-sm-3 control-label">开通时长:</label>
+
+              <div class="col-sm-9 controls">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <input type="text"   ng-disabled="orderUser == 'order'" maxlength="4" ng-model="orderList.duration"  ng-keyup="timeOpen();" class="form-control" placeholder="开通时长">
+                  </div>
+                  <div class="col-xs-2">
+                    <p class="form-control-static">{{unit}}</p>
+                  </div>
+              </div>
+              </div>
+            </div>
+            <div class="form-group"><label class="col-sm-3 control-label">优惠券:</label>
+
+              <div class="col-sm-9 controls">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <input type="text"  ng-disabled="orderUser == 'order'"   ng-model="code" class="form-control"  placeholder="优惠券">
+                  </div>
+                  <div class="col-xs-2"><input   ng-disabled="orderUser == 'order'" ng-click="promoCode();" class="btn btn-default btn-sm" type="button" value="使用" /></div>
+              </div>
+              </div>
+            </div>
+            <div class="form-group" ng-if="codeMoney != ''"><label class="col-sm-3 control-label">抵减:</label>
+
+              <div class="col-sm-9 controls">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <p  class="form-control-static"  >{{codeMoney}}</p>
+                </div>
+              </div>
+              </div>
+            </div>
+            <div class="form-group"><label class="col-sm-3 control-label">应付金额:</label>
+
+              <div class="col-sm-9 controls">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <p  class="form-control-static"  >{{orderList.netAmount}}元</p>
+                </div>
+              </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div  class="box-footer text-center" >
+          <a ng-click="saveOrder()" class="btn btn-default btn-sm"><i class="proudsmart ps-pay"></i><span class="hidden-xs"> 支付</span></a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display: none;"  ng-bind-html="TrustAsHtml(subAjax)"  ></div>
+  <!-- /.row -->
+</section>

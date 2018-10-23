@@ -1,0 +1,98 @@
+{
+  "草莓": [
+    {
+      "title": "地产草莓延后一个月上市",
+      "url": "http://nc.mofcom.gov.cn/articlesc/sc/yjnc/201602/18982663_1.html",
+      "time": "早上 11:23"
+    }, {
+      "title": "小草莓成为普安村农民的“致富果”",
+      "url": "http://nc.mofcom.gov.cn/articlesc/sc/zfal/201602/18982688_1.html",
+      "time": "早上 11:23"
+    }, {
+      "title": "新型农民的草莓电子微商",
+      "url": "http://nc.mofcom.gov.cn/articlexw/xw/dsxw/201602/18982340_1.html",
+      "time": "早上 11:23"
+    }
+  ],
+  "草莓_记录": {
+    "title": "生产记录",
+    "list": [
+      {
+        "title": "定植日期",
+        "remark": "按计划完成",
+        "time": "2016-01-17",
+        "status": "text-green"
+      }, {
+        "title": "扣棚日期",
+        "remark": "按计划完成",
+        "time": "2016-02-20",
+        "status": "text-green"
+      }, {
+        "title": "覆膜日期",
+        "remark": "按计划完成",
+        "time": "2016-04-05",
+        "status": "text-green"
+      }, {
+        "title": "预计成熟期",
+        "remark": "暂无变化",
+        "time": "2016-05-20",
+        "status": "text-red"
+      }, {
+        "title": "天气变化提示",
+        "remark": "最近一周气温小幅上升，注意大棚温控",
+        "time": "",
+        "status": "text-green"
+      }
+    ]
+  },
+  "金针菇": [
+    {
+      "title": "金针菇出菇期的水分管理",
+      "url": "http://www.zzsyj.com/ZZnd/147607.aspx",
+      "time": "早上 11:23"
+    }, {
+      "title": "食用菌新秀-大球盖菇",
+      "url": "http://www.zzsyj.com/ZZnd/142737.aspx",
+      "time": "早上 11:23"
+    }, {
+      "title": "平菇病虫害防治",
+      "url": "http://www.zzsyj.com/ZZnd/147606.aspx",
+      "time": "早上 11:23"
+    }, {
+      "title": "杏鲍菇细菌性病毒感染原因与防治",
+      "url": "http://www.zzsyj.com/ZZnd/146058.aspx",
+      "time": "早上 11:23"
+    }
+  ],
+  "金针菇_记录": {
+    "title": "生产记录",
+    "list": [
+      {
+        "title": "定植日期",
+        "remark": "按计划完成",
+        "time": "2016-01-16",
+        "status": "text-green"
+      }, {
+        "title": "扣棚日期",
+        "remark": "按计划完成",
+        "time": "2016-02-20",
+        "status": "text-green"
+      }, {
+        "title": "覆膜日期",
+        "remark": "按计划完成",
+        "time": "2016-04-05",
+        "status": "text-green"
+      }, {
+        "title": "预计成熟期",
+        "remark": "暂无变化",
+        "time": "2016-05-20",
+        "status": "text-red"
+      }, {
+        "title": "天气变化提示",
+        "remark": "最近一周气温小幅上升，注意大棚温控",
+        "time": "",
+        "status": "text-green"
+      }
+    ]
+  }
+}

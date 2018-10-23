@@ -1,0 +1,78 @@
+{
+	"week": {
+		"timespan":604860000,
+		"title":"最近一周告警情况"
+	},
+	"month": {
+		"timespan":2678460000,
+		"title":"最近一月告警情况"
+	},
+	"deviceitems": [
+		{
+			"title": "医用除臭设备10",
+			"content": "环保行业设备.",
+			"time": "2015-11-18 20:47:10"
+		}, {
+			"title": "医用除臭设备9",
+			"content": "环保行业设备.",
+			"time": "2015-11-18 20:47:10"
+		}, {
+			"title": "医用除臭设备8",
+			"content": "环保行业设备.",
+			"time": "2015-11-18 20:47:10"
+		}, {
+			"title": "医用除臭设备7",
+			"content": "环保行业设备.",
+			"time": "2015-11-18 20:47:10"
+		}, {
+			"title": "医用除臭设备6",
+			"content": "环保行业设备.",
+			"time": "2015-11-18 20:47:10"
+		}	],
+	"totalItems": [
+		{
+			"title": "管控设备数",
+			"bg": "bg-aqua",
+			"icon": "ion ion-ios-gear-outline",
+			"value":0,
+			"kpi":3001,
+			"kpiName":"manageDeviceNum",
+			"unit": "台",
+			"visible":true,
+			"url": "#/resource"
+		}, 
+		{
+			"title": "数据采集点",
+			"bg": "bg-green",
+			"icon": "fa fa-connectdevelop",
+			"value":0,
+			"kpi":3002,
+			"kpiName":"collectorPointsNum",
+			"unit": "个",
+			"visible":true,
+			"url": "#/emcsView"
+		}, 
+		{
+			"title": "待处理告警数",
+			"bg": "bg-red",
+			"icon": "fa fa-warning",
+			"value":0,
+			"kpi":3003,
+			"kpiName":"toHandleAlertNum",
+			"unit": "条",
+			"visible":true,
+			"url": "#/configAlertByStatus"
+		},
+		{
+			"title": "待处理工单数",
+			"bg": "bg-yellow",
+			"icon": "fa fa-edit",
+			"value":0,
+			"kpi":3004,
+			"kpiName":"toHandleWorkOrderNum",
+			"unit": "件",
+			"visible":true,
+			"url": "#/workorderrecord"
+		}
+	]
+}

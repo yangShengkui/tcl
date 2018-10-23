@@ -1,0 +1,55 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+      <a role="button" ng-click="closeDialog
+();" class="close">×</a>
+        <h4 class="modal-title info-box-number">其他联系人信息</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal" name="clientOtherForm">
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">联系人名称：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <input type="text" name="contactName" autocomplete="off" ng-model="inputItem.clientOther.contactName" class="form-control input-sm" maxlength="32" placeholder="" required="required">
+              </div>
+            </div>
+          </div>
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">联系人职务：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <select class="form-control input-sm" autocomplete="off" style="border: solid 1px #e8e8e8;" ng-model="inputItem.clientOther.contactDuty" ng-options="item.valueCode as item.label for item in jobs" ng-change="queryType(inputItem.clientOther.contactDuty)" required="required">
+                  <option>请选择...</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">联系电话：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <input type="text" name="phone" autocomplete="off" ng-model="inputItem.clientOther.contactPhone" class="form-control input-sm" placeholder="" ng-change="verifyFun(inputItem.clientOther.contactPhone,'phone')" required="required">
+                <span style="color:red;" ng-show="mistakeMesg.phone">请正确输入座机或手机号</span>
+              </div>
+            </div>
+          </div>
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">邮箱地址：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <input type="email" name="email" autocomplete="off" ng-model="inputItem.clientOther.contactEmail" class="form-control input-sm" placeholder="" ng-change="verifyFun(inputItem.clientOther.contactEmail,'email')" required="required">
+                <span style="color:red" ng-show="mistakeMesg.email">请输入正确的邮箱地址</span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="clientOtherForm.$invalid" ng-click="inputFun.saveOther()">确定</button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

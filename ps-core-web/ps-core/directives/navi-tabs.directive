@@ -1,0 +1,61 @@
+<config injector="psNavigators, $route, $location, $routeParams"
+></config>
+<template>
+  <ul class="nav nav-tabs" role="tablist">
+    <li ng-class="{true : 'active'}[nav.active]"
+        ng-click="nav.click()"
+        ng-repeat="nav in navigators">
+      <a ng-bind="nav.label"></a>
+    </li>
+  </ul>
+</template>
+<script type="text/javascript">
+  import { each } from "ps-ultility";
+  export default function(psNavigators, route, location, routeParams){
+    return {
+      scope : true,
+      link(scope, element, attr, ngModel) {
+        let navs = psNavigators.get(),
+          paths = [];
+          originalPath = route.current.$$route.originalPath,
+          naviattr = (function(){
+            for(var i in navs){
+              for(var j in navs[i]){
+                if(originalPath.indexOf(j) !== -1){
+                  return [navs[i], j]
+                }
+              }
+            }
+          })(),
+          navigators = [];
+        // if(naviattr){
+        if(naviattr){
+          for(let i in naviattr[0]){
+            navigators.push({
+              label : naviattr[0][i],
+              active : naviattr[1] == i,
+              click : function(){
+                paths = [i];
+                for(let j in routeParams){
+                  paths.push(routeParams[j]);
+                }
+                location.path(paths.join("/"))
+              }
+            })
+          }
+        } else {
+          navigators = [{
+            label : "未配置路由名称，请打开ps-navigators.service进行注册"
+          }]
+        }
+        console.log(navigators);
+        scope.navigators = navigators;
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+  li{
+    cursor : pointer;
+  }
+</style>

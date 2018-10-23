@@ -1,0 +1,260 @@
+<config injector="$rootScope,$timeout,$compile,psEvent,psUltility" type="factory"
+></config>
+<script type="text/javascript">
+  import { extend, each, attribute, deepClone } from "ps-ultility";
+  export default function(rootScope,timeout,compile,psEvent,psUltility){
+    let onceModalTemplates;
+    function clone(obj){
+      return JSON.parse(JSON.stringify(obj));
+    }
+    function setValue(template, data){
+      return template;
+    }
+    const modalTemplates = createCache(),
+      alertTemplates = createCache(),
+      alert = function(template, message){
+        let alertDom = document.createElement("div"),
+          events = {},
+          scope = rootScope.$new();
+        scope.option = template;
+        alertDom.innerHTML =
+          `<div id="bootstrap-dialog" class="modal bootstrap-dialog type-primary size-normal in" style="display:block;">
+        <div class="modal-dialog type-primary">
+          <div class="modal-content" style="border-radius : 4px;">
+            <div class="modal-header">
+              <div class="bootstrap-dialog-header">
+                <div class="bootstrap-dialog-close-button" style="display: none;">
+                  <button class="close">×</button>
+                </div>
+                <div class="bootstrap-dialog-title ng-binding">提示</div>
+              </div>
+            </div>
+            <div class="modal-body">
+              <div class="bootstrap-dialog-body">
+                <div class="bootstrap-dialog-message ng-binding">${message}</div>
+              </div>
+            </div>
+            <div class="modal-footer" style="display: block;">
+              <div class="bootstrap-dialog-footer">
+                <div class="bootstrap-dialog-footer-buttons">
+                  <button ng-class="classfn(btn)" ng-repeat="btn in option.buttons"
+                  ng-click="click(btn, $event)"
+                  ng-bind="btn.label"
+                  ng-disabled="disabled(btn)"
+                  ng-bind="btn.label"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div></div>`;
+        scope.close = close;
+        scope.click = function(btn, event){
+          let evt = psEvent(event, scope);
+          extend(evt, {
+            close : close,
+            submit : submit
+          });
+          btn.click && btn.click.call(evt, evt);
+        }
+        scope.classfn = function(btn){
+          return btn.class || "btn btn-default"
+        }
+        scope.disabled = function(btn){
+          if(typeof btn.disabled === "function"){
+            return btn.disabled();
+          } else {
+            return btn.disabled;
+          }
+        }
+        function submit(){
+          emit("submit");
+          alertDom.remove();
+          alertDom = null;
+        }
+        function close(){
+          emit("close");
+          alertDom.remove();
+          alertDom = null;
+        };
+        function on(eventname, handler){
+          events[eventname] = handler;
+        }
+        function emit(eventname, data){
+          typeof events[eventname] === "function" && events[eventname](data);
+        }
+        console.log(scope);
+        document.body.appendChild(alertDom);
+        compile(alertDom)(scope);
+        return {
+          on : on,
+          close : close,
+          submit : submit
+        }
+      }
+      modal = function(template, data){
+        let modal = document.createElement("div"),
+          events = {},
+          scope = rootScope.$new();
+        scope.option = setData(template, data = data || {});
+        modal.innerHTML =
+          `<div id="bootstrap-dialog" class="modal bootstrap-dialog type-primary size-normal in" style="display:block;">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header bg-f2 padding-top-10 padding-bottom-10">
+              <div class="bootstrap-dialog-header">
+                <a role="button" class="close" ng-click="close()">×</a>
+                <h4 class="modal-title info-box-number ng-binding" ng-bind="option.label" id="ngdialog1-aria-labelledby"></h4>
+              </div>
+            </div>
+            <div class="modal-body padding-top-10 no-pad-bottom">
+              <ps-layout data-option="option"></ps-layout>
+            </div>
+            <div class="modal-footer padding-top-10">
+              <div class="bootstrap-dialog-footer">
+                <div class="bootstrap-dialog-footer-buttons">
+                  <button ng-class="classfn(btn)" ng-repeat="btn in option.buttons"
+                  ng-click="click(btn, $event)"
+                  ng-bind="btn.label"
+                  ng-disabled="disabled(btn)"
+                  ng-bind="btn.label"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+        document.body.appendChild(modal);
+        compile(modal)(scope);
+        scope.close = close;
+        scope.click = function(btn, event){
+          let evt = psEvent(event, scope);
+          extend(evt, {
+            close : close,
+            submit : submit
+          });
+          btn.click && btn.click.call(evt, evt);
+        }
+        scope.classfn = function(btn){
+          return btn.class || "btn btn-default"
+        }
+        scope.disabled = function(btn){
+          if(typeof btn.disabled === "function"){
+            return btn.disabled();
+          } else {
+            return btn.disabled;
+          }
+        }
+
+        scope.getData = getData;
+        function setData(template, data){
+          recursive(template, "");
+          function recursive(node, depth){
+            if(node.scope){
+              depth += "." + node.scope;
+            } else if(node.key) {
+              let _key = depth + "." + node.key;
+              node[psUltility.keyPattern(node.key)] = attribute(data, _key) || node.value;
+            }
+            each(node.children, (n)=>{
+              recursive(n, depth);
+            });
+          }
+          return template;
+        }
+        function getData(){
+          let rs = extend({}, data);
+          recursive(rs, scope.option);
+          function recursive(rs, node){
+            if(node.scope){
+              rs = rs[node.scope] = {};
+            } else if(node.key) {
+              attribute(rs, node.key, node[psUltility.keyPattern(node.value)] || null);
+            }
+            each(node.children, (n)=>{
+              recursive(rs, n);
+            });
+          }
+          return rs;
+        }
+        function submit(){
+          let data = getData();
+          emit("submit", data);
+          modal.remove();
+          modal = null;
+        }
+        function close(){
+          emit("close");
+          modal.remove();
+          modal = null;
+        };
+        function on(eventname, handler){
+          events[eventname] = handler;
+        }
+        function emit(eventname, data){
+          typeof events[eventname] === "function" && events[eventname](data);
+        }
+        console.log(scope);
+        return {
+          on : on,
+          close : close,
+          submit : submit
+        }
+      };
+    function createCache(){
+      let cache = function(attr, val){
+        if(typeof val !== "undefined"){
+          cache[attr] = val
+        } else {
+          return cache[attr];
+        }
+      }
+      return cache;
+    }
+    function createModalTemplate(obj){
+      onceModalTemplates = createCache();
+      for(var i in obj){
+        onceModalTemplates(i, obj[i]);
+      }
+    }
+    function registerModalTemplate(name, obj){
+      modalTemplates(name, function(){
+        return deepClone(obj);
+      });
+    }
+    function registerAlertTemplate(name, obj){
+      alertTemplates(name, function(){
+        return deepClone(obj);
+      });
+    }
+    function getModelTemplate(name){
+      return modalTemplates[name];
+    }
+    function getAlertTemplate(name){
+      return alertTemplates[name];
+    }
+    registerAlertTemplate("commonAlert", {
+      type : "layout",
+      buttons : [{
+        label : "确定",
+        class : "btn btn-primary",
+        click : function(){
+          this.submit();
+        }
+      },{
+        label : "取消",
+        click : function(){
+          this.close();
+        }
+      }]
+    })
+    return {
+      alert : alert,
+      modal : modal,
+      registerAlertTemplate : registerAlertTemplate,
+      createModalTemplate : createModalTemplate,
+      registerModalTemplate : registerModalTemplate,
+      getModelTemplate : getModelTemplate,
+      getAlertTemplate : getAlertTemplate
+    };
+  }
+</script>

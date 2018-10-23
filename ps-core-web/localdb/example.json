@@ -1,0 +1,1206 @@
+{
+  "__comment__": {
+    "title": "__comment__下都是注释，随时可以删掉",
+    "desc": "一下两个key: extend1和extend2，本来名字都是extend，分别在stencil.groups和stencil.shapes下。对应页面上是左侧扩展栏内的一些图形，因为现在没什么用，所以先去掉了。之后如果又需要的话，再把这两个属性加上即可",
+    "date": "注释于 2018-08-28 14：38。 Author by Zhu Guannan",
+    "extend1": {
+      "index": 5,
+      "label": "扩展"
+    },
+    "extend2": [
+      {
+        "type": "bpmn.Annotation",
+        "size": {
+          "width": "60",
+          "height": "60"
+        }
+      },
+      {
+        "type": "bpmn.Pool",
+        "size": {
+          "width": "60",
+          "height": "60"
+        }
+      },
+      {
+        "type": "bpmn.Group",
+        "size": {
+          "width": "60",
+          "height": "60"
+        }
+      },
+      {
+        "type": "bpmn.Choreography",
+        "size": {
+          "width": "60",
+          "height": "60"
+        }
+      },
+      {
+        "type": "bpmn.DataObject",
+        "size": {
+          "width": "60",
+          "height": "60"
+        }
+      },
+      {
+        "type": "bpmn.Message",
+        "size": {
+          "width": "60",
+          "height": "60"
+        }
+      }
+    ]
+  },
+  "stencil": {
+    "groups": {
+      "event": {
+        "index": 1,
+        "label": "事件"
+      },
+      "task": {
+        "index": 2,
+        "label": "任务"
+      },
+      "timeBoundary": {
+        "index": 3,
+        "label": "时间边界事件"
+      },
+      "gateway": {
+        "index": 4,
+        "label": "网关"
+      }
+    },
+    "shapes": {
+      "event": [
+        {
+          "type": "bpmn.Event",
+          "size": {
+            "width": 3,
+            "height": 3
+          }
+        }
+      ],
+      "task": [
+        {
+          "type": "bpmn.Activity",
+          "size": {
+            "width": 4,
+            "height": 3
+          },
+          "icon": "user",
+          "taskType": "user",
+          "content": "用户任务"
+        },
+        {
+          "type": "bpmn.Activity",
+          "size": {
+            "width": 4,
+            "height": 3
+          },
+          "icon": "service",
+          "taskType": "service",
+          "content": "服务任务"
+        }
+      ],
+      "gateway": [
+        {
+          "type": "bpmn.Gateway",
+          "size": {
+            "width": "60",
+            "height": "60"
+          },
+          "attrs": {
+            "text": {
+              "text": "分支",
+              "x": 0,
+              "y": 2,
+              "color": "#000000"
+            }
+          },
+          "icon": "cross"
+        },
+        {
+          "type": "bpmn.Gateway",
+          "size": {
+            "width": 3,
+            "height": 3
+          },
+          "attrs": {
+            "text": {
+              "text": "聚合",
+              "x": 0,
+              "y": 2,
+              "color": "#000000"
+            }
+          },
+          "icon": "plus"
+        }
+      ],
+      "timeBoundary": [
+        {
+          "type": "bpmn.Conversation",
+          "size": {
+            "width": "60",
+            "height": "60"
+          }
+        }
+      ]
+    },
+    "search": {
+      "*": [
+        "attrs/text/text"
+      ]
+    }
+  },
+  "init": {
+    "type": "bpmn",
+    "cells": [
+      {
+        "type": "bpmn.Event",
+        "size": {
+          "width": 70,
+          "height": 70
+        },
+        "eventType": "start",
+        "position": {
+          "x": 280,
+          "y": 190
+        },
+        "angle": 0,
+        "id": "9ce8d916-6641-43d2-ad82-e7d47e8aa94c",
+        "embeds": "",
+        "z": 2,
+        "startExpression": "",
+        "endExpression": "",
+        "icon": "none",
+        "attrs": {
+          ".body": {
+            "fill": "#13c865"
+          },
+          ".inner": {
+            "visibility": "hidden"
+          },
+          ".label": {
+            "text": "开始"
+          },
+          "text": {
+            "text": "开始"
+          },
+          "rect": {
+            "opacity": 1
+          }
+        }
+      },
+      {
+        "type": "bpmn.Event",
+        "size": {
+          "width": 70,
+          "height": 70
+        },
+        "eventType": "end",
+        "position": {
+          "x": 800,
+          "y": 180
+        },
+        "angle": 0,
+        "id": "aec9d549-3972-45fc-ac58-4d6e1903b2f7",
+        "embeds": "",
+        "z": 6,
+        "startExpression": "",
+        "endExpression": "",
+        "icon": "none",
+        "attrs": {
+          ".body": {
+            "fill": "#ff0000"
+          },
+          ".outer": {
+            "stroke-width": 5
+          },
+          ".inner": {
+            "visibility": "hidden"
+          },
+          ".label": {
+            "text": "结束"
+          },
+          "text": {
+            "text": "结束"
+          },
+          "rect": {
+            "opacity": 1
+          }
+        }
+      }
+    ]
+  },
+  "mould": [
+    {
+      "name": "维保任务模板",
+      "content": "maintenance",
+      "view": {
+        "type": "bpmn",
+        "cells": [
+          {
+            "type": "bpmn.Event",
+            "size": {
+              "width": 70,
+              "height": 70
+            },
+            "eventType": "start",
+            "position": {
+              "x": 30,
+              "y": 150
+            },
+            "angle": 0,
+            "id": "9ce8d916-6641-43d2-ad82-e7d47e8aa94c",
+            "embeds": "",
+            "z": 171,
+            "startExpression": "ticket:=@ticketTaskService.getTicket(#ticketNo);ticketNo:=#ticket.ticketNo;ticketCommitTime:=#ticket.commitTime;ticketCreatorID:=#ticket.creatorId;ticketCreatorName:=#ticket.creatorName;priorityCode:=#ticket.priorityCode;isUnderWarranty:=@customerProjectUIService.isUnderWarranty(#deviceId);",
+            "endExpression": "@ticketLogService.saveTicketLog(#ticketNo,\"开始\",\"startEvent\")",
+            "icon": "none",
+            "attributeDefinitions": [],
+            "attrs": {
+              ".body": {
+                "fill": "#13c865"
+              },
+              ".inner": {
+                "visibility": "hidden"
+              },
+              ".label": {
+                "text": "开始"
+              },
+              "text": {
+                "text": "开始"
+              },
+              "rect": {
+                "opacity": 1
+              }
+            }
+          },
+          {
+            "type": "bpmn.Gateway",
+            "size": {
+              "width": 60,
+              "height": 60
+            },
+            "position": {
+              "x": 200,
+              "y": 160
+            },
+            "angle": 0,
+            "icon": "cross",
+            "id": "984c428b-347b-4d95-a4b9-93ff59d8fa6c",
+            "embeds": "",
+            "z": 215,
+            "startExpression": "",
+            "endExpression": "@ticketLogService.saveTicketLog(#ticketNo,(#isUnderWarranty ? '在保' : '不在保'),'exclusiveGateway')",
+            "attrs": {
+              "image": {
+                "xlink:href": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI0IDI0IiBoZWlnaHQ9IjI0cHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0cHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGQ9Ik0yMi4yNDUsNC4wMTVjMC4zMTMsMC4zMTMsMC4zMTMsMC44MjYsMCwxLjEzOWwtNi4yNzYsNi4yN2MtMC4zMTMsMC4zMTItMC4zMTMsMC44MjYsMCwxLjE0bDYuMjczLDYuMjcyICBjMC4zMTMsMC4zMTMsMC4zMTMsMC44MjYsMCwxLjE0bC0yLjI4NSwyLjI3N2MtMC4zMTQsMC4zMTItMC44MjgsMC4zMTItMS4xNDIsMGwtNi4yNzEtNi4yNzFjLTAuMzEzLTAuMzEzLTAuODI4LTAuMzEzLTEuMTQxLDAgIGwtNi4yNzYsNi4yNjdjLTAuMzEzLDAuMzEzLTAuODI4LDAuMzEzLTEuMTQxLDBsLTIuMjgyLTIuMjhjLTAuMzEzLTAuMzEzLTAuMzEzLTAuODI2LDAtMS4xNGw2LjI3OC02LjI2OSAgYzAuMzEzLTAuMzEyLDAuMzEzLTAuODI2LDAtMS4xNEwxLjcwOSw1LjE0N2MtMC4zMTQtMC4zMTMtMC4zMTQtMC44MjcsMC0xLjE0bDIuMjg0LTIuMjc4QzQuMzA4LDEuNDE3LDQuODIxLDEuNDE3LDUuMTM1LDEuNzMgIEwxMS40MDUsOGMwLjMxNCwwLjMxNCwwLjgyOCwwLjMxNCwxLjE0MSwwLjAwMWw2LjI3Ni02LjI2N2MwLjMxMi0wLjMxMiwwLjgyNi0wLjMxMiwxLjE0MSwwTDIyLjI0NSw0LjAxNXoiLz48L3N2Zz4="
+              },
+              "text": {
+                "text": "是否在保",
+                "x": 0,
+                "y": 2,
+                "color": "#000000"
+              }
+            }
+          },
+          {
+            "type": "bpmn.Flow",
+            "flowType": "normal",
+            "id": "acb71172-e508-42e8-b540-5ed4b0c56152",
+            "embeds": "",
+            "source": {
+              "id": "9ce8d916-6641-43d2-ad82-e7d47e8aa94c"
+            },
+            "target": {
+              "id": "984c428b-347b-4d95-a4b9-93ff59d8fa6c"
+            },
+            "z": 218,
+            "vertices": [
+              {
+                "x": 160,
+                "y": 190
+              }
+            ],
+            "conditionExpression": "",
+            "smooth": false,
+            "manhattan": false,
+            "processMonitors": [],
+            "labels": [],
+            "attrs": {
+              ".marker-source": {
+                "transform": "scale(1)",
+                "fill": "#000000"
+              },
+              ".marker-target": {
+                "transform": "scale(1)"
+              },
+              ".connection": {
+                "stroke": "#000000"
+              }
+            }
+          },
+          {
+            "type": "bpmn.Gateway",
+            "size": {
+              "width": 60,
+              "height": 60
+            },
+            "position": {
+              "x": 360,
+              "y": 160
+            },
+            "angle": 0,
+            "icon": "cross",
+            "id": "c6df1eb7-6697-43a9-ba29-d8ae3428451a",
+            "embeds": "",
+            "z": 219,
+            "startExpression": "",
+            "endExpression": "@ticketLogService.saveTicketLog(#ticketNo,((#priorityCode == 200) ? '紧急故障' : '普通故障'),'exclusiveGateway')",
+            "attrs": {
+              "image": {
+                "xlink:href": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI0IDI0IiBoZWlnaHQ9IjI0cHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0cHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGQ9Ik0yMi4yNDUsNC4wMTVjMC4zMTMsMC4zMTMsMC4zMTMsMC44MjYsMCwxLjEzOWwtNi4yNzYsNi4yN2MtMC4zMTMsMC4zMTItMC4zMTMsMC44MjYsMCwxLjE0bDYuMjczLDYuMjcyICBjMC4zMTMsMC4zMTMsMC4zMTMsMC44MjYsMCwxLjE0bC0yLjI4NSwyLjI3N2MtMC4zMTQsMC4zMTItMC44MjgsMC4zMTItMS4xNDIsMGwtNi4yNzEtNi4yNzFjLTAuMzEzLTAuMzEzLTAuODI4LTAuMzEzLTEuMTQxLDAgIGwtNi4yNzYsNi4yNjdjLTAuMzEzLDAuMzEzLTAuODI4LDAuMzEzLTEuMTQxLDBsLTIuMjgyLTIuMjhjLTAuMzEzLTAuMzEzLTAuMzEzLTAuODI2LDAtMS4xNGw2LjI3OC02LjI2OSAgYzAuMzEzLTAuMzEyLDAuMzEzLTAuODI2LDAtMS4xNEwxLjcwOSw1LjE0N2MtMC4zMTQtMC4zMTMtMC4zMTQtMC44MjcsMC0xLjE0bDIuMjg0LTIuMjc4QzQuMzA4LDEuNDE3LDQuODIxLDEuNDE3LDUuMTM1LDEuNzMgIEwxMS40MDUsOGMwLjMxNCwwLjMxNCwwLjgyOCwwLjMxNCwxLjE0MSwwLjAwMWw2LjI3Ni02LjI2N2MwLjMxMi0wLjMxMiwwLjgyNi0wLjMxMiwxLjE0MSwwTDIyLjI0NSw0LjAxNXoiLz48L3N2Zz4="
+              },
+              "text": {
+                "text": "紧急度",
+                "x": 0,
+                "y": 2,
+                "color": "#000000"
+              }
+            }
+          },
+          {
+            "type": "bpmn.Flow",
+            "flowType": "normal",
+            "id": "8fcb769b-75ef-461c-ade7-dae2305d6d17",
+            "embeds": "",
+            "source": {
+              "id": "984c428b-347b-4d95-a4b9-93ff59d8fa6c"
+            },
+            "target": {
+              "id": "c6df1eb7-6697-43a9-ba29-d8ae3428451a"
+            },
+            "z": 222,
+            "conditionExpression": "#{isUnderWarranty == true}",
+            "smooth": false,
+            "manhattan": false,
+            "processMonitors": [],
+            "labels": [
+              {
+                "attrs": {
+                  "text": {
+                    "text": "是"
+                  }
+                },
+                "position": 0.5
+              }
+            ],
+            "vertices": [
+              {
+                "x": 330,
+                "y": 190
+              }
+            ],
+            "attrs": {
+              ".marker-source": {
+                "transform": "scale(1)",
+                "fill": "#000000"
+              },
+              ".marker-target": {
+                "transform": "scale(1)"
+              },
+              ".connection": {
+                "stroke": "#000000"
+              }
+            }
+          },
+          {
+            "type": "bpmn.Event",
+            "size": {
+              "width": 70,
+              "height": 70
+            },
+            "eventType": "end",
+            "position": {
+              "x": 810,
+              "y": 160
+            },
+            "angle": 0,
+            "id": "aec9d549-3972-45fc-ac58-4d6e1903b2f7",
+            "embeds": "",
+            "z": 268,
+            "startExpression": "@ticketLogService.saveTicketLog(#ticketNo,'结束','endEvent')",
+            "endExpression": "",
+            "icon": "none",
+            "attributeDefinitions": [],
+            "attrs": {
+              ".body": {
+                "fill": "#ff0000"
+              },
+              ".outer": {
+                "stroke-width": 5
+              },
+              ".inner": {
+                "visibility": "hidden"
+              },
+              ".label": {
+                "text": "结束"
+              },
+              "text": {
+                "text": "结束"
+              },
+              "rect": {
+                "opacity": 1
+              }
+            }
+          },
+          {
+            "size": {
+              "width": 100,
+              "height": 77.5
+            },
+            "type": "bpmn.Activity",
+            "activityType": "task",
+            "subProcess": false,
+            "content": "通知设备过保",
+            "position": {
+              "x": 180,
+              "y": 320
+            },
+            "angle": 0,
+            "icon": "service",
+            "id": "a9b3d8b9-7da3-4984-86af-863044918684",
+            "embeds": "",
+            "z": 351,
+            "userType": "expression",
+            "templateURL": "",
+            "roleIds": "number:100",
+            "userIds": "number:2965831236092",
+            "userExpression": "",
+            "userGroupIds": null,
+            "startExpression": "customerID:=@resourceService.findById(#deviceId)?.customerId;customer:=#customerID != null ? @customerUIService.findCustomersById(#customerID) : null;customerEmail:=#customer?.customerEmail;customerPhone:=#customer?.customerPhone;deviceInfo:=@customerProjectUIService.getDeviceInfoById(#deviceId);sendEmail:=(#customerEmail != null ? @noticeService.sendDeviceInfoEmail({#customerEmail},'maintenance_email',#deviceInfo,'app-oc/index.html#/facility') : null);#customerPhone != null ? @noticeService.sendTicketSms({#customerPhone},'ticket_service_sms',#ticketNo,#ticket.title,'设备已过保') : null;",
+            "endExpression": "@ticketLogService.saveTicketLog(#ticketNo,'通知设备过保','serviceTask')",
+            "taskType": "service",
+            "processMonitors": [
+              {
+                "name": "开如短信",
+                "eventType": "start",
+                "adviceType": "message"
+              },
+              {
+                "name": "开始邮件",
+                "eventType": "start",
+                "adviceType": "email"
+              }
+            ],
+            "attributeDefinitions": [],
+            "attrs": {
+              "rect": {
+                "opacity": 1
+              },
+              ".inner": {
+                "visibility": "hidden"
+              },
+              "path": {
+                "ref": ".outer"
+              },
+              "image": {
+                "ref": ".outer",
+                "ref-dy": "",
+                "ref-y": 5,
+                "xlink:href": "data:image/png;base64,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"
+              },
+              "text": {
+                "ref-y": 0.5
+              },
+              ".content": {
+                "html": "通知设备过保"
+              },
+              ".fobj": {
+                "width": 100,
+                "height": 77.5
+              },
+              "div": {
+                "style": {
+                  "width": 100,
+                  "height": 77.5
+                }
+              },
+              ".fobj div": {
+                "style": {
+                  "verticalAlign": "middle",
+                  "paddingTop": 0
+                }
+              },
+              ".outer": {
+                "stroke-width": 1,
+                "stroke-dasharray": "none"
+              },
+              ".sub-process": {
+                "visibility": "hidden",
+                "data-sub-process": ""
+              }
+            }
+          },
+          {
+            "type": "bpmn.Flow",
+            "flowType": "normal",
+            "id": "b858810c-d217-4c19-8c84-02768f434b78",
+            "embeds": "",
+            "source": {
+              "id": "984c428b-347b-4d95-a4b9-93ff59d8fa6c"
+            },
+            "target": {
+              "id": "a9b3d8b9-7da3-4984-86af-863044918684"
+            },
+            "z": 353,
+            "conditionExpression": "#{isUnderWarranty == false}",
+            "smooth": false,
+            "manhattan": false,
+            "processMonitors": [],
+            "labels": [
+              {
+                "attrs": {
+                  "text": {
+                    "text": "否"
+                  }
+                },
+                "position": 0.5
+              }
+            ],
+            "attrs": {
+              ".marker-source": {
+                "transform": "scale(1)",
+                "fill": "#000000"
+              },
+              ".marker-target": {
+                "transform": "scale(1)"
+              },
+              ".connection": {
+                "stroke": "#000000"
+              }
+            }
+          },
+          {
+            "size": {
+              "width": 110,
+              "height": 77.5
+            },
+            "type": "bpmn.Activity",
+            "activityType": "task",
+            "subProcess": false,
+            "content": "维保主管通知",
+            "position": {
+              "x": 470,
+              "y": 30
+            },
+            "angle": 0,
+            "icon": "service",
+            "id": "89ea36b9-4867-4705-a415-bf8169ce120c",
+            "embeds": "",
+            "z": 357,
+            "userType": "role",
+            "roleIds": "number:2000",
+            "templateURL": "",
+            "userIds": "number:496795433367378",
+            "userExpression": "role:=@userRoleUIService.queryRoleInfo(2000);userList:=@userRoleUIService.getAssociateRole2User(#role);(#userList != null) ? #userList.![userID] : null",
+            "userGroupIds": null,
+            "startExpression": "role:=@userRoleUIService.queryRoleInfo(2000);userList:=@userRoleUIService.getAssociateRole2User(#role, #ticket.domainPath);userIdList:=((#userList != null) ? #userList.![userID] : null);mobilePhoneList:=((#userList != null) ? #userList.![mobilePhone] : null);emailAddressList:=((#userList != null) ? #userList.![emailAddress] : null);sendMsg:=(#userIdList != null ? @noticeService.sendTicketMessage(#userIdList,'notify_message',#ticketNo,#ticket.title,'有紧急设备维保') : null);sendEmail:=(#emailAddressList != null ? @noticeService.sendTicketEmail(#emailAddressList,'ticket_service_email',#ticketNo,#ticket.title,'有紧急设备维保') : null);#mobilePhoneList != null ? @noticeService.sendTicketSms(#mobilePhoneList,'ticket_service_sms',#ticketNo,#ticket.title,'有紧急设备维保') : null;",
+            "endExpression": "@ticketLogService.saveTicketLog(#ticketNo,'通知维保主管','serviceTask')",
+            "taskType": "service",
+            "processMonitors": [
+              {
+                "name": "开始短信",
+                "eventType": "start",
+                "adviceType": "message"
+              },
+              {
+                "name": "开始邮件",
+                "eventType": "start",
+                "adviceType": "email"
+              }
+            ],
+            "attributeDefinitions": [],
+            "attrs": {
+              "rect": {
+                "opacity": 1
+              },
+              ".inner": {
+                "visibility": "hidden"
+              },
+              "path": {
+                "ref": ".outer"
+              },
+              "image": {
+                "ref": ".outer",
+                "ref-dy": "",
+                "ref-y": 5,
+                "xlink:href": "data:image/png;base64,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"
+              },
+              "text": {
+                "ref-y": 0.5
+              },
+              ".content": {
+                "html": "维保主管通知"
+              },
+              ".fobj": {
+                "width": 110,
+                "height": 77.5
+              },
+              "div": {
+                "style": {
+                  "width": 110,
+                  "height": 77.5
+                }
+              },
+              ".fobj div": {
+                "style": {
+                  "verticalAlign": "middle",
+                  "paddingTop": 0
+                }
+              },
+              ".outer": {
+                "stroke-width": 1,
+                "stroke-dasharray": "none"
+              },
+              ".sub-process": {
+                "visibility": "hidden",
+                "data-sub-process": ""
+              }
+            }
+          },
+          {
+            "type": "bpmn.Flow",
+            "flowType": "normal",
+            "id": "303904f4-67e7-4c1a-bb67-1e1d85756f03",
+            "embeds": "",
+            "source": {
+              "id": "c6df1eb7-6697-43a9-ba29-d8ae3428451a"
+            },
+            "target": {
+              "id": "89ea36b9-4867-4705-a415-bf8169ce120c"
+            },
+            "z": 359,
+            "conditionExpression": "#{priorityCode == 200}",
+            "smooth": false,
+            "manhattan": false,
+            "processMonitors": [],
+            "labels": [
+              {
+                "attrs": {
+                  "text": {
+                    "text": "高"
+                  }
+                },
+                "position": 0.5
+              }
+            ],
+            "vertices": [
+              {
+                "x": 430,
+                "y": 150
+              }
+            ],
+            "attrs": {
+              ".marker-source": {
+                "transform": "scale(1)",
+                "fill": "#000000"
+              },
+              ".marker-target": {
+                "transform": "scale(1)"
+              },
+              ".connection": {
+                "stroke": "#000000"
+              }
+            }
+          },
+          {
+            "size": {
+              "width": 100,
+              "height": 77.5
+            },
+            "type": "bpmn.Activity",
+            "activityType": "task",
+            "subProcess": false,
+            "content": "维保人员接单",
+            "position": {
+              "x": 620,
+              "y": 160
+            },
+            "angle": 0,
+            "icon": "user",
+            "id": "8bf91bcd-4eab-4c45-8c12-4b65e77598d8",
+            "embeds": "",
+            "z": 360,
+            "userType": "role",
+            "roleIds": "number:2001",
+            "userIds": "number:496795433367378",
+            "userExpression": "",
+            "userGroupIds": null,
+            "startExpression": "customerID:=@resourceService.findById(#deviceId)?.customerId;customer:=#customerID != null ? @customerUIService.findCustomersById(#customerID) : null;customerName:=#customer?.customerName;projectList:=@customerProjectUIService.getProjectByDeviceId(#deviceId);project:=(#projectList != null) ? #projectList[0] : null;projectID:=#project?.id;projectName:=#project?.label;device:=@resourceService.findById(#deviceId);modelID:=#device.modelId;modelName:=@resourceUIService.getModelById(#modelID)?.label;deviceSn:=#device.sn;faultId:=#ticket.faultId;fault:=#faultId != null ? @faultKnowledgeUIService.getFaultKnowledgeById(#faultId) : null;faultNo:=#fault?.faultNo;faultPhenomenon:=#ticket.message;",
+            "endExpression": "(#stockOrderItemList != null and #maintenanceTicketTaskId != null) ? @sparePartUIService.batchOutStock(#stockOrderItemList,false, #maintenanceTicketTaskId) : null;",
+            "processMonitors": [
+              {
+                "name": "开始邮件",
+                "eventType": "start",
+                "adviceType": "email"
+              },
+              {
+                "name": "开始短信",
+                "eventType": "start",
+                "adviceType": "message"
+              }
+            ],
+            "attributeDefinitions": [],
+            "templateURL": "../app-oc/index.html#/deviceTask/Inspection",
+            "taskType": "user",
+            "attrs": {
+              "rect": {
+                "opacity": 1
+              },
+              ".inner": {
+                "visibility": "hidden"
+              },
+              "path": {
+                "ref": ".outer"
+              },
+              "image": {
+                "ref": ".outer",
+                "ref-dy": "",
+                "ref-y": 5,
+                "xlink:href": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI0IDI0IiBoZWlnaHQ9IjI0cHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0cHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTIyLDIwLjk5OGgtMWMwLDAtMSwwLTEtMVYxNy41YzAtMC4yNzctMC4yMjQtMC41LTAuNS0wLjVTMTksMTcuMjIzLDE5LDE3LjUgIGwtMC4wMDgsNC4yOTVjMCwwLjYwOS0yLjAxLDIuMjA1LTYuNDkyLDIuMjA1cy02LjQ5Mi0xLjU5Ni02LjQ5Mi0yLjIwNUw2LDE3LjVDNiwxNy4yMjMsNS43NzYsMTcsNS41LDE3UzUsMTcuMjIzLDUsMTcuNXYyLjQ5OCAgYzAsMS0xLDEtMSwxSDNjMCwwLTEsMC0xLTFWMTUuNzVjMC0yLjkyMiwyLjg5Mi01LjQwMSw2LjkzLTYuMzQxYzAsMCwxLjIzNCwxLjEwNywzLjU3LDEuMTA3czMuNTctMS4xMDcsMy41Ny0xLjEwNyAgYzQuMDM4LDAuOTQsNi45MywzLjQxOSw2LjkzLDYuMzQxdjQuMjQ4QzIzLDIwLjk5OCwyMiwyMC45OTgsMjIsMjAuOTk4eiBNMTIuNDc3LDljLTIuNDg1LDAtNC41LTIuMDE1LTQuNS00LjVTOS45OTEsMCwxMi40NzcsMCAgczQuNSwyLjAxNSw0LjUsNC41UzE0Ljk2Miw5LDEyLjQ3Nyw5eiIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+"
+              },
+              "text": {
+                "ref-y": 0.5
+              },
+              ".content": {
+                "html": "维保人员接单"
+              },
+              ".fobj": {
+                "width": 100,
+                "height": 77.5
+              },
+              "div": {
+                "style": {
+                  "width": 100,
+                  "height": 77.5
+                }
+              },
+              ".fobj div": {
+                "style": {
+                  "verticalAlign": "middle",
+                  "paddingTop": 0
+                }
+              },
+              ".outer": {
+                "stroke-width": 1,
+                "stroke-dasharray": "none"
+              },
+              ".sub-process": {
+                "visibility": "hidden",
+                "data-sub-process": ""
+              }
+            }
+          },
+          {
+            "type": "bpmn.Flow",
+            "flowType": "normal",
+            "id": "eec7ee49-d3b4-46dd-b4e8-07d1f8343197",
+            "embeds": "",
+            "source": {
+              "id": "8bf91bcd-4eab-4c45-8c12-4b65e77598d8"
+            },
+            "target": {
+              "id": "aec9d549-3972-45fc-ac58-4d6e1903b2f7"
+            },
+            "z": 361,
+            "vertices": [
+              {
+                "x": 760,
+                "y": 200
+              }
+            ],
+            "attrs": {}
+          },
+          {
+            "type": "bpmn.Flow",
+            "flowType": "normal",
+            "id": "ba11ef1f-1246-4c22-adf0-c23b457ec0a1",
+            "embeds": "",
+            "source": {
+              "id": "c6df1eb7-6697-43a9-ba29-d8ae3428451a"
+            },
+            "target": {
+              "id": "8bf91bcd-4eab-4c45-8c12-4b65e77598d8"
+            },
+            "z": 362,
+            "conditionExpression": "#{priorityCode < 200}",
+            "smooth": false,
+            "manhattan": false,
+            "processMonitors": [],
+            "labels": [
+              {
+                "attrs": {
+                  "text": {
+                    "text": "不是高"
+                  }
+                },
+                "position": 0.5
+              }
+            ],
+            "attrs": {
+              ".marker-source": {
+                "transform": "scale(1)",
+                "fill": "#000000"
+              },
+              ".marker-target": {
+                "transform": "scale(1)"
+              },
+              ".connection": {
+                "stroke": "#000000"
+              }
+            }
+          },
+          {
+            "type": "bpmn.Flow",
+            "flowType": "normal",
+            "id": "52716c18-b131-4f97-94a9-39e8d82e3de4",
+            "embeds": "",
+            "source": {
+              "id": "89ea36b9-4867-4705-a415-bf8169ce120c"
+            },
+            "target": {
+              "id": "8bf91bcd-4eab-4c45-8c12-4b65e77598d8"
+            },
+            "z": 363,
+            "attrs": {}
+          },
+          {
+            "size": {
+              "width": 110,
+              "height": 67.5
+            },
+            "type": "bpmn.Activity",
+            "activityType": "task",
+            "subProcess": false,
+            "content": "自动完成工单",
+            "position": {
+              "x": 540,
+              "y": 320
+            },
+            "angle": 0,
+            "icon": "service",
+            "id": "2eb535b0-22ad-46d5-8c4a-8d4b950c398b",
+            "embeds": "",
+            "z": 364,
+            "userType": "expression",
+            "userExpression": "",
+            "endExpression": "@ticketLogService.saveTicketLog(#ticketNo,'自动完成工单','serviceTask')",
+            "templateURL": "",
+            "roleIds": "number:100",
+            "userIds": "number:496795433367378",
+            "userGroupIds": null,
+            "startExpression": "",
+            "taskType": "service",
+            "processMonitors": [
+              {
+                "name": "开始",
+                "eventType": "start",
+                "adviceType": "message"
+              }
+            ],
+            "attributeDefinitions": [],
+            "attrs": {
+              "rect": {
+                "opacity": 1
+              },
+              ".inner": {
+                "visibility": "hidden"
+              },
+              "path": {
+                "ref": ".outer"
+              },
+              "image": {
+                "ref": ".outer",
+                "ref-dy": "",
+                "ref-y": 5,
+                "xlink:href": "data:image/png;base64,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"
+              },
+              "text": {
+                "ref-y": 0.5
+              },
+              ".content": {
+                "html": "自动完成工单"
+              },
+              ".fobj": {
+                "width": 110,
+                "height": 67.5
+              },
+              "div": {
+                "style": {
+                  "width": 110,
+                  "height": 67.5
+                }
+              },
+              ".fobj div": {
+                "style": {
+                  "verticalAlign": "middle",
+                  "paddingTop": 0
+                }
+              },
+              ".outer": {
+                "stroke-width": 1,
+                "stroke-dasharray": "none"
+              },
+              ".sub-process": {
+                "visibility": "hidden",
+                "data-sub-process": ""
+              }
+            }
+          },
+          {
+            "type": "bpmn.Flow",
+            "flowType": "normal",
+            "id": "4c8b3aa0-45b0-43a8-9690-aa6ed051cfd7",
+            "embeds": "",
+            "source": {
+              "id": "2eb535b0-22ad-46d5-8c4a-8d4b950c398b"
+            },
+            "target": {
+              "id": "aec9d549-3972-45fc-ac58-4d6e1903b2f7"
+            },
+            "z": 365,
+            "vertices": [
+              {
+                "x": 860,
+                "y": 350
+              }
+            ],
+            "attrs": {}
+          },
+          {
+            "type": "bpmn.Flow",
+            "flowType": "normal",
+            "id": "5404dc12-5881-473c-b795-37a5a1308579",
+            "embeds": "",
+            "source": {
+              "id": "a9b3d8b9-7da3-4984-86af-863044918684"
+            },
+            "target": {
+              "id": "2eb535b0-22ad-46d5-8c4a-8d4b950c398b"
+            },
+            "z": 366,
+            "attrs": {}
+          }
+        ]
+      }
+    },
+    {
+      "name": "设备维修",
+      "content": "device",
+      "view": {
+        "type": "bpmn",
+        "cells": [
+          {
+            "type": "bpmn.Event",
+            "size": {
+              "width": 70,
+              "height": 70
+            },
+            "eventType": "start",
+            "position": {
+              "x": 30,
+              "y": 150
+            },
+            "angle": 0,
+            "id": "9ce8d916-6641-43d2-ad82-e7d47e8aa94c",
+            "embeds": "",
+            "z": 171,
+            "startExpression": "ticket:=@ticketTaskService.getTicket(#ticketNo);ticketNo:=#ticket.ticketNo;ticketCommitTime:=#ticket.commitTime;ticketCreatorID:=#ticket.creatorId;ticketCreatorName:=#ticket.creatorName;priorityCode:=#ticket.priorityCode;isUnderWarranty:=@customerProjectUIService.isUnderWarranty(#deviceId);",
+            "endExpression": "@ticketLogService.saveTicketLog(#ticketNo,\"开始\",\"startEvent\")",
+            "icon": "none",
+            "attributeDefinitions": [],
+            "attrs": {
+              ".body": {
+                "fill": "#13c865"
+              },
+              ".inner": {
+                "visibility": "hidden"
+              },
+              ".label": {
+                "text": "开始"
+              },
+              "text": {
+                "text": "开始"
+              },
+              "rect": {
+                "opacity": 1
+              }
+            }
+          },
+          {
+            "type": "bpmn.Event",
+            "size": {
+              "width": 70,
+              "height": 70
+            },
+            "eventType": "end",
+            "position": {
+              "x": 450,
+              "y": 140
+            },
+            "angle": 0,
+            "id": "aec9d549-3972-45fc-ac58-4d6e1903b2f7",
+            "embeds": "",
+            "z": 366,
+            "startExpression": "@ticketLogService.saveTicketLog(#ticketNo,'结束','endEvent')",
+            "endExpression": "",
+            "icon": "none",
+            "attributeDefinitions": [],
+            "attrs": {
+              ".body": {
+                "fill": "#ff0000"
+              },
+              ".outer": {
+                "stroke-width": 5
+              },
+              ".inner": {
+                "visibility": "hidden"
+              },
+              ".label": {
+                "text": "结束"
+              },
+              "text": {
+                "text": "结束"
+              },
+              "rect": {
+                "opacity": 1
+              }
+            }
+          },
+          {
+            "size": {
+              "width": 100,
+              "height": 77.5
+            },
+            "type": "bpmn.Activity",
+            "activityType": "task",
+            "subProcess": false,
+            "content": "维保人员接单",
+            "position": {
+              "x": 220,
+              "y": 150
+            },
+            "angle": 0,
+            "icon": "user",
+            "id": "8bf91bcd-4eab-4c45-8c12-4b65e77598d8",
+            "embeds": "",
+            "z": 374,
+            "userType": "role",
+            "roleIds": "number:2001",
+            "userIds": "number:496795433367378",
+            "userExpression": "",
+            "userGroupIds": null,
+            "startExpression": "device:=@resourceService.findById(#deviceId);customerID:=#device?.customerId;customer:=#customerID != null ? @customerUIService.findCustomersById(#customerID) : null;customerName:=#customer?.customerName;project:=@projectUIService.findProjectById(#device?.projectId);projectID:=#project?.id;projectName:=#project?.projectName;modelID:=#device.modelId;modelName:=@resourceUIService.getModelById(#modelID)?.label;deviceSn:=#device.sn;faultId:=#ticket.faultId;fault:=#faultId != null ? @faultKnowledgeUIService.getFaultKnowledgeById(#faultId) : null;faultNo:=#fault?.faultNo;faultPhenomenon:=#ticket.message;noticeConfig:=@configUIService.getGlobalConfigByGroupAndKey('NotificationCode','');phoneProperty:=(#noticeConfig != null ? getJsonValue(#noticeConfig.value,'type','phone','value') : null);phone:=(#phoneProperty != null ? getProperty(#device.values, #phoneProperty) : null);sendPhone:=(#phone != null ? @noticeService.sendTicketSms({#phone},'ticket_sms',#ticketNo,#ticket.title,'有设备维修') : null);emailProperty:= (#noticeConfig != null ? getJsonValue(#noticeConfig.value,'type','email','value') : null);email:=(#emailProperty != null ? getProperty(#device.values, #emailProperty) : null);#email != null ? @noticeService.sendTicketEmail({#email},'ticket_service_email',#ticketNo,#ticket.title,'有设备维修') : null;",
+            "endExpression": "(#stockOrderItemList != null and #maintenanceTicketTaskId != null) ? @sparePartUIService.batchOutStock(#stockOrderItemList,false, #maintenanceTicketTaskId) : null;",
+            "processMonitors": [
+              {
+                "name": "开始邮件",
+                "eventType": "start",
+                "adviceType": "email"
+              },
+              {
+                "name": "开始短信",
+                "eventType": "start",
+                "adviceType": "message"
+              }
+            ],
+            "attributeDefinitions": [],
+            "templateURL": "../app-oc/index.html#/deviceTask/Inspection",
+            "taskType": "user",
+            "attrs": {
+              "rect": {
+                "opacity": 1
+              },
+              ".inner": {
+                "visibility": "hidden"
+              },
+              "path": {
+                "ref": ".outer"
+              },
+              "image": {
+                "ref": ".outer",
+                "ref-dy": "",
+                "ref-y": 5,
+                "xlink:href": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI0IDI0IiBoZWlnaHQ9IjI0cHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0cHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTIyLDIwLjk5OGgtMWMwLDAtMSwwLTEtMVYxNy41YzAtMC4yNzctMC4yMjQtMC41LTAuNS0wLjVTMTksMTcuMjIzLDE5LDE3LjUgIGwtMC4wMDgsNC4yOTVjMCwwLjYwOS0yLjAxLDIuMjA1LTYuNDkyLDIuMjA1cy02LjQ5Mi0xLjU5Ni02LjQ5Mi0yLjIwNUw2LDE3LjVDNiwxNy4yMjMsNS43NzYsMTcsNS41LDE3UzUsMTcuMjIzLDUsMTcuNXYyLjQ5OCAgYzAsMS0xLDEtMSwxSDNjMCwwLTEsMC0xLTFWMTUuNzVjMC0yLjkyMiwyLjg5Mi01LjQwMSw2LjkzLTYuMzQxYzAsMCwxLjIzNCwxLjEwNywzLjU3LDEuMTA3czMuNTctMS4xMDcsMy41Ny0xLjEwNyAgYzQuMDM4LDAuOTQsNi45MywzLjQxOSw2LjkzLDYuMzQxdjQuMjQ4QzIzLDIwLjk5OCwyMiwyMC45OTgsMjIsMjAuOTk4eiBNMTIuNDc3LDljLTIuNDg1LDAtNC41LTIuMDE1LTQuNS00LjVTOS45OTEsMCwxMi40NzcsMCAgczQuNSwyLjAxNSw0LjUsNC41UzE0Ljk2Miw5LDEyLjQ3Nyw5eiIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+"
+              },
+              "text": {
+                "ref-y": 0.5
+              },
+              ".content": {
+                "html": "维保人员接单"
+              },
+              ".fobj": {
+                "width": 100,
+                "height": 77.5
+              },
+              "div": {
+                "style": {
+                  "width": 100,
+                  "height": 77.5
+                }
+              },
+              ".fobj div": {
+                "style": {
+                  "verticalAlign": "middle",
+                  "paddingTop": 0
+                }
+              },
+              ".outer": {
+                "stroke-width": 1,
+                "stroke-dasharray": "none"
+              },
+              ".sub-process": {
+                "visibility": "hidden",
+                "data-sub-process": ""
+              }
+            }
+          },
+          {
+            "type": "bpmn.Flow",
+            "flowType": "normal",
+            "id": "380caf35-b610-4c57-b548-5dfea703b445",
+            "embeds": "",
+            "source": {
+              "id": "8bf91bcd-4eab-4c45-8c12-4b65e77598d8"
+            },
+            "target": {
+              "id": "aec9d549-3972-45fc-ac58-4d6e1903b2f7"
+            },
+            "z": 375,
+            "attrs": {}
+          },
+          {
+            "type": "bpmn.Flow",
+            "flowType": "normal",
+            "id": "f92471eb-10cf-4f6b-81c9-9107117581cc",
+            "embeds": "",
+            "source": {
+              "id": "9ce8d916-6641-43d2-ad82-e7d47e8aa94c"
+            },
+            "target": {
+              "id": "8bf91bcd-4eab-4c45-8c12-4b65e77598d8"
+            },
+            "z": 376,
+            "attrs": {}
+          }
+        ],
+        "gridSize": 10,
+        "width": 1200,
+        "height": 700
+      }
+    }
+  ]
+}

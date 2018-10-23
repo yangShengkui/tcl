@@ -1,0 +1,117 @@
+<!--添加解析协议模态框-->
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">协议信息</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal" name="protocolForm">
+          <div class="form-group col-sm-6">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">接入协议：</span>
+            </label>
+            <div class="col-sm-8">
+              <select required="required" ng-disabled="protocolObj.id > 0" ng-change="protocolObj.analysisProtocol = '';" ng-model="protocolObj.accessProtocol" ng-options="value.protocol as value.protocol for value in protocols" class="form-control input-sm">
+                <option value="">请选择</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group col-sm-6">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span><span class="ng-binding">解析协议：</span>
+            </label>
+            <div class="col-sm-8">
+              <select required="required" ng-model="protocolObj.analysisProtocol" ng-change="analysisChange();" ng-disabled="protocolObj.id > 0 || !protocolObj.accessProtocol" ng-options="value.label as value.label for value in resolutionProtocols | filter:{ accessProtocol : protocolObj.accessProtocol}"  class="form-control input-sm">
+                <option value="">请选择</option>
+              </select>
+              <span ng-show="errorPoint.name == 'analysisProtocol'" style="font-size: 12px;"  class="help-block text-danger text-muted" ng-bind="errorPoint.content" ng-cloak></span>
+            </div>
+          </div>
+        </form>
+        <div class="box-body col-sm-12  table-responsive margin-bottom-20 bg-write" ng-class="{true: 'table-overflow'}[protocolObj.accessConfigs.length > 3]">
+          <table class="table table-hover dataTable">
+            <thead>
+              <tr role="row">
+                <th>数据项</th>
+                <th>数据类型</th>
+                <th ng-if="protocolObj.accessProtocol == 'modbus' || protocolObj.accessProtocol == 'flexem'">寄存器类型</th>
+                <th ng-if="protocolObj.accessProtocol == 'modbus'">起始地址</th>
+                <th ng-if="protocolObj.accessProtocol == 'modbus'">寄存器个数</th>
+                <th ng-if="protocolObj.accessProtocol == 'flexem'">主地址</th>
+                <th ng-if="protocolObj.accessProtocol == 'flexem'">子地址</th>
+                <th ng-if="protocolObj.accessProtocol == 'flexem'">BD地址</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody ng-repeat="kpi in protocolObj.accessConfigs">
+              <tr>
+                <td>{{kpi.kpiName}}</td>
+                <td>
+                  <select ng-model="kpi.dataTypeId" class="form-control no-pad input-sm "  ng-init="dataByte(kpi); "  ng-change="dataByte(kpi);" ng-options="value.id as value.name for value in allDataTypes">
+                    <option value="">请选择</option>
+                  </select>
+                </td>
+
+                <td ng-show="protocolObj.accessProtocol == 'modbus'">
+                  <select ng-model="kpi.registers" class="form-control no-pad input-sm "   ng-options="regs.id as regs.label for regs in resolutionProtocolDic[protocolObj.analysisProtocol].regs">
+                    <option value="">请选择</option>
+                  </select>
+                </td>
+                <td ng-show="protocolObj.accessProtocol == 'flexem'">
+                  <select ng-model="kpi.registers" class="form-control no-pad input-sm " ng-options="regs.label as regs.label for regs in regsKpiList[kpi.kpiId]">
+                    <option value="">请选择</option>
+                  </select>
+                </td>
+                <td ng-if="protocolObj.accessProtocol == 'modbus'">
+                  <input type="text" ng-model="kpi.config.startPoint" class="form-control padding-left-5 no-pad input-sm" />
+                </td>
+                <td ng-if="protocolObj.accessProtocol == 'modbus'">
+                  <input type="text" ng-model="kpi.config.length" class="form-control padding-left-5 no-pad input-sm" />
+                </td>
+                <td ng-if="protocolObj.accessProtocol == 'flexem'">
+                  <input type="text" ng-model="kpi.config.mainAddr" class="form-control padding-left-5 no-pad input-sm" />
+                </td>
+                <td ng-if="protocolObj.accessProtocol == 'flexem'">
+                  <input type="text" ng-model="kpi.config.subAddr" class="form-control padding-left-5 no-pad input-sm" />
+                </td>
+                <td ng-if="protocolObj.accessProtocol == 'flexem'">
+                  <input type="text" ng-model="kpi.config.bdAddr" class="form-control padding-left-5 no-pad input-sm" />
+                </td>
+                <td>
+                  <button  class="btn btn-default" ng-click="optionExpand(kpi);">
+                    <span class="hidden-xs"> 高级</span>
+                  </button>
+                </td>
+              </tr>
+              <tr ng-show="expandObj[kpi.kpiId].option">
+                <td colspan="7">
+                  <div class="col-sm-3" >
+                    <label>读表达式</label>
+                    <input  class="form-control input-sm" ng-model="kpi.readExpression">
+                  </div>
+                  <div class="col-sm-3" >
+                    <label>写表达式</label>
+                    <input   class="form-control input-sm" ng-model="kpi.writeExpression">
+                  </div>
+                  <div class="col-sm-3" ng-if="expandObj[kpi.kpiId].serialNumStatus">
+                    <label>小数位数</label>
+                    <input type="number" min="0" max="9" oninput="if(value>9)value=9"  class="form-control input-sm" ng-model="kpi.config.scale">
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="protocolForm.$invalid || (errorPoint.name)" ng-click="saveProtocol()" disabled="disabled">
+          确定
+        </button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

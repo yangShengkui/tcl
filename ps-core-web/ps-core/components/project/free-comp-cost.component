@@ -1,0 +1,342 @@
+<config injector="$q,$timeout,viewFlexService,$interval, kpiDataService"
+></config>
+<properties>
+    <script type="text/javascript">
+    function properties () {
+      return [{
+        label: "基本设定",
+        attributes: {
+          height: ["高度", "input", 200]
+        }
+      }];
+    }
+
+    export {properties}
+    </script>
+</properties>
+<template>
+    <div id="cost">
+        <div id="cost_center">
+            <div id="cost_left">
+                <div class="cost_file">
+                    <div class="cost_file_content">
+                        <span>毛坯采购件</span>
+                        <div>{{objData.ps_gross_purchase}}</div>
+                    </div>
+                </div>
+                <div class="cost_file">
+                    <div class="cost_file_content">
+                        <span>生产计划数</span>
+                        <div>{{objData.ps_produce_plan}}</div>
+                    </div>
+                </div>
+                <div class="cost_file">
+                    <div class="cost_file_content">
+                        <span>可供货天数</span>
+                        <div>{{objData.ps_supply_days}}</div>
+                    </div>
+                </div>
+            </div>
+            <div id="cost_top">
+                <div class="cost-tp set_h">
+                    <div>
+                        <label>{{objData.pp_insert_online}}</label>
+                        <span></span>
+                    </div>
+                    <div>
+                        <label>{{objData.pp_cut_online}}</label>
+                        <span></span>
+                    </div>
+                    <div>
+                        <label>{{objData.pp_gearwheel_online}}</label>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="cost-tp set_h"></div>
+                <div class="cost-tp set_h">
+                    <div class="cost-tp-total">
+                        <div id="canvas1">
+                            <span>{{objData.pp_insert_offline}}</span>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="txt">差壳线</div>
+                    <div class="cost-tp-total">
+                        <div id="canvas2">
+                            <span>{{objData.pp_cut_offline}}</span>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="txt">减壳线</div>
+                    <div class="cost-tp-total">
+                        <div id="canvas3">
+                            <span>{{objData.pp_gearwheel_offline}}</span>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="txt">齿轮线</div>
+                </div>
+                <div class="cost-tp set_h"></div>
+                <div class="cost-tp set_h">
+                    <div>
+                        <label>{{objData.pp_assembly_online}}</label>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="cost-tp">
+                    <div id="zhuzi">
+                        <span>{{objData.pp_assembly_offline}}</span>
+                    </div>
+                    <span>装配线</span>
+                </div>
+                <div class="cost-tp set_h"></div>
+                <div class="cost-tp set_h">
+                    <div class="content">
+                        <span>装配采购件</span>
+                        <div>{{objData.ps_assembly_purchase}}</div>
+                    </div>
+                </div>
+            </div>
+            <div id="cost_bottom">
+                <div class="cost_bot">
+                    <div id="canvas5">
+                        <span>{{objData.pp_end_synthetic}}</span>
+                    </div>
+                    <span>大总成</span>
+                </div>
+                <div class="cost_bot">
+                    <div class="set_h"></div>
+                </div>
+                <div class="cost_bot">
+                    <div class="set_h">
+                        <span>{{objData.pp_wait_synthetic}}</span>
+                    </div>
+                    <span>待总成</span>
+                </div>
+                <div class="cost_bot">
+                    <div class="set_h"></div>
+                </div>
+                <div class="cost_bot">
+                    <div class="set_h">
+                        <span>{{objData.pp_transport}}</span>
+                    </div>
+                    <span>运输</span>
+                </div>
+                <div class="cost_bot">
+                    <div class="set_h"></div>
+                </div>
+            </div>
+            <div id="cost_right">
+                <div id="canvas4">
+                    <span>{{objData.pp_in_storehouse}}</span>
+                </div>
+                <span>成品库</span>
+            </div>
+        </div>
+    </div>
+</template>
+<script type="text/javascript">
+export default function (q, timeout, viewFlexService, interval, kpiDataService) {
+  return {
+    scope: {
+      option: "="
+    },
+    link (scope, element, attr, ngModel) {
+      scope.objData = {
+        "ps_gross_purchase": 80,
+        "ps_assembly_purchase": 90,
+        "ps_produce_plan": 60,
+        "ps_supply_days": 100,
+        "pp_insert_online": 100,
+        "pp_cut_online": 100,
+        "pp_gearwheel_online": 230,
+        "pp_assembly_online": 230,
+        "pp_insert_offline": 110,
+        "pp_cut_offline": 50,
+        "pp_gearwheel_offline": 20,
+        "pp_assembly_offline": 100,
+        "pp_in_storehouse": 230,
+        "pp_transport": 230,
+        "pp_wait_synthetic": 230,
+        "pp_end_synthetic": 230
+      };
+      let kpiCodes = {
+        "148": "ps_gross_purchase",
+        "149": "ps_assembly_purchase",
+        "150": "ps_produce_plan",
+        "151": "ps_supply_days",
+        "152": "pp_insert_online",
+        "153": "pp_cut_online",
+        "154": "pp_gearwheel_online",
+        "155": "pp_assembly_online",
+        "156": "pp_insert_offline",
+        "157": "pp_cut_offline",
+        "158": "pp_gearwheel_offline",
+        "159": "pp_assembly_offline",
+        "160": "pp_in_storehouse",
+        "161": "pp_transport",
+        "162": "pp_wait_synthetic",
+        "163": "pp_end_synthetic"
+      }, arr = [{
+        "label": "ps_gross_purchase",
+        "nodeId": "403471445038759",
+        "kpiCode": "148",
+      }, {
+        "label": "ps_assembly_purchase",
+        "nodeId": "403471445038759",
+        "kpiCode": "149",
+      }, {
+        "label": "ps_produce_plan",
+        "nodeId": "403471445038759",
+        "kpiCode": "150",
+      }, {
+        "label": "ps_supply_days",
+        "nodeId": "403471445038759",
+        "kpiCode": "151",
+      }, {
+        "label": "pp_insert_online",
+        "nodeId": "403471445038759",
+        "kpiCode": "152",
+      }, {
+        "label": "pp_cut_online",
+        "nodeId": "403471445038759",
+        "kpiCode": "153",
+      }, {
+        "label": "pp_gearwheel_online",
+        "nodeId": "403471445038759",
+        "kpiCode": "154",
+      }, {
+        "label": "pp_assembly_online",
+        "nodeId": "403471445038759",
+        "kpiCode": "155",
+      }, {
+        "label": "pp_insert_offline",
+        "nodeId": "403471445038759",
+        "kpiCode": "156",
+      }, {
+        "label": "pp_cut_offline",
+        "nodeId": "403471445038759",
+        "kpiCode": "157",
+      }, {
+        "label": "pp_gearwheel_offline",
+        "nodeId": "403471445038759",
+        "kpiCode": "158",
+      }, {
+        "label": "pp_assembly_offline",
+        "nodeId": "403471445038759",
+        "kpiCode": "159",
+      }, {
+        "label": "pp_in_storehouse",
+        "nodeId": "403471445038759",
+        "kpiCode": "160",
+      }, {
+        "label": "pp_transport",
+        "nodeId": "403471445038759",
+        "kpiCode": "161",
+      }, {
+        "label": "pp_wait_synthetic",
+        "nodeId": "403471445038759",
+        "kpiCode": "162",
+      }, {
+        "label": "pp_end_synthetic",
+        "nodeId": "403471445038759",
+        "kpiCode": "163",
+      }], fn = Element.prototype.getBoundingClientRect;
+      Element.prototype.getBoundingClientRect = function () {
+        var obj = fn.call(this);
+        obj.width = this.clientWidth;
+        obj.height = this.clientHeight;
+        return obj;
+      };
+
+      let w1, w2, w3, h1, h2, r1;
+
+      function getValue () {
+        let defer = q.defer();
+        kpiDataService.getRealTimeKpiData([403471445038759], arr.map(nk => {
+          return nk.kpiCode * 1
+        }), ret => {
+          if (ret.code == '0') {
+            defer.resolve(ret.data);
+          }
+        });
+        return defer.promise;
+      };
+
+      function getJS () {
+        let defer = q.defer();
+        if (window['House'] && window['TextWave'] && window['_Render']) {
+          defer.resolve();
+        } else {
+          window['require'](['../ps-core/toolkit/house.js', "../ps-core/toolkit/wave.js", "../ps-core/toolkit/zhuti.js"], function () {
+            defer.resolve();
+          }, function (err) {
+            console.log(err);
+          });
+        }
+        return defer.promise;
+      }
+
+      function renderAll () {
+        getJS().then(() => {
+          w1 = w1 || new TextWave({
+            id: 'canvas1',
+            percent: '0.5',
+            text: '200'
+          });
+          w2 = w2 || new TextWave({
+            id: 'canvas2',
+            percent: '0.5',
+            text: '134'
+          });
+          w3 = w3 || new TextWave({
+            id: 'canvas3',
+            percent: '0.5',
+            text: '229'
+          });
+          h1 = h1 || new House({
+            id: 'canvas4',
+            percent: '0.5',
+            text: '229'
+          });
+          h2 = h2 || new House({
+            id: 'canvas5',
+            percent: '0.5',
+            text: '2290'
+          });
+          r1 = r1 || new _Render({
+            id: 'zhuzi',
+            zgd: 5 / 6,
+            zdd: 2 / 6,
+            sjd: 4 / 6
+          });
+          w1.action();
+          w2.action();
+          w3.action();
+          h2.action();
+          h1.action();
+          r1.drawZhuti();
+        });
+        getValue().then(d => {
+          d.forEach(item => {
+            scope.objData[kpiCodes[item.kpiCode]] = item.value;
+          });
+        })
+      }
+      function render () {
+        getValue().then(d => {
+          d.forEach(item => {
+            scope.objData[kpiCodes[item.kpiCode]] = item.value;
+          });
+        })
+      }
+
+      renderAll();
+      interval(render, 3 * 60 * 1000);
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+
+</style>

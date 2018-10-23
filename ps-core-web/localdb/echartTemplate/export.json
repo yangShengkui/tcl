@@ -1,0 +1,1058 @@
+{
+  "version": "V_2",
+  "groups": [
+    {
+      "id": "0",
+      "label": "导出",
+      "path": "index",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "控制板1",
+            "type": "block",
+            "source": "BLOCK",
+            "style": {
+              "padding": "10px",
+              "margin": "5px 0",
+              "background-color": "#3c8dbc"
+            },
+            "advance": {
+              "expression": {}
+            },
+            "children": [
+              {
+                "type": "column",
+                "col": 12,
+                "children": [
+                  {
+                    "label": "文字",
+                    "type": "text",
+                    "source": "TEXT",
+                    "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                    "data": {
+                      "applied": false,
+                      "kpi": [],
+                      "modelType": 300,
+                      "resfilltype": "parameter",
+                      "resource": [],
+                      "multipleCi": false,
+                      "multipleKpi": false,
+                      "series": {
+                        "manual": "拷贝图标样式到剪切板",
+                        "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                      },
+                      "modelDisable": true
+                    },
+                    "style": {
+                      "font-size": "16px",
+                      "font-weight": "bold",
+                      "text-align": "left",
+                      "color": "rgb(255, 255, 255)"
+                    },
+                    "advance": {
+                      "getfunction": "kpiDataService.getValueList",
+                      "category": "ci",
+                      "condition": [
+                        "kpi",
+                        "{object:kpiQueryModel}"
+                      ],
+                      "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"批量导入，导出视图及组件\")\n        }\n    }\n}"
+                    },
+                    "url": "images/map/map1.png",
+                    "template": [
+                      {
+                        "type": "text",
+                        "style": {
+                          "margin": "auto",
+                          "padding": "0",
+                          "font-size": "10px",
+                          "font-weight": "bold",
+                          "color": "#333"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "style": {
+                          "margin": "auto",
+                          "padding": "0",
+                          "font-size": "16px",
+                          "font-weight": "bold",
+                          "color": "#666",
+                          "text-align": "center"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "style": {
+                          "width": "60px",
+                          "height": "60px",
+                          "margin": "auto",
+                          "padding": "0",
+                          "font-size": "12px",
+                          "line-height": "60px",
+                          "font-weight": "bold",
+                          "color": "#fff",
+                          "text-align": "center",
+                          "border-radius": "50%",
+                          "background-color": "#3c8dbc"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "style": {
+                          "width": "140px",
+                          "height": "60px",
+                          "margin": "auto",
+                          "padding": "0",
+                          "font-size": "12px",
+                          "line-height": "60px",
+                          "font-weight": "bold",
+                          "color": "#fff",
+                          "text-align": "center",
+                          "border-radius": "4px",
+                          "background-color": "#3c8dbc"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "style": {
+                          "width": "140px",
+                          "height": "60px",
+                          "margin": "auto",
+                          "padding": "0",
+                          "font-size": "12px",
+                          "line-height": "60px",
+                          "font-weight": "bold",
+                          "color": "#444",
+                          "text-align": "center",
+                          "border-radius": "4px",
+                          "background-color": "#eee"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "style": {
+                          "margin": "auto",
+                          "padding": "5px",
+                          "font-size": "18px",
+                          "font-weight": "bold",
+                          "color": "#444",
+                          "text-align": "center",
+                          "border-radius": "0px",
+                          "background-color": "#eee"
+                        }
+                      }
+                    ],
+                    "id": "bPQNkzAw4Hi6tk3ZnkdFQEarMFJmQWGh"
+                  }
+                ],
+                "id": "ebiB8xj7YaJ3DWi8HPYZpr2SPRBEQzny"
+              }
+            ],
+            "url": "images/map/map1.png",
+            "template": [
+              {
+                "type": "css",
+                "style": {
+                  "padding": "10px",
+                  "margin": "5px",
+                  "border": "1px solid #ccc",
+                  "background-color": "#fff"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "padding": "5px",
+                  "margin": "5px",
+                  "border": "1px solid #ccc",
+                  "background-color": "#fff",
+                  "border-top": "0"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "margin": "5px",
+                  "padding": "5px",
+                  "background-color": "#efdcaf",
+                  "border": "1px solid #c2ad7a"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "margin": "5px",
+                  "padding": "5px",
+                  "background-color": "#f0c0a4",
+                  "border": "1px solid #e5671b"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "margin": "5px",
+                  "padding": "5px",
+                  "background-color": "#ffb3b3",
+                  "border": "1px solid #db2222"
+                }
+              }
+            ],
+            "id": "KCmMXQbdaTHbn763yfRTPtn78cepK6Ys"
+          },
+          {
+            "label": "伪TAB样式",
+            "type": "faketab",
+            "source": "FAKETAB",
+            "advance": {
+              "getfunction": "kpiDataService.getValueList",
+              "category": "ci",
+              "condition": [
+                "kpi",
+                "{object:kpiQueryModel}"
+              ],
+              "expression": "expression = {\n  \"on\" : {\n    \"init\" : function(event){\n      event.target.render([{\n          id : \"index\",\n          label : \"导出\"\n      },{\n          id : \"detail\",\n          label : \"导入\"\n      }]);\n    },\n    \"click\" : function(event){\n      var target = event.target;\n      var value = event.value;\n      target.navigateTo(value.id, {}, \"self\");\n    }\n  },\n  \"format\" : {\n    \"id\" : \"id\",\n    \"label\" : \"label\"\n  }\n}",
+              "customCategory": ""
+            },
+            "style": {
+              "color": "#fff",
+              "background-color": "#3c8dbc",
+              "margin": "5px"
+            },
+            "template": [
+              {
+                "label": "普通样式",
+                "type": "faketab",
+                "source": "FAKETAB",
+                "advance": {
+                  "getfunction": "kpiDataService.getValueList",
+                  "category": "ci",
+                  "condition": [
+                    "kpi",
+                    "{object:kpiQueryModel}"
+                  ],
+                  "expression": "{\n  \"on\" : {\n    \"init\" : function(event){\n      var tabs = [];\n      for(var i=0; i<4; i++){\n        tabs.push({\n          id : i,\n        \tlabel : \"标签页\" + i\n        })\n      }\n      event.target.render(tabs);\n    },\n    \"click\" : function(event){\n      console.log(event);\n    }\n  },\n  \"format\" : {\n    \"id\" : \"id\",\n    \"label\" : \"label\"\n  }\n}"
+                },
+                "style": {
+                  "color": "#fff",
+                  "background-color": "#3c8dbc",
+                  "margin": "5px"
+                },
+                "tabInx": 0,
+                "url": "images/map/map1.png"
+              },
+              {
+                "label": "所有项目",
+                "type": "faketab",
+                "source": "FAKETAB",
+                "advance": {
+                  "getfunction": "kpiDataService.getValueList",
+                  "category": "ci",
+                  "condition": [
+                    "kpi",
+                    "{object:kpiQueryModel}"
+                  ],
+                  "expression": "{\n  \"on\" : {\n    \"init\" : function(event){\n      event.target.getDomainsByFilter({\n        modelIds : [302]\n      }, function(projects){\n        event.target.render(projects);\n      })\n    },\n    \"click\" : function(event){\n      console.log(event);\n    }\n  },\n  \"format\" : {\n    \"id\" : \"id\",\n    \"label\" : \"label\"\n  }\n}"
+                },
+                "style": {
+                  "color": "#fff",
+                  "background-color": "#3c8dbc",
+                  "margin": "5px"
+                },
+                "tabInx": 0,
+                "url": "images/map/map1.png"
+              }
+            ],
+            "id": "NdGHte2AZApEXNBBjJSKATMNSWQPR4hc",
+            "tabInx": 0
+          },
+          {
+            "label": "控制板1",
+            "type": "block",
+            "source": "BLOCK",
+            "style": {
+              "padding": "5px",
+              "border": "1px solid #ccc",
+              "background-color": "#fff",
+              "border-top": "0"
+            },
+            "advance": {
+              "expression": {}
+            },
+            "children": [
+              {
+                "type": "column",
+                "col": 12,
+                "children": [
+                  {
+                    "type": "row",
+                    "source": "ROW",
+                    "parameters": {
+                      "alignment": "bootstrap"
+                    },
+                    "style": {},
+                    "children": [
+                      {
+                        "type": "column",
+                        "children": [
+                          {
+                            "label": "控制板1",
+                            "type": "block",
+                            "source": "BLOCK",
+                            "style": {
+                              "padding": "20px",
+                              "margin": "5px",
+                              "border": "1px solid #ccc",
+                              "background": "#fff",
+                              "box-shadow": "1px 1px 10px 1px rgba(0,0,0,.1)"
+                            },
+                            "children": [
+                              {
+                                "type": "column",
+                                "col": 12,
+                                "children": [
+                                  {
+                                    "label": "控件组",
+                                    "type": "ctrlgroup",
+                                    "source": "CTRLGROUP",
+                                    "advance": {
+                                      "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var config = {};\n      var viewData = {};\n      var viewFormat = {\n          id : \"viewId\",\n          label : \"viewTitle\"\n      };\n      var defaultFormat = {\n          id : \"id\",\n          label : \"label\"\n      };\n      var viewOption = [{\n        id : \"dashboard\",\n        label : \"仪表板\"\n      },{\n        id : \"configure\",\n        label : \"组态视图\"\n      },{\n        id : \"configAlert\",\n        label : \"告警视图\"\n      },{\n        id : \"designView\",\n        label : \"分析视图\"\n      }];\n      var configOption = [{\n        id : \"ConfigurationCommon\",\n        label : \"通用组件\"\n      },{\n        id : \"ConfigurationCustom\",\n        label : \"自定义组件\"\n      },{\n        id : \"ConfigurationViewBG\",\n        label : \"组件背景\"\n      }]\n      var render = function(){\n        var run = function(options){\n          var ctrlGroups = [[{\n            type : \"label\",\n            value : \"导出内容\",\n            class : \"col-md-2\"\n          },{\n            type : \"select\",\n            value : config.dataType,\n            colSpan : 1,\n            on : {\n              change : function(elem){\n                config.dataType = elem.value.id;\n                if(config.dataType == \"view\"){\n                    config.filter = \"dashboard\";\n                    config.selectView = [];\n                } else {\n                    config.filter = \"ConfigurationCommon\";\n                    config.selectView = [];\n                }\n                render();\n              }\n            },\n            options : [{\n              id : \"view\",\n              label : \"视图\"\n            },{\n              id : \"config\",\n              label : \"组件配置项\"\n            }]\n          }], [{\n            type : \"label\",\n            value : \"类型\",\n            class : \"col-md-2\"\n          },{\n            type : \"select\",\n            value : config.filter,\n            colSpan : 1,\n            on : {\n              change : function(elem){\n                config.filter = elem.value.id;\n                render();\n              }\n            },\n            options : config.dataType == \"view\" ? viewOption : configOption\n          }],[{\n            type : \"label\",\n            value : \"视图类型\",\n            class : \"col-md-2\"\n          },{\n            type : \"multiSelect\",\n            value : config.selectView,\n            colSpan : 1,\n            on : {\n              change : function(elem){\n                config.selectView = elem.values;\n              }\n            },\n            options : options,\n            format : config.dataType == \"view\" ? viewFormat : defaultFormat\n          }],[{\n            type : \"label\",\n            value : \"后缀\",\n            class : \"col-md-2\"\n          },{\n            type : \"input\",\n            value : config.perfix,\n            colSpan : 1,\n            on : {\n              change : function(elem){\n                config.perfix = elem.value;\n                render();\n              }\n            },\n            options : options,\n            format : config.dataType == \"view\" ? viewFormat : defaultFormat\n          }],\n            [{\n              type : \"button\",\n              value : \"导出JSON\",\n              icon : \"glyphicon glyphicon-export\",\n              btnclass : \"btn btn-primary\",\n              class : \"col-md-4\",\n              on : {\n                click : function(elem){\n                  delete config.value;\n                  target.saveEditorStatus(\"COPYVIEW\", config);\n                  global.fire(\"renderCode\");\n                }\n              }\n            }]\n          ];\n          event.target.render(ctrlGroups);\n        }\n        if(config.dataType == \"view\"){\n          if(!viewData[config.filter]){\n            target.getManagedViewsByTypeAndRole(config.filter, function(views){\n              viewData[config.filter] = views\n              run(viewData[config.filter]);\n            });\n          } else {\n            run(viewData[config.filter]);\n          }\n        } else {\n          if(!viewData[config.filter]){\n            target.getConfigsByGroupName(config.filter, function(configs){\n              viewData[config.filter] = configs\n              run(viewData[config.filter]);\n            });\n          } else {\n            run(viewData[config.viewType]);\n          }\n        }\n      };\n      target.getEditorStatus(\"COPYVIEW\", function(data){\n        config = ({\n            selectView : [],\n          perfix : \"_duplicate\",\n          dataType : \"view\",\n          filter : \"dashboard\"\n        }).$extension(data || {});\n        target.setValue(\"config\", config);\n        render();\n      });\n    }\n  }\n}"
+                                    },
+                                    "style": {
+                                      "margin": "5px",
+                                      "font-size": "12px"
+                                    },
+                                    "help": "../pdf/ctrlgroup.pdf",
+                                    "parameters": {},
+                                    "url": "images/map/map1.png",
+                                    "template": [
+                                      {
+                                        "label": "普通按钮",
+                                        "type": "ctrlgroup",
+                                        "source": "CTRLGROUP",
+                                        "advance": {
+                                          "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n       [{\n          type : \"button\",\n          value : \"按钮\",\n          icon : \"glyphicon glyphicon-search\",\n          btnclass : \"btn btn-primary\",\n          class : \"col-md-12\",\n          on : {\n            click : function(elem){\n              target.console(elem);\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                                        },
+                                        "style": {
+                                          "margin": "5px",
+                                          "font-size": "12px"
+                                        },
+                                        "parameters": {},
+                                        "url": "images/map/map1.png"
+                                      },
+                                      {
+                                        "label": "设备，项目，客户下拉",
+                                        "type": "ctrlgroup",
+                                        "source": "CTRLGROUP",
+                                        "advance": {
+                                          "expression": "expression = {\n  on : {\n    init : function(event){\n\n      var target = event.target;\n      var global = event.global;\n      event.target.getDomainsByFilter({\n        modelIds : [301,302]\n      }, function(obj){\n        var projects = obj.filter(function(elem){\n          return elem.modelId == 302;\n        })\n        var customers = obj.filter(function(elem){\n          return elem.modelId == 301;\n        })\n        event.target.getDevicesByCondition({}, function(devices){\n          var ctrlGroups = [\n            [{\n              type : \"label\",\n              value : \"设备下拉列表\"\n            },{\n              type : \"select\",\n              value : \"\",\n              on : {\n                change : function(elem){\n                  console.log(elem);\n                }\n              },\n              options : devices,\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"客户下拉列表\"\n            },{\n              type : \"select\",\n              value : \"\",\n              on : {\n                change : function(elem){\n                  console.log(elem);\n                }\n              },\n              options : customers,\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"项目下拉列表1\"\n            },{\n              type : \"select\",\n              value : \"\",\n              on : {\n                change : function(elem){\n                  console.log(elem);\n                }\n              },\n              options : projects,\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"\"\n            },{\n              type : \"button\",\n              value : \"按钮\",\n              icon : \"glyphicon glyphicon-search\",\n              class : \"btn-primary\",\n              on : {\n                click : function(elem){\n                  console.log(elem);\n                }\n              }\n            }]\n          ];\n          event.target.render(ctrlGroups);\n        });\n      });\n    }\n  }\n}"
+                                        },
+                                        "style": {
+                                          "margin": "5px",
+                                          "font-size": "12px"
+                                        },
+                                        "parameters": {},
+                                        "url": "images/map/map1.png"
+                                      },
+                                      {
+                                        "label": "竖排组件功能组件",
+                                        "type": "ctrlgroup",
+                                        "source": "CTRLGROUP",
+                                        "advance": {
+                                          "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n        [{\n          type : \"label\",\n          value : \"普通输入框\"\n        },{\n          type : \"input\",\n          value : \"普通输入框\",\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          }\n        }],[{\n          type : \"label\",\n          value : \"普通下拉列表\"\n        },{\n          type : \"select\",\n          value : \"普通下拉列表\",\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          },\n          options : [{\n            id : 0,\n            label : \"项目1\"\n          },{\n            id : 1,\n            label : \"项目名称2\"\n          },{\n            id : 2,\n            label : \"名称3\"\n          }],\n          format : {\n            \"id\" : \"id\",\n            \"label\" : \"label\"\n          }\n        }],[{\n          type : \"label\",\n          value : \"日期选择器\"\n        },{\n          type : \"datePicker\",\n          value : \"普通输入框\",\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          }\n        }],[{\n          type : \"label\",\n          value : \"输入选择器\"\n        },{\n          type : \"autoComplete\",\n          value : \"search\",\n          options : [{\n            id : 0,\n            label : \"项目1\"\n          },{\n            id : 1,\n            label : \"项目名称2\"\n          },{\n            id : 2,\n            label : \"名称3\"\n          }],\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          },\n          format : {\n            \"id\" : \"id\",\n            \"label\" : \"label\",\n            \"searchkey\" : \"label\"\n          }\n        }],[{\n          type : \"label\",\n          value : \"树状选择器\"\n        },{\n          type : \"dropdowntree\",\n          value : \"search\",\n          options : {\n            \"children\" : [{\n              id : 0,\n              label : \"根节点\",\n              children : [{\n                id : 1,\n                label : \"子节点1\"\n              },{\n                id : 2,\n                label : \"子节点2\"\n              }]\n            }]\n          },\n          on : {\n            change : function(elem){\n              console.log(elem)\n            }\n          },\n          format : {\n            \"children\" : \"children\"\n          }\n        }],[{\n          type : \"label\",\n          value : \"\"\n        },{\n          type : \"button\",\n          value : \"按钮\",\n          icon : \"glyphicon glyphicon-search\",\n          class : \"btn-primary\",\n          on : {\n            click : function(elem){\n              console.log(elem);\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                                        },
+                                        "style": {
+                                          "margin": "5px",
+                                          "font-size": "12px"
+                                        },
+                                        "url": "images/map/map1.png"
+                                      },
+                                      {
+                                        "label": "项目，管理域,提交按钮",
+                                        "type": "ctrlgroup",
+                                        "source": "CTRLGROUP",
+                                        "advance": {
+                                          "expression": "{\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      event.target.queryDomainTree(function(domaintree){\n        event.target.getDomainsByFilter({\n          modelIds : [302]\n        }, function(projects){\n          event.target.setValue(\"projectName\", \"\");\n          event.target.setValue(\"domainPath\", \"\")\n          var ctrlGroups = [\n            [{\n              type : \"label\",\n              value : \"项目名称\"\n            },{\n              type : \"autoComplete\",\n              value : \"search\",\n              options : projects,\n              on : {\n                change : function(elem){\n                  var projectName = elem.value;\n                  target.setValue(\"projectName\", projectName);\n                }\n              },\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\",\n                \"searchkey\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"管理域\"\n            },{\n              type : \"dropdowntree\",\n              value : \"search\",\n              options : {\n                \"domainInfos\" : domaintree\n              },\n              on : {\n                change : function(elem){\n                  var domain = elem.value;\n                  target.setValue(\"domainPath\", domain.domainPath);\n                }\n              },\n              format : {\n                \"children\" : \"domainInfos\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"\"\n            },{\n              type : \"button\",\n              value : \"搜索\",\n              icon : \"glyphicon glyphicon-search\",\n              class : \"btn-primary\",\n              on : {\n                click : function(elem){\n                  global.fire(\"refresh\")\n                }\n              }\n            }]\n          ];\n          event.target.render(ctrlGroups);\n        });\n      });\n    }\n  }\n}"
+                                        },
+                                        "style": {
+                                          "margin": "5px",
+                                          "font-size": "12px",
+                                          "width": "100%"
+                                        },
+                                        "url": "images/map/map1.png"
+                                      }
+                                    ],
+                                    "id": "KxQycm4BKHWiY2bAT7ZhNMEFP8C65Tm2",
+                                    "$index": [
+                                      3,
+                                      0
+                                    ]
+                                  }
+                                ],
+                                "id": "csJjhPyfFGYfS4hEwsAhsdQD4jKTJ7mc"
+                              }
+                            ],
+                            "advance": {
+                              "expression": "{}"
+                            },
+                            "url": "images/map/map1.png",
+                            "template": [
+                              {
+                                "type": "css",
+                                "style": {
+                                  "padding": "10px",
+                                  "margin": "5px",
+                                  "border": "1px solid #ccc",
+                                  "background-color": "#fff"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "padding": "5px",
+                                  "margin": "5px",
+                                  "border": "1px solid #ccc",
+                                  "background-color": "#fff",
+                                  "border-top": "0"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "5px",
+                                  "background-color": "#efdcaf",
+                                  "border": "1px solid #c2ad7a"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "5px",
+                                  "background-color": "#f0c0a4",
+                                  "border": "1px solid #e5671b"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "5px",
+                                  "background-color": "#ffb3b3",
+                                  "border": "1px solid #db2222"
+                                }
+                              }
+                            ],
+                            "id": "5CNiB25SaNbZhnfkzkKtAs3McKjx4NDA"
+                          }
+                        ],
+                        "col": 6,
+                        "id": "4Hid5zQN4kdNdGiHpSafRieSCGdwGW3B"
+                      },
+                      {
+                        "type": "column",
+                        "children": [
+                          {
+                            "label": "控制板1",
+                            "type": "block",
+                            "source": "BLOCK",
+                            "style": {
+                              "padding": "20px",
+                              "margin": "5px",
+                              "border": "1px solid #ccc",
+                              "background": "#fff",
+                              "box-shadow": "1px 1px 10px 1px rgba(0,0,0,.1)"
+                            },
+                            "children": [
+                              {
+                                "type": "column",
+                                "col": 12,
+                                "children": [
+                                  {
+                                    "label": "代码编辑器",
+                                    "type": "aceeditor",
+                                    "source": "ACEEDITOR",
+                                    "style": {
+                                      "margin": "5px",
+                                      "padding": "0",
+                                      "height": "600px"
+                                    },
+                                    "advance": {
+                                      "expression": "expression = {\n  on : {\n    \"renderCode\" : function(event){\n      var target = event.target;\n      var config = target.getValue(\"config\");\n      var inx = 0;\n\n      if(config.dataType == \"view\"){\n        var selectView = config.selectView.map(function(elem){\n          return {\n            viewTitle : elem.viewTitle + config.perfix\n          };\n        });\n        var repeat = function(i){\n          if(config.selectView[i]){\n            target.getViewById(config.selectView[i].viewId, function(view){\n              selectView[i].viewType = view.viewType;\n              selectView[i].content = view.content;\n              i++;\n              repeat(i);\n            })\n          } else {\n            target.setText(JSON.stringify({\n              type : config.dataType,\n              context : config.filter,\n              data :selectView\n            }, null, 2));\n          }\n        }\n        repeat(inx);\n      } else {\n        var selectView = config.selectView.map(function(elem){\n            console.log(elem);\n          return {\n            label : elem.label + config.perfix,\n            groupName : elem.groupName,\n            value : elem.value\n          };\n        });\n        target.setText(JSON.stringify({\n          type : config.dataType,\n          context : config.filter,\n          data :selectView\n        }, null, 2));\n      }\n    }\n  }\n}"
+                                    },
+                                    "id": "aJQHyk2KXMjFfetBntH3F74MWtzQGJKh",
+                                    "$index": [
+                                      1,
+                                      0
+                                    ]
+                                  }
+                                ],
+                                "id": "pRtWwSJGwsSBaerMJtFfpTFhDfEXSKfz"
+                              }
+                            ],
+                            "advance": {
+                              "expression": "{}"
+                            },
+                            "url": "images/map/map1.png",
+                            "template": [
+                              {
+                                "type": "css",
+                                "style": {
+                                  "padding": "10px",
+                                  "margin": "5px",
+                                  "border": "1px solid #ccc",
+                                  "background-color": "#fff"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "padding": "5px",
+                                  "margin": "5px",
+                                  "border": "1px solid #ccc",
+                                  "background-color": "#fff",
+                                  "border-top": "0"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "5px",
+                                  "background-color": "#efdcaf",
+                                  "border": "1px solid #c2ad7a"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "5px",
+                                  "background-color": "#f0c0a4",
+                                  "border": "1px solid #e5671b"
+                                }
+                              },
+                              {
+                                "type": "css",
+                                "style": {
+                                  "margin": "5px",
+                                  "padding": "5px",
+                                  "background-color": "#ffb3b3",
+                                  "border": "1px solid #db2222"
+                                }
+                              }
+                            ],
+                            "id": "hWNFJKCyHpb5G4jCWapYtYD4MrSMZM35"
+                          }
+                        ],
+                        "col": 6,
+                        "id": "XXzd4XAYnfrsshbAFWdrpiHjHXemMXTa"
+                      }
+                    ],
+                    "id": "frttW3XRjsK6amz6Af8YCHDEFGTFDX6t"
+                  }
+                ],
+                "id": "icjFWNj5tp4fB2Y3SSjhay2MhMEie5yQ"
+              }
+            ],
+            "template": [
+              {
+                "type": "css",
+                "style": {
+                  "padding": "10px",
+                  "margin": "5px",
+                  "border": "1px solid #ccc",
+                  "background-color": "#fff"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "padding": "5px",
+                  "margin": "5px",
+                  "border": "1px solid #ccc",
+                  "background-color": "#fff",
+                  "border-top": "0"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "margin": "5px",
+                  "padding": "5px",
+                  "background-color": "#efdcaf",
+                  "border": "1px solid #c2ad7a"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "margin": "5px",
+                  "padding": "5px",
+                  "background-color": "#f0c0a4",
+                  "border": "1px solid #e5671b"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "margin": "5px",
+                  "padding": "5px",
+                  "background-color": "#ffb3b3",
+                  "border": "1px solid #db2222"
+                }
+              }
+            ],
+            "id": "22EJcZm6CJDQbfbpzd4bizZ3FYCD8sCs"
+          }
+        ],
+        "col": 12,
+        "id": "2EDEGZyrFKPyfNeeCAczRHyisYxbWPc7"
+      },
+      "$$hashKey": "object:1196"
+    },
+    {
+      "label": "导入",
+      "path": "detail",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "控制板1",
+            "type": "block",
+            "source": "BLOCK",
+            "style": {
+              "padding": "10px",
+              "margin": "5px 0",
+              "background-color": "#3c8dbc"
+            },
+            "advance": {
+              "expression": {}
+            },
+            "children": [
+              {
+                "type": "column",
+                "col": 12,
+                "children": [
+                  {
+                    "label": "文字",
+                    "type": "text",
+                    "source": "TEXT",
+                    "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                    "data": {
+                      "applied": false,
+                      "kpi": [],
+                      "modelType": 300,
+                      "resfilltype": "parameter",
+                      "resource": [],
+                      "multipleCi": false,
+                      "multipleKpi": false,
+                      "series": {
+                        "manual": "拷贝图标样式到剪切板",
+                        "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                      },
+                      "modelDisable": true
+                    },
+                    "style": {
+                      "font-size": "16px",
+                      "font-weight": "bold",
+                      "text-align": "left",
+                      "color": "rgb(255, 255, 255)"
+                    },
+                    "advance": {
+                      "getfunction": "kpiDataService.getValueList",
+                      "category": "ci",
+                      "condition": [
+                        "kpi",
+                        "{object:kpiQueryModel}"
+                      ],
+                      "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"批量导入，导出视图及组件\")\n        }\n    }\n}"
+                    },
+                    "url": "images/map/map1.png",
+                    "template": [
+                      {
+                        "type": "text",
+                        "style": {
+                          "margin": "auto",
+                          "padding": "0",
+                          "font-size": "10px",
+                          "font-weight": "bold",
+                          "color": "#333"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "style": {
+                          "margin": "auto",
+                          "padding": "0",
+                          "font-size": "16px",
+                          "font-weight": "bold",
+                          "color": "#666",
+                          "text-align": "center"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "style": {
+                          "width": "60px",
+                          "height": "60px",
+                          "margin": "auto",
+                          "padding": "0",
+                          "font-size": "12px",
+                          "line-height": "60px",
+                          "font-weight": "bold",
+                          "color": "#fff",
+                          "text-align": "center",
+                          "border-radius": "50%",
+                          "background-color": "#3c8dbc"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "style": {
+                          "width": "140px",
+                          "height": "60px",
+                          "margin": "auto",
+                          "padding": "0",
+                          "font-size": "12px",
+                          "line-height": "60px",
+                          "font-weight": "bold",
+                          "color": "#fff",
+                          "text-align": "center",
+                          "border-radius": "4px",
+                          "background-color": "#3c8dbc"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "style": {
+                          "width": "140px",
+                          "height": "60px",
+                          "margin": "auto",
+                          "padding": "0",
+                          "font-size": "12px",
+                          "line-height": "60px",
+                          "font-weight": "bold",
+                          "color": "#444",
+                          "text-align": "center",
+                          "border-radius": "4px",
+                          "background-color": "#eee"
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "style": {
+                          "margin": "auto",
+                          "padding": "5px",
+                          "font-size": "18px",
+                          "font-weight": "bold",
+                          "color": "#444",
+                          "text-align": "center",
+                          "border-radius": "0px",
+                          "background-color": "#eee"
+                        }
+                      }
+                    ],
+                    "id": "6KdZSykwREyGjhKbArMrESMmtHEidZrX"
+                  }
+                ],
+                "id": "icPwXDFXC4hzWKbPQ6G5ZPFSREywaWYA"
+              }
+            ],
+            "url": "images/map/map1.png",
+            "template": [
+              {
+                "type": "css",
+                "style": {
+                  "padding": "10px",
+                  "margin": "5px",
+                  "border": "1px solid #ccc",
+                  "background-color": "#fff"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "padding": "5px",
+                  "margin": "5px",
+                  "border": "1px solid #ccc",
+                  "background-color": "#fff",
+                  "border-top": "0"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "margin": "5px",
+                  "padding": "5px",
+                  "background-color": "#efdcaf",
+                  "border": "1px solid #c2ad7a"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "margin": "5px",
+                  "padding": "5px",
+                  "background-color": "#f0c0a4",
+                  "border": "1px solid #e5671b"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "margin": "5px",
+                  "padding": "5px",
+                  "background-color": "#ffb3b3",
+                  "border": "1px solid #db2222"
+                }
+              }
+            ],
+            "id": "QHJbSn8MXzhpJmEnpzcaHdkXD2S6c7Y4"
+          },
+          {
+            "label": "伪TAB样式",
+            "type": "faketab",
+            "source": "FAKETAB",
+            "advance": {
+              "getfunction": "kpiDataService.getValueList",
+              "category": "ci",
+              "condition": [
+                "kpi",
+                "{object:kpiQueryModel}"
+              ],
+              "expression": "expression = {\n  \"on\" : {\n    \"init\" : function(event){\n        event.target.tabInx = 1;\n      event.target.render([{\n          id : \"index\",\n          label : \"导出\"\n      },{\n          id : \"detail\",\n          label : \"导入\"\n      }]);\n    },\n    \"click\" : function(event){\n      var target = event.target;\n      var value = event.value;\n      target.navigateTo(value.id, {}, \"self\");\n    }\n  },\n  \"format\" : {\n    \"id\" : \"id\",\n    \"label\" : \"label\"\n  }\n}",
+              "customCategory": ""
+            },
+            "style": {
+              "color": "#fff",
+              "background-color": "#3c8dbc",
+              "margin": "5px"
+            },
+            "tabIndex": 1,
+            "template": [
+              {
+                "label": "普通样式",
+                "type": "faketab",
+                "source": "FAKETAB",
+                "advance": {
+                  "getfunction": "kpiDataService.getValueList",
+                  "category": "ci",
+                  "condition": [
+                    "kpi",
+                    "{object:kpiQueryModel}"
+                  ],
+                  "expression": "{\n  \"on\" : {\n    \"init\" : function(event){\n      var tabs = [];\n      for(var i=0; i<4; i++){\n        tabs.push({\n          id : i,\n        \tlabel : \"标签页\" + i\n        })\n      }\n      event.target.render(tabs);\n    },\n    \"click\" : function(event){\n      console.log(event);\n    }\n  },\n  \"format\" : {\n    \"id\" : \"id\",\n    \"label\" : \"label\"\n  }\n}"
+                },
+                "style": {
+                  "color": "#fff",
+                  "background-color": "#3c8dbc",
+                  "margin": "5px"
+                },
+                "tabInx": 0,
+                "url": "images/map/map1.png"
+              },
+              {
+                "label": "所有项目",
+                "type": "faketab",
+                "source": "FAKETAB",
+                "advance": {
+                  "getfunction": "kpiDataService.getValueList",
+                  "category": "ci",
+                  "condition": [
+                    "kpi",
+                    "{object:kpiQueryModel}"
+                  ],
+                  "expression": "{\n  \"on\" : {\n    \"init\" : function(event){\n      event.target.getDomainsByFilter({\n        modelIds : [302]\n      }, function(projects){\n        event.target.render(projects);\n      })\n    },\n    \"click\" : function(event){\n      console.log(event);\n    }\n  },\n  \"format\" : {\n    \"id\" : \"id\",\n    \"label\" : \"label\"\n  }\n}"
+                },
+                "style": {
+                  "color": "#fff",
+                  "background-color": "#3c8dbc",
+                  "margin": "5px"
+                },
+                "tabInx": 0,
+                "url": "images/map/map1.png"
+              }
+            ],
+            "id": "apsbGaEYDfTTxGpw6DpMCase47jb3YZQ",
+            "tabInx": 1
+          },
+          {
+            "label": "控制板1",
+            "type": "block",
+            "source": "BLOCK",
+            "style": {
+              "padding": "5px",
+              "border": "1px solid #ccc",
+              "background-color": "#fff",
+              "border-top": "0"
+            },
+            "advance": {
+              "expression": {}
+            },
+            "children": [
+              {
+                "type": "column",
+                "col": 12,
+                "children": [
+                  {
+                    "label": "代码编辑器",
+                    "type": "aceeditor",
+                    "source": "ACEEDITOR",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "0",
+                      "height": "600px"
+                    },
+                    "advance": {
+                      "expression": "expression = {\n    on : {\n        \"change\" : function(event){\n            var target = event.target;\n            target.setValue(\"config/importCode\", event.value);\n        }\n    }\n}"
+                    },
+                    "id": "mnZ45NpCyjk2y3CPJkJYKYtn7THYpxBp"
+                  },
+                  {
+                    "label": "控件组",
+                    "type": "ctrlgroup",
+                    "source": "CTRLGROUP",
+                    "advance": {
+                      "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n       [{\n          type : \"button\",\n          value : \"导入视图\",\n          icon : \"glyphicon glyphicon-import\",\n          btnclass : \"btn btn-primary\",\n          class : \"col-md-12\",\n          on : {\n            click : function(elem){\n              var importCode = target.getValue(\"config/importCode\");\n              var data = JSON.parse(importCode);\n              var type = data.type;\n              var copyView = function(){\n                  for(var i in data.data){\n                      console.log(\"asd\", data.data[i]);\n                      target.addView(data.data[i], function(data){\n                          if(data.code == 0){\n                              target.growl(data.msg);\n                          } else {\n                              target.growl(data.msg, \"error\");\n                          }\n                      })\n                  }\n              };\n              var copyConfig = function(){\n                  for(var i in data.data){\n                      console.log(\"asd\", data.data[i]);\n                      target.saveConfig(data.data[i], function(data){\n                          if(data.code == 0){\n                              target.growl(data.msg);\n                          } else {\n                              target.growl(data.msg, \"error\");\n                          }\n                      })\n                  }\n              };\n              if(type == \"view\"){\n                  copyView();\n              } else if(type == \"config\") {\n                  copyConfig();\n              }\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                    },
+                    "style": {
+                      "margin": "5px",
+                      "font-size": "12px"
+                    },
+                    "help": "../pdf/ctrlgroup.pdf",
+                    "template": [
+                      {
+                        "label": "普通按钮",
+                        "type": "ctrlgroup",
+                        "source": "CTRLGROUP",
+                        "advance": {
+                          "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n       [{\n          type : \"button\",\n          value : \"按钮\",\n          icon : \"glyphicon glyphicon-search\",\n          btnclass : \"btn btn-primary\",\n          class : \"col-md-12\",\n          on : {\n            click : function(elem){\n              target.console(elem);\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "font-size": "12px"
+                        },
+                        "parameters": {},
+                        "url": "images/map/map1.png"
+                      },
+                      {
+                        "label": "设备，项目，客户下拉",
+                        "type": "ctrlgroup",
+                        "source": "CTRLGROUP",
+                        "advance": {
+                          "expression": "expression = {\n  on : {\n    init : function(event){\n\n      var target = event.target;\n      var global = event.global;\n      event.target.getDomainsByFilter({\n        modelIds : [301,302]\n      }, function(obj){\n        var projects = obj.filter(function(elem){\n          return elem.modelId == 302;\n        })\n        var customers = obj.filter(function(elem){\n          return elem.modelId == 301;\n        })\n        event.target.getDevicesByCondition({}, function(devices){\n          var ctrlGroups = [\n            [{\n              type : \"label\",\n              value : \"设备下拉列表\"\n            },{\n              type : \"select\",\n              value : \"\",\n              on : {\n                change : function(elem){\n                  console.log(elem);\n                }\n              },\n              options : devices,\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"客户下拉列表\"\n            },{\n              type : \"select\",\n              value : \"\",\n              on : {\n                change : function(elem){\n                  console.log(elem);\n                }\n              },\n              options : customers,\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"项目下拉列表1\"\n            },{\n              type : \"select\",\n              value : \"\",\n              on : {\n                change : function(elem){\n                  console.log(elem);\n                }\n              },\n              options : projects,\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"\"\n            },{\n              type : \"button\",\n              value : \"按钮\",\n              icon : \"glyphicon glyphicon-search\",\n              class : \"btn-primary\",\n              on : {\n                click : function(elem){\n                  console.log(elem);\n                }\n              }\n            }]\n          ];\n          event.target.render(ctrlGroups);\n        });\n      });\n    }\n  }\n}"
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "font-size": "12px"
+                        },
+                        "parameters": {},
+                        "url": "images/map/map1.png"
+                      },
+                      {
+                        "label": "竖排组件功能组件",
+                        "type": "ctrlgroup",
+                        "source": "CTRLGROUP",
+                        "advance": {
+                          "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n        [{\n          type : \"label\",\n          value : \"普通输入框\"\n        },{\n          type : \"input\",\n          value : \"普通输入框\",\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          }\n        }],[{\n          type : \"label\",\n          value : \"普通下拉列表\"\n        },{\n          type : \"select\",\n          value : \"普通下拉列表\",\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          },\n          options : [{\n            id : 0,\n            label : \"项目1\"\n          },{\n            id : 1,\n            label : \"项目名称2\"\n          },{\n            id : 2,\n            label : \"名称3\"\n          }],\n          format : {\n            \"id\" : \"id\",\n            \"label\" : \"label\"\n          }\n        }],[{\n          type : \"label\",\n          value : \"日期选择器\"\n        },{\n          type : \"datePicker\",\n          value : \"普通输入框\",\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          }\n        }],[{\n          type : \"label\",\n          value : \"输入选择器\"\n        },{\n          type : \"autoComplete\",\n          value : \"search\",\n          options : [{\n            id : 0,\n            label : \"项目1\"\n          },{\n            id : 1,\n            label : \"项目名称2\"\n          },{\n            id : 2,\n            label : \"名称3\"\n          }],\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          },\n          format : {\n            \"id\" : \"id\",\n            \"label\" : \"label\",\n            \"searchkey\" : \"label\"\n          }\n        }],[{\n          type : \"label\",\n          value : \"树状选择器\"\n        },{\n          type : \"dropdowntree\",\n          value : \"search\",\n          options : {\n            \"children\" : [{\n              id : 0,\n              label : \"根节点\",\n              children : [{\n                id : 1,\n                label : \"子节点1\"\n              },{\n                id : 2,\n                label : \"子节点2\"\n              }]\n            }]\n          },\n          on : {\n            change : function(elem){\n              console.log(elem)\n            }\n          },\n          format : {\n            \"children\" : \"children\"\n          }\n        }],[{\n          type : \"label\",\n          value : \"\"\n        },{\n          type : \"button\",\n          value : \"按钮\",\n          icon : \"glyphicon glyphicon-search\",\n          class : \"btn-primary\",\n          on : {\n            click : function(elem){\n              console.log(elem);\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "font-size": "12px"
+                        },
+                        "url": "images/map/map1.png"
+                      },
+                      {
+                        "label": "项目，管理域,提交按钮",
+                        "type": "ctrlgroup",
+                        "source": "CTRLGROUP",
+                        "advance": {
+                          "expression": "{\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      event.target.queryDomainTree(function(domaintree){\n        event.target.getDomainsByFilter({\n          modelIds : [302]\n        }, function(projects){\n          event.target.setValue(\"projectName\", \"\");\n          event.target.setValue(\"domainPath\", \"\")\n          var ctrlGroups = [\n            [{\n              type : \"label\",\n              value : \"项目名称\"\n            },{\n              type : \"autoComplete\",\n              value : \"search\",\n              options : projects,\n              on : {\n                change : function(elem){\n                  var projectName = elem.value;\n                  target.setValue(\"projectName\", projectName);\n                }\n              },\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\",\n                \"searchkey\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"管理域\"\n            },{\n              type : \"dropdowntree\",\n              value : \"search\",\n              options : {\n                \"domainInfos\" : domaintree\n              },\n              on : {\n                change : function(elem){\n                  var domain = elem.value;\n                  target.setValue(\"domainPath\", domain.domainPath);\n                }\n              },\n              format : {\n                \"children\" : \"domainInfos\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"\"\n            },{\n              type : \"button\",\n              value : \"搜索\",\n              icon : \"glyphicon glyphicon-search\",\n              class : \"btn-primary\",\n              on : {\n                click : function(elem){\n                  global.fire(\"refresh\")\n                }\n              }\n            }]\n          ];\n          event.target.render(ctrlGroups);\n        });\n      });\n    }\n  }\n}"
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "font-size": "12px",
+                          "width": "100%"
+                        },
+                        "url": "images/map/map1.png"
+                      }
+                    ],
+                    "id": "xR4tENAwxPGFEshdGdwQAGjajxQfJTri",
+                    "$index": [
+                      2,
+                      0
+                    ]
+                  }
+                ],
+                "id": "5wKMbxFC4M4mwM55cpGtp8Z5xT6zPPft"
+              }
+            ],
+            "template": [
+              {
+                "type": "css",
+                "style": {
+                  "padding": "10px",
+                  "margin": "5px",
+                  "border": "1px solid #ccc",
+                  "background-color": "#fff"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "padding": "5px",
+                  "margin": "5px",
+                  "border": "1px solid #ccc",
+                  "background-color": "#fff",
+                  "border-top": "0"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "margin": "5px",
+                  "padding": "5px",
+                  "background-color": "#efdcaf",
+                  "border": "1px solid #c2ad7a"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "margin": "5px",
+                  "padding": "5px",
+                  "background-color": "#f0c0a4",
+                  "border": "1px solid #e5671b"
+                }
+              },
+              {
+                "type": "css",
+                "style": {
+                  "margin": "5px",
+                  "padding": "5px",
+                  "background-color": "#ffb3b3",
+                  "border": "1px solid #db2222"
+                }
+              }
+            ],
+            "id": "5cbaZAG3CmfEde8wwAmYhesfXMnPzN4w"
+          }
+        ],
+        "col": 12,
+        "id": "8TtCtTY52R67n8nspRTiNwizYHhRjGYN"
+      },
+      "id": "1",
+      "$$hashKey": "object:1203"
+    }
+  ],
+  "setting": {
+    "showNavi": false,
+    "style": {
+      "padding": "15px",
+      "background-color": "#eee"
+    }
+  }
+}

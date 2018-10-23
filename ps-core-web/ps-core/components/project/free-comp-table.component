@@ -1,0 +1,206 @@
+<config injector="$q,viewFlexService,$interval,kpiDataService"
+></config>
+<properties>
+    <script type="text/javascript">
+    function properties () {
+      return [{
+        label: "基本设定",
+        attributes: {
+          text: ["文字", "input", "标题文字"],
+        }
+      }];
+    }
+
+    export {properties}
+    </script>
+</properties>
+<template>
+    <div>
+        <div class="table-wrap">
+            <div class="title">计划排程</div>
+            <div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th style="width: 10%;">产线</th>
+                        <th style="width: 20%;">计划完成时间</th>
+                        <th style="width: 20%;">计划偏离状态</th>
+                        <th style="width: 15%;">实际完成</th>
+                        <th style="width: 35%;">完成比例</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="d in data">
+                        <td ng-bind="d.prodline"></td>
+                        <td ng-bind="d.time"></td>
+                        <td ng-bind="d.status"></td>
+                        <td ng-bind="d.finish"></td>
+                        <td>
+                            <table-bar></table-bar>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>
+<script type="text/javascript">
+export default function (q, viewFlexService, $interval, kpiDataService) {
+  return {
+    scope: {
+      option: "="
+    },
+    link (scope, element, attr, ngModel) {
+      let dict = {
+        403471445139371: {
+          label: '差壳',
+          index: 1
+        },
+        403471445139389: {
+          label: '减壳',
+          index: 2
+        },
+        403471445139407: {
+          label: '齿轮',
+          index: 3
+        },
+        403471445139425: {
+          label: '装配',
+          index: 4
+        }
+      }
+
+      function getValue () {
+        let defer = q.defer();
+        kpiDataService.getRealTimeKpiData([
+          403471445139371,
+          403471445139389,
+          403471445139407,
+          403471445139425
+        ], [104], ret => {
+          if (ret.code == '0') {
+            defer.resolve(ret.data);
+          }
+        });
+        return defer.promise;
+      }
+
+      function render () {
+        getValue().then(d => {
+          scope.data = d.map(item => {
+            let iDate = new Date(item.arisingTime),
+              instance = {};
+            try {
+              instance = JSON.parse(item.instance);
+            } catch (e) {
+
+            }
+            let total = Number(item.value) == 0 ? 0 : ((Number(instance.actualDone) / (Number(item.value) / 100)));
+            return {
+              prodline: dict[item.nodeId].label,
+              time: (iDate.getMonth() + 1) + '月' + iDate.getDate() + '日 ' + iDate.getHours() + ':' + iDate.getMinutes(),
+              status: instance.divergeStat,
+              finish: instance.actualDone,
+              total: total.toFixed(0),
+              index: dict[item.nodeId].index
+            }
+          });
+          scope.data.sort((a, b) => {
+            return a.index - b.index;
+          })
+        });
+      }
+
+      scope.$watch("option", (n, o, s) => {
+        if (n !== undefined) {
+          scope.title = n.attributes.text;
+          render();
+          $interval(render, 3 * 60 * 1000);
+        }
+      })
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+.table-wrap {
+    .title {
+        color: #fff;
+        margin: 1%;
+    }
+    .div:first-child {
+        color: #AAC3FF;
+        font-family: '微软雅黑';
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+    .div:nth-child(2) {
+        width: 100%;
+    }
+    .table {
+        width: 100%;
+        border-spacing: 0;
+    }
+    .table thead tr {
+        height: 40px;
+    }
+    .table tr {
+        min-height: 30px;
+    }
+    .table tr td span {
+        color: #fff;
+    }
+    .table th,
+    .table td {
+        color: #404060;
+        padding: 1%;
+        border: 0;
+        vertical-align: middle;
+        text-align: center;
+    }
+    .table th {
+        background-color: #2C2D3B;
+        font-family: "微软雅黑";
+        font-weight: bold;
+        color: #87AAFC;
+        cursor: pointer;
+    }
+    .table td {
+        font-family: '微软雅黑';
+        color: #ffffff;
+    }
+    .table td div:first-child ul,
+    .table td div:first-child li {
+        list-style: none;
+    }
+    .table td div:first-child ul {
+        list-style: none;
+        position: absolute;
+        left: -18% !important;
+        top: -50% !important;
+        width: 100%;
+        display: none;
+    }
+    .table td div:first-child li {
+        float: left;
+        width: 16.66%;
+        color: #fff;
+    }
+    .table td div:first-child div:nth-child(2) {
+        background: url("../images/bg-bar.png") no-repeat center center / 100%;
+    }
+    .table tbody tr:hover {
+        cursor: pointer;
+        background-color: #000;
+    }
+    .table tbody tr:hover td {
+        background-color: #1A1E2A;
+    }
+    .table tbody tr:hover ul {
+        display: block;
+        font-size: 18px;
+    }
+}
+
+</style>

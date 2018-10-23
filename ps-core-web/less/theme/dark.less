@@ -1,0 +1,73 @@
+.dark {
+  color : #73d9ff;
+  min-height : 100vh;
+  select {
+    &.form-control {
+      background-color : #000011;
+      color : #73d9ff;
+      border : 1px solid #73d9ff;
+    }
+  }
+  .pagination {
+    .paginate_button {
+      a {
+        background-color : #000011;
+        color : #73d9ff;
+        border : 1px solid #73d9ff;
+      }
+    }
+    .paginate_button {
+      &.active{
+        a {
+          background-color : #73d9ff;
+          color : #0d1c27;
+          border : 1px solid #73d9ff;
+        }
+      }
+    }
+  }
+  .progress {
+    background-color : rgba(250, 250, 250, .1);
+    border : 1px solid rgba(250, 250, 250, .8);
+  }
+  table.dataTable{
+    color : #73d9ff;
+    label {
+      color : #73d9ff;
+    }
+    th {
+      border-bottom : 1px solid rgba(250,250,250,.3);
+    }
+    tr {
+      &:hover {
+        background-color : rgba(250, 250, 250, .2);
+      }
+    }
+    td {
+      border-top : 1px solid rgba(250,250,250,.2);
+    }
+  }
+  [tabid*=tabId_]{
+    border : 1px solid #6dacd2;
+    background-color : rgba(15,37,75,.8);
+  }
+  .nav {
+    &.nav-tabs{
+      border-bottom:1px solid #6dacd2;
+      li {
+        &.active{
+          a {
+            border : 1px solid #6dacd2;
+            background-color: #3c8dbc;
+            color : #fff;
+          }
+        };
+        a:hover {
+          border : 1px solid #6dacd2;
+          background-color: #3c8dbc;
+          color : #fff;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,446 @@
+{
+  "type": "absolute",
+  "setting": {
+    "viewTitle": "青岛展厅视图1314",
+    "description": "青岛展厅视图1314",
+    "cls": "qingdao1314"
+  },
+  "data": [
+    {
+      "type": "times",
+      "position": {
+        "top": 282,
+        "left": "24.713541666666668%",
+        "width": "3.515625%",
+        "height": 100
+      },
+      "attributes": {
+        "height": "50",
+        "width": "120",
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "poor": "0",
+        "format": "MM-dd HH:mm",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "textAlign": "left",
+        "MMpoor": 0,
+        "real": "false",
+        "paddingZero": "true"
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 325,
+        "left": "24.739583333333336%",
+        "width": "3.4895833333333335%",
+        "height": 100
+      },
+      "attributes": {
+        "height": "50",
+        "width": "120",
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "poor": "1",
+        "format": "MM-dd HH:mm",
+        "hourpoor": "1",
+        "daypoor": 0,
+        "textAlign": "left",
+        "MMpoor": 0,
+        "real": "false",
+        "paddingZero": "true"
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 369,
+        "left": "24.765625%",
+        "width": "3.463541666666667%",
+        "height": 100
+      },
+      "attributes": {
+        "height": "50",
+        "width": "120",
+        "fontSize": "18px",
+        "color": "#ffffff",
+        "poor": "2",
+        "format": "MM-dd HH:mm",
+        "hourpoor": "2",
+        "daypoor": 0,
+        "textAlign": "left",
+        "MMpoor": "",
+        "real": "false",
+        "paddingZero": "true"
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 412,
+        "left": "24.765625%",
+        "width": "3.4895833333333335%",
+        "height": 100
+      },
+      "attributes": {
+        "height": "50",
+        "width": "120",
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "poor": "3",
+        "format": "MM-dd HH:mm",
+        "hourpoor": "3",
+        "daypoor": 0,
+        "textAlign": "left",
+        "MMpoor": 0,
+        "real": "false",
+        "paddingZero": "true"
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 407774594970041
+      },
+      "position": {
+        "top": 704,
+        "left": "2.3177083333333335%",
+        "width": "19.166666666666668%",
+        "height": 100
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 703,
+        "left": "21.09375%",
+        "width": "2.8125%",
+        "height": 100
+      },
+      "attributes": {
+        "width": "100",
+        "height": 50,
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "format": "MM-dd",
+        "MMpoor": 0,
+        "real": "false",
+        "paddingZero": "true"
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 407774594970041
+      },
+      "position": {
+        "top": 1003,
+        "left": "2.3958333333333335%",
+        "width": "19.270833333333336%",
+        "height": 100
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 1003,
+        "left": "21.432291666666668%",
+        "width": "2.604166666666667%",
+        "height": 100
+      },
+      "attributes": {
+        "width": 200,
+        "height": 50,
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "format": "MM-dd",
+        "MMpoor": 0,
+        "real": "false",
+        "paddingZero": "true"
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 407774594970041
+      },
+      "position": {
+        "top": 1003,
+        "left": "26.875%",
+        "width": "19.322916666666668%",
+        "height": 100
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 1005,
+        "left": "46.197916666666664%",
+        "width": "2.604166666666667%",
+        "height": 100
+      },
+      "attributes": {
+        "width": "80",
+        "height": 50,
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "format": "MM-dd",
+        "MMpoor": 0,
+        "real": "false",
+        "paddingZero": "true"
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 407774594970106
+      },
+      "position": {
+        "top": 704,
+        "left": "27.135416666666668%",
+        "width": "19.140625%",
+        "height": 100
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 703,
+        "left": "46.041666666666664%",
+        "width": "2.604166666666667%",
+        "height": 100
+      },
+      "attributes": {
+        "width": "80",
+        "height": 50,
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "format": "HH:mm",
+        "MMpoor": 0,
+        "real": "false",
+        "paddingZero": "true"
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 407774594970041
+      },
+      "position": {
+        "top": 539,
+        "left": "76.92708333333333%",
+        "width": "18.359375%",
+        "height": 100
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 539,
+        "left": "95.28645833333333%",
+        "width": "2.8385416666666665%",
+        "height": 100
+      },
+      "attributes": {
+        "width": "100",
+        "height": 50,
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "format": "MM-dd",
+        "MMpoor": 0,
+        "real": "false",
+        "paddingZero": "true"
+      }},
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 407774594970041
+      },
+      "position": {
+        "top": 999,
+        "left": "76.92708333333333%",
+        "width": "18.59375%",
+        "height": 100
+      }},
+    {
+      "type": "times",
+      "position": {
+        "top": 998,
+        "left": "95.546875%",
+        "width": "2.9427083333333335%",
+        "height": 100
+      },
+      "attributes": {
+        "width": "80",
+        "height": 50,
+        "fontSize": "18px",
+        "color": "#FFFFFF",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "format": "MM-dd",
+        "MMpoor": 0,
+        "real": "false",
+        "paddingZero": "true"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 319,
+        "left": "21.171875%",
+        "width": "2.604166666666667%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "差壳",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 278,
+        "left": "21.171875%",
+        "width": "2.604166666666667%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "装配",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 364,
+        "left": "21.145833333333332%",
+        "width": "2.604166666666667%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "减壳",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 408,
+        "left": "21.145833333333332%",
+        "width": "2.604166666666667%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "齿轮",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 280,
+        "left": "34.791666666666664%",
+        "width": "3.802083333333333%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "2050",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 320,
+        "left": "34.817708333333336%",
+        "width": "3.6979166666666665%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "2050",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 360,
+        "left": "34.791666666666664%",
+        "width": "3.75%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "2050",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 411,
+        "left": "34.84375%",
+        "width": "3.6979166666666665%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "2050",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 281,
+        "left": "30.15625%",
+        "width": "3.3072916666666665%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "正常",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 323,
+        "left": "30.130208333333336%",
+        "width": "3.3333333333333335%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "正常",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 364,
+        "left": "30.078125%",
+        "width": "3.3854166666666665%",
+        "height": 100
+      },
+      "attributes": {
+        "text": "正常",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }},
+    {
+      "type": "title",
+      "position": {
+        "top": 409,
+        "left": "30.052083333333336%",
+        "width": "10%",
+        "height": 200
+      },
+      "attributes": {
+        "text": "正常",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }}
+  ]
+}

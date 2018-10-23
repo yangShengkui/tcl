@@ -1,0 +1,23 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+    <div class="modal-dialog search-part">
+        <div class="modal-content">
+            <div class="modal-header bg-f2">
+                <a role="button" ng-click="closeDialog()" class="close">×</a>
+                <h4 class="modal-title info-box-number">选择配件</h4>
+            </div>
+            <div class="modal-body clearfix row ">
+                <div class="box-body" slim-scroll height="300px">
+                    <table width="100%" class="table table-hover" part-table name="dialog"></table>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary"
+                        ng-click="confirmSelectPart()">
+                    确定
+                </button>
+                <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+            </div>
+        </div>
+    </div>
+</div>

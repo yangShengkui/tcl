@@ -1,0 +1,97 @@
+<config injector=" $q, $timeout, $location"
+></config>
+<template>
+  <div>
+    <input class="form-control" spellcheck="false" class="jscolor">
+  </div>
+</template>
+<script type="text/javascript">
+  export default function( q, $timeout,$location){
+    return {
+      scope : {
+        ngModel : "=?",
+        config : "=?",
+      },
+      require : '?ngModel',
+      replace : false,
+      link(scope, element, attr, ngModel) {
+        let inp = element[0].getElementsByTagName("input")[0],
+          defaultConfig = {},
+          config = angular.extend({},defaultConfig,scope.config|| {}),
+          ins = null;
+        //ins.style.display = "none";
+        inp.value = scope.ngModel;
+        inp.style.backgroundColor = "#" + inp.value || '#FFFFFF';
+        //rgb 转 16进制 颜色
+        function colorRGB2Hex(color) {
+          if(color) {
+            var rgb = color.split(',');
+            var r = parseInt(rgb[0].split('(')[1]);
+            var g = parseInt(rgb[1]);
+            var b = parseInt(rgb[2].split(')')[0]);
+            var hex =  ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+            return hex.toUpperCase();
+          }else {
+            return inp.style.backgroundColor.split('#')[1];
+          }
+        }
+        //更新$viewValue
+        function updateViewValue(val){
+          if(!val) {
+            return;
+          }else {
+            ngModel.$setViewValue(val);
+          }
+        }
+        var reg = /^[A-Fa-f0-9\s]+$/,
+          bool;
+        inp.onblur = function () {
+          bool = reg.test(this.value);
+          if(bool && this.value.length==3) {
+            this.value = this.value[0] +this.value[0]+this.value[1]+this.value[1]+this.value[2]+this.value[2];
+          } else if(bool && this.value.length > 6){
+            this.value = this.value.slice(0,6)
+          } else  {
+            this.value = colorRGB2Hex(this.style.backgroundColor);
+          }
+          updateViewValue(this.value.toUpperCase());
+        }
+        Array.prototype.push.call(ngModel.$parsers,function (n,o,s) {
+          if(!n) {
+            return;
+          } else {
+            return n;
+          }
+        });
+        //引包
+        let importJscolor = () => {
+          let defer = q.defer();
+          if (window.jscolor) {
+            defer.resolve();
+          } else {
+            window['require'](['../ps-core/toolkit/jscolor.js'], function () {
+              defer.resolve();
+            }, function (err) {
+              console.error(err);
+              defer.reject();
+            });
+          }
+          return defer.promise;
+        }
+
+        //必须实例化
+        importJscolor().then(() => {
+          ins = new jscolor(inp);
+        });
+        scope.$on('$destroy',function () {
+          config = null;
+          inp = null;
+          ins = null;
+        })
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+
+</style>

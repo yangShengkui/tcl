@@ -1,0 +1,108 @@
+<config injector="$scope,ajax,$location,psDialog" params="/:id?">
+</config>
+<template>
+  <proudsmart-base>
+    <ps-layout data-option="layout"></ps-layout>
+  </proudsmart-base>
+</template>
+<script type="text/javascript">
+  export default function (scope, ajax,location,psDialog) {
+    scope.layout = {
+      label: "数据模板",
+      children: [{
+        label: "数据模板",
+        type: "panel",
+        children:[{
+          type: "table",
+          config: {
+            attributes: {
+              "label": ["部位", "text"],
+              "modelId": ["数据模板","text",{
+                name: "model",
+                label: ""
+              }],
+            },
+            grid: {
+              body: ["label","modelId"],
+              buttons: {
+                outGrid: [{
+                  label: "关联数据模板",
+                  class: "primary",
+                  icon: "",
+                  on: {
+                    click : function(){
+                      psDialog.modal({
+                        label : "关联数据模板",
+                        type : "layout",
+                        children : [{
+                          type : "form-dialog",
+                          data : null,
+                          children : [{
+                            type : "select",
+                            label : "部位",
+                            composory: true,
+                            __key : "label",
+                            options : [{
+                              id : 0,
+                              label : "a"
+                            },{
+                              id : 1,
+                              label : "b"
+                            }]
+                          },{
+                            type : "select",
+                            label : "数据模板",
+                            composory: true,
+                            __key : "modelId",
+                            options : [{
+                              id : 0,
+                              label : "a"
+                            },{
+                              id : 1,
+                              label : "b"
+                            }]
+                          }]
+                        }],
+                        buttons : [{
+                          label : "确定",
+                          class : "btn btn-primary",
+                          click : function(){
+
+                            this.close();
+                          }
+                        },{
+                          label : "取消",
+                          click : function(){
+                            this.close();
+                          }
+                        }]
+                      });
+                    }
+                  }
+                }],
+                inGrid: [{
+                  label: "编辑",
+                  class: "btn btn-primary"
+                },{
+                  label: "删除",
+                  class: "btn btn-default"
+                }]
+              },
+              config: {
+                url: 'sparePartUIService.getAllSpareParts',
+                parameter: "",
+                showIndex: false,
+                showSelector: false,
+                showSearch: false
+              },
+              options: []
+            }
+          }
+        }]
+      }]
+    }
+
+  };
+</script>
+<style type="less">
+</style>

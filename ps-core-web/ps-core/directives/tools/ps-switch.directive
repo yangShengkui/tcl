@@ -1,0 +1,96 @@
+<config injector=""
+></config>
+<template>
+    <div>
+        <div class="range">
+            <div class="swh"></div>
+        </div>
+    </div>
+</template>
+<script type="text/javascript">
+    export default function(){
+        return {
+            restrict: 'E',
+            require: '?ngModel',
+            scope: {
+                ngModel: '=',
+                config: '='
+            },
+            replace: true,
+            link: function (scope, element, attr, ngModel) {
+                var range = element[0].children[0],
+                    switchBtn = range.children[0],
+                    defaultConfig ={};
+                scope.config = angular.extend({},defaultConfig,scope.config||{});
+                function renderSwitch(str) {
+                    if(str === 'true') {
+                        switchBtn.style.float = 'right';
+                        switchBtn.style.backgroundColor = '#00c6ff';
+                        range.style.borderColor = '#00c6ff';
+                        ngModel.$setViewValue('true');
+                    }else {
+                        switchBtn.style.float = 'left';
+                        switchBtn.style.backgroundColor = '#cacaca';
+                        range.style.borderColor = '#cacaca';
+                        ngModel.$setViewValue('false');
+                    }
+                }
+                if(scope.ngModel === 'true'){
+                    renderSwitch('true');
+                }else {
+                    renderSwitch('false');
+                }
+                range.onclick = function (e){
+                    if(switchBtn.style.float === 'left') {
+                        renderSwitch('true');
+                    }else {
+                        renderSwitch('false');
+                    }
+                }
+                scope.$on('destroy',function () {
+                    range = null;
+                    switchBtn = null;
+                    scope.config = null;
+                    range.onclick = null;
+                })
+                Array.prototype.push.call(ngModel.$parsers, function (n,o) {
+                    if(!n){
+                        return;
+                    }else {
+                        return n;
+                    }
+                });
+
+            }
+        }
+    }
+</script>
+<style type="less" scoped="true">
+    /**{
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }*/
+    .range {
+        width: 100px;
+        height: 30px;
+        border-radius: 15px;
+        border: 1px solid #cacaca;
+        cursor: pointer;
+        padding: 2px;
+        overflow: hidden;
+        .swh {
+            width: 55%;
+            height: 100%;
+            float: left;
+            background-color: #cacaca;
+            -webkit-border-radius: 13px;
+            -moz-border-radius: 13px;
+            border-radius: 13px;
+        }
+
+    }
+
+</style>

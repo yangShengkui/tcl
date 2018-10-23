@@ -1,0 +1,349 @@
+<config injector="$q, kpiDataService, $interval"
+></config>
+<properties>
+    <script type="text/javascript">
+    function properties () {
+      return [{
+        label: "基本设定",
+        attributes: {
+          height: ["高度", "input", 300]
+        }
+      }]
+    }
+
+    export {properties}
+    </script>
+</properties>
+<template>
+    <div>
+        <div class="tab">
+            <ul class="tab_title">
+                <li ng-click="changeTab('a')" ng-class="{active: activeTab == 'a'}">
+                    <span>机床A</span>
+                </li>
+                <li ng-click="changeTab('b')" ng-class="{active: activeTab == 'b'}">
+                    <span>机床B</span>
+                </li>
+                <li ng-click="changeTab('c')" ng-class="{active: activeTab == 'c'}">
+                    <span>机床C</span>
+                </li>
+                <li ng-click="changeTab('d')" ng-class="{active: activeTab == 'd'}">
+                    <span>机床D</span>
+                </li>
+            </ul>
+            <div class="tab_body" id="insertshell_chart">
+            </div>
+        </div>
+    </div>
+</template>
+<script type="text/javascript">
+export default function (q, kpiDataService, $interval) {
+  return {
+    scope: {
+      option: "="
+    },
+    link (scope, element, attr, ngModel) {
+      let chartEl = element.find('#insertshell_chart')[0];
+      let myChart,
+        kcs = {
+          403471445142549: '轴承位A孔径',
+          403471445142567: '轴承位B孔径',
+          403471445142568: '两耳孔孔径',
+          403471445142569: '套管孔孔径',
+          403471445142587: '偏心距',
+        };
+      let lineOption = {
+        "title": {
+          "text": "减壳加工线CPK"
+        },
+        legend: {
+          show: true,
+          top: '15%',
+          right: '5%',
+          selectedMode: false,
+          textStyle: {
+            fontSize: 12
+          },
+          data: ['轴承位A孔径',
+            '轴承位B孔径',
+            '两耳孔孔径',
+            '套管孔孔径',
+            '偏心距']
+        },
+        "grid": {
+          "bottom": "10%",
+          "left": "15%",
+          "right": "5%",
+          top: '25%'
+        },
+        "xAxis": {
+          "type": "category",
+          "boundaryGap": true,
+          "data": []
+        },
+        "yAxis": {
+          "type": "value",
+          "axisTick": {
+            "show": false
+          },
+          "axisLabel": {}
+        },
+        "series": []
+      }
+      scope.activeTab = 'a';
+      scope.tabInterval = null;
+      scope.changeTab = function (value) {
+        scope.activeTab = value;
+        getValue(scope.activeTab).then(d => {
+          myChart.setOption(resolveData(d));
+        });
+      }
+
+      function extend (a, b) {
+        var rs = {};
+
+        function recursive (t, m) {
+          for (var i in m) {
+            if ({}.toString.call(m[i]) === "[object Object]") {
+              if ({}.toString.call(t[i]) === "[object Object]") {
+                recursive(t[i], m[i]);
+              } else {
+                recursive(t[i] = {}, m[i]);
+              }
+            } else {
+              t[i] = m[i]
+            }
+          }
+          return t
+        }
+
+        rs = recursive({}, a)
+        return recursive(rs, b);
+      }
+
+      function getValue (type) {
+        let nodeIds = [],
+          kpiCodes = [];
+        switch (type) {
+          case 'a':
+            nodeIds.push(403471445142643);
+            kpiCodes = [403471445142549, 403471445142567, 403471445142568, 403471445142569, 403471445142587];
+            break;
+          case 'b':
+            nodeIds.push(403471445142663);
+            kpiCodes = [403471445142549, 403471445142567, 403471445142568, 403471445142569, 403471445142587];
+            break;
+          case 'c':
+            nodeIds.push(403471445142666);
+            kpiCodes = [403471445142549, 403471445142567, 403471445142568, 403471445142569, 403471445142587];
+            break;
+          case 'd':
+            nodeIds.push(403471445142686);
+            kpiCodes = [403471445142549, 403471445142567, 403471445142568, 403471445142569, 403471445142587];
+            break;
+          default:
+            break;
+        }
+        let defer = q.defer(),
+          now = new Date(),
+          endTime = new Date(now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + (now.getDate() + 1) + ' 00:00:00:000'),
+          startTime = new Date(endTime.getTime() - 7 * 24 * 3600 * 1000);
+        kpiDataService.getValueList(['kpi', {
+          "isRealTimeData": false,
+          "nodeIds": nodeIds,
+          "kpiCodes": kpiCodes,
+          "includeInstance": true,
+          "endTime": endTime,
+          "startTime": startTime
+        }], ret => {
+          if (ret.code == 0) {
+            defer.resolve(ret.data);
+          }
+        });
+        return defer.promise;
+      }
+
+      function getEchart () {
+        var defer = q.defer();
+        if (typeof echarts == "undefined") {
+          window['require'](['echarts'], function (ec) {
+            defer.resolve(ec);
+          })
+        } else {
+          defer.resolve(echarts);
+        }
+        return defer.promise;
+      }
+
+      function getTheme () {
+        var defer = q.defer();
+        window['require']([`../toolkit/echart-theme/dark.js`], (th) => {
+          defer.resolve(th);
+        });
+        return defer.promise;
+      }
+
+      function getFontSize () {
+        var defer = q.defer();
+        window['require']([`../toolkit/echart-theme/fontsize.js`], (fn) => {
+          defer.resolve(fn);
+        });
+        return defer.promise;
+      }
+
+      function resolveData (d) {
+        let dateObj = {}, dataObj = {};
+        d.forEach(item => {
+          let iDate = new Date(item.arisingTime);
+          dateObj[(iDate.getMonth() + 1) + '-' + iDate.getDate()] = dateObj[(iDate.getMonth() + 1) + '-' + iDate.getDate()] || [];
+          dateObj[(iDate.getMonth() + 1) + '-' + iDate.getDate()].push(item);
+          dataObj[item.kpiCode] = dataObj[item.kpiCode] || [];
+          dataObj[item.kpiCode].push(item);
+        });
+        let option = {};
+        option = lineOption;
+        option.xAxis.data = Object.keys(dateObj);
+        option.series = [];
+        for (var key in dataObj) {
+          let arr = dataObj[key];
+          option.series.push({
+            "name": kcs[key],
+            "type": "line",
+            "symbolSize": 10,
+            "symbol": "circle",
+            data: arr.map(item => {
+              let iDate = new Date(item.arisingTime);
+              return {
+                name: (iDate.getMonth() + 1) + '-' + iDate.getDate(),
+                value: item.value
+              };
+            }),
+            "itemStyle": {
+              "borderWidth": 3,
+              "borderColor": "#fff"
+            },
+            "emphasis": {
+              "label": {
+                "show": true,
+                "color": "#fff",
+                "backgroundColor": "#333",
+                "borderWidth": 2,
+                "borderColor": "auto",
+                "padding": [4, 6],
+                "borderRadius": 3
+              }
+            }
+          });
+        }
+        return option;
+      }
+
+      function render () {
+        getValue(scope.activeTab).then(d => {
+          myChart.setOption(resolveData(d));
+        });
+      }
+
+      function renderAll () {
+        q.all([getEchart(), getTheme(), getFontSize()]).then(function (ret) {
+          let ec = ret[0], theme = ret[1], fn = ret[2];
+          let th = extend(theme, fn(40)('xsmall'));
+          myChart = ec.init(chartEl, th);
+          render();
+        });
+      }
+
+      renderAll();
+      scope.tabInterval = $interval(function () {
+        let value = '';
+        switch (scope.activeTab) {
+          case 'a':
+            value = 'b';
+            break;
+          case 'b':
+            value = 'c';
+            break;
+          case 'c':
+            value = 'd';
+            break;
+          case 'd':
+            value = 'a';
+            break;
+        }
+        scope.changeTab(value);
+      }, 30 * 1000);
+
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+.tab {
+    height: 450px;
+    position: relative;
+    .tab_title {
+        position: absolute;
+        right: 2%;
+        color: #4E689F;
+        border-bottom: 1px solid #3C5483;
+        font-size: 24px;
+        z-index: 1;
+        li {
+            width: auto;
+            cursor: pointer;
+            display: inline-block;
+            padding: 0 0 10px 0;
+            margin-right: 10px;
+            position: relative;
+            &:after {
+                display: none;
+                content: '';
+                width: 100%;
+                height: 4px;
+                position: absolute;
+                background: #3C5483;
+                left: 0;
+                bottom: -2px;
+            }
+            &.active {
+                color: #fff;
+                &:after {
+                    display: block;
+                }
+            }
+            &:hover {
+                span {
+                    color: #fff;
+                }
+                &:after {
+                    display: block;
+                }
+            }
+            
+            &:last-child {
+                margin-right: 0;
+            }
+            
+        }
+    }
+    .tab_body {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        span {
+            width: auto;
+            height: auto;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+</style>

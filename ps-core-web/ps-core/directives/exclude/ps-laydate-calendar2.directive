@@ -1,0 +1,144 @@
+<config injector="$filter"
+></config>
+<template>
+    <div style="display: inline-block">
+      <input type="text" />
+      <span style="color: red;font-size: 12px; margin-left: 10px;"></span>
+    </div>,
+</template>
+<script type="text/javascript">
+  import laydate from "layui-laydate";
+  export default function($filter){
+    return {
+      scope : {
+          ngModel: '=?',
+          config: '=?',
+
+      },
+      require : '?ngModel',
+      link(scope, element, attr, ngModel) {
+          //添加laydate.css路径
+          laydate.path = '../../node_modules/layui-laydate/dist/';
+          var $dom = element.find('input'),
+              dom = $dom[0],
+              bool = false, //事件触发开关
+              $spa = element.find('span'),
+              defaultConfig = {
+                  placeholder: '---请选择---',
+                  type: 'datetime',
+                  width: '280px',
+                  height: '30px',
+                  pos: 'center',
+                  err: '*开始日期超出了结束日期，请重新选择',
+                  trigger: 'click',
+                  done: function (value) {//value是点击后获得的值
+                      var that = this;//this保存一下
+                      if (!value) {
+                          return;
+                      } else {
+                          //用于存放所有的指令 有单个的 有成对的
+                          var members = scope.$parent.configs;
+                          //用于存放只有成对的
+                          var ranges = [];
+                          for(var i=0; i<members.length; i++){//有modelFlag 用于标识是成对的
+                              if(members[i].modeFlag!=null && members[i].modeFlag!=''){
+                                  ranges.push(members[i]);
+                              }
+                          }
+                          for(var i=0; i<ranges.length; i+=2){//遍历成对的数组 ranges
+                              if(that.modeFlag == ranges[i].modeFlag){//如果当前点击的modeFlag和成对数组遍历的一致 证明是一对
+                                  if(that.tagFlag == 'start'){//点击的是start
+                                      var startTime = value;
+                                      var endTime = getTime_(ranges, that);
+                                      if (new Date(startTime).getTime()>new Date(endTime).getTime()) {
+                                          alert(scope.config.err);
+//                                                that.dateTime =  {date:new Date(ngModel.$viewValue).getDate(),hours:new Date(ngModel.$viewValue).getHours(),minutes:new Date(ngModel.$viewValue).getMinutes(),month:new Date(ngModel.$viewValue).getMonth(),seconds:new Date(ngModel.$viewValue).getSeconds(),year:new Date(ngModel.$viewValue).getFullYear()}
+                                          //如果验证不通过 需要手动赋值回复之前的正确的值
+                                          that.dateTime = getOldTime_(ngModel.$viewValue);
+                                          return ;
+                                      }
+                                  }else{//点击的是end
+                                      var endTime = value;
+                                      var startTime = getTime_(ranges, that);
+                                      if (new Date(startTime).getTime()>new Date(endTime).getTime()) {
+                                          alert(scope.config.err);
+                                          dom.value = ngModel.$viewValue;
+//                                                that.dateTime =  {date:new Date(ngModel.$viewValue).getDate(),hours:new Date(ngModel.$viewValue).getHours(),minutes:new Date(ngModel.$viewValue).getMinutes(),month:new Date(ngModel.$viewValue).getMonth(),seconds:new Date(ngModel.$viewValue).getSeconds(),year:new Date(ngModel.$viewValue).getFullYear()}
+                                          that.dateTime = getOldTime_(ngModel.$viewValue);
+                                          return ;
+                                      }
+                                  }
+                              }
+                          }
+                          renderDom(value);
+                      }
+                  }
+              },
+              //遍历成对数组 用于获取当前点击的 另一半的值，用于比较判断
+              getTime_ = function(ranges, that){
+                  for(var i=0; i<ranges.length; i++){
+                      //如果当前点击的和循环遍历的一致 点击的是一对 但不是同个start或者end值 返回的为另一半用来比较的值
+                      if(that.modeFlag == ranges[i].modeFlag && ranges[i].tagFlag != null && ranges[i].tagFlag != that.tagFlag){
+                          return ranges[i].val;
+                      }
+                  }
+              },
+              //用于返回之前的旧值
+              getOldTime_ = function (val) {
+                  return {
+                      date: new Date(val).getDate(),
+                      hours: new Date(val).getHours(),
+                      minutes:new Date(val).getMinutes(),
+                      month:new Date(val).getMonth(),
+                      seconds:new Date(val).getSeconds(),
+                      year:new Date(val).getFullYear()
+                  }
+              },
+              //格式转化
+              formatDate = function (date) {
+                  if(date) {
+                      return $filter('date')(new Date(date), 'yyyy-MM-dd HH:mm:ss');//转为日期字符串
+                  }else {
+                      return '';
+                  }
+
+              },
+              //更新$viewValue
+              renderDom = function (value) {
+                  scope.config.val = value;
+                  ngModel.$setViewValue(value);
+              };
+          scope.config = $.extend({}, defaultConfig, scope.config || {});
+
+          ///new add start
+          //用于初始化配置，第一次初始化  以后如果有了configs就不再初始化，直接添加配置
+          if(!!!scope.$parent.configs){
+              scope.$parent.configs = [];
+          }
+          scope.config.val = formatDate(scope.ngModel || new Date());//初始化值
+          scope.$parent.configs.push(scope.config);//每个指令都有data-config
+          ///new add end
+
+          dom.placeholder = scope.config.placeholder;
+          dom.value = formatDate(scope.ngModel || new Date());//如果不传就是当前时间
+          $dom.css({'width': scope.config.width, 'height': scope.config.height, 'text-align': scope.config.pos});
+          laydate.render($.extend({}, scope.config, {elem: dom}));
+          Array.prototype.push.call(ngModel.$parsers, function (n,o) {
+              if(!n){
+                  return;
+              }
+              return new Date(n);//把字符串2017-08-15 11:27:12转为日期对象Thu Aug 24 2017 11:27:12 GMT+0800 (中国标准时间)
+          });
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+  .wrap{
+    margin : 5px;
+    padding : 10px;
+    color : #333;
+    background-color : #eee;
+    border : 1px solid #ddd;
+  }
+</style>

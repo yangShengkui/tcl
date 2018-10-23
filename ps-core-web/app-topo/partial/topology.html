@@ -1,0 +1,341 @@
+<div class="openNewFile" ng-if="resourceSelect">
+  <button ng-click="$parent.resourceClose()" class="closeBtn">
+    <span class="glyphicon glyphicon-remove"></span>
+  </button>
+  <div class="wrap" ng-init="showother=false;">
+    <p>选择绑定设备：</p>
+    <div class="scroll" ng-if="resourceSelect.length > 0">
+      <div ng-repeat="resource in $parent.resourceSelect" class="viewItem" ng-click="selectResource(resource)">
+        <span class="glyphicon glyphicon-link"></span>
+        <span ng-bind="resource.label"></span>
+      </div>
+    </div>
+    <div ng-if="resourceSelect.length == 0" class="neResInfo">
+      没有可使用的设备！
+    </div>
+  </div>
+</div>
+<div class="bgcover" ng-if="resourceSelect"></div>
+<div class="svloading_wrap" ng-if="saveloading">
+  <table>
+    <tr>
+      <td>
+        <div class="loading_inner loading">
+          <div class="loadingIcon"></div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="bgcover" ng-if="saveloading"></div>
+<div class="callbackmsg_wrap" ng-if="callbackmsg" ng-bind="callbackmsg"></div>
+<div class="msg_wrap" ng-if="msg">
+  <table>
+    <tr>
+      <td>
+        <div class="loading_inner">
+          <div class="wrap">
+            <div class="title" ng-bind="msg.title"></div>
+            <div class="content" ng-bind="msg.content"></div>
+          </div>
+          <div class="buttonWrap">
+            <button class="btn btn-default" ng-bind="btn.text" ng-click="btn.fn()" ng-repeat="btn in msg.btnlist"></button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="bgcover" ng-if="msg">
+</div>
+<div class="topInfo">
+  <div class="logoColor">
+    <img class="proudLogo"  ng-src="{{ userInfo.enterprise.enterpriseLogo}}" width="94" height="32" type="image/svg+xml"/>
+    <span>视图生成器</span>
+  </div>
+  <div class="userInfo">
+    <div class="title" ng-bind="userInfo.userName"></div><div class="icon"></div>
+  </div>
+
+  <div class="back">
+    <button class="btn btn-default" ng-click="step=0;"  ng-show="step==1 && equipment.DeviceMode=='deviceGroup'">上一步</button>
+    <button class="btn btn-warning" ng-click="saveAndExit()" ng-show="step==1">保存</button>
+    <button class="btn btn-default" ng-click="back()">退出</button>
+  </div>
+</div>
+<div class="navbar navbar-inverse top-navi-bar" ng-if="equipment.DeviceMode=='deviceGroup'">
+  <div class="step">
+    <!--
+    <div class="inner" ng-class="{true:'active',false:''}[step==2]">3生成运营视图</div>
+     -->
+    <div class="inner" ng-class="{true:'active',false:''}[step==1]">2配置监控设备</div>
+    <div class="inner" ng-class="{true:'active',false:''}[step==0]">1定义生产区域</div>
+  </div>
+</div>
+<div class="navbar navbar-inverse top-navi-bar" ng-if="equipment.DeviceMode=='deviceGroupModel'">
+  <div class="step">
+    <!--
+    <div class="inner" ng-class="{true:'active',false:''}[step==2]">3生成运营视图</div>
+     -->
+    <div class="inner active" style="width : 100%;">设备组通用模板</div>
+  </div>
+</div>
+<!--
+<div class="buttonpart" ng-click="nexStep_Btn()" ng-show="step==1">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="nextStep">保存退出</span>
+</div>
+<div class="buttonpart_prev" ng-click="prevStep_Btn()" ng-show="step==1 && equipment.DeviceMode=='deviceGroup'">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="nextStep">返回上一步</span>
+</div>
+-->
+<div ng-show="step==0" class="addNewModel">
+  <div style="width : 100%; height : 1px;"></div>
+  <table class="newModelTable">
+    <tr>
+      <td class="title">
+        <span>生产区域类型</span>
+      </td>
+      <td class="td-content">
+        <select ng-model="equipment.modelGroup"
+                ng-change="equipment.modelGroup.onChange()"
+                class = "form-control"
+                ng-options="modelGroup as modelGroup.label for modelGroup in modelGroups" class="dropdown" style="width : 100%;">
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td class="title">
+        <span>生产区域名称（必填）</span>
+      </td>
+      <td class="td-content">
+        <input ng-model="equipment.label" class="form-control" placeholder="生产区域名称"/>
+        <div ng-bind="errorSameTitle" class="errorMsg" ng-if="errorSameTitle"></div>
+        <div class="okstatus" ng-if="errorSameTitle==undefined&&equipment.label!=undefined&&equipment.label!=''">
+          <span class="glyphicon glyphicon-ok"></span>
+        </div>
+        <div ng-bind="'区域名称不能为空'" class="errorMsg" ng-if="equipment.label == ''"></div>
+      </td>
+    </tr>
+    <tr ng-repeat="attributesDes in equipment.modelGroup.attributesDes">
+      <td class="title">
+        <span ng-bind="attributesDes.label"></span>
+      </td>
+      <td class="td-content">
+        <div ng-if="(attributesDes.name =='longitude')||(attributesDes.name == 'latitude')"
+             ng-bind="{true : {true:attributesDes.value, false:attributesDes.label}[attributesDes.value!=undefined], false : getLocation}[getLocation==undefined]"
+             class="" reqire ng-pattern="/^\d{0,9}(\.\d{1,9})?$/" ng-if="key!='standardAddress'">
+        </div>
+        <input ng-if="(attributesDes.name!='longitude')&&(attributesDes.name!='latitude')&&(attributesDes.name!='standardAddress')&&(attributesDes.name!='productionDate')"
+               placeholder="{{attributesDes.label}}"
+               ng-model="attributesDes.value" class="form-control"  />
+        <input ng-if="(attributesDes.name=='productionDate')" ng-model="attributesDes.value" class="form-control datepicker" id="Datepicker" placeholder="{{attributesDes.label}}"/>
+        <div style="width:450px;position:relative;" ng-if="attributesDes.name =='standardAddress'">
+          <div style="width : 33%; float : left;">
+            <select ng-model="$parent.$parent.$Address.province"
+                    class = "form-control"
+                    ng-options="province as province.label for province in $parent.$parent.$Address.all"
+                    ng-change="$parent.$parent.$Address.changeProvince($parent.$parent.$Address.province)"
+                    class="dropdown" style="padding-right : 5px; width : 140px;"></select>
+          </div>
+          <div style="width : 33%; float : left;">
+            <select ng-model="$parent.$parent.$Address.city"
+                    class = "form-control"
+                    ng-show="$parent.$parent.$Address.city"
+                    ng-options="city as city.label for city in $parent.$parent.$Address.province.children"
+                    ng-change="$parent.$parent.$Address.changeCity($parent.$parent.$Address.city)"
+                    class="dropdown" style="padding-right : 5px; width : 140px;"></select>
+          </div>
+          <div style="width : 33%; float : left;">
+            <select ng-model="$parent.$parent.$Address.district"
+                    class = "form-control"
+                    ng-show="$parent.$parent.$Address.city"
+                    ng-change="$parent.$parent.$Address.changeDistrict($parent.$parent.$Address.district)"
+                    ng-options="district as district.label for district in $parent.$parent.$Address.city.children"
+                    class="dropdown" style="padding-right : 5px; width : 140px;"></select>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <button ng-click="nextStep()" class="btn btn-primary nextNext_btn_home"
+          ng-bind="{true : '下一步[' + errorSameTitle + ']', false : {true:'下一步[区域名称不可为空]',false:'下一步'}[equipment.label==''||equipment.label==undefined]}[errorSameTitle!=undefined]"
+          ng-disabled="equipment.label==''||equipment.label==undefined||errorSameTitle"></button>
+</div>
+
+<div ng-show="step==2" class="addNewModel">
+  <div style="width : 100%; height : 150px;"></div>
+  <table style="width : 500px; margin: 0 auto 30px;">
+    <td class="finishTxt">
+      <div class="iconWrap">
+        <span class="glyphicon glyphicon-ok"></span>
+      </div>
+
+    </td>
+    <td ng-bind="'已生成' + information.label + '生产运营视图!'" class="txt">
+    </td>
+  </table>
+  <div style="width : 500px; margin : auto">
+    <button ng-click="createNewGraph()" class="btn btn-primary nextNext_btn">
+      <span class="glyphicon glyphicon-plus"></span>
+      添加新生产区域
+    </button>
+    <button ng-click="accomplished()" class="btn btn-primary nextNext_btn">
+      <span class="glyphicon glyphicon-camera"></span>
+      返回服务中心
+    </button>
+  </div>
+</div>
+
+<div class="tool-bar" ng-show="step==1" ng-if="equipment.DeviceMode=='deviceGroupModel'||equipment.DeviceMode=='deviceModel'">
+  <div class="handler"></div>
+  <div class="titleTxt">生产区域示意图</div>
+  <div class="bgWrap">
+    <div class="bg_select"
+         ng-class="{true:'selected',false:''}[bgimg.path==bgImgId]"
+         ng-click="bgSel_click(bgimg)"
+         ng-repeat="bgimg in backgroundImage" ng-style="bgSelect(bgimg.path)">
+    </div>
+  </div>
+  <div class="titleTxt">设备模型列表</div>
+  <div class="input-group" style="width : 90%; margin:auto;">
+    <input type="text" class="form-control" placeholder="搜寻监控设备..." ng-model="keyword">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">搜索</button>
+      </span>
+  </div>
+  <div class="sensorWrap">
+    <div ng-repeat="model in models | filter : {label : keyword}">
+      <div class="gateway_title" ng-click="model.unfold();">
+        <span class="glyphicon glyphicon-hdd"></span><span class="text" ng-bind="model.label"></span>
+      </div>
+      <div ng-if="model.fold">
+        <div class="sensor"
+             ng-repeat="kpi in (model.kpiArrays | orderBy:'label') track by kpi.id">
+          <div ng-attr-model="{{model.id}}" ng-attr-kpi="{{kpi.id}}" class="sensor-icon" ng-class="{true:kpi.icon, false:'proudsmart ps-edit'}[kpi.icon != undefined]"></div>
+          <div class="instruct" ng-bind="kpi.label"></div>
+        </div>
+        <div style="height : 1px; clear : both;"></div>
+      </div>
+    </div>
+    <div ng-if="models==undefined || models==null || models.length == 0" class="noContentWarning">
+      您所选取的解决方案，没有关联任何模型信息，请返回应用中心关联模型。
+    </div>
+  </div>
+</div>
+
+<div class="tool-bar" ng-show="step==1" ng-if="equipment.DeviceMode=='deviceGroup'">
+  <div class="handler"></div>
+  <div class="titleTxt">生产区域示意图</div>
+  <div class="bgWrap">
+    <div class="bg_select"
+         ng-class="{true:'selected',false:''}[bgimg.path==bgImgId]"
+         ng-click="bgSel_click(bgimg)"
+         ng-repeat="bgimg in backgroundImage" ng-style="bgSelect(bgimg.path)">
+    </div>
+  </div>
+  <div class="titleTxt">设备模型列表</div>
+  <div>
+    <select class="form-control" ng-model="gatewayId" ng-options="gateway.id as gateway.name for gateway in gateways | orderBy : name" style="margin : 10px 5%; width : 90%;"></select>
+  </div>
+  <div class="input-group" style="width : 90%; margin:auto;">
+    <input type="text" class="form-control" placeholder="搜寻监控设备..." ng-model="keyword">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">搜索</button>
+      </span>
+  </div>
+  <div class="sensorWrap">
+    <div ng-repeat="model in models | subResourcefilter : {keyword : keyword, gatewayId : gatewayId}">
+      <div class="gateway_title" ng-click="model.unfold();"
+           ng-class="{true : 'active', false :''}[model.fold]">
+        <span class="glyphicon glyphicon-hdd"></span><span class="text" ng-bind="model.label"></span>
+      </div>
+      <div ng-if="model.fold">
+        <div class="resource"
+             ng-class="{true : 'active', false :''}[resource.fold]"
+             ng-click="resource.unfold();"
+             ng-repeat="resource in (model.resourcesArray | orderBy:'label' | filter : { label : keyword, gatewayId : gatewayId }) track by resource.id">
+          <div class="gateway_title">
+            <span class="glyphicon glyphicon-wrench" style="margin-left : 30px;"></span><span class="text" ng-bind="resource.label"></span>
+          </div>
+          <div ng-if="resource.fold">
+            <div class="sensor"
+                 ng-class="{true:'', false:'disabled'}[kpi.show == true]"
+                 ng-repeat="kpi in (resource.kpiArray | orderBy:'label') track by kpi.id">
+              <div ng-attr-model="{{model.id}}" ng-attr-resource="{{resource.id}}" ng-attr-kpi="{{kpi.id}}"
+                   class="sensor-icon" ng-class="{true:kpi.icon, false:'proudsmart ps-edit'}[kpi.icon != undefined]"
+                   style="margin-left : 50px;"></div>
+              <div class="instruct" ng-bind="kpi.label"></div>
+            </div>
+          </div>
+        </div>
+        <div ng-if="model.resourcesArray.length == 0" class="noResourceWarning">
+          此模型没有设备
+        </div>
+        <div style="height : 1px; clear : both;"></div>
+      </div>
+    </div>
+    <div ng-if="models==undefined || models==null || models.length == 0" class="noContentWarning">
+      您所采用的解决方案，不包含任何模型信息。
+    </div>
+  </div>
+</div>
+
+<div class="tool-bar" ng-show="step==1" ng-if="equipment.DeviceMode=='device'">
+  <div class="handler"></div>
+  <div class="titleTxt">生产区域示意图</div>
+  <div class="bgWrap">
+    <div class="bg_select"
+         ng-class="{true:'selected',false:''}[bgimg.path==bgImgId]"
+         ng-click="bgSel_click(bgimg)"
+         ng-repeat="bgimg in backgroundImage" ng-style="bgSelect(bgimg.path)">
+    </div>
+  </div>
+  <div class="titleTxt" style="margin:0;">可选指标列表</div>
+  <div class="sensorWrap">
+    <div ng-repeat="resource in resources">
+      <div ng-if="resource.fold">
+        <div class="sensor"
+             ng-class="{true:'', false:'disabled'}[kpi.show == true]"
+             ng-if="resource.fold"
+             ng-repeat="kpi in (resource.kpiArray | orderBy:'label' ) track by kpi.id">
+          <div ng-attr-model="{{resource.modelId}}" ng-attr-resource="{{resource.id}}" ng-attr-kpi="{{kpi.id}}"
+               class="sensor-icon" ng-class="{true:kpi.icon, false:'proudsmart ps-edit'}[kpi.icon != undefined]"
+               style="margin-left : 50px;"></div>
+          <div class="instruct" ng-bind="kpi.label"></div>
+        </div>
+        <div style="height : 1px; clear : both;"></div>
+      </div>
+    </div>
+    <!--<div ng-if="models==undefined || models==null || models.length == 0" class="noContentWarning">
+      您所采用的解决方案，不包含任何模型信息。
+    </div>-->
+  </div>
+</div>
+
+<div class="drawing-area" ng-show="step==1">
+  <div class="drop-area"
+       data-on-drop="onDrop(ui, offset)">
+    <div class="profinner" ng-style="renderBgImg(bgImgId)">
+      <div class="handle-wrap"
+           data-receive="receive"
+           ng-class="{true:'empty',false:''}[receive.resource==undefined]"
+           ng-repeat="receive in receivedList"
+           ng-style="{top: receive.top + 'px',left: receive.left + 'px', display : 'block'}">
+        <div ng-bind="{true:receive.resource ? receive.resource.label : '未接入设备' + '- (' + receive.model.label + '-' + receive.kpi.label + ')', false:receive.kpi.label}[equipment.DeviceMode=='deviceGroup']"
+             class="custom-tooltip"></div>
+        <div class="handler">
+          <div class="iconpart" ng-class="{true:receive.kpi.icon, false:'proudsmart ps-edit'}[receive.kpi.icon != undefined]"></div>
+          <input ng-model="receive.instance" placeholder="请输入实例名称" maxlength="10"/>
+          <div ng-click="receive.remove()" class="closeBtn">
+            <span class="glyphicon glyphicon-remove"></span>
+          </div>
+          <div ng-click="openResourceSelect(receive)" class="editBtn" ng-if="receive.resource == undefined && equipment.DeviceMode=='deviceGroup'">
+            <span class="glyphicon glyphicon-edit"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

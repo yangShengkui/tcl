@@ -1,0 +1,29 @@
+{
+  "type": "absolute",
+  "setting": {
+    "viewTitle": "青岛展厅视图0506",
+    "description": "青岛展厅视图0506",
+    "cls": "qingdao0506"
+  },
+  "data": [
+    {
+      "type": "times",
+      "position": {
+        "top": 36,
+        "left": "32.317708333333336%",
+        "width": "10%",
+        "height": 200
+      },
+      "attributes": {
+        "width": "100",
+        "height": 50,
+        "fontSize": "16px",
+        "color": "#c2e0f6",
+        "textAlign": "left",
+        "hourpoor": 0,
+        "daypoor": 0,
+        "format": "yyyy-MM-dd HH:mm:ss",
+        "real": "true"
+      }}
+  ]
+}

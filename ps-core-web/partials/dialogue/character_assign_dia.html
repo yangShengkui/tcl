@@ -1,0 +1,33 @@
+<div id="bootstrap-dialog" class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-f2">
+                <a role="button" class="close" ng-click="closeThisDialog()">×</a>
+                <h4 class="modal-title info-box-number" ng-bind="dialog.title"></h4>
+            </div>
+            <div class="margin-top-2 alert-info-dialog t-sty" ng-if="dialog.note">
+                <i class="proudsmart ps-fail c-f29047  i-con"></i>
+                <b bo-text="'msg.cm.lb.tips'|translate">提醒：</b>
+                <span class="c-f29047" style="font-size: 12px;" ng-bind="dialog.note.message"></span>
+            </div>
+            <div>
+                <div class="simple-form-field" class="row" style="height : 60vh;position:relative; padding: 10px;">
+                    <div select-list
+                         data-titles="dialog.titles"
+                         data-name="dialog.mark"
+                         data-source="dialog.characters"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button ng-repeat="btn in dialog.button"
+                        ng-class="btn.icon"
+                        ng-click="btn.fn(dialog)"
+                        ng-bind="btn.label"
+                        ng-class="btn.icon;"
+                        ng-disabled = "btn.disabled">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

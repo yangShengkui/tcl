@@ -1,0 +1,62 @@
+<div class='col-xs-12'>
+	<div class='weather-layout js-weather-layout weather-flip'>
+		<div class='weather-widget'>
+			<div class='weather-widget-main col-md-8 col-lg-6'>
+				<div class='weather-loading' ng-show='loading'>
+					<i class='fa fa-spinner fa-pulse fa-3x'></i>
+				</div>
+				<i class='icn-weather' data-weather-icn='{{item.results[0].weather_data[0].weather}}' ng-repeat='item in weathers'></i>
+				<p class='title-deg' ng-repeat='item in weathers'>
+					{{item.results[0].currentCity}}
+				</p>
+				<p>
+					<span class='title-deg' ng-repeat='item in weathers'>
+						{{item.results[0].weather_data[0].temperature}}
+					</span>
+					<span class='title-weather' ng-repeat='item in weathers'>
+						{{item.results[0].weather_data[0].weather}}
+					</span>
+					<span class='title-wind' ng-repeat='item in weathers'>
+						{{item.results[0].weather_data[0].wind}}
+					</span>
+				</p>
+
+				<!--<span ng-repeat='item in weathers'>
+					{{item.results[0].weather_data[0].date}}
+				</span>-->
+
+			</div>
+			<div class="weather-widget-side col-md-4 col-lg-3">
+				<i class='icn-weather' data-weather-icn='{{item.results[0].weather_data[1].weather}}' ng-repeat='item in weathers'></i>
+				<p class='title-deg' ng-repeat='item in weathers'>
+					{{item.results[0].weather_data[1].temperature}}
+				</p>
+				<p class='title-weather' ng-repeat='item in weathers'>
+					{{item.results[0].weather_data[1].weather}}
+				</p>
+				<p class='title-wind' ng-repeat='item in weathers'>
+					{{item.results[0].weather_data[1].wind}}
+				</p>
+				<p ng-repeat='item in weathers'>
+					{{item.results[0].weather_data[1].date}}
+				</p>
+			</div>
+			<div class="weather-widget-side">
+				<i class='icn-weather' data-weather-icn='{{item.results[0].weather_data[2].weather}}' ng-repeat='item in weathers'></i>
+				<p class='title-deg' ng-repeat='item in weathers'>
+					{{item.results[0].weather_data[2].temperature}}
+				</p>
+				<p class='title-weather' ng-repeat='item in weathers'>
+					{{item.results[0].weather_data[2].weather}}
+				</p>
+				<p class='title-wind' ng-repeat='item in weathers'>
+					{{item.results[0].weather_data[2].wind}}
+				</p>
+				<p ng-repeat='item in weathers'>
+					{{item.results[0].weather_data[2].date}}
+				</p>
+			</div>
+
+		</div>
+	</div>
+</div>

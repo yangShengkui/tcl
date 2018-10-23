@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <!-- 响应屏幕宽度 -->
+    <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <!-- 360等浏览器默认webkit内核 -->
+    <meta name="renderer" content="webkit">
+    <!-- IE浏览器默认edge渲染 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link rel="shortcut icon" href="" type="image/vnd.microsoft.icon">
+    <script type="text/javascript" src="./js/services/service_factory.js"></script>
+  </head>
+  <body>
+    <script>
+      /** 根据JS/SERVICES/SERVICES.JS文件下面设置的参数配置AJAX地址。 */
+      var url  = $services.getUrl(this);
+      function createXHR() {
+        if ('XMLHttpRequest' in window) {
+          createXHR = function() {
+            return new XMLHttpRequest();
+          };
+        } else {
+          createXHR = function() {
+            throw new Error("Ajax is not supported by this browser");
+          };
+        }
+        return createXHR();
+      }
+      // Ajax 执行
+      function request(ajaxData) {
+        var xhr = createXHR();
+        xhr.withCredentials = true;
+        // 通过事件来处理异步请求
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+              if (ajaxData.dataType == 'json') {
+                ajaxData.callback(JSON.parse(xhr.responseText));
+              } else
+                ajaxData.callback(xhr.responseText);
+            } else {
+              ajaxData.error && ajaxData.error(xhr.responseText);
+            }
+          }
+        };
+        // 设置请求参数
+        xhr.open(ajaxData.type, ajaxData.url);
+        if (ajaxData.data) {
+          xhr.send(ajaxData.data);
+        } else {
+          xhr.send(null);
+        }
+        return xhr;
+      }
+      function post(ajaxData) {
+        ajaxData.type = 'POST';
+        ajaxData.callback = redirectHandler;
+        var _result = request(ajaxData);
+        return _result;
+      }
+
+      function get(ajaxData,callback) {
+        ajaxData.type = 'GET';
+        ajaxData.data = null;
+        ajaxData.callback = callback;
+        var _result = request(ajaxData);
+        return _result;
+      }
+      var jsonData;
+      function redirectHandler(returnObj) {
+        if (returnObj.code == 10020) {
+          window.location.href = returnObj.data;
+          return;
+        };
+        if (returnObj.code != 0) {
+          return;
+        }
+        jsonData = returnObj.data;
+        get({url:url +'/api/rest/get/resourceUIService/getAppData/[]',dataType:'json'},redirectHandler2)
+      };
+      function redirectHandler2(returnObj) {
+        jsonData.appData = returnObj.data;
+        var industry = jsonData.industry;
+        if (!industry || industry == 0) {
+          if (!jsonData.appData) {
+            if (jsonData.loginTimes == 0) {
+              window.location.href = "app-uc/password.html";
+            } else {
+              window.location.href = "app-ac/index.html";
+            }
+          } else {
+            if (jsonData.loginTimes == 0) {
+              window.location.href = "app-uc/password.html";
+            } else {
+              window.location.href = "app-oc/index.html";
+            }
+          }
+        } else {
+          if (jsonData.loginTimes == 0) {
+            window.location.href = "app-uc/password.html";
+          } else {
+            firstCode = jsonData.functionList[0].functionCode;
+            if(firstCode == "F02") {
+              window.location.href = "app-sc/index.html";
+            } else if(firstCode == "F03") {
+              window.location.href = "app-ac/index.html";
+            } else if(firstCode == "F04") {
+              window.location.href = "app-uc/index.html";
+            } else {
+              window.location.href = "app-oc/index.html";
+            }
+          }
+        }
+      };
+      get({url:url + '/api/rest/get/userLoginUIService/getCurrentUser/[]',dataType:'json'},redirectHandler)
+    </script>
+  </body>
+
+</html>

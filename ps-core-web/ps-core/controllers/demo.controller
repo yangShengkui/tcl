@@ -1,0 +1,173 @@
+<config router="prod_demo"
+        injector="$scope,$q, resourceUIService, psModel">
+</config>
+<template>
+    <ps-base config="config"></ps-base>
+</template>
+<script type="text/javascript">
+export default function (scope, q, resourceUIService, psModel) {
+
+  let getAllModels = () => {
+    let defer = q.defer();
+    resourceUIService.getModelsByCondition({}, function (ret) {
+      if (ret.code == 0) {
+        defer.resolve(ret.data);
+      }
+    });
+    return defer.promise;
+  }
+  scope.config = {
+    title: "备件管理",
+    attributes: {
+      "key1": ["字段1", "input"],
+      "key2": ["字段2", "input", 222],
+      "key3": {
+        label: '字段3',
+        type: 'select',
+        options: [{
+          id: 1,
+          label: '一'
+        }, {
+          id: 2,
+          label: '二'
+        }, {
+          id: 3,
+          label: '三'
+        }]
+      },
+      "key4": ["字段4", "select", "", null, [{
+        id: 1,
+        label: '一'
+      }, {
+        id: 2,
+        label: '二'
+      }, {
+        id: 3,
+        label: '三'
+      }]]
+    },
+    actions: {
+      add: {},
+      del: '',
+      advice: ''
+    },
+    search: {
+      body: ["key1", "key2", "key3", "key4"],
+      buttons: [[
+      ]],
+    },
+    grid: {
+      showIndex: false,
+      showSelector: false,
+      showheader: false,
+      data: [],
+      buttons: [{
+        label: `添加模板`,
+        on: "add:addService"
+      }, {
+        label: `添加模板`,
+        on: "actice"
+      },
+      ],
+      body: ["key1", "key2"]
+    }
+  };
+  getAllModels().then(d => {
+    scope.config.grid.data = d;
+  });
+  scope.clickMe = () => {
+    psModel.open({
+      title: '物联网卡详情',
+      body: {
+        MSISDN: {
+          label: '物联网卡号',
+          disabled: true,
+          type: 'input',
+          value: 1
+        },
+        gprsFlowUsed: {
+          label: '本月累计使用流量(MB)',
+          type: 'select',
+          value: 2,
+          selectData: [{
+            id: 1,
+            label: 1
+          }, {
+            id: 2,
+            label: 2
+          }, {
+            id: 3,
+            label: 3
+          }, {
+            id: 4,
+            label: 4
+          }, {
+            id: 5,
+            label: 5
+          }],
+          on: {
+            change: function (a, b, c) {
+              if (a == 3) {
+                c.iccid.selectData = [{
+                  id: 1,
+                  label: 1
+                }, {
+                  id: 2,
+                  label: 2
+                }, {
+                  id: 3,
+                  label: 3
+                }, {
+                  id: 4,
+                  label: 4
+                }, {
+                  id: 5,
+                  label: 5
+                }]
+              } else {
+                c.iccid.selectData = [];
+              }
+            }
+          }
+        },
+        iccid: {
+          label: 'ICCID',
+          type: 'select',
+          value: 3,
+          selectData: [],
+          on: {
+            change: function (a, b, c) {
+              console.log(a);
+              console.log(b);
+              console.log(c);
+            }
+          }
+        },
+        imsi: {
+          label: 'IMSI',
+          disabled: true,
+          type: 'input',
+          value: 4
+        },
+        sn: {
+          label: '网关SN号',
+          disabled: true,
+          type: 'input',
+          value: 5
+        },
+        switchgearState: {
+          label: '开机状态',
+          disabled: true,
+          type: 'input',
+          value: 6
+        }
+      },
+      buttons: [{
+        label: '确认'
+      }]
+    });
+  }
+};
+</script>
+<style type="less">
+</style>

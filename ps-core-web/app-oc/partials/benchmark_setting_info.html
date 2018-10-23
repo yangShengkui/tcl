@@ -1,0 +1,81 @@
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header" ng-hide="searchMode">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active">
+                <a>标杆设置</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body no-padding-left no-pad-bottom">
+          <form role="form">
+            <div class="form-group col-sm-3">
+              <label class="control-label">选择行业：</label>
+              <select ng-model="queryDitem.industryType" ng-options="value.id as value.text for value in industryList" class="form-control input-sm" selectdata="industryList" select2></select>
+            </div>
+            <div class="form-group col-sm-2">
+              <label class="col-sm-12 control-label font-white">操作：</label>
+              <div class="btn-group">
+                <button ng-click="goSearch(queryDitem)" type="button" class="btn btn-primary btn-sm"><i class="fa fa-search"></i><span class="hidden-sm">查询</span></button>
+                <button ng-click="goClear()" type="button" class="btn btn-default btn-sm"><i class="fa fa-close"></i><span class="hidden-sm">清除</span></button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="box-footer no-padding" style="margin-bottom:15px;">
+          <div class="box box-solid" style="margin-bottom:1px">
+            <div class="box-header">
+              <h3 class="box-title">标杆设置图表</h3>
+              <div class="box-tools pull-right">
+                <button id="viewcollapse" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="col-sm-6">
+                <div id="barsettingdataview" style="height: 400px; width: 900px; margin-left:30px;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="box box-solid" style="margin-bottom:1px" ng-show="queryDitem.industryType">
+            <div class="box-header">
+              <h3 class="box-title">上周期标杆设置时间：{{lastTime}}</h3>
+              <div class="box-tools pull-right">
+                <button ng-click="goSubmit()" type="button" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-ok"></i><span class="hidden-sm">提交</span></button>
+                <!-- <button id="viewcollapse" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button> -->
+              </div>
+            </div>
+            <div class="box-body table-responsive" height="300px" style="width: 90%;margin-left: 5%;" slim-scroll>
+              <table class="table no-margin">
+                <thead>
+                  <tr>
+                    <th>能源名称</th>
+                    <th>上次设置标杆值</th>
+                    <th>系统计算标杆值</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="item in energyType">
+                    <td>{{item.label}}</td>
+                    <td>
+                      <input type="text" disabled ng-model="filterLastDic[item.label].value">
+                    </td>
+                    <td>
+                      <input type="text" ng-model="filterBestDic[item.label].value">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

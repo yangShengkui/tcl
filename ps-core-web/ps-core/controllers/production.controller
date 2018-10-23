@@ -1,0 +1,86 @@
+<config injector="$scope,$rootScope,$routeParams,$q,$timeout,viewFlexService,psCommand"
+        params="/:viewId?"
+></config>
+<template>
+  <div>
+    <free-board-preview
+        ng-if="type!=='absolute'"
+        data-setting="setting"
+        data-options="options">
+    </free-board-preview>
+    <free-board-abs-preview
+        ng-if="type=='absolute'"
+        data-setting="setting"
+        data-options="options">
+    </free-board-abs-preview>
+  </div>
+  <select ng-model="scale"
+          ng-change="change(scale)"
+          ng-options="item[1] as item[0] for item in [['10%', .1], ['25%', .25], ['50%', .5], ['75%', .75], ['100%', 1]]"
+          class="sel"></select>
+</template>
+<script type="text/javascript">
+  export default function(scope,rootScope,routeParams,q,timeout,viewFlexService,psCommand) {
+    var viewId = routeParams.viewId;
+    function parser(str){
+      let json;
+      try {
+        json = JSON.parse(str);
+      } catch(e) {
+        console.error(e);
+        json = null;
+      } finally {
+        return json
+      }
+    }
+    function extend(a, b){
+      for(var i in b){
+        a[i] = b[i];
+      }
+      return a;
+    }
+    function getViewById(viewId){
+      var defer = q.defer();
+      viewFlexService.getViewById(viewId, (d) => {
+        d.code == 0 ? defer.resolve(d.data) : defer.reject(d.message)
+      });
+      return defer.promise;
+    }
+    getViewById(viewId).then((view)=>{
+      var json = parser(view.content);
+      scope.type = json ? json.type : "";
+      scope.options = json ? (json.data || []) : [];
+      scope.setting = json ? json.setting : {};
+      scope.scale = scope.setting.scale;
+    });
+    rootScope.$on(`freeboard:select`, (e, d)=>{
+      window['globalCtrl'].emit(`freeboard:select`, d);
+    });
+    window['globalCtrl'].on(`freeboard:select`, (d)=>{
+      var name = d.getName();
+
+
+      /** 中间通过这个name名打开对应的窗口 */
+
+
+      /** 编辑完之后更新ATTRS属性 */
+
+
+      d.update((attrs)=>{
+        attrs.value = 10;
+      })
+    })
+    scope.change = function(scale){
+      scope.setting.scale = scale;
+      scope.setting = extend({}, scope.setting);
+    }
+  }
+</script>
+<style type="less">
+  .sel{
+    position : absolute;
+    width : 100px;
+    top : 10px;
+    right : 10px;
+  }
+</style>

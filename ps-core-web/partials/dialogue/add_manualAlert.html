@@ -1,0 +1,122 @@
+
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">人工报警</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal" name="dirForm">
+          <div class="form-group col-sm-8 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">报警设备：</span>
+            </label>
+            <div class="col-sm-8">
+              <!--<input type="text"  maxlength="32" autocomplete="off" ng-model="orderAddData.title"  ng-change="clearError();" ng-model="orderAddData.title" class="form-control  input-sm" name="commandCode" required="required">-->
+              <!--<select class="form-control" selectdata="manualAlertDevname" ng-model="manualAlert.devName" ng-options="value.valueCode as value.label for value in selectedDitem.label ">-->
+                <select class="form-control" buttonclass='btn btn-default full-width' ng-model="manualAlert.nodeId"  ng-options="value.id as value.label for value in selectedDitem.label" selectdata="manualAlertDevname" numberdisplayed="6">
+
+                </select>
+            </div>
+          </div>
+          <div class="form-group col-sm-8 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">报警时间：</span>
+            </label>
+            <div class="col-sm-8">
+              <input type="text" autocomplete="off" id="createStart" style="background-color:#fff;" class="form-control" ng-model="manualAlert.arisingTime" timepicker="true" readonly="readonly" placeholder="请选择..." opens="left" drops="down" date-time-picker>
+
+            </div>
+          </div>
+          <div class="form-group col-sm-8 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">报警原因：</span>
+            </label>
+            <div class="col-sm-8">
+              <select class="form-control input-sm"   placeholder="请选择..." ng-change="process();" ng-model="manualAlert.alertReasonData" required="required" ng-options="x.label for x in alertTitleList" selectdata="alertTitleList">
+              <!--<select class="form-control input-sm"   placeholder="请选择..." ng-change="process();" ng-model="manualAlert.title" ng-options="x.id  as x.name for x in processType" selectdata="allDictList" required="required">-->
+              </select>
+            </div>
+          </div>
+          <div class="form-group col-sm-8 " ng-show="manualAlert.alertReasonData.id=='0'">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">其他原因：</span>
+            </label>
+            <div class="col-sm-8">
+              <input type="text"  maxlength="32" autocomplete="off" ng-model="manualAlert.message"  ng-change="clearError();"  class="form-control  input-sm" name="commandCode" required="required">
+
+            </div>
+          </div>
+          <div class="form-group col-sm-8 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">报警级别：</span>
+            </label>
+            <div class="col-sm-8">
+              <div class="col-sm-12 no-padding-lr multiselect-group">
+
+              <select class="form-control" buttonclass='btn btn-default full-width' ng-model="manualAlert.severity"  ng-options="value.valueCode as value.label for value in allDictList | filter:{ dictCode :'alertLevel'}" selectdata="allDictList" numberdisplayed="6">
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-sm-8 " ng-repeat="item in formAryList">
+            <label class="col-sm-4 dialog-control-label no-padding-right no-padding-left dialog-control-h">
+              <span  ng-if="item.required == 'yes'" class="text-danger ng-binding">*</span> <span class="ng-binding">{{item.name}}：</span>
+            </label>
+            <div class="col-sm-8" ng-if="item.dataType == 'date'">
+              <input timePicker="false" timepicker="false"  ng-required="item.required == 'yes'"  ng-disabled="detail.taskStatus >= 100"  date-time-picker class="form-control" type="text" ng-model="$parent.definitions[item.label]" />
+            </div>
+            <div class="col-sm-8" ng-if="item.dataType == 'textarea'">
+              <textarea class="col-md-12 form-control"    ng-required="item.required == 'yes'" ng-disabled="detail.taskStatus >= 100"  ng-model="$parent.definitions[item.label]"  style="height:100px;resize: none;" name="discription" maxlength="500" type="text" ></textarea>
+
+            </div>
+            <div class="col-sm-8" ng-if="item.dataType == 'string'">
+              <input class="form-control" type="text"  ng-required="item.required == 'yes'"  ng-disabled="detail.taskStatus >= 100"  ng-model="$parent.definitions[item.label]" />
+            </div>
+            <div class="col-sm-8" ng-if="item.dataType == 'customers'">
+              <select select2 class="form-control"  ng-required="item.required == 'yes'"  ng-disabled="detail.taskStatus >= 100"  ng-model="$parent.definitions[item.label] "  selectdata="customersList"  ng-options="value.valueCode as value.text for value in customersList  | filter:{ id :devicesDic[orderAddData.deviceId].customerId}">
+                <option value="">请选择...</option>
+              </select>
+            </div>
+            <div class="col-sm-8" ng-if="item.dataType == 'project'">
+              <select select2 class="form-control"   ng-required="item.required == 'yes'"  ng-disabled="detail.taskStatus >= 100"   ng-model="$parent.definitions[item.label]" ng-options="value.valueCode as value.text for value in projectsList | filter:{ id :devicesDic[orderAddData.deviceId].projectId}" selectdata="projectsList">
+                <option value="">请选择...</option>
+              </select>
+            </div>
+            <div class="col-sm-8" ng-if="item.dataType == 'select'">
+              <select class="form-control"  ng-required="item.required == 'yes'"  ng-disabled="detail.taskStatus >= 100" ng-model="definitions[item.label]" ng-options="value.label as value.label for value in item.selectValue">
+                <option value="">请选择</option>
+              </select>
+            </div>
+          </div>
+       <!--   <div class="form-group col-sm-6 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">故障码：</span>
+            </label>
+            <div class="col-sm-8">
+              <select class="form-control input-sm"   placeholder="请选择..."  ng-model="orderAddData.faultId" ng-options="x.id  as x.faultNo for x in initData.faultList" >
+                <option value="">请选择</option>
+              </select>
+            </div>
+          </div>-->
+          <!--<div class="form-group col-sm-12">-->
+            <!--<label class="col-sm-2 margin-left-15 dialog-control-label no-padding-right dialog-control-h">-->
+              <!--<span class="ng-binding">工单内容：</span>-->
+            <!--</label>-->
+            <!--<div class="col-sm-9 no-padding-right">-->
+              <!--<textarea  id="discription" ng-model="orderAddData.message" class="col-md-12  form-control"  style="height:100px;resize: none;" name="discription" maxlength="500"  type="text" placeholder="最多可输入500字"></textarea>-->
+            <!--</div>-->
+          <!--</div>-->
+        </form>
+      </div>
+      <div class="modal-footer">
+
+        <button ng-hide="orderAddData.ticketNo" class="btn btn-primary" ng-disabled=""  ng-click="saveManualAlert()" disabled="disabled">
+          确认
+        </button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

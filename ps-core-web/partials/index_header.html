@@ -1,0 +1,53 @@
+<div class="logo no-padding">
+  <div class="pull-left " ng-click="gotoHomePage()" style="width: 120px; padding-left:0px;padding-top: 0px;">
+    <a href="index.html">
+      <div ng-style="{'background-image' : 'url(' + userInfo.enterprise.enterpriseLogo + ')'}" class="enterprise-logo"></div>
+    </a>
+  </div>
+  <a class="sidebar-toggle" style="float:right;padding:0 8px 0 0; font-size: 15px;color:#fff" data-toggle="offcanvas" role="button" admin-lite-toggle>
+    <span class="sr-only">Toggle navigation</span>
+  </a>
+</div>
+
+<nav class="navbar navbar-static-top" role="navigation">
+
+  <a ng-cloak ng-show="menuitems['F01']" ng-style="{true:{'pointer-events':'none'},}[localMenuCode == 'F01']" href="../app-oc/index.html" class="sidebar-toggle2 proudsmart ps-center" ng-class="{true:'active'}[localMenuCode == 'F01']"><span class="hidden-sm hidden-xs"> {{menuitems['F01'].name}}</span></a>
+  <a ng-cloak ng-show="menuitems['F02']" ng-style="{true:{'pointer-events':'none'},}[localMenuCode == 'F02']" href="../app-sc/index.html" class="sidebar-toggle2 proudsmart ps-server" ng-class="{true:'active'}[localMenuCode == 'F02']"><span class="hidden-sm hidden-xs"> {{menuitems['F02'].name}}</span></a>
+  <a ng-cloak ng-show="menuitems['F03']" ng-style="{true:{'pointer-events':'none'},}[localMenuCode == 'F03']" href="../app-ac/index.html" class="sidebar-toggle2 proudsmart ps-app" ng-class="{true:'active'}[localMenuCode == 'F03']"><span class="hidden-sm hidden-xs"> {{menuitems['F03'].name}}</span></a>
+  <a ng-cloak ng-show="menuitems['F04']" ng-style="{true:{'pointer-events':'none'},}[localMenuCode == 'F04']" href="../app-uc/index.html" class="sidebar-toggle2 proudsmart ps-userinfo" ng-class="{true:'active'}[localMenuCode == 'F04']"><span class="hidden-sm hidden-xs"> {{menuitems['F04'].name}}</span></a>
+  <a ng-cloak ng-show="menuitems['F05']" ng-style="{true:{'pointer-events':'none'},}[localMenuCode == 'F05']" href="../app-help/index.html" class="sidebar-toggle2 proudsmart ps-help" ng-class="{true:'active'}[localMenuCode == 'F05']"><span class="hidden-sm hidden-xs"> {{menuitems['F05'].name}}</span></a>
+
+  <div class="navbar-custom-menu">
+    <ul class="nav navbar-nav">
+      <audio id="alertMusic" loop="loop">
+        <source src="../assets/warning/alert1.mp3" type="audio/mp3">
+      </audio>
+      <!-- 导航栏右侧的数据将后期实现 -->
+      <menu-messages></menu-messages>
+      <li class="dropdown user user-menu">
+        <a class="dropdown-toggle" data-toggle="dropdown">
+          <img src="../images/user/user.png" class="user-image" alt="User Image">
+          <span class="hidden-sm hidden-xs" ng-bind="userInfo.userName"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <!-- User image -->
+          <li class="user-header">
+            <img src="../images/user/user.png" class="img-circle" alt="User Image">
+            <p>
+              {{userInfo.userName}}
+              <small>最近登录时间{{userInfo.lastLoginTime | date:'yyyy-MM-dd HH:mm:ss'}}</small>
+            </p>
+          </li>
+          <li class="user-footer">
+            <div ng-show="menuitems['M26']" class="pull-left">
+              <a href="../app-uc/index.html#/personal" class="btn btn-default btn-flat">个人资料</a>
+            </div>
+            <div class="pull-right">
+              <a ng-click="logout()" class="btn btn-default btn-flat">退出</a>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,99 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+	<h1>
+	    服务概览
+	    <small ng-show="selectView==undefined">
+			<a class="text-green" ><i class="fa fa-square "></i>正常状态</a>
+		    <a class="text-red" ><i class="fa fa-square"></i>告警状态</a>
+		    <a class="text-yellow" ><i class="fa fa-square"></i>异常状态</a>
+	    </small>
+	    <small ng-show="selectView!=undefined">
+			<a class="text-green" ><i class="fa fa-square "></i>连接正常</a>
+		    <a class="text-red" ><i class="fa fa-square"></i>指标告警</a>
+		    <a class="text-yellow" ><i class="fa fa-square"></i>连接异常</a>
+	    </small>
+	</h1>
+	<ol class="breadcrumb">
+		<li><a href="#dashboard3"><i class="sidebar-toggle2 proudsmart ps-server"></i> 服务中心</a></li>
+		<li class="active" ng-show="selectView==undefined">服务概览</li>
+		<li ng-show="selectView!=undefined" style="cursor : pointer" ng-click="backMainPage()">服务概览</li>
+		<li class="active" ng-show="selectView!=undefined">{{selectView.viewTitle}}</li>
+	</ol>
+</section>
+<!-- Main content -->
+<section class="content" style="padding-bottom: 15px;">
+	<!-- Direct Chat -->
+	<!-- <button ng-click="createDummyData(resource)" style="display : none">createDummyData</button> -->
+	<div class="row" ng-if="!currentRes">
+		<div ng-repeat="resource in resources" class="col-sm-12 col-md-6 col-lg-4 col-xl-3 wrap" ng-class="alertsClass(resource.alert)" ng-click="resource.onClick()">
+			<div class="resources">
+				<div class="line"></div>
+				<div class="icon"></div>
+				<div class="label" ng-bind="resource.kpis[9].value + ' ' + resource.kpis[10].value + '行' + resource.kpis[11].value + '列' + resource.kpis[10].value * resource.kpis[11].value * 8 + '针'"></div>
+				<div class="text">
+					<div ng-bind="resource.kpis[9].label + ':' + resource.kpis[9].value"></div>
+					<div ng-bind="resource.kpis[2].label + ':' + resource.kpis[2].value"></div>
+					<div ng-bind="resource.kpis[1].label + ':' + resource.kpis[1].value"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-if="currentRes" class="row">
+		<div class="col-md-3">
+            <div>
+                <div class="header"></div>
+                <div class="epuipment-echart" epuipment-echart></div>
+            </div>
+            <div>
+                <div class="header">机台配置信息</div>
+                <div class="content">
+                    <ul>
+                        <li>
+                            <span></span><span>text</span>
+                        </li>
+                        <li>
+                            <span></span><span>text</span>
+                        </li>
+                        <li>
+                            <span></span><span>text</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer">
+                    <table>
+                        <tr>
+                            <td>
+                                班组
+                            </td>
+                            <td>
+                                值机工号
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+		</div>
+		<div class="col-md-6">
+			<div class="drawingArea"></div>
+		</div>
+		<div class="col-md-3">
+            <div>
+                <div class="title">提花机生产信息</div>
+                <div class="content">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="icon"></div>
+                                <p class="des">客户编号</p>
+                            </td>
+                            <td>
+                                <p class="value">ASNAJHSA</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+		</div>
+	</div>
+</section>
+<!-- /.content -->

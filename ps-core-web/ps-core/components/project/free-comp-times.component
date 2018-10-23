@@ -1,0 +1,170 @@
+<config injector=""
+></config>
+<properties>
+  <script type="text/javascript">
+    function properties(){
+      return [{
+        label : "基本设定",
+        attributes : {
+          width : ["宽度","input",200],
+          height : ["高度", "input", 50],
+          fontSize : ["字体大小", "input","18px"],
+          color : ["颜色","input","#FFFFFF"],
+          textAlign : ["文字对齐","input","left"],
+          hourpoor : ["小时差","input",0],
+          daypoor : ["日差","input",0],
+          MMpoor : ["月差","input",0],
+          format : ["时间格式","input","yyyy-MM-dd HH:mm:ss"],
+          real : ["实时","input","false"],
+          paddingZero : ["补零","input","true"]
+        }
+      }]
+    }
+    export { properties }
+  </script>
+</properties>
+<template>
+  <div class="images" ng-style="mystyle">
+    {{times }}
+  </div>
+</template>
+<script type="text/javascript">
+    export default function(q,viewFlexService){
+        return {
+            scope : {
+                option : "="
+            },
+            link(scope, element, attr, ngModel) {
+                function render(n){
+                    var times = new Date();
+                    var yyyy = times.getFullYear();
+                    var MM = times.getMonth()+1;
+                    var DD = times.getDate();
+                    var hh = times.getHours();
+                    var mm = Math.ceil(Math.random()*49 + 10);
+                    var ss = Math.ceil(Math.random()*49 + 10);
+                    var realMM = times.getMinutes();
+                    var realSS = times.getSeconds();
+                    if(n.paddingZero == "true"){
+                        if(MM < 10){
+                            MM = "0" + MM;
+                        }
+                        if(realSS < 10){
+                            realSS = "0" + realSS;
+                        }
+                        if(realMM < 10){
+                            realMM = "0" + realMM;
+                        }
+                    }
+
+                    if(n.real == "true"){
+                        scope.times = yyyy + "-" + MM + "-" + DD + " " + hh + ":" + realMM + ":" + realSS;
+                        setInterval(function () {
+                            render(scope.option.attributes);
+                            scope.$apply();
+                        },1000);
+                    }else{
+                        if(n.format == "yyyy-MM-dd HH:mm:ss"){
+                            var HH = hh - n.hourpoor;
+                            if(HH < 0 ){
+                                HH = 0;
+                            }
+                            if(HH < 10){
+                                HH = "0" + HH;
+                            }
+
+                            var dd = DD - n.daypoor;
+                            if(n.paddingZero == "true"){
+                                if(dd < 10){
+                                    dd = "0" + dd;
+                                }
+                            }
+
+                            scope.times = yyyy + "-" + MM + "-" + dd + " " + HH + ":" + mm + ":" + ss;
+                        }else if(n.format == "yyyy-MM-dd"){
+                            var dd = DD - n.daypoor;
+                            if(n.paddingZero == "true"){
+                                if(dd < 10){
+                                    dd = "0" + dd;
+                                }
+                            }
+
+                            scope.times = yyyy + "-" + MM + "-" + dd ;
+                        }else if(n.format == "MM-dd HH:mm"){
+                            var dd = DD - n.daypoor;
+                            if(n.paddingZero == "true"){
+                                if(dd < 10){
+                                    dd = "0" + dd;
+                                }
+                            }
+
+                            var HH = hh - n.hourpoor;
+                            if(HH < 0 ){
+                                HH = 0;
+                            }
+                            if(HH < 10){
+                                HH = "0" + HH;
+                            }
+                            scope.times =  MM + "-" + dd + " " + HH + ":" + mm;
+                        }else if(n.format == "MM-dd"){
+                            var dd = DD - n.daypoor;
+                            if(n.paddingZero == "true"){
+                                if(dd < 10){
+                                    dd = "0" + dd;
+                                }
+                            }
+
+                            scope.times =  MM + "-" + dd;
+                        }else if(n.format == "HH:mm"){
+                            var HH = hh - n.hourpoor;
+                            if(HH < 0 ){
+                                HH = 0;
+                            }
+                            if(HH < 10){
+                                HH = "0" + HH;
+                            }
+                            scope.times = HH + ":" + mm;
+                        }else if(n.format == "MM"){
+                            var Mm = MM - n.MMpoor;
+                            if(Mm < 0){
+                                Mm = 0;
+                            }
+
+                            scope.times = Mm + "月";
+                        }else{
+                            var HH = hh - n.hourpoor;
+                            if(HH < 0 ){
+                                HH = 0;
+                            }
+                            if(HH < 10){
+                                HH = "0" + HH;
+                            }
+                            var dd = DD - n.daypoor;
+                            if(n.paddingZero == "true"){
+                                if(dd < 10){
+                                    dd = "0" + dd;
+                                }
+                            }
+
+                            scope.times = yyyy + "-" + MM + "-" + dd + " " + HH + ":" + mm + ":" + ss;
+                        }
+                        setInterval(function () {
+                            render(scope.option.attributes);
+                            scope.$apply();
+                        },5 * 60 * 1000);
+                    }
+                }
+
+                scope.$watch("option.attributes", (n, o, s) => {
+                    if(n !== undefined){
+                        render(n);
+                        scope.mystyle = n
+                    }
+                })
+            }
+        }
+    }
+</script>
+<style type="less" scoped="true">
+
+</style>

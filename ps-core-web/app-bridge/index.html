@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+
+	<!-- 响应屏幕宽度 -->
+	<meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+
+	<link rel="shortcut icon" href="" type="image/vnd.microsoft.icon">
+
+	<link rel="stylesheet" href="../bower_components/jquery-ui/themes/base/all.css">
+	<!-- Bootstrap 样式-->
+	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+	<!-- Bootstrap-switch 样式-->
+	<link rel="stylesheet" href="../bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css">
+
+	<!-- Font Awesome 字体图标-->
+	<link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../bower_components/spectrum/spectrum.css">
+	<!-- Bootstrap dialog响应样式 -->
+	<link href="../bower_components/bootstrap3-dialog/dist/css/bootstrap-dialog.min.css" rel="stylesheet">
+	<link href="../bower_components/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" rel="stylesheet">
+
+	<!-- Bootstrap treeview -->
+	<link href="../bower_components/bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+	<!-- daterangepicker 日期选择-->
+	<link rel="stylesheet" href="../bower_components/bootstrap-daterangepicker/daterangepicker.css">
+
+	<!-- DataTables bootstrap3样式-->
+	<link href="../bower_components/datatables/media/css/dataTables.bootstrap.min.css" rel="stylesheet">
+
+	<!-- Ionicons 图标-->
+	<link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+
+	<!-- fullCalendar 2.4.0-->
+	<link rel="stylesheet" href="../bower_components/fullcalendar/dist/fullcalendar.min.css">
+	<link rel="stylesheet" href="../bower_components/fullcalendar/dist/fullcalendar.print.css" media="print">
+
+	<link rel="stylesheet" href="../bower_components/angular-growl-v2/build/angular-growl.min.css" />
+
+	<!-- iCheck -->
+	<link rel="stylesheet" href="../bower_components/iCheck/skins/all.css">
+
+	<!-- slick -->
+	<link rel="stylesheet" href="../bower_components/slick-carousel/slick/slick.css">
+	<link rel="stylesheet" href="../bower_components/slick-carousel/slick/slick-theme.css">
+
+	<!-- 百度天气 样式 -->
+	<link rel="stylesheet" href="../css/baidu-weather/weather.css">
+	<!-- AdminLTE 样式 -->
+	<link rel="stylesheet" href="../css/admin-lte/AdminLTE.css">
+
+	<link rel="stylesheet" href="../css/bridge/bridge.css">
+	<!-- AdminLTE 皮肤. 保存在css/skins目录下 -->
+	<link rel="stylesheet" href="../css/admin-lte/skins/_all-skins.css">
+	<!-- 普奥自定义字体 -->
+	<link rel="stylesheet" href="../css/proudsmart-webfont/font-proudsmart.css">
+	<!-- 编辑器less -->
+	<link rel="stylesheet" href="../css/dropdowntree/dropdowntree.css">
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<style type="text/css">
+		@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-start{clip:rect(0,auto,auto,0);-ms-zoom:1.0001;}.ng-animate-active{clip:rect(-1px,auto,auto,0);-ms-zoom:1;}
+	</style>
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini fixed sidebar-collapse">
+
+<div class="contextMenu" id="myMenu1">
+	<ul>
+		<li id="paste"><span class="glyphicon glyphicon-duplicate"></span>粘贴</li>
+	</ul>
+</div>
+
+<div class="main" ng-controller="appBridgeCtrl">
+	<div class="main-pattern"></div>
+	<div popup></div>
+	<div growl></div>
+	<div class="main-header">
+		<div class="item lighter">
+			环境监测
+		</div>
+		<div class="item">
+			桥梁监控系统
+		</div>
+		<div class="item lighter">
+			变形监测
+		</div>
+	</div>
+	<div class="main-invest">
+		<div class="item">
+			<div class="block" ng-repeat="item in gaugesLeft">
+				<div class="gauge">
+					<svg svg-pie ng-model="item.value"></svg>
+				</div>
+				<div class="text" ng-bind="item.label"></div>
+			</div>
+		</div>
+		<div class="item bg">
+			<div class="bg-l"></div>
+			<div class="bg-r"></div>
+			<div class="bg-border-l"></div>
+			<div class="bg-border-r"></div>
+			<div class="maintext">浦东新区  黄埔大桥</div>
+			<div class="time">10:23:54</div>
+			<div class="date">2016-9-16</div>
+			<div class="red">挠度过高</div>
+			<div class="value">136#</div>
+			<div class="yellow">WARNING</div>
+		</div>
+		<div class="item">
+			<div class="block" ng-repeat="item in gaugesRight">
+				<div class="gauge">
+					<svg svg-pie ng-model="item.value"></svg>
+				</div>
+				<div class="text" ng-bind="item.label"></div>
+			</div>
+		</div>
+	</div>
+	<div class="innerWrap" ng-view>
+
+	</div>
+</div>
+
+<!-- ./wrapper -->
+<script>
+	window.HOST_TYPE = "2";
+	window.BMap_loadScriptTime = (new Date).getTime();
+</script>
+<script src="../bower_components/requirejs/require.js" data-main="js/main"></script>
+</body>
+
+</html>

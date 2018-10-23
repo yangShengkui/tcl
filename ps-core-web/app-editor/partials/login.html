@@ -1,0 +1,9 @@
+<div class="main_login">
+	<select class="pathSelector" ng-model="sitem" 
+		ng-options="item as item.name for item in loginList">
+	</select>
+	<button ng-click='login(sitem)' class="btn btn-default">
+		<span class="glyphicon glyphicon-log-in"></span>
+		登录
+	</button>
+</div>

@@ -1,0 +1,90 @@
+<!--创建采集组模态框-->
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header bg-f2">
+      <a role="button" ng-click="closeDialog();" class="close">×</a>
+      <h4 class="modal-title info-box-number">指令信息</h4>
+    </div>
+    <div class="modal-body clearfix row ">
+      <form role="form" class="form-horizontal" name="dirForm">
+        <div class="form-group col-sm-6">
+          <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+            <span class="text-danger ng-binding">*</span> <span class="ng-binding">指令编码：</span>
+          </label>
+          <div class="col-sm-8">
+            <input type="text"  maxlength="50" autocomplete="off" ng-model="directivesObj.commandCode"  ng-change="clearError();" class="form-control  input-sm" name="commandCode" required="required">
+            <span ng-show="dirError.name == 'commandCode'" style="font-size: 12px;"  class="help-block text-danger text-muted" ng-bind="dirError.txt" ng-cloak></span>
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+            <span class="text-danger ng-binding">*</span> <span class="ng-binding">指令名称：</span>
+          </label>
+          <div class="col-sm-8">
+            <input type="text" ng-model="directivesObj.name" autocomplete="off" maxlength="32" ng-change="clearError();" class="form-control  input-sm" name="Name" required="required">
+            <span ng-show="dirError.name == 'name'" style="font-size: 12px;"  class="help-block text-danger text-muted" ng-bind="dirError.txt" ng-cloak></span>
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+            <span class="text-danger ng-binding">*</span> <span class="ng-binding">类型：</span>
+          </label>
+          <div class="col-sm-8">
+            <select class="form-control input-sm"  ng-model="directivesObj.commandType"  placeholder="请选择..." ng-options="value.valueCode as value.label for value in myDicts['commandType']"  required="required">
+              <option value="">请选择</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-sm-6">
+          <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+            <span class="ng-binding">指令顺序：</span>
+          </label>
+          <div class="col-sm-8">
+            <input type="number" ng-model="directivesObj.values.index" min="1" max="99999999" class="form-control  input-sm" name="Name" />
+          </div>
+        </div>
+        <div class="form-group col-sm-12">
+          <label class="col-sm-2 dialog-control-label no-padding-right dialog-control-h" style="margin-left:-6px">
+            <span class="ng-binding">指令描述：</span>
+          </label>
+          <div class="col-sm-10">
+            <textarea type="text" rows="2" ng-model="directivesObj.description" maxlength="32" class="form-control  input-sm" name="Name" ></textarea>
+          </div>
+        </div>
+      </form>
+      <div class="box-body table-responsive margin-bottom-20 padding-left-40 padding-right-20 bg-write">
+        <div class="form-group pull-left" style="width: 210px;height: 250px;">
+          <label>可用配置项</label>
+          <select class="form-control domainClass select-mult" id="valueLeft"  ng-model="selectData.optional"  ng-click="selectData.noOptional = ''" style="height: 250px;" multiple="multiple" >
+            <option ng-repeat="value in selectValueLeft" value="{{value.id}}" title="{{value.label}}">{{value.label}}</option>
+          </select>
+        </div>
+        <div class="form-group pull-left" style="width: 90px;height: 250px;">
+          <button class="btn btn-sm-dis btnR"  ng-class="{true: 'btn-primary',false: 'btn-default'}[selectData.optional.length > 0]" style="top: 60px;" ng-disabled="selectData.optional.length == 0 " ng-click="selectRight();selectData.optional = [];"><i
+            class="glyphicon glyphicon-arrow-right"></i></button>
+          <button class="btn btn-sm-dis btnL" style="top: 90px;" ng-class="{true: 'btn-primary',false: 'btn-default'}[selectData.noOptional.length > 0]"  ng-disabled="selectData.noOptional.length == 0"  ng-click="selectLeft();selectData.noOptional = [];"><i
+            class="glyphicon glyphicon-arrow-left"></i></button>
+
+          <button class="btn btn-sm-dis btnR" style="top: 130px;"  ng-class="{true: 'btn-primary',false: 'btn-default'}[selectData.noOptional.length > 0]"  ng-click="leftUp();" ng-disabled="selectData.noOptional.length == 0" ng-click="selectRight();"><i
+            class="fa fa-arrow-up"></i></button>
+          <button class="btn btn-sm-dis btnL" style="top: 160px;"  ng-class="{true: 'btn-primary',false: 'btn-default'}[selectData.noOptional.length > 0]"  ng-click="leftDown();" ng-disabled="selectData.noOptional.length == 0 " ng-click="selectLeft()"><i
+            class="fa fa-arrow-down"></i></button>
+        </div>
+        <div class="form-group pull-left " style="width: 210px;height: 250px;">
+          <label><span class="text-danger ng-binding">*</span> 分组数据项</label>
+          <select class="form-control domainClass select-mult"  id="valueRight" ng-click="selectData.optional = ''"  ng-model="selectData.noOptional" style="height: 250px;" multiple="multiple"   >
+            <option ng-repeat=" sel in selectValueRight" value="{{sel.uid}}" title="{{sel.label}}">{{sel.label}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" ng-disabled="dirForm.$invalid || isLoading || selectValueRight.length <= 0"  ng-click="saveDirectives()" disabled="disabled">
+        确定
+      </button>
+      <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+    </div>
+  </div>
+</div>
+</div>

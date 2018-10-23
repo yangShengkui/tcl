@@ -1,0 +1,210 @@
+<config injector="$scope,ajax,$location,psDialog,$routeParams" params="/:id?/:id2?/:id3?">
+</config>
+<template>
+  <proudsmart-base>
+    <ps-layout data-option="layout"></ps-layout>
+  </proudsmart-base>
+</template>
+<script type="text/javascript">
+  export default function (scope, ajax, location,psDialog,routeParams) {
+    console.log(routeParams["id2"], routeParams["id3"])
+    scope.layout = {
+      label : "设备属性",
+      modals : {
+        attrTemp : {
+          label : "添加属性",
+          type : "layout",
+          children : [{
+            type : "form-dialog",
+            children : [{
+              type : "input",
+              label : "属性名称",
+              composory : true,
+              key : "name"
+            },{
+              type : "input",
+              label : "显示名称",
+              composory : true,
+              key : "label"
+            },{
+              type : "select",
+              label : "数据类型",
+              key : "dataType",
+              options : [{
+                id : "string",
+                label : "字符串"
+              },{
+                id : "int",
+                label : "整数"
+              }],
+              value : "string"
+            },{
+              type : "input",
+              label : "属性值",
+              composory : true,
+              key : "sourceValue",
+              watch : {
+                name : "dataType",
+                handler : function(e){
+                  e.pipe({
+                    command : "update",
+                    args : [{
+                      type : e.$value == 1 ? "input" : "input",
+                      value : []
+                    }]
+                  }).pipe(function(d){
+                    console.log(d);
+                  });
+                }
+              }
+            },{
+              type : "select",
+              label : "敏感信息",
+              key : "values.sensitive",
+              options : [{
+                id : 1,
+                label : "是"
+              },{
+                id : 0,
+                label : "否"
+              }]
+            },{
+              type : "select",
+              label : "显示为台账",
+              key : "taizhang",
+              options : [{
+                id : 1,
+                label : "是"
+              },{
+                id : 0,
+                label : "否"
+              }]
+            },{
+              type : "input",
+              label : "字体大小",
+              composory : true,
+              key : "values.fontsize"
+            },{
+              type : "color",
+              label : "字体颜色",
+              composory : true,
+              key : "values.color"
+            }]
+          }],
+          buttons : [{
+            label : "确定",
+            class : "btn btn-primary",
+            click : function(){
+              this.submit();
+            }
+          },{
+            label : "取消",
+            click : function(){
+              this.close();
+            }
+          }]
+        }
+      },
+      children : [{
+        label : "设备属性",
+        type : "panel",
+        children : [{
+          type: "tabs-dynamic",
+          scope : "dtable",
+          options : [{
+            label : "基本属性",
+            url: 'resourceUIService.getAttrsByModelId',
+            parameter: routeParams.id,
+            after : function(d){
+              return d;
+            }
+          }],
+          template : {
+            type : "table",
+            key : "a",
+            children: [],
+            config : {
+              attributes: {
+                "label": ["显示名称", "text"],
+                "name": {
+                  label: "属性名称",
+                  type: "text"
+                },
+                "dataType": ["数据类型","text"],
+                "sourceValue": ["属性值","text"],
+                "values.color" : ["颜色", "text"]
+              },
+              grid: {
+                body: ["name", "label","dataType","sourceValue","values.color"],
+                buttons: {
+                  outGrid: [{
+                    label: "添加属性",
+                    class: "primary",
+                    icon: "fa fa-plus",
+                    on: {
+                      click: function (e) {
+                        e.add({
+                          template : "attrTemp",
+                          url : "resourceUIService.saveAttrs",
+                          before : function(d){
+                            d.modelId = routeParams.id;
+                            return [[d]];
+                          },
+                          after : function(d){
+                            return d.successObj[0];
+                          }
+                        });
+                      }
+                    }
+                  }],
+                  inGrid: [{
+                    label: "编辑",
+                    class: "btn btn-primary",
+                    on: {
+                      click: function (e) {
+                        e.update({
+                          template : "attrTemp",
+                          url : "resourceUIService.saveAttrs",
+                          before : function(d){
+                            d.modelId = routeParams.id;
+                            return [[d]];
+                          },
+                          after : function(d){
+                            return d.successObj[0];
+                          }
+                        });
+                      }
+                    }
+                  },{
+                    label: "删除",
+                    class: "btn btn-default",
+                    show : function(row){
+                      return ( row.id - 0 ) > 1000;
+                    },
+                    on: {
+                      click: function (e) {
+                        e.remove({
+                          url : "resourceUIService.deleteAttrs"
+                        }).pipe((d)=>{
+                          return d
+                        });
+                      }
+                    }
+                  }]
+                },
+                config: {
+                  showIndex: false,
+                  showSelector: false,
+                  showSearch: false
+                },
+                options: []
+              }
+            }
+          },
+        }]
+      }]
+    }
+  };
+</script>
+<style type="less">
+</style>

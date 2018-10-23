@@ -1,0 +1,368 @@
+{
+  "layout": {
+    "type": "column",
+    "children": [
+      {
+        "label": "控制板1",
+        "type": "block",
+        "source": "BLOCK",
+        "style": {
+          "padding": "10px",
+          "margin": "5px",
+          "background-color": "#3c8dbc"
+        },
+        "advance": {
+          "expression": {}
+        },
+        "children": [
+          {
+            "type": "column",
+            "col": 12,
+            "children": [
+              {
+                "label": "文字",
+                "type": "text",
+                "source": "TEXT",
+                "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                "data": {
+                  "applied": false,
+                  "kpi": [],
+                  "modelType": 300,
+                  "resfilltype": "parameter",
+                  "resource": [],
+                  "multipleCi": false,
+                  "multipleKpi": false,
+                  "series": {
+                    "manual": "拷贝图标样式到剪切板",
+                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                  },
+                  "modelDisable": true
+                },
+                "style": {
+                  "font-size": "16px",
+                  "font-weight": "bold",
+                  "text-align": "left",
+                  "color": "rgb(255, 255, 255)"
+                },
+                "advance": {
+                  "getfunction": "kpiDataService.getValueList",
+                  "category": "ci",
+                  "condition": [
+                    "kpi",
+                    "{object:kpiQueryModel}"
+                  ],
+                  "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"SCP路径生成器\")\n        }\n    }\n}"
+                },
+                "url": "images/map/map1.png",
+                "template": [
+                  {
+                    "type": "text",
+                    "style": {
+                      "margin": "auto",
+                      "padding": "0",
+                      "font-size": "10px",
+                      "font-weight": "bold",
+                      "color": "#333"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "style": {
+                      "margin": "auto",
+                      "padding": "0",
+                      "font-size": "16px",
+                      "font-weight": "bold",
+                      "color": "#666",
+                      "text-align": "center"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "style": {
+                      "width": "60px",
+                      "height": "60px",
+                      "margin": "auto",
+                      "padding": "0",
+                      "font-size": "12px",
+                      "line-height": "60px",
+                      "font-weight": "bold",
+                      "color": "#fff",
+                      "text-align": "center",
+                      "border-radius": "50%",
+                      "background-color": "#3c8dbc"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "style": {
+                      "width": "140px",
+                      "height": "60px",
+                      "margin": "auto",
+                      "padding": "0",
+                      "font-size": "12px",
+                      "line-height": "60px",
+                      "font-weight": "bold",
+                      "color": "#fff",
+                      "text-align": "center",
+                      "border-radius": "4px",
+                      "background-color": "#3c8dbc"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "style": {
+                      "width": "140px",
+                      "height": "60px",
+                      "margin": "auto",
+                      "padding": "0",
+                      "font-size": "12px",
+                      "line-height": "60px",
+                      "font-weight": "bold",
+                      "color": "#444",
+                      "text-align": "center",
+                      "border-radius": "4px",
+                      "background-color": "#eee"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "style": {
+                      "margin": "auto",
+                      "padding": "5px",
+                      "font-size": "18px",
+                      "font-weight": "bold",
+                      "color": "#444",
+                      "text-align": "center",
+                      "border-radius": "0px",
+                      "background-color": "#eee"
+                    }
+                  }
+                ],
+                "id": "nckePEdrWAaCifQKMHfyNwxhEkmmH7cP"
+              }
+            ],
+            "id": "TGX7whkbc6M28F828BbKZ2kTTpd3ziAp"
+          }
+        ],
+        "url": "images/map/map1.png",
+        "template": [
+          {
+            "type": "css",
+            "style": {
+              "padding": "10px",
+              "margin": "5px",
+              "border": "1px solid #ccc",
+              "background-color": "#fff"
+            }
+          },
+          {
+            "type": "css",
+            "style": {
+              "padding": "5px",
+              "margin": "5px",
+              "border": "1px solid #ccc",
+              "background-color": "#fff",
+              "border-top": "0"
+            }
+          },
+          {
+            "type": "css",
+            "style": {
+              "margin": "5px",
+              "padding": "5px",
+              "background-color": "#efdcaf",
+              "border": "1px solid #c2ad7a"
+            }
+          },
+          {
+            "type": "css",
+            "style": {
+              "margin": "5px",
+              "padding": "5px",
+              "background-color": "#f0c0a4",
+              "border": "1px solid #e5671b"
+            }
+          },
+          {
+            "type": "css",
+            "style": {
+              "margin": "5px",
+              "padding": "5px",
+              "background-color": "#ffb3b3",
+              "border": "1px solid #db2222"
+            }
+          }
+        ],
+        "id": "jdE6aj7AW8eJheEjC2e6Q64B2icp3XQp"
+      },
+      {
+        "label": "控制板1",
+        "type": "block",
+        "source": "BLOCK",
+        "style": {
+          "padding": "20px",
+          "margin": "5px",
+          "border": "1px solid #ccc",
+          "background": "#fff",
+          "box-shadow": "1px 1px 10px 1px rgba(0,0,0,.1)"
+        },
+        "children": [
+          {
+            "type": "column",
+            "col": 12,
+            "children": [
+              {
+                "label": "控件组",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var config = {};\n      var server, password, user, path, local;\n      var render = function(){\n          var ctrlGroups = [\n              [{\n              type : \"label\",\n              value : \"地址\",\n              class : \"col-md-2\"\n            },{\n              type : \"select\",\n              value : config.server,\n              colSpan : 1,\n              on : {\n                change : function(elem){\n                    config.server = elem.value.id;\n                    config.password = elem.value.password || \"Letmein123\";\n                    config.user = elem.value.user || \"root\";\n                    config.path = elem.value.path || \"../psiot/app/web/sysconfig/ROOT/\";\n                    render();\n                }\n              },\n              options : [{\n                  id : \"192.168.1.112\",\n                  label : \"192.168.1.112\"\n              },{\n                  id : \"192.168.1.117\",\n                  label : \"192.168.1.117\"\n              },{\n                  id : \"192.168.1.121\",\n                  label : \"192.168.1.121\"\n              },{\n                  id : \"192.168.1.139\",\n                  label : \"192.168.1.139\"\n              },{\n                  id : \"180.76.147.159\",\n                  label : \"180.76.147.159(临港创新中心)\",\n                  path : \"../ps_data/psiot/app/web/sysconfig/ROOT/\",\n                  password : \"6!8z@G#vhrH8\"\n              }]\n            }],\n           [{\n              type : \"label\",\n              value : \"scp路径\",\n              class : \"col-md-2\"\n            },{\n              type : \"input\",\n              value : config.local,\n              on : {\n                change : function(elem){\n                    config.local = elem.value;\n                }\n              }\n            },{\n              type : \"button\",\n              value : \"生成路径\",\n              icon : \"glyphicon glyphicon-search\",\n              btnclass : \"btn btn-primary\",\n              class : \"col-md-4\",\n              on : {\n                click : function(elem){\n                    delete config.value;\n                    target.saveEditorStatus(\"SCPPATH\", config)\n                    render();\n                }\n              }\n            }],\n            [{\n              type : \"label\",\n              value : \"用户名\",\n              class : \"col-md-2\"\n            },{\n              type : \"label\",\n              value : config.user,\n              colSpan : 1,\n              style : {\n                  \"padding\" : \"8px\",\n                  \"background-color\" : \"#eee\",\n                  \"border\" : \"1px solid #ccc\"\n              }\n            }],\n            [{\n              type : \"label\",\n              value : \"密码\",\n              class : \"col-md-2\"\n            },{\n              type : \"label\",\n              value : config.password,\n              colSpan : 1,\n              style : {\n                  \"padding\" : \"8px\",\n                  \"background-color\" : \"#eee\",\n                  \"border\" : \"1px solid #ccc\"\n              }\n            }],\n            [{\n              type : \"label\",\n              value : \"运行结果\",\n              class : \"col-md-2\"\n            },{\n              type : \"label\",\n              value : \"scp \" + config.local + \" root@\" + config.server + \":\" + config.path + config.local,\n              colSpan : 2,\n              style : {\n                  \"padding\" : \"8px\",\n                  \"background-color\" : \"#eee\",\n                  \"border\" : \"1px solid #ccc\"\n              }\n            }]\n          ];\n          event.target.render(ctrlGroups);\n      };\n      target.getEditorStatus(\"SCPPATH\", function(data){\n          config = ({\n              server : \"192.168.1.112\",\n              password : \"Letmein123\",\n              user : \"root\",\n              path : \"../psiot/app/web/sysconfig/ROOT/\"\n          }).$extension(data || {});\n        render();    \n      });\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px"
+                },
+                "help": "../pdf/ctrlgroup.pdf",
+                "parameters": {},
+                "url": "images/map/map1.png",
+                "template": [
+                  {
+                    "label": "普通按钮",
+                    "type": "ctrlgroup",
+                    "source": "CTRLGROUP",
+                    "advance": {
+                      "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n       [{\n          type : \"button\",\n          value : \"按钮\",\n          icon : \"glyphicon glyphicon-search\",\n          btnclass : \"btn btn-primary\",\n          class : \"col-md-12\",\n          on : {\n            click : function(elem){\n              target.console(elem);\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                    },
+                    "style": {
+                      "margin": "5px",
+                      "font-size": "12px"
+                    },
+                    "parameters": {},
+                    "url": "images/map/map1.png"
+                  },
+                  {
+                    "label": "页面导航",
+                    "type": "ctrlgroup",
+                    "source": "CTRLGROUP",
+                    "advance": {
+                      "expression": "expression = {\n    width : \"auto\",\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var pages = target.getPages();\n      var ctrlGroups = [];\n      var tr = [];\n      ctrlGroups.push(tr)\n      var createPage = function(i, page){\n          return {\n              type : \"label\",\n              linkage : true,\n              value : page.tabLabel || \"标签\",\n              on : {\n                  click : function(event){\n                      target.moveTo(page.path);\n                  }\n              }\n          }\n      }\n      for(var i in pages){\n          tr.push(createPage(i, pages[i]));\n          if(i < pages.length - 1){\n             tr.push({\n                type : \"label\",\n                value : \" > \"\n             }); \n          };\n      }\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                    },
+                    "style": {
+                      "margin": "5px",
+                      "font-size": "12px"
+                    },
+                    "parameters": {},
+                    "url": "images/map/map1.png"
+                  },
+                  {
+                    "label": "设备，项目，客户下拉",
+                    "type": "ctrlgroup",
+                    "source": "CTRLGROUP",
+                    "advance": {
+                      "expression": "expression = {\n  on : {\n    init : function(event){\n\n      var target = event.target;\n      var global = event.global;\n      event.target.getDomainsByFilter({\n        modelIds : [301,302]\n      }, function(obj){\n        var projects = obj.filter(function(elem){\n          return elem.modelId == 302;\n        })\n        var customers = obj.filter(function(elem){\n          return elem.modelId == 301;\n        })\n        event.target.getDevicesByCondition({}, function(devices){\n          var ctrlGroups = [\n            [{\n              type : \"label\",\n              value : \"设备下拉列表\"\n            },{\n              type : \"select\",\n              value : \"\",\n              on : {\n                change : function(elem){\n                  console.log(elem);\n                }\n              },\n              options : devices,\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"客户下拉列表\"\n            },{\n              type : \"select\",\n              value : \"\",\n              on : {\n                change : function(elem){\n                  console.log(elem);\n                }\n              },\n              options : customers,\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"项目下拉列表1\"\n            },{\n              type : \"select\",\n              value : \"\",\n              on : {\n                change : function(elem){\n                  console.log(elem);\n                }\n              },\n              options : projects,\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"\"\n            },{\n              type : \"button\",\n              value : \"按钮\",\n              icon : \"glyphicon glyphicon-search\",\n              class : \"btn-primary\",\n              on : {\n                click : function(elem){\n                  console.log(elem);\n                }\n              }\n            }]\n          ];\n          event.target.render(ctrlGroups);\n        });\n      });\n    }\n  }\n}"
+                    },
+                    "style": {
+                      "margin": "5px",
+                      "font-size": "12px"
+                    },
+                    "parameters": {},
+                    "url": "images/map/map1.png"
+                  },
+                  {
+                    "label": "竖排组件功能组件",
+                    "type": "ctrlgroup",
+                    "source": "CTRLGROUP",
+                    "advance": {
+                      "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n        [{\n          type : \"label\",\n          value : \"普通输入框\"\n        },{\n          type : \"input\",\n          value : \"普通输入框\",\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          }\n        }],[{\n          type : \"label\",\n          value : \"普通下拉列表\"\n        },{\n          type : \"select\",\n          value : \"普通下拉列表\",\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          },\n          options : [{\n            id : 0,\n            label : \"项目1\"\n          },{\n            id : 1,\n            label : \"项目名称2\"\n          },{\n            id : 2,\n            label : \"名称3\"\n          }],\n          format : {\n            \"id\" : \"id\",\n            \"label\" : \"label\"\n          }\n        }],[{\n          type : \"label\",\n          value : \"日期选择器\"\n        },{\n          type : \"datePicker\",\n          value : \"普通输入框\",\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          }\n        }],[{\n          type : \"label\",\n          value : \"输入选择器\"\n        },{\n          type : \"autoComplete\",\n          value : \"search\",\n          options : [{\n            id : 0,\n            label : \"项目1\"\n          },{\n            id : 1,\n            label : \"项目名称2\"\n          },{\n            id : 2,\n            label : \"名称3\"\n          }],\n          on : {\n            change : function(elem){\n              console.log(elem);\n            }\n          },\n          format : {\n            \"id\" : \"id\",\n            \"label\" : \"label\",\n            \"searchkey\" : \"label\"\n          }\n        }],[{\n          type : \"label\",\n          value : \"树状选择器\"\n        },{\n          type : \"dropdowntree\",\n          value : \"search\",\n          options : {\n            \"children\" : [{\n              id : 0,\n              label : \"根节点\",\n              children : [{\n                id : 1,\n                label : \"子节点1\"\n              },{\n                id : 2,\n                label : \"子节点2\"\n              }]\n            }]\n          },\n          on : {\n            change : function(elem){\n              console.log(elem)\n            }\n          },\n          format : {\n            \"children\" : \"children\"\n          }\n        }],[{\n          type : \"label\",\n          value : \"\"\n        },{\n          type : \"button\",\n          value : \"按钮\",\n          icon : \"glyphicon glyphicon-search\",\n          class : \"btn-primary\",\n          on : {\n            click : function(elem){\n              console.log(elem);\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                    },
+                    "style": {
+                      "margin": "5px",
+                      "font-size": "12px"
+                    },
+                    "url": "images/map/map1.png"
+                  },
+                  {
+                    "label": "项目，管理域,提交按钮",
+                    "type": "ctrlgroup",
+                    "source": "CTRLGROUP",
+                    "advance": {
+                      "expression": "{\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      event.target.queryDomainTree(function(domaintree){\n        event.target.getDomainsByFilter({\n          modelIds : [302]\n        }, function(projects){\n          event.target.setValue(\"projectName\", \"\");\n          event.target.setValue(\"domainPath\", \"\")\n          var ctrlGroups = [\n            [{\n              type : \"label\",\n              value : \"项目名称\"\n            },{\n              type : \"autoComplete\",\n              value : \"search\",\n              options : projects,\n              on : {\n                change : function(elem){\n                  var projectName = elem.value;\n                  target.setValue(\"projectName\", projectName);\n                }\n              },\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\",\n                \"searchkey\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"管理域\"\n            },{\n              type : \"dropdowntree\",\n              value : \"search\",\n              options : {\n                \"domainInfos\" : domaintree\n              },\n              on : {\n                change : function(elem){\n                  var domain = elem.value;\n                  target.setValue(\"domainPath\", domain.domainPath);\n                }\n              },\n              format : {\n                \"children\" : \"domainInfos\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"\"\n            },{\n              type : \"button\",\n              value : \"搜索\",\n              icon : \"glyphicon glyphicon-search\",\n              class : \"btn-primary\",\n              on : {\n                click : function(elem){\n                  global.fire(\"refresh\")\n                }\n              }\n            }]\n          ];\n          event.target.render(ctrlGroups);\n        });\n      });\n    }\n  }\n}"
+                    },
+                    "style": {
+                      "margin": "5px",
+                      "font-size": "12px",
+                      "width": "100%"
+                    },
+                    "url": "images/map/map1.png"
+                  }
+                ],
+                "id": "GFCFspKrtfZGzjpYdCzzyKdh4JWicdFt",
+                "$index": [
+                  3,
+                  0
+                ]
+              }
+            ],
+            "id": "RFNtBXbttWDTG6SX4x7TAEcsaEwzK6BH"
+          }
+        ],
+        "advance": {
+          "expression": "{}"
+        },
+        "url": "images/map/map1.png",
+        "template": [
+          {
+            "type": "css",
+            "style": {
+              "padding": "10px",
+              "margin": "5px",
+              "border": "1px solid #ccc",
+              "background-color": "#fff"
+            }
+          },
+          {
+            "type": "css",
+            "style": {
+              "padding": "5px",
+              "margin": "5px",
+              "border": "1px solid #ccc",
+              "background-color": "#fff",
+              "border-top": "0"
+            }
+          },
+          {
+            "type": "css",
+            "style": {
+              "margin": "5px",
+              "padding": "5px",
+              "background-color": "#efdcaf",
+              "border": "1px solid #c2ad7a"
+            }
+          },
+          {
+            "type": "css",
+            "style": {
+              "margin": "5px",
+              "padding": "5px",
+              "background-color": "#f0c0a4",
+              "border": "1px solid #e5671b"
+            }
+          },
+          {
+            "type": "css",
+            "style": {
+              "margin": "5px",
+              "padding": "5px",
+              "background-color": "#ffb3b3",
+              "border": "1px solid #db2222"
+            }
+          }
+        ],
+        "id": "mAhY6BEwEdse2bM3ADxQZRk2FXJjNKfQ"
+      }
+    ],
+    "col": 12,
+    "id": "6m57dzicjG85Ebi7RerD4a55hPKdnJES"
+  },
+  "setting": "{\n  \"showNavi\": false,\n  \"style\": {\n    \"padding\": \"5px\",\n    \"background-color\": \"#eee\"\n  }\n}"
+}

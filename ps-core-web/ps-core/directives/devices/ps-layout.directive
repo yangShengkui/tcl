@@ -1,0 +1,31 @@
+<config injector="$timeout, $compile, psScope, psDialog, psUltility"
+></config>
+<template>
+  <div>
+    <div class="bk-scope bk-theme-mini">
+      <ps-recursive ng-repeat="op in option.children"></ps-recursive>
+    </div>
+  </div>
+</template>
+<script type="text/javascript">
+  import { deepClone } from "ps-ultility";
+  export default function(timeout, compile, psScope, psDialog, psUltility){
+    return {
+      restrict: 'E',
+      scope: {
+        option : '=',
+      },
+      link: function (scope, element) {
+        scope.$parent['$$customParentScope'] = scope.$parent;
+        scope.$parent['$$customRootScope'] = scope.$parent;
+        for(let i in scope.option.modals){
+          scope.$parent[psUltility.keyPattern(i)] = function(){
+            return deepClone(scope.option.modals[i]);
+          };
+        }
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+</style>

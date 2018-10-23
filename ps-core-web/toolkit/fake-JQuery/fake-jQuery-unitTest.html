@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+    <link rel="stylesheet" href="../jasmine-standalone-2.9.1/lib/jasmine-2.9.1/jasmine.css">
+    <script src="../jasmine-standalone-2.9.1/lib/jasmine-2.9.1/jasmine.js"></script>
+    <script src="../jasmine-standalone-2.9.1/lib/jasmine-2.9.1/jasmine-html.js"></script>
+    <script src="../jasmine-standalone-2.9.1/lib/jasmine-2.9.1/boot.js"></script>
+    <script src="../fake-JQuery/fake-jQuery.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script>
+      F$(function(){
+        var body = F$("body");
+        console.log(body);
+        for(var i=0; i<10; i++){
+          var div = F$("<div>" + i + "</div>");
+          body.append(div);
+        };
+        var di = F$("div");
+        console.log(di);
+      });
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

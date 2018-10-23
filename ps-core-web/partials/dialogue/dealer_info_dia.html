@@ -1,0 +1,79 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">经销商信息</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal" name="dealerForm">
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ">*</span> <span>经销商归属：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <input class="form-control input-sm" disabled="true" ng-if="inputItem.dealer.id && inputItem.dealer.id >0" value="{{domainDealerListDic[inputItem.dealer.domainPath].name}}" />
+                <div ng-if="!inputItem.dealer.id || inputItem.dealer.id == -1" class="dropdowntree select-sm" autocomplete="off" ng-model="inputItem.dealer.domainPath" change="" key="domainPath" options="domainDealerListTree" mark="nodes" required="required"></div>
+              </div>
+            </div>
+          </div>
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ">*</span> <span>经销商名称：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <input type="text" class="form-control input-sm" autocomplete="off" maxlength="32" ng-model="inputItem.dealer.distributorName" name="Name" required>
+              </div>
+            </div>
+          </div>
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ">*</span> <span>联系人：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <input type="text" class="form-control input-sm" autocomplete="off" maxlength="32" ng-model="inputItem.dealer.distributorContact" name="Name" required>
+              </div>
+            </div>
+          </div>
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ">*</span> <span>联系人职务：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <select class="form-control input-sm" autocomplete="off" ng-model="inputItem.dealer.contactDuty" ng-options="item.valueCode as item.label for item in jobs" required="required">
+                  <option>请选择...</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ">*</span> <span>联系电话：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <input type="text" class="form-control input-sm" autocomplete="off" ng-model="inputItem.dealer.contactPhone" name="phone" ng-change="verifyFun(inputItem.dealer.contactPhone,'phone')" required>
+                <span style="color:red;" ng-show="dealerForm.phone.$dirty && mistakeMesg.phone">请正确输入座机或手机号</span>
+              </div>
+            </div>
+          </div>
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ">*</span><span>邮箱地址：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <input type="text" class="form-control input-sm" autocomplete="off" ng-model="inputItem.dealer.email" name="email" ng-change="verifyFun(inputItem.dealer.email,'email')" required>
+                <span style="color:red;" ng-show="dealerForm.email.$dirty && mistakeMesg.email">请正确输入邮箱地址</span>
+              </div>
+            </div>
+          </div>
+          <div class="simple-form-field">
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ">*</span><span>经销商地址：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <input type="text" class="form-control input-sm" autocomplete="off" maxlength="32" ng-model="inputItem.dealer.distributorAddress" name="Name" required>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="dealerForm.$invalid" ng-click="saveUser('saveDealer')" disabled="disabled">确定</button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

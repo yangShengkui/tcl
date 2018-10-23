@@ -1,0 +1,86 @@
+<config injector="$scope,ajax">
+</config>
+<template>
+    <ps-table config="config"></ps-table>
+</template>
+<script type="text/javascript">
+export default function (scope, ajax) {
+  scope.config = {
+    title: [["待处理", "", true], ["处理中", "prod_sparepart"], ["已完成", ""]],
+    attributes: {
+      "ticketTitle": ["设备位置", "text"],
+      "ticketNo": ["设备编码", "text"],
+      "taskConfigName": ["任务名称", "text"],
+      "processDefinitionId": ["任务来源", "text"],
+      "sendTime": ["任务产生时间", "date"],
+      "taskStatus": ["任务状态", "text"],
+      "finishedTime": ["发送时间", "date"],
+      "customerId": ["厂部", "dict", {
+        name: "customer",
+        parameter: {}
+      }, 'label:customerName']
+    },
+    search: {
+      body: ["customerId"]
+    },
+    grid: {
+      body: ["ticketTitle", {
+        name: "ticketTitleBak",
+        label: "设备名称",
+        type: "text",
+        bind: function (row) {
+          return row.ticketTitle;
+        }
+      }, "ticketNo", "taskConfigName", "processDefinitionId", {
+        name: "processDefinitionIdBak",
+        label: "第一责任人",
+        type: "text",
+        bind: function (row) {
+          return row.processDefinitionId;
+        }
+      }, "sendTime", {
+        name: "taskStatus",
+        bind: function (row) {
+          let str = '';
+          switch (row.taskStatus) {
+            default:
+              str = '无数据';
+            case 10 :
+              str = '待处理';
+              break;
+            case 100 :
+              str = '处理中';
+              break;
+            case 200 :
+              str = '已完成';
+              break;
+          }
+          return str;
+        }
+      }, "finishedTime"],
+      buttons: {
+        outGrid: [{
+          label: "临时维修",
+          class: "primary",
+          icon: "fa fa-plus"
+        }, ["接单"], ["维修完工"]],
+        inGrid:
+          [{
+            label: "接单",
+            class: "btn btn-primary"
+          }, ["任务关闭"], ["过程跟踪"]]
+      },
+      config: {
+        url: 'ticketTaskService.getTicketTasksByStatus',
+        parameter: 10,
+        showIndex: false,
+        showSelector: false,
+        showSearch: false
+      },
+      options: []
+    }
+  };
+};
+</script>
+<style type="less">
+</style>

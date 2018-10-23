@@ -1,0 +1,30 @@
+.control-sidebar.control-sidebar-dark {
+  width: 230px;
+  height: 100%;
+}
+.control-sidebar.control-sidebar-dark .nav>li>a {
+  padding: 10px 8px;
+}
+
+.control-sidebar.control-sidebar-dark .form-control.color {
+  padding: 1px;
+}
+
+.toolbar-container .btn.inspectoropen {
+  margin-right: 230px;
+}
+.toolbar-container .btn.inspectorclose {
+  margin-right: 0px;
+}
+.toolbar-container .btn-group-sm {
+  margin: 0;
+}
+.stencil-container .stencil .sidebar-form {
+  margin: 4px 8px 6px 8px;
+}
+.inspector .toggle {
+  width: 80;
+}
+.inspector .toggle span:before {
+  display: none;
+}

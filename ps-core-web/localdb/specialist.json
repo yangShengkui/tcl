@@ -1,0 +1,17 @@
+[
+  {
+    "label": "时序预测",
+    "viewContent": "{\n  \"expression\": \"function(){\\n    var PI = Math.PI;\\n    var sin = Math.sin;\\n    var random = function(a){\\n        return Math.random() * a;\\n    }\\n    var loop = function(inx, step){\\n        return sin(step) *  (.5 + random(inx) / 5) + inx / 3;\\n    }\\n    return [{\\n      name : '时域波形',\\n      data : (function(){\\n        var rs = [];\\n        var range = 5 * PI;\\n        var freq = PI / 20;\\n        var inx = 0;\\n        for(var i= 0; i < range; i += freq){\\n          rs.push(loop(inx, i));\\n          inx++ \\n        }\\n        return rs;\\n      })()\\n    }]\\n  }\",\n  \"simulate\": [],\n  \"variables\": [\n    {\n      \"name\": \"variable\",\n      \"period\": 0,\n      \"$$hashKey\": \"object:366\",\n      \"open\": false\n    }\n  ],\n  \"thumb\": \"../app-freeboard/images/dataModel/dataModel1.jpg\",\n  \"fontcolor\": \"#fff\",\n  \"kqiModelNameEn\": \"time sequence\"\n}",
+    "expertModelType": 0
+  },
+  {
+    "label": "时域波形",
+    "viewContent": "{\n  \"expression\": \"function(){\\n    return [{\\n      name : '时域波形',\\n      data : (function(){\\n        var rs = [];\\n        for(var i= 0; i < 10 * Math.PI; i += (2 * Math.PI /180)){\\n          var nu = 0;\\n          for(var j=0; j<8; j++){\\n            nu += (Math.pow((1 / (j+1)), 3) * Math.sin(i * Math.pow(3 ,j))) * 10 + Math.random() * 1.3;\\n          }\\n          rs.push(nu);\\n        }\\n        return rs;\\n      })()\\n    },{\\n      name : '波形分析',\\n      data : (function(){\\n        var rs = [];\\n        for(var i=Math.PI / 5; i < 10 * Math.PI; i += (2 * Math.PI /180)){\\n          var nu = 0;\\n          for(var j=0; j<8; j++){\\n            nu += (Math.pow((1 / (j+1)), 2) * Math.sin(i * Math.pow(3 ,j))) * 3;\\n          }\\n          rs.push(nu);\\n        }\\n        return rs;\\n      })()\\n    }]\\n  }\",\n  \"simulate\": [],\n  \"variables\": [\n  {\n    \"name\": \"variable\",\n    \"period\": 0,\n    \"$$hashKey\": \"object:366\",\n    \"open\": false\n  }\n],\n  \"thumb\": \"../app-freeboard/images/dataModel/dataModel1.jpg\",\n  \"fontcolor\": \"#fff\",\n  \"kqiModelNameEn\": \"Logistic Regression\"\n}",
+    "expertModelType": 0
+  },
+  {
+    "label": "频域波形",
+    "viewContent": "{\n  \"expression\": \"function(input){\\n    var rs = [];\\n    var loop = function(inx){\\n        var arr = [[Math.PI / 10, 20, 1],[Math.PI / 5, 10, 2],[Math.PI / 2, 2 ,.5],[Math.PI / 4, 6 ,.7],[Math.PI / 3, 3 ,.3],[Math.PI / 8, 5 ,.2]];\\n        var val = 0;\\n        for(var i in arr){\\n            val += Math.sin(arr[i][0] * inx) * arr[i][1] * Math.random() * arr[i][2];\\n        }\\n        return val > 0 ? val : 0;\\n    }\\n    for(var i = 0; i < 300; i++){\\n        rs.push(loop(i))\\n    }\\n    return [{\\n        name : '频域波形',\\n        data : rs\\n    }]    \\n}\",\n  \"thumb\": \"../app-freeboard/images/dataModel/dataModel1.jpg\",\n  \"fontcolor\": \"#fff\",\n  \"kqiModelNameEn\": \"frequence\"\n}",
+    "expertModelType": 0
+  }
+]

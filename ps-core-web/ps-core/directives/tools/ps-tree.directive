@@ -1,0 +1,185 @@
+<config injector="$timeout"
+></config>
+<template>
+  <div>
+    <div class="ps_tree">
+      <div class="_sel">---请选择---</div>
+    </div>
+  </div>
+</template>
+<script type="text/javascript">
+  import { screenOffset } from "ps-ultility";
+  export default function ($timeout) {
+    return {
+      restrict: 'E',
+      require: '?ngModel',
+      scope: {
+        ngModel: '=?',
+        config: '=?',
+        options: '='
+      },
+      replace: true,
+      link: function (scope, element, attr, ngModel) {
+        let defaultConfig = {};
+        scope.config = angular.extend({}, defaultConfig, scope.config || {});
+        let ele = element[0].children[0],
+          sel = ele.children[0],
+          whole,
+          field_id = scope.config.format && scope.config.format.id ? scope.config.format.id : 'id',
+          field_pid = scope.config.format && scope.config.format.parentID ? scope.config.format.parentID : 'parentID',
+          field_label = scope.config.format && scope.config.format.label ? scope.config.format.label : 'label';
+        function listToTree (list, pid) {
+          var ret = [];//一个存放结果的临时数组
+          for (var i in list) {
+            if (list[i][field_pid] == pid) {//如果当前项的父id等于要查找的父id，进行递归
+              list[i].children = listToTree(list, list[i].id);
+              ret.push(list[i]);//把当前项保存到临时数组中
+            }
+          }
+          return ret;//递归结束后返回结果
+        }
+        function creatSelectTree (d, level = 0) {
+          var str = '',
+            active = "",
+            spaceWidth = 20,
+            level = level;
+          for (var i = 0; i < d.length; i++) {
+            active = ngModel.$viewValue == d[i]["id"] ? "active" : "";
+            if (d[i].children && d[i].children.length > 0) {
+              str += `<div class="level"><div class="item ${active}" value="${d[i][field_id]}" style="margin-left: ${-spaceWidth * (level + 1)}px;padding-left: ${spaceWidth * (level + 1)}px;">${d[i][field_label]}<i class="glyphicon glyphicon-minus" style="left: ${spaceWidth * (level)}px;"></i></div>`;
+              str += creatSelectTree(d[i].children, level + 1);
+              str += `</div>`;
+            } else {
+              str += `<div class="level"><div class="item ${active}" value="${d[i][field_id]}" style="margin-left: ${-spaceWidth * (level + 1)}px;padding-left: ${spaceWidth * (level + 1)}px;">${d[i][field_label]}</div></div>`
+            }
+          }
+          return str;
+        }
+
+        function getElePosition (element) {
+          return element.getBoundingClientRect();
+        }
+
+        //渲染下拉树
+        function renderIconDiv () {
+          return $timeout(function () {
+            let whole = $('<div class="ps-tree-drop-content"></div>');
+            $(document.body).append(whole);
+            createIconDiv();
+            $('.item').click(function (e) {
+              if (e.target.tagName !== 'I') {
+                $(sel).html($(this).text());
+                ngModel.$setViewValue($(this).attr('value'));
+              }
+            });
+            $('.item > i').click(function (e) {
+              e.stopPropagation();
+              if ($(this).hasClass('glyphicon-minus')) {
+                $(this).removeClass('glyphicon-minus')
+                  .addClass('glyphicon-plus');
+                $(this).parent().parent().children('.level').hide();
+              } else {
+                $(this).removeClass('glyphicon-plus')
+                  .addClass('glyphicon-minus');
+                $(this).parent().parent().children('.level').show();
+              }
+            })
+          })
+        }
+
+        function createIconDiv () {
+          whole = $('.ps-tree-drop-content')[0];
+          //调用函数，并将结构出入到下拉框容器中
+          whole.innerHTML = creatSelectTree(scope.options);
+          whole.style.left = getElePosition(sel).left + 'px';
+          whole.style.top = (getElePosition(sel).top + sel.offsetHeight + 2) + 'px';
+          whole.style.width = ele.clientWidth + "px";
+          $(sel).addClass('open');
+        }
+
+        function destroyeIconDiv () {
+          $('.ps-tree-drop-content').html();
+          $('.ps-tree-drop-content').remove();
+          $(sel).removeClass('open');
+        }
+
+        //生成树下拉菜单
+        scope.options.some(function (item) {
+          if (item.children) {
+            return;
+          } else {
+            scope.options = listToTree(scope.options, 0);//调用函数，传入要转换的list数组，和树中顶级元素的pid
+          }
+        });
+
+        sel.onclick = function (e) {
+          if ($(sel).hasClass('open')) {
+            destroyeIconDiv();
+          } else {
+            renderIconDiv();
+          }
+        };
+        //利用捕获特性处理
+        document.addEventListener('scroll', function (e) {
+          document._ICON_SCROLL_EVENT = arguments.callee;
+          if (e.target !== whole) {
+            destroyeIconDiv();
+          }
+        }, true);
+        document.onclick = function (e) {
+          destroyeIconDiv();
+          /**
+          if (whole && !whole.contains(e.target)) {
+            destroyeIconDiv();
+          }**/
+        }
+        scope.$on('destroy', function () {
+          $('.ps-tree-drop-content').remove();
+          scope.config = null;
+          ele = null;
+          sel = null;
+          document.onclick = null;
+          document.removeEventListener('scroll', document._ICON_SCROLL_EVENT);
+        });
+        Array.prototype.push.call(ngModel.$parsers, function (n, o) {
+          if (!n) {
+            return;
+          } else {
+            return n;
+          }
+        });
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+  * {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /*取消双击选中样式*/
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    user-select: none;
+  }
+
+  .ps_tree {
+    position: relative;
+    width : 100%;
+    cursor : pointer;
+  }
+
+  ._sel {
+    display: block;
+    padding : 6px 5px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #e8e8e8;
+  }
+
+</style>

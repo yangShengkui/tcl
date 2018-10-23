@@ -1,0 +1,603 @@
+{
+  "version": "V_2",
+  "groups": [
+    {
+      "id": 0,
+      "label": "地图导航模版",
+      "path": "index",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "type": "row",
+            "children": [
+              {
+                "type": "column",
+                "col": 3,
+                "children": [
+                  {
+                    "label": "数据统计标签",
+                    "type": "totalItem",
+                    "source": "TOTALITEM",
+                    "data": {
+                      "applied": true,
+                      "kpi": [
+                        3001
+                      ],
+                      "modelType": 300,
+                      "resfilltype": "parameter",
+                      "resource": [],
+                      "multipleCi": false,
+                      "multipleKpi": false,
+                      "series": {
+                        "manual": [
+                          {
+                            "data": [
+                              {
+                                "name": "模拟数据",
+                                "unit": "个",
+                                "value": "10"
+                              }
+                            ]
+                          }
+                        ],
+                        "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n  }\n  return source.ci.getSeries(formatter);\n})"
+                      },
+                      "modelDisable": true
+                    },
+                    "parameters": {
+                      "icon": {
+                        "id": "1",
+                        "perfix": "fa",
+                        "css": "fa-connectdevelop"
+                      }
+                    },
+                    "advance": {
+                      "getfunction": "kpiDataService.getValueList",
+                      "category": "ci",
+                      "condition": [
+                        "kpi",
+                        "{object:kpiQueryModel}"
+                      ],
+                      "expression": "{\n  on : {\n    click : function(event){\n      console.log(event);\n      event.tools.location.href='../../app-oc/index.html#/facility';\n    }\n  }\n}\n"
+                    },
+                    "style": {
+                      "color": "#fff",
+                      "background-color": "#25bce7",
+                      "margin": "5px"
+                    },
+                    "$index": [
+                      3,
+                      0
+                    ],
+                    "id": "4YEjad8XMTWRsbk5t3CkfXib3tBKkBFE"
+                  }
+                ],
+                "id": "X7KiFnyF45dMXM4xikDsyrYaZrKEf3Pr"
+              },
+              {
+                "type": "column",
+                "col": 3,
+                "children": [
+                  {
+                    "label": "数据统计标签",
+                    "type": "totalItem",
+                    "source": "TOTALITEM",
+                    "data": {
+                      "applied": true,
+                      "resource": [],
+                      "modelDisable": true,
+                      "series": {
+                        "manual": [
+                          {
+                            "data": [
+                              {
+                                "name": "模拟数据",
+                                "unit": "个",
+                                "value": "10"
+                              }
+                            ]
+                          }
+                        ],
+                        "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                      },
+                      "model": {
+                        "id": 204
+                      },
+                      "kpi": [
+                        3002
+                      ],
+                      "multipleCi": false,
+                      "multipleKpi": false,
+                      "modelType": 300,
+                      "resfilltype": "parameter"
+                    },
+                    "parameters": {
+                      "icon": {
+                        "id": "3",
+                        "perfix": "fa",
+                        "css": "fa-edit"
+                      }
+                    },
+                    "advance": {
+                      "getfunction": "kpiDataService.getValueList",
+                      "category": "ci",
+                      "condition": [
+                        "kpi",
+                        "{object:kpiQueryModel}"
+                      ],
+                      "expression": "{\n  on : {\n    click : function(event){\n      console.log(event);\n      event.tools.location.href='../../app-oc/index.html#/gateways2';\n    }\n  }\n}"
+                    },
+                    "style": {
+                      "color": "#fff",
+                      "background-color": "#00b9b2",
+                      "margin": "5px"
+                    },
+                    "$index": [
+                      0,
+                      0
+                    ],
+                    "id": "CkkFtCPJmM5FKYz25iGMjWXZ7SDkSeaj"
+                  }
+                ],
+                "id": "ndBEnKEwd6t56WmAafBAkNfCijKSfRXa"
+              },
+              {
+                "type": "column",
+                "col": 3,
+                "children": [
+                  {
+                    "label": "数据统计标签",
+                    "type": "totalItem",
+                    "source": "TOTALITEM",
+                    "data": {
+                      "applied": true,
+                      "kpi": [
+                        3040
+                      ],
+                      "modelType": 300,
+                      "resfilltype": "parameter",
+                      "resource": [],
+                      "multipleCi": false,
+                      "multipleKpi": false,
+                      "series": {
+                        "manual": [
+                          {
+                            "data": [
+                              {
+                                "name": "模拟数据",
+                                "unit": "条",
+                                "value": "10"
+                              }
+                            ]
+                          }
+                        ],
+                        "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                      },
+                      "modelDisable": true
+                    },
+                    "parameters": {
+                      "icon": {
+                        "id": "2",
+                        "perfix": "fa",
+                        "css": "fa-warning"
+                      }
+                    },
+                    "advance": {
+                      "getfunction": "kpiDataService.getValueList",
+                      "category": "ci",
+                      "condition": [
+                        "kpi",
+                        "{object:kpiQueryModel}"
+                      ],
+                      "expression": "{\n  on : {\n    click : function(event){\n      console.log(event);\n      event.tools.location.href='../../app-oc/index.html#/configAlert/0/1,0,0,0';\n    }\n  }\n}"
+                    },
+                    "style": {
+                      "color": "#fff",
+                      "background-color": "#e7675d",
+                      "margin": "5px"
+                    },
+                    "$index": [
+                      1,
+                      0
+                    ],
+                    "id": "d4aRcB2tmNzTzw2sHNaYXFJSS73KcKft"
+                  }
+                ],
+                "id": "FNJRr5w5befNw8ypP3GRDAAHQb65d8x6"
+              },
+              {
+                "type": "column",
+                "col": 3,
+                "children": [
+                  {
+                    "label": "数据统计标签",
+                    "type": "totalItem",
+                    "source": "TOTALITEM",
+                    "data": {
+                      "applied": true,
+                      "kpi": [
+                        3017
+                      ],
+                      "modelType": 300,
+                      "resfilltype": "parameter",
+                      "resource": [],
+                      "multipleCi": false,
+                      "multipleKpi": false,
+                      "series": {
+                        "manual": [
+                          {
+                            "data": [
+                              {
+                                "name": "模拟数据",
+                                "unit": "%",
+                                "value": "10"
+                              }
+                            ]
+                          }
+                        ],
+                        "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                      },
+                      "modelDisable": true
+                    },
+                    "parameters": {
+                      "icon": {
+                        "id": "5",
+                        "perfix": "fa",
+                        "css": "fa-user"
+                      }
+                    },
+                    "advance": {
+                      "getfunction": "kpiDataService.getValueList",
+                      "category": "ci",
+                      "condition": [
+                        "kpi",
+                        "{object:kpiQueryModel}"
+                      ],
+                      "expression": "{\n  on : {\n    click : function(event){\n      console.log(event);\n      event.tools.location.href='../../app-oc/index.html#/workorder';\n    }\n  }\n}"
+                    },
+                    "style": {
+                      "color": "#fff",
+                      "background-color": "#ebae0b",
+                      "margin": "5px"
+                    },
+                    "$index": [
+                      1,
+                      0
+                    ],
+                    "id": "mYkixfApkEwfhnPR5pa3jzFyM4fXk7Xx"
+                  }
+                ],
+                "id": "bE2ABRWx7MZmCQ7YS7yS3tDiGe2rh6DS"
+              }
+            ],
+            "source": "ROW",
+            "parameters": {
+              "alignment": "bootstrap"
+            },
+            "style": {},
+            "id": "bzGtMMjcyWFsbWhXT25cDNEeE6nRKtZP"
+          },
+          {
+            "type": "row",
+            "source": "ROW",
+            "parameters": {
+              "alignment": "bootstrap"
+            },
+            "style": {},
+            "children": [
+              {
+                "type": "column",
+                "children": [
+                  {
+                    "label": "控制板2",
+                    "type": "box",
+                    "class": "box box-info",
+                    "source": "BOX",
+                    "parameters": {
+                      "title": "检索"
+                    },
+                    "style": {
+                      "font-size": "12px",
+                      "font-weight": "bold",
+                      "text-align": "left",
+                      "margin": "5px"
+                    },
+                    "children": [
+                      {
+                        "class": "box-body",
+                        "type": "box-body",
+                        "children": [
+                          {
+                            "type": "column",
+                            "col": 12,
+                            "children": [
+                              {
+                                "label": "控件组",
+                                "type": "ctrlgroup",
+                                "source": "CTRLGROUP",
+                                "advance": {
+                                  "expression": "{\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      event.target.queryDomainTree(function(domaintree){\n        event.target.getDomainsByFilter({\n          modelIds : [302]\n        }, function(projects){\n          event.target.setValue(\"projectName\", \"\");\n          event.target.setValue(\"domainPath\", \"\")\n          var ctrlGroups = [\n            [{\n              type : \"label\",\n              value : \"项目名称\"\n            },{\n              type : \"autoComplete\",\n              value : \"search\",\n              options : projects,\n              on : {\n                change : function(elem){\n                  var projectName = elem.value;\n                  target.setValue(\"projectName\", projectName);\n                }\n              },\n              format : {\n                \"id\" : \"id\",\n                \"label\" : \"label\",\n                \"searchkey\" : \"label\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"管理域\"\n            },{\n              type : \"dropdowntree\",\n              value : \"search\",\n              options : {\n                \"domainInfos\" : domaintree\n              },\n              on : {\n                change : function(elem){\n                  var domain = elem.value;\n                  target.setValue(\"domainPath\", domain.domainPath);\n                }\n              },\n              format : {\n                \"children\" : \"domainInfos\"\n              }\n            }],[{\n              type : \"label\",\n              value : \"\"\n            },{\n              type : \"button\",\n              value : \"搜索\",\n              icon : \"glyphicon glyphicon-search\",\n              class : \"btn-primary\",\n              on : {\n                click : function(elem){\n                  global.fire(\"refresh\")\n                }\n              }\n            }]\n          ];\n          event.target.render(ctrlGroups);\n        });\n      });\n    }\n  }\n}"
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "font-size": "12px",
+                                  "width": "100%"
+                                },
+                                "$index": [
+                                  3,
+                                  0
+                                ],
+                                "id": "Te72EpXMddPGy7dGwkFzWpNnif2mNiJe"
+                              }
+                            ],
+                            "id": "Nbkbb3CCdSee8bEPsYrtWDfPD6HEKyaN"
+                          }
+                        ],
+                        "id": "4iefzfitTaM3ehGhfMaC3w43t2htmBAs"
+                      },
+                      {
+                        "class": "box-footer",
+                        "type": "box-footer",
+                        "children": [
+                          {
+                            "type": "column",
+                            "col": 12,
+                            "children": [
+                              {
+                                "label": "列表",
+                                "type": "dataTable",
+                                "source": "DATATABLE",
+                                "parameters": {
+                                  "col": 1,
+                                  "pageSize": 10,
+                                  "listbottom": "pageOnly"
+                                },
+                                "advance": {
+                                  "getListTable": "newdevice",
+                                  "expression": "{\n\t\"on\" : {\n    \"init\" : function(event){\n    \tevent.target.getDomainsByFilter({\n        modelIds : [302]\n      }, function(projects){\n        event.target.render(projects);\n      })\n    },\n    \"click\" : function(event){\n      var project = event.data;\n      event.global.fire(\"highlight\", {\n        project : project\n      })\n    },\n    \"refresh\" : function(event){\n      var projectName = event.target.getValue(\"projectName\");\n      var domainPath = event.target.getValue(\"domainPath\");\n      event.target.getDomainsByFilter({\n        modelIds : [302]\n      }, function(projects){\n        var filter = projects.filter(function(elem){\n          return (projectName == \"\" || elem.label.indexOf(projectName) != -1) && (domainPath == \"\" || elem.domainPath.indexOf(domainPath) != -1);\n        })\n        event.target.render(filter);\n      })\n    }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"label\",\n      \"type\": \"text\",\n      \"style\" : {\n        \"width\" : \"100px\"\n      }\n    }\n  ]\n}",
+                                  "condition": "[100]"
+                                },
+                                "style": {
+                                  "margin": "5px",
+                                  "font-size": "12px"
+                                },
+                                "template": [
+                                  {
+                                    "label": "全部设备列表",
+                                    "type": "image",
+                                    "url": "images/line/line1.png",
+                                    "parameters": {
+                                      "col": 1,
+                                      "pageSize": 10,
+                                      "listbottom": "standard"
+                                    },
+                                    "advance": {
+                                      "getListTable": "newdevice",
+                                      "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"label\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"创建时间\",\n      \"value\": \"createTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    }\n  ]\n}",
+                                      "condition": "[100]"
+                                    },
+                                    "style": {
+                                      "margin": "5px",
+                                      "font-size": "12px"
+                                    }
+                                  },
+                                  {
+                                    "label": "当前项目设备列表",
+                                    "type": "image",
+                                    "url": "images/line/line1.png",
+                                    "parameters": {
+                                      "col": 1,
+                                      "pageSize": 10,
+                                      "listbottom": "standard"
+                                    },
+                                    "advance": {
+                                      "getListTable": "currentDevicesByProject",
+                                      "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"label\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"启动时间\",\n      \"value\": \"activeTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    },\n    {\n      \"name\": \"创建时间\",\n      \"value\": \"createTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    }\n  ]\n}",
+                                      "condition": "[100]"
+                                    },
+                                    "style": {
+                                      "margin": "5px",
+                                      "font-size": "12px"
+                                    }
+                                  },
+                                  {
+                                    "label": "全部告警列表",
+                                    "type": "image",
+                                    "url": "images/line/line2.png",
+                                    "parameters": {
+                                      "col": 1,
+                                      "pageSize": 10,
+                                      "listbottom": "standard"
+                                    },
+                                    "advance": {
+                                      "getListTable": "alert",
+                                      "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"devName\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警信息\",\n      \"value\": \"message\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警时间\",\n      \"value\": \"arisingTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    },\n    {\n      \"name\": \"告警级别\",\n      \"value\": \"severity\",\n      \"type\": \"priority\"\n    }\n  ]\n}",
+                                      "condition": "[100]"
+                                    },
+                                    "style": {
+                                      "margin": "5px",
+                                      "font-size": "12px"
+                                    }
+                                  },
+                                  {
+                                    "label": "当前设备告警列表",
+                                    "type": "image",
+                                    "url": "images/line/line2.png",
+                                    "parameters": {
+                                      "col": 1,
+                                      "pageSize": 10,
+                                      "listbottom": "standard"
+                                    },
+                                    "advance": {
+                                      "getListTable": "currentAlertByDevice",
+                                      "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名称\",\n      \"value\": \"devName\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警信息\",\n      \"value\": \"message\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"告警时间\",\n      \"value\": \"arisingTime\",\n      \"type\": \"date\",\n      \"style\": {\n        \"background-color\" : \"#3c8dbc\",\n        \"border-radius\" : \"3px\",\n        \"text-align\" : \"center\",\n        \"color\" : \"#fff\",\n        \"padding\" : \"5px 15px\"\n      }\n    },\n    {\n      \"name\": \"告警级别\",\n      \"value\": \"severity\",\n      \"type\": \"priority\"\n    }\n  ]\n}",
+                                      "condition": "[100]"
+                                    },
+                                    "style": {
+                                      "margin": "5px",
+                                      "font-size": "12px"
+                                    }
+                                  },
+                                  {
+                                    "label": "当前设备指令列表",
+                                    "type": "image",
+                                    "url": "images/line/line2.png",
+                                    "parameters": {
+                                      "col": 2,
+                                      "pageSize": 10,
+                                      "listbottom": "standard"
+                                    },
+                                    "advance": {
+                                      "getListTable": "currentDirectiveByDevice",
+                                      "expression": "{\n\t\"on\" : {\n    \"click\" : function(event){\n      \tconsole.log(event);\n     }\n  },\n  \"format\" : [\n    {\n      \"name\": \"指令名称\",\n      \"value\": \"name\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"指令输入\",\n      \"type\": \"directiveInput\"\n    },\n    {\n      \"name\": \"操作\",\n      \"type\": \"button\"\n    }\n  ]\n}",
+                                      "condition": "[100]"
+                                    },
+                                    "style": {
+                                      "margin": "5px",
+                                      "font-size": "12px"
+                                    }
+                                  }
+                                ],
+                                "$index": [
+                                  3,
+                                  0
+                                ],
+                                "id": "F5mtT6r4Q6Xd5cGBeeWBKxpXbzQmRTtA"
+                              }
+                            ],
+                            "id": "k3Z7R7RC8ZCjJ2PthMfBkWbr2nPTNExr"
+                          }
+                        ],
+                        "id": "yiHG4bbCzPNiFbwyJQY6YJPmS6t7r6dm"
+                      }
+                    ],
+                    "$index": [
+                      1,
+                      0
+                    ],
+                    "id": "5NEPwrtarcnH63wRMwjjJtHXS7wSYrGY"
+                  }
+                ],
+                "col": 3,
+                "id": "3Cw8nfnjsYBdYeJY5ZX2MQW7jnadc4kd"
+              },
+              {
+                "type": "column",
+                "children": [
+                  {
+                    "label": "控制板2",
+                    "type": "box",
+                    "class": "box box-info",
+                    "source": "BOX",
+                    "parameters": {
+                      "title": "地图展示"
+                    },
+                    "style": {
+                      "font-size": "12px",
+                      "font-weight": "bold",
+                      "text-align": "left",
+                      "margin": "5px"
+                    },
+                    "children": [
+                      {
+                        "class": "box-body",
+                        "type": "box-body",
+                        "children": [
+                          {
+                            "type": "column",
+                            "col": 12,
+                            "children": [
+                              {
+                                "label": "地图展示",
+                                "type": "baidumap",
+                                "source": "BAIDUMAP",
+                                "style": {
+                                  "padding": "0",
+                                  "font-size": "12px",
+                                  "height": "calc(100vh - 300px)",
+                                  "margin": "5px"
+                                },
+                                "advance": {
+                                  "expression": "{\n  on : {\n    init : function(event){\n      var markers = [];\n      var target = event.target;\n      event.target.getCurrentProjects(function(projects){\n        event.target.queryDomainTree(function(domains){\n          var markers = [];\n          var loopProject = function(project){\n            return {\n              id : project.id,\n              icon : {\n                normal : {\n                  url : \"../images/ouke/oukeIcon2.svg\",\n                  width : 30,\n                  height : 30\n                },\n                highlight : {\n                  url : \"../images/ouke/oukeIcon2.svg\",\n                  width : 50,\n                  height : 50\n                }\n              },\n              lng : project.values.longitude,\n              lat : project.values.latitude,\n              infoWindow : {\n                html : project.label\n              },\n              rotation : 0,\n              minZoom : 7,\n              maxZoom : 19,\n              on : {\n                click : function(){\n                  console.log(project);\n                }\n              }\n            }\n          };\n          var loopDomain = function(domain){\n            return {\n              id : domain.id,\n              icon : {\n                normal : {\n                  url : \"../images/ouke/oukeIcon1.svg\",\n                  width : 30,\n                  height : 30\n                },\n                highlight : {\n                  url : \"../images/ouke/oukeIcon1.svg\",\n                  width : 50,\n                  height : 50\n                }\n              },\n              lng : domain.values.longitude,\n              lat : domain.values.latitude,\n              infoWindow : {\n                html : domain.label\n              },\n              rotation : 0,\n              minZoom : 0,\n              maxZoom : 7,\n              on : {\n                click : function(){\n                  target.setCenter([domain.values.longitude,domain.values.latitude]);\n                  target.setZoom(8);\n                }\n              }\n            }\n          }\n          for(var i in domains[0].domainInfos){\n            markers.push(loopDomain(domains[0].domainInfos[i]));\n          };\n          for(var i in projects){\n            markers.push(loopProject(projects[i]));\n          };\n          event.target.render({\n            center : [116.404, 33.915],\n            markers : markers,\n            zoom : 6\n          });\n        });\n      })\n    },\n    highlight : function(event){\n      var project = event.params.project;\n      event.target.setCenter([project.values.longitude,project.values.latitude]);\n      event.target.setZoom(8);\n      event.target.setHighlightByMakerId(project.id);\n    }\n  }\n}",
+                                  "stylejson": {}
+                                },
+                                "$index": [
+                                  1,
+                                  0
+                                ],
+                                "template": [
+                                  {
+                                    "label": "管理域，项目两层显示",
+                                    "url": "images/map/map1.png",
+                                    "style": {
+                                      "padding": "0",
+                                      "font-size": "12px",
+                                      "height": "calc(100vh - 200px)",
+                                      "margin": "5px"
+                                    },
+                                    "advance": {
+                                      "expression": "{\n  on : {\n    init : function(event){\n      var markers = [];\n      var target = event.target;\n      event.target.getCurrentProjects(function(projects){\n        event.target.queryDomainTree(function(domains){\n          var markers = [];\n          var loopProject = function(project){\n            return {\n              id : project.id,\n              icon : {\n                normal : {\n                  url : \"../images/ouke/oukeIcon2.svg\",\n                  width : 30,\n                  height : 30\n                },\n                highlight : {\n                  url : \"../images/ouke/oukeIcon2.svg\",\n                  width : 50,\n                  height : 50\n                }\n              },\n              lng : project.values.longitude,\n              lat : project.values.latitude,\n              infoWindow : {\n                html : project.label\n              },\n              rotation : 0,\n              minZoom : 7,\n              maxZoom : 19,\n              on : {\n                click : function(){\n                  console.log(project);\n                }\n              }\n            }\n          };\n          var loopDomain = function(domain){\n            return {\n              id : domain.id,\n              icon : {\n                normal : {\n                  url : \"../images/ouke/oukeIcon1.svg\",\n                  width : 30,\n                  height : 30\n                },\n                highlight : {\n                  url : \"../images/ouke/oukeIcon1.svg\",\n                  width : 50,\n                  height : 50\n                }\n              },\n              lng : domain.values.longitude,\n              lat : domain.values.latitude,\n              infoWindow : {\n                html : domain.label\n              },\n              rotation : 0,\n              minZoom : 0,\n              maxZoom : 7,\n              on : {\n                click : function(){\n                  target.setCenter([domain.values.longitude,domain.values.latitude]);\n                  target.setZoom(8);\n                }\n              }\n            }\n          }\n          for(var i in domains[0].domainInfos){\n            markers.push(loopDomain(domains[0].domainInfos[i]));\n          };\n          for(var i in projects){\n            markers.push(loopProject(projects[i]));\n          };\n          event.target.render({\n            center : [116.404, 33.915],\n            markers : markers,\n            zoom : 6\n          });\n        });\n      })\n    },\n    highlight : function(event){\n      var project = event.params.project;\n      event.target.setCenter([project.values.longitude,project.values.latitude]);\n      event.target.setZoom(8);\n      event.target.setHighlightByMakerId(project.id);\n    }\n  }\n}",
+                                      "stylejson": {}
+                                    }
+                                  },
+                                  {
+                                    "label": "展示所有设备地址",
+                                    "style": {
+                                      "padding": "0",
+                                      "font-size": "12px",
+                                      "height": "calc(100vh - 200px)",
+                                      "margin": "5px"
+                                    },
+                                    "advance": {
+                                      "expression": "{\n  on : {\n    init : function(event){\n      var markers = [];\n      var target = event.target;\n      event.target.getDevicesByCondition({}, function(devices){\n        var markers = [];\n        var loopDevice = function(device){\n          return {\n            id : device.id,\n            icon : {\n              normal : {\n                url : \"../images/ouke/oukeIcon1.svg\",\n                width : 30,\n                height : 30\n              },\n              highlight : {\n                url : \"../images/ouke/oukeIcon1.svg\",\n                width : 50,\n                height : 50\n              }\n            },\n            lng : device.values.longitude,\n            lat : device.values.latitude,\n            infoWindow : {\n              html : device.label\n            },\n            rotation : 0,\n            minZoom : 0,\n            maxZoom : 19,\n            on : {\n              click : function(){\n                console.log(device);\n              }\n            }\n          }\n        };\n        for(var i in devices){\n          markers.push(loopDevice(devices[i]));\n        };\n        console.log(markers);\n        event.target.render({\n          center : [116.404, 33.915],\n          markers : markers,\n          zoom : 6\n        });\n      });\n    },\n    highlight : function(event){\n      var project = event.params.project;\n      event.target.setCenter([project.values.longitude,project.values.latitude]);\n      event.target.setZoom(8);\n      event.target.setHighlightByMakerId(project.id);\n    }\n  }\n}"
+                                    },
+                                    "url": "images/map/map1.png"
+                                  }
+                                ],
+                                "id": "X2fyFkz3jWAn6MNJxSsdjDGkpR8D3aPb"
+                              }
+                            ],
+                            "id": "4hQFzJkRkDDGDPhJynGeKYCJwwf6BQ88"
+                          }
+                        ],
+                        "id": "Z8behfZpWSmQ5wbmRFFch6s5jHwt8jeK"
+                      },
+                      {
+                        "class": "box-footer",
+                        "type": "box-footer",
+                        "children": [
+                          {
+                            "type": "column",
+                            "col": 12,
+                            "children": [],
+                            "id": "4bifaHpbPp8cAiQCsyFR2EyR8AmhCwTa"
+                          }
+                        ],
+                        "id": "nEihmcRAi5SMDimm3bY3aermfzbQKabG"
+                      }
+                    ],
+                    "$index": [
+                      1,
+                      0
+                    ],
+                    "id": "85Hy5hSSwtjHjTkke83rdsd33FcPrpmB"
+                  }
+                ],
+                "col": 9,
+                "id": "MzwmxztBBxkSYbbRKZZyi35CstNb6kyw"
+              }
+            ],
+            "id": "6hbz2EeMyN4C2KJEZsaDX7zp6CY6YYkt"
+          }
+        ],
+        "col": 12,
+        "id": "S8QxcmWMwzkFFWTixRJEdNG8BQDjTAXS"
+      },
+      "$$hashKey": "object:1885"
+    }
+  ],
+  "setting": {
+    "padding": 15
+  }
+}

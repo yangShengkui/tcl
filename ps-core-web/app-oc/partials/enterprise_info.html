@@ -1,0 +1,57 @@
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Application buttons -->
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active">
+                <a role="button" ng-bind="tableInit.header.label"></a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body">
+          <button ng-click="addNewClick()" type="button" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i><span class="hidden-sm">添加企业</span></button>
+          <input type="text" class="input-sm" style="background-color: #fff;" drops="down" readonly='readonly' autocomplete="off" ng-model="tableInit.header.time" placeholder="请选择时间" date-time-picker>
+          <button ng-click="tableInit.clacTime()" type="button" class="btn btn-default btn-sm"><i class="fa fa-arrow-circle-o-up"></i><span class="hidden-sm">数据计算</span></button>
+          <div class="combined-query pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                {{queryLabel?queryLabel:'查询条件'}} <span class="caret"></span>
+              </button>
+              <!-- <ul class="dropdown-menu" role="menu">
+                <li ng-click="queryLabel = item.title;queryState = $index;" ng-repeat="item in tableInit.columns | filter : {filterable:true}">
+                  <a role="button" ng-bind="item.title"></a>
+                </li>
+              </ul> -->
+              <ul class="dropdown-menu" role="menu">
+                <li><a role="button" ng-click="queryState=1;queryLabel='企业名称';tableInit.event()">企业名称</a></li>
+                <li><a role="button" ng-click="queryState=2;queryLabel='行业类型';tableInit.event()">行业类型</a></li>
+                <li><a role="button" ng-click="queryState=3;queryLabel='所在区域';tableInit.event()">所在区域</a></li>
+                <!-- <li><a role="button" ng-click="queryState=4;queryLabel='统计周期类型';tableInit.event()">统计周期类型</a></li> -->
+              </ul>
+            </div>
+            <input class="form-control input-sm" ng-show="!queryState ||queryState == 1" maxlength="32" type="text" ng-model="tableInit.select.name" type="text " />
+            <select class="form-control input-sm" ng-show="queryState == 2" ng-model="tableInit.select.industryType" ng-options="value.id as value.text for value in industryList" selectdata="industryList" select2></select>
+            <div style="display: inline-block;">
+              <select class="city-select input-sm" ng-show="queryState == 3" ng-model="tableInit.select.province" ng-options="value.id as value.label for value in dialog.list.provincesList" ng-change="dialog.event.provinceClick(tableInit.select.province)"></select>
+              <select class="city-select input-sm" ng-show="queryState == 3" ng-model="tableInit.select.city" ng-options="value.id as value.label for value in dialog.list.cityList" ng-change="dialog.event.cityClick(tableInit.select.city)"></select>
+              <select class="city-select input-sm" ng-show="queryState == 3" ng-model="tableInit.select.county" ng-options="value.id as value.label for value in dialog.list.districtList"></select>
+            </div>
+            <!-- <select class="form-control input-sm" ng-show="queryState == 4" ng-model="tableInit.select.statisticsType" ng-options="value.id as value.label for value in dialog.list.periodList"></select> -->
+            <button class="btn btn-primary btn-sm" ng-click="searchData()" type="button"><i class="fa fa-search"></i><span class="hidden-sm">查询</span></button>
+          </div>
+        </div>
+        <div class="box-footer  margin-bottom-10">
+          <table width="100%" class="table table-hover" id="usertable" enterprise-info-table>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

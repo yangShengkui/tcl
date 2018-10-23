@@ -1,0 +1,158 @@
+<config injector="$scope,$q,ajax, psDialog"
+        params="/:id?"
+></config>
+<template>
+  <proudsmart-base>
+    <div class="wrap">
+      <ps-layout data-option="option">
+      </ps-layout>
+    </div>
+  </proudsmart-base>
+</template>
+<script type="text/javascript">
+  export default function (scope, q, ajax, psDialog) {
+    scope.option = {
+      label: "name",
+      type : "layout",
+      children: [{
+        type : "form-inline",
+        children : [{
+          type : "label",
+          config : {
+            label : "label"
+          }
+        },{
+          type : "input",
+          __key : "b",
+          value : "asdsad"
+        },{
+          type : "select",
+          label : "模版描述",
+          __key : "m",
+          options : [{
+            id : 0,
+            label : "a"
+          },{
+            id : 1,
+            label : "b"
+          }]
+        },{
+          type : "select",
+          label : "模版描述",
+          __key : "m",
+          options : [{
+            id : 0,
+            label : "a"
+          },{
+            id : 1,
+            label : "b"
+          }]
+        },{
+          type : "button",
+          __key : "status",
+          config : {
+            label : "asdasdasd",
+            click : function(e){
+              console.log(e);
+            }
+          }
+        }]
+      },{
+        label: "设备属性",
+        type: "panel",
+        children : [{
+          type : "form",
+          scope : "model",
+          url : "resourceUIService.getModelById",
+          children : [{
+            type : "input",
+            label : "模版名称",
+            __key : "id"
+          },{
+            type : "input",
+            label : "模版描述",
+            __key : "desc"
+          },{
+            type : "select",
+            label : "模版描述",
+            __key : "m",
+            options : [{
+              id : 0,
+              label : "a"
+            },{
+              id : 1,
+              label : "b"
+            }]
+          },{
+            type : "tree",
+            label : "树结构",
+            __key : "desc",
+            options : [{
+              id : 0,
+              label : "a",
+              children : [{
+                id : 1,
+                label : "b",
+                children : [{
+                  id : 2,
+                  label : "c"
+                }]
+              }]
+            }]
+          },{
+            type : "color",
+            label : "颜色",
+            __key : "desc",
+            value : "#000",
+            watch : {
+              target : "./id",
+              watcher : function(n, o, s){
+
+              }
+            }
+          },{
+            type : "color",
+            label : "颜色",
+            __key : "mm",
+            value : "blue"
+          }]
+        }]
+      }, {
+        label: "部位",
+        type: "panel",
+        children: [{
+          type : "tabs",
+          children : [{
+            type : "tab",
+            label : "基础属性",
+            children : []
+          }, {
+            type : "tab",
+            label : "高级属性",
+            children : [{
+              type : "form",
+              children : [{
+                type : "input",
+                label : "模版描述",
+                __key : "c",
+                config : {},
+                value : 5
+              }]
+            }]
+          }]
+        }]
+      }, {
+        label: "备件",
+        type: "panel"
+      }, {
+        label: "数据模板",
+        type: "panel"
+      }, {
+        label: "文档",
+        type: "panel"
+      }]
+    }
+  }
+</script>
+<style type="less" scoped="true">
+</style>

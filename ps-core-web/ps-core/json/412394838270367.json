@@ -1,0 +1,40 @@
+{
+  "type": "relative",
+  "setting": {
+    "viewTitle": "计划偏离状态"
+  },
+  "data": [
+    {
+      "type": "title",
+      "attributes": {
+        "text": "正常",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "正常",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "正常",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "type": "title",
+      "attributes": {
+        "text": "正常",
+        "fontSize": "18px",
+        "color": "#FFFFFF"
+      }
+    }
+  ]
+}

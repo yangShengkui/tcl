@@ -1,0 +1,220 @@
+<config injector="$q, $timeout, resourceUIService, kpiDataServiceAsync, $interval"></config>
+<properties>
+    <script type="text/javascript">
+    function properties (q, timeout, resourceUIService) {
+      return [{
+        label: "基本设定",
+        attributes: {
+          title: ["标题", "input", "仪表盘标题"],
+          titlePosition: ["标题位置", "input", "30%"],
+          titleFontSize: ["标题大小", "input", "30,20,20"],
+          theme: ['主题', "input", "default"],
+          color: ['配色', "select", "default", [["default", "默认"], ["blue", "蓝色"], ["yellow", "黄色"], ["highlight", "高亮"]]],
+          type: ["类型", "select", "percent", [["percent", "百分比"], ["normal", "普通"]]],
+          position: ["位置", "input", "50%"],
+          height: ["高度", "input", "200"]
+        }
+      }, {
+        label: "数据",
+        attributes: {
+          nkIds: ["详细指标", 'input', '']
+        }
+      }];
+    }
+
+    export {properties}
+    </script>
+</properties>
+<template>
+    <div>
+        <echarts-base
+                data-theme="theme"
+                class="echarts-base-wrap"
+                data-height="height"
+                data-option="chartOption">
+        </echarts-base>
+    </div>
+</template>
+<script type="text/javascript">
+export default function (q, timeout, resourceUIService, kpiDataService, $interval) {
+  return {
+    scope: {
+      option: '=?'
+    },
+    link (scope, element, attr) {
+      scope.dataItems = {};
+      let option = scope.option, colors = {
+        default: {
+          color: ['#f96d86', '#3d3843']
+        },
+        blue: {
+          color: ['#77cdff', '#3d3843']
+        },
+        yellow: {
+          color: ['#fde07b', '#3d3843']
+        },
+        highlight: {
+          color: [
+            "#ff5a5a",
+            "#f2bb74",
+            "#c6f275",
+            "#5a97ff",
+            "#bd7bf8",
+            "#64d2fb",
+            "#75f2c2"
+          ]
+        }
+      }, themeObj;
+      let getValue = (n) => {
+        let nkIds = JSON.parse(n.nkIds);
+        let resourceIds = nkIds.map(nk => {
+            return nk.nodeId * 1;
+          }),
+          kpiIds = nkIds.map(nk => {
+            return nk.kpiCode * 1;
+          });
+        nkIds.forEach(m => {
+          scope.dataItems[m.kpiCode] = m.label;
+        });
+        let defer = q.defer();
+        kpiDataService.getRealTimeKpiData(resourceIds, kpiIds, ret => {
+          if (ret.code == '0') {
+            defer.resolve(ret.data);
+          }
+        });
+        return defer.promise;
+      }
+
+      function render (n) {
+        getValue(n).then(d => {
+          scope.theme = [n.theme, colors[n.color]];
+          let val = [], rs = [];
+          if (d.length > 1) {
+            rs = d.map(m => {
+              return [scope.dataItems[m.kpiCode], m.value]
+            });
+          } else {
+            val.push(d[0].value);
+          }
+          let titlePositions = n.titlePosition.split(',');
+          let titleTopPosition = titlePositions[0], titleRightPosition = titlePositions[1];
+          let fontSize = n.titleFontSize.split(',');
+          let circleType = {
+            percent: {
+              title: {
+                text: n.title || '',
+                subtext: '{valueTextStyle|' + val[0] + '}{percentStyle|%}',
+                top: titleTopPosition,
+                right: titleRightPosition,
+                textStyle: {
+                  color: '#fff',
+                  fontSize: fontSize[0],
+                  fontWeight: 'lighter'
+                },
+                subtextStyle: {
+                  rich: {
+                    valueTextStyle: {
+                      color: colors[n.color].color[0],
+                      fontSize: fontSize[1]
+                    },
+                    percentStyle: {
+                      fontSize: fontSize[2],
+                      color: colors[n.color].color[0],
+                      verticalAlign: 'bottom'
+                    }
+                  }
+                }
+              },
+              legend: {
+                show: false
+              },
+              series: [{
+                type: 'pie',
+                hoverAnimation: false,
+                center: [n.position, '50%'],
+                radius: ['75%', '90%'],
+                avoidLabelOverlap: false,
+                label: {
+                  show: false
+                },
+                labelLine: {
+                  normal: {
+                    show: false
+                  }
+                },
+                data: [{
+                  value: val[0]
+                }, {
+                  value: (100 - val[0])
+                }]
+              }]
+            },
+            normal: {
+              legend: {
+                show: true,
+                itemWidth: 30,
+                itemHeight: 70,
+                itemGap: 30,
+                selectedMode: false,
+                textStyle: {
+                  color: '#fff',
+                  fontSize: 24
+                },
+                bottom: '9%',
+                data: rs.map(m => {
+                  return {
+                    name: m[0],
+                    icon: 'path://M0,40 A40,40 0 1,1 80,40 L 80,80 A40,40 0 1,1 0,80 L 0,0z'
+                  }
+                })
+              },
+              series: [{
+                type: 'pie',
+                center: [n.position, '50%'],
+                radius: ['45%', '60%'],
+                avoidLabelOverlap: false,
+                itemStyle: {
+                  borderWidth: 5,
+                  borderColor: "#fff"
+                },
+                label: {
+                  show: true,
+                  position: 'outside',
+                  color: '#fff',
+                  formatter: '{c}({d}%)'
+                },
+                data: rs.map((m) => {
+                  return {
+                    name: m[0],
+                    value: m[1]
+                  }
+                })
+              }]
+            }
+          }
+          scope.height = n.height;
+          scope.chartOption = circleType[n.type];
+        });
+      }
+
+      scope.$watch(`option`, (n, o, s) => {
+        if (typeof n !== "undefined") {
+          window['require'](['../toolkit/echart-theme/fontsize.js'], (fn) => {
+            themeObj = fn(s.setting ? s.setting.fontsize || 40 : 35);
+            render(n.attributes);
+            $interval(function () {
+              render(n.attributes);
+            }, 3 * 60 * 1000);
+          });
+        }
+      });
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+.echarts-base-wrap {
+    width: 100%;
+    height: 100%;
+}
+</style>

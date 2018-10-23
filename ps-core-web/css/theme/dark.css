@@ -1,0 +1,55 @@
+.dark {
+  color: #73d9ff;
+  min-height: 100vh;
+}
+.dark select.form-control {
+  background-color: #000011;
+  color: #73d9ff;
+  border: 1px solid #73d9ff;
+}
+.dark .pagination .paginate_button a {
+  background-color: #000011;
+  color: #73d9ff;
+  border: 1px solid #73d9ff;
+}
+.dark .pagination .paginate_button.active a {
+  background-color: #73d9ff;
+  color: #0d1c27;
+  border: 1px solid #73d9ff;
+}
+.dark .progress {
+  background-color: rgba(250, 250, 250, 0.1);
+  border: 1px solid rgba(250, 250, 250, 0.8);
+}
+.dark table.dataTable {
+  color: #73d9ff;
+}
+.dark table.dataTable label {
+  color: #73d9ff;
+}
+.dark table.dataTable th {
+  border-bottom: 1px solid rgba(250, 250, 250, 0.3);
+}
+.dark table.dataTable tr:hover {
+  background-color: rgba(250, 250, 250, 0.2);
+}
+.dark table.dataTable td {
+  border-top: 1px solid rgba(250, 250, 250, 0.2);
+}
+.dark [tabid*=tabId_] {
+  border: 1px solid #6dacd2;
+  background-color: rgba(15, 37, 75, 0.8);
+}
+.dark .nav.nav-tabs {
+  border-bottom: 1px solid #6dacd2;
+}
+.dark .nav.nav-tabs li.active a {
+  border: 1px solid #6dacd2;
+  background-color: #3c8dbc;
+  color: #fff;
+}
+.dark .nav.nav-tabs li a:hover {
+  border: 1px solid #6dacd2;
+  background-color: #3c8dbc;
+  color: #fff;
+}

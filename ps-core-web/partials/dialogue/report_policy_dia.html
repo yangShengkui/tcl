@@ -1,0 +1,135 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number" id="ngdialog1-aria-labelledby">策略信息</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal row" name="configureForm">
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">报表模板：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <select select2 class="form-control" ng-disabled="selectedPolicy.id" ng-model="selectedPolicy.template" ng-options="value as  value.name for value in reportTemplates" selectdata="reportTemplates" required>
+                <option value="">请选择...</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">生成周期：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <select select2 class="form-control" ng-model="selectedPolicy.periodTypeValue" ng-options="value.value as value.label for value in periodList" selectdata="periodList" required>
+                <option value="">请选择...</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">生成触发时间：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="text" class="form-control input-sm" ng-model="selectedPolicy.cronExp" maxlength="32" required>
+            </div>
+          </div>
+      <!--    <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">数据开始时间：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="text" class="form-control input-sm" style="background-color: #fff;" readonly='readonly' autocomplete="off" ng-model="selectedPolicy.startTime" timepicker="true" drops="down" date-time-picker required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">数据结束时间：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="text" class="form-control input-sm" style="background-color: #fff;" readonly='readonly' autocomplete="off" ng-model="selectedPolicy.endTime" timepicker="true"  drops="down"  date-time-picker required>
+            </div>
+          </div>-->
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">报表生成格式：</span></label>
+            <div class="col-sm-4 padding-left-5 multiselect-group">
+              <select class="form-control" buttonclass='btn btn-default full-width' ng-model="selectedPolicy.reportFileTypeList" numberdisplayed="6" multiple="multiple" bootstrap-multiselect required>
+                <option value="PDF" selected>PDF</option>
+                <option value="DOCX" selected>DOCX</option>
+                <option value="XLSX" selected>XLSX</option>
+                <option value="PPTX" selected>PPTX</option>
+                <option value="HTML" selected>HTML</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-4 col-sm-push-5 padding-left-5 multiselect-group">
+              <span>
+                <input type="checkbox"
+                       ng-change="selectedPolicy.receiver = ''; selectedPolicy.noticeType = '';"
+                       style="vertical-align: -3px;" ng-true-value="1" ng-false-value="0" ng-model="selectedPolicy.sendEmail" >发送邮件
+              </span>
+            </div>
+          </div>
+          <div class="form-group" ng-if="selectedPolicy.sendEmail == '1'">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">通知人员类型：</span></label>
+            <div class="col-sm-4 padding-left-5 multiselect-group">
+              <select class="form-control"
+                      ng-change="selectedPolicy.receiver = ''"
+                      ng-model="selectedPolicy.noticeType" required>
+                <option value="role" selected>系统用户</option>
+                <option value="email" selected>自定义</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group" ng-if="selectedPolicy.noticeType == 'role'">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">通知角色：</span></label>
+            <div class="col-sm-4 padding-left-5 multiselect-group">
+              <select class="form-control" buttonclass='btn btn-default full-width'
+                      ng-model="selectedPolicy.receiver"
+                      numberdisplayed="6"
+                      multiple="multiple"
+                      bootstrap-multiselect required>
+                <option ng-repeat="item in roleList" value="{{item.roleID}}" selected>{{item.roleName}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group" ng-if="selectedPolicy.noticeType == 'email'">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">邮箱列表：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="text"
+                     class="form-control input-sm"
+                     placeholder="多个邮箱以 ; 分隔"
+                     ng-model="selectedPolicy.receiver"
+                     ng-pattern="/^((([a-z0-9_\.-]+)@([0-9a-z\.-]+)\.([a-z\.]{2,10}\;))*(([a-z0-9_\.-]+)@([0-9a-z\.-]+)\.([a-z\.]{2,10})))$/" required>
+            </div>
+          </div>
+          <div class="form-group" >
+            <div slim-scroll height="210px" width="93%"  class="box-body col-sm-10 col-sm-offset-1  table-responsive table-overflow">
+              <table class="table table-hover dataTable">
+                <thead>
+                  <tr role="row">
+                    <th>参数名称</th>
+                    <th>显示名称</th>
+                    <th>参数值</th>
+                  </tr>
+                </thead>
+                <tbody ng-repeat="param in selectedPolicy.template.reportParams">
+                  <tr>
+                    <td>
+                      {{param.name}}
+                    </td>
+                    <td>
+                      {{param.title}}
+                    </td>
+                    <td>
+                      <input type="text" ng-model="param.value" class="form-control padding-left-5 no-pad input-sm" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button class="btn btn-primary" ng-disabled="configureForm.$invalid  || !selectedPolicy.template.id" ng-click="savePolicy()" disabled="disabled">确定</button>
+          <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

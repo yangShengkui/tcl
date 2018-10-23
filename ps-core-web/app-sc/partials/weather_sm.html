@@ -1,0 +1,43 @@
+<div class='weather-layout js-weather-layout weather-flip'>
+	<div class='weather-widget'>
+		<div class='weather-widget-main col-md-6 col-lg-4' style="height:48px;padding: 0">
+			<div class='weather-loading' ng-show='loading'>
+				<i class='fa fa-spinner fa-pulse fa-3x'></i>
+			</div>
+			<span class='title-deg' style="font-size:18px" ng-repeat='item in weathers'>
+					{{item.results[0].currentCity}}
+				</span>
+			<i class='icn-weather' style="font-size: 48px;" data-weather-icn='{{item.results[0].weather_data[0].weather}}' ng-repeat='item in weathers'></i>
+			<span class='title-deg' style="font-size:18px" ng-repeat='item in weathers'>
+					{{item.results[0].weather_data[0].temperature}}
+				</span>
+
+			<!--<span ng-repeat='item in weathers'>
+					{{item.results[0].weather_data[0].date}}
+				</span>-->
+
+		</div>
+		<div class="weather-widget-side col-md-6 col-lg-4 hidden-sm hidden-xs" style="height:48px">
+			<i class='icn-weather' style="font-size: 48px;" data-weather-icn='{{item.results[0].weather_data[1].weather}}' ng-repeat='item in weathers'></i>
+			<span class='title-deg' ng-repeat='item in weathers'>
+					{{item.results[0].weather_data[1].date}}
+				</span>
+
+			<span ng-repeat='item in weathers'>
+					{{item.results[0].weather_data[1].temperature}}
+					
+				</span>
+		</div>
+		<div class="weather-widget-side col-lg-4 hidden-md hidden-sm hidden-xs" style="height:48px">
+			<i class='icn-weather' style="font-size: 48px;" data-weather-icn='{{item.results[0].weather_data[2].weather}}' ng-repeat='item in weathers'></i>
+			<span class='title-deg' ng-repeat='item in weathers'>
+					{{item.results[0].weather_data[2].date}}
+				</span>
+
+			<span ng-repeat='item in weathers'>
+					{{item.results[0].weather_data[2].temperature}}
+					
+				</span>
+		</div>
+	</div>
+</div>

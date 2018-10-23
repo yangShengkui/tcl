@@ -1,0 +1,58 @@
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box" >
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li ng-click="planListInfo(queryState=1)" ng-class="{true:'active',false:''}[queryState == 1]" class="active">
+                <a>点检计划</a>
+              </li>
+              <li ng-click="planListInfo(queryState=2)" ng-class="{true:'active',false:''}[queryState == 2]">
+                <a>保养计划</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+          <div class="box-body" >
+            <form role="form" name="alertForm" style="margin-bottom: 20px;">
+              <div class="combined-query" style="display: inline-block">
+                <label class="control-label">厂部：</label>
+                <select select2="" class="form-control ng-pristine ng-untouched ng-valid ng-empty select2-hidden-accessible"  ng-model="queryDitem.customerId" selectdata="customersList" ng-options="value.id as value.text for value in customersList | filter:{ domainPath :queryDitem.domainPath}" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                </select>
+              </div>
+              <div class="combined-query" style="display: inline-block">
+                <label class="control-label">车间</label>
+                <select class="form-control ng-pristine ng-valid ng-not-empty ng-touched"  ng-change="queryModelChange();" ng-model="queryDitem.projectId" ng-options="value.id as value.text for value in projectsList | filter:{ customerId :queryDitem.customerId}" selectdata="projectsList"><select>
+              </div>
+              <div class="combined-query" style="display: inline-block">
+                <label class="control-label">线体</label>
+                <select class="form-control ng-pristine ng-valid ng-empty ng-touched"  ng-model="queryDitem.checkAreaId" ng-options="value.id as value.name for value in LineBodyList | filter:{ customerId :queryDitem.customerId,projectId :queryDitem.projectId}" selectdata="LineBodyList"></select>
+              </div>
+              <div class="combined-query" style="display: inline-block">
+                <label class="control-label">点检计划名称：</label>
+                <input class="form-control ng-pristine ng-valid ng-isolate-scope ng-empty ng-valid-maxlength ng-touched" maxlength="20" type="text" ng-model="queryDitem.projectName"  placeholder="请输入..." style="">
+              </div>
+              <div class="combined-query" style="display: inline-block;">
+                <label class="control-label font-white">操作：</label>
+
+                <button ng-click="goSearch()" type="button" class="btn btn-primary btn-sm"><i class="fa fa-search"></i><span class="hidden-sm"> 查询</span></button>
+                <button ng-click="goClear()" type="button" class="btn btn-default btn-sm"><i class="fa fa-close"></i><span class="hidden-sm"> 清除</span></button>
+              </div>
+            </form>
+            <div class="combined-query pull-right">
+              <button  ng-click="addCheckPlan(0)" type="button" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i><span class="hidden-sm"> 添加点检计划</span></button>
+              <button  type="button" class="btn btn-default btn-sm" ng-click="checkPlanStatus(0)"><i class="fa fa-play"></i><span class="hidden-sm">启用</span></button>
+              <button  type="button" class="btn btn-default btn-sm" ng-click="checkPlanStatus(1)"><i class="fa fa-stop"></i><span class="hidden-sm">停用</span></button>
+            </div>
+          </div>
+          <div class="box-footer  margin-bottom-10" >
+            <table width="100%" class="table table-hover"  check-plan-table></table>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>

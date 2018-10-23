@@ -1,0 +1,81 @@
+<!--创建文档模态框-->
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">导出查询条件</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal" name="queryForm">
+          <div class="form-group">
+            <label class="col-sm-2 dialog-control-label margin-left-20 no-padding-right dialog-control-h"> <span class="ng-binding">时间范围：</span></label>
+            <div class="col-sm-6 padding-left-5">
+              <input class="form-control input-sm" type="text" disabled value="{{selectedItem.startTime | date:'yyyy-MM-dd HH:mm:ss'}}到{{selectedItem.endTime | date:'yyyy-MM-dd HH:mm:ss'}}" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 dialog-control-label margin-left-20 no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">打包时间：</span>
+            </label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="number" min="1" required="required" ng-model="expObj.packNumber" oninput="if( !/^[0-9]*$/.test(this.value)){this.value='';}" class="form-control input-sm">
+            </div>
+            <div class="col-sm-2 pull-left padding-left-5">
+              <select class="form-control input-sm" ng-model="expObj.packType" placeholder="请选择...">
+                <option value="小时">小时</option>
+                <option value="天">天</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 dialog-control-label margin-left-20 no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">统计周期：</span>
+            </label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="number" min="1" required="required" ng-model="expObj.censusNumber" oninput="if( !/^[0-9]*$/.test(this.value)){this.value='';}" class="form-control input-sm">
+            </div>
+            <div class="col-sm-2 pull-left padding-left-5">
+              <select class="form-control input-sm" ng-model="expObj.censusType" name="dataType" placeholder="请选择...">
+                <option value="天">天</option>
+                <option value="小时">小时</option>
+                <option value="分钟">分钟</option>
+                <option value="秒钟">秒钟</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 dialog-control-label margin-left-20 no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">指标列表：</span>
+            </label>
+          </div>
+          <div class="form-group col-sm-12 margin-left-5">
+            <div slim-scroll height='250px'>
+              <table class="table table-hover dataTable">
+                <thead>
+                  <tr role="row">
+                    <th>序号</th>
+                    <th>数据项</th>
+                    <th>名称</th>
+                    <th>数据分类</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="paramkpi in expObj.paramkpis">
+                    <td><input ng-model="paramkpi.index" value="{{paramkpi.index}}" type="number"></td>
+                    <td>{{paramkpi.name}}</td>
+                    <td>{{paramkpi.label}}</td>
+                    <td>{{paramkpi.type=='kpi'?'测点':(paramkpi.type=='fault'?'故障':'KQI')}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="queryForm.$invalid" data-ng-click="exportKpi()">
+          确定
+        </button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,113 @@
+<div class="flowId">
+  <!-- dirty == {{$parent.dirty}} -->
+  <div class="toolbar-container">
+    <div class="btn-group btn-group-sm">
+      <button class="btn btn-default" data-tooltip="保存" data-tooltip-position="top" ng-click="components.commander.save4Json()">
+        <i class="fa fa-save fa-lg"></i>
+      </button>
+      <button class="btn btn-default" data-tooltip="清除" data-tooltip-position="top" ng-click="components.graph.clear()">
+        <i class="fa fa-recycle fa-lg"></i>
+      </button>
+      <!--<button class="btn btn-default" ng-click="components.paper.print()" data-tooltip="打印"><i class="fa fa-print fa-lg"></i></button>-->
+      <button class="btn btn-default" ng-click="components.commander.toJSON()" data-tooltip="打开JSON文件" data-tooltip-position="top"><i class="fa fa-download fa-lg"></i></button>
+      <button class="btn btn-default" ng-click="components.commander.loadJSON()" data-tooltip="加载JSON文件" data-tooltip-position="top"><i class="fa fa-upload fa-lg"></i></button>
+    </div>
+    <div class="btn-group btn-group-sm">
+      <button class="btn btn-default" data-tooltip="撤销" data-tooltip-position="top" ng-click="components.commander.undo()">
+        <i class="fa fa-rotate-left fa-lg"></i>
+      </button>
+      <button class="btn btn-default" data-tooltip="重做" data-tooltip-position="top" ng-click="components.commander.redo()">
+        <i class="fa fa-rotate-right fa-lg"></i>
+      </button>
+      <button class="btn btn-default" data-tooltip="放大" data-tooltip-position="top" ng-click="components.scroller.zoom(.2, { max: 2 })">
+        <i class="fa fa-search-plus fa-lg"></i>
+      </button>
+      <button class="btn btn-default" data-tooltip="缩小" data-tooltip-position="top" ng-click="components.scroller.zoom(-.2, { min: .2 })">
+        <i class="fa fa-search-minus fa-lg"></i>
+      </button>
+    </div>
+    <div class="btn-group btn-group-sm">
+      <button id="btn-up" class="btn btn-default" data-tooltip="最上层" data-tooltip-position="top" ng-click="components.commander.toFront()">
+        <i class="proudsmart ps-layer-up fa-lg"></i>
+      </button>
+      <button id="btn-down" class="btn btn-default" data-tooltip="最下层" data-tooltip-position="top" ng-click="components.commander.toBack()">
+        <i class="proudsmart ps-layer-down fa-lg"></i>
+      </button>
+    </div>
+    <div class="btn-group btn-group-sm">
+      <button class="btn btn-default" data-tooltip="返回" data-tooltip-position="top" ng-click="$parent.homeClick(2);">
+        <i class="fa fa-arrow-circle-o-left fa-lg"></i>
+      </button>
+      <button class="btn btn-default btn-sm pull-right" data-tooltip="视图设置" data-toggle="control-sidebar" ng-click="$parent.viewConfigClick()">
+        <i class="fa fa-gears"></i>
+      </button>
+    </div>
+  </div>
+  <div id="paper-container1" class="paper-container"></div>
+  <div id="stencil-container1" class="stencil-container"></div>
+  <aside class="control-sidebar control-sidebar-dark" style="position: absolute;max-height: 100%;overflow: auto;padding-bottom: 50px;right: 0;">
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+      <li class="active">
+        <a href="#control-sidebar-home-tab" data-toggle="tab" ><i class="fa fa-dashboard"> 基础信息设置</i></a>
+      </li>
+      <!--<li ng-show="!$parent.selectedView.inspector" class="active">-->
+        <!--<a href="#control-sidebar-settings-data" data-toggle="tab">{{$parent.selectedItem.cell.attributes.type !='link'?'数据':'标签'}}</a>-->
+      <!--</li>-->
+      <!--<li ng-show="!$parent.selectedView.inspector">-->
+        <!--<a href="#control-sidebar-settings-text" data-toggle="tab">{{$parent.selectedItem.cell.attributes.type !='link'?'内容':'线条'}}</a>-->
+      <!--</li>-->
+      <!--<li ng-show="!$parent.selectedView.inspector">-->
+        <!--<a href="#control-sidebar-settings-presentation" data-toggle="tab">{{$parent.selectedItem.cell.attributes.type !='link'?'背景':'初始'}}</a>-->
+      <!--</li>-->
+      <!--<li ng-show="!$parent.selectedView.inspector">-->
+        <!--<a href="#control-sidebar-settings-geometry" data-toggle="tab">{{$parent.selectedItem.cell.attributes.type !='link'?'外观':'目的'}}</a>-->
+      <!--</li>-->
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- Home tab content -->
+      <div ng-show="$parent.selectedView.inspector" id="control-sidebar-home-tab">
+        <form role="form">
+          <div class="form-group">
+            <label >流程模板:</label>
+            <select class="form-control input-sm" ng-model="data.mouldType" ng-change="components.commander.mould()" ng-options="value.content as value.name for value in data.mould">
+              <option value="">请选择...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label >流程名称:</label>
+            <input class="form-control input-sm" type="text" maxlength="32" ng-model="selectedView.name" />
+          </div>
+          <div class="form-group">
+            <label>视图宽度:</label>
+            <input type="number" class="form-control input-sm"  maxlength="4" ng-model="components.paper.options.width" ng-change="components.myCommander.setDimensions()">
+          </div>
+          <div class="form-group">
+            <label>视图高度:</label>
+            <input type="number" class="form-control input-sm" maxlength="4" ng-model="components.paper.options.height" ng-change="components.myCommander.setDimensions()">
+          </div>
+          <div class="form-group">
+            <label>视图背景色:</label>
+            <div class="col-sm-10 no-padding-lr form-group">
+              <input type="text" class="form-control input-sm" ng-model="data.bgcolor" ng-change="components.myCommander.setGrid()">
+            </div>
+            <div class="col-sm-2 no-padding-lr">
+              <input type="color" class="form-control input-sm color" ng-model="data.bgcolor" ng-change="components.myCommander.setGrid()">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>视图背景网格:</label>
+            <input type="number" class="form-control input-sm" min="1" max="20" ng-model="components.paper.options.gridSize" ng-change="components.myCommander.setGrid()">
+          </div>
+        </form>
+      </div>
+      <div ng-show="!$parent.selectedView.inspector" id="inspector-container1"   class="inspector-container"></div>
+      <!--<div class="tab-pane joint-theme-default joint-inspector active" ng-hide="$parent.selectedView.inspector" id="control-sidebar-settings-data"></div>-->
+      <!--<div class="tab-pane joint-theme-default joint-inspector" ng-hide="$parent.selectedView.inspector" id="control-sidebar-settings-text"></div>-->
+      <!--<div class="tab-pane joint-theme-default joint-inspector" ng-hide="$parent.selectedView.inspector" id="control-sidebar-settings-presentation"></div>-->
+      <!--<div class="tab-pane joint-theme-default joint-inspector" ng-hide="$parent.selectedView.inspector" id="control-sidebar-settings-geometry"></div>-->
+      <!-- /.tab-pane -->
+    </div>
+  </aside>
+</div>

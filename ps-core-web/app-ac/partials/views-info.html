@@ -1,0 +1,38 @@
+<!---->
+<div class="example-modal">
+  <div class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">选择一个解决方案视图</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label class="col-sm-2 control-label"><span class="text-danger">*</span>视图</label>
+              <div class="col-sm-8">
+                <select class="form-control" ng-change="changeViewModel(viewModel)" ng-model="viewModel" ng-options="value.id as value.label for value in designView" selectdata="designView">
+                  <option value="" selected hidden ng-bind="viewModel"></option>
+                  <!--<option value="" ng-bind="viewModel"></option>-->
+
+                </select>
+              </div>
+
+              <!--<div class="col-sm-2">-->
+                <!--<button type="button" class="btn btn-link btn-sm" ng-click="gotoView()">创建新的视图</button>-->
+              <!--</div>-->
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" ng-click="confirmView();closeDialog()">确认</button>
+          <button type="button" class="btn btn-default" ng-click="closeThisDialog();closeDialog()">取消</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+</div>
+<!-- /.example-modal -->

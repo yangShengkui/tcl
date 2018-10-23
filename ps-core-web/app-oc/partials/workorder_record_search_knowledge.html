@@ -1,0 +1,76 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+    <div class="modal-dialog search-part">
+        <div class="modal-content">
+            <div class="modal-header bg-f2">
+                <a role="button" ng-click="closeDialog()" class="close">×</a>
+                <h4 class="modal-title info-box-number">选择配件</h4>
+            </div>
+            <div class="modal-body clearfix row ">
+                <div class="box-body" style="padding-top: 0;">
+                    <form role="form" name="queryForm">
+                        <div class="form-group col-sm-4">
+                            <label class="control-label">故障编号：</label>
+                            <input class="form-control"
+                                   maxlength="20"
+                                   type="text"
+                                   ng-model="queryItem.faultNo"
+                                   name="deviceName"
+                                   placeholder="请输入..."/>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label class="control-label">故障名称：</label>
+                            <input class="form-control"
+                                   maxlength="20"
+                                   type="text"
+                                   ng-model="queryItem.label"
+                                   name="deviceName"
+                                   placeholder="请输入..."/>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label class="control-label">故障类别：</label>
+                            <input class="form-control"
+                                   maxlength="20"
+                                   type="text"
+                                   ng-model="queryItem.category"
+                                   name="deviceName"
+                                   placeholder="请输入..."/>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label class="control-label">设备模板：</label>
+                            <select select2 class="form-control"
+                                    ng-model="queryItem.modelId"
+                                    ng-options="value.id as value.label for value in deviceModelList"
+                                    selectdata="modelListSelect">
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label class="col-sm-12 control-label font-white">操作：</label>
+                            <div class="btn-group">
+                                <button ng-click="goSearch()"
+                                        type="button"
+                                        ng-disabled="!(!!queryItem.faultNo||!!queryItem.label||!!queryItem.category||!!queryItem.modelId)"
+                                        class="btn btn-primary btn-sm">
+                                    <i class="fa fa-search"></i><span class="hidden-sm"> 查询</span></button>
+                                <button ng-click="goClear()" type="button" class="btn btn-default btn-sm"><i
+                                        class="fa fa-close"></i><span class="hidden-sm"> 清除</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="box-body" slim-scroll height="300px">
+                    <table width="100%" class="table table-hover" fault-knowledge-table></table>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary"
+                        ng-disabled="!selectedFaultKnowledge"
+                        ng-click="confirmSelectFaultKnowledge(selectedFaultKnowledge)">
+                    应用知识
+                </button>
+                <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<config injector="$q, $timeout, $http, growl"
+></config>
+<script type="text/javascript">
+import serviceproxy from "../../js/services/service_factory.js";
+import {urlparser} from "ps-ultility";
+
+export default function (q, timeout, http, growl) {
+  let _Parameters = {};
+
+  function resolveUrl () {
+    let loc = urlparser(window.location.href),
+      baseurl = window.location.origin;
+    baseurl = loc.port == 63342 ? baseurl.replace(loc.host, serviceproxy.host) : baseurl;
+    return `${baseurl}/api/rest/post/configUIService/getByCondition`;
+  }
+
+  function mergeObj () {
+    let arr = Array.prototype.slice.call(arguments);
+    let obj = {};
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i]) {
+        for (let key in arr[i]) {
+          obj[key] = arr[i][key];
+        }
+      }
+    }
+    return obj;
+  }
+
+  function request (relate, parameter) {
+    let defer = q.defer();
+    let param = mergeObj({}, parameter);
+    http.post(resolveUrl(), [relate, param]).then(ret => {
+      if (ret.data.code == 0) {
+        defer.resolve(ret.data.data);
+      } else {
+        defer.reject(ret);
+      }
+    }).catch(ret => {
+      console.log(ret);
+    });
+    return defer.promise;
+  }
+
+  return {
+    request: request
+  };
+}
+</script>

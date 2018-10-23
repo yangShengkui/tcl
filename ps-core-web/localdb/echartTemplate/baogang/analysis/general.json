@@ -1,0 +1,192 @@
+{
+  "layout": {
+    "type": "column",
+    "children": [
+      {
+        "label": "控制板1",
+        "type": "block",
+        "source": "BLOCK",
+        "style": {
+          "padding": "5px",
+          "margin": "5px"
+        },
+        "advance": {
+          "expression": {}
+        },
+        "children": [
+          {
+            "type": "column",
+            "col": 12,
+            "children": [
+              {
+                "label": "控件组",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  width : \"auto\",\n  on: {\n    init: function (event) {\n      var target = event.target;\n      var global = event.global;\n      var endDate = target.dateHandler();\n      var startDate = endDate.clone();\n      startDate.addHour(-12);\n      var dates = [startDate, endDate];\n      var ctrlGroups = [\n        [{\n          value : startDate,\n          type: \"dateTimePicker\",\n          style : {\n              width : \"200px\"\n          },\n          on: {\n            change: function (elem) {\n                startDate = elem.value;\n              target.trigger(\"drawDiagnoseFeatureEchart\",dates);\n            }\n          },\n        }, {\n          type: \"label\",\n          value: \"至\",\n          style: {\n            textAlign: \"center\",\n             width : \"30px\"\n          }\n        },{\n          value : endDate,\n          type: \"dateTimePicker\",\n          style : {\n              width : \"200px\"\n          },\n          on: {\n            change: function (elem) {\n                endDate = elem.value;\n              target.trigger(\"drawDiagnoseFeatureEchart\",dates);\n            }\n          },\n        }, {\n          type: \"button\",\n          btnclass: \"btn btn-primary\",\n          value: \"设备信息\",\n          btnStyle: {\n            width: \"100px\",\n          }\n        }\n          /*{\n           type: \"button\",\n           class: \"col-md-1 col-md-offset-1\",\n           btnclass: \"btn btn-primary\",\n           value: \"求助\",\n           btnStyle: {\n           width: \"100px\",\n           }\n           }*/\n        ]\n      ];\n      target.render(ctrlGroups);\n    }\n  }\n}"
+                },
+                "style": {
+                  "margin": "5px",
+                  "font-size": "12px"
+                },
+                "help": "../pdf/ctrlgroup.pdf",
+                "url": "images/map/map1.png",
+                "parameters": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "source": "ROW",
+        "parameters": {
+          "alignment": "bootstrap"
+        },
+        "style": {},
+        "children": [
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "高级视图",
+                "type": "advanceEchart",
+                "source": "ADVANCEECHART",
+                "advance": {
+                  "expression": "express = {\n  on: {\n    init: function (event) {\n      var target = event.target;\n      var global = event.global;\n      var color = \"#ffe400\";\n      var LENGTH = 50;\n      var resource = target.getValue(\"global/resource\");\n      var kpiDes = target.getValue(\"global/kpi\");\n      var endDate = target.dateHandler();\n      var startDate = endDate.clone();\n      startDate.addHour(-12);\n      var endTime = endDate.getUTCDateString();\n      var startTime = startDate.getUTCDateString();\n      var renderEchart = function renderEchartFn() {\n          renderEchart = function(){\n              console.log(\"渲染中请稍后！！\");\n          };\n        //console.log(\"-----------------综合趋势1视图开始渲染------------------\",ci, kpiDes)\n        target.showLoading();\n        target.hideNoData();\n        target.getKpiTypeByFilter({\n          hasSingnal : false\n        },function(noSignalkpis){\n          var ci = [resource.id];\n          var extension = {\n            includeInstance : true,\n            queryInstances : kpiDes[0].instance,\n            isRealTimeData : false\n          };\n          if(startTime){\n            extension['startTime'] = startTime;\n          }\n          if(endTime){\n            extension['endTime'] = endTime;\n          }\n          var xAxis = [];\n          \n          var kpi = kpiDes.map(function(elem){\n            return elem.dataItemId;\n          });\n          target.getKpiValueList(ci, kpi, null, function (returnData) {\n            target.hideLoading();\n            if(returnData.length > 0){\n                var minDate = returnData.reduce(function(a, b){\n                    var dt = target.dateHandler(b.arisingTime)\n                    if(a){\n                        if(dt.before(a)){\n                            return dt;\n                        } else {\n                            return a;\n                        }\n                    } else {\n                        return dt\n                    }\n                }, null);\n              var series = kpiDes.map(function(kpi){\n                  var rdata = returnData.filter(function(vdata){\n                    var kpiCode = vdata.kpiCode;\n                    var instance = vdata.instance;\n                    return kpi.dataItemId == kpiCode && kpi.instance == instance;\n                  })\n                  rdata.sort(function(a, b){\n                     var dt1 = new Date(a.arisingTime);\n                     var dt2 = new Date(b.arisingTime);\n                     return dt1.getTime() - dt2.getTime();\n                  });\n                  console.log(rdata);\n                var rs = {\n                  name : kpi.kpiName,\n                  type : \"line\",\n                  symbolSize :0,\n                  data : rdata.map(function(elem){\n                    var dt = new Date(elem.arisingTime);\n                    var dh = target.dateHandler(dt);\n                    var D2017 = target.dateHandler(\"2017/01/01\");\n                    return [dh.minus(minDate),elem.value]\n                  })\n                }\n                return rs;\n              });\n              var option = {\n                title: {\n                  textStyle: {color: \"#fff\"}\n                },\n                tooltip : {\n                  trigger: 'axis',\n                  formatter : function(params, b, c){\n                      console.log(\"params\", params);\n                      var str = \"\";\n                      for(var i in params){\n                          var time = params[i].value[0];\n                          var val = params[i].value[1];\n                          var marker = params[i].marker;\n                          var seriesIndex = params[i].seriesIndex;\n                          var d = minDate.clone().addTimeStamp(time)\n                          str += marker + kpiDes[seriesIndex].kpiName;\n                          str += \":\" + val + \"[\" + d.getDateString(\"MM/dd,hh:mm:ss\") + \"]<br>\";\n                      }\n                      return str;\n                  }\n                },\n                legend: {\n                  data: kpiDes.map(function (elem) {\n                    return elem.kpiName;\n                  })\n                },\n                xAxis: {\n                  boundaryGap: false,\n                  type: 'value',\n                  axisLabel : {\n                      formatter : function(params){\n                          var d = minDate.clone().addTimeStamp(params)\n                          return d.getDateString(\"MM/dd,hh:mm:ss\");\n                      }\n                  }\n                },\n                yAxis: {\n                  type: 'value'\n                },\n                dataZoom: [{\n                  show: true,\n                  realtime: true,\n                  start: 0,\n                  end: 12,\n                }],\n                series: series\n              };\n              var ins = target.render(option);\n            } else {\n              target.showNoData();\n            };\n            renderEchart = renderEchartFn;\n            console.log(\"option\", option);\n          }, extension)\n        })\n      }\n      target.off(\"multiSelectValues\");\n      target.on(\"multiSelectValues\", function(dataItems){\n        kpiDes = dataItems;\n         console.log(\"----------multiSelectValues被触发-------------\", kpiDes)\n        if(resource && kpiDes){\n          renderEchart();\n        }\n      })\n      target.off(\"tree_resourceChange.generalChart\");\n      target.on(\"tree_resourceChange.generalChart\", function(res){\n        resource = res.resource;\n        console.log(\"----------tree_resourceChange被触发-------------\", kpiDes)\n        if(resource && kpiDes){\n            renderEchart();\n          }\n      });\n      if(resource && kpiDes){\n        renderEchart();\n      }\n      target.off(\"drawDiagnoseFeatureEchart\");\n      target.on(\"drawDiagnoseFeatureEchart\", function (dateRangeTime) {\n        console.log(\"----------drawDiagnoseFeatureEchart被触发-------------\", kpiDes)\n        startTime = dateRangeTime[0].getUTCDateString();\n        endTime = dateRangeTime[1].getUTCDateString();\n        if(resource && kpiDes){\n            renderEchart();\n        }\n      });\n    }\n  }\n};"
+                },
+                "style": {
+                  "margin": "5px 0",
+                  "width": "100%",
+                  "height": "400px"
+                },
+                "parameters": {
+                  "theme": "auto"
+                },
+                "url": "images/map/map1.png"
+              }
+            ],
+            "col": 9
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "控制板1",
+                "type": "block",
+                "source": "BLOCK",
+                "style": {
+                  "padding": "5px",
+                  "margin": "5px"
+                },
+                "advance": {
+                  "expression": {}
+                },
+                "children": [
+                  {
+                    "type": "column",
+                    "col": 12,
+                    "children": [
+                      {
+                        "label": "控件组",
+                        "type": "ctrlgroup",
+                        "source": "CTRLGROUP",
+                        "advance": {
+                          "expression": "expression = {\n  on: {\n    init: function (event) {\n      var target = event.target;\n      var global = event.global;\n      var dItem, kpi;\n      var duration = null;\n      var resource = target.getValue(\"global/resource\");\n      var multiSelectValues = [];\n      var success = function (resource) {\n         multiSelectValues = [];\n        var ci = [resource.id]; // 设备 526443915616079\n        var modelId = [resource.modelId] // 获取modelId\n        var accessConfigValues = resource.physicalConfig.accessConfigs;\n        target.getAttrsByModelId(modelId, function (attrs) {\n          var MeasurePointLocate = attrs.find(function (elem) {\n              return elem.name == \"MeasurePointLocate\";\n            }) || {};\n          var sourceValue = eval(MeasurePointLocate.sourceValue)|| \"\";\n          var sourceValueArr = [];\n          for (var i in sourceValue) {\n            for (var j in sourceValue[i]) {\n              for(var k in sourceValue[i][j]){\n                  var ins = sourceValue[i][j][k];\n                  ins.configValues = accessConfigValues.filter(function(accessConfigValue){\n                      return ins.name == accessConfigValue.instance;\n                  })\n                sourceValueArr.push(ins);\n              }\n            }\n          };\n          sourceValueArr = sourceValueArr.filter(function(elem){\n              return elem.label != '整体';\n          })\n          console.log(\"sourceValueArr\", sourceValueArr);\n          multiSelectValues = [sourceValueArr[0]];\n          var render = function () {\n              var getConfigValues = function(elem){\n                  return elem.configValues;\n              }\n              console.log(\"kpiDes ---------> \", kpiDes, multiSelectValues);\n             var kpiDes = multiSelectValues\n            .filter(getConfigValues)\n            .map(getConfigValues)[0];\n            \n            target.setValue(\"global/kpi\",kpiDes);\n            target.trigger(\"multiSelectValues\",kpiDes);\n            var ctrlGroups = [\n              [{\n                  type : \"label\",\n                  value : \"测点选择\"\n              }],[{\n                type: \"checkboxlist\",\n                multiselect : false,\n                value: multiSelectValues.map(function(source){\n                    return source.name;\n                }),\n                on: {\n                  change: function (elem) {\n                    var elemValues = elem.value;\n                    multiSelectValues = elem.value;\n                    render();\n                  }\n                },\n                options: sourceValueArr,\n                format: {\n                  \"id\": \"name\",\n                  \"label\": \"label\"\n                }\n              }]\n            ];\n            event.target.render(ctrlGroups);\n          };\n          render();\n        })\n      };\n      if(resource){\n        success(resource);\n      }\n      target.off(\"tree_resourceChange.multiSelect\");\n      target.on(\"tree_resourceChange.multiSelect\", function (node) {\n          debugger;\n        success(node.resource);\n      })\n    }\n  }\n}"
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "font-size": "12px"
+                        },
+                        "help": "../pdf/ctrlgroup.pdf",
+                        "parameters": {}
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "col": 3
+          }
+        ]
+      },
+      {
+        "type": "row",
+        "source": "ROW",
+        "parameters": {
+          "alignment": "bootstrap"
+        },
+        "style": {},
+        "children": [
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "高级视图",
+                "type": "advanceEchart",
+                "source": "ADVANCEECHART",
+                "advance": {
+                  "expression": "express = {\n  on: {\n    init: function (event) {\n      var target = event.target;\n      var global = event.global;\n      var color = \"#ffe400\";\n      var LENGTH = 50;\n      var resource = target.getValue(\"global/resource\");\n      var kpiDes = target.getValue(\"global/kpi\");\n      var endDate = target.dateHandler();\n      var startDate = endDate.clone();\n      startDate.addHour(-12);\n      var endTime = endDate.getUTCDateString();\n      var startTime = startDate.getUTCDateString();\n      var renderEchart = function renderEchartFn() {\n        //console.log(\"-----------------综合趋势1视图开始渲染------------------\",ci, kpiDes)\n        renderEchart = function(){\n            console.log(\"渲染中请稍后！！\");\n        };\n        target.showLoading();\n        target.hideNoData();\n        target.getKpiTypeByFilter({\n          hasSingnal : false\n        },function(noSignalkpis){\n          var ci = [resource.id];\n          var extension = {\n            includeInstance : true,\n            queryInstances : kpiDes.map(function(elem){\n              return elem.instance;\n            }).toString(),\n            isRealTimeData : false\n          };\n          if(startTime){\n            extension['startTime'] = startTime;\n          }\n          if(endTime){\n            extension['endTime'] = endTime;\n          }\n          var xAxis = [];\n          \n          var kpi = kpiDes.map(function(elem){\n            return elem.dataItemId;\n          });\n          target.getKpiValueList(ci, kpi, null, function (returnData) {\n            target.hideLoading();\n            if(returnData.length > 0){\n                var minDate = returnData.reduce(function(a, b){\n                    var dt = target.dateHandler(b.arisingTime)\n                    if(a){\n                        if(dt.before(a)){\n                            return dt;\n                        } else {\n                            return a;\n                        }\n                    } else {\n                        return dt\n                    }\n                }, null);\n              var series = kpiDes.map(function(kpi){\n                var rs = {\n                  name : kpi.kpiName,\n                  type : \"line\",\n                  symbolSize :0,\n                  data : returnData.filter(function(vdata){\n                    var kpiCode = vdata.kpiCode;\n                    var instance = vdata.instance;\n                    return kpi.dataItemId == kpiCode && kpi.instance == instance;\n                  }).sort(function(a, b){\n                     var dt1 = new Date(a.arisingTime);\n                     var dt2 = new Date(b.arisingTime);\n                     return dt2.getTime() - dt1.getTime();\n                  }).map(function(elem){\n                    var dt = new Date(elem.arisingTime);\n                    var dh = target.dateHandler(dt);\n                    var D2017 = target.dateHandler(\"2017/01/01\");\n                    console.log(dh.minus(minDate));\n                    return [dh.minus(minDate),elem.value]\n                  })\n                }\n                return rs;\n              });\n              var option = {\n                title: {\n                  textStyle: {color: \"#fff\"}\n                },\n                tooltip : {\n                  trigger: 'axis',\n                  formatter : function(params, b, c){\n                      var time = params[0].value[0];\n                      var val = params[0].value[1];\n                      var marker = params[0].marker;\n                      var seriesIndex = params[0].seriesIndex;\n                      var d = minDate.clone().addTimeStamp(time)\n                      var str = marker + d.getDateString(\"MM/dd,hh:mm:ss\") + \"<br>\";\n                      console.log(kpiDes[seriesIndex]);\n                      str += kpiDes[seriesIndex].kpiName+ \":\" + val;\n                      return str;\n                  }\n                },\n                legend: {\n                  data: kpiDes.map(function (elem) {\n                    return elem.kpiName;\n                  })\n                },\n                xAxis: {\n                  boundaryGap: false,\n                  type: 'value',\n                  axisLabel : {\n                      formatter : function(params){\n                          var d = minDate.clone().addTimeStamp(params)\n                          return d.getDateString(\"MM/dd,hh:mm:ss\");\n                      }\n                  }\n                },\n                yAxis: {\n                  type: 'value'\n                },\n                dataZoom: [{\n                  show: true,\n                  realtime: true,\n                  start: 0,\n                  end: 12,\n                }],\n                series: series\n              };\n              var ins = target.render(option);\n            } else {\n              target.showNoData();\n            };\n            //console.log(\"option\", option);\n            renderEchart = renderEchartFn\n          }, extension)\n        })\n      }\n      target.off(\"multiSelectValues2\");\n      target.on(\"multiSelectValues2\", function(dataItems){\n          //console.log(\"----------multiSelectValues被触发-------------\")\n        kpiDes = dataItems;\n        console.log(kpiDes);\n        if(resource && kpiDes){\n          renderEchart();\n        }\n      })\n      target.off(\"tree_resourceChange.generalChart2\");\n      target.on(\"tree_resourceChange.generalChart2\", function(res){\n          //console.log(\"----------tree_resourceChange被触发-------------\")\n        resource = res.resource;\n        /**\n        if(resource && kpiDes){\n          renderEchart();\n        }*/\n      });\n      if(resource && kpiDes){\n        renderEchart();\n      }\n      target.off(\"drawDiagnoseFeatureEchart2\");\n      target.on(\"drawDiagnoseFeatureEchart2\", function (dateRangeTime) {\n          //console.log(\"----------drawDiagnoseFeatureEchart被触发-------------\")\n        startTime = dateRangeTime[0].getUTCDateString();\n        endTime = dateRangeTime[1].getUTCDateString();\n        if(resource && kpiDes){\n            renderEchart(); \n        }//测点（指标）\n      });\n    }\n  }\n};"
+                },
+                "style": {
+                  "margin": "5px 0",
+                  "width": "100%",
+                  "height": "400px"
+                },
+                "parameters": {
+                  "theme": "auto"
+                },
+                "url": "images/map/map1.png"
+              }
+            ],
+            "col": 9
+          },
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "控制板1",
+                "type": "block",
+                "source": "BLOCK",
+                "style": {
+                  "padding": "5px",
+                  "margin": "5px",
+                  "max-height": "300px",
+                  "overflow-y": "auto"
+                },
+                "advance": {
+                  "expression": {}
+                },
+                "children": [
+                  {
+                    "type": "column",
+                    "col": 12,
+                    "children": [
+                      {
+                        "label": "控件组",
+                        "type": "ctrlgroup",
+                        "source": "CTRLGROUP",
+                        "advance": {
+                          "expression": "expression = {\n  on: {\n    init: function (event) {\n      var target = event.target;\n      var global = event.global;\n      var dItem, kpi;\n      var duration = null;\n      var resource = target.getValue(\"global/resource\");\n      var multiSelectValues = [];\n      var success = function (resource) {\n         multiSelectValues = [];\n        var ci = [resource.id]; // 设备 526443915616079\n        var modelId = [resource.modelId] // 获取modelId\n        var accessConfigValues = resource.physicalConfig.accessConfigs;\n        target.getAttrsByModelId(modelId, function (attrs) {\n          var MeasurePointLocate = attrs.find(function (elem) {\n              return elem.name == \"MeasurePointLocate\";\n            }) || {};\n          var sourceValue = eval(MeasurePointLocate.sourceValue)|| \"\";\n          var sourceValueArr = [];\n          for (var i in sourceValue) {\n            for (var j in sourceValue[i]) {\n              for(var k in sourceValue[i][j]){\n                  var ins = sourceValue[i][j][k];\n                  ins.configValues = accessConfigValues.find(function(accessConfigValue){\n                      return ins.name == accessConfigValue.instance;\n                  })\n                sourceValueArr.push(ins);\n                //multiSelectValues.push(ins);\n              }\n            }\n          };\n          var whole = sourceValueArr.find(function(elem){\n              return elem.label == \"整体\"\n          });\n          var options = accessConfigValues.filter(function(elem){\n              return elem.instance == whole.name;\n          });\n          multiSelectValues = [];\n          if(options.length > 0){\n             multiSelectValues.push(options[0]);\n          }\n          var render = function () {\n              target.trigger(\"multiSelectValues2\", multiSelectValues);\n            var ctrlGroups = [\n              [{\n                  type : \"label\",\n                  value : \"工艺类数据项\"\n              }],[{\n                type: \"checkboxlist\",\n                value: multiSelectValues.map(function(source){\n                    return source.kpiId;\n                }),\n                on: {\n                  change: function (elem) {\n                    var elemValues = elem.value;\n                    multiSelectValues = elem.value;\n                    render();\n                  }\n                },\n                options: options,\n                format: {\n                  \"id\": \"kpiId\",\n                  \"label\": \"kpiName\"\n                }\n              }]\n            ];\n            target.render(ctrlGroups);\n          };\n          render();\n        })\n      };\n      if(resource){\n        success(resource);\n      }\n      target.off(\"tree_resourceChange.multiSelect2\");\n      target.on(\"tree_resourceChange.multiSelect2\", function (node) {\n          debugger;\n        success(node.resource);\n      })\n    }\n  }\n}"
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "font-size": "12px"
+                        },
+                        "help": "../pdf/ctrlgroup.pdf",
+                        "parameters": {}
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "col": 3
+          }
+        ]
+      }
+    ],
+    "col": 12
+  },
+  "setting": "{\n  \"theme\": \"steel\"\n}"
+}

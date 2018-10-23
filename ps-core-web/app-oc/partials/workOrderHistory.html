@@ -1,0 +1,47 @@
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active">
+                <a>过程跟踪</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body">
+            <div class="col-md-12 margin-top-15">
+              <ul class="timeline" >
+
+                <li ng-if="historyList != null" ng-repeat=" h in historyList | filter:{logType: '!exclusiveGateway'} ">
+                  <i ng-class="{cancelEvent: 'fa fa-rotate-left fa-lg',userTask: 'fa fa-user bg-aqua', serviceTask: 'ion ion-ios-gear-outline bg-blue', startEvent: 'fa fa-fw fa-circle-o bg-green', endEvent: 'fa fa-fw fa-circle bg-green'}[h.logType]" class="fa fa-user"></i>
+                  <div class="timeline-item" ng-if="h.logType == 'userTask' || h.logType == 'serviceTask'|| h.logType == 'startEvent'|| h.logType == 'endEvent'|| h.logType == 'cancelEvent'">
+                    <span class="time"><i class="fa fa-clock-o"></i> {{h.executeTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                    <h3 class="timeline-header no-border" ng-if="h.logType == 'userTask'">
+                      <a ng-if="h.ticketTask.templateURL != '' && h.ticketTask.templateURL != null" ng-click="hrefList(h.ticketTask.templateURL, h.ticketTask.id)" style="cursor:pointer;">{{h.message}}</a>
+                      <a ng-if="h.ticketTask.templateURL == '' || h.ticketTask.templateURL == null" href="index.html#/orderdetail/{{h.ticketTask.id}}/task">{{h.message}}</a>
+                    </h3>
+                    <h3 class="timeline-header no-border" ng-if="h.logType == 'userTask'">
+                      处理人:{{h.ticketTask.handlerName}} </h3>
+                    <h3 class="timeline-header no-border" ng-if="h.logType == 'serviceTask'">处理人:系统 </h3>
+
+                    <h3 class="timeline-header no-border" ng-if="h.logType == 'startEvent' || h.logType == 'endEvent' ">{{h.message}}</h3>
+                    <h3 class="timeline-header no-border" ng-if="h.logType == 'serviceTask'">处理描述:{{h.message}}</h3>
+                    <h3 class="timeline-header no-border" ng-if="h.logType == 'cancelEvent'">已撤销</h3>
+                    <h3 class="timeline-header no-border" ng-if="h.logType == 'userTask'">处理描述:{{h.ticketTask.values.ticketTaskDesc}}</h3>
+                  </div>
+                </li>
+              </ul>
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

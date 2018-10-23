@@ -1,0 +1,798 @@
+<config injector="$q, $timeout, $http, growl"
+></config>
+<script type="text/javascript">
+import serviceproxy from "../../js/services/service_factory.js";
+import {
+  each,
+  urlparser,
+  isObject,
+  isString,
+  isNumber,
+  isArray,
+  isFunction,
+  extend,
+  pushDiff,
+  eachProp
+} from "ps-ultility";
+
+export default function (q, timeout, http, growl) {
+  const allconfigs = createCache(), ajaxcached = {},
+    before = createCache(),
+    after = createCache(),
+    AttrCombineMethods = createCache(),
+    SaveBackToListMethods = createCache(),
+    _QUERY_EACH = function (source) {
+      return source;
+    },
+    _QUERY_ALL = function (source) {
+      return [source];
+    },
+    _KPIQUERYMODEL_ALERTSTATE = function () {
+      let kpis = [].slice.call(arguments);
+
+      function param (source) {
+        let p = ["kpi", {
+          category: "ci",
+          isRealTimeData: true,
+          timePeriod: 0,
+          nodeIds: source,
+          kpiCodes: kpis.map((n) => {
+            return n.id
+          }),
+          startTime: null,
+          endTime: null,
+          timeRange: "",
+          statisticType: "psiot",
+          condList: []
+        }]
+        return p;
+      }
+
+      function after (source, newValue, save2Cache) {
+        each(kpis, (m) => {
+          let fd = newValue.find((n) => {
+            return n.kpiCode === m.id && n.nodeId === source.id;
+          });
+          save2Cache(m.label, fd);
+        });
+      }
+
+      return {
+        param: param,
+        after: after
+      }
+    },
+    _Parameters = [{
+      id: "url",
+      default: function (key, isNewApi, method) {
+        if (isNewApi) {
+          return "configUIService." + method;
+        } else {
+          return key;
+        }
+      }
+    }, {
+      id: "method",
+      default: function (key, isNewApi, method) {
+        if (isNewApi) {
+          return "postAll";
+        } else {
+          return "postwith";
+        }
+      }
+    }, {
+      id: "before",
+      default: function (key, isNewApi, method) {
+        return "id";
+      }
+    }, {
+      id: "param",
+      default: function (key, isNewApi, method) {
+        if (isNewApi) {
+          return method == "getByIds" ? function (source) {
+            return [key, source];
+          } : function (source) {
+            return [key, {}];
+          }
+        } else {
+          return {}
+        }
+      }
+    }, {
+      id: "after",
+      default: function (key, isNewApi) {
+        return key + (isNewApi ? ":_id" : ":id");
+      }
+    }, {
+      id: "save2Cache",
+      default: function (key, isNewApi) {
+        return key + (isNewApi ? ":_id" : ":id");
+      }
+    }, {
+      id: "cache",
+      default: function (key, isNewApi) {
+        return key + (isNewApi ? ":_id" : ":id");
+      }
+    }],
+    widget = {
+      _QUERY_ALL: _QUERY_ALL,
+      _QUERY_EACH: _QUERY_EACH,
+      _KPIQUERYMODEL_ALERTSTATE: _KPIQUERYMODEL_ALERTSTATE,
+      content2JSON: content2JSON
+    },
+    factory = {
+      $native: {
+        ajax: __ajax__,
+        post: __post__,
+        get: __get__,
+      },
+      $angular: {
+        ajax: $$ajax,
+        post: $$post,
+        get: $$get,
+      },
+      widget: widget,
+      ajax: ajax,
+      pipeline: pipeline,
+      post: post,
+      get: get,
+      config: config,
+      request: request,
+      requestAll: requestAll,
+      requestEach: requestEach,
+      postEach: postEach,
+      postAll: postAll,
+      getEach: getEach,
+      getAll: getAll,
+      postwith: postwith,
+      getwith: getwith,
+      getCache: getCache
+    };
+  let temp = null;
+
+  function debug (fn, msg) {
+    try {
+      return fn();
+    } catch (e) {
+      e.message = msg + e.message + " . \n";
+      throw new Error(e);
+    }
+  }
+
+  function stringify () {
+    return JSON.stringify.apply(JSON, arguments);
+  }
+
+  function parse (str) {
+    return JSON.parse(str);
+  }
+
+  function error () {
+    let args = [].slice.call(arguments),
+      condition = args.shift();
+    each(args, (n) => {
+      if (!condition) {
+        throw new Error(n);
+      }
+    });
+  }
+
+  function warn () {
+    let args = [].slice.call(arguments),
+      condition = args.shift();
+    each(args, (n) => {
+      if (!condition) {
+        console.warn(n);
+      }
+    });
+  }
+
+  function createCache () {
+    let cache = function (attr, val) {
+      //warn(isString(attr) || isNumber(attr), `attribute [${stringify(attr)}] 's type is [${(typeof attr)}] is not a string or number, fail to cache.` );
+      if (isString(attr) || isNumber(attr) && typeof val !== "undefined") {
+        cache[attr] = val;
+      } else {
+        return cache[attr];
+      }
+    }
+    return cache;
+  }
+
+  function __ajax__ (method, url, param) {
+    let xhr = new XMLHttpRequest(),
+      defer = q.defer();
+    xhr.withCredentials = true;
+    xhr.open(method, url);
+    xhr.send(param ? JSON.stringify(param) : null);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status >= 200) {
+          defer.resolve(parse(xhr.responseText))
+        } else {
+          defer.reject("请求失败")
+        }
+      }
+    }
+    return defer.promise;
+  }
+
+  function __post__ (url, param) {
+    return __ajax__("POST", url, param);
+  }
+
+  function __get__ (url, param) {
+    return __ajax__("GET", url, param);
+  }
+
+  function $$get (url, param) {
+    return $$ajax("get", service, method, param)
+  }
+
+  function $$post (url, param) {
+    return $$ajax("post", service, method, param)
+  }
+
+  function createImmediateDefer (val) {
+    let defer = q.defer();
+    defer.resolve(val);
+    return defer.promise;
+  }
+
+  function clone (obj) {
+    return JSON.parse(JSON.stringify((obj)))
+  }
+
+  function httpPromise (m, u, param, config) {
+    let defer = q.defer(), p = stringify(param);
+    http[m](u, p, config).then((e) => {
+      e = e.status == 200 ? e.data : e;
+      if (e.code == 0) {
+        defer.resolve(clone(e.data));//18.10.18修改 e.data.data angel
+      } else {
+        e.message = "请求:\"" + u + "\",参数:\"" + p + "\"发生错误," + e.message;
+        if (e.message.search("需要用户登录才能使用") > -1) {
+          let dt = e.data;
+          dt = dt[0] == "/" ? dt.slice(1) : dt;
+          location.href = "../" + dt;
+        } else if (e.code > 9999) {
+          growl.info(e.message, {});
+        } else {
+          growl.error("错误编码" + e.code + ":" + e.message, {});
+        }
+        defer.reject(e);
+      }
+    }).catch(function (e) {
+      defer.reject(e);
+    });
+    return defer.promise;
+  }
+
+  function $$ajax (mtd, key, url, p, handler, cache2sub, cache, isNewApi) {
+    error(url, "url is undefined");
+    let Dic = {
+        post: "post",
+        get: "get"
+      },
+      pa = handler(p),
+      gp = getParam(p),
+      t = isEmpty(gp) ? "_" : gp,
+      u = normalize(url),
+      param = pa ? (isArray(pa) ? pa : [pa]) : null,
+      subarr, subname, subid,
+      m = Dic[mtd.toLowerCase()],
+      config = {};
+
+    function getParam (obj) {
+      if (isNewApi) {
+        return obj[1];
+      } else {
+        return isArray(obj) && obj.length === 1 && isArray(obj[0])
+          ? obj[0]
+          : obj;
+      }
+    }
+
+    function isEmpty (obj) {
+      if (typeof obj === "undefined" || obj === null) {
+        return true;
+      } else if (typeof obj === "object") {
+        for (var i in obj) {
+        }
+        return typeof i === "undefined";
+      } else {
+        return false;
+      }
+    }
+
+    if (cache2sub && !isObject(t) && !isArray(t)) {
+      subarr = isString(cache2sub) ? cache2sub.split(":") : [];
+      subname = subarr[0];
+      subid = subarr[1];
+      ajaxcached[key] = ajaxcached[key] || createCache();
+      if (isArray(t) && !/[a-z]+/g.test(t[0])) {
+        return t.every((n) => {
+          return ajaxcached[key][n];
+        }) ? q.all(t.map((n) => {
+          return ajaxcached[key][n];
+        })) : httpPromise(m, u, param, config).then(function (d) {
+          each(t, (m) => {
+            let fd = d.find((f) => {
+              error(f[subid], `function [ $$ajax ] : 缓存属性设置为 [ ${subid} ]， 但返回结果查找不正确，请把重新设置cache属性，或为false禁用缓存功能。`);
+              return f[subid] == m;
+            }) || null;
+            debug(function () {
+              ajaxcached[key][m] ? null : ajaxcached[key](m, createImmediateDefer(fd));
+            }, `subname = ${subname}, key = ${key}, url = ${url}, subarr = ${subarr}`);
+          });
+          return createImmediateDefer(d);
+        });
+      } else if (!isObject(t) && !/[a-z]+/g.test(t[0])) {
+        ajaxcached[key][t] ? null : ajaxcached[key](t, httpPromise(m, u, param, config));
+        ajaxcached[key][t].then((d) => {
+          ajaxcached[subname] = ajaxcached[subname] || createCache();
+          each(d, (n) => {
+            debug(function () {
+              ajaxcached[subname](n[subid]) ? null : ajaxcached[subname](n[subid], createImmediateDefer(n));
+            }, `subname = ${subname}, key = ${key}, url = ${url}, cache2sub = ${cache2sub}`);
+          });
+        });
+        return ajaxcached[key][t];
+      }
+      ;
+    }
+    return httpPromise(m, u, param, config);
+  }
+
+  function post (url, param, cache) {
+    return ajax("POST", url, param, cache);
+  }
+
+  function get (url, param, cache) {
+    return ajax("GET", url, param, cache);
+  }
+
+  function normalize (url, key) {
+    return debug(function () {
+      let loc = urlparser(window.location.href),
+        u = isArray(url) ? url[0] : url,
+        baseurl = window.location.origin;
+      baseurl = loc.port == 63342 ? baseurl.replace(loc.host, serviceproxy.host) : baseurl;
+      u = allconfigs[u] || u.split(".");
+      u = isFunction(u) ? u : `${baseurl}/api/rest/post/${u[0]}/${u[1]}`;
+      error(u.length !== 2, u + "不是一个合法的服务,请查阅字典表是否已设置该服务。", url, key);
+      return isArray(url) ? [u].concat(url.slice(1)) : u;
+    }, " [ url = " + url + ",key = " + key + " ] ");
+  }
+
+  function getConfig (key) {
+    let match = /(\w+)\@(\w+)/g.exec(key),
+      allmatch = match && match.shift(),
+      _key = match ? match.shift() : key,
+      method = match && match.shift(),
+      isNewApi = !!match,
+      rs = allconfigs[key] ? explainConfig(allconfigs[key]) : defaultConfig(_key);
+
+    function defaultConfig (_key) {
+      return explainConfig({url: isNewApi ? undefined : _key});
+    }
+
+    function explainConfig (config) {
+      let rs = {};
+      if (isArray(config)) {
+        each(_Parameters, (p, i) => {
+          let id = p.id, value = p.default || {};
+          value = isFunction(value) ? value(_key, isNewApi, method) : value[_key];
+          rs[id] = config[i] || value;
+        })
+      } else {
+        rs = config;
+        each(_Parameters, (p) => {
+          let id = p.id, value = p.default || {};
+          value = isFunction(value) ? value(_key, isNewApi, method) : value[_key];
+          rs[id] = typeof rs[id] !== "undefined" ? rs[id] : value;
+        });
+      }
+      ;
+      isNewApi ? rs.key = key : null;
+      isNewApi ? rs.isNewApi = isNewApi : null;
+      isNewApi ? rs.module = _key : null;
+      return rs;
+    }
+
+    return rs
+  }
+
+  function formatPath (str) {
+    let arr = str.split(".");
+    return arr.join("_")
+  }
+
+  function pipeline (data) {
+    let promise = createImmediateDefer(data);
+
+    function pipe (fn) {
+      let defer = q.defer();
+      this.then((data) => {
+        typeof fn === "function"
+          ? fn.call(this, data, next)
+          : fn.then((d) => {
+            defer.resolve(d);
+          }).catch((e) => {
+            defer.reject(e);
+          });
+
+        function next (dt) {
+          defer.resolve(typeof dt !== "undefined" ? dt : data);
+        }
+      });
+      defer.promise.post = post;
+      defer.promise.pipe = pipe;
+      return defer.promise;
+    }
+
+    function post (url, param) {
+      let defer = q.defer();
+      this.then((data) => {
+        ajax.call(this, "POST", url, param, undefined, data).then((d) => {
+          defer.resolve(d);
+        }).catch((e) => {
+          defer.reject(e);
+        });
+      }).catch((e) => {
+        defer.reject(e);
+      });
+      defer.promise.post = post;
+      defer.promise.pipe = pipe;
+      return promise = defer.promise;
+    };
+    promise.pipe = pipe;
+    promise.post = post;
+    return promise;
+  }
+
+  function ajax (METHOD, url, param, cache, origindata) {
+    let promise = pipeline(origindata), base, pipe, regex = /(:?request|postwith|getwith)/g;
+    regex.lastIndex = 0;
+
+    function tokenize (url) {
+      let arr = url.split("|").map((n) => {
+        if (n.length) {
+          let params = n.split(":"),
+            match, allmatch, moduleName, method,
+            key = params.shift(),
+            config = getConfig(key);
+          config.key = config.key || key;
+          return config;
+        } else {
+          return null;
+        }
+      });
+      return arr;
+    }
+
+    if (isObject(METHOD)) {
+      url = METHOD.url;
+      param = METHOD.param;
+      METHOD = METHOD.method;
+    }
+    url = tokenize(url);
+    if (this === window) {
+      url[0].method = "postwith";
+      url[0].param = (function (item, param) {
+        if(typeof param === "undefined"){
+          return undefined;
+        };
+        return item.isNewApi ? [item.module, param] : (isArray(param) ? param : [param]);
+      })(url[0], param);
+      url[0].cache = typeof cache === "undefined" ? url[0].cache : cache;
+    }
+    while (typeof (pipe = url.shift()) !== "undefined") {
+      if (pipe === null) {
+        continue;
+      }
+      regex.lastIndex = 0;
+      let method = pipe.method, fn = factory[method],
+        args = [pipe.key, pipe.before, typeof pipe.param == "undefined" ? "__undefined__" : pipe.param, pipe.after, pipe.cache];
+      debug(() => {
+        error(isFunction(fn), method + "是无效方法请检查配置文件method属性");
+        promise = promise.pipe(fn.apply(factory, args));
+      }, " [ " + stringify(pipe, null, 2) + " ] ");
+    }
+    return promise;
+  };
+
+  function generateCompareFun (attr, save2Param) {
+    return function (n, m) {
+      let extractArr = typeof save2Param === "function" ? save2Param : save2Param.split(":"),
+        name = typeof extractArr === "function" ? extractArr : extractArr[0],
+        extra = typeof extractArr === "function" ? null : (extractArr[1] || "id"),
+        k = typeof attr === "function" ? attr(n) : n[attr],
+        save2Cache = function (name, fd) {
+          if (!n["__get__"]) {
+            Object.defineProperty(n, "__get__", {
+              enumerable: false,
+              value: function (attr) {
+                return this.hasOwnProperty(attr)
+                  ? this[attr]
+                  : this["__get__"][attr]
+              }
+            });
+          }
+          n["__get__"][name] = typeof fd == "undefined" ? null : fd;
+        };
+      error(m, "m is undefined!!");
+      typeof name === "function"
+        ? name(n, m, save2Cache)
+        : (save2Cache(name, isArray(m)
+        ? (m[isArray(k) ? "filter" : "find"]((o) => {
+          error(o, stringify(m));
+          return isArray(k) ? k.indexOf(o[extra]) !== -1 : k === o[extra];
+        }))
+        : m));
+    }
+  }
+
+  function request (METHOD, key, before, param, after, cache) {
+    if (isObject(key)) {
+      before = key.before;
+      param = key.param;
+      after = key.after;
+      key = key.url;
+      cache = key.cache;
+    }
+    let config = getConfig(key),
+      save2Param = generateCompareFun(before || config.before, after || config.after);
+    return function (source, next) {
+      let prm;
+
+      function checkUndefined (param) {
+        if (param === "__undefined__") {
+          return undefined;
+        } else if (typeof param === "undefined") {
+          return config.param;
+        } else {
+          return param;
+        }
+      }
+
+      prm = $$ajax(METHOD, key, config.url, checkUndefined(param), _QUERY_EACH, typeof cache == "undefined" ? config.cache : cache, true, config.isNewApi);
+      prm.then((d) => {
+        if (typeof source !== "undefined") {
+          each(source, (n) => {
+            save2Param(n, d);
+          });
+          next();
+        } else {
+          next(d);
+        }
+      }).catch(function (e) {
+        console.error(e);
+      });
+    }
+  };
+
+  function postwith (key, before, param, after, cache) {
+    return request("POST", key, before, param, after, cache);
+  }
+
+  function getwith (key, before, param, after, cache) {
+    return request("GET", key, before, param, after, cache);
+  }
+
+  function requestAll (METHOD, key, before, param, after, cache) {
+    if (isObject(key)) {
+      before = key.before;
+      param = key.param;
+      after = key.after;
+      key = key.url;
+      cache = key.cache;
+    }
+    let ids = [], config = getConfig(key),
+      save2Param = generateCompareFun(before, after || config.after);
+    cache = typeof cache === "undefined" ? (after || config.cache) : cache;
+    return function (source, next) {
+      let prm;
+
+      function checkUndefined (param) {
+        if (param === "__undefined__") {
+          return undefined;
+        } else if (typeof param === "undefined") {
+          return config.param;
+        } else {
+          return param;
+        }
+      }
+
+      each(source, (n) => {
+        let at = typeof before === "function" ? before(n) : n[before];
+        pushDiff(ids, at);
+      });
+      debug(function () {
+        prm = $$ajax(METHOD, key, config.url, ids, checkUndefined(param), cache, true, config.isNewApi);
+      }, " requestAll [ key : " + key + " ],[ param : " + param + " ] ");
+      prm.then((d) => {
+        d = d.filter((n) => {
+          return n
+        });
+        error(isArray(d), "not a Array", d);
+        if (typeof source !== "undefined") {
+          each(source, (n) => {
+            save2Param(n, d);
+          });
+          next();
+        } else {
+          next(d);
+        }
+      }).catch(function (e) {
+        console.error(e);
+      });
+    }
+  };
+
+  function postAll (key, before, param, after, cache) {
+    return requestAll("POST", key, before, param, after, cache);
+  }
+
+  function getAll (key, before, param, after, cache) {
+    return requestAll("GET", key, before, param, after, cache);
+  }
+
+  function requestEach (METHOD, key, before, param, after, cache) {
+    if (isObject(key)) {
+      before = key.before;
+      param = key.param;
+      after = key.after;
+      key = key.url;
+      cache = key.cache;
+    }
+    let ids = [], config = getConfig(key),
+      save2Param = generateCompareFun(attr, after || config.after);
+
+    function checkUndefined (param) {
+      if (param === "__undefined__") {
+        return undefined;
+      } else if (typeof param === "undefined") {
+        return config.param;
+      } else {
+        return param;
+      }
+    }
+
+    return function (METHOD, source, next) {
+      error(typeof source === "undefined", "管道数据为空不可进行requestEach操作")
+      each(source, (n) => {
+        let at = typeof before === "function" ? before(n) : n[before],
+          prm = $$ajax(METHOD, key, config.url, at, checkUndefined(param), typeof cache == "undefined" ? config.cache : cache, true, config.isNewApi);
+        prm.then((d) => {
+          console.assert(isArray(d), "not a Array");
+          save2Param(n, d);
+        }).catch(function (e) {
+          console.error(e);
+        });
+        ids.push(prm);
+      });
+      q.all(ids).then((d) => {
+        next();
+      }).catch((e) => {
+        console.error(e);
+      });
+    }
+  };
+
+  function postEach (key, before, param, after) {
+    return requestEach("POST", key, before, param, after);
+  }
+
+  function getEach (key, before, param, after) {
+    return requestEach("GET", key, before, param, after);
+  }
+
+  function config (option) {
+    eachProp(option, (value, key) => {
+      allconfigs(key, value);
+    });
+  };
+
+  function getCache () {
+    return ajaxcached;
+  }
+
+  function content2JSON (source, newValue) {
+    source.content = newValue.content;
+  }
+
+  function saveState2 (source, newValue, save2Cache) {
+    save2Cache("state", newValue.find((n) => {
+      return n.kpiCode == 999999 || source.nodeId == newValue.nodeId;
+    }));
+    save2Cache("state2", newValue.find((n) => {
+      return n.kpiCode == 999998 || source.nodeId == newValue.nodeId;
+    }));
+  }
+
+  config({
+
+    gateway: {
+      url: "resourceUIService.getAllGatewaysByCondition",
+      method: "postwith",
+      before: "gatewayId",
+      param: {}
+    },
+    model: {
+      url: "resourceUIService.getModelByIds",
+      method: "postAll",
+      before: "modelId",
+      param: widget._QUERY_ALL
+    },
+    deviceModel: {
+      url: "resourceUIService.getModelByIds",
+      method: "postAll",
+      before: "deviceModelId",
+      param: widget._QUERY_ALL,
+      after: "deviceModel",
+      save2Cache: "model:id"
+    },
+    roleRes: {
+      url: "userRoleUIService.findRoleResByResIds",
+      method: "postAll",
+      before: "viewId"
+    },
+    state: {
+      url: "kpiDataFlexService.getKpiValueList",
+      method: "postAll",
+      before: "id",
+      param: (temp = widget._KPIQUERYMODEL_ALERTSTATE({
+        id: 999999, label: "state"
+      }))['param'],
+      after: temp['after'],
+      cache: "state:nodeId"
+    },
+    online: {
+      url: "kpiDataFlexService.getKpiValueList",
+      method: "postAll",
+      before: "id",
+      param: (temp = widget._KPIQUERYMODEL_ALERTSTATE({
+        id: 999998, label: "online"
+      }))['param'],
+      after: temp['after'],
+      cache: "state:nodeId"
+    },
+    online_state: {
+      url: "kpiDataFlexService.getKpiValueList",
+      method: "postAll",
+      before: "id",
+      param: (temp = widget._KPIQUERYMODEL_ALERTSTATE({
+        id: 999998, label: "online"
+      }, {
+        id: 999999, label: "state"
+      }))['param'],
+      after: temp['after'],
+      cache: "state:nodeId"
+    },
+    domain: {
+      url: "resourceUIService.getResourceByIds",
+      method: "postAll",
+      before: "domains",
+      param: function (source) {
+        return {
+          "IN": source
+        }
+      },
+      after: "domain"
+    },
+    user: {
+      url: "resourceUIService.getResourceByIds",
+      method: "postAll",
+      before: "domains",
+      param: function (source) {
+        return {
+          "IN": source
+        }
+      },
+      after: "domain"
+    }
+  });
+  return factory;
+}
+</script>

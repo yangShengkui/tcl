@@ -1,0 +1,805 @@
+.ui-tooltip, .arrow:after {
+  background: #038ddc;
+  border: 2px solid white;
+}
+#tg-edit
+{
+  .toggle-wrap{
+    width : 80px;
+    height : 24px;
+    border-radius : 12px;
+    background-color: #fff;
+    border : 1px solid #cacaca;
+    cursor : pointer;
+    transition : .1s linear all;
+    -webkit-transition : .1s linear all;
+    &.active{
+      border : 1px solid #00c6ff;
+      .toggle-inner{
+        margin-left : 36px;
+        width : 40px;
+        height : 20px;
+        margin-top : 1px;
+        border-radius : 10px;
+        background-color: #00c6ff;
+      }
+    }
+    .toggle-inner{
+      transition : .1s linear all;
+      -webkit-transition : .1s linear all;
+      margin-left : 2px;
+      width : 40px;
+      height : 20px;
+      margin-top : 1px;
+      border-radius : 10px;
+      background-color: #cacaca;
+    }
+  }
+  .drawWrap
+  {
+    .drawingArea
+    {
+      width : 1024px;
+      height : 720px;
+      border : 1px solid #eee;
+      margin: 20px auto;
+      background-size: contain;
+      background-position : center;
+      background-repeat: no-repeat;
+      position: relative;
+      .element
+      {
+        border : 1px dashed #ddd;
+        cursor : pointer;
+        &.active
+        {
+          border : 1px solid #bbb;
+        }
+        .closeBtn
+        {
+          top : -20px;
+          right : -20px;
+          position:absolute;
+        }
+        .open
+        {
+          width : 100%;
+          height : 100%;
+          transform: rotate(0deg);
+          .rotate_wrap
+          {
+            width : 100%;
+            height : 100%;
+            position : absolute;
+            padding-bottom:3%;
+            overflow : hidden;
+            border-bottom : 2px solid #fff;
+            border-left : 2px solid #fff;
+            box-shadow : -3px 1px 10px #fff;
+            .rotate_wrap_inner
+            {
+              position : absolute;
+              width : 200%;
+              height : 200%;
+              border-radius : 100%;
+              margin-left : -100%;
+              background-color : rgba(0,0,0,.8);
+              border : 2px solid #fff;
+              overflow : hidden;
+              .rotate_value
+              {
+                width : 200%;
+                height : 200%;
+                margin-top : 50%;
+                margin-left : -50%;
+                background-color : #04e196;
+                transform:rotate(-20deg);
+                -ms-transform:rotate(-20deg); 	/* IE 9 */
+                -moz-transform:rotate(-20deg); 	/* Firefox */
+                -webkit-transform:rotate(-20deg); /* Safari 和 Chrome */
+                -o-transform:rotate(-20deg);
+                transform-origin: top;
+              }
+            }
+          }
+        }
+        .bar
+        {
+          width : 100%;
+          height : 100%;
+          background-image: url(../images/tongji/barOuter.png);
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          .bar-inner
+          {
+            position: absolute;
+            left : 30%;
+            top : 5%;
+            width : 40%;
+            height : 90%;
+            background-color : #222;
+          }
+          .bar-value
+          {
+            position: absolute;
+            left : 30%;
+            bottom : 5%;
+            width : 40%;
+            height : 30%;
+            background-color : #00b990;
+          }
+        }
+        .blink
+        {
+          width : 100%;
+          height : 100%;
+          position : relative;
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+        }
+        .switch
+        {
+          width : 100%;
+          height : 100%;
+          position : relative;
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+        }
+      }
+    }
+  }
+
+}
+.ui-tooltip {
+  padding: 10px 20px;
+  color: white;
+  border-radius: 20px;
+  font: bold 14px "Helvetica Neue", Sans-Serif;
+  text-transform: uppercase;
+  box-shadow: 0 0 7px #038ddc;
+}
+.arrow {
+  width: 70px;
+  height: 16px;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  margin-left: -35px;
+  bottom: -16px;
+}
+.arrow.top {
+  top: -16px;
+  bottom: auto;
+}
+.arrow.left {
+  left: 20%;
+}
+.arrow:after {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: -20px;
+  width: 25px;
+  height: 25px;
+  box-shadow: 6px 5px 9px -9px black;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.arrow.top:after {
+  bottom: -20px;
+  top: auto;
+}
+.ipcam
+  {
+    position : fixed;
+    top : 0;
+    left : 0;
+    width : 100%;
+    height : 100%;
+    z-index: 99999;
+    background-color : transparent;
+    pointer-events: none;
+    .camWrap
+    {
+      pointer-events: all;
+      width : 640px;
+      height : 480px;
+      background-color : #eee;
+      border : 1px solid #999;
+      box-shadow : 1px 1px 10px #000;
+      position : relative;
+      top : 20%;
+      left : 10%;
+      .camHeader{
+        cursor : move;
+        background-color : #999;
+        height : 34px;
+        width : 100%;
+        position : absolute;
+        .camBtn
+        {
+          background-color: #222;
+          color : #fff;
+          float : right;
+          border : 0;
+          margin : 4px 10px 0 0;
+        }
+      }
+      .cam
+      {
+        width : 90%;
+        height : ~'calc(95% - 80px)';
+        top : 60px;
+        left : 5%;
+        position: relative;
+      }
+    }
+  }
+.whole{
+  width : 100%;
+  height : 100%;
+  overflow-x : hidden;
+  overflow-y : auto;
+  background-color : #fff;
+  .leftPart_tongji{
+    float:left;
+    position : relative;
+    width : 70%;
+    .leftTop
+    {
+      width : 100%;
+      position : relative;
+      z-index : 1;
+      .top_column
+      {
+        height : 100px;
+        background : -webkit-gradient(linear,center top,center bottom,from(#e5e5e5), to(#ffffff));
+        float : left;
+        overflow : visible;
+        position : relative;
+        z-index: 999;
+        position: relative;
+        .inner
+        {
+          height : 70px;
+          margin-top : 15px;
+          width : 100%;
+          border-left : 1px solid #ccc;
+          .health
+          {
+            top : 20px;
+            width : 60px;
+            height : 60px;
+            border-radius : 50%;
+            background-color : #04e196;
+            position: absolute;
+            &::before
+            {
+              content : '';
+              display : block;
+              border-radius : 50%;
+              width : 40px;
+              height : 40px;
+              position: absolute;
+              top : 10px;
+              left : 10px;
+              background-color : #15ba91;
+            }
+          }
+          .alert
+          {
+            top : 20px;
+            width : 60px;
+            height : 60px;
+            border-radius : 50%;
+            background-color : #ff6b09;
+            opacity : 0;
+            position: absolute;
+            &::before
+            {
+              content : '';
+              display : block;
+              border-radius : 50%;
+              width : 40px;
+              height : 40px;
+              position: absolute;
+              top : 10px;
+              left : 10px;
+              background-color : #c70000;
+            }
+          }
+          .btn
+          {
+            height : 40px;
+            background-color : #fff;
+            &:focus{
+              color : #666;
+            }
+            .setting
+            {
+              display : block;
+              float : left;
+              margin-right : 10px;
+              margin-left : 20px;
+              width : 20px;
+              height : 20px;
+              background-image: url(../images/tongji/iconfont-androidoptions.svg);
+              background-size: contain;
+              background-position: center;
+            }
+            .text
+            {
+              display : block;
+              float : left;
+              display : inline-block;
+              font-weight : bold;
+              font-size : 16px;
+              line-height: 20px;
+              margin-right : 20px;
+            }
+          }
+          .value
+          {
+            font-weight : bold;
+            text-align : left;
+            width : 60%;
+            color : #038ddc;
+            font-family: arial, sans-serif;
+            font-size : 48px;
+            vertical-align: middle;
+          }
+          .des
+          {
+            text-align : right;
+            font-family: Heiti;
+            font-weight : bold;
+            font-size : 16px;
+            vertical-align: middle;
+          }
+          .value_t
+          {
+            font-weight : bold;
+            text-align : left;
+            width : 60%;
+            color : #038ddc;
+            font-family: arial, sans-serif;
+            font-size : 48px;
+            vertical-align: middle;
+          }
+          .des_t
+          {
+            text-align : right;
+            font-family: Heiti;
+            font-weight : bold;
+            font-size : 16px;
+            vertical-align: middle;
+          }
+          .btn{
+            margin : auto;
+            margin-top : 20px;
+            display : block;
+          }
+          &::before{
+            content : '';
+            display : block;
+            height : 1px;
+          }
+        }
+        .dropdown{
+          transition : .3s linear all;
+          -webkit-transition : .3s linear all;
+          position : relative;
+          overflow: hidden;
+          width : 90%;
+          top : 15px;
+          left : ~'calc(10% + 2px)';
+          max-height : 0;
+          background-color : #f8f8f8;
+          border : 1px solid transparent;
+          opacity : 0;
+          .title
+          {
+            line-height : 50px;
+            font-family: hei;
+            font-weight: bold;
+            .valTable
+            {
+              width : 100%;
+              .val{
+                color : #038ddc;
+                font-family: arial, sans-serif;
+                font-size : 16px;
+                font-weight: bold;
+                text-align: center;
+              }
+            }
+          }
+          .title_small
+          {
+            line-height : 50px;
+            font-family: hei;
+            font-weight: bold;
+            float : left;
+          }
+          .tg-toggle{
+            float : right;
+            margin : 10px 10px 0 0;
+          }
+          .ui-slider
+          {
+            height : 24px;
+            border-radius : 12px;
+            background-color : #fff;
+            .ui-slider-range
+            {
+              border-top-left-radius: 12px;
+              border-top-right-radius: 0px;
+              border-bottom-left-radius: 12px;
+              border-bottom-right-radius: 0;
+              background : #3edda7;
+            }
+            .ui-slider-handle
+            {
+              width : 22px;
+              height : 22px;
+              border-radius : 50%;
+              background : #009f78;
+              border : 0;
+              top : 0;
+              cursor : move;
+              &:hover
+              {
+                background : #00634b;
+              }
+              &:focus
+              {
+                outline: 0px;
+              }
+            }
+          }
+          .dropIn
+          {
+            padding : 4% 20px;
+          }
+          &.visible{
+            max-height : 900px;
+            border : 1px solid #bbb;
+            opacity : 1;
+          }
+          .toggle-wrap{
+            width : 80px;
+            height : 24px;
+            border-radius : 12px;
+            background-color: #fff;
+            border : 1px solid #cacaca;
+            cursor : pointer;
+            transition : .1s linear all;
+            -webkit-transition : .1s linear all;
+            &.active{
+              border : 1px solid #00c6ff;
+              .toggle-inner{
+                margin-left : 36px;
+                width : 40px;
+                height : 20px;
+                margin-top : 1px;
+                border-radius : 10px;
+                background-color: #00c6ff;
+              }
+            }
+            .toggle-inner{
+              transition : .1s linear all;
+              -webkit-transition : .1s linear all;
+              margin-left : 2px;
+              width : 40px;
+              height : 20px;
+              margin-top : 1px;
+              border-radius : 10px;
+              background-color: #cacaca;
+            }
+          }
+        }
+      }
+      &::after{
+        content : '';
+        display: block;
+        clear : both;
+      }
+    }
+    .camBtn
+    {
+      position : absolute;
+      &:focus{
+        outline : 0;
+      }
+      left : 3%;
+      top : 120px;
+      z-index: 99;
+      border : 0;
+      background-color: #3C8DBC;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      width : 60px;
+      height : 60px;
+      transition : .1s all linear;
+      -webkit-transition : .1s all linear;
+      &.move{
+        left : 3%;
+      }
+      border : 4px solid #fff;
+      span
+      {
+        top : 2px;
+        left : 2px;
+        font-size : 30px;
+        color : #fff;
+      }
+    }
+    .leftMiddle
+    {
+      width : 100%;
+      background-image:url(../images/tongji/bg.jpg);
+      background-position-y: -200px;
+      .image{
+        position : relative;
+        width : 100%;
+        background-size : contain;
+        background-position : center;
+        .open
+        {
+          width : 100%;
+          height : 100%;
+          .rotate_wrap
+          {
+            width : 100%;
+            height : 100%;
+            position : absolute;
+            padding-bottom:3%;
+            overflow : hidden;
+            border-bottom : 2px solid #fff;
+            border-left : 2px solid #fff;
+            box-shadow : -3px 1px 10px #fff;
+            .rotate_wrap_inner
+            {
+              position : absolute;
+              width : 200%;
+              height : 200%;
+              border-radius : 100%;
+              margin-left : -100%;
+              background-color : rgba(0,0,0,.8);
+              border : 2px solid #fff;
+              overflow : hidden;
+              .rotate_value
+              {
+                width : 200%;
+                height : 200%;
+                margin-top : 50%;
+                margin-left : -50%;
+                background-color : #04e196;
+                transform:rotate(-20deg);
+                -ms-transform:rotate(-20deg); 	/* IE 9 */
+                -moz-transform:rotate(-20deg); 	/* Firefox */
+                -webkit-transform:rotate(-20deg); /* Safari 和 Chrome */
+                -o-transform:rotate(-20deg);
+                transform-origin: top;
+              }
+            }
+          }
+        }
+        .bar
+        {
+          width : 100%;
+          height : 100%;
+          background-image: url(../images/tongji/barOuter.png);
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          .innerText
+          {
+            color : #fff;
+            text-shadow: 1px 1px 5px #000;
+            position:absolute;
+            top : -25px;
+            font-weight: bold;
+            font-size : 16px;
+          }
+          .bar-inner
+          {
+            position: absolute;
+            left : 30%;
+            top : 5%;
+            width : 40%;
+            height : 90%;
+            background-color : #222;
+          }
+          .bar-value
+          {
+            position: absolute;
+            left : 30%;
+            bottom : 5%;
+            width : 40%;
+            height : 30%;
+            background-color : #00b990;
+          }
+        }
+        .blink
+        {
+          width : 100%;
+          height : 100%;
+          position : relative;
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+        }
+        .switch
+        {
+          width : 100%;
+          height : 100%;
+          position : relative;
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+        }
+        .tg-blink
+        {
+          position : absolute;
+          background-size : contain;
+          background-repeat : no-repeat;
+          background-position : center;
+        }
+        .btn-info
+        {
+          position : absolute;
+          width : 150px;
+          margin : 60% 0 0 5%;
+          color : #fff;
+          font-size : 16px;
+          font-weight: bold;
+          &.alertBtn
+          {
+            display : block;
+            background-color : #ef8242;
+            box-shadow: 1px 1px 4px rgba(0,0,0,.4);
+            border : 0;
+            &:hover{
+              background-color: #DE2525;
+              color : #fff;
+            }
+          }
+        }
+        .btnWrap
+        {
+          position : absolute;
+          margin : 65% 0 0 5%;
+          font-size : 14px;
+          .btn{
+            border-radius : 0;
+          }
+          .otherBtn{
+            box-shadow : 1px 1px 4px rgba(0,0,0,.4);
+            float : left;
+            width : 120px;
+            margin-right : 30px;
+            background-color: #fff;
+            border: 1px solid #378cbe;
+            color : #378cbe;
+            font-weight: bold;
+            font-size : 16px;
+            &:hover{
+              background-color: #378cbe;
+              color : #fff;
+            }
+            .glyphicon
+            {
+              margin-right : 10px;
+              font-size : 14px;
+            }
+          }
+        }
+      }
+      #bigimg{
+        display : block;
+        width : 100%;
+        padding-bottom : 70%;
+        position : absolute;
+        z-index: 9999;
+      }
+    }
+  }
+  .rightPart_tongji{
+    float:left;  width : 30%;
+    background-color : #f8f8f8;
+    .chartLabel
+    {
+      border-left : 1px solid #bbb;
+      padding : 20px 10% 0 11%;
+      font-size : 14px;
+      font-weight: bold;
+    }
+    .tg-echarts{
+      height : ~'calc(20vh - 60px)';
+      min-height : 120px;
+      border-bottom : 1px solid #888;
+      border-left : 1px solid #bbb;
+    }
+  }
+}
+@media screen and (max-width: 1280px){
+  .whole{
+    width : 100%;
+    height : 100%;
+    overflow-x : hidden;
+    overflow-y : auto;
+    background-color : #fff;
+    .leftPart_tongji{
+      float : none;
+      width : 100%;
+    }
+    .rightPart_tongji{
+      float : none;
+      width : 100%;
+
+    }
+  }
+}
+@media screen and (min-width: 1280px){
+  .whole{
+    width : 100%;
+    height : 100%;
+    overflow-x : hidden;
+    overflow-y : auto;
+    background-color : #fff;
+    .leftPart_tongji{
+      float : left;
+      width : 70%;
+    }
+    .rightPart_tongji{
+      float : left;
+      width : 30%;
+
+    }
+  }
+}
+@media screen and (max-width: 768px){
+  .whole{
+    .leftPart_tongji{
+      .top_column{
+        width : 100%;
+        .value
+        {
+          width : 50%;
+        }
+        .des
+        {
+          width : 50%;
+        }
+        .value_t
+        {
+          width : 50%;
+        }
+        .des_t
+        {
+          width : 50%;
+        }
+      }
+    }
+    .rightPart_tongji{
+
+    }
+  }
+}
+@media screen and (min-width: 769px){
+  .whole{
+    .leftPart_tongji{
+      .top_column{
+        width : 20%;
+      }
+    }
+    .rightPart_tongji{
+
+
+    }
+  }
+}

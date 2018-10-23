@@ -1,0 +1,37 @@
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active" name="tab1">
+                <a role="button" data-toggle="tab">应用服务</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body">
+          <div class="col-xs-12">
+
+            <ul class="necessary list-unstyled">
+              <li class="col-xs-4" ng-repeat="app in placeList">
+                <a>
+                  <p class="biaoti">{{app.label}}</p>
+                  <p class="tupian"><img ng-src="images/appcenter/{{app.icon}}.png" /></p>
+                  <p class="tupian1"><img ng-src="images/appcenter/{{app.icon}}_hover.png" /></p>
+                  <p class="remark">{{app.desc}}</p>
+                  <div class="text-center">
+                    <button ng-if="app.status == 10" ng-click="viewUse(app)" class="btn btn-primary btn-sm">应用</button>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>

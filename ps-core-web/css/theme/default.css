@@ -1,0 +1,14 @@
+.default {
+  color: #666;
+  background-color: #eee;
+  min-height: 100%
+}
+
+.default .block {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1)
+}
+
+
+/*# sourceMappingURL=default.css.map */

@@ -1,0 +1,166 @@
+<config injector="$scope,ajax,$location,psDialog">
+</config>
+<template>
+    <proudsmart-base>
+        <ps-layout data-option="layout"></ps-layout>
+    </proudsmart-base>
+</template>
+<script type="text/javascript">
+    export default function (scope, ajax,location,psDialog) {
+        scope.layout = {
+                label: "设备类型",
+                children:[{
+                    type: "form-inline",
+                    children: [{
+                        type: "label",
+                        config: {
+                            label: "设备类型"
+                        }
+                    },{
+                        type : "input",
+                        label : "设备类型",
+                        key: "id"
+                    },{
+                        type: "button",
+                        config: {
+                            label: "查询",
+                            class: "btn btn-sm btn-primary",
+                            click: function (e) {
+                                console.log(e)
+                            }
+                        }
+                    }]
+
+                },{
+                    type : "tree-view2",
+                    options : "resourceUIService.getModelsTree",
+                    parameter : [0],
+                    parentId : "parentModelId",
+                    buttons: [{
+                        label:"",
+                        class: "glyphicon glyphicon-trash",
+                        tit: "刪除",
+                        icon: "",
+                        on: {
+                            click: function (row) {
+                                console.log(row)
+                            }
+                        }
+                    },{
+                        label:"",
+                        class: "proudsmart ps-edit",
+                        tit: "编辑",
+                        icon: "",
+                        on: {
+                            click: function (row) {
+                                console.log(row)
+                            }
+                        }
+                    },{
+                        label:"",
+                        class: "glyphicon glyphicon-plus",
+                        tit: "添加",
+                        icon: "",
+                        rootShow: true,
+                        on: {
+                            click: function (e) {
+                                console.log("@check 添加 : ", e.$row.id);
+                                psDialog.modal({
+                                    label : "设备类型",
+                                    type : "layout",
+                                    children : [{
+                                        type : "form-dialog",
+                                        data : null,
+                                        children : [{
+                                            type : "input",
+                                            label : "名称",
+                                            composory: true,
+                                            key : "label",
+                                        },{
+                                            type : "input",
+                                            label : "描述",
+                                            composory: false,
+                                            key : "desc"
+                                        }]
+                                    }],
+                                    buttons : [{
+                                        label : "确定",
+                                        class : "btn btn-primary",
+                                        click : function(e){
+                                            console.log("@chekc come here ")
+                                            console.log("@chekc label = "+scope,scope)
+                                            /*var param = {
+                                                "label":e.$row.label,
+                                                "desc":e.$row.desc,
+                                                "parentModelId":e.$row.id
+                                            };*/
+                                           /* ajax.post("resourceUIService.addModel",param).then(
+                                                function (d) {
+                                                    console.log("@check data : "+d,d);
+                                                }
+                                            );*/
+
+                                            this.close();
+                                        }
+                                    },{
+                                        label : "取消",
+                                        click : function(){
+                                            this.close();
+                                        }
+                                    }]
+                                },e.$row);
+                            }
+                        }
+                    },{
+                        label:"管理",
+                        class: "",
+                        icon: "",
+                        tit: "管理",
+                        on: {
+                            click: function (e) {
+                                location.path("/prod_propertyinfo/"+e.$row.id)
+                            }
+                        }
+                    }]
+                }]
+
+
+
+            }
+
+        // scope.config = {
+        //     title: "部位",
+        //     attributes: {
+        //         "name": ["设备部件名称", "text"],
+        //     },
+        //     search: {
+        //         body: []
+        //     },
+        //     // grid: {
+        //     //     body: ["name"],
+        //     //     buttons: {
+        //     //         outGrid: [{
+        //     //             label: "添加",
+        //     //             class: "primary",
+        //     //             icon: "fa fa-plus"
+        //     //         }],
+        //     //         inGrid: [{
+        //     //             label: "编辑",
+        //     //             class: "btn btn-primary"
+        //     //         }]
+        //     //     },
+        //     //     config: {
+        //     //         url: 'resourceUIService.getDevicePartsByDeviceModelIdAndDevicePartType',
+        //     //         parameter: ["456663498040179", "DEVICE"],
+        //     //         showIndex: false,
+        //     //         showSelector: false,
+        //     //         showSearch: false
+        //     //     },
+        //     //     options: []
+        //     // }
+        // };
+
+    };
+</script>
+<style type="less">
+</style>

@@ -1,0 +1,46 @@
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Application buttons -->
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active"><a role="button">经销商管理</a></li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body">
+          <button ng-show="menuitems['A02_S46']" ng-click="addUser('addDealer')" type="button" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i><span class="hidden-sm"> 添加经销商</span></button>
+          <div class="combined-query pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                {{queryLabel?queryLabel:'查询条件'}} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a role="button" ng-click="queryState=1;queryLabel='经销商归属';getChange('searchDealer')">经销商归属</a></li>
+                <li><a role="button" ng-click="queryState=2;queryLabel='经销商名称';getChange('searchDealer')">经销商名称</a></li>
+                <li><a role="button" ng-click="queryState=3;queryLabel='经销商地址';getChange('searchDealer')">经销商地址</a></li>
+                <li><a role="button" ng-click="queryState=4;queryLabel='联系人电话';getChange('searchDealer')">联系人电话</a></li>
+              </ul>
+            </div>
+            <input class="form-control input-sm" ng-show="!queryState" maxlength="20" type="text" ng-model="selectedDealItem.orCondition" type="text " />
+            <div class="dropdowntree" ng-show="queryState == 1" ng-model="selectedDealItem.domainPath" change="" key="domainPath" options="domainDealerListTree" mark="nodes">
+            </div>
+            <input class="form-control input-sm" ng-show="queryState == 2" maxlength="20" type="text" ng-model="selectedDealItem.distributorName " type="text " />
+            <input class="form-control input-sm " ng-show="queryState==3" maxlength="20" type="text" ng-model="selectedDealItem.distributorAddress" type="text">
+            <input class="form-control input-sm" ng-show="queryState == 4" maxlength="20" type="text" ng-model="selectedDealItem.contactPhone" type="text" />
+            <button class="btn btn-primary btn-sm" ng-click="searchData('searchDealer')" type="button"><i class="fa fa-search"></i><span class="hidden-sm">查询</span></button>
+          </div>
+        </div>
+        <div class="box-footer  margin-bottom-10">
+          <table width="100%" class="table table-hover" id="usertable" dealer-table>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,2771 @@
+{
+  "version" : "V_2",
+  "title" : "设备仪表板（单页模板）",
+  "src" : "url(images/template4.jpg)",
+  "layout": {
+    "type": "column",
+    "children": [
+      {
+        "type": "row",
+        "children": [
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "控制板1",
+                "type": "block",
+                "source": "BLOCK",
+                "children": [
+                  {
+                    "type": "column",
+                    "col": 12,
+                    "children": [
+                      {
+                        "type": "row",
+                        "children": [
+                          {
+                            "type": "column",
+                            "children": [
+                              {
+                                "label": "控制板1",
+                                "type": "block",
+                                "source": "BLOCK",
+                                "children": [
+                                  {
+                                    "type": "column",
+                                    "col": 12,
+                                    "children": []
+                                  }
+                                ],
+                                "style": {
+                                  "margin": 0,
+                                  "border": "1px solid #aaa",
+                                  "background-color": "",
+                                  "border-color": "#93C47D",
+                                  "border-width": 0
+                                },
+                                "template": [
+                                  {
+                                    "type": "css",
+                                    "style": {
+                                      "margin": "5px",
+                                      "padding": "5px",
+                                      "background-color": "#ddd",
+                                      "border": "1px solid #888"
+                                    }
+                                  },
+                                  {
+                                    "type": "css",
+                                    "style": {
+                                      "margin": "5px",
+                                      "padding": "5px",
+                                      "color": "#3c84b2",
+                                      "background-color": "#85bee2",
+                                      "border": "1px solid #3c84b2"
+                                    }
+                                  },
+                                  {
+                                    "type": "css",
+                                    "style": {
+                                      "margin": "5px",
+                                      "padding": "5px",
+                                      "background-color": "#efdcaf",
+                                      "border": "1px solid #c2ad7a"
+                                    }
+                                  },
+                                  {
+                                    "type": "css",
+                                    "style": {
+                                      "margin": "5px",
+                                      "padding": "5px",
+                                      "background-color": "#f0c0a4",
+                                      "border": "1px solid #e5671b"
+                                    }
+                                  },
+                                  {
+                                    "type": "css",
+                                    "style": {
+                                      "margin": "5px",
+                                      "padding": "5px",
+                                      "background-color": "#ffb3b3",
+                                      "border": "1px solid #db2222"
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "label": "图片",
+                                "type": "image",
+                                "source": "IMAGE",
+                                "parameters": {
+                                  "imgSrc": "../images/machine/machine2.png"
+                                },
+                                "style": {
+                                  "height": "400",
+                                  "margin": "10px",
+                                  "background-color": "rgba(0,0,0,.1)",
+                                  "border": "0px solid #ccc"
+                                },
+                                "$index": [
+                                  2,
+                                  0
+                                ],
+                                "advance": {
+                                  "expression": "{\n  \"on\" : {\n    \"init\" : function(event){\n      \n  \t}\n  }\n}"
+                                }
+                              }
+                            ],
+                            "col": 5
+                          },
+                          {
+                            "type": "column",
+                            "children": [
+                              {
+                                "label": "文字",
+                                "type": "text",
+                                "source": "TEXT",
+                                "data": {
+                                  "applied": false,
+                                  "text": {
+                                    "manual": "机组汽动给水泵",
+                                    "bind": "(function (source){\n  return source.getSeries();\n})"
+                                  },
+                                  "model": {
+                                    "id": 99924346626072
+                                  },
+                                  "resource": [],
+                                  "series": {},
+                                  "modelDisable": true
+                                },
+                                "style": {
+                                  "margin": "15px",
+                                  "padding": "0",
+                                  "font-size": "16px",
+                                  "font-weight": "bold",
+                                  "background-color": "rgb(255, 255, 255)",
+                                  "color": "rgb(68, 68, 68)",
+                                  "line-height": "75px",
+                                  "text-align": "left"
+                                },
+                                "advance": {
+                                  "getfunction": "kpiDataService.getValueList",
+                                  "category": "ci",
+                                  "condition": [
+                                    "kpi",
+                                    "{object:kpiQueryModel}"
+                                  ]
+                                },
+                                "$index": [
+                                  2,
+                                  0
+                                ]
+                              },
+                              {
+                                "label": "控制板1",
+                                "type": "block",
+                                "source": "BLOCK",
+                                "children": [
+                                  {
+                                    "type": "column",
+                                    "col": 12,
+                                    "children": [
+                                      {
+                                        "type": "kpilist",
+                                        "data": {
+                                          "applied": true,
+                                          "model": {
+                                            "id": 99924346626072
+                                          },
+                                          "resource": [
+                                            "rootCi"
+                                          ]
+                                        },
+                                        "$index": [
+                                          0,
+                                          0
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "style": {
+                                  "margin": "10px 10px 5px 5px",
+                                  "border": "0px solid #aaa",
+                                  "background-color": ""
+                                },
+                                "$index": [
+                                  1,
+                                  0
+                                ],
+                                "template": [
+                                  {
+                                    "type": "css",
+                                    "style": {
+                                      "margin": "5px",
+                                      "padding": "5px",
+                                      "background-color": "#ddd",
+                                      "border": "1px solid #888"
+                                    }
+                                  },
+                                  {
+                                    "type": "css",
+                                    "style": {
+                                      "margin": "5px",
+                                      "padding": "5px",
+                                      "color": "#3c84b2",
+                                      "background-color": "#85bee2",
+                                      "border": "1px solid #3c84b2"
+                                    }
+                                  },
+                                  {
+                                    "type": "css",
+                                    "style": {
+                                      "margin": "5px",
+                                      "padding": "5px",
+                                      "background-color": "#efdcaf",
+                                      "border": "1px solid #c2ad7a"
+                                    }
+                                  },
+                                  {
+                                    "type": "css",
+                                    "style": {
+                                      "margin": "5px",
+                                      "padding": "5px",
+                                      "background-color": "#f0c0a4",
+                                      "border": "1px solid #e5671b"
+                                    }
+                                  },
+                                  {
+                                    "type": "css",
+                                    "style": {
+                                      "margin": "5px",
+                                      "padding": "5px",
+                                      "background-color": "#ffb3b3",
+                                      "border": "1px solid #db2222"
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            "col": 7
+                          }
+                        ],
+                        "source": "ROW",
+                        "parameters": {
+                          "alignment": "bootstrap"
+                        },
+                        "style": {}
+                      }
+                    ]
+                  }
+                ],
+                "style": {
+                  "margin": "5px",
+                  "border": "0px solid #aaa",
+                  "background-color": "rgb(255, 255, 255)"
+                },
+                "$index": [
+                  1,
+                  0
+                ],
+                "template": [
+                  {
+                    "type": "css",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "5px",
+                      "background-color": "#ddd",
+                      "border": "1px solid #888"
+                    }
+                  },
+                  {
+                    "type": "css",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "5px",
+                      "color": "#3c84b2",
+                      "background-color": "#85bee2",
+                      "border": "1px solid #3c84b2"
+                    }
+                  },
+                  {
+                    "type": "css",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "5px",
+                      "background-color": "#efdcaf",
+                      "border": "1px solid #c2ad7a"
+                    }
+                  },
+                  {
+                    "type": "css",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "5px",
+                      "background-color": "#f0c0a4",
+                      "border": "1px solid #e5671b"
+                    }
+                  },
+                  {
+                    "type": "css",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "5px",
+                      "background-color": "#ffb3b3",
+                      "border": "1px solid #db2222"
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "控制板1",
+                "type": "block",
+                "source": "BLOCK",
+                "children": [
+                  {
+                    "type": "column",
+                    "col": 12,
+                    "children": [
+                      {
+                        "type": "row",
+                        "children": [
+                          {
+                            "type": "column",
+                            "children": [
+                              {
+                                "label": "控制板1",
+                                "type": "tab",
+                                "source": "TAB",
+                                "children": [
+                                  {
+                                    "tabName": "温度",
+                                    "tabId": 0,
+                                    "display": "none",
+                                    "type": "tabItem",
+                                    "children": [
+                                      {
+                                        "type": "row",
+                                        "children": [
+                                          {
+                                            "type": "column",
+                                            "children": [
+                                              {
+                                                "label": "文字",
+                                                "type": "text",
+                                                "source": "TEXT",
+                                                "data": {
+                                                  "applied": false,
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  },
+                                                  "resource": [],
+                                                  "text": {
+                                                    "manual": "进水口温度",
+                                                    "bind": "(function (source){\n  return source.getSeries();\n})"
+                                                  },
+                                                  "modelDisable": false,
+                                                  "maxKpi": 1,
+                                                  "series": {}
+                                                },
+                                                "style": {
+                                                  "margin": "5px auto",
+                                                  "padding": "0",
+                                                  "font-size": "16px",
+                                                  "font-weight": "bold",
+                                                  "background-color": "rgb(255, 255, 255)",
+                                                  "border-color": "#93C47D",
+                                                  "border-width": "0px",
+                                                  "border-style": "solid",
+                                                  "color": "rgb(68, 68, 68)",
+                                                  "line-height": "40px",
+                                                  "text-align": "left"
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "ci",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                "label": "仪表盘",
+                                                "type": "echart",
+                                                "source": "GAUGECHART",
+                                                "data": {
+                                                  "applied": false,
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  },
+                                                  "resource": [],
+                                                  "series": {
+                                                    "manual": "[\n  {\n    \"name\" : \"进水口温度\",\n    \"data\": [\n      {\n        \"name\": \"设备A\",\n        \"value\": \"22\"\n      }\n    ]\n  }\n]",
+                                                    "bind": "(function (source){\n  return source.getSeries();\n})"
+                                                  },
+                                                  "modelDisable": false,
+                                                  "legend": {
+                                                    "manual": [
+                                                      "设备A"
+                                                    ]
+                                                  }
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "time",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ]
+                                                },
+                                                "parameters": {
+                                                  "title": "基础柱状图",
+                                                  "subtitle": ""
+                                                },
+                                                "style": {
+                                                  "margin": "auto",
+                                                  "width": "100%",
+                                                  "height": "500px"
+                                                },
+                                                "echart": {
+                                                  "general": {},
+                                                  "title": {
+                                                    "show": false,
+                                                    "textStyle": {
+                                                      "fontWeight": "bold",
+                                                      "fontSize": 16
+                                                    },
+                                                    "textAlign": "middle",
+                                                    "padding": 30,
+                                                    "left": "50%",
+                                                    "text": "基础饼图",
+                                                    "subtext": ""
+                                                  },
+                                                  "tooltip": {
+                                                    "trigger": "item"
+                                                  },
+                                                  "series": [
+                                                    {
+                                                      "type": "gauge",
+                                                      "center": [
+                                                        "50%",
+                                                        "50%"
+                                                      ],
+                                                      "label": {
+                                                        "normal": {
+                                                          "show": false
+                                                        }
+                                                      },
+                                                      "markPoint": {
+                                                        "data": []
+                                                      }
+                                                    },
+                                                    {
+                                                      "type": "gauge",
+                                                      "startAngle": "315",
+                                                      "endAngle": "45",
+                                                      "center": [
+                                                        "30%",
+                                                        "50%"
+                                                      ],
+                                                      "radius": "55%",
+                                                      "markPoint": {
+                                                        "data": []
+                                                      }
+                                                    },
+                                                    {
+                                                      "type": "gauge",
+                                                      "startAngle": "135",
+                                                      "endAngle": "-135",
+                                                      "center": [
+                                                        "70%",
+                                                        "50%"
+                                                      ],
+                                                      "radius": "55%",
+                                                      "markPoint": {
+                                                        "data": []
+                                                      }
+                                                    }
+                                                  ]
+                                                },
+                                                "$index": [
+                                                  4,
+                                                  3
+                                                ]
+                                              }
+                                            ],
+                                            "col": 6
+                                          },
+                                          {
+                                            "type": "column",
+                                            "children": [
+                                              {
+                                                "label": "文字",
+                                                "type": "text",
+                                                "source": "TEXT",
+                                                "data": {
+                                                  "applied": false,
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  },
+                                                  "resource": [],
+                                                  "text": {
+                                                    "manual": "出水口温度",
+                                                    "bind": "(function (source){\n  return source.getSeries();\n})"
+                                                  },
+                                                  "modelDisable": false,
+                                                  "maxKpi": 1,
+                                                  "series": {}
+                                                },
+                                                "style": {
+                                                  "margin": "5px auto",
+                                                  "padding": "0",
+                                                  "font-size": "16px",
+                                                  "font-weight": "bold",
+                                                  "background-color": "rgb(255, 255, 255)",
+                                                  "border-color": "#93C47D",
+                                                  "border-width": "0px",
+                                                  "border-style": "solid",
+                                                  "color": "rgb(68, 68, 68)",
+                                                  "line-height": "40px",
+                                                  "text-align": "left"
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "ci",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                "label": "仪表盘",
+                                                "type": "echart",
+                                                "source": "GAUGECHART",
+                                                "data": {
+                                                  "applied": false,
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  },
+                                                  "resource": [],
+                                                  "series": {
+                                                    "manual": "[\n  {\n    \"name\" : \"进水口温度\",\n    \"data\": [\n      {\n        \"name\": \"设备A\",\n        \"value\": \"22\"\n      }\n    ]\n  }\n]",
+                                                    "bind": "(function (source){\n  return source.getSeries();\n})"
+                                                  },
+                                                  "modelDisable": false,
+                                                  "legend": {
+                                                    "manual": [
+                                                      "设备A"
+                                                    ]
+                                                  }
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "time",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ]
+                                                },
+                                                "parameters": {
+                                                  "title": "基础柱状图",
+                                                  "subtitle": ""
+                                                },
+                                                "style": {
+                                                  "margin": "auto",
+                                                  "width": "100%",
+                                                  "height": "500px"
+                                                },
+                                                "echart": {
+                                                  "general": {},
+                                                  "title": {
+                                                    "show": false,
+                                                    "textStyle": {
+                                                      "fontWeight": "bold",
+                                                      "fontSize": 16
+                                                    },
+                                                    "textAlign": "middle",
+                                                    "padding": 30,
+                                                    "left": "50%",
+                                                    "text": "基础饼图",
+                                                    "subtext": ""
+                                                  },
+                                                  "tooltip": {
+                                                    "trigger": "item"
+                                                  },
+                                                  "series": [
+                                                    {
+                                                      "type": "gauge",
+                                                      "center": [
+                                                        "50%",
+                                                        "50%"
+                                                      ],
+                                                      "label": {
+                                                        "normal": {
+                                                          "show": false
+                                                        }
+                                                      },
+                                                      "markPoint": {
+                                                        "data": []
+                                                      }
+                                                    },
+                                                    {
+                                                      "type": "gauge",
+                                                      "startAngle": "315",
+                                                      "endAngle": "45",
+                                                      "center": [
+                                                        "30%",
+                                                        "50%"
+                                                      ],
+                                                      "radius": "55%",
+                                                      "markPoint": {
+                                                        "data": []
+                                                      }
+                                                    },
+                                                    {
+                                                      "type": "gauge",
+                                                      "startAngle": "135",
+                                                      "endAngle": "-135",
+                                                      "center": [
+                                                        "70%",
+                                                        "50%"
+                                                      ],
+                                                      "radius": "55%",
+                                                      "markPoint": {
+                                                        "data": []
+                                                      }
+                                                    }
+                                                  ]
+                                                },
+                                                "$index": [
+                                                  4,
+                                                  3
+                                                ]
+                                              }
+                                            ],
+                                            "col": 6
+                                          }
+                                        ],
+                                        "source": "ROW",
+                                        "parameters": {
+                                          "alignment": "bootstrap"
+                                        },
+                                        "style": {}
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "tabName": "密封液体",
+                                    "tabId": 0,
+                                    "type": "tabItem",
+                                    "display": "none",
+                                    "children": [
+                                      {
+                                        "type": "row",
+                                        "children": [
+                                          {
+                                            "type": "column",
+                                            "children": [
+                                              {
+                                                "label": "文字",
+                                                "type": "text",
+                                                "source": "TEXT",
+                                                "data": {
+                                                  "applied": false,
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  },
+                                                  "resource": [],
+                                                  "text": {
+                                                    "manual": "进水端密封液体进水温度",
+                                                    "bind": "(function (source){\n  return source.getSeries();\n})"
+                                                  },
+                                                  "modelDisable": false,
+                                                  "maxKpi": 1,
+                                                  "series": {}
+                                                },
+                                                "style": {
+                                                  "margin": "5px auto",
+                                                  "padding": "0",
+                                                  "font-size": "16px",
+                                                  "font-weight": "bold",
+                                                  "background-color": "rgb(255, 255, 255)",
+                                                  "border-color": "#93C47D",
+                                                  "border-width": "0px",
+                                                  "border-style": "solid",
+                                                  "color": "rgb(68, 68, 68)",
+                                                  "line-height": "40px",
+                                                  "text-align": "left"
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "ci",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                "label": "仪表盘",
+                                                "type": "echart",
+                                                "source": "GAUGECHART",
+                                                "data": {
+                                                  "applied": false,
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  },
+                                                  "resource": [],
+                                                  "series": {
+                                                    "manual": {
+                                                      "0": {
+                                                        "data": [
+                                                          {
+                                                            "name": "设备A",
+                                                            "value": "22"
+                                                          }
+                                                        ]
+                                                      }
+                                                    },
+                                                    "bind": "(function (source){\n  return source.getSeries();\n})"
+                                                  },
+                                                  "modelDisable": false,
+                                                  "legend": {
+                                                    "manual": [
+                                                      "设备A"
+                                                    ]
+                                                  }
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "time",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ]
+                                                },
+                                                "parameters": {
+                                                  "title": "基础柱状图",
+                                                  "subtitle": ""
+                                                },
+                                                "style": {
+                                                  "margin": "auto",
+                                                  "width": "100%",
+                                                  "height": "500px"
+                                                },
+                                                "echart": {
+                                                  "general": {},
+                                                  "title": {
+                                                    "show": false,
+                                                    "textStyle": {
+                                                      "fontWeight": "bold",
+                                                      "fontSize": 16
+                                                    },
+                                                    "textAlign": "middle",
+                                                    "padding": 30,
+                                                    "left": "50%",
+                                                    "text": "基础饼图",
+                                                    "subtext": ""
+                                                  },
+                                                  "tooltip": {
+                                                    "trigger": "item"
+                                                  },
+                                                  "series": [
+                                                    {
+                                                      "type": "gauge",
+                                                      "center": [
+                                                        "50%",
+                                                        "50%"
+                                                      ],
+                                                      "label": {
+                                                        "normal": {
+                                                          "show": false
+                                                        }
+                                                      },
+                                                      "markPoint": {
+                                                        "data": []
+                                                      }
+                                                    },
+                                                    {
+                                                      "type": "gauge",
+                                                      "startAngle": "315",
+                                                      "endAngle": "45",
+                                                      "center": [
+                                                        "30%",
+                                                        "50%"
+                                                      ],
+                                                      "radius": "55%",
+                                                      "markPoint": {
+                                                        "data": []
+                                                      }
+                                                    },
+                                                    {
+                                                      "type": "gauge",
+                                                      "startAngle": "135",
+                                                      "endAngle": "-135",
+                                                      "center": [
+                                                        "70%",
+                                                        "50%"
+                                                      ],
+                                                      "radius": "55%",
+                                                      "markPoint": {
+                                                        "data": []
+                                                      }
+                                                    }
+                                                  ]
+                                                },
+                                                "$index": [
+                                                  4,
+                                                  3
+                                                ]
+                                              }
+                                            ],
+                                            "col": 6
+                                          },
+                                          {
+                                            "type": "column",
+                                            "children": [
+                                              {
+                                                "label": "文字",
+                                                "type": "text",
+                                                "source": "TEXT",
+                                                "data": {
+                                                  "applied": false,
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  },
+                                                  "resource": [],
+                                                  "text": {
+                                                    "manual": "出水端密封液体进水温度",
+                                                    "bind": "(function (source){\n  return source.getSeries();\n})"
+                                                  },
+                                                  "modelDisable": false,
+                                                  "maxKpi": 1,
+                                                  "series": {}
+                                                },
+                                                "style": {
+                                                  "margin": "5px auto",
+                                                  "padding": "0",
+                                                  "font-size": "16px",
+                                                  "font-weight": "bold",
+                                                  "background-color": "rgb(255, 255, 255)",
+                                                  "border-color": "#93C47D",
+                                                  "border-width": "0px",
+                                                  "border-style": "solid",
+                                                  "color": "rgb(68, 68, 68)",
+                                                  "line-height": "40px",
+                                                  "text-align": "left"
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "ci",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ]
+                                                }
+                                              },
+                                              {
+                                                "label": "仪表盘",
+                                                "type": "echart",
+                                                "source": "GAUGECHART",
+                                                "data": {
+                                                  "applied": false,
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  },
+                                                  "resource": [],
+                                                  "series": {
+                                                    "manual": {
+                                                      "0": {
+                                                        "data": [
+                                                          {
+                                                            "name": "设备A",
+                                                            "value": "22"
+                                                          }
+                                                        ]
+                                                      }
+                                                    },
+                                                    "bind": "(function (source){\n  return source.getSeries();\n})"
+                                                  },
+                                                  "modelDisable": false,
+                                                  "legend": {
+                                                    "manual": [
+                                                      "设备A"
+                                                    ]
+                                                  }
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "time",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ]
+                                                },
+                                                "parameters": {
+                                                  "title": "基础柱状图",
+                                                  "subtitle": ""
+                                                },
+                                                "style": {
+                                                  "margin": "auto",
+                                                  "width": "100%",
+                                                  "height": "500px"
+                                                },
+                                                "echart": {
+                                                  "general": {},
+                                                  "title": {
+                                                    "show": false,
+                                                    "textStyle": {
+                                                      "fontWeight": "bold",
+                                                      "fontSize": 16
+                                                    },
+                                                    "textAlign": "middle",
+                                                    "padding": 30,
+                                                    "left": "50%",
+                                                    "text": "基础饼图",
+                                                    "subtext": ""
+                                                  },
+                                                  "tooltip": {
+                                                    "trigger": "item"
+                                                  },
+                                                  "series": [
+                                                    {
+                                                      "type": "gauge",
+                                                      "center": [
+                                                        "50%",
+                                                        "50%"
+                                                      ],
+                                                      "label": {
+                                                        "normal": {
+                                                          "show": false
+                                                        }
+                                                      },
+                                                      "markPoint": {
+                                                        "data": []
+                                                      }
+                                                    },
+                                                    {
+                                                      "type": "gauge",
+                                                      "startAngle": "315",
+                                                      "endAngle": "45",
+                                                      "center": [
+                                                        "30%",
+                                                        "50%"
+                                                      ],
+                                                      "radius": "55%",
+                                                      "markPoint": {
+                                                        "data": []
+                                                      }
+                                                    },
+                                                    {
+                                                      "type": "gauge",
+                                                      "startAngle": "135",
+                                                      "endAngle": "-135",
+                                                      "center": [
+                                                        "70%",
+                                                        "50%"
+                                                      ],
+                                                      "radius": "55%",
+                                                      "markPoint": {
+                                                        "data": []
+                                                      }
+                                                    }
+                                                  ]
+                                                },
+                                                "$index": [
+                                                  4,
+                                                  3
+                                                ]
+                                              }
+                                            ],
+                                            "col": 6
+                                          }
+                                        ],
+                                        "source": "ROW",
+                                        "parameters": {
+                                          "alignment": "bootstrap"
+                                        },
+                                        "style": {}
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "tabName": "径向轴承",
+                                    "tabId": 1,
+                                    "type": "tabItem",
+                                    "display": "block",
+                                    "children": [
+                                      {
+                                        "type": "row",
+                                        "children": [
+                                          {
+                                            "type": "column",
+                                            "children": [
+                                              {
+                                                "label": "文字",
+                                                "type": "text",
+                                                "source": "TEXT",
+                                                "data": {
+                                                  "applied": false,
+                                                  "text": {
+                                                    "manual": "进水端径向轴承温度",
+                                                    "bind": "(function (source){\n  return source.getSeries();\n})"
+                                                  },
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  },
+                                                  "resource": [],
+                                                  "series": {},
+                                                  "modelDisable": true
+                                                },
+                                                "style": {
+                                                  "margin": "15px auto 5px 30px",
+                                                  "padding": "0",
+                                                  "font-size": "14px",
+                                                  "font-weight": "bold",
+                                                  "color": "#333"
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "ci",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ]
+                                                },
+                                                "$index": [
+                                                  0,
+                                                  0
+                                                ]
+                                              },
+                                              {
+                                                "label": "仪表盘",
+                                                "type": "echart",
+                                                "source": "GAUGECHART",
+                                                "data": {
+                                                  "applied": false,
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  },
+                                                  "resource": [],
+                                                  "series": {
+                                                    "manual": {
+                                                      "0": {
+                                                        "data": [
+                                                          {
+                                                            "name": "设备A",
+                                                            "value": "22"
+                                                          }
+                                                        ]
+                                                      }
+                                                    },
+                                                    "bind": "(function (source){\n  return source.getSeries();\n})"
+                                                  },
+                                                  "modelDisable": false,
+                                                  "legend": {
+                                                    "manual": [
+                                                      "设备A"
+                                                    ]
+                                                  }
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "time",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ]
+                                                },
+                                                "parameters": {
+                                                  "title": "基础柱状图",
+                                                  "subtitle": ""
+                                                },
+                                                "style": {
+                                                  "margin": "auto",
+                                                  "width": "100%",
+                                                  "height": "500px"
+                                                },
+                                                "echart": {
+                                                  "general": {},
+                                                  "title": {
+                                                    "show": false,
+                                                    "textStyle": {
+                                                      "fontWeight": "bold",
+                                                      "fontSize": 16
+                                                    },
+                                                    "textAlign": "middle",
+                                                    "padding": 30,
+                                                    "left": "50%",
+                                                    "text": "基础饼图",
+                                                    "subtext": ""
+                                                  },
+                                                  "tooltip": {
+                                                    "trigger": "item"
+                                                  },
+                                                  "series": [
+                                                    {
+                                                      "type": "gauge",
+                                                      "center": [
+                                                        "50%",
+                                                        "50%"
+                                                      ],
+                                                      "label": {
+                                                        "normal": {
+                                                          "show": false
+                                                        }
+                                                      },
+                                                      "markPoint": {
+                                                        "data": []
+                                                      }
+                                                    },
+                                                    {
+                                                      "type": "gauge",
+                                                      "startAngle": "315",
+                                                      "endAngle": "45",
+                                                      "center": [
+                                                        "30%",
+                                                        "50%"
+                                                      ],
+                                                      "radius": "55%",
+                                                      "markPoint": {
+                                                        "data": []
+                                                      }
+                                                    },
+                                                    {
+                                                      "type": "gauge",
+                                                      "startAngle": "135",
+                                                      "endAngle": "-135",
+                                                      "center": [
+                                                        "70%",
+                                                        "50%"
+                                                      ],
+                                                      "radius": "55%",
+                                                      "markPoint": {
+                                                        "data": []
+                                                      }
+                                                    }
+                                                  ]
+                                                },
+                                                "$index": [
+                                                  4,
+                                                  3
+                                                ]
+                                              }
+                                            ],
+                                            "col": 6
+                                          },
+                                          {
+                                            "type": "column",
+                                            "children": [
+                                              {
+                                                "label": "文字",
+                                                "type": "text",
+                                                "source": "TEXT",
+                                                "data": {
+                                                  "applied": false,
+                                                  "text": {
+                                                    "manual": "出水端径向轴承温度",
+                                                    "bind": "(function (source){\n  return source.getSeries();\n})"
+                                                  },
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  },
+                                                  "resource": [],
+                                                  "series": {},
+                                                  "modelDisable": true
+                                                },
+                                                "style": {
+                                                  "margin": "15px auto 5px 30px",
+                                                  "padding": "0",
+                                                  "font-size": "14px",
+                                                  "font-weight": "bold",
+                                                  "color": "#333333",
+                                                  "text-align": "left"
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "ci",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ]
+                                                },
+                                                "$index": [
+                                                  0,
+                                                  0
+                                                ]
+                                              },
+                                              {
+                                                "label": "仪表盘",
+                                                "type": "echart",
+                                                "source": "GAUGECHART",
+                                                "data": {
+                                                  "applied": false,
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  },
+                                                  "resource": [],
+                                                  "series": {
+                                                    "manual": {
+                                                      "0": {
+                                                        "data": [
+                                                          {
+                                                            "name": "设备A",
+                                                            "value": "22"
+                                                          }
+                                                        ]
+                                                      }
+                                                    },
+                                                    "bind": "(function (source){\n  return source.getSeries();\n})"
+                                                  },
+                                                  "modelDisable": false,
+                                                  "legend": {
+                                                    "manual": [
+                                                      "设备A"
+                                                    ]
+                                                  }
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "time",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ]
+                                                },
+                                                "parameters": {
+                                                  "title": "基础柱状图",
+                                                  "subtitle": ""
+                                                },
+                                                "style": {
+                                                  "margin": "auto",
+                                                  "width": "100%",
+                                                  "height": "500px"
+                                                },
+                                                "echart": {
+                                                  "general": {},
+                                                  "title": {
+                                                    "show": false,
+                                                    "textStyle": {
+                                                      "fontWeight": "bold",
+                                                      "fontSize": 16
+                                                    },
+                                                    "textAlign": "middle",
+                                                    "padding": 30,
+                                                    "left": "50%",
+                                                    "text": "基础饼图",
+                                                    "subtext": ""
+                                                  },
+                                                  "tooltip": {
+                                                    "trigger": "item"
+                                                  },
+                                                  "series": [
+                                                    {
+                                                      "type": "gauge",
+                                                      "center": [
+                                                        "50%",
+                                                        "50%"
+                                                      ],
+                                                      "label": {
+                                                        "normal": {
+                                                          "show": false
+                                                        }
+                                                      },
+                                                      "markPoint": {
+                                                        "data": []
+                                                      }
+                                                    },
+                                                    {
+                                                      "type": "gauge",
+                                                      "startAngle": "315",
+                                                      "endAngle": "45",
+                                                      "center": [
+                                                        "30%",
+                                                        "50%"
+                                                      ],
+                                                      "radius": "55%",
+                                                      "markPoint": {
+                                                        "data": []
+                                                      }
+                                                    },
+                                                    {
+                                                      "type": "gauge",
+                                                      "startAngle": "135",
+                                                      "endAngle": "-135",
+                                                      "center": [
+                                                        "70%",
+                                                        "50%"
+                                                      ],
+                                                      "radius": "55%",
+                                                      "markPoint": {
+                                                        "data": []
+                                                      }
+                                                    }
+                                                  ]
+                                                },
+                                                "$index": [
+                                                  4,
+                                                  3
+                                                ]
+                                              }
+                                            ],
+                                            "col": 6
+                                          }
+                                        ],
+                                        "source": "ROW",
+                                        "parameters": {
+                                          "alignment": "bootstrap"
+                                        },
+                                        "style": {}
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "tabInx": "2",
+                                "": "",
+                                "parameters": {
+                                  "align": "horizental"
+                                },
+                                "style": {
+                                  "margin": "5px"
+                                }
+                              }
+                            ],
+                            "col": 5
+                          },
+                          {
+                            "type": "column",
+                            "children": [
+                              {
+                                "label": "控制板1",
+                                "type": "tab",
+                                "source": "TAB",
+                                "children": [
+                                  {
+                                    "tabName": "温度",
+                                    "tabId": 0,
+                                    "display": "block",
+                                    "type": "tabItem",
+                                    "children": [
+                                      {
+                                        "label": "文字",
+                                        "type": "text",
+                                        "source": "TEXT",
+                                        "data": {
+                                          "applied": false,
+                                          "text": {
+                                            "manual": "温度指标统计",
+                                            "bind": "(function (source){\n  return source.getSeries();\n})"
+                                          },
+                                          "model": {
+                                            "id": 99924346626072
+                                          },
+                                          "resource": [],
+                                          "series": {},
+                                          "modelDisable": true
+                                        },
+                                        "style": {
+                                          "margin": "15px auto 5px 30px",
+                                          "padding": "0",
+                                          "font-size": "14px",
+                                          "font-weight": "bold",
+                                          "color": "#333333",
+                                          "text-align": "left"
+                                        },
+                                        "advance": {
+                                          "getfunction": "kpiDataService.getValueList",
+                                          "category": "ci",
+                                          "condition": [
+                                            "kpi",
+                                            "{object:kpiQueryModel}"
+                                          ]
+                                        },
+                                        "$index": [
+                                          0,
+                                          0
+                                        ]
+                                      },
+                                      {
+                                        "type": "row",
+                                        "children": [
+                                          {
+                                            "type": "column",
+                                            "children": [
+                                              {
+                                                "label": "数据统计标签",
+                                                "type": "totalItem",
+                                                "source": "TOTALITEM",
+                                                "data": {
+                                                  "applied": false,
+                                                  "resource": [],
+                                                  "modelDisable": true,
+                                                  "series": {
+                                                    "manual": [
+                                                      {
+                                                        "data": [
+                                                          {
+                                                            "name": "进水端径向轴承温度",
+                                                            "unit": "C",
+                                                            "value": "42"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ],
+                                                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                                                  },
+                                                  "maxKpi": 1,
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  }
+                                                },
+                                                "parameters": {
+                                                  "icon": {
+                                                    "id": "24",
+                                                    "perfix": "proudsmart",
+                                                    "css": "ps-air-temperature"
+                                                  }
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "ci",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ],
+                                                  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+                                                },
+                                                "style": {
+                                                  "color": "#fff",
+                                                  "background-color": "rgb(118, 165, 175)",
+                                                  "margin": "5px"
+                                                }
+                                              },
+                                              {
+                                                "label": "数据统计标签",
+                                                "type": "totalItem",
+                                                "source": "TOTALITEM",
+                                                "data": {
+                                                  "applied": false,
+                                                  "resource": [],
+                                                  "modelDisable": true,
+                                                  "series": {
+                                                    "manual": [
+                                                      {
+                                                        "data": [
+                                                          {
+                                                            "name": "进水端密封液体出水温度",
+                                                            "unit": "C",
+                                                            "value": "56"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ],
+                                                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                                                  },
+                                                  "maxKpi": 1,
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  }
+                                                },
+                                                "parameters": {
+                                                  "icon": {
+                                                    "id": "24",
+                                                    "perfix": "proudsmart",
+                                                    "css": "ps-air-temperature"
+                                                  }
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "ci",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ],
+                                                  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+                                                },
+                                                "style": {
+                                                  "color": "#fff",
+                                                  "background-color": "rgb(118, 165, 175)",
+                                                  "margin": "5px"
+                                                }
+                                              },
+                                              {
+                                                "label": "数据统计标签",
+                                                "type": "totalItem",
+                                                "source": "TOTALITEM",
+                                                "data": {
+                                                  "applied": false,
+                                                  "resource": [],
+                                                  "modelDisable": true,
+                                                  "series": {
+                                                    "manual": [
+                                                      {
+                                                        "data": [
+                                                          {
+                                                            "name": "进水端径向轴承温度",
+                                                            "unit": "C",
+                                                            "value": "42"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ],
+                                                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                                                  },
+                                                  "maxKpi": 1,
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  }
+                                                },
+                                                "parameters": {
+                                                  "icon": {
+                                                    "id": "24",
+                                                    "perfix": "proudsmart",
+                                                    "css": "ps-air-temperature"
+                                                  }
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "ci",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ],
+                                                  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+                                                },
+                                                "style": {
+                                                  "color": "#fff",
+                                                  "background-color": "rgb(118, 165, 175)",
+                                                  "margin": "5px"
+                                                }
+                                              },
+                                              {
+                                                "label": "数据统计标签",
+                                                "type": "totalItem",
+                                                "source": "TOTALITEM",
+                                                "data": {
+                                                  "applied": false,
+                                                  "resource": [],
+                                                  "modelDisable": true,
+                                                  "series": {
+                                                    "manual": [
+                                                      {
+                                                        "data": [
+                                                          {
+                                                            "name": "进水端径向轴承温度",
+                                                            "unit": "C",
+                                                            "value": "42"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ],
+                                                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                                                  },
+                                                  "maxKpi": 1,
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  }
+                                                },
+                                                "parameters": {
+                                                  "icon": {
+                                                    "id": "24",
+                                                    "perfix": "proudsmart",
+                                                    "css": "ps-air-temperature"
+                                                  }
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "ci",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ],
+                                                  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+                                                },
+                                                "style": {
+                                                  "color": "#fff",
+                                                  "background-color": "rgb(118, 165, 175)",
+                                                  "margin": "5px"
+                                                }
+                                              }
+                                            ],
+                                            "col": 6
+                                          },
+                                          {
+                                            "type": "column",
+                                            "children": [
+                                              {
+                                                "label": "数据统计标签",
+                                                "type": "totalItem",
+                                                "source": "TOTALITEM",
+                                                "data": {
+                                                  "applied": false,
+                                                  "resource": [],
+                                                  "modelDisable": true,
+                                                  "series": {
+                                                    "manual": [
+                                                      {
+                                                        "data": [
+                                                          {
+                                                            "name": "出水端径向轴承温度",
+                                                            "unit": "C",
+                                                            "value": "35"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ],
+                                                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                                                  },
+                                                  "maxKpi": 1,
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  }
+                                                },
+                                                "parameters": {
+                                                  "icon": {
+                                                    "id": "24",
+                                                    "perfix": "proudsmart",
+                                                    "css": "ps-air-temperature"
+                                                  }
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "ci",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ],
+                                                  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+                                                },
+                                                "style": {
+                                                  "color": "#fff",
+                                                  "background-color": "rgb(118, 165, 175)",
+                                                  "margin": "5px"
+                                                }
+                                              },
+                                              {
+                                                "label": "数据统计标签",
+                                                "type": "totalItem",
+                                                "source": "TOTALITEM",
+                                                "data": {
+                                                  "applied": false,
+                                                  "resource": [],
+                                                  "modelDisable": true,
+                                                  "series": {
+                                                    "manual": [
+                                                      {
+                                                        "data": [
+                                                          {
+                                                            "name": "出水端密封液体出水温度",
+                                                            "unit": "C",
+                                                            "value": "62"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ],
+                                                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                                                  },
+                                                  "maxKpi": 1,
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  }
+                                                },
+                                                "parameters": {
+                                                  "icon": {
+                                                    "id": "24",
+                                                    "perfix": "proudsmart",
+                                                    "css": "ps-air-temperature"
+                                                  }
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "ci",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ],
+                                                  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+                                                },
+                                                "style": {
+                                                  "color": "#fff",
+                                                  "background-color": "rgb(118, 165, 175)",
+                                                  "margin": "5px"
+                                                }
+                                              },
+                                              {
+                                                "label": "数据统计标签",
+                                                "type": "totalItem",
+                                                "source": "TOTALITEM",
+                                                "data": {
+                                                  "applied": false,
+                                                  "resource": [],
+                                                  "modelDisable": true,
+                                                  "series": {
+                                                    "manual": [
+                                                      {
+                                                        "data": [
+                                                          {
+                                                            "name": "进水端径向轴承温度",
+                                                            "unit": "C",
+                                                            "value": "42"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ],
+                                                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                                                  },
+                                                  "maxKpi": 1,
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  }
+                                                },
+                                                "parameters": {
+                                                  "icon": {
+                                                    "id": "24",
+                                                    "perfix": "proudsmart",
+                                                    "css": "ps-air-temperature"
+                                                  }
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "ci",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ],
+                                                  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+                                                },
+                                                "style": {
+                                                  "color": "#fff",
+                                                  "background-color": "rgb(118, 165, 175)",
+                                                  "margin": "5px"
+                                                }
+                                              },
+                                              {
+                                                "label": "数据统计标签",
+                                                "type": "totalItem",
+                                                "source": "TOTALITEM",
+                                                "data": {
+                                                  "applied": false,
+                                                  "resource": [],
+                                                  "modelDisable": true,
+                                                  "series": {
+                                                    "manual": [
+                                                      {
+                                                        "data": [
+                                                          {
+                                                            "name": "进水端径向轴承温度",
+                                                            "unit": "C",
+                                                            "value": "42"
+                                                          }
+                                                        ]
+                                                      }
+                                                    ],
+                                                    "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+                                                  },
+                                                  "maxKpi": 1,
+                                                  "model": {
+                                                    "id": 99924346626072
+                                                  }
+                                                },
+                                                "parameters": {
+                                                  "icon": {
+                                                    "id": "24",
+                                                    "perfix": "proudsmart",
+                                                    "css": "ps-air-temperature"
+                                                  }
+                                                },
+                                                "advance": {
+                                                  "getfunction": "kpiDataService.getValueList",
+                                                  "category": "ci",
+                                                  "condition": [
+                                                    "kpi",
+                                                    "{object:kpiQueryModel}"
+                                                  ],
+                                                  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+                                                },
+                                                "style": {
+                                                  "color": "#fff",
+                                                  "background-color": "rgb(118, 165, 175)",
+                                                  "margin": "5px"
+                                                }
+                                              }
+                                            ],
+                                            "col": 6
+                                          }
+                                        ],
+                                        "source": "ROW",
+                                        "parameters": {
+                                          "alignment": "bootstrap"
+                                        },
+                                        "style": {}
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "tabName": "压力",
+                                    "tabId": 0,
+                                    "type": "tabItem",
+                                    "display": "none",
+                                    "children": [
+                                      {
+                                        "label": "文字",
+                                        "type": "text",
+                                        "source": "TEXT",
+                                        "data": {
+                                          "applied": false,
+                                          "model": {
+                                            "id": 99924346626072
+                                          },
+                                          "resource": [],
+                                          "text": {
+                                            "manual": "压力分布图",
+                                            "bind": "(function (source){\n  return source.getSeries();\n})"
+                                          },
+                                          "modelDisable": false,
+                                          "maxKpi": 1,
+                                          "series": {}
+                                        },
+                                        "style": {
+                                          "margin": "5px auto",
+                                          "padding": "0",
+                                          "font-size": "16px",
+                                          "font-weight": "bold",
+                                          "background-color": "rgb(255, 255, 255)",
+                                          "border-color": "#93C47D",
+                                          "border-width": "0px",
+                                          "border-style": "solid",
+                                          "color": "rgb(68, 68, 68)",
+                                          "line-height": "40px",
+                                          "text-align": "left"
+                                        },
+                                        "advance": {
+                                          "getfunction": "kpiDataService.getValueList",
+                                          "category": "ci",
+                                          "condition": [
+                                            "kpi",
+                                            "{object:kpiQueryModel}"
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "label": "饼图",
+                                        "type": "echart",
+                                        "source": "PIECHART",
+                                        "data": {
+                                          "applied": false,
+                                          "model": {
+                                            "id": 99924346626072
+                                          },
+                                          "resource": [],
+                                          "legend": {
+                                            "manual": [
+                                              "设备A",
+                                              "设备B",
+                                              "设备C",
+                                              "设备D"
+                                            ],
+                                            "bind": "(function (source){\n console.log(source)\n return source.ci.getLegend();\n})"
+                                          },
+                                          "series": {
+                                            "manual": {
+                                              "0": {
+                                                "data": [
+                                                  {
+                                                    "name": "设备A",
+                                                    "value": "6"
+                                                  },
+                                                  {
+                                                    "name": "设备B",
+                                                    "value": "5"
+                                                  },
+                                                  {
+                                                    "name": "设备C",
+                                                    "value": "10"
+                                                  },
+                                                  {
+                                                    "name": "设备D",
+                                                    "value": "2"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "bind": "(function (source){\n  return source.ci.getSeries();\n})"
+                                          },
+                                          "modelDisable": true,
+                                          "timeSpan": 3600,
+                                          "category": [
+                                            "ci"
+                                          ]
+                                        },
+                                        "advance": {
+                                          "getfunction": "kpiDataService.getValueList",
+                                          "category": "time",
+                                          "condition": [
+                                            "kpi",
+                                            "{object:kpiQueryModel}"
+                                          ]
+                                        },
+                                        "parameters": {
+                                          "title": "基础饼图",
+                                          "subtitle": ""
+                                        },
+                                        "style": {
+                                          "margin": "auto",
+                                          "width": "100%",
+                                          "height": "400px"
+                                        },
+                                        "echart": {
+                                          "general": {},
+                                          "title": {
+                                            "show": false,
+                                            "textStyle": {
+                                              "fontWeight": "bold",
+                                              "fontSize": 16
+                                            },
+                                            "textAlign": "middle",
+                                            "padding": 30,
+                                            "left": "50%",
+                                            "text": "基础饼图",
+                                            "subtext": ""
+                                          },
+                                          "tooltip": {
+                                            "trigger": "item"
+                                          },
+                                          "legend": {
+                                            "left": "1%",
+                                            "top": "2%",
+                                            "orient": "vertical"
+                                          },
+                                          "series": [
+                                            {
+                                              "name": "数据1",
+                                              "center": [
+                                                "50%",
+                                                "50%"
+                                              ],
+                                              "radius": [
+                                                0,
+                                                "65%"
+                                              ],
+                                              "type": "pie"
+                                            },
+                                            {
+                                              "name": "数据2",
+                                              "center": [
+                                                "70%",
+                                                "50%"
+                                              ],
+                                              "radius": [
+                                                0,
+                                                "75%"
+                                              ],
+                                              "type": "pie"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "tabInx": "0",
+                                "": "",
+                                "parameters": {
+                                  "align": "horizental"
+                                },
+                                "style": {
+                                  "margin": "5px"
+                                }
+                              }
+                            ],
+                            "col": 7
+                          }
+                        ],
+                        "source": "ROW",
+                        "parameters": {
+                          "alignment": "bootstrap"
+                        },
+                        "style": {}
+                      }
+                    ]
+                  }
+                ],
+                "style": {
+                  "margin": "5px",
+                  "border": "0px solid #aaa",
+                  "background-color": "rgb(255, 255, 255)"
+                },
+                "$index": [
+                  1,
+                  0
+                ],
+                "template": [
+                  {
+                    "type": "css",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "5px",
+                      "background-color": "#ddd",
+                      "border": "1px solid #888"
+                    }
+                  },
+                  {
+                    "type": "css",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "5px",
+                      "color": "#3c84b2",
+                      "background-color": "#85bee2",
+                      "border": "1px solid #3c84b2"
+                    }
+                  },
+                  {
+                    "type": "css",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "5px",
+                      "background-color": "#efdcaf",
+                      "border": "1px solid #c2ad7a"
+                    }
+                  },
+                  {
+                    "type": "css",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "5px",
+                      "background-color": "#f0c0a4",
+                      "border": "1px solid #e5671b"
+                    }
+                  },
+                  {
+                    "type": "css",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "5px",
+                      "background-color": "#ffb3b3",
+                      "border": "1px solid #db2222"
+                    }
+                  }
+                ]
+              },
+              {
+                "label": "控制板1",
+                "type": "block",
+                "source": "BLOCK",
+                "children": [
+                  {
+                    "type": "column",
+                    "col": 12,
+                    "children": [
+                      {
+                        "label": "控制板1",
+                        "type": "tab",
+                        "source": "TAB",
+                        "children": [
+                          {
+                            "tabName": "进水口温度统计",
+                            "tabId": 0,
+                            "display": "none",
+                            "type": "tabItem",
+                            "children": [
+                              {
+                                "label": "文字",
+                                "type": "text",
+                                "source": "TEXT",
+                                "data": {
+                                  "applied": false,
+                                  "model": {
+                                    "id": 99924346626072
+                                  },
+                                  "resource": [],
+                                  "text": {
+                                    "manual": "进水口温度",
+                                    "bind": "(function (source){\n  return source.getSeries();\n})"
+                                  },
+                                  "modelDisable": false,
+                                  "maxKpi": 1,
+                                  "series": {}
+                                },
+                                "style": {
+                                  "margin": "5px auto",
+                                  "padding": "0",
+                                  "font-size": "23px",
+                                  "font-weight": "bold",
+                                  "background-color": "rgb(255, 255, 255)",
+                                  "border-color": "#93C47D",
+                                  "border-width": "0px",
+                                  "border-style": "solid",
+                                  "color": "rgb(68, 68, 68)",
+                                  "line-height": "75px",
+                                  "text-align": "left"
+                                },
+                                "advance": {
+                                  "getfunction": "kpiDataService.getValueList",
+                                  "category": "ci",
+                                  "condition": [
+                                    "kpi",
+                                    "{object:kpiQueryModel}"
+                                  ]
+                                }
+                              },
+                              {
+                                "type": "row",
+                                "children": [
+                                  {
+                                    "type": "column",
+                                    "children": [
+                                      {
+                                        "label": "线图",
+                                        "type": "echart",
+                                        "source": "LINECHART",
+                                        "data": {
+                                          "applied": false,
+                                          "model": {
+                                            "id": 99924346626072
+                                          },
+                                          "resource": [],
+                                          "modelDisable": false,
+                                          "timespan": {
+                                            "value": 168,
+                                            "unit": "hour"
+                                          },
+                                          "frequency": {
+                                            "value": 86400,
+                                            "unit": "second"
+                                          },
+                                          "format": "年月日",
+                                          "legend": {
+                                            "manual": "[\n  \"出水口温度\",\n]",
+                                            "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+                                          },
+                                          "xAxisType": "category",
+                                          "xAxis": {
+                                            "manual": [
+                                              [
+                                                "2016/6/1",
+                                                "2016/6/2",
+                                                "2016/6/3",
+                                                "2016/6/4",
+                                                "2016/6/5",
+                                                "2016/6/6",
+                                                "2016/6/7",
+                                                "2016/6/8",
+                                                "2016/6/9",
+                                                "2016/6/10",
+                                                "2016/6/11",
+                                                "2016/6/12",
+                                                "2016/6/13",
+                                                "2016/6/14",
+                                                "2016/6/15",
+                                                "2016/6/16",
+                                                "2016/6/17"
+                                              ]
+                                            ],
+                                            "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+                                          },
+                                          "yAxisType": "value",
+                                          "yAxis": {
+                                            "manual": [
+                                              [
+                                                "第一个数据",
+                                                "第二个数据",
+                                                "第三个数据",
+                                                "第四个数据",
+                                                "第五个数据",
+                                                "第六个数据"
+                                              ]
+                                            ],
+                                            "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+                                          },
+                                          "series": {
+                                            "manual": "[{\n  \"name\" : \"出水口温度\",\n  \"data\" : [29,19,15,16,14,18,13,19,23,15,17,14,13,11]\n}]",
+                                            "bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+                                          }
+                                        },
+                                        "advance": {
+                                          "getfunction": "kpiDataService.getValueList",
+                                          "category": "time",
+                                          "condition": [
+                                            "kpi",
+                                            "{object:kpiQueryModel}"
+                                          ],
+                                          "variable": "",
+                                          "expression": {}
+                                        },
+                                        "parameters": {
+                                          "title": "进水口温度",
+                                          "subtitle": ""
+                                        },
+                                        "style": {
+                                          "margin": "auto",
+                                          "width": "100%",
+                                          "height": "400px"
+                                        },
+                                        "echart": {
+                                          "general": {},
+                                          "title": {
+                                            "padding": 30,
+                                            "text": "草莓大棚温度变化",
+                                            "textStyle": {
+                                              "fontWeight": "bold",
+                                              "fontSize": 16
+                                            }
+                                          },
+                                          "tooltip": {
+                                            "trigger": "axis"
+                                          },
+                                          "legend": {
+                                            "data": [
+                                              "数据1",
+                                              "数据2",
+                                              "数据3"
+                                            ]
+                                          },
+                                          "grid": [
+                                            {}
+                                          ],
+                                          "xAxis": [
+                                            {
+                                              "boundaryGap": false,
+                                              "axisLine": {
+                                                "lineStyle": {
+                                                  "color": "#b0b0b0"
+                                                }
+                                              }
+                                            }
+                                          ],
+                                          "yAxis": [
+                                            {
+                                              "boundaryGap": false,
+                                              "axisLine": {
+                                                "lineStyle": {
+                                                  "color": "#b0b0b0"
+                                                }
+                                              }
+                                            }
+                                          ],
+                                          "series": [
+                                            {
+                                              "type": "line",
+                                              "name": "数据1",
+                                              "areaStyle": {
+                                                "normal": {
+                                                  "color": "rgb(224, 102, 102)"
+                                                }
+                                              },
+                                              "lineStyle": {
+                                                "normal": {
+                                                  "color": "rgb(224, 102, 102)"
+                                                }
+                                              },
+                                              "markPoint": {
+                                                "data": []
+                                              }
+                                            },
+                                            {
+                                              "type": "line",
+                                              "name": "数据2",
+                                              "markPoint": {
+                                                "data": []
+                                              }
+                                            },
+                                            {
+                                              "type": "line",
+                                              "name": "数据3",
+                                              "markPoint": {
+                                                "data": [
+                                                  {
+                                                    "name": "最大值",
+                                                    "type": "max"
+                                                  },
+                                                  {
+                                                    "name": "最小值",
+                                                    "type": "min"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        "$index": [
+                                          2,
+                                          0
+                                        ]
+                                      }
+                                    ],
+                                    "col": 5
+                                  },
+                                  {
+                                    "type": "column",
+                                    "children": [
+                                      {
+                                        "label": "文字",
+                                        "type": "text",
+                                        "source": "TEXT",
+                                        "data": {
+                                          "applied": false,
+                                          "model": {
+                                            "id": 99924346626072
+                                          },
+                                          "resource": [],
+                                          "text": {
+                                            "manual": "进水口温度周统计",
+                                            "bind": "(function (source){\n  return source.getSeries();\n})"
+                                          },
+                                          "modelDisable": true,
+                                          "maxKpi": 1,
+                                          "series": {}
+                                        },
+                                        "style": {
+                                          "margin": "5px auto",
+                                          "padding": "0",
+                                          "font-size": "14px",
+                                          "font-weight": "bold",
+                                          "border-color": "#93C47D",
+                                          "border-width": "0px",
+                                          "border-style": "solid",
+                                          "color": "#333",
+                                          "line-height": "14px",
+                                          "text-align": "left"
+                                        },
+                                        "advance": {
+                                          "getfunction": "kpiDataService.getValueList",
+                                          "category": "ci",
+                                          "condition": [
+                                            "kpi",
+                                            "{object:kpiQueryModel}"
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "label": "表格",
+                                        "type": "excel",
+                                        "source": "EXCEL",
+                                        "style": {
+                                          "margin": "5px"
+                                        },
+                                        "parameters": {
+                                          "excelData": [
+                                            [
+                                              "标题1",
+                                              "标题2",
+                                              "标题3",
+                                              "标题4",
+                                              "标题5"
+                                            ],
+                                            [
+                                              "12",
+                                              "14",
+                                              "10",
+                                              "51",
+                                              "5"
+                                            ],
+                                            [
+                                              "9",
+                                              "53",
+                                              "14",
+                                              "12",
+                                              "16"
+                                            ],
+                                            [
+                                              "16",
+                                              "3",
+                                              "4",
+                                              "7",
+                                              "12"
+                                            ]
+                                          ]
+                                        }
+                                      }
+                                    ],
+                                    "col": 7
+                                  }
+                                ],
+                                "source": "ROW",
+                                "parameters": {
+                                  "alignment": "bootstrap"
+                                },
+                                "style": {}
+                              }
+                            ]
+                          },
+                          {
+                            "tabName": "出水口温度统计",
+                            "tabId": 0,
+                            "type": "tabItem",
+                            "display": "block",
+                            "children": [
+                              {
+                                "label": "文字",
+                                "type": "text",
+                                "source": "TEXT",
+                                "data": {
+                                  "applied": false,
+                                  "text": {
+                                    "manual": "出水口温度",
+                                    "bind": "(function (source){\n  return source.getSeries();\n})"
+                                  },
+                                  "model": {
+                                    "id": 99924346626072
+                                  },
+                                  "resource": [],
+                                  "series": {},
+                                  "modelDisable": true
+                                },
+                                "style": {
+                                  "margin": "5px auto 5px 30px",
+                                  "padding": "0",
+                                  "font-size": "14px",
+                                  "font-weight": "bold",
+                                  "background-color": "rgb(255, 255, 255)",
+                                  "color": "rgb(68, 68, 68)",
+                                  "line-height": "75px",
+                                  "text-align": "left"
+                                },
+                                "advance": {
+                                  "getfunction": "kpiDataService.getValueList",
+                                  "category": "ci",
+                                  "condition": [
+                                    "kpi",
+                                    "{object:kpiQueryModel}"
+                                  ]
+                                },
+                                "$index": [
+                                  2,
+                                  0
+                                ]
+                              },
+                              {
+                                "type": "row",
+                                "children": [
+                                  {
+                                    "type": "column",
+                                    "children": [
+                                      {
+                                        "label": "柱图",
+                                        "type": "echart",
+                                        "source": "BARCHART",
+                                        "data": {
+                                          "applied": false,
+                                          "model": {
+                                            "id": 99924346626072
+                                          },
+                                          "resource": [],
+                                          "modelDisable": false,
+                                          "timespan": {
+                                            "value": 168,
+                                            "unit": "hour"
+                                          },
+                                          "frequency": {
+                                            "value": 86400,
+                                            "unit": "second"
+                                          },
+                                          "format": "年月日",
+                                          "legend": {
+                                            "manual": "[\n  \"设备\",\n]",
+                                            "bind": "(function (source){\n  return source.time.getLegend();\n})"
+                                          },
+                                          "xAxisType": "category",
+                                          "xAxis": {
+                                            "manual": [
+                                              [
+                                                "2016/6/1",
+                                                "2016/6/2",
+                                                "2016/6/3",
+                                                "2016/6/4",
+                                                "2016/6/5",
+                                                "2016/6/6",
+                                                "2016/6/7"
+                                              ]
+                                            ],
+                                            "bind": "(function (source){\n  return source.time.getxAxis();\n})"
+                                          },
+                                          "series": {
+                                            "manual": "[{\n  \"name\" : \"设备\",\n  \"data\" : [15,13,16,12,15,17,16]\n}]",
+                                            "bind": ""
+                                          },
+                                          "yAxisType": "value",
+                                          "yAxis": {
+                                            "manual": [
+                                              [
+                                                "第一个数据",
+                                                "第二个数据",
+                                                "第三个数据",
+                                                "第四个数据",
+                                                "第五个数据",
+                                                "第六个数据"
+                                              ]
+                                            ],
+                                            "bind": "(function (source){\n  return source.time.getxAxis();\n})"
+                                          }
+                                        },
+                                        "advance": {
+                                          "getfunction": "kpiDataService.getValueList",
+                                          "category": "time",
+                                          "condition": [
+                                            "kpi",
+                                            "{object:kpiQueryModel}"
+                                          ]
+                                        },
+                                        "parameters": {
+                                          "title": "出水口温度",
+                                          "subtitle": ""
+                                        },
+                                        "style": {
+                                          "margin": "auto",
+                                          "width": "100%",
+                                          "height": "400px"
+                                        },
+                                        "echart": {
+                                          "general": {},
+                                          "title": {
+                                            "padding": 30,
+                                            "text": "草莓大棚温度变化",
+                                            "textStyle": {
+                                              "fontWeight": "bold",
+                                              "fontSize": 16
+                                            }
+                                          },
+                                          "tooltip": {
+                                            "trigger": "axis"
+                                          },
+                                          "legend": {
+                                            "data": [
+                                              "数据1",
+                                              "数据2",
+                                              "数据3"
+                                            ]
+                                          },
+                                          "grid": [
+                                            {}
+                                          ],
+                                          "xAxis": [
+                                            {
+                                              "axisLine": {
+                                                "lineStyle": {
+                                                  "color": "#b0b0b0"
+                                                }
+                                              }
+                                            }
+                                          ],
+                                          "yAxis": [
+                                            {
+                                              "axisLine": {
+                                                "lineStyle": {
+                                                  "color": "#b0b0b0"
+                                                }
+                                              }
+                                            }
+                                          ],
+                                          "series": [
+                                            {
+                                              "type": "bar",
+                                              "name": "数据1",
+                                              "markPoint": {
+                                                "data": []
+                                              }
+                                            },
+                                            {
+                                              "type": "bar",
+                                              "name": "数据2",
+                                              "markPoint": {
+                                                "data": []
+                                              }
+                                            },
+                                            {
+                                              "type": "bar",
+                                              "name": "数据3",
+                                              "markPoint": {
+                                                "data": []
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        "$index": [
+                                          0,
+                                          0
+                                        ]
+                                      }
+                                    ],
+                                    "col": 5
+                                  },
+                                  {
+                                    "type": "column",
+                                    "children": [
+                                      {
+                                        "label": "文字",
+                                        "type": "text",
+                                        "source": "TEXT",
+                                        "data": {
+                                          "applied": false,
+                                          "model": {
+                                            "id": 99924346626072
+                                          },
+                                          "resource": [],
+                                          "text": {
+                                            "manual": "出水口温度周统计",
+                                            "bind": "(function (source){\n  return source.getSeries();\n})"
+                                          },
+                                          "modelDisable": true,
+                                          "maxKpi": 1,
+                                          "series": {}
+                                        },
+                                        "style": {
+                                          "margin": "5px auto",
+                                          "padding": "0",
+                                          "font-size": "14px",
+                                          "font-weight": "bold",
+                                          "border-color": "#93C47D",
+                                          "border-width": "0px",
+                                          "border-style": "solid",
+                                          "color": "#333",
+                                          "line-height": "14px",
+                                          "text-align": "left"
+                                        },
+                                        "advance": {
+                                          "getfunction": "kpiDataService.getValueList",
+                                          "category": "ci",
+                                          "condition": [
+                                            "kpi",
+                                            "{object:kpiQueryModel}"
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "label": "表格",
+                                        "type": "excel",
+                                        "source": "EXCEL",
+                                        "style": {
+                                          "margin": "5px"
+                                        },
+                                        "parameters": {
+                                          "excelData": [
+                                            [
+                                              "标题1",
+                                              "标题2",
+                                              "标题3",
+                                              "标题4",
+                                              "标题5"
+                                            ],
+                                            [
+                                              "12",
+                                              "14",
+                                              "10",
+                                              "51",
+                                              "5"
+                                            ],
+                                            [
+                                              "9",
+                                              "53",
+                                              "14",
+                                              "12",
+                                              "16"
+                                            ],
+                                            [
+                                              "16",
+                                              "3",
+                                              "4",
+                                              "7",
+                                              "12"
+                                            ]
+                                          ]
+                                        }
+                                      }
+                                    ],
+                                    "col": 7
+                                  }
+                                ],
+                                "source": "ROW",
+                                "parameters": {
+                                  "alignment": "bootstrap"
+                                },
+                                "style": {}
+                              }
+                            ]
+                          }
+                        ],
+                        "tabInx": "1",
+                        "": "",
+                        "parameters": {
+                          "align": "horizental"
+                        },
+                        "style": {
+                          "margin": "5px"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "style": {
+                  "margin": "5px",
+                  "border": "0px solid #aaa",
+                  "background-color": "rgb(255, 255, 255)"
+                },
+                "$index": [
+                  0,
+                  0
+                ],
+                "template": [
+                  {
+                    "type": "css",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "5px",
+                      "background-color": "#ddd",
+                      "border": "1px solid #888"
+                    }
+                  },
+                  {
+                    "type": "css",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "5px",
+                      "color": "#3c84b2",
+                      "background-color": "#85bee2",
+                      "border": "1px solid #3c84b2"
+                    }
+                  },
+                  {
+                    "type": "css",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "5px",
+                      "background-color": "#efdcaf",
+                      "border": "1px solid #c2ad7a"
+                    }
+                  },
+                  {
+                    "type": "css",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "5px",
+                      "background-color": "#f0c0a4",
+                      "border": "1px solid #e5671b"
+                    }
+                  },
+                  {
+                    "type": "css",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "5px",
+                      "background-color": "#ffb3b3",
+                      "border": "1px solid #db2222"
+                    }
+                  }
+                ]
+              }
+            ],
+            "col": 12
+          }
+        ],
+        "source": "ROW",
+        "parameters": {
+          "alignment": "bootstrap"
+        },
+        "style": {}
+      }
+    ],
+    "col": 12
+  }
+}

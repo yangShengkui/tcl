@@ -1,0 +1,167 @@
+<config injector=""
+></config>
+<template>
+    <div class="wrap">
+        <select name="multiselect[]" multiple="multiple" style="border:none"></select>
+        <span></span>
+    </div>
+</template>
+<script type="text/javascript">
+    import bootstrapMultiSelect from "bootstrap-multiselect";
+    export default function(){
+        return {
+            scope : {
+                ngModel : "=?",
+                config : "=?",
+                options: '@'  //= 赋值 @字符格式  & 回调  不写也可以
+
+            },
+            require : 'ngModel',
+            link(scope, element, attr, ngModel) {
+                //判断数组  对象的方法
+                var toString = Object.prototype.toString,
+                    isArray = isTypeof("Array"),
+                    isObject = isTypeof("Object");
+                function isTypeof(type) {
+                    return function(obj) {
+                        return toString.call(obj) === "[object "+ type +"]";//记得空格
+                    }
+                }
+//                    require(['bootstrap-multiselect'], function () {
+                //reg = /(?:(?:([\w\[\]\d\.\"\']+)\s+as\s+)?([\w\[\]\d\.\"\']+)\s+for\s+)?(\w+)\s+in\s+(\w+)/g,
+                var reg = /(?:(?:([\w\[\]\d\.\"\']+)\s+as\s+)?([\w\[\]\d\.\"\']+)\s+for\s+)?(\w+)\s+in\s+(?:([\w\[\]\d\.\"\']+))/g,
+                    match = reg.exec(attr["options"]),
+                    options = match[4],
+                    item = match[3],
+                    value = match[2] || item,
+                    key = match[1] || value,
+                    $dom = element.find('select'),
+                    dom = $dom.get(0),
+                    $spa = element.find('span'),
+                    dataOptions = scope.$parent[options],
+                    defaultConfig = {
+                        numberDisplayed: 1,
+                        buttonWidth: '178px',//按钮宽度
+                        selectedClass: 'multiselect-selected',//选中项样式
+                        enableFiltering: true,//过滤
+                        filterPlaceholder: '请搜索',
+                        nonSelectedText: '请选择...',
+                        nSelectedText: '项被选中',
+                        buttonClass: 'btn btn-default btn-sm',
+                        includeSelectAllOption: true,//全选
+                        enableCaseInsensitiveFiltering: true,//不区分大小写
+                        selectAllText: '全选',//全选的checkbox名称
+                        maxHeight: 200,
+                        allSelectedText: '全选中',
+                        countSelected: '# of % selected'
+                    };
+                defaultConfig = $.extend({}, defaultConfig, scope.config || {});//维护一个默认配置 如果传入就继承
+                var fn = new Function("scope", "options", "callback",
+                    "for(var i in options){\n\
+                        var " + item + "=options[i];\n\
+                      callback(" + key + ", " + value + "," + item + ")\n\
+                  }");
+                scope.$parent.$watch(options, function (n, o, s) {//options 为父级正则匹配到的变量
+                    if (!n) {
+                        return;
+                    } else {
+                        isArray(n) ? render(n) : null;
+                    }
+                });
+                function render(n) {
+                    try {
+                        var str1 = '';
+                        fn(scope, n, function (key, value, item) {
+                            str1 += "<option value=" + key + ">" + value + "</option>";
+                        });
+                    } catch (e) {
+                        $spa.text('*无效的表达式');
+                    } finally {
+                        //x.id as x.label for x in obj.arr
+                        //scope.$parent['obj.arr']
+                        // ['obj', 'arr', 'x', 'y', 'a']
+                        /**
+                         * 1. value: undefined
+                         *    str: 'obj'
+                         *    value : scope.$parent.obj
+                         * 2. value: scope.$parent.obj
+                         *    str: 'arr'
+                         *    value: scope.$parent.obj.arr
+                         *
+                         */
+                            //系统中数据格式可能是 options 也可能是options.arr.x
+                        var modelStrArr = attr.ngModel.split('.');//
+                        var value;
+                        modelStrArr.forEach(function (str) {
+                            value = value ? value[str]: scope.$parent[str];
+                        });
+                        $dom.html(str1);
+                        //或者 window['require'](["bootstrap-multiselect"],()=>{} 可以注释掉import
+                        window['require'](bootstrapMultiSelect,()=>{
+                            $dom.multiselect(defaultConfig);
+                            $dom.multiselect(dataOptions);
+                            $dom.multiselect('rebuild');///先rebuild在多选
+                            $dom.multiselect('select', value);
+                        });
+
+                    }
+                }
+                render(dataOptions);
+                dom.onchange = function () {
+                    ngModel.$setViewValue($dom.val());
+                };
+                Array.prototype.push.call(ngModel.$parsers, function (n, o) {
+                    if (!n) {
+                        return;
+                    }
+                    console.log('parsers:',n);
+                    return n;
+                });
+                Array.prototype.push.call(ngModel.$formatters, function (n,o) {
+                    if(typeof n === 'undefined'){
+                        return;
+                    }
+                    console.log('formatters:',n);
+                    window['require'](bootstrapMultiSelect,()=>{
+                        $dom.multiselect(defaultConfig);
+                        $dom.multiselect(dataOptions);
+                        $dom.multiselect('rebuild');///先rebuild在多选
+                        $dom.multiselect('select', n);
+                        ngModel.$setViewValue(n);
+                    });
+                    $dom.val(n);
+                    return n;
+                });
+                scope.$on('destroy',function () {
+                    toString =null;
+                    isArray = null;
+                    isObject = null;
+                    reg = null;
+                    match = null;
+                    s2 = null;
+                    options = null;
+                    item = null;
+                    value = null;
+                    key = null;
+                    $dom = null;
+                    dom = null;
+                    $spa = null;
+                    dataOptions = null;
+                    defaultConfig = null;
+                    fn = null;
+                    isTypeof = null;
+                    render = null;
+                })
+            }
+        }
+    }
+</script>
+<style type="less" scoped="true">
+    .wrap{
+        margin : 5px;
+        padding : 10px;
+        color : #333;
+        background-color : #eee;
+        border : 1px solid #ddd;
+    }
+</style>

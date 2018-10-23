@@ -1,0 +1,56 @@
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active">
+                <a>报表规则</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" ng-show="menuitems['#'+treeviewIndex] == null" role="button" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i
+              class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+
+        <div class="box-body">
+          <button class="btn btn-primary btn-sm" ng-click="dialog();"><i class="fa fa-plus"></i><span class="hidden-sm"> 添加通知规则</span></button>
+          <div class="combined-query pull-right" ng-class="{'select2':queryDitem.state==2||queryDitem.state==3}">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                {{queryDitem.statelabel?queryDitem.statelabel:'查询条件'}} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a role="button" ng-click="queryDitem.state=0;queryDitem.statelabel='规则名称'">规则名称</a>
+                </li>
+                <li>
+                  <a role="button" ng-click="queryDitem.state=1;queryDitem.statelabel='邮件模板'">邮件模板</a>
+                </li>
+                <li>
+                  <a role="button" ng-click="queryDitem.state=2;queryDitem.statelabel='报表模板'">报表模板</a>
+                </li>
+              </ul>
+            </div>
+
+            <input class="form-control input-sm" ng-show="queryDitem.state == 0" ng-model="queryDitem.name"/>
+
+            <select class="form-control input-sm" ng-show="queryDitem.state == 1" ng-model="queryDitem.emailTemplate">
+            </select>
+
+            <select class="form-control input-sm" ng-show="queryDitem.state == 2" ng-model="queryDitem.templateId">
+            </select>
+            <button class="btn btn-primary btn-sm" ng-click="goSearch()"><i class="fa fa-search"></i><span class="hidden-sm"> 查询</span></button>
+          </div>
+        </div>
+        <div class="box-footer">
+          <table width="100%" class="table table-hover" report-rule-table></table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

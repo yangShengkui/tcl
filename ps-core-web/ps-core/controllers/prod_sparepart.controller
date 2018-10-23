@@ -1,0 +1,114 @@
+<config injector="$scope,ajax">
+</config>
+<template>
+    <ps-table config="config"></ps-table>
+</template>
+<script type="text/javascript">
+export default function (scope, ajax) {
+  ajax.config({
+    allSpareParts: {
+      url: "sparePartUIService.findSparePartsByCondition",
+      method: "postwith",
+      before: "id",
+      param: {}
+    },
+    domains: {
+      url: "resourceUIService.getDomainsByFilter"
+    },
+    models: {
+      url: "resourceUIService.getModels"
+    },
+    sparePartsType: {
+      url: "dictionaryService.getDictValues"
+    }
+  });
+  scope.config = {
+    title: "备件管理",
+    attributes: {
+      "test": ["管理域", "dict", {
+        name: "domains",
+        parameter: {}
+      }],
+      "customerId": ["厂部", "dict", {
+        name: "customer",
+        parameter: {}
+      }, 'label:customerName'],
+      "deviceModelId": ["使用设备类型", "dict", "deviceModel"],
+      "model": ["备件类型", "dict"],
+      "label": ["备件名称", "text"],
+      "name": {
+        label: "备件编号",
+        type: "text"
+      },
+      "specification": ["规格型号", "text"],
+      "manufacturer": ["生产厂家", "text"],
+      "lifespan": ["参考使用寿命", "text"],
+      "stockNumber": ["实际库存", "text"],
+      "lowerLimit": ["安全库存", "text"],
+      "imageUrl": ["附件", "text"]
+    },
+    search: {
+      body: [{
+        name: "test",
+        searchType: "tree"
+      }, "customerId", {
+        name: "deviceModelId",
+        searchAs: 'Array',
+        relate: {
+          name: "resourceUIService.getModels",
+          parameter: null
+        }
+      }, {
+        name: "model",
+        relate: {
+          name: "sparePartsType",
+          parameter: ["sparePartModel"]
+        }
+      }, "label"]
+    },
+    grid: {
+      body: ["name", {
+        name: "label",
+        inquery: true
+      }, {
+        name: "customerId",
+        inquery: true
+      }, "deviceModelId", {
+        name: "model",
+        inquery: true
+      }, "specification",
+        "stockNumber", {
+          name: "imageUrl",
+          bind: function (row) {
+            return row.imageUrl ? row.label + '.' + row.imageUrl.split('.')[1] : '';
+          }
+        }],
+      buttons: {
+        outGrid: [{
+          label: "添加备件",
+          class: "primary",
+          icon: "fa fa-plus"
+        }],
+        inGrid: [{
+          label: "详情",
+          class: "btn btn-primary"
+        }, ["库存调整"], ["出入明细"], ["编辑"], ["删除"]]
+      },
+      config: {
+        url: 'allSpareParts',
+        parameter: {},
+        showIndex: false,
+        showSelector: false,
+        showSearch: true,
+        /*sortBy: {
+          value: "label",
+          direction: "asc"
+        }*/
+      },
+      options: []
+    }
+  };
+};
+</script>
+<style type="less">
+</style>

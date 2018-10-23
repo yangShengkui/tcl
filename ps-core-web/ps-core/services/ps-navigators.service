@@ -1,0 +1,36 @@
+<config injector="$rootScope,$timeout,$compile" type="factory"
+></config>
+<script type="text/javascript">
+  import ultiltiy from "ps-ultility";
+  export default function(rootScope,timeout,compile){
+    function get(){
+      return {
+        devices : {
+          prod_propertyinfo : "设备属性",
+          prod_part : "部位",
+          prod_spare : "备件",
+          prod_datatemplate : "数据模版",
+          prod_document : "公共文档",
+        },
+          deviceType: {
+            prod_devicetype : "设备类型",
+          },
+        test : {
+            prod_test : "布局",
+            prod_layout : "abc"
+        },
+        device_info: {
+            prod_device_property : "配置设备信息",
+            prod_device_part : "部位",
+            prod_device_spare : "备件",
+            prod_device_template : "数据模版",
+            prod_public_document : "公共文档",
+            prod_device_document : "设备文档",
+        }
+      }
+    }
+    return {
+      get : get
+    }
+  }
+</script>

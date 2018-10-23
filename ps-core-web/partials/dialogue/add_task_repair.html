@@ -1,0 +1,215 @@
+<!-- 我的任务-维修实绩模板 -->
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog" style="width:800px;">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">维修实绩</h4>
+      </div>
+
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal" name="dirForm">
+          <!-- 设备名称 -->
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">设备名称：</span>
+            </label>
+            <div class="col-sm-8" style="line-height: 30px;">
+              设备名称
+            </div>
+          </div>
+          <!-- 设备编码 -->
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">设备编码: </span>
+            </label>
+            <div class="col-sm-8" style="line-height: 30px;">
+              设备编码
+            </div>
+          </div>
+          <div style="width: 715px;height: 1px;background: rgb(121,121,121);position: absolute;left: 50%;top: 50px;transform: translateX(-50%);"></div>
+          <!-- 设备部位 -->
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">设备部位：</span>
+            </label>
+            <div class="col-sm-8">
+              <!-- ng-model="sparepartAddData.customerId"
+                selectdata="customersList" 
+                ng-change="queryCustomer();" 
+                ng-init="queryCustomer();" 
+                ng-options="x.id as x.customerName for x in customersList" -->
+              <select ng-model='ModelShowData.variables.devicePart' class="form-control input-sm" placeholder="请选择...">
+                <option value="">请选择...</option>
+                <option value="1">部位1</option>
+                <option value="2">部位2</option>
+                <option value="3">部位3</option>
+              </select>
+            </div>
+          </div>
+          <!-- 问题类别 -->
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">问题类别: </span>
+            </label>
+            <div class="col-sm-8">
+              <select ng-model="ModelShowData.variables.problemCategory" class="form-control input-sm" placeholder="请选择...">
+                <option value="">请选择...</option>
+                <option value="1">类别1</option>
+                <option value="2">类别2</option>
+              </select>
+            </div>
+          </div>
+          <!-- 故障现象 -->
+          <div class="form-group">
+            <label class="col-sm-2 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">故障现象：</span>
+            </label>
+            <div class="col-sm-9 padding-left-15">
+              <input type="text" ng-model="ModelShowData.variables.failure" autocomplete="off" maxlength="32" class="form-control input-sm  ng-isolate-scope"
+                required="required">
+            </div>
+          </div>
+          <!-- 故障原因分析 -->  
+          <div class="form-group">
+            <label class="col-sm-2 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">故障原因分析：</span>
+            </label>
+            <div class="col-sm-9 padding-left-15">
+              <input type="text" ng-model="ModelShowData.variables.failureAnalysis" autocomplete="off" maxlength="32" class="form-control input-sm " required="required" />
+            </div>
+          </div>
+          <!-- 维修措施 -->
+          <div class="form-group">
+            <label class="col-sm-2 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">维修措施：</span>
+            </label>
+            <div class="col-sm-9 padding-left-15">
+              <input type="text" ng-model="ModelShowData.variables.maintenanceMeasures" autocomplete="off" maxlength="32" class="form-control input-sm " required="required" />
+            </div>
+          </div>
+          <!-- 改善措施 -->
+          <div class="form-group">
+            <label class="col-sm-2 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">改善措施：</span>
+            </label>
+            <div class="col-sm-9 padding-left-15">
+              <input type="text" ng-model="ModelShowData.variables.improvementMeasures" autocomplete="off" maxlength="32" class="form-control input-sm " required="required" />
+            </div>
+          </div>
+          <!-- 报警确认时间 -->
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">报警确认时间：</span>
+            </label>
+            <div class="col-sm-8">
+              <input class="form-control"  readonly
+              timepicker="true" 
+              date-time-picker
+              drops="down"  type="text" />
+            </div>
+          </div>
+          <!-- 完工确认时间 -->
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">完工确认时间：</span>
+            </label>
+            <div class="col-sm-8">
+              <input class="form-control" type="text"   readonly
+              timepicker="true" 
+              date-time-picker
+              drops="down"  />
+            </div>
+          </div>
+          <!-- 实际开始时间 -->
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">实际开始时间：</span>
+            </label>
+            <div class="col-sm-8">
+              <input autocomplete="off" 
+              ng-model="ModelShowData.variables.factStartTime" 
+              timepicker="true" 
+              date-time-picker
+              drops="down" class="form-control" type="text" ng-required="item.required == 'yes'" />
+            </div>
+          </div>
+          <!-- 实际完工时间 -->
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">实际完工时间：</span>
+            </label>
+            <div class="col-sm-8">
+              <input autocomplete="off" 
+              readonly
+              ng-model="ModelShowData.variables.factEndTime" 
+              timepicker="true" 
+              date-time-picker
+              drops="down" class="form-control" type="text" ng-required="item.required == 'yes'" />
+            </div>
+          </div>
+          <!-- 主导维修员 -->
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">主导维修员：</span>
+            </label>
+            <div class="col-sm-8">
+              <!-- ng-model="sparepartAddData.customerId"
+                  selectdata="customersList" 
+                  ng-change="queryCustomer();" 
+                  ng-init="queryCustomer();" 
+                  ng-options="x.id as x.customerName for x in customersList" -->
+              <select class="form-control input-sm" ng-model="ModelShowData.variables.dominantMan" placeholder="请选择...">
+                <option value="">请选择...</option>
+                <option value="1">主导维修员1</option>
+                <option value="2">主导维修员2</option>
+              </select>
+            </div>
+          </div>
+          <!-- 协助维修员 -->
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">协助维修员: </span>
+            </label>
+            <div class="col-sm-8">
+              <select class="form-control input-sm" ng-model="ModelShowData.variables.auxiliaryMan" placeholder="请选择...">
+                <option value="">请选择...</option>
+                <option value="1">协助维修员1</option>
+                <option value="2">协助维修员2</option>
+              </select>
+            </div>
+          </div>
+          <!-- 确认人-->
+          <div class="form-group col-sm-6 ">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">确认人: </span>
+            </label>
+            <div class="col-sm-8">
+              <select class="form-control input-sm" ng-model="ModelShowData.variables.cliamBy" placeholder="请选择...">
+                <option value="">请选择...</option>
+                <option value="1">确认人1</option>
+                <option value="2">确认人2</option>
+              </select>
+            </div>
+          </div>
+          <!-- 添加备件 -->
+          <div class="form-group col-sm-12 ">
+            <label class="col-sm-2 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">使用备件：</span>
+            </label>
+            <div class="col-sm-2">
+                <button class="btn btn-primary">添加备件</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="collForm.$invalid" ng-click="saveInspection()" disabled="disabled">
+          确定
+        </button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

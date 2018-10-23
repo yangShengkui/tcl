@@ -1,0 +1,91 @@
+{
+  "layout": {
+    "type": "column",
+    "children": [
+      {
+        "label": "控制板1",
+        "type": "block",
+        "source": "BLOCK",
+        "style": {
+          "padding": "5px",
+          "margin": "5px"
+        },
+        "advance": {
+          "expression": {}
+        },
+        "children": [
+          {
+            "type": "column",
+            "col": 12,
+            "children": [
+              {
+                "label": "控件组",
+                "type": "ctrlgroup",
+                "source": "CTRLGROUP",
+                "advance": {
+                  "expression": "expression = {\n  width: \"auto\",\n  on: {\n    init: function (event) {\n      var target = event.target;\n      var global = event.global;\n      var timeObj = {\"firstTimeFrom\": \"\", \"firstTimeTo\": \"\", \"alertFromMaps\": \"\"};\n      var inpStatus = false;\n      var currStatus = \"\";\n      var now = new Date(); //当前日期 \n      var options1 = [\n        {\n          id: \"1\",\n          label: \"在线预警\"\n        }, {\n          id: \"2\",\n          label: \"智能诊断\"\n        }, {\n          id: \"3\",\n          label: \"大数据分析\"\n        }, {\n          id: \"4\",\n          label: \"离线诊断\"\n        }\n      ];\n      timeObj.alertFromMaps = options1[1];\n      var render = function () {\n        var ctrlGroups = [\n          [\n            {\n              type: \"label\",\n              value: \"报警类型\",\n              class: \"col-md-1\",\n              style: {\n                textAlign: \"right\",\n                width: \"100px\"\n              }\n            }, {\n            type: \"select\",\n            value: timeObj.alertFromMaps.id,\n            class: \"col-md-2\",\n            on: {\n              change: function (elem) {\n                timeObj.alertFromMaps = elem.value;\n                render();\n              }\n            },\n            options: options1,\n            format: {\n              \"id\": \"id\",\n              \"label\": \"label\"\n            }\n          },\n\n\n            {\n              type: \"label\",\n              value: \"时 间：\",\n              style: {\n                //   width:\"100px\",\n                // textAlign: \"right\"\n              }\n            }, {\n            type: \"button\",\n            value: \"当日报警\",\n            btnclass: currStatus == \"today\" ? \"btn btn-primary\" : \"btn btn-default\",\n            btnStyle: {\n              \"width\": \"100px\",\n              \"border\": \"#10a4fb solid 1px\"\n            },\n            on: {\n              click: function (elem) {\n                var today = new Date();\n                today.setHours(0);\n                today.setMinutes(0);\n                today.setSeconds(0);\n                today.setMilliseconds(0);\n                timeObj.firstTimeFrom = today;\n                timeObj.firstTimeTo = now;\n                target.trigger(\"search_toDolist\", timeObj)\n                currStatus = \"today\";\n                render();\n              }\n            }\n          }, {\n            type: \"button\",\n            value: \"本周报警\",\n            btnclass: currStatus == \"bz\" ? \"btn btn-primary\" : \"btn btn-default\",\n            btnStyle: {\n              \"width\": \"100px\",\n              \"border\": \"#10a4fb solid 1px\"\n            },\n            on: {\n              click: function (elem) {\n\n                //获得本周的开端日期 \n                function getWeekStartDate() {\n                  var nowDayOfWeek = now.getDay(); //今天本周的第几天 \n                  var nowDay = now.getDate(); //当前日 \n                  var nowMonth = now.getMonth(); //当前月 \n                  var nowYear = now.getFullYear(); //当前年 \n                  var weekStartDate = new Date(nowYear, nowMonth, nowDay - nowDayOfWeek);\n                  return weekStartDate;\n                }\n\n                timeObj.firstTimeFrom = getWeekStartDate();\n                timeObj.firstTimeTo = now;\n                target.trigger(\"search_toDolist\", timeObj)\n                currStatus = \"bz\";\n                render();\n              }\n            }\n          }, {\n            type: \"button\",\n            value: \"当月报警\",\n            btnclass: currStatus == \"month\" ? \"btn btn-primary\" : \"btn btn-default\",\n            btnStyle: {\n              \"width\": \"100px\",\n              \"border\": \"#10a4fb solid 1px\"\n            },\n            on: {\n              click: function (elem) {\n\n                //当前月的第一天\n                function getCurrentMonthFirst() {\n                  var date = new Date();\n                  date.setDate(1);\n                  return date;\n                }\n\n                timeObj.firstTimeFrom = getCurrentMonthFirst();\n                timeObj.firstTimeTo = now;\n                target.trigger(\"search_toDolist\", timeObj);\n                currStatus = \"month\";\n                render();\n              }\n            }\n          }, {\n            type: \"dateRangePicker\",\n            value: \"\",\n            class: \"col-md-5\",\n            style: {\n              width: \"200px\",\n              textAlign: \"center\"\n            },\n            on: {\n              change: function (elem) {\n                timeObj.firstTimeFrom = elem.value.start;\n                timeObj.firstTimeTo = elem.value.end;\n                if (elem.value.start) {\n                  inpStatus = true;\n                }\n              }\n            },\n          }, {\n            type: \"button\",\n            btnclass: \"btn btn-primary\",\n            value: \"查 询\",\n            btnStyle: {\n              width: \"100px\",\n            },\n            on: {\n              click: function (elem) {\n               \n                  target.trigger(\"search_toDolist\", timeObj)\n          \n              \n              }\n            }\n          }]\n        ];\n        event.target.render(ctrlGroups);\n      }\n      render()\n    }\n  }\n}"
+                },
+                "style": {
+                  "font-size": "12px",
+                  "text-align": "left",
+                  "line-height": "30px"
+                },
+                "help": "../pdf/ctrlgroup.pdf",
+                "parameters": {},
+                "url": "images/map/map1.png"
+              },
+              {
+                "label": "控制板1",
+                "type": "block",
+                "source": "BLOCK",
+                "style": {
+                  "padding": "10px",
+                  "margin": "5px"
+                },
+                "advance": {
+                  "expression": {}
+                },
+                "children": [
+                  {
+                    "type": "column",
+                    "col": 12,
+                    "children": [
+                      {
+                        "label": "高级列表",
+                        "type": "dataTableAdvance",
+                        "source": "DATATABLEADVANCE",
+                        "parameters": {
+                          "col": 1,
+                          "pageSize": 5,
+                          "listbottom": "standard"
+                        },
+                        "advance": {
+                          "expression": "expression = {\n  \"theme\": \"dark\",\n  \"on\": {\n    \"init\": function (event) {\n      var target = event.target;\n      //--------------------------自定义输入-----------------------------\n\n\n      //自定义输入\n      var Dictionary = {\n        message: \"报警消息\",\n        severity: {\n          name: \"报警级别\",\n          type: \"priority\",\n          value: \"severity\"\n        },\n        arisingTime: \"报警时间\",\n        diagnoseDesc: \"判断依据\",\n        dealOption: \"诊断建议\",\n      };\n\n\n      // 获取字典查专业\n    //   var propsList = target.getRootScope(\"myDicts\")[\"specialtyProps\"];\n\n      // 获取设备id\n      var resource = target.getValue(\"global/resource\");\n\n      target.on(\"tree_resourceChange\", function (e) {\n        resource = e.resource;\n        getTableData();\n      })\n\n\n      // 设备信息的\n    //   var devicesInfo;\n    //   var resourceId = {\n    //     resourceId: resource.id\n    //   }\n    //   target.postService(\"resourceUIService\", \"getDevicesByCondition\", resourceId, function (tc) {\n    //     if (tc.data) {\n    //       devicesInfo = eval(tc.data[0].values.MeasurePointLocate);\n    //     }\n    //   })\n\n      function getTableData(time) {\n        var params = [\n          {\n            nodeId: resource.id +\"\", \n            severities: \"1,2,3,4\",\n            states: \"0,5,10\",\n            appName: time ? time.alertFromMaps.id : \"2\",\n            firstTimeFrom: time ? time.firstTimeFrom : \"\",\n            firstTimeTo: time ? time.firstTimeTo : \"\",\n          },\n          {start: 0, length: 500, statCount: true}\n        ];\n\n\n        target.postService(\"alertQueryFlexService\", \"getAlertByPage\", params, function (tc) {\n\n            console.log(tc.data.data)\n          if (tc.data) {\n            var datas = [];\n            tc.data.data.forEach(function (ele) {\n              var data = ele;\n              // 获取专业\n            //   propsList.forEach(function (e) {\n            //     if (e.valueCode == ele.specialty) {\n            //       data.specialtyName = e.label;\n            //       return;\n            //     }\n            //   })\n            //   // 获取测点\n            //   for (var i in devicesInfo) {\n            //     for (var j in devicesInfo[i]) {\n            //       if (j == ele.specialty) {\n            //         for (var k in devicesInfo[i][j]) {\n            //           if (devicesInfo[i][j][k].name == ele.instance) {\n            //             data.instance = devicesInfo[i][j][k].label\n            //           }\n            //         }\n            //       }\n            //     }\n            //   }\n              data.arisingTime = new Date(ele.arisingTime).Format(\"yyyy-MM-dd hh:mm:ss\");\n              datas.push(data);\n            })\n            success(datas)\n          }\n        });\n      }\n\n      getTableData();\n      //--------------------------自定义输入-----------------------------\n      //注意，下面内容别动！！！\n      function success(datas) {\n\n\n        var render = function (advsearch) {\n          var format = [];\n          for (var i in Dictionary) {\n            var item = target.explainDic(i, Dictionary[i]);\n            format.push(item);\n          }\n        //   format.push({\n        //     name: \"过程追踪\",\n        //     type: \"buttonGroup\",\n        //     content: [{\n        //       label: \"详情\",\n        //       icon: \"null\",\n        //       class: \"btn btn-default btn-sm\",\n        //       on: {\n        //         click: function (elem) {\n                    \n        //           target.navigateTo(\"index\", {\n        //             main : [4],\n        //             sub:[4,\"process\"],\n        //             ticketNo : elem.row.ticketNo,\n        //           }, \"self\");\n     \n        //             //  target.createSystemPopupByLocalPath(\"process\", {\n        //             //       width : \"auto\",\n        //             //       title : \"过程跟踪\",\n        //             //  }, elem.row);\n        //         }\n        //       }\n        //     }],\n        //     render: function () {\n        //       return \"\"\n        //     }\n        //   });\n          target.render({\n            data: datas,\n            format: format\n          });\n        };\n        // 点击查询按钮\n        target.off(\"search_toDolist\");\n        target.on(\"search_toDolist\", function (time) {\n          console.log(time);\n          getTableData(time)\n          render();\n        });\n\n        render();\n      };\n    }\n  }\n}"
+                        },
+                        "style": {
+                          "margin": "5px",
+                          "font-size": "12px"
+                        },
+                        "url": "images/map/map1.png",
+                        "echart": {}
+                      }
+                    ]
+                  }
+                ],
+                "url": "images/map/map1.png"
+              }
+            ]
+          }
+        ],
+        "url": "images/map/map1.png"
+      }
+    ],
+    "col": 12
+  },
+  "setting": {
+    "showNavi": false,
+    "style": {
+      "padding": "15px"
+    }
+  }
+}

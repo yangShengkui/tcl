@@ -1,0 +1,34 @@
+<div class="row" style="margin-top : 30px;">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="row">
+      <div class="col-xs-12 col-lg-6 ng-scope" ng-repeat="deviceGroup in deviceGroups">
+        <div class="box form-group box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title ng-binding" ng-bind="deviceGroup.view.JSON.preview.title"></h3>
+            <div class="box-tools pull-right">
+              <button class="btn btn-box-tool" title="编辑" ng-click="deviceGroup.edit()"><i class="fa fa-edit"></i></button>
+              <button class="btn btn-box-tool" title="详细" ng-click="deviceGroup.detail()"><i class="fa fa-list"></i></button>
+              <button class="btn btn-box-tool" title="删除" ng-click="deviceGroup.remove()"><i class="fa fa-bitbucket"></i></button>
+            </div>
+          </div>
+          <div class="box-body" style="padding: 10px 30px; min-height: 172px;">
+            <div class="text-center" data-preview-list="deviceGroup.view.JSON.preview.list" data-click="deviceGroup.detail()" data-mode="prev" tg-slick>
+            </div>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer" style="padding: 5px 0px;">
+
+          </div>
+          <!-- /.box-footer-->
+        </div>
+      </div>
+      <div class="col-xs-12 col-lg-6 ng-scope">
+        <div class="text-center" style="padding-top: 100px;">
+          <a class="btn">
+            <i class="fa fa-plus fa-5x" data-toggle="popover" ng-click="addResource()"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

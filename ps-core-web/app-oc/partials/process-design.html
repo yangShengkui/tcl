@@ -1,0 +1,72 @@
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div ng-show="historyVersion != 'version'" class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active">
+                <a>流程设计</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body">
+          <button ng-show="menuitems['A05_S19']" type="button" ng-click="addViews();" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i><span class="hidden-sm"> 添加设计</span></button>
+          <div class="combined-query pull-right">
+            筛选: <input class="form-control input-sm" ng-model="tableSearchValue" ng-change="publicTableSearch('process-design-dom',tableSearchValue)"/>
+          </div>
+        <!--  <div class="combined-query pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                {{queryDitem.statelabel?queryDitem.statelabel:'查询条件'}} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a role="button" ng-click="queryDitem.state=1;queryDitem.statelabel='流程名称';queryDitem.attributeName='modelType'">流程名称</a>
+                </li>
+                <li>
+                  <a role="button" ng-click="queryDitem.state=2;queryDitem.statelabel='描述';queryDitem.attributeName='series'">描述</a>
+                </li>
+              </ul>
+            </div>
+            <input class="form-control input-sm"  ng-model="loaderValue"  ng-show="!queryDitem.state || queryDitem.state == 2" maxlength="40" type="text" />
+
+            <button class="btn btn-primary btn-sm" ng-click="goSearch()" type="button"><i class="fa fa-search"></i><span class="hidden-sm"> 查询</span></button>
+          </div>-->
+        </div>
+        <div class="box-footer margin-bottom-10">
+          <table width="100%" class="table table-hover" name="process-design-dom" process-design-dom></table>
+        </div>
+      </div>
+      <div ng-show="historyVersion == 'version'" class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active">
+                <a>流程发布历史版本</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-click="historyVersion = ''" data-toggle="返回" title="" data-original-title="返回" ><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body">
+          <div class="box-header">
+            <h3 class="box-title">
+              当前选中的流程为:<a>{{selectHistory.name}}</a>
+            </h3>
+          </div>
+        </div>
+        <div class="box-footer margin-bottom-10">
+          <table width="100%" class="table table-hover" process-history></table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

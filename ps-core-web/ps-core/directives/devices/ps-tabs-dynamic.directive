@@ -1,0 +1,64 @@
+<config injector="$timeout, psScope, psUi"
+></config>
+<template>
+  <div>
+    <div class="nav-tabs-custom margin-bottom-20">
+      <ul class="nav nav-tabs">
+        <li ng-repeat="op in option.options"
+            ng-click="navClick(op)"
+            ng-class="{true : 'active'}[selected === op]"
+            class="li-custom">
+          <a role="button" ng-bind="op.label"></a>
+          <a ng-click="dropClick($event, op)" class="dropdown-toggle"><span class="caret"></span></a>
+        </li>
+        <li>
+          <a style="color: #000;" ng-click="add()" title="添加分类" class="btn btn-sm bg-e8 btn-flat pull-left  margin-right-10">
+            <i class="fa fa-plus bk-message-row-icon"></i>
+          </a>
+        </li>
+      </ul>
+      <ps-tab data-option="option.template"></ps-tab>
+    </div>
+  </div>
+</template>
+<script type="text/javascript">
+  export default function(timeout, psScope, psUi){
+    return {
+      restrict: 'E',
+      scope: {
+        option : "="
+      },
+      replace: true,
+      link: function (scope, element) {
+        scope.selected = scope.option.options[0];
+        console.log(scope);
+        psScope(scope);
+        scope.navClick = function(tab){
+          scope.selected = tab;
+        };
+        scope.dropClick = function(e, op){
+          let dropOptions = [{
+            label : "编辑",
+            click : function(row, i){
+              console.log("edit", op);
+            }
+          },{
+            label : "删除",
+            click : function(row, i){
+              console.log("delete", op);
+            }
+          }]
+          psUi.createDrop(e.currentTarget, dropOptions);
+        };
+        scope.add = function(){
+
+        };
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+  .dropdown-toggle{
+    cursor : pointer;
+  }
+</style>

@@ -1,0 +1,68 @@
+<div class="select-list">
+    <div class="left-part">
+        <div ng-bind="titles[0]" class="title"></div>
+        <div class="wrap"
+             select-drop
+             ng-click="$event.stopPropagation();"
+             data-drop="dropLeft()"
+             ng-class="{true : 'disabled'}[rightFilterNoCheck()]">
+            <div ng-repeat="item in source | $filter : leftFilter"
+                 select-drag
+                 data-name = "name"
+                 data-target="source"
+                 data-start="item.start()"
+                 data-stop="item.stop()"
+                 class="item"
+                 ng-class="{true : 'active'}[item.selected]"
+                 ng-click="item.click();$event.stopPropagation();">
+                <div class="inner" ng-class="{true:'renew'}[item.renew]">
+                    <span ng-bind="item[name]"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="middle-part">
+        <div>
+            <button class="btn btn-default"
+                    ng-disabled="!leftFilterNoCheck()"
+                    ng-click="leftToRight()">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </button>
+            <button class="btn btn-default"
+                    ng-disabled="!rightFilterNoCheck()"
+                    ng-click="rightToLeft()">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </button>
+        </div>
+    </div>
+    <div class="right-part">
+        <div ng-bind="titles[1]" class="title"></div>
+        <div class="wrap"
+             select-drop
+             ng-click="$event.stopPropagation();"
+             data-drop="dropRight()"
+             ng-if = "(source | $filter : rightFilter).length > 0"
+             ng-class="{true : 'disabled'}[leftFilterNoCheck()]">
+            <div ng-repeat="item in source | $filter : rightFilter"
+                 select-drag
+                 data-name = "name"
+                 data-target="source"
+                 data-start="item.start()"
+                 data-stop="item.stop()"
+                 class="item"
+                 ng-class="{true : 'active'}[item.selected]"
+                 ng-click="item.click();$event.stopPropagation();">
+                <div class="inner" ng-class="{true:'renew'}[item.renew]">
+                    <span ng-bind="item[name]"></span>
+                </div>
+            </div>
+        </div>
+        <div class="wrap"
+             select-drop
+             ng-click="$event.stopPropagation();"
+             data-drop="dropRight()"
+             ng-if = "(source | $filter : rightFilter).length == 0"
+             ng-class="{true : 'disabled'}[leftFilterNoCheck()]">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+<config injector="$scope,ajax" params="/:id?">
+</config>
+<template>
+    <ps-base config="config"></ps-base>
+</template>
+<script type="text/javascript">
+export default function (scope, ajax) {
+    scope.navigators = [{
+        id : 0,
+        label : "属性信息",
+        click : function(){
+            location.path("prod_propertyinfo");
+        }
+    },{
+        id : 1,
+        label : "部位",
+        click : function(){
+            location.path("prod_part");
+        }
+    },{
+        id : 2,
+        label : "备件",
+        click : function(){
+            location.path("prod_spare");
+        }
+    },{
+        id : 3,
+        label : "数据模板",
+        click : function(){
+            location.path("prod_datatemplate");
+        }
+    },{
+        id : 4,
+        label : "公共文档",
+        click : function(){
+            location.path("prod_document");
+        }
+    }];
+    scope.navigators[1].active = true;
+
+    scope.config = {
+        title: "设备模板",
+        attributes: {
+            "label": ["模板名称", "text"],
+            "desc": ["模板描述", "text"],
+            "values.series": ["产品系列","text"],
+            "values.modelNo": ["设备型号","text"]
+        },
+        search: {
+            body: []
+        },
+        grid: {
+            body: ["label", "desc","values.series","values.modelNo"],
+            buttons: {
+                outGrid: [{
+                    label: "添加模板",
+                    class: "primary",
+                    icon: "fa fa-plus"
+                },{
+                    label: "复制模板",
+                    class: "primary",
+                    icon: "proudsmart ps-copy"
+                },{
+                    label: "导入模板",
+                    class: "primary",
+                    icon: "fa fa-arrow-circle-o-up"
+                },{
+                    label: "导出模板",
+                    class: "primary",
+                    icon: " fa fa-arrow-circle-o-down"
+                }],
+                inGrid: [{
+                    label: "管理",
+                    class: "btn btn-primary",
+                },["删除"],["设计仪表板"],["导出SDK模板"]]
+            },
+            config: {
+                url: 'resourceUIService.getModelsByCondition',
+                parameter: [{label: ""}],
+                showIndex: false,
+                showSelector: false,
+                showSearch: false
+            },
+            options: []
+        }
+    };
+    console.log()
+
+};
+</script>
+<style type="less">
+</style>

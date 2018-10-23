@@ -1,0 +1,548 @@
+{
+  "version" : "V_2",
+  "src" : "url(images/template1.jpg)",
+  "title" : "华能服务列表（单页模板）",
+  "layout": {
+	"type": "column",
+	"children": [
+	  {
+		"type": "tab",
+		"children": [
+		  {
+			"tabName": "系统监控",
+			"tabId": "0",
+			"type": "tabItem",
+			"children": [
+			  {
+				"type": "row",
+				"children": [
+				  {
+					"type": "column",
+					"children": [
+					  {
+						"label": "拓扑视图",
+						"type": "topo",
+						"source": "TOPO",
+						"style": {
+						  "margin": "5px",
+						  "height": "700px",
+						  "font-size": "12px",
+						  "background-size": "contain",
+						  "background-position": "center",
+						  "background-repeat": "no-repeat"
+						},
+						"viewId": 35775936556396,
+						"data": {
+						  "series": {}
+						},
+						"$index": [
+						  1,
+						  0
+						]
+					  }
+					],
+					"col": 9
+				  },
+				  {
+					"type": "column",
+					"children": [
+					  {
+						"label": "文字",
+						"type": "text",
+						"source": "TEXT",
+						"data": {
+						  "applied": false,
+						  "model": {
+							"id": 204
+						  },
+						  "resource": [
+							"rootCi"
+						  ],
+						  "text": {
+							"manual": "统计分析",
+							"bind": "(function (source){\n  return source.getSeries();\n})"
+						  },
+						  "modelDisable": false,
+						  "series": {}
+						},
+						"style": {
+						  "margin": "5px",
+						  "padding": "0",
+						  "font-size": "16px",
+						  "font-weight": "bold",
+						  "background-color": "rgb(243, 243, 243)",
+						  "color": "#333",
+						  "line-height": "50px",
+						  "text-align": "center"
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "ci",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"$index": [
+						  2,
+						  0
+						]
+					  },
+					  {
+						"label": "数据统计标签",
+						"type": "totalItem",
+						"source": "TOTALITEM",
+						"data": {
+						  "applied": false,
+						  "resource": [
+							"rootCi"
+						  ],
+						  "modelDisable": true,
+						  "series": {
+							"manual": [
+							  {
+								"data": [
+								  {
+									"name": "设备总数",
+									"unit": "台",
+									"value": "357"
+								  }
+								]
+							  }
+							],
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+						  },
+						  "maxKpi": 1,
+						  "model": {
+							"id": 204
+						  }
+						},
+						"parameters": {
+						  "icon": {
+							"id": "10",
+							"perfix": "proudsmart",
+							"css": "ps-edit"
+						  }
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "ci",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ],
+						  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+						},
+						"style": {
+						  "color": "#fff",
+						  "background-color": "rgb(60, 141, 188)",
+						  "margin": "5px"
+						}
+					  },
+					  {
+						"label": "数据统计标签",
+						"type": "totalItem",
+						"source": "TOTALITEM",
+						"data": {
+						  "applied": false,
+						  "resource": [
+							"rootCi"
+						  ],
+						  "modelDisable": true,
+						  "series": {
+							"manual": [
+							  {
+								"data": [
+								  {
+									"name": "总告警数",
+									"unit": "个",
+									"value": "10"
+								  }
+								]
+							  }
+							],
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+						  },
+						  "maxKpi": 1,
+						  "model": {
+							"id": 204
+						  }
+						},
+						"parameters": {
+						  "icon": {
+							"id": "2",
+							"perfix": "fa",
+							"css": "fa-warning"
+						  }
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "ci",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ],
+						  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+						},
+						"style": {
+						  "color": "#fff",
+						  "background-color": "rgb(69, 129, 142)",
+						  "margin": "5px"
+						}
+					  },
+					  {
+						"label": "数据统计标签",
+						"type": "totalItem",
+						"source": "TOTALITEM",
+						"data": {
+						  "applied": false,
+						  "resource": [
+							"rootCi"
+						  ],
+						  "modelDisable": true,
+						  "series": {
+							"manual": [
+							  {
+								"data": [
+								  {
+									"name": "工单数",
+									"unit": "个",
+									"value": "6"
+								  }
+								]
+							  }
+							],
+							"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+						  },
+						  "maxKpi": 1,
+						  "model": {
+							"id": 204
+						  }
+						},
+						"parameters": {
+						  "icon": {
+							"id": "22",
+							"perfix": "proudsmart",
+							"css": "ps-number"
+						  }
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "ci",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ],
+						  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+						},
+						"style": {
+						  "color": "#fff",
+						  "background-color": "rgb(106, 168, 79)",
+						  "margin": "5px"
+						}
+					  },
+					  {
+						"label": "控制板1",
+						"type": "block",
+						"source": "BLOCK",
+						"children": [
+						  {
+							"type": "column",
+							"col": 12,
+							"children": [
+							  {
+								"label": "线图",
+								"type": "echart",
+								"source": "LINECHART",
+								"data": {
+								  "applied": false,
+								  "model": {
+									"id": 204
+								  },
+								  "resource": [
+									"rootCi"
+								  ],
+								  "timespan": {
+									"value": 168,
+									"unit": "hour"
+								  },
+								  "format": "年月日",
+								  "frequency": {
+									"value": 86400,
+									"unit": "second"
+								  },
+								  "legend": {
+									"manual": "[\n  \"第一组\"\n]",
+									"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+								  },
+								  "xAxis": {
+									"manual": [
+									  [
+										"2016/6/1",
+										"2016/6/2",
+										"2016/6/3",
+										"2016/6/4",
+										"2016/6/5",
+										"2016/6/6",
+										"2016/6/7",
+										"2016/6/8",
+										"2016/6/9",
+										"2016/6/10",
+										"2016/6/11",
+										"2016/6/12",
+										"2016/6/13",
+										"2016/6/14",
+										"2016/6/15",
+										"2016/6/16",
+										"2016/6/17"
+									  ]
+									],
+									"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+								  },
+								  "xAxisType": "category",
+								  "yAxis": {
+									"manual": [
+									  [
+										"第一个数据",
+										"第二个数据",
+										"第三个数据",
+										"第四个数据",
+										"第五个数据",
+										"第六个数据"
+									  ]
+									],
+									"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+								  },
+								  "yAxisType": "value",
+								  "series": {
+									"bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})",
+									"manual": "[{\n  \"name\" : \"第一组\",\n  \"data\" : [\n    12,14,14,15,13,14,12,16,14,13,12,16,14,13,16,14\n  ]\n}]"
+								  }
+								},
+								"advance": {
+								  "getfunction": "kpiDataService.getValueList",
+								  "category": "time",
+								  "condition": [
+									"kpi",
+									"{object:kpiQueryModel}"
+								  ]
+								},
+								"parameters": {
+								  "title": "",
+								  "subtitle": "附标题"
+								},
+								"style": {
+								  "margin": "5px",
+								  "width": "100%",
+								  "height": "400px"
+								},
+								"echart": {
+								  "general": {},
+								  "title": {
+									"textStyle": {
+									  "fontWeight": "bold",
+									  "fontSize": 16
+									},
+									"padding": 30
+								  },
+								  "tooltip": {
+									"trigger": "axis"
+								  },
+								  "legend": {
+									"data": [
+									  "数据1",
+									  "数据2",
+									  "数据3"
+									]
+								  },
+								  "grid": [
+									{}
+								  ],
+								  "xAxis": [
+									{
+									  "boundaryGap": false,
+									  "axisLine": {
+										"lineStyle": {
+										  "color": "#b0b0b0"
+										}
+									  }
+									}
+								  ],
+								  "yAxis": [
+									{
+									  "boundaryGap": false,
+									  "axisLine": {
+										"lineStyle": {
+										  "color": "#b0b0b0"
+										}
+									  }
+									}
+								  ],
+								  "series": [
+									{
+									  "type": "line",
+									  "name": "数据1",
+									  "areaStyle": {
+										"normal": {
+										  "color": "rgb(224, 102, 102)"
+										}
+									  },
+									  "lineStyle": {
+										"normal": {
+										  "color": "rgb(224, 102, 102)"
+										}
+									  },
+									  "markPoint": {
+										"data": []
+									  }
+									},
+									{
+									  "type": "line",
+									  "name": "数据2",
+									  "markPoint": {
+										"data": []
+									  }
+									},
+									{
+									  "type": "line",
+									  "name": "数据3",
+									  "markPoint": {
+										"data": [
+										  {
+											"name": "最大值",
+											"type": "max"
+										  },
+										  {
+											"name": "最小值",
+											"type": "min"
+										  }
+										]
+									  }
+									}
+								  ]
+								},
+								"$index": [
+								  2,
+								  0
+								]
+							  }
+							]
+						  }
+						],
+						"style": {
+						  "margin": "5px",
+						  "border": "0",
+						  "background-color": "rgb(255, 255, 255)"
+						},
+						"data": {
+						  "series": {}
+						},
+						"$index": [
+						  1,
+						  0
+						]
+					  }
+					],
+					"col": 3
+				  }
+				]
+			  }
+			],
+			"display": "block"
+		  },
+		  {
+			"tabName": "设备列表",
+			"tabId": "1",
+			"type": "tabItem",
+			"children": [
+			  {
+				"type": "listTable",
+				"advance": {
+				  "getfunction": "serviceCenterService.resources.getAll",
+				  "expression": "{\n  \"on\" : {\n    \"click\" : function(row){\n      console.log(row)\n    }\n  },\n  \"format\" : [\n    {\n      \"name\": \"设备名\",\n      \"value\": \"{item:label}\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"流量\",\n      \"value\": \"{random:(0,100)} + 'm³ /s'\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"进水压力\",\n      \"value\": \"{random:(0,100)} + 'Pa'\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"出水压力\",\n      \"value\": \"{random:(0,100)} + 'Pa'\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"温度\",\n      \"value\": \"{random:(0,100)} + '℃'\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"创建日期\",\n      \"value\": \"{item:createTime}\",\n      \"type\": \"date\"\n    },\n    {\n      \"name\": \"健康度\",\n      \"value\": \"{random:(0,100)}\",\n      \"type\": \"progress\"\n    },\n    {\n      \"name\": \"当前状态\",\n      \"value\": \"{item:managedStatus}\",\n      \"type\": \"status\"\n    }\n  ]\n}"
+				},
+				"source": "LISTTABLE",
+				"label": "图列表",
+				"style": {
+				  "margin": "5px",
+				  "font-size": "12px"
+				},
+				"$index": [
+				  1,
+				  0
+				]
+			  }
+			],
+			"display": "none"
+		  },
+		  {
+			"tabName": "告警",
+			"tabId": "2",
+			"type": "tabItem",
+			"children": [
+			  {
+				"label": "工单列表",
+				"type": "listTable",
+				"source": "LISTTABLE",
+				"advance": {
+				  "getfunction": "alertService.queryByView",
+				  "expression": "{\n  \"on\" : {\n    \"click\" : function(event){\n      console.log(event);\n    }\n  },\n  \"format\" : [\n    {\n      \"name\": \"工单号\",\n      \"value\": \"{item:devName}\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"内容\",\n      \"value\": \"{item:message}\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"紧急度\",\n      \"value\": \"{item:priorityCode}\",\n      \"type\": \"status\"\n    }\n  ]\n}",
+				  "condition": "[\"{alertView:viewId}\",null]"
+				},
+				"style": {
+				  "margin": "5px",
+				  "font-size": "12px"
+				},
+				"$index": [
+				  1,
+				  0
+				]
+			  }
+			],
+			"display": "none"
+		  },
+		  {
+			"tabName": "工单",
+			"tabId": "3",
+			"type": "tabItem",
+			"children": [
+			  {
+				"label": "工单列表",
+				"type": "listTable",
+				"source": "LISTTABLE",
+				"advance": {
+				  "getfunction": "ticketTaskService.getTicketsByStatus",
+				  "expression": "{\n  \"on\" : {\n    \"click\" : function(event){\n      console.log(event);\n    }\n  },\n  \"format\" : [\n    {\n      \"name\": \"工单号\",\n      \"value\": \"{item:ticketNo}\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"内容\",\n      \"value\": \"{item:message}\",\n      \"type\": \"text\"\n    },\n    {\n      \"name\": \"紧急度\",\n      \"value\": \"{item:priorityCode}\",\n      \"type\": \"status\"\n    }\n  ]\n}",
+				  "condition": "[100]"
+				},
+				"style": {
+				  "margin": "5px",
+				  "font-size": "12px"
+				},
+				"$index": [
+				  1,
+				  0
+				]
+			  }
+			],
+			"display": "none"
+		  }
+		],
+		"tabInx": "0",
+		"source": "TAB",
+		"label": "控制板1",
+		"": "",
+		"parameters": {
+		  "align": "horizental"
+		},
+		"style": {
+		  "margin": "5px"
+		},
+		"data": {
+		  "series": {}
+		}
+	  }
+	],
+	"col": 12
+  }
+}

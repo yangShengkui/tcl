@@ -1,0 +1,113 @@
+/*! Rappid v2.0.1 - HTML5 Diagramming Framework
+
+Copyright (c) 2015 client IO
+
+ 2016-12-02 
+
+
+This Source Code Form is subject to the terms of the Rappid License
+, v. 2.0. If a copy of the Rappid License was not distributed with this
+file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
+ or from the Rappid archive as was distributed by client IO. See the LICENSE file.*/
+
+.inspector-container {
+  border: 1px solid #333;
+  border-top: 1px solid #4f4f4f;
+  color: #bcbcbc;
+  /*text-shadow: 0 -1px 0 #000;*/
+  background-color: #333;
+}
+
+.inspector .group {
+  padding-top: 0;
+}
+
+.inspector .group.closed {
+  height: 26px;
+}
+
+.inspector output {
+  float: left;
+  font-size: 14px;
+  color: #e6e6e6;
+  padding-top: 0;
+}
+
+.inspector .units {
+  float: left;
+  font-size: 14px;
+}
+
+.inspector .btn-list-add,
+.inspector .btn-list-del {
+  background: 0 0;
+  color: #fff;
+  border: 1px solid gray;
+  cursor: pointer;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px #000;
+  min-width: 23px;
+  margin: 2px 8px 2px 2px;
+}
+
+
+/*.inspector .field {
+  padding:0;
+}*/
+
+.multiselect-container {
+  position: relative;
+  width: 100%;
+}
+
+.multiselect-container.dropdown-menu>li>a {
+  display: block;
+  float: left;
+  width: 100%;
+  margin-right: 8px;
+  white-space: normal;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.tab-pane .inspector {
+  position: inherit;
+}
+
+.tab-pane .inspector .group {
+  padding: 0 0 15px 0;
+}
+
+.tab-pane .inspector .group>h3 {
+  display: none;
+}
+
+.tab-pane .inspector .group .field {
+  padding-bottom: 8px;
+}
+
+.tab-pane .inspector .group .select2 {
+  width: 100% !important;
+}
+
+.tab-pane .inspector .group .multiselect-container.dropdown-menu {
+  margin-top: -2px;
+  border-radius: 0;
+  width: 100%;
+}
+
+.tab-pane .inspector label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 0px;
+  font-weight: 400;
+  font-size: inherit;
+}
+
+.tab-pane .inspector label.with-output {
+  float: left;
+}
+
+.color-picker-block {
+  display: block;
+}

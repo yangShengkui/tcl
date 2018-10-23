@@ -1,0 +1,74 @@
+<config injector=" $q, $timeout, $location"
+></config>
+<template>
+  <div>
+    <input spellcheck="false" class="jscolor" style="display : none;">
+    <span ng-bind="ngModel" class="color-txt" ng-style="{ color : ngModel }"></span>
+  </div>
+</template>
+<script type="text/javascript">
+  export default function( q, $timeout,$location){
+    return {
+      scope : {
+        ngModel : "=?",
+        config : "=?",
+      },
+      require : '?ngModel',
+      replace : true,
+      link(scope, element, attr, ngModel) {
+        let inp = element.find("input");
+        function getSpectrum(){
+          let defer = q.defer();
+          $.fn.spectrum
+            ? defer.resolve("success")
+            : window['require'](['spectrum'], (s)=>{
+            defer.resolve("success");
+          })
+          return defer.promise;
+        }
+        getSpectrum().then(() => {
+          inp.spectrum({
+            allowEmpty: true,
+            showPalette: true,
+            showInput: true,
+            hideAfterPaletteSelect: true,
+            color: null,
+            change: function(color) {
+              var colorCode = color ? ( color.toName() || color.toHexString()) : null;
+              ngModel.$setViewValue(colorCode);
+            },
+            palette: [
+              [null, "#000", "#444", "#666", "#999", "#ccc", "#eee", "#f3f3f3", "#fff"],
+              ["#f00", "#f90", "#ff0", "#0f0", "#0ff", "#00f", "#90f", "#f0f"],
+              ["#f4cccc", "#fce5cd", "#fff2cc", "#d9ead3", "#d0e0e3", "#cfe2f3", "#d9d2e9", "#ead1dc"],
+              ["#ea9999", "#f9cb9c", "#ffe599", "#b6d7a8", "#a2c4c9", "#9fc5e8", "#b4a7d6", "#d5a6bd"],
+              ["#e06666", "#f6b26b", "#ffd966", "#93c47d", "#76a5af", "#6fa8dc", "#8e7cc3", "#c27ba0"],
+              ["#c00", "#e69138", "#f1c232", "#6aa84f", "#45818e", "#3d85c6", "#674ea7", "#a64d79"],
+              ["#900", "#b45f06", "#bf9000", "#38761d", "#134f5c", "#0b5394", "#351c75", "#741b47"],
+              ["#600", "#783f04", "#7f6000", "#274e13", "#0c343d", "#073763", "#20124d", "#4c1130"]
+            ]
+          });
+
+        });
+        ngModel.$render = function (e) {
+          getSpectrum().then(() => {
+            inp.spectrum('set', ngModel.$viewValue || null);
+          });
+        };
+        scope.$on('$destroy',function () {
+          inp.spectrum("destroy");
+        })
+      }
+    }
+  }
+</script>
+<style type="less" scoped="true">
+  .sp-replacer {
+    padding : 4px;
+  }
+  .color-txt{
+    line-height : 32px;
+    margin-left : 10px;
+    font-weight : bold;
+  }
+</style>

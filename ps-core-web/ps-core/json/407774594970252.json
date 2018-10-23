@@ -1,0 +1,21 @@
+{
+  "type": "absolute",
+  "setting": {
+    "viewTitle": "青岛展厅视图0910",
+    "description": "青岛展厅视图0910",
+    "cls": "qingdao0910"
+  },
+  "data": [
+    {
+      "type": "view",
+      "attributes": {
+        "viewId": 407774594970263
+      },
+      "position": {
+        "top": 978,
+        "left": "9.921875%",
+        "width": "40.3125%",
+        "height": 162
+      }}
+  ]
+}

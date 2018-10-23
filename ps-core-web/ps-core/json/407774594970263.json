@@ -1,0 +1,491 @@
+{
+  "type": "relative",
+  "setting": {
+    "viewTitle": "待办事项"
+  },
+  "data": [
+    {
+      "type": "row",
+      "children": [
+        {
+          "type": "col",
+          "col": 6,
+          "children": [
+            {
+              "type": "row",
+              "children": [
+                {
+                  "type": "col",
+                  "col": 3,
+                  "children": [
+                    {
+                      "type": "title",
+                      "attributes": {
+                        "text": "待评估报价",
+                        "fontSize": "18px",
+                        "color": "#34F8B4"
+                      }
+                    }
+                  ],
+                  "inx": 3
+                },
+                {
+                  "type": "col",
+                  "col": 4,
+                  "children": [
+                    {
+                      "type": "title",
+                      "attributes": {
+                        "text": "ORD201809220002004",
+                        "fontSize": "18px",
+                        "color": "#FFFFFF"
+                      }
+                    }
+                  ],
+                  "inx": 7
+                },
+                {
+                  "type": "col",
+                  "col": 3,
+                  "children": [
+                    {
+                      "type": "title",
+                      "attributes": {
+                        "text": "中国航天",
+                        "fontSize": "18px",
+                        "color": "#FFFFFF"
+                      }
+                    }
+                  ],
+                  "inx": 10
+                },
+                {
+                  "type": "col",
+                  "col": 2,
+                  "children": [
+                    {
+                      "type": "title",
+                      "attributes": {
+                        "text": "0",
+                        "fontSize": "18px",
+                        "color": "#ffffff"
+                      }
+                    }
+                  ],
+                  "inx": 12
+                }
+              ],
+              "attributes": {
+                "class": ""
+              }
+            }
+          ],
+          "inx": 6
+        },
+        {
+          "type": "col",
+          "col": 6,
+          "children": [
+            {
+              "type": "row",
+              "children": [
+                {
+                  "type": "col",
+                  "col": 3,
+                  "children": [
+                    {
+                      "type": "title",
+                      "attributes": {
+                        "text": "-",
+                        "fontSize": "18px",
+                        "color": "#FFFFFF"
+                      }
+                    }
+                  ],
+                  "inx": 3
+                },
+                {
+                  "type": "col",
+                  "col": 3,
+                  "children": [
+                    {
+                      "type": "times",
+                      "attributes": {
+                        "width": 200,
+                        "height": "30",
+                        "fontSize": "18px",
+                        "color": "#FFFFFF",
+                        "textAlign": "left",
+                        "hourpoor": 0,
+                        "daypoor": "3",
+                        "format": "yyyy-MM-dd",
+                        "real": "false"
+                      }
+                    }
+                  ],
+                  "inx": 6
+                },
+                {
+                  "type": "col",
+                  "col": 3,
+                  "children": [
+                    {
+                      "type": "times",
+                      "attributes": {
+                        "width": "200",
+                        "height": "40",
+                        "fontSize": "18px",
+                        "color": "#FFFFFF",
+                        "textAlign": "left",
+                        "hourpoor": 0,
+                        "daypoor": "",
+                        "format": "yyyy-MM-dd",
+                        "real": "false"
+                      }
+                    }
+                  ],
+                  "inx": 9
+                },
+                {
+                  "type": "col",
+                  "col": 3,
+                  "children": [],
+                  "inx": 12
+                }
+              ],
+              "attributes": {
+                "class": ""
+              }
+            }
+          ],
+          "inx": 12
+        }
+      ],
+      "attributes": {
+        "class": ""
+      }
+    },
+    {
+      "type": "row",
+      "children": [
+        {
+          "type": "col",
+          "col": 6,
+          "children": [
+            {
+              "type": "row",
+              "children": [
+                {
+                  "type": "col",
+                  "col": 3,
+                  "children": [
+                    {
+                      "type": "title",
+                      "attributes": {
+                        "text": "待评估报价",
+                        "fontSize": "18px",
+                        "color": "#34F8B4"
+                      }
+                    }
+                  ],
+                  "inx": 3
+                },
+                {
+                  "type": "col",
+                  "col": 4,
+                  "children": [
+                    {
+                      "type": "title",
+                      "attributes": {
+                        "text": "ORD201809220002003",
+                        "fontSize": "18px",
+                        "color": "#FFFFFF"
+                      }
+                    }
+                  ],
+                  "inx": 7
+                },
+                {
+                  "type": "col",
+                  "col": 3,
+                  "children": [
+                    {
+                      "type": "title",
+                      "attributes": {
+                        "text": "中国航天",
+                        "fontSize": "18px",
+                        "color": "#FFFFFF"
+                      }
+                    }
+                  ],
+                  "inx": 10
+                },
+                {
+                  "type": "col",
+                  "col": 2,
+                  "children": [
+                    {
+                      "type": "title",
+                      "attributes": {
+                        "text": "0",
+                        "fontSize": "18px",
+                        "color": "#ffffff"
+                      }
+                    }
+                  ],
+                  "inx": 12
+                }
+              ],
+              "attributes": {
+                "class": ""
+              }
+            }
+          ],
+          "inx": 6
+        },
+        {
+          "type": "col",
+          "col": 6,
+          "children": [
+            {
+              "type": "row",
+              "children": [
+                {
+                  "type": "col",
+                  "col": 3,
+                  "children": [
+                    {
+                      "type": "title",
+                      "attributes": {
+                        "text": "-",
+                        "fontSize": "18px",
+                        "color": "#FFFFFF"
+                      }
+                    }
+                  ],
+                  "inx": 3
+                },
+                {
+                  "type": "col",
+                  "col": 3,
+                  "children": [
+                    {
+                      "type": "times",
+                      "attributes": {
+                        "width": 200,
+                        "height": "30",
+                        "fontSize": "18px",
+                        "color": "#FFFFFF",
+                        "textAlign": "left",
+                        "hourpoor": 0,
+                        "daypoor": "3",
+                        "format": "yyyy-MM-dd",
+                        "real": "false"
+                      }
+                    }
+                  ],
+                  "inx": 6
+                },
+                {
+                  "type": "col",
+                  "col": 3,
+                  "children": [
+                    {
+                      "type": "times",
+                      "attributes": {
+                        "width": "200",
+                        "height": "40",
+                        "fontSize": "18px",
+                        "color": "#FFFFFF",
+                        "textAlign": "left",
+                        "hourpoor": 0,
+                        "daypoor": "",
+                        "format": "yyyy-MM-dd",
+                        "real": "false"
+                      }
+                    }
+                  ],
+                  "inx": 9
+                },
+                {
+                  "type": "col",
+                  "col": 3,
+                  "children": [],
+                  "inx": 12
+                }
+              ],
+              "attributes": {
+                "class": ""
+              }
+            }
+          ],
+          "inx": 12
+        }
+      ],
+      "attributes": {
+        "class": ""
+      }
+    },
+    {
+      "type": "row",
+      "children": [
+        {
+          "type": "col",
+          "col": 6,
+          "children": [
+            {
+              "type": "row",
+              "children": [
+                {
+                  "type": "col",
+                  "col": 3,
+                  "children": [
+                    {
+                      "type": "title",
+                      "attributes": {
+                        "text": "待评估报价",
+                        "fontSize": "18px",
+                        "color": "#34F8B4"
+                      }
+                    }
+                  ],
+                  "inx": 3
+                },
+                {
+                  "type": "col",
+                  "col": 4,
+                  "children": [
+                    {
+                      "type": "title",
+                      "attributes": {
+                        "text": "ORD201809220002002",
+                        "fontSize": "18px",
+                        "color": "#FFFFFF"
+                      }
+                    }
+                  ],
+                  "inx": 7
+                },
+                {
+                  "type": "col",
+                  "col": 3,
+                  "children": [
+                    {
+                      "type": "title",
+                      "attributes": {
+                        "text": "中国航天",
+                        "fontSize": "18px",
+                        "color": "#FFFFFF"
+                      }
+                    }
+                  ],
+                  "inx": 10
+                },
+                {
+                  "type": "col",
+                  "col": 2,
+                  "children": [
+                    {
+                      "type": "title",
+                      "attributes": {
+                        "text": "0",
+                        "fontSize": "18px",
+                        "color": "#ffffff"
+                      }
+                    }
+                  ],
+                  "inx": 12
+                }
+              ],
+              "attributes": {
+                "class": ""
+              }
+            }
+          ],
+          "inx": 6
+        },
+        {
+          "type": "col",
+          "col": 6,
+          "children": [
+            {
+              "type": "row",
+              "children": [
+                {
+                  "type": "col",
+                  "col": 3,
+                  "children": [
+                    {
+                      "type": "title",
+                      "attributes": {
+                        "text": "-",
+                        "fontSize": "18px",
+                        "color": "#FFFFFF"
+                      }
+                    }
+                  ],
+                  "inx": 3
+                },
+                {
+                  "type": "col",
+                  "col": 3,
+                  "children": [
+                    {
+                      "type": "times",
+                      "attributes": {
+                        "width": 200,
+                        "height": "30",
+                        "fontSize": "18px",
+                        "color": "#FFFFFF",
+                        "textAlign": "left",
+                        "hourpoor": 0,
+                        "daypoor": "3",
+                        "format": "yyyy-MM-dd",
+                        "real": "false"
+                      }
+                    }
+                  ],
+                  "inx": 6
+                },
+                {
+                  "type": "col",
+                  "col": 3,
+                  "children": [
+                    {
+                      "type": "times",
+                      "attributes": {
+                        "width": "200",
+                        "height": "30",
+                        "fontSize": "18px",
+                        "color": "#FFFFFF",
+                        "textAlign": "left",
+                        "hourpoor": 0,
+                        "daypoor": "",
+                        "format": "yyyy-MM-dd",
+                        "real": "false"
+                      }
+                    }
+                  ],
+                  "inx": 9
+                },
+                {
+                  "type": "col",
+                  "col": 3,
+                  "children": [],
+                  "inx": 12
+                }
+              ],
+              "attributes": {
+                "class": ""
+              }
+            }
+          ],
+          "inx": 12
+        }
+      ],
+      "attributes": {
+        "class": ""
+      }
+    }
+  ]
+}

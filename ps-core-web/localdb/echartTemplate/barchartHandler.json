@@ -1,0 +1,87 @@
+{
+  "layout": {
+    "type": "column",
+    "children": [
+      {
+        "type": "row",
+        "source": "ROW",
+        "parameters": {
+          "alignment": "bootstrap"
+        },
+        "style": {},
+        "children": [
+          {
+            "type": "column",
+            "children": [
+              {
+                "label": "控制板2",
+                "type": "box",
+                "class": "box box-info",
+                "source": "BOX",
+                "parameters": {
+                  "title": "标题文字123123"
+                },
+                "style": {
+                  "font-size": "12px",
+                  "font-weight": "bold",
+                  "text-align": "left",
+                  "margin": "5px"
+                },
+                "children": [
+                  {
+                    "class": "box-body",
+                    "type": "box-body",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": [
+                          {
+                            "label": "控件组",
+                            "type": "ctrlgroup",
+                            "source": "CTRLGROUP",
+                            "advance": {
+                              "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n       [{\n          type : \"label123\",\n          value : \"按钮\"\n        },{\n          type : \"label\",\n          value : \"按钮\"\n        },{\n          type : \"button\",\n          value : \"按钮\"\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                            },
+                            "style": {
+                              "margin": "5px",
+                              "font-size": "12px"
+                            },
+                            "help": "../pdf/ctrlgroup.pdf",
+                            "parameters": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "class": "box-footer",
+                    "type": "box-footer",
+                    "children": [
+                      {
+                        "type": "column",
+                        "col": 12,
+                        "children": []
+                      }
+                    ]
+                  }
+                ],
+                "advance": {}
+              }
+            ],
+            "col": 6
+          },
+          {
+            "type": "column",
+            "children": [],
+            "col": 6
+          }
+        ]
+      }
+    ],
+    "col": 12
+  },
+  "setting": {
+    "padding": 15
+  }
+}

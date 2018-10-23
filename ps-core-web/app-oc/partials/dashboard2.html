@@ -1,0 +1,253 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+
+<!-- Main content -->
+<section class="content">
+  <!-- Info boxes -->
+  <div class="row">
+    <div ng-if="item.visible ==true" ng-repeat="item in totalItems" class="col-lg-3 col-xs-6">
+      <!-- small box -->
+      <div class="small-box {{item.bg}}">
+
+        <div class="inner" style="cursor : pointer" ng-click="gotoShow(item)">
+          <h3>{{item.value}}<sdown style="font-size: 20px">{{item.unit}}</sdown></h3>
+          <p>{{item.title}}</p>
+        </div>
+
+        <div class="icon">
+          <i class="{{item.icon}}"></i>
+        </div>
+        <a ng-show="totalItems.length > 4" href="#" class="small-box-footer dropdown-toggle" data-toggle="dropdown"><i class="fa fa-arrow-circle-down"></i></a>
+        <ul class="dropdown-menu">
+          <li ng-click="changeKpiDisPlay(item,subitem)" ng-if="subitem.visible ==false" ng-repeat="subitem in totalItems">
+            <a>{{subitem.title}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- ./col -->
+  </div>
+  <!-- /.row -->
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title" ng-bind="leftTitle"></h3>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <div class="btn-group">
+              <button class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown"><i class="fa fa-wrench"></i></button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a ng-click="changeBindData('week')">周数据</a></li>
+                <li><a ng-click="changeBindData('month')">月数据</a></li>
+              </ul>
+            </div>
+            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="col-md-8 hidden-xs">
+            <div class="chart" ng-repeat="item in dashboardItems">
+              <div style="height: 230px;" ng-controller="ViewChartsCtrl" echarts3-dom></div>
+            </div>
+            <!-- /.chart-responsive -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-4">
+            <p class="text-center">
+              <strong>处理情况</strong>
+            </p>
+            <div class="progress-group" ng-repeat="item in totalItems3">
+              <span class="progress-text">{{item.title}}</span>
+              <span class="progress-number"><b>{{item.value}}</b>%</span>
+              <div class="progress sm">
+                <div class="progress-bar {{item.lv}}" style="width: {{item.rate}}%"></div>
+              </div>
+            </div>
+          </div>
+          <!-- /.col -->
+          <!-- /.row -->
+        </div>
+        <!-- ./box-body -->
+        <div class="box-footer">
+          <div class="row">
+            <div class="col-sm-3 col-xs-6" ng-repeat="item in totalItems2">
+              <div class="description-block border-right">
+                <span class="description-percentage {{item.lv}}"><i class="fa {{item.state}}"></i> {{item.rate}}%</span>
+                <h5 class="description-header">{{item.value}}</h5>
+                <span class="description-text">{{item.title}}</span>
+              </div>
+              <!-- /.description-block -->
+            </div>
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.box-footer -->
+      </div>
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+
+  <!-- Main row -->
+  <div class="row">
+    <!-- Left col -->
+    <div class="col-md-8">
+      <!-- MAP & BOX PANE -->
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">设备分布情况</h3>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body no-padding">
+          <div class="row">
+            <div class="col-md-9 col-sm-8">
+              <div class="pad">
+                <!-- Map will be created here -->
+                <div ng-controller="ViewMapsCtrl" echarts2-dom style="height: 345px;"></div>
+
+              </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-md-3 col-sm-4">
+              <div class="pad box-pane-right bg-green" style="min-height: 280px" sparkline>
+                <div class="description-block margin-bottom" ng-repeat="item in totalItems4" on-finish-render-filters>
+                  <div class="sparkbar pad" data-color="#fff">{{item.valuelist}}</div>
+                  <h5 class="description-header">{{item.value}}</h5>
+                  <span class="description-text">{{item.title}}</span>
+                </div>
+              </div>
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+
+      <!-- TABLE: LATEST ORDERS -->
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">正在执行中工单</h3>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="table-responsive">
+            <table width="100%" class="table table-hover no-margin">
+              <thead>
+                <tr>
+                  <th>工单号</th>
+                  <th>内容</th>
+                  <!-- <th>状态</th> -->
+                  <th>紧急度</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="item in orderList">
+                  <td><a href="#/workorder/{{item.ticketNo}}">{{item.ticketNo}}</a></td>
+                  <td>{{item.message}}</td>
+                  <!-- <td>{{item.statuslab}}</td> -->
+                  <td><span class="label {{item.severitybg}}">{{item.severitylab}}</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.table-responsive -->
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer clearfix">
+          <!--a href="javascript:;" class="btn btn-sm btn-info btn-flat pull-left">发起工单</a>-->
+          <a href="#/workorder/1" class="btn btn-sm btn-default btn-flat pull-right">查看执行中工单</a>
+        </div>
+        <!-- /.box-footer -->
+      </div>
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+
+    <div class="col-md-4">
+
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">常见告警类型</h3>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="chart-responsive">
+                <div style="height: 200px;" name="dashboard" echarts3-dom></div>
+              </div>
+
+            </div>
+
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer no-padding">
+          <ul class="nav nav-pills nav-stacked">
+            <li ng-repeat="item in alertTypeInfos">
+              <a>{{item.category}} <span class="pull-right text-red"></i> {{item.alert_code_count}}条</span></a>
+            </li>
+
+          </ul>
+        </div>
+        <!-- /.footer -->
+      </div>
+      <!-- /.box -->
+
+      <!-- PRODUCT LIST -->
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">最新上线设备</h3>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <ul class="products-list product-list-in-box">
+            <li class="item" ng-repeat="device in deviceitems">
+              <!--<div class="product-img">
+                <i class="{{device.values.icon}}" style="font-size: 24px;"></i>
+              </div>-->
+              <div class="product-info">
+                
+                <a href="" ng-click="gotoDeviceShow(device)" class="product-title"><span class="label label-primary pull-left">{{device.createTime | date:'yyyy-MM-dd HH:mm'}}</span>{{device.label}}</a>
+                
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer text-center">
+          <a href="#/resource" class="uppercase">查看更多设备</a>
+        </div>
+        <!-- /.box-footer -->
+      </div>
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</section>
+<!-- /.content -->

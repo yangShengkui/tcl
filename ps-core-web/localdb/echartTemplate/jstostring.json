@@ -1,0 +1,144 @@
+{
+  "version": "V_2",
+  "groups": [
+    {
+      "id": 0,
+      "label": "将JS转化为字符串",
+      "path": "index",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "控制板1",
+            "type": "block",
+            "source": "BLOCK",
+            "style": {
+              "padding": "10px",
+              "margin": "5px",
+              "background-color": "#3c8dbc"
+            },
+            "advance": {
+              "expression": "{}"
+            },
+            "children": [
+              {
+                "type": "column",
+                "col": 12,
+                "children": [
+                  {
+                    "label": "文字",
+                    "type": "text",
+                    "source": "TEXT",
+                    "help": "http://localhost/app-free-style/index.html#/help/index%7Ctext/%5B%220%22,%7B%7D%5D",
+                    "data": {
+                      "applied": false,
+                      "kpi": [],
+                      "modelType": 300,
+                      "resfilltype": "parameter",
+                      "resource": [],
+                      "multipleCi": false,
+                      "multipleKpi": false,
+                      "series": {
+                        "manual": "拷贝图标样式到剪切板",
+                        "bind": "(function (source){\n  var formatter=function(elem){\n    return elem.value\n   }\n  return source.ci.getSeries(formatter);\n})"
+                      },
+                      "modelDisable": true
+                    },
+                    "style": {
+                      "font-size": "16px",
+                      "font-weight": "bold",
+                      "text-align": "left",
+                      "color": "rgb(255, 255, 255)"
+                    },
+                    "advance": {
+                      "getfunction": "kpiDataService.getValueList",
+                      "category": "ci",
+                      "condition": [
+                        "kpi",
+                        "{object:kpiQueryModel}"
+                      ],
+                      "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.setText(\"将JS转化为字符串\")\n        }\n    }\n}"
+                    },
+                    "url": "images/map/map1.png",
+                    "parameters": {}
+                  }
+                ]
+              }
+            ],
+            "url": "images/map/map1.png",
+            "parameters": {}
+          },
+          {
+            "label": "控制板1",
+            "type": "block",
+            "source": "BLOCK",
+            "style": {
+              "padding": "5px",
+              "margin": "5px",
+              "border": "1px solid #eee",
+              "background-color": "#fff",
+              "box-shadow": "1px 1px 10px 1px rgba(0,0,0,.2)",
+              "background": "#fff"
+            },
+            "advance": {
+              "expression": {}
+            },
+            "children": [
+              {
+                "type": "column",
+                "col": 12,
+                "children": [
+                  {
+                    "label": "控件组",
+                    "type": "ctrlgroup",
+                    "source": "CTRLGROUP",
+                    "advance": {
+                      "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      target.setValue(\"useDoubleSlash\", false)\n      var ctrlGroups = [\n       [{\n          type : \"label\",\n          value : \"双斜线\",\n          class : \"col-md-1\"\n        },{\n          type : \"toggle\",\n          class : \"col-md-6\",\n          on : {\n            change : function(elem){\n                target.setValue(\"useDoubleSlash\", elem.value);\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+                    },
+                    "style": {
+                      "margin": "5px",
+                      "font-size": "12px"
+                    },
+                    "help": "../pdf/ctrlgroup.pdf"
+                  },
+                  {
+                    "label": "代码编辑器",
+                    "type": "aceeditor",
+                    "source": "ACEEDITOR",
+                    "style": {
+                      "margin": "5px",
+                      "padding": "0",
+                      "height": "300px"
+                    },
+                    "advance": {
+                      "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.render();\n        },\n        change : function(event){\n            var target = event.target;\n            var global = event.global;\n            var useDoubleSlash = target.getValue(\"useDoubleSlash\");\n            console.log(useDoubleSlash);\n            if(useDoubleSlash) {\n                console.log(\"a\");\n                global.fire(\"setClipBoard\", \"\\\"\" + event.value.replace(/\\\\n/g, \"\\\\\\\\n\").replace(/\\n/g, \"\\\\n\").replace(/\\\"/g, \"\\\\\\\"\") + \"\\\"\");\n            } else {\n                console.log(\"b\");\n                global.fire(\"setClipBoard\", \"\\\"\" + event.value.replace(/\\n/g, \"\\\\n\").replace(/\\\"/g, \"\\\\\\\"\") + \"\\\"\");\n            }\n            \n        }\n    }\n}"
+                    },
+                    "parameters": {}
+                  },
+                  {
+                    "label": "控件组",
+                    "type": "ctrlgroup",
+                    "source": "CTRLGROUP",
+                    "advance": {
+                      "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      global.fire(\"setClipBoard\", \"\");\n    },\n    setClipBoard : function(event){\n        var target = event.target;\n        var params = event.params;\n        var ctrlGroups = [\n           [{\n              type : \"clipboardButton\",\n              value : \"转化样式\",\n              icon : \"glyphicon glyphicon-pencil\",\n              btnclass : \"btn btn-primary\",\n              class : \"col-md-12\",\n              clipboardText : params,\n              on : {\n                  save : function(){\n                      target.growl(\"已保存到剪切板\")\n                  }\n              }\n            }]\n          ];\n          event.target.render(ctrlGroups);\n    }\n  }\n}"
+                    },
+                    "style": {
+                      "margin": "5px",
+                      "font-size": "12px"
+                    },
+                    "help": "../pdf/ctrlgroup.pdf",
+                    "parameters": {}
+                  }
+                ]
+              }
+            ],
+            "url": "images/map/map1.png"
+          }
+        ],
+        "col": 12
+      },
+      "$$hashKey": "object:1294"
+    }
+  ],
+  "setting": "setting = {\n  \"showNavi\" : false,\n  \"style\" : {\n    \"padding\" : \"5px\",\n    \"background\" : \"-webkit-linear-gradient(top,#eee,#fff)\"\n  }\n}"
+}

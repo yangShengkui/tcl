@@ -1,0 +1,18 @@
+
+<div class="modal-dialog" >
+  <div class="modal-content">
+    <div class="modal-header ">
+      <button type="button" ng-click="closeDialog();" class="close" >×</button>
+      <h4 class="modal-title info-box-number">角色分配功能</h4>
+    </div>
+    <div class="modal-body clearfix row ">
+      <div style=" height: 300px;overflow: auto;margin-left: 15px;">
+        <ul  class="ztree" id="roleTree" ztreedata="treeData" ztree-checkable></ul>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" ng-click="userRoleOdd();">确定</button>
+      <button class="btn btn-default" ng-click="closeDialog();" >取消</button>
+    </div>
+  </div>
+</div>

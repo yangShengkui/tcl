@@ -1,0 +1,134 @@
+<div id="bootstrap-dialog" class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2 padding-top-10 padding-bottom-10">
+        <a role="button" class="close" ng-click="closeThisDialog()">×</a>
+        <h4 class="modal-title info-box-number" ng-bind="dialog.title"></h4>
+      </div>
+      <div class="margin-top-2 alert-info-dialog t-sty" ng-if="dialog.note">
+        <i class="proudsmart ps-fail c-f29047  i-con"></i>
+        <b bo-text="'msg.cm.lb.tips'|translate">提醒：</b>
+        <span class="c-f29047" style="font-size: 12px;" ng-bind="dialog.note.message"></span>
+      </div>
+      <div class="modal-body padding-top-10 no-pad-bottom">
+        <form role="form form-inline" class="form-horizontal" name="userForm">
+          <div class="simple-form-field" class="row">
+            <ul class="nav nav-tabs">
+              <li ng-repeat="tab in dialog.tabs" ng-click="naviClick(tab.id)" role="presentation" ng-class="{true:'active'}[$tabInx==tab.id]">
+                <a ng-bind="tab.label" style="cursor:pointer;"></a>
+              </li>
+            </ul>
+            <div ng-repeat="tab in dialog.tabs" ng-show="$tabInx == tab.id" style="margin: 20px auto; min-height: 300px;">
+              <div class="form-group margin-bottom-10" ng-repeat="item in tab.inputs" ng-if="item.apply != false">
+                <div class="col-sm-4 dialog-control-label no-padding-right dialog-control-h" style="height:auto;">
+                  <span class="text-danger" ng-if="item.composory">*</span>
+                  <span ng-bind="item.label?item.label + ':' : ''"></span>
+                </div>
+                <div class="col-sm-7 padding-left-5 dialog-control-h" style="height:auto;">
+                  <span style="padding-left : 20px;color : #888;" ng-if="item.type=='text'" ng-bind="{true : item.value, false: item.format(item.value)}[item.format==undefined]"></span>
+                  <div class="input-group" ng-if="item.type=='input' || item.type=='text'" style="width:200px;">
+                    <span class="input-group-addon" ng-if="item.textBefore" ng-bind="item.textBefore"></span>
+                    <input type="text" class="form-control dialog-inp-text input-sm" ng-change="item.events.change(item)" maxlength="item.maxlength" ng-model="item.value" placeholder="{{item.placeholder}}" ng-blur="item.events.blur(item)" />
+                    <span class="input-group-addon" ng-if="item.textAfter" ng-bind="item.textAfter"></span>
+                  </div>
+				  <!--加了一个number 输入框-->
+                  <div class="input-group" ng-if="item.type=='number'" style="width:200px;">
+                    <span class="input-group-addon" ng-if="item.textBefore" ng-bind="item.textBefore"></span>
+                    <input type="number" class="form-control dialog-inp-text input-sm" ng-change="item.events.change(item)" maxlength="item.maxlength" ng-model="item.value" placeholder="{{item.placeholder}}" ng-blur="item.events.blur(item)" />
+                    <span class="input-group-addon" ng-if="item.textAfter" ng-bind="item.textAfter"></span>
+                    <span ng-show="item.error" style="font-size: 12px;display: block;" class="text-danger " ng-bind="item.error"></span>
+                  </div>
+                  <textarea type="text" class="form-control dialog-inp-text input-sm" style="width:200px;height:150px;" ng-change="item.events.change(item)" maxlength="item.maxlength" ng-model="item.value" ng-if="item.type=='textarea'"></textarea>
+                  <div class="dropdowntree" ng-if="item.type=='tree'" selectclass = "form-control input-sm  padding-left-10" disabled="item.disabled" fontsize="item.fontsize" width="item.width" placeholder="请选择..." ng-model="item.value" dt-key="item.key" options="item.options" dt-mark="item.mark" data-change="item.events.change(item)" style="box-sizing: border-box; width:200px;"></div>
+                  <select class="form-control dialog-inp-text input-sm padding-left-10" ng-model="item.value" ng-change="item.events.change(item)" ng-if="item.type=='userType'" ng-disabled="item.disabled" ng-options="op as op.label for op in item.options">
+                    <option value="">请选择...</option>
+                  </select>
+                  <div class="input-group" ng-if="item.type=='select'" style="width:200px;">
+                    <span class="input-group-addon" ng-if="item.textBefore" ng-bind="item.textBefore"></span>
+                    <select class="form-control input-sm" style="border-radius: 0;" ng-model="item.value" ng-change="item.events.change(item)" ng-if="item.type=='select'" ng-disabled="item.disabled" ng-options="op.id as op.label for op in item.options">
+                      <option value="">请选择...</option>
+                    </select>
+                    <span class="input-group-addon" ng-if="item.textAfter" ng-bind="item.textAfter"></span>
+                  </div>
+                  <select class="form-control dialog-inp-text input-sm" ng-model="item.value" ng-change="item.events.change(item)" ng-if="item.type=='multiple'" ng-disabled="item.disabled" multiple="multiple" buttonclass="btn btn-default btn-sm multiselect-btn" bootstrap-multiselect numberdisplayed="2" buttonWidth="202px" ng-options="op.id as op.label for op in item.options">
+                  </select>
+                  <div ng-model="item.value" ng-if="item.type=='codeMirror'" code-mirror-editor data-config="{showCopy:false,showPaste:false}"></div>
+                  <label ng-repeat="op in item.options" ng-if="item.type=='checkbox'" style="display: inline;">
+                    <div class="icheckbox_square-blue" ng-class="{true:'checked', false:''}[op.value]" style="position: relative;">
+                      <input type="checkbox" ng-model="op.value" class="ng-pristine ng-untouched ng-valid ng-empty" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
+                      <ins ng-bind="op.label" class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
+                      </ins>
+                    </div>
+                    <span ng-bind="op.label" style="font-size : 12px; padding:0 6px; font-weight: normal;"></span>
+                  </label>
+                  <div ng-if="item.type=='radio'" ng-model="item.value">
+                    <span ng-repeat="radio in item.options">
+                      <input type="radio" ng-checked="radio.id==item.value" ng-click="item.events.click(radio)"/>
+                      <label ng-bind="radio.label"></label>
+                    </span>
+                  </div>
+                  <div ng-if="item.type=='cronGen'" ng-model="item.value" cron-gen style="width:200px;"></div>
+                  <div ng-if="item.type=='kpiSelector'" ng-model="item.value" kpi-selector style="width:200px;" data-options="item.options"></div>
+                  <div fb-toggle ng-model="item.value" ng-if="item.type=='toggle'" style="margin:2px 0;"></div>
+                  <table ng-if="item.type=='groupSelect'" style="width:200px;">
+                    <tr>
+                      <td ng-repeat="elem in item.groups">
+                        <div class="input-group" style="width:100px;">
+                          <span class="input-group-addon" ng-if="elem.textBefore" ng-bind="elem.textBefore"></span>
+                          <input type="text" ng-if="elem.type=='input'" style="width:60px !important;" class="form-control dialog-inp-text input-sm" ng-change="elem.events.change(item)" maxlength="elem.maxlength" ng-model="elem.value" placeholder="{{elem.placeholder}}" ng-blur="elem.events.blur(item)" />
+                          <select class="form-control input-sm" style="border-radius: 0;width:60px;" ng-model="elem.value" ng-change="elem.events.change(item)" ng-if="elem.type=='select'" ng-disabled="elem.disabled" ng-options="op.id as op.label for op in elem.options">
+                            <option  ng-if="elem.label != '开始计算' || elem.label != '统计频率' " value="">请选择...</option>
+                          </select>
+                          <span class="input-group-addon" ng-if="elem.textAfter" ng-bind="elem.textAfter"></span>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                  <!--
+                  <div class="input-group-btn" style="display: inline; position:absolute; left:200px; top:0px;" ng-if="(item.composory!=true || item.right!=false) && (item.type != 'codeMirror')">
+                    <span class="btn btn-sm">
+                      <span class="glyphicon glyphicon-ok" style="color:green;"></span>
+                    </span>
+                  </div>
+                  -->
+                </div>
+                <div class="box-body table-responsive" ng-if="item.type=='table'">
+                <div class="t-sty" style="margin-top: -19px;">
+                  <b bo-text="'msg.cm.lb.tips'|translate">提醒：</b>
+                  <span class="c-f29047" style="font-size: 12px;" ng-bind="item.message"></span>
+                </div>
+                  <table class="table table-hover text-center" border="1" style="border: 1px solid #eee;" width="100%">
+                    <thead>
+                      <tr role="row">
+                        <th ng-repeat="elem in item.groups">
+                        <span class="text-danger" ng-if="elem.composory">*</span>
+                          <span ng-bind="elem.label"></span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr role="row" style="width: 300px;" ng-repeat="option in item.options">
+                        <td ng-repeat="elem in option.inputs">
+                          <input type="text" ng-if="elem.type=='input'" class="form-control input-sm" ng-change="elem.events.change(elem)" maxlength="elem.maxlength" ng-model="elem.value" placeholder="{{elem.placeholder}}" ng-blur="elem.events.blur(elem)" />
+                          <select class="form-control input-sm" style="padding:0 5px;" ng-model="elem.value" ng-change="elem.events.change(elem)" ng-if="elem.type=='select'" ng-disabled="elem.disabled" ng-options="op.id as op.label for op in elem.options">
+                            <option value="">请选择...</option>
+                          </select>
+                          <span ng-if="elem.type=='text'" ng-bind="elem.text"></span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <span ng-show="item.error" style="font-size: 12px;display: block;" class="text-danger " ng-bind="item.error"></span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer padding-top-10">
+        <button ng-repeat="btn in dialog.button" ng-class="btn.icon" ng-click="btn.fn(dialog)" ng-bind="btn.label" ng-class="btn.icon;" ng-disabled="{true : btn.disabledFn(), false : btn.disabled}[btn.disabled == undefined]">
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<section class="content" ng-style="setting.style" style="height:calc(100vh - 51px); overflow-x:hidden; overflow-y: auto; padding : 0;">
+  <div class="row" ng-if="setting.showNavi != false">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li ng-repeat="nav in navigation" ng-class="{true:'active'}[$index == navigation.length - 1]">
+                <a ng-bind="nav.label" ng-click="naviClick(nav.link, nav.param)" style="cursor : pointer; font-weight:bold;"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="box-body" ng-style="bgColorFn(bgColor)" style="min-height:calc(100vh - 120px);">
+          <div id="free-board" class="whole" ng-if="error==undefined">
+            <div class="col-md-12" instance="$parent.$parent.instance" f-board></div>
+          </div>
+          <div ng-if="error" style="padding:60px 30px; text-align: center;">
+            <span class="glyphicon glyphicon-warning-sign" style="color:orange;margin-right:30px;"></span><span ng-bind-html="error | trustHtml"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="free-board" class="whole" ng-if="setting.showNavi == false">
+    <div class="col-md-12" ng-class="setting.theme" instance="$parent.instance" f-board></div>
+  </div>
+</section>

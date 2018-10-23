@@ -1,0 +1,136 @@
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li ng-click="showalert()" class="active" name="tab1"><a role="button">{{menuitems['S12'].label?menuitems['S12'].label:'客户'}}信息</a></li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();" role="button"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body">
+          <button ng-show="menuitems['A06_S12']" class="btn btn-primary btn-sm" ng-if="inputItem.userMain.id || !baseConfig.customerConfig || (baseConfig.customerConfig && !baseConfig.customerConfig.createUser)" ng-click="saveUser('saveClient')"><i class="fa fa-save"></i><span class="hidden-sm" ng-disabled="clientForm.$invalid" disabled="disabled"> 保存{{menuitems['S12'].label?menuitems['S12'].label:'客户'}}</span></button>
+          <button ng-show="menuitems['A07_S12']" class="btn btn-primary btn-sm" ng-if="!inputItem.userMain.id && baseConfig.customerConfig && baseConfig.customerConfig.createUser" ng-click="saveUser('saveClient','createUser')"><i class="fa fa-user"></i><span class="hidden-sm" ng-disabled="clientForm.$invalid" disabled="disabled"> 保存{{menuitems['S12'].label?menuitems['S12'].label:'客户'}}并创建用户</span></button>
+        </div>
+        <div class="box-footer no-pad-top no-border">
+          <div class="bk-scope bk-theme-mini">
+            <dl class="bk-group">
+              <dt class="bk-group-title"><span>{{menuitems['S12'].label?menuitems['S12'].label:'客户'}}信息</span></dt>
+              <dd class="bk-group-detail">
+                <form id="client-form" role="form" name="clientForm">
+                  <div class="bk-form-row">
+                    <label class="bk-form-row-name">
+                      <font color="red">*</font>{{menuitems['S12'].label?menuitems['S12'].label:'客户'}}归属：</label>
+                    <div class="bk-form-row-cell">
+                      <div class="bk-form-row-li">
+                        <input class="bk-form-input bk-form-input-l2" disabled="true" ng-if="inputItem.userMain.id && inputItem.userMain.id >0" value="{{domainListDic[inputItem.userMain.domainPath].name}}" />
+                        <div ng-if="!inputItem.userMain.id || inputItem.userMain.id == -1" class="dropdowntree bk-select bk-select-l2 select-sm width-ctrl" autocomplete="off" ng-model="inputItem.userMain.domainPath" change="" key="domainPath" options="domainListTree" mark="nodes" required="required" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bk-form-row">
+                    <label class="bk-form-row-name">
+                      <font color="red">*</font>{{menuitems['S12'].label?menuitems['S12'].label:'客户'}}名称：</label>
+                    <div class="bk-form-row-cell">
+                      <div class="bk-form-row-li">
+                        <input type="text" name="clientName" autocomplete="off" ng-model="inputItem.userMain.customerName" class="bk-form-input bk-form-input-l2" placeholder="" maxlength="32" required="required">
+                        <!-- <span style="color: red;" ng-show="clientForm.clientName.$dirty && clientForm.clientName.$invalid">输入不正确</span> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bk-form-row">
+                    <label class="bk-form-row-name">
+                      <font color="red">*</font>主要联系人：</label>
+                    <div class="bk-form-row-cell">
+                      <div class="bk-form-row-li">
+                        <input type="text" autocomplete="off" ng-model="inputItem.userMain.customerContact" class="bk-form-input bk-form-input-l2" placeholder="" maxlength="20" required="required">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bk-form-row">
+                    <label class="bk-form-row-name">
+                      <font color="red">*</font>联系人职务：</label>
+                    <div class="bk-form-row-cell">
+                      <div class="bk-form-row-li">
+                        <select class="bk-select bk-select-l2" autocomplete="off" style="border: solid 1px #e8e8e8;" ng-model="inputItem.userMain.duty" ng-options="item.valueCode as item.label for item in jobs" required="required">
+                          <option>请选择...</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bk-form-row">
+                    <label class="bk-form-row-name">
+                      <font color="red">*</font>联系人电话：</label>
+                    <div class="bk-form-row-cell">
+                      <div class="bk-form-row-li">
+                        <input type="text" name="phone" autocomplete="off" ng-model="inputItem.userMain.customerPhone" class="bk-form-input bk-form-input-l2" placeholder="" ng-change="verifyFun(inputItem.userMain.customerPhone,'phone','user')" required="required">
+                        <!-- <span style="color:red;" ng-show="clientForm.phone.$dirty && mistakeMesg.userphone">请正确输入座机或手机号</span> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bk-form-row">
+                    <label class="bk-form-row-name"> 邮箱地址：</label>
+                    <div class="bk-form-row-cell">
+                      <div class="bk-form-row-li">
+                        <input type="text" name="email" autocomplete="off" ng-model=" inputItem.userMain.customerEmail" class="bk-form-input bk-form-input-l2" placeholder="" ng-change="verifyFun(inputItem.userMain.customerEmail,'email','user')" required="required">
+                        <!-- <span style="color:red" ng-show="clientForm.email.$dirty && mistakeMesg.useremail">请输入正确的邮箱地址</span> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bk-form-row">
+                    <label class="bk-form-row-name">
+                      <font color="red">*</font>所属区域：</label>
+                    <div class="bk-form-row-li">
+                      <select class="form-control bk-select bk-select-l1" ng-options="value.id as value.label for value in provinces"
+                        ng-model="inputItem.userMain.province" ng-change="inputItem.userMain.values.standardAddress = ''">
+                        <option value="">请选择省级...</option>
+                      </select>
+                      <select ng-disabled="!inputItem.userMain.province" class="form-control bk-select bk-select-l1" ng-options="value.id as value.label for value in cityDics[inputItem.userMain.province]"
+                        ng-model="inputItem.userMain.city" ng-change="inputItem.userMain.values.standardAddress = ''">
+                        <option value="">请选择市级...</option>
+                      </select>
+                      <select ng-disabled="!inputItem.userMain.city" class="form-control bk-select bk-select-l1" ng-options="value.id as value.label for value in districtDics[inputItem.userMain.city]"
+                        ng-model="inputItem.userMain.county" ng-change="inputItem.userMain.values.standardAddress = inputItem.userMain.county">
+                        <option value="">请选择县级...</option>
+                      </select>
+                      
+                      <!--<select class="form-control input-sm" style="display: inline;width: 32%;padding-right: 0;padding-left: 0;" ng-change="provinceClick(inputItem.userMain.province)" ng-model=" inputItem.userMain.province" ng-options="value.id as value.label for value in provinces" required></select>
+                      <select ng-disabled="!inputItem.userMain.province" ng-model="inputItem.userMain.city" ng-change="cityClick(inputItem.userMain.city)" class="form-control input-sm" style="display: inline;width: 32%; padding-right: 0;padding-left: 0;" ng-options="value.id as value.label for value in cityList"></select>
+                      <select ng-disabled="!inputItem.userMain.city" ng-model="inputItem.userMain.county" class="form-control input-sm" style="display: inline;width: 32%; padding-right: 0;padding-left: 0;" ng-options="value.id as value.label for value in districtList"></select>-->
+                    </div>
+                  </div>
+                  <div class="bk-form-row">
+                    <label class="bk-form-row-name">
+                      详细地址：</label>
+                    <div class="bk-form-row-cell">
+                      <div class="bk-form-row-li">
+                        <input type="text" name="address" autocomplete="off" ng-model="inputItem.userMain.customerAddress" class="bk-form-input bk-form-input-l2" placeholder="" maxlength="32" ng-biur="verifyFun(inputItem.userMain.customerAddress,address)">
+                        <span style="color: red;" class="bk-form-row-li-info bk-ml2" ng-show="clientForm.address.$error.maxlength">长度不超过32个字符</span>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </dd>
+            </dl>
+            <dl class="bk-group">
+              <dt class="bk-group-title"><span>其他联系人</span></dt>
+              <dd class="bk-group-detail">
+                <div class="bk-form-row">
+                  <button ng-show="menuitems['A08_S12']" ng-disabled="othercontactlist.length >= 5" ng-click="inputFun.addOther()" type="button" class="btn btn-primary btn-sm" style="width: 110px;height: 30px; margin: 0 10px 10px 0;"><i class="fa fa-plus"></i><span class="hidden-sm"> 添加其他联系人</span></button>
+                  <span style="color:red;">最多只能添加5位其他联系人</span>
+                  <div class="box-footer no-pad-top no-border">
+                    <table width="100%" class="table table-hover" id="usertable" client-other-table></table>
+                  </div>
+                </div>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

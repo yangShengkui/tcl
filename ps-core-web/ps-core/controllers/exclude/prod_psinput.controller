@@ -1,0 +1,64 @@
+<config router="prod_psinput"
+        injector="$scope,$q,resourceUIService,viewFlexService,apiService"
+></config>
+<template>
+    <div class="wrap">
+        <h1>ps-input指令封装</h1>
+        <ol>
+            <li>testcase为0，传入正则字符串 只能输入数字,限长6</li>
+            <li>testcase为1，传入fn，必须包含1和2的校验，限长5</li>
+            <li>testcase为2，默认不校验，只是限制输入长度，限长5</li>
+        </ol>
+        {{val}}
+        <!--不写config，会走默认的config-->
+        <ps-input ng-model="val" data-config="config"></ps-input>
+        {{val2}}
+        <!--不写config，会走默认的config-->
+        <ps-input ng-model="val2"></ps-input>
+    </div>
+</template>
+<script type="text/javascript">
+    export default function(scope,q,resourceUIService,viewFlexService,api){
+            var testcase = 0;
+            if(testcase == 0){//传入字符串正则
+                scope.val = '101';
+                scope.val2 = '101';
+                scope.config = {
+                    validInput : "^\\d+$",
+                    placeholder: '请输入数字',
+                    maxlength: 6
+                };
+            } else if(testcase == 1){//传入回调
+                scope.val = '10';
+                scope.val2 = '10';
+    //            $scope.val1 = '20';
+    //            scope.changeVal = function () {
+    //                scope.val = scope.val +'err';
+    //            };
+                scope.config = {
+                    validInput : function(val, success, error){
+                        if(val.indexOf("1") == -1){
+                            error("*val contian no 1");
+                        } else if(val.indexOf("2") == -1){
+                            error("*val contian no 2");
+                        } else {
+                            success('success');
+                        }
+                    },
+                    placeholder: '请输入数字包含1和2',
+                    maxlength: 5
+                };
+            } else if(testcase == 2){//什么也不传入
+    //            scope.val = '12';
+            }
+        };
+</script>
+<style type="less" scoped="true">
+    .wrap{
+        margin : 5px;
+        padding : 10px;
+        color : #333;
+        background-color : #eee;
+        border : 1px solid #ddd;
+    }
+</style>

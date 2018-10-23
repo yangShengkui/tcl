@@ -1,0 +1,62 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="dialog.button[1].fn();" class="close">×</a>
+        <h4 class="modal-title info-box-number" ng-bind="dialog.title"></h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal row" name="enterpriseForm">
+          <!-- <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger">*</span> <span>客户归属：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input class="form-control input-sm" disabled="true" ng-if="dialog.input.id && dialog.input.id >0" value="{{domainListDic[dialog.input.domainPath].name}}" />
+              <div ng-if="!dialog.input.id || dialog.input.id == -1" class="dropdowntree select-sm" autocomplete="off" ng-model="dialog.input.domainPath" change="" key="domainPath" options="domainListTree" mark="nodes" required>
+              </div>
+            </div>
+          </div> -->
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">企业名称：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="text" class="form-control input-sm" ng-model="dialog.input.name" name="name" maxlength="32" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">行业类型：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <select ng-model="dialog.input.industryType" class="form-control input-sm" selectdata="industryList" ng-options="value.id as value.text for value in industryList" select2 required></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">所在省：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <select ng-model="dialog.input.province" class="form-control input-sm" ng-change="dialog.event.provinceClick(dialog.input.province)" ng-options="value.id as value.label for value in provinces" required></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">所在市：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <select ng-disabled="!dialog.input.province" ng-model="dialog.input.city" ng-change="dialog.event.cityClick(dialog.input.city)" class="form-control input-sm" ng-options="value.id as value.label for value in dialog.list.cityList"></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"> <span class="ng-binding">所在县：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <select ng-disabled="!dialog.input.city" ng-model="dialog.input.county" class="form-control input-sm" ng-options="value.id as value.label for value in dialog.list.districtList"></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">统计周期类型：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <select ng-model="dialog.input.statisticsType" class="form-control input-sm" ng-options="value.id as value.label for value in dialog.list.periodList" required></select>
+            </div>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button class="btn btn-primary" ng-click="dialog.button[0].fn();" ng-disabled="enterpriseForm.$invalid" ng-click="saveData()" disabled="disabled">确定</button>
+          <button class="btn btn-default" ng-click="dialog.button[1].fn();">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

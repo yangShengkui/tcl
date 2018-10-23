@@ -1,0 +1,104 @@
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header" ng-hide="searchMode">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active">
+                <a>重点能耗单位</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body no-padding-left no-pad-bottom">
+          <form role="form">
+            <div class="form-group col-sm-2">
+              <label class="control-label">选择topN：</label>
+              <select class="form-control" style="width:100%" ng-model="queryDitem.topN" ng-options="x.id as x.text for x in [{id:5,text:'前五'},{id:10,text:'前十'},{id:20,text:'前二十'},{id:30,text:'前三十'}]">
+              </select>
+            </div>
+            <div class="form-group col-sm-2">
+              <label class="control-label">周期类型：</label>
+              <select class="form-control" style="width:100%" ng-model="queryDitem.statisticsType" ng-options="x.id as x.text for x in [{'id':'MONTH','text':'月'},{'id':'QUARTER','text':'季度'},{'id':'YEAR','text':'年'}]">
+              </select>
+            </div>
+            <div class="form-group col-sm-2">
+              <label class="control-label">选择时间段：</label>
+              <select class="form-control" style="width:100%" ng-model="queryDitem.range" ng-options="x.id as x.label for x in [{id:3,label:'三月内'},{id:6,label:'六月内'},{id:9,label:'九月内'},{id:12,label:'一年内'}]">
+              </select>
+            </div>
+            <div class="form-group col-sm-2">
+              <label class="control-label">选择指标：</label>
+              <select class="form-control" style="width:100%" ng-model="queryDitem.kpiCode" ng-options="x.id as x.text for x in [{'id':'3301','text':'综合能耗'},{'id':'3304','text':'GDP能耗'},{'id':'3300','text':'单能源消耗'}]">
+              </select>
+            </div>
+            <div class="form-group col-sm-2" ng-show="queryDitem.kpiCode == '3300'">
+              <label class="control-label">选择能源类型：</label>
+              <select class="form-control" style="width:100%" ng-model="queryDitem.energyType" ng-options="x.label as x.label for x in energyType">
+              </select>
+            </div>
+            <div class="form-group col-sm-2">
+              <label class="col-sm-12 control-label font-white">操作：</label>
+              <div class="btn-group">
+                <button ng-click="goSearch(queryDitem)" type="button" class="btn btn-primary btn-sm"><i class="fa fa-search"></i><span class="hidden-sm">查询</span></button>
+                <button ng-click="goClear()" type="button" class="btn btn-default btn-sm"><i class="fa fa-close"></i><span class="hidden-sm">清除</span></button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="box-footer no-padding">
+          <!-- <div class="box box-solid" style="margin-bottom:1px">
+            <div class="box-header">
+              <h3 class="box-title">重点能效单位信息</h3>
+              <div class="box-tools pull-right">
+                <button id="viewcollapse" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+             <div class="box-body table-responsive">
+              <table class="table no-margin" ng-show="enterpriseInfoAry">
+                <thead>
+                  <tr>
+                    <th>公司名称</th>
+                    <th>统计周期</th>
+                    <th>所属行业</th>
+                    <th>地址</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="item in enterpriseInfoAry">
+                    <td style="cursor: pointer;">{{item.name}}</td>
+                    <td>{{statisticsTypeDic[item.statisticsType]}}</td>
+                    <td>{{industryDic[item.industryType].param}}</td>
+                    <td>{{item.values.standardAddress}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div> -->
+          <div class="box box-solid" style="margin-bottom:1px">
+            <div class="box-header">
+              <h3 class="box-title">重点能效单位分析</h3>
+              <div class="box-tools pull-right">
+                <button id="viewcollapse" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="col-sm-6">
+                <!-- <div style="height: 300px;" echarts3-dom></div> -->
+                <div id="piedataview" style="height: 500px; margin-left:30px;"></div>
+              </div>
+              <div class="col-sm-6">
+                <!-- <div style="height: 300px;" echarts3-dom></div> -->
+                <div id="bardataview" style="height: 500px; margin-left:30px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

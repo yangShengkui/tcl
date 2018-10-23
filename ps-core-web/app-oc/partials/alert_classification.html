@@ -1,0 +1,44 @@
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Application buttons -->
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active"><a role="button">告警类别</a></li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body">
+          <button ng-show="menuitems['D01_A02_S45']" ng-click="addalertClassify()" type="button" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i><span class="hidden-sm"> 添加告警类别</span></button>
+          <button ng-show="menuitems['D02_A02_S45']" ng-disabled="selectedCount == 0" type="button" class="btn btn-default btn-sm" ng-click="selectedDelete()"><i class="fa fa-trash"></i> <span class="hidden-sm">删除告警类别</span></button>
+          <div class="combined-query pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                {{queryLabel?queryLabel:'查询条件'}} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a role="button" ng-click="queryState=1;queryLabel='类别名称';getChange()">类别名称</a></li>
+                <li><a role="button" ng-click="queryState=2;queryLabel='告警码';getChange()">告警码</a></li>
+                <li><a role="button" ng-click="queryState=3;queryLabel='类别描述';getChange()">类别描述</a></li>
+              </ul>
+            </div>
+            <input ng-show="!queryState" ng-model="selectedItem.orCondition" class="form-control input-sm" maxlength="32" type="text" />
+            <input type="text" class="form-control input-sm" ng-show="queryState == 1" ng-model="selectedItem.label" maxlength="20">
+            <input class="form-control input-sm" ng-show="queryState == 2" maxlength="40" type="text" ng-model="selectedItem.name" type="text" maxlength="20">
+            <input class="form-control input-sm" ng-show="queryState == 3" maxlength="40" type="text" ng-model="selectedItem.description" type="text" maxlength="20">
+            <button class="btn btn-primary btn-sm" ng-click="searchData()" type="button"><i class="fa fa-search"></i><span class="hidden-sm">查询</span></button>
+          </div>
+        </div>
+        <div class="box-footer margin-bottom-10">
+          <table width="100%" class="table table-hover" alert-classify-table>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

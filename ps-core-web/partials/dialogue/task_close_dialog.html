@@ -1,0 +1,43 @@
+<!-- 我的任务-点检计划模板 -->
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog" style="width:500px;">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">关闭</h4>
+      </div>
+
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal" name="dirForm">
+          <div class="form-group">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">关闭原因：</span>
+            </label>
+            <div class="col-sm-6 padding-left-5">
+              <!--<input type="text"  autocomplete="off" ng-model="inspectStandard.spotCheckCategory"  maxlength="32" class="form-control dialog-inp-text input-sm "  required="required" />-->
+              <select class="form-control dialog-inp-text input-sm ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
+               ng-model="taskCloseData.selectData.values.reason" 
+               ng-options="value.label as value.label for value in taskCloseData.dropDownList" required="required"><option value="?" selected="selected"></option><option value="" class="">请选择</option><option label="巡检" value="string:巡检">巡检</option></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span><span class="ng-binding">备注：</span>
+            </label>
+            <div class="col-sm-6 padding-left-5">
+              <textarea ng-model="taskCloseData.selectData.values.remark" required="required" style="height: 50px;" maxlength="200" rows="3" class="form-control dialog-inp-text input-sm  ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty ng-valid-maxlength" name="Name"></textarea>
+            </div>
+          </div>
+        
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="collForm.$invalid" ng-click="closeSingleTask()" disabled="disabled">
+          确定
+        </button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

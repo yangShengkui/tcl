@@ -1,0 +1,502 @@
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="active" name="tab1">
+                <a role="button" data-toggle="tab">添加设备</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();" role="button"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body">
+          <button class="btn btn-primary btn-sm" ng-click="saveResource();" ng-show="menuitems['D09_A03_S03']" ng-disabled="selectDevice.isLoading"><i class="fa fa-save"></i><span class="hidden-sm"> 保存设备</span></button>
+          <button class="btn btn-default btn-sm" ng-show="selectDevice.managedStatus == 'deactive' && menuitems['D06_S03']" ng-click="infoPageManage('设备启用')" ng-disabled="selectDevice.isLoading"><i class="fa fa-play"></i><span class="hidden-sm"> 启用设备</span></button>
+          <button class="btn btn-default btn-sm" ng-show="selectDevice.managedStatus == 'active' && menuitems['D07_S03']" ng-click="infoPageManage('设备停用')" ng-disabled="selectDevice.isLoading"><i class="fa fa-stop"></i><span class="hidden-sm"> 停用设备</span></button>
+        </div>
+        <div class="box-footer no-pad-top no-border">
+          <div class="bk-scope bk-theme-mini">
+            <dl class="bk-group">
+              <dt class="bk-group-title"><span>基本信息</span></dt>
+              <dd class="bk-group-detail">
+                
+                <div class="bk-form-row" ng-if="baseConfig.projectConfig.display && baseConfig.projectConfig.devEnabled">
+                  <label class="bk-form-row-name"><span ng-if="baseConfig.projectConfig.check || baseConfig.projectConfig.devCheck" class="text-red">*</span>{{menuitems['S13'].label?menuitems['S13'].label:'项目'}}名称：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select select2 class="form-control bk-select bk-select-l2" ng-disabled="((selectDevice.id && selectDevice.id !=0) || (selectDevice.from=='gateway' && !baseConfig.projectConfig.devEnabled))" 
+                        ng-model="selectDevice.projectId" ng-options="value.id as value.text for value in projectsList | filter:{ customerId : selectDevice.gateInfo.customerId}" selectdata="projectsList">
+                      </select>
+                      <!--<span class="bk-form-row-li-info bk-ml2">通过项目过滤网关信息，保存后不可修改，请慎重选择。<a href="#/projectManagement" target="_blank">创建一个新的>></a>或尝试<a ng-click="queryProject(true)">刷新>></a></span>-->
+                      <span class="bk-form-row-li-info bk-ml2">保存以后不可修改</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row" ng-if="baseConfig.projectConfig.display && baseConfig.projectConfig.devEnabled">
+                  <label class="bk-form-row-name"><span ng-if="baseConfig.projectConfig.check || baseConfig.projectConfig.devCheck" class="text-red">*</span>{{menuitems['S13'].label?menuitems['S13'].label:'项目'}}名称：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select select2 class="form-control bk-select bk-select-l2" ng-disabled="((selectDevice.id && selectDevice.id !=0) || (selectDevice.from=='gateway' && !baseConfig.projectConfig.devEnabled))"
+                              ng-model="selectDevice.projectId2" ng-options="value.id as value.text for value in projectsList | filter:{ customerId : selectDevice.gateInfo.customerId}" selectdata="projectsList2">
+                      </select>
+                      <!--<span class="bk-form-row-li-info bk-ml2">通过项目过滤网关信息，保存后不可修改，请慎重选择。<a href="#/projectManagement" target="_blank">创建一个新的>></a>或尝试<a ng-click="queryProject(true)">刷新>></a></span>-->
+                      <span class="bk-form-row-li-info bk-ml2">保存以后不可修改</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="bk-form-row" ng-if="baseConfig.projectConfig.display && !baseConfig.projectConfig.devEnabled">
+                  <label class="bk-form-row-name"><span ng-if="baseConfig.projectConfig.check" class="text-red">*</span>{{menuitems['S13'].label?menuitems['S13'].label:'项目'}}名称：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select select2 class="form-control bk-select bk-select-l2" ng-disabled="((selectDevice.id && selectDevice.id !=0) || selectDevice.from=='gateway' )" 
+                        ng-model="selectDevice.projectId3" ng-options="value.id as value.text for value in projectsList" selectdata="projectsList3">
+                      </select>
+                      <!--<span class="bk-form-row-li-info bk-ml2">通过项目过滤网关信息，保存后不可修改，请慎重选择。<a href="#/projectManagement" target="_blank">创建一个新的>></a>或尝试<a ng-click="queryProject(true)">刷新>></a></span>-->
+                      <span class="bk-form-row-li-info bk-ml2">过滤网关信息，不可修改。</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>设备模板：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <!--<input class="bk-form-input bk-form-input-l2" disabled="true" ng-if="selectDevice.id != 0 && selectDevice.from != 'unReco'" value="{{rootModelDic[selectDevice.modelId].label}}"/>-->
+                      <select select2 selectdata="modelListSelect" ng-model="selectDevice.modelId" ng-change="modelIdChange()" ng-options="value.id as value.label for value in modelListSelect" class="form-control bk-select bk-select-l2">
+                      </select>
+                      <span class="bk-form-row-li-info bk-ml2">通过模板过滤属性数据配置，保存后不可修改，请慎重选择。<a href="#/resource_type" target="_blank">创建一个新的>></a>或尝试<a ng-click="modelList(true)">刷新>></a>或<a role="button" ng-click="infoPageManage('管理当前模板')">管理当前模板>></a></span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>设备编码：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input type="text" ng-model="selectDevice.sn" maxlength="32" ng-disabled="selectDevice.managedStatus == 'active'" class="bk-form-input bk-form-input-l2" placeholder="">
+                      <span class="bk-form-row-li-info bk-ml2">设备的唯一标识</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>设备名称：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input type="text" ng-model="selectDevice.label" maxlength="32" ng-disabled="selectDevice.managedStatus == 'active'" class="bk-form-input bk-form-input-l2" placeholder="">
+                      <span class="bk-form-row-li-info bk-ml2"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row" ng-if="baseConfig.extendDomain">
+                  <label class="bk-form-row-name"><span class="text-red"> </span>扩展域：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input class="bk-form-input bk-form-input-l2" disabled="true" ng-if="selectDevice.managedStatus == 'active'" value="{{subDomainListDic[selectDevice.extendDomains].name}}"/>
+                      <div ng-if="selectDevice.managedStatus != 'active'" class="dropdowntree bk-select bk-select-l2 select-sm" placeholder="请选择..." 
+                        ng-model="selectDevice.extendDomains" change="" key="domainPath" options="subDomainListTree" mark="nodes"/>
+                      <span class="bk-form-row-li-info bk-ml2">选择扩展域后，设备的告警状态将会统计到扩展域上。</span>
+                    </div>
+                  </div>
+                </div>
+              </dd>
+            </dl>
+            <dl class="bk-group" ng-show="gatewayPhysical[selectDevice.gatewayId].protocol == 'flexem'">
+              <dt class="bk-group-title"><span>繁易连接信息</span></dt>
+              <dd class="bk-group-detail">
+                <div class="bk-form-row" >
+                  <label class="bk-form-row-name"><span class="text-red">*</span>接入方式：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select ng-disabled="!selectDevice.modelId || selectDevice.managedStatus == 'active'"  ng-model="selectDevice.accessMode" ng-change="accessMode()" class="form-control bk-select bk-select-l2">
+                        <option value="single">单个接入</option>
+                        <option value="multiple">多个接入</option>
+                      </select>
+                      <span ng-show="selectDevice.accessMode == 'multiple'" class="bk-form-row-li-info bk-ml2"><a ng-click="showProtocol()">配置解析协议>></a>或尝试<a ng-click="connectPointsInit(true)">刷新>></a></span>
+                    </div>
+                  </div>
+                </div>
+                <div ng-show="selectDevice.accessMode == 'single'" class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>网关连接点：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select class="form-control bk-select bk-select-l2" ng-disabled="!selectDevice.modelId || selectDevice.managedStatus == 'active'" 
+                        ng-change="selectDevice.physicalConfig.stationNo=connectPointsDic[selectDevice.physicalConfig.analysisConfigs.connectPointId]['stationNo'];
+                        selectDevice.externalDevId = selectDevice.physicalConfig.analysisConfigs.connectPointId+'_'+selectDevice.physicalConfig.stationNo;
+                        selectDevice.physicalConfig.analysisProtocol = connectPointsDic[selectDevice.physicalConfig.analysisConfigs.connectPointId]['resolutionProtocolName']"
+                        ng-model="selectDevice.physicalConfig.analysisConfigs.connectPointId" ng-options="value.id as value.label for value in connectPoints">
+                        <option value="">请选择...</option>
+                      </select>
+                      <span class="bk-form-row-li-info bk-ml2">如未出现网关连接点，请<a ng-click="infoPageManage('FBOX')">配置FBOX>></a>或尝试<a ng-click="connectPointsInit(true)">刷新>></a></span>
+                    </div>
+                  </div>
+                </div>
+                <div ng-show="selectDevice.accessMode == 'single'" class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>解析协议：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select class="form-control bk-select bk-select-l2" ng-disabled="true" ng-model="selectDevice.physicalConfig.analysisProtocol" ng-options="value.label as value.label for value in resolutionProtocols | filter:{ accessProtocol : selectDevice.physicalConfig.accessProtocol} ">
+                        <option value="">请选择...</option>
+                      </select>
+                      <span class="bk-form-row-li-info bk-ml2">选择网关连接点后默认设置，<a ng-click="showProtocol()">点击查看具体解析协议>></a></span>
+                    </div>
+                  </div>
+                </div>
+                <div ng-show="selectDevice.accessMode == 'single'" class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>站号：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input type="number" string-to-number min="0" max="65535" ng-model="selectDevice.physicalConfig.stationNo" ng-change="selectDevice.externalDevId = selectDevice.physicalConfig.analysisConfigs.connectPointId+'_'+selectDevice.physicalConfig.stationNo"
+                        ng-disabled="selectDevice.managedStatus == 'active'" oninput="if( !/^[0-9]*$/.test(this.value)){this.value='';}else if(this.value > 65535){this.value=65535;}" class="bk-form-input bk-form-input-l2" placeholder="">
+                      <span class="bk-form-row-li-info bk-ml2">站号小于或等于65535</span>
+                    </div>
+                  </div>
+                </div>
+                <div ng-show="selectDevice.accessMode == 'single'" class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>设备地址：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input type="text" ng-model="selectDevice.externalDevId" maxlength="32" ng-disabled="true" class="bk-form-input bk-form-input-l2" placeholder="">
+                      <span class="bk-form-row-li-info bk-ml2">系统内唯一，未识别设备设备地址不可修改</span>
+                    </div>
+                  </div>
+                </div>
+              </dd>
+            </dl>
+
+            <dl class="bk-group" ng-show="gatewayPhysical[selectDevice.gatewayId].protocol == 'baogang'">
+              <dt class="bk-group-title"><span>宝钢连接信息</span></dt>
+              <dd class="bk-group-detail">
+                <div  class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>设备地址：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input type="text" ng-model="selectDevice.externalDevId" maxlength="32" ng-disabled="!selectDevice.modelId || selectDevice.managedStatus == 'active'" class="bk-form-input bk-form-input-l2" placeholder="">
+                      <span class="bk-form-row-li-info bk-ml2">系统内唯一，未识别设备设备地址不可修改</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>解析协议：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select class="form-control bk-select bk-select-l2" ng-disabled="!selectDevice.modelId || selectDevice.managedStatus == 'active'" ng-model="selectDevice.physicalConfig.analysisProtocol" ng-options="value.label as value.label for value in resolutionProtocols | filter:{ accessProtocol : selectDevice.physicalConfig.accessProtocol}">
+                        <option value="">请选择...</option>
+                      </select>
+                      <span class="bk-form-row-li-info bk-ml2"><a ng-click="showProtocol()">点击查看具体解析协议>></a></span>
+                    </div>
+                  </div>
+                </div>               
+              </dd>
+            </dl>
+
+            <dl class="bk-group" ng-show="gatewayPhysical[selectDevice.gatewayId].protocol == 'modbus'">
+              <dt class="bk-group-title"><span>Modbus连接信息</span></dt>
+              <dd class="bk-group-detail">
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>解析协议：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select class="form-control bk-select bk-select-l2" ng-disabled="!selectDevice.modelId || selectDevice.managedStatus == 'active'" ng-model="selectDevice.physicalConfig.analysisProtocol" ng-options="value.label as value.label for value in resolutionProtocols | filter:{ accessProtocol : selectDevice.physicalConfig.accessProtocol}">
+                        <option value="">请选择...</option>
+                      </select>
+                      <span class="bk-form-row-li-info bk-ml2"><a ng-click="showProtocol()">点击查看具体解析协议>></a></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>设备地址：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input type="text" ng-model="selectDevice.externalDevId" maxlength="32" ng-disabled="selectDevice.from == 'unReco' || selectDevice.managedStatus == 'active'" class="bk-form-input bk-form-input-l2" placeholder="">
+                      <span class="bk-form-row-li-info bk-ml2">系统内唯一，未识别设备设备地址不可修改</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>站号：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <input type="number" string-to-number min="0" max="65535" ng-model="selectDevice.physicalConfig.stationNo" ng-disabled="selectDevice.managedStatus == 'active'"  oninput="if( !/^[0-9]*$/.test(this.value)){this.value='';}else if(this.value > 65535){this.value=65535;}" class="bk-form-input bk-form-input-l2" placeholder="">
+                      <span class="bk-form-row-li-info bk-ml2">站号小于或等于65535</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>16字节序：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select class="form-control bk-select bk-select-l2" ng-disabled="selectDevice.managedStatus == 'active'" ng-model="selectDevice.physicalConfig.analysisConfigs.byteOrder16" ng-options="value.valueCode as value.label for value in myDicts['byteOrder16']">
+                        <option value="">请选择...</option>
+                      </select>
+                      <!--<span class="bk-form-row-li-info bk-ml2">16字节序说明</span>-->
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>32字节序：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select class="form-control bk-select bk-select-l2" ng-disabled="selectDevice.managedStatus == 'active'" ng-model="selectDevice.physicalConfig.analysisConfigs.byteOrder32" ng-options="value.valueCode as value.label for value in myDicts['byteOrder32']">
+                        <option value="">请选择...</option>
+                      </select>
+                      <!--<span class="bk-form-row-li-info bk-ml2">32字节序说明</span>-->
+                    </div>
+                  </div>
+                </div>
+                <div class="bk-form-row">
+                  <label class="bk-form-row-name"><span class="text-red">*</span>浮点数字节序：</label>
+                  <div class="bk-form-row-cell">
+                    <div class="bk-form-row-li">
+                      <select class="form-control bk-select bk-select-l2" ng-disabled="selectDevice.managedStatus == 'active'" ng-model="selectDevice.physicalConfig.analysisConfigs.floatbyteOrder" ng-options="value.valueCode as value.label for value in myDicts['floatbyteOrder']">
+                        <option value="">请选择...</option>
+                      </select>
+                     <!-- <span class="bk-form-row-li-info bk-ml2">浮点数节序说明</span>-->
+                    </div>
+                  </div>
+                </div>
+              </dd>
+            </dl>
+
+            <dl class="bk-group">
+              <dt class="bk-group-title"><span>设备属性</span></dt>
+              <dd class="bk-group-detail">
+                <div class="col-md-12 margin-bottom-20">
+                  <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                      <li ng-repeat=" t in attrType" ng-click="attrClick(t.name,true);"  ng-class="{'active' : currentTab == t.name}">
+                        <a data-toggle="tab">{{t.name=='default'?'基础属性':t.name}}</a>
+                      </li>
+                      <li ng-click="attrClick('devicePart');" ng-class="{'active':currentTab=='devicePart'}">
+                        <a data-toggle="tab">设备部位</a>
+                      </li>
+                      <li ng-click="attrClick('sparePartUse');" ng-class="{'active':currentTab=='sparePartUse'}">
+                        <a data-toggle="tab">备件使用部位</a>
+                      </li>
+                      <li ng-click="attrClick('sparePartData');" ng-class="{'active':currentTab=='sparePartData'}">
+                        <a data-toggle="tab">设备备件</a>
+                      </li>
+                      <li ng-click="attrClick('docData');" ng-class="{'active':currentTab=='docData'}">
+                        <a data-toggle="tab">公共模块</a>
+                      </li>
+                      <li ng-click="attrClick('deviceDocData');" ng-class="{'active':currentTab=='deviceDocData'}">
+                        <a data-toggle="tab">设备文档</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content">
+                      <div class="box-header margin-bottom-10" ng-show="!isAttr && currentTab=='deviceDocData' && selectDevice.id != 0">
+                        <a role="button"  ng-click="addDoc();" style="color: #fff;"
+                           class="btn btn-sm btn-primary btn-flat pull-left margin-right-10"><i class="fa fa-plus"></i>
+                          添加文档</a>
+                      </div>
+                      <div slim-scroll height='240px'>
+                        <table ng-repeat="attr1 in attrType | filter:{ name :currentTab}"  class="table table-hover dataTable" ng-show="isAttr">
+                          <thead>
+                            <tr role="row">
+                              <th>显示名称</th>
+                              <th>属性值</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr ng-repeat="attr in attr1.arr  | orderBy:'createTime'">
+                              <td style="color:{{attr.values.color}};font-size: {{attr.values.fontsize}};">{{attr.label}}</td>
+                              <td class="last-td" ng-show="selectDevice.managedStatus == 'active' && (attr.values.sensitive != '1' || menuitems['A08_S02'])">
+                                <span ng-if="attr.dataType == 'datetime'" >{{selectDevice.values.hasOwnProperty(attr.name) ? (selectDevice.values[attr.name] | date:'yyyy-MM-dd HH:mm:ss') : attr.sourceValue | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                                <span ng-if="attr.dataType == 'date'" >{{selectDevice.values.hasOwnProperty(attr.name) ? (selectDevice.values[attr.name] | date:'yyyy-MM-dd') : attr.sourceValue | date:'yyyy-MM-dd'}}</span>
+                                <span ng-if="attr.dataType == 'string' || attr.dataType == 'icon' " >{{selectDevice.values.hasOwnProperty(attr.name) ? selectDevice.values[attr.name] : attr.sourceValue}}</span>
+                                <span ng-if="attr.dataType == 'numberic'" >{{selectDevice.values.hasOwnProperty(attr.name) ? selectDevice.values[attr.name] : attr.sourceValue}}</span>
+                                <span ng-if="attr.dataType == 'dict'" >{{selectDevice.values.hasOwnProperty(attr.name) ? selectDevice.values[attr.name] : ''}}</span>
+                                <span ng-if="attr.dataType == 'standardAddress'" >{{selectDevice.values.hasOwnProperty(attr.name) ? selectDevice.values[attr.name].split(',').join('')+selectDevice.values[attr.name+'detail'] : attr.sourceValue}}</span>
+                              </td>
+                              <td class="last-td" ng-show="selectDevice.managedStatus != 'active' && (attr.values.sensitive != '1' || menuitems['A08_S02'])">
+                                <input ng-if="attr.dataType == 'datetime'"  class="form-control input-sm" readonly ng-model="selectDevice.values[attr.name]" drops="up" timepicker="true" date-time-picker>
+                                <input ng-if="attr.dataType == 'date'"  class="form-control input-sm" readonly ng-model="selectDevice.values[attr.name]" drops="up" date-time-picker>
+                                <input ng-if="attr.dataType == 'string' || attr.dataType == 'icon'"  class="form-control input-sm" ng-model="selectDevice.values[attr.name]" placeholder="{{attr.sourceValue}}">
+                                <input type="number" string-to-number ng-if="attr.dataType == 'numberic'"  class="form-control input-sm" ng-model="selectDevice.values[attr.name]" placeholder="{{attr.sourceValue}}">
+                                <select ng-if="attr.dataType == 'dict'" class="form-control input-sm"  ng-model="selectDevice.values[attr.name]"  ng-init="dictInit(attr)" ng-options="v.value as v.value for v in attrDist[attr.name]" >
+                                  <option value="">请选择</option>
+                                </select>
+                                <div ng-if="attr.dataType == 'standardAddress'" >
+                                  <select class="form-control bk-select bk-select-l1" ng-options="value.id as value.label for value in provinces"
+                                    ng-model="selectDevice.values[attr.name+'province']" ng-change="selectDevice.values[attr.name] = selectDevice.values[attr.name+'province']">
+                                    <option value="">请选择省级...</option>
+                                  </select>
+                                  <select class="form-control bk-select bk-select-l1" ng-options="value.id as value.label for value in cityDics[selectDevice.values[attr.name+'province']]"
+                                    ng-model="selectDevice.values[attr.name+'city']" ng-change="selectDevice.values[attr.name] = selectDevice.values[attr.name+'city']">
+                                    <option value="">请选择市级...</option>
+                                  </select>
+                                  <select class="form-control bk-select bk-select-l1" ng-options="value.id as value.label for value in districtDics[selectDevice.values[attr.name+'city']]"
+                                    ng-model="selectDevice.values[attr.name+'district']" ng-change="selectDevice.values[attr.name] = selectDevice.values[attr.name+'district']">
+                                    <option value="">请选择县级...</option>
+                                  </select>
+                                  <input class="form-control bk-select bk-select-l2" ng-model="selectDevice.values[attr.name+'detail']" placeholder="详细地址">
+                                </div>
+                              </td>
+                              <td class="last-td" ng-show="attr.values.sensitive == '1' && !menuitems['A08_S02']">
+                                ******
+                              </td>
+                              <td ng-show="menuitems['D06_A08'] || menuitems['D07_A08']">
+                                <div class="btn-group btn-group-sm">
+                                  <button ng-show="menuitems['D06_A08']" ng-click="addProtocol('up',config);" id="config-edit-btn" class="btn btn-primary">
+                                    <i class="fa fa-edit hidden-lg hidden-md hidden-sm"></i>
+                                    <span class="hidden-xs"> 编辑</span>
+                                  </button>
+                                  <button ng-show="menuitems['D07_A08']" id="config-del-btn" ng-click="deleteAction('protocol',config);" class="btn btn-default">
+                                    <i class="fa fa-trash hidden-lg hidden-md hidden-sm"></i>
+                                    <span class="hidden-xs"> 删除</span>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                            
+                            <tr ng-if="attr1.arr.length == 0">
+                              <td valign="top" colspan="7" class="dataTables_empty"><i class="fa fa-success text-danger"></i>没有符合条件的记录</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <!--备件使用部位-->
+                        <table class="table table-hover dataTable" ng-show="!isAttr && currentTab=='devicePart'">
+                          <thead>
+                          <tr role="row">
+                            <th>设备部位名称</th>
+
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr ng-if="selectDevice.kpi && selectDevice.kpi.length > 0 " ng-repeat="kpi in selectDevice.kpi">
+                            <td>{{kpi.name}}</td>
+                          </tr>
+                          <tr ng-if="!selectDevice.kpi || selectDevice.kpi.length == 0">
+                            <td valign="top" colspan="7" class="dataTables_empty"><i class="fa fa-success text-danger"></i>没有符合条件的记录</td>
+                          </tr>
+                          </tbody>
+
+                        </table>
+                        <!--备件使用部位-->
+                        <table class="table table-hover dataTable" ng-show="!isAttr && currentTab=='sparePartUse'">
+                          <thead>
+                            <tr role="row">
+                              <th>使用部位名称</th>
+
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr ng-if="selectDevice.kpi && selectDevice.kpi.length > 0 " ng-repeat="kpi in selectDevice.kpi">
+                              <td>{{kpi.name}}</td>
+                            </tr>
+                            <tr ng-if="!selectDevice.kpi || selectDevice.kpi.length == 0">
+                              <td valign="top" colspan="7" class="dataTables_empty"><i class="fa fa-success text-danger"></i>没有符合条件的记录</td>
+                            </tr>
+                          </tbody>
+  
+                        </table>
+                        <!--设备备件-->
+                        <table class="table  table-hover dataTable" ng-show="!isAttr && currentTab=='sparePartData'">
+
+                          <thead>
+                          <tr><th colspan="12" style="background:white;"><button class="btn btn-primary btn-sm" ng-click="addSpareInfo();" ng-disabled="selectDevice.isLoading"><i class="fa fa-save"></i><span class="hidden-sm">添加</span></button>
+                          </th></tr>
+                          <tr role="row">
+                              <th>备件编码</th>
+                              <th>备件名称</th>
+                              <th>备件类型</th>
+                              <th>规格型号</th>
+                              <th>生产厂家</th>
+                              <th>使用寿命</th>
+                              <th>开始使用时间</th>
+                              <th>附件</th>
+                              <th>备件使用部位</th>
+                              <th>更换次数</th>
+                              <th class="optioncol1">操作</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr ng-if="selectDevice.taskData && selectDevice.taskData.length > 0" ng-repeat="task in selectDevice.taskData">
+                              <td>{{task.taskCode}}</td>
+                              <td>{{task.description}}</td>
+                              <td>{{task.taskCycle}}</td>
+                              <td><span ng-repeat="value in myDicts['KqiGranularityUnit']" ng-if="value.valueCode == task.cycleUnit">{{value.label}}</span></td>
+                              <td>
+                                <button class="bk-button bk-button-primary" ng-click="showCollection(task)">
+                                  <i class="fa fa-edit hidden-lg hidden-md hidden-sm"></i>
+                                  <span class="hidden-xs"> {{selectDevice.managedStatus != 'active'?'编辑':'查看'}}</span>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr ng-if="!selectDevice.taskData || selectDevice.taskData.length == 0 ">
+                              <td valign="top" colspan="4" class="dataTables_empty"><i class="fa fa-success text-danger"></i>没有符合条件的记录</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table class="table table-hover dataTable" ng-show="!isAttr && currentTab=='docData'">
+                          <thead>
+                            <tr role="row">
+                              <th>文档名称</th>
+                              <th>文档描述</th>
+                              <th class="optioncol1">操作</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr ng-if="selectDevice.docData && selectDevice.docData.length > 0 " ng-repeat="doc in selectDevice.docData">
+                              <td>{{doc.name}}</td>
+                              <td>{{doc.description}}</td>
+                              <td>
+                                <button ng-click="downClick(doc.qualifiedName);" class="bk-button bk-button-primary">
+                                  <i class="fa fa-download hidden-lg hidden-md hidden-sm"></i>
+                                  <span class="hidden-xs"> 下载</span>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr ng-if="!selectDevice.docData || selectDevice.docData.length == 0">
+                              <td valign="top" colspan="3" class="dataTables_empty"><i class="fa fa-success text-danger"></i>没有符合条件的记录</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table class="table table-hover dataTable" ng-show="!isAttr && currentTab=='deviceDocData'">
+                          <thead>
+                            <tr role="row">
+                              <th>文档名称</th>
+                              <th>文档描述</th>
+                              <th class="optioncol2">操作</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr ng-if="selectDevice.deviceDocData && selectDevice.deviceDocData.length > 0 " ng-repeat="doc in selectDevice.deviceDocData">
+                              <td>{{doc.name}}</td>
+                              <td>{{doc.description}}</td>
+                              <td>
+                                <button ng-click="downClick(doc.qualifiedName);" class="btn btn-sm btn-primary" >
+                                  <i class="fa fa-download hidden-lg hidden-md hidden-sm"></i>
+                                  <span class="hidden-xs"> 下载</span>
+                                </button>
+                                <button  class="btn btn-sm btn-default"  ng-click="deleteDeviceDoc(doc);" >
+                                  <i class="fa fa-trash hidden-lg hidden-md hidden-sm"></i>
+                                  <span class="hidden-xs"> 删除</span>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr ng-if="!selectDevice.deviceDocData || selectDevice.deviceDocData.length == 0">
+                              <td valign="top" colspan="3" class="dataTables_empty"><i class="fa fa-success text-danger"></i>没有符合条件的记录</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

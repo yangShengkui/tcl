@@ -1,0 +1,457 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+
+<!-- Main content -->
+<section class="content">
+	<div class="row">
+		<div class="col-xs-12">
+			<!-- Application buttons -->
+			<div class="box">
+				<div class="box-header">
+					<div class="nav-tabs-custom">
+						<!-- Tabs within a box -->
+						<ul class="nav nav-tabs pull-left">
+							<li class="active"><a href="#type-form" data-toggle="tab">设备类型视图</a></li>
+							<li><a href="#domain-form" data-toggle="tab">资源域视图</a></li>
+							<li><a href="#gateway-form" data-toggle="tab">网关视图</a></li>
+						</ul>
+					</div>
+					<div class="text-center pull-right">
+						<a class="btn btn-social-icon" ng-if="activeMainTab=='网关视图' && selectedGateitem && selectedGateitem.id != 0" ng-click="qrCode()"><i class="fa fa-qrcode"></i></a>
+						<a class="btn btn-social-icon" ng-if="activeMainTab=='网关视图' && selectedGateitem && selectedGateitem.id != 0" ng-click="changeManagedStatus()"><i ng-class="{true:'fa fa-play',false:'fa fa-pause'}[selectedGateitem.managedStatus=='deactive']"></i></a>
+						<a class="btn btn-social-icon" ng-if="(activeMainTab=='设备类型视图' && selectedDitem) ||(activeMainTab=='资源域视图' && selectedDomainitem)||(activeMainTab=='网关视图' && selectedGateitem)" ng-click="eidtModel()"><i class="fa fa-edit"></i></a>
+						<a class="btn btn-social-icon" ng-click="addModel()"><i class="fa fa-plus-square"></i></a>
+						<a class="btn btn-social-icon" ng-if="(activeMainTab=='设备类型视图' && selectedDitem) ||(activeMainTab=='资源域视图' && selectedDomainitem)||(activeMainTab=='网关视图' && selectedGateitem)" ng-click="delModel()"><i class="fa fa-minus-square"></i></a>
+
+					</div>
+				</div>
+
+				<div class="box-body">
+					<a ng-if="activeMainTab=='设备类型视图'" class="btn btn-app" ng-class="{true: 'btn btn-app active active-ps', false: 'btn btn-app'}[selectedDitem==item]" ng-click="click(item)" ng-repeat="item in treeAry">
+						<span class="badge {{item.alertlv}}">{{item.count}}</span>
+						<i class="{{item.icon}}"></i>{{item.label}}
+					</a>
+					<a ng-if="activeMainTab=='资源域视图'" class="btn btn-app" ng-class="{true: 'btn btn-app active active-ps', false: 'btn btn-app'}[selectedDomainitem==item]" ng-click="click(item)" ng-repeat="item in domainsAry">
+						<span class="badge {{item.alertlv}}">{{item.count}}</span>
+						<i class="{{item.icon}}"></i> {{item.name}}
+					</a>
+					<a ng-if="activeMainTab=='网关视图'" class="btn btn-app" ng-class="{true: 'btn btn-app active active-ps', false: 'btn btn-app'}[selectedGateitem==item]" ng-click="click(item)" ng-repeat="item in gatewaysAry">
+						<span class="badge {{item.alertlv}}">{{item.count}}</span>
+						
+						<span class="badgeleft">
+							<i ng-class="{true:'fa fa-link',false:'fa fa-unlink'}[item.onlineStatus=='online']"></i>
+						</span>
+						<!--
+						<span class="badgecenter {{item.managedStatuslv}}">{{item.managedStatuslab}}</span>
+						-->
+						<i ng-class="{true:item.icon,false:'fa fa-ban fa-2x text-danger'}[item.managedStatus=='active']"></i>
+						{{item.label}}
+					</a>
+				</div>
+
+				<!-- /.box-body -->
+				<div class="box-footer" ng-show="editVisible">
+					<!-- Custom tabs (Charts with tabs)-->
+					<div class="nav-tabs-custom">
+						<!-- Tabs within a box -->
+						<ul class="nav nav-tabs pull-right" ng-show="activeMainTab=='设备类型视图'">
+							<li ng-class="{true:'active',false:''}[activeTab=='指令']"><a href="#directive-form" data-toggle="tab">指令</a></li>
+							<li ng-class="{true:'active',false:''}[activeTab=='告警']"><a href="#alerts-form" data-toggle="tab">告警</a></li>
+							<li ng-class="{true:'active',false:''}[activeTab=='KPI']"><a href="#kpis-form" data-toggle="tab">KPI</a></li>
+							<li ng-class="{true:'active',false:''}[activeTab=='属性']"><a href="#attrs-form" data-toggle="tab">属性</a></li>
+							<div class="text-center pull-right">
+								<a class="btn btn-social-icon" ng-click="addModelSubItem()"><i class="fa fa-plus-square"></i></a>
+								<a class="btn btn-social-icon" ng-click="saveModelSubItem()"><i class="fa fa-save"></i></a>
+							</div>
+							<li class="pull-left">
+								<!--
+								<div class="input-group">
+				                    <input class="form-control" ng-model="selectedDitem.label" value="{{selectedDitem.label}}"></input>
+				                    <span class="input-group-btn">
+				                      <button ng-click="updateModel()" class="btn btn-info btn-flat" type="button">Save</button>
+				                    </span>
+				                  </div>
+				                 -->
+
+								<!--<input class="form-control input-sm" ng-blur="updateModel(this)" onkeyup="validatorCN(this)" ng-model="selectedDitem.label"></input>-->
+
+								<form class="form-horizontal" name="deviceForm">
+									<div class="col-sm-6 form-group no-padding">
+										<label class="col-sm-4 control-label">名称</label>
+										<div class="col-sm-8">
+											<input  maxlength="20" ng-pattern="/^[0-9A-Za-z\u4e00-\u9fa5]{0,40}$/"  class="form-control" type="text" name="deviceName" ng-model="selectedDitem.label"  ng-blur="updateModel(this)"/>
+											<span style="color:red" ng-show="deviceForm.deviceName.$dirty && deviceForm.deviceName.$invalid">
+												<span style="font-size: 14px" ng-show="deviceForm.deviceName.$dirty && deviceForm.deviceName.$invalid">
+													仅限数字字母和中文
+												</span>
+											</span>
+										</div>
+									</div>
+									<div class="col-sm-6 form-group no-padding">
+										<label class="col-sm-4 control-label">图标</label>
+										<div class="col-sm-8 ">
+											<select  ng-change="updateModel(this)" ng-model="selectedDitem.icon" ng-options="val.icon as val.title for val in iconList" class="combobox form-control" >
+												<option value="">请选择...</option>
+											</select>
+										</div>
+									</div>
+									<!-- <div class="col-sm-5 ">
+										<input ng-pattern="/^[0-9A-Za-z\u4e00-\u9fa5]{0,40}$/" class="form-control" type="text" name="deviceName" ng-model="selectedDitem.label" />
+										<span style="color:red" ng-show="deviceForm.deviceName.$dirty && deviceForm.deviceName.$invalid">
+										<span style="font-size: 14px" ng-show="deviceForm.deviceName.$dirty && deviceForm.deviceName.$invalid">仅限数字字母和中文</span>
+										</span>
+									</div>
+									<div class="col-sm-5 ">
+										<span>视图图标</span>
+										<input ng-pattern="/^[0-9A-Za-z\u4e00-\u9fa5]{0,40}$/" class="form-control" type="text" name="deviceName" ng-model="selectedDitem.label" />
+										<span style="color:red" ng-show="deviceForm.deviceName.$dirty && deviceForm.deviceName.$invalid">
+										<span style="font-size: 14px" ng-show="deviceForm.deviceName.$dirty && deviceForm.deviceName.$invalid">仅限数字字母和中文</span>
+										</span>
+									</div> -->
+								</form>
+								<!-- /.nav-tabs-custom 
+								<div class="input-group">
+									<div class="input-group-btn">
+										<button ng-if="activeMainTab=='设备类型视图'" class="btn btn-default" ng-click="addModelSubItem()"><i class="fa fa-plus-square-o"></i></button>
+										<button class="btn btn-default" ng-click="saveModelSubItem()"><i class="fa fa-save"></i></button>
+									</div>
+								</div>
+								-->
+							</li>
+						</ul>
+						<ul class="nav nav-tabs pull-right" ng-show="activeMainTab=='资源域视图'">
+
+							<!--<div class="text-center pull-right">-->
+								<!--<a class="btn btn-social-icon" ng-click="delDomainSubItem()" title="将此用户移出该资源域"><i-->
+										<!--class="fa fa-minus-square-o"></i></a>-->
+							<!--</div>-->
+
+							<div class="text-center pull-right">
+								<a class="btn btn-social-icon" ng-click="saveModelSubItem()"><i class="fa fa-save"></i></a>
+							</div>
+
+						</ul>
+						<ul class="nav nav-tabs pull-right" ng-show="activeMainTab=='网关视图'">
+							<div class="text-center pull-right">
+								<a class="btn btn-social-icon" ng-click="saveModelSubItem()"><i class="fa fa-save"></i></a>
+							</div>
+						</ul>
+						<div class="tab-content" ng-if="activeMainTab=='设备类型视图'">
+							<!-- Morris chart - Sales -->
+							
+							<form id="attrs-form" class="tab-pane active" role="form" name="myform" novalidate>
+								<div class="box-body">
+									<div ng-repeat="item in selectedDitem.attrs">
+										<div class="col-sm-6 no-padding form-group">
+											<div class="col-sm-3 no-padding ">
+												<input  ng-pattern="/^[0-9A-Za-z\u4e00-\u9fa5]{1,40}$/" id="label{{$index}}" name="label{{$index}}" ng-disabled="!item.canEdit||item.dataType=='icon'" class="form-control" type="text" ng-model="item.label" placeholder="请输入显示名称" />
+												<span style="color:red" ng-show="myform.label{{$index}}.$dirty && myform.label{{$index}}.$invalid">
+												<span ng-show="myform.label{{$index}}.$dirty && myform.label{{$index}}.$invalid">仅限数字字母和中文</span>
+												</span>
+											</div>
+	
+											<div  ng-if="item.dataType != 'icon'" class="col-sm-5 "  id="nameinp{{$index}}" name="nameinp{{$index}}" >
+												<input ng-pattern="/^[0-9A-Za-z]{1,40}$/" name="name{{$index}}" ng-disabled="!item.canEdit" class="form-control" type="text" ng-model="item.name" placeholder="请输入属性名称" />
+												<span style="color:red" ng-show="myform.name{{$index}}.$dirty && myform.name{{$index}}.$invalid">
+												<span ng-show="myform.name{{$index}}.$dirty && myform.name{{$index}}.$invalid">仅限数字字母</span>
+												</span>
+											</div>
+	
+											<div  ng-if="item.dataType == 'icon'"  class="col-sm-5 " id="namesel{{$index}}" name="namesel{{$index}}" >
+												
+												<select ng-disabled="!item.canEdit"  ng-model="item.name"  ng-options="value.title as value.title for value in iconList" class="combobox form-control" ng-change="iconShow({{$index}});" >
+													<option value="">请选择...</option>
+												</select>
+												
+											</div>
+											<!-- <div   ng-if="item.dataType == 'icon'"   class="col-sm-1" id="show{{$index}}" name="show{{$index}}" >
+												<span>
+													<i  id="showIcon{{$index}}" name="showIcon{{$index}}" class="{{item.name}}"></i>
+												</span>
+											</div> -->
+											<div class="col-sm-3 no-padding ">
+												<select ng-disabled="!item.canEdit" ng-model="item.dataType" ng-options="value.valueCode as value.label for value in myDicts['DataType']" class="combobox form-control" ng-change="iconClick(item.dataType,{{$index}})";>
+													<option value="">请选择...</option>
+												</select>
+											</div>
+											<div class="col-sm-1 no-padding" ng-show="item.canEdit">
+												<a class="btn btn-social-icon" ng-click="delModelSubItem(item)"><i class="fa fa-minus-square-o"></i></a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+							<form id="kpis-form" class="tab-pane" role="form">
+								<table width="100%" class="table table-hover" kpiedit-table>
+								</table>
+							</form>
+							<form id="alerts-form" class="tab-pane" role="form">
+								<table width="100%" class="table table-hover" aedit-table>
+								</table>
+							</form>
+							<form id="directive-form" class="tab-pane" role="form" name="myForm" novalidate>
+								<div class="box-body" ng-hide="selectedDirective!=null">
+									<table width="100%" class="table table-hover" directive-table>
+									</table>
+								</div>
+								<div class="box-footer" ng-show="selectedDirective!=null">
+									
+									<h4><span class="btn btn-info btn-xs" ng-click="directiveBack()">返回指令列表</span>    {{selectedDirective.label}}的表达式参数设置</h4>
+									<div ng-repeat="item in selectedDirective.params">
+										<div class="form-group col-sm-6 no-padding">
+											<div class="col-sm-3 no-padding">
+												<input ng-pattern="/^[0-9A-Za-z\u4e00-\u9fa5]{1,40}$/" name="label{{$index}}"  class="form-control" type="text" ng-model="item.label" placeholder="请输入显示名称" />
+												<span style="color:red" ng-show="myform.label{{$index}}.$dirty && myform.label{{$index}}.$invalid">
+												<span ng-show="myform.label{{$index}}.$dirty && myform.label{{$index}}.$invalid">仅限数字字母和中文</span>
+												</span>
+											</div>
+	
+											<div class="col-sm-5 ">
+												<input ng-pattern="/^[0-9A-Za-z]{1,40}$/" name="name{{$index}}"  class="form-control" type="text" ng-model="item.name" placeholder="请输入属性名称" disabled/>
+												<span style="color:red" ng-show="myform.name{{$index}}.$dirty && myform.name{{$index}}.$invalid">
+												<span ng-show="myform.name{{$index}}.$dirty && myform.name{{$index}}.$invalid">仅限数字字母</span>
+												</span>
+											</div>
+											<div class="col-sm-3 no-padding">
+												<select  ng-model="item.dataType" ng-options="value.valueCode as value.label for value in myDicts['DataType']" class="combobox form-control">
+													<option value="">请选择...</option>
+												</select>
+											</div>
+											<div class="col-sm-1 no-padding" ng-show="item.canEdit">
+												<a class="btn btn-social-icon" ng-click="delModelSubItem(item)"><i class="fa fa-minus-square-o"></i></a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</form>
+
+						</div>
+						<div class="tab-content" ng-if="activeMainTab=='资源域视图'">
+							<form id="domain-form" class="form-horizontal tab-pane active" role="form" name="domainForm" novalidate>
+								<div class="form-group">
+									<div class="col-sm-12">
+										<div class="col-sm-1">
+											<label class="control-label" type="text">域名</label>
+										</div>
+										<div class="col-sm-3 no-padding">
+											<!--<input autofocus="autofocus" class="form-control" type="text" ng-model="selectedDomainitem.name" maxlength="50" value="{{selectedDomainitem.name}}" />-->
+											<input ng-pattern="/^[0-9A-Za-z\u4e00-\u9fa5]{0,40}$/" class="form-control" type="text" name="domainName" ng-model="selectedDomainitem.name" />
+										<span style="color:red" ng-show="domainForm.domainName.$dirty && domainForm.domainName.$invalid">
+										<span ng-show="domainForm.domainName.$dirty && domainForm.domainName.$invalid">仅限数字字母和中文</span>
+										</span>
+										</div>
+										<div class="col-sm-1">
+											<label class="control-label" type="text">描述</label>
+										</div>
+										<div class="col-sm-3 no-padding">
+											<!--<input class="form-control" type="text" ng-model="selectedDomainitem.description" maxlength="200" value="{{selectedDomainitem.description}}" />-->
+											<input ng-pattern="/^[0-9A-Za-z\u4e00-\u9fa5，。,.]{0,40}$/" class="form-control" type="text" name="description" ng-model="selectedDomainitem.description" />
+										<span style="color:red" ng-show="domainForm.description.$dirty && domainForm.description.$invalid">
+										<span ng-show="domainForm.description.$dirty && domainForm.description.$invalid">仅限数字字母中文逗号句号</span>
+										</span>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="box-body" ng-if="activeMainTab=='网关视图'">
+							<form role="form" name="myForm" novalidate>
+								<div class="col-md-2">
+									<div class="form-group">
+										<label>网关类型</label>
+										<select class="form-control" ng-model="selectedGateitem.type" ng-options="value.valueCode as value.label for value in myDicts['gatewayType']" style="width: 100%">
+											<option value="">请选择...</option>
+										</select>
+									</div>
+									<!-- /.form-group -->
+									<div class="form-group">
+										<label>网关标识</label>
+										<input ng-pattern="/^[0-9A-Za-z\u4e00-\u9fa5]{0,40}$/" class="form-control" type="text" name="externalGwId" ng-model="selectedGateitem.externalGwId" />
+										<span style="color:red" ng-show="myForm.externalGwId.$dirty && myForm.externalGwId.$invalid">
+										<span ng-show="myForm.externalGwId.$dirty && myForm.externalGwId.$invalid">仅限数字字母和中文</span>
+										</span>
+									</div>
+									<!-- /.form-group -->
+								</div>
+								<!-- /.col -->
+								<div class="col-md-2">
+									<div class="form-group">
+										<label>协议类型</label>
+										<select class="form-control" ng-model="selectedGateitem.protocolType" ng-options="value.valueCode as value.label for value in myDicts['gwProtocolType']" style="width: 100%">
+											<option value="">请选择...</option>
+										</select>
+									</div>
+									<!-- /.form-group -->
+									<div class="form-group">
+										<label>网关名称</label>
+										<input ng-pattern="/^[0-9A-Za-z\u4e00-\u9fa5]{0,40}$/" name="name" class="form-control" type="text" ng-model="selectedGateitem.name" />
+										<span style="color:red" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+										<span ng-show="myForm.name.$dirty && myForm.name.$invalid">仅限数字字母和中文</span>
+										</span>
+									</div>
+									<!-- /.form-group -->
+								</div>
+								<!-- /.col -->
+								<div class="col-md-2">
+									<div class="form-group">
+										<label>适配器类型</label>
+										<select class="form-control" ng-model="selectedGateitem.cloudAdapter" style="width: 100%">
+											<option value="">请选择...</option>
+											<option value="普奥HTTP" selected="selected">普奥HTTP</option>
+											<option value="普奥MQTT">普奥MQTT</option>
+											<option value="普奥Socket">普奥Socket</option>
+											<option value="昆仑海岸">昆仑海岸</option>
+										</select>
+									</div>
+									<!-- /.form-group -->
+									<div class="form-group">
+										<label>接入云端用户名</label>
+										<input ng-pattern="/^[0-9A-Za-z\u4e00-\u9fa5]{0,40}$/" name="accessName" class="form-control" type="text" ng-model="selectedGateitem.accessName" />
+										<span style="color:red" ng-show="myForm.accessName.$dirty && myForm.accessName.$invalid">
+										<span ng-show="myForm.accessName.$dirty && myForm.accessName.$invalid">仅限数字字母和中文</span>
+										</span>
+									</div>
+									<!-- /.form-group -->
+								</div>
+								<!-- /.col -->
+								<div class="col-md-2">
+									<!--
+									<div class="form-group">
+										<label>运维状态</label>
+										<select class="form-control select2" value="{{selectedGateitem.operationalStatus}}" ng-model="selectedGateitem.operationalStatus" ng-options="value.valueCode as value.label for value in myDicts['operationStatus']" style="width: 100%">
+											<option value="">请选择...</option>
+										</select>
+									</div>
+									-->
+									<div class="form-group">
+										<label>网关所属域</label>
+										<select class="form-control" ng-model="selectedGateitem.domain" ng-options="value.domainPath as value.label for value in domainsAry" style="width: 100%">
+											<option value="">请选择...</option>
+										</select>
+									</div>
+									<!-- /.form-group -->
+									<div class="form-group">
+										<label>接入云端密码</label>
+										<input ng-pattern="/^[0-9A-Za-z]{0,40}$/" name="accessPassword" class="form-control" type="password" ng-model="selectedGateitem.accessPassword" />
+										<span style="color:red" ng-show="myForm.accessPassword.$dirty && myForm.accessPassword.$invalid">
+										<span ng-show="myForm.accessPassword.$dirty && myForm.accessPassword.$invalid">仅限数字字母</span>
+										</span>
+									</div>
+									<!-- /.form-group -->
+								</div>
+								<!-- /.col -->
+								<div class="col-md-4">
+									<!--
+									<div class="form-group">
+										<label>管理状态</label>
+										<select class="form-control select2" value="{{selectedGateitem.managedStatus}}" ng-model="selectedGateitem.managedStatus" ng-options="value.valueCode as value.label for value in myDicts['managedStatus']" style="width: 100%">
+											<option value="">请选择...</option>
+										</select>
+									</div>
+									-->
+									
+									<!-- /.form-group -->
+									<div class="form-group">
+										<label>有效时间</label>
+										<input class="form-control" type="text" ng-model="selectedGateitem.validTime" model="selectedGateitem" startdate="activeTime" enddate="expireTime" daterange-Picker2/>
+									</div>
+									<!-- /.form-group -->
+								</div>
+								<!-- /.col 
+								<div class="col-md-2">
+									<div class="form-group">
+										<label>过期时间</label>
+										<input class="form-control" daterange-Picker2 type="text" ng-model="selectedGateitem.expireTime" />
+									</div>
+								</div>
+								-->
+								<!-- /.col -->
+
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="box">
+				<div class="box-header">
+					<div class="nav-tabs-custom" ng-show="activeMainTab=='设备类型视图'">
+						<!-- Tabs within a box -->
+						<ul class="nav nav-tabs pull-left">
+							<li class="active" ng-class="{true:'active',false:''}[activeListTab == 'tab1']"><a name="tab1" href="#" data-toggle="tab">设备列表</a></li>
+							<li ng-class="{true:'active',false:''}[activeListTab == 'tab2']"><a name="tab2" href="#" data-toggle="tab">设备分布地图</a></li>
+						</ul>
+					</div>
+					<div class="nav-tabs-custom" ng-show="activeMainTab=='资源域视图'">
+						<!-- Tabs within a box -->
+						<ul class="nav nav-tabs pull-left">
+							<li class="active" ng-class="{true:'active',false:''}[activeListTab == 'tab3']"><a name="tab3" href="#" data-toggle="tab">设备列表</a></li>
+							<li id="showbyusertype" ng-class="{true:'active',false:''}[activeListTab == 'tab4']"><a name="tab4" href="#" data-toggle="tab">域用户</a></li>
+						</ul>
+					</div>
+					<div class="text-center pull-right" ng-show="activeMainTab=='资源域视图'">
+						<div class="box-body" ng-show="activeListTab == 'tab4'">
+							<a class="btn btn-social-icon" ng-click="addUserToDomain()"><i class="fa fa-plus-square"></i></a>
+						</div>
+					</div>
+					<div class="nav-tabs-custom" ng-show="activeMainTab=='网关视图'">
+						<!-- Tabs within a box -->
+						<ul class="nav nav-tabs pull-left">
+							<li class="active" ng-class="{true:'active',false:''}[activeListTab == 'tab5']"><a name="tab5" href="#" data-toggle="tab">未激活设备列表</a></li>
+							<li ng-class="{true:'active',false:''}[activeListTab == 'tab6']"><a name="tab6" href="#" data-toggle="tab">激活设备列表</a></li>
+						</ul>
+					</div>
+					<div class="text-center pull-right" ng-show="activeListTab == 'tab5'">
+						<a class="btn btn-social-icon" ng-click="addIns()"><i class="fa fa-plus-square"></i></a>
+					</div>
+				</div>
+
+				<div class="box-body" ng-show="activeListTab == 'tab1'">
+
+					<table width="100%" class="table table-hover" cmdb-table>
+
+					</table>
+				</div>
+				<!-- /.box-body -->
+				<div class="box-body" ng-show="activeListTab == 'tab2'">
+
+					<div ng-controller="ViewMaps2Ctrl" echarts2-dom style="height: 657px;"></div>
+				</div>
+				<div class="box-body" ng-show="activeListTab == 'tab3'">
+
+					<table width="100%" class="table table-hover" domain-cmdb-table>
+
+					</table>
+				</div>
+				<!-- /.box-body -->
+				<div class="box-body" ng-show="activeListTab == 'tab4'">
+
+					<table width="100%" class="table table-hover" id="usertable" domain-user-table>
+
+					</table>
+
+				</div>
+				<div class="box-body" ng-show="activeListTab == 'tab5'">
+
+					<table width="100%" class="table table-hover" cmdb2-table>
+
+					</table>
+				</div>
+				<!-- /.box-body -->
+				<div class="box-body" ng-show="activeListTab == 'tab6'">
+					<table width="100%" class="table table-hover" cmdb3-table>
+
+					</table>
+					<!--div id="qrcode"></div>-->
+				</div>
+			</div>
+			<!-- /.box -->
+
+		</div>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+</section>
+<!-- /.content -->

@@ -1,0 +1,599 @@
+{
+  "version": "V_2",
+  "src" : "url(images/template1.jpg)",
+  "title" : "华能地图（单页模板）",
+  "layout": {
+	"type": "column",
+	"children": [
+	  {
+		"type": "row",
+		"children": [
+		  {
+			"type": "column",
+			"children": [
+			  {
+				"label": "地图分布",
+				"type": "echart",
+				"source": "BMAP",
+				"data": {
+				  "applied": false,
+				  "resource": [],
+				  "modelDisable": true,
+				  "series": {
+					"manual": "function (){\n        var mydata = [{\"address\":\"巢湖电厂\",\"lat\":31.608733,\"lng\":117.88049,\"devCount\":5, \"warnning\": 0},\n          {\"address\":\"海门发电公司\",\"lat\":31.956039,\"lng\":121.31247,\"devCount\":1, \"warnning\": 0, \"src\" : \"../images/ksb/LUV.jpg\"},\n          {\"address\":\"华能北京热电厂\",\"lat\":39.929986,\"lng\":116.395645,\"devCount\":3, \"warnning\": 0, \"src\" : \"../images/ksb/NLT.jpg\"},\n          {\"address\":\"华能东方电厂\",\"lat\":18.998161,\"lng\":108.85101,\"devCount\":12, \"warnning\": 0, \"src\" : \"../images/ksb/SQ.jpg\"},\n          {\"address\":\"华能福州电厂\",\"lat\":26.047125,\"lng\":119.330221,\"devCount\":7, \"warnning\": 3, \"src\" : \"../images/ksb/SEZ.jpg\"},\n          {\"address\":\"华能金陵电厂\",\"lat\":39.925237,\"lng\":116.420509,\"devCount\":1, \"warnning\": 0, \"src\" : \"../images/ksb/SQ.jpg\"},\n          {\"address\":\"华能洛阳热电\",\"lat\":34.657368,\"lng\":112.447525,\"devCount\":1, \"warnning\": 0, \"src\" : \"../images/ksb/HG.jpg\"},\n          {\"address\":\"华能南京热电有限公司\",\"lat\":32.057236,\"lng\":118.778074,\"devCount\":4, \"warnning\": 3, \"src\" : \"../images/ksb/NLT.jpg\"},\n          {\"address\":\"华能瑞金电厂\",\"lat\":25.921831,\"lng\":115.985867,\"devCount\":2, \"warnning\": 2, \"src\" : \"../images/ksb/LUV.jpg\"},\n          {\"address\":\"华能上安电厂\",\"lat\":39.763206,\"lng\":115.839295,\"devCount\":2, \"warnning\": 0, \"src\" : \"../images/ksb/SEZ.jpg\"},\n          {\"address\":\"华能太仓电厂\",\"lat\":31.571904,\"lng\":121.158978,\"devCount\":3, \"warnning\": 0, \"src\" : \"../images/ksb/SQ.jpg\"},\n          {\"address\":\"华能营口电厂\",\"lat\":40.668651,\"lng\":122.233391,\"devCount\":4, \"warnning\": 0, \"src\" : \"../images/ksb/NLT.jpg\"},\n          {\"address\":\"华能岳阳电厂\",\"lat\":29.441833,\"lng\":113.167978,\"devCount\":1, \"warnning\": 0, \"src\" : \"../images/ksb/LUV.jpg\"},\n          {\"address\":\"淮阴电厂\",\"lat\":33.664059,\"lng\":118.935664,\"devCount\":1, \"warnning\": 0, \"src\" : \"../images/ksb/SQ.jpg\"},\n          {\"address\":\"金陵燃机\",\"lat\":39.925237,\"lng\":116.420509,\"devCount\":7, \"warnning\": 0, \"src\" : \"../images/ksb/SEZ.jpg\"},\n          {\"address\":\"渑池热电\",\"lat\":34.839691,\"lng\":111.802535,\"devCount\":1, \"warnning\": 0, \"src\" : \"../images/ksb/HG.jpg\"},\n          {\"address\":\"汕头电厂\",\"lat\":23.383908,\"lng\":116.72865,\"devCount\":1, \"warnning\": 0, \"src\" : \"../images/ksb/SQ.jpg\"},\n          {\"address\":\"杨柳青电厂\",\"lat\":39.144457,\"lng\":117.013943,\"devCount\":1, \"warnning\": 0, \"src\" : \"../images/ksb/LUV.jpg\"},\n          {\"address\":\"榆社电厂\",\"lat\":37.14005,\"lng\":112.954181,\"devCount\":1, \"warnning\": 0, \"src\" : \"../images/ksb/HG.jpg\"},\n          {\"address\":\"玉环电厂\",\"lat\":28.179738,\"lng\":121.284426,\"devCount\":2, \"warnning\": 3, \"src\" : \"../images/ksb/LUV.jpg\"},\n          {\"address\":\"长兴电厂\",\"lat\":30.983353,\"lng\":119.81942,\"devCount\":1, \"warnning\": 1, \"src\" : \"../images/ksb/SQ.jpg\"},\n          {\"address\":\"中原燃机\",\"lat\":34.779474,\"lng\":113.557281,\"devCount\":2, \"warnning\": 0, \"src\" : \"../images/ksb/HG.jpg\"}];\n        var convertData = function (data) {\n          var res = [];\n          for (var i = 0; i < data.length; i++) {\n            res.push({\n              name: data[i].address,\n              value: [data[i].lng, data[i].lat, data[i]['devCount']],\n              warning : data[i].warnning,\n              src : data[i].src\n            });\n          }\n          return res;\n        };\n        return [{\n          name : '电厂概况',\n          data : convertData(mydata)\n        }]\n      }",
+					"bind": "(function (source){\n  return source.time.getSeries();\n})"
+				  },
+				  "value": []
+				},
+				"category": [
+				  "time"
+				],
+				"parameters": {
+				  "title": "主标题",
+				  "subtitle": "附标题"
+				},
+				"style": {
+				  "margin": "auto",
+				  "width": "100%",
+				  "height": "800px"
+				},
+				"echart": {
+				  "general": {},
+				  "title": {
+					"padding": 30,
+					"text": "地图",
+					"textStyle": {
+					  "fontWeight": "bold",
+					  "fontSize": 16
+					}
+				  },
+				  "tooltip": {
+					"trigger": "item"
+				  },
+				  "grid": [
+					{}
+				  ],
+				  "series": [
+					{
+					  "type": "scatter",
+					  "name": "设备分布",
+					  "itemStyle": {
+						"normal": {
+						  "color": "#3b8962",
+						  "opacity": 1
+						}
+					  },
+					  "symbol": "path://d='M37.1,24.1L37,23.8l-5-9.2l-5,9.2l-0.2,0.3c-0.4,0.8-0.6,1.6-0.6,2.5c0,3.2,2.6\n/,5.7,5.7,5.7s5.7-2.6,5.7-5.7C37.7,25.8,37.5,24.9,37.1,24.1z M32,30.4c-2.1,0-3.8-1.7-3.8-3.8c0-1.5,0.9-2.7,2.1-3.4c-0.3,0.5-0.5,1.1-0.5,1.8c0,1.8,1.4,3.2,3.2,3.2c1.2,0,2.3-0.7,2.8-1.7c0,0,0,0,0,0.1C35.8,28.7,34.1,30.4,32,30.4z',d='M32,0C14.4,0,0,14.4,0,32s14.4,32,32,32s32-14.4,32-32S49.6,0,32,0z M5.6,35.6C3.6,35.6,2,34,2,32c0-2,1.6-3.6,3.6-3.6c2,0,3.6,1.6,3.6,3.6C9.2,34,7.6,35.6,5.6,35.6z M32,2c2,0,3.6,1.6,3.6,3.6S34,9.2,32,9.2s-3.6-1.6-3.6-3.6S30,2,32,2z M10.8,10.8c1.4-1.4,3.7-1.4,5.1,0c1.4,1.4,1.4,3.7,0,5.1s-3.7,1.4-5.1,0S9.4,12.2,10.8,10.8z M15.9,53.2c-1.4,1.4-3.7,1.4-5.1,0s-1.4-3.7,0-5.1s3.7-1.4,5.1,0S17.3,51.8,15.9,53.2z M32,62c-2,0-3.6-1.6-3.6-3.6c0-2,1.6-3.6,3.6-3.6s3.6,1.6,3.6,3.6C35.6,60.4,34,62,32,62z M32,52.8c-11.5,0-20.8-9.3-20.8-20.8S20.5,11.2,32,11.2S52.8,20.5,52.8,32S43.5,52.8,32,52.8z M53.2,53.2c-1.4,1.4-3.7,1.4-5.1,0c-1.4-1.4-1.4-3.7,0-5.1c1.4-1.4,3.7-1.4,5.1,0S54.6,51.8,53.2,53.2zM53.2,15.9c-1.4,1.4-3.7,1.4-5.1,0c-1.4-1.4-1.4-3.7,0-5.1c1.4-1.4,3.7-1.4,5.1,0C54.6,12.2,54.6,14.5,53.2,15.9z M58.4,35.6c-2,0-3.6-1.6-3.6-3.6c0-2,1.6-3.6,3.6-3.6c2,0,3.6,1.6,3.6,3.6C62,34,60.4,35.6,58.4,35.6z',d='M42.3,43.7c-4.1-0.3-7-1.4-10.2-2.6c-3.1-1.2-6.3-2.5-10.9-3c-2-0.2-4-0.2-6.1-0.1c0.4,1,0.8,2,1.3,2.9c1.5-0.1,3,0,4.5,0.2c4.2,0.5,7.2,1.6,10.1,2.8c3.2,1.3,6.5,2.6,11.1,2.8c0.1,0,0.1,0,0.2,0c1.2-0.9,2.3-1.8,3.3-3C44.4,43.7,43.4,43.7,42.3,43.7z',d='M21,43.8c-0.9-0.1-1.7-0.2-2.6-0.2c1.1,1.3,2.3,2.4,3.7,3.3c3.4,0.5,6.1,1.6,8.7,2.6c0.3,0.1,0.6,0.2,0.9,0.4c0.1,0,0.2,0,0.3,0c2.1,0,4.2-0.4,6.1-1.1c-2.2-0.5-4.2-1.3-6.2-2.1C28.8,45.5,25.6,44.3,21,43.8z',d='M42.5,37.9c-4.1-0.3-7-1.4-10.2-2.6c-3.1-1.2-6.3-2.5-10.9-3c-2.4-0.3-4.9-0.3-7.4,0c0,1,0.1,2,0.3,2.9c2.3-0.2,4.5-0.2,6.7,0c4.2,0.5,7.2,1.6,10.1,2.8c3.2,1.3,6.5,2.6,11.1,2.8c0.6,0,1.2,0.1,1.8,0.1c1.1,0,2.3-0.1,3.4-0.2c0.6-1,1-2.1,1.4-3.2C46.8,37.9,44.7,38.1,42.5,37.9z'",
+					  "symbolSize": 40,
+					  "coordinateSystem": "bmap"
+					}
+				  ],
+				  "bmap": {
+					"center": [
+					  118.114129,
+					  30.550339
+					],
+					"zoom": 6,
+					"roam": true,
+					"mapStyle": {
+					  "styleJson": [
+						{
+						  "featureType": "background",
+						  "elementType": "all",
+						  "stylers": {
+							"color": "#81b6bf"
+						  }
+						},
+						{
+						  "featureType": "land",
+						  "elementType": "all",
+						  "stylers": {
+							"color": "#f3f3f3"
+						  }
+						},
+						{
+						  "featureType": "road",
+						  "elementType": "all",
+						  "stylers": {
+							"visibility": "off"
+						  }
+						},
+						{
+						  "featureType": "poi",
+						  "elementType": "all",
+						  "stylers": {
+							"visibility": "off"
+						  }
+						},
+						{
+						  "featureType": "label",
+						  "elementType": "labels.icon",
+						  "stylers": {
+							"visibility": "off"
+						  }
+						},
+						{
+						  "featureType": "boundary",
+						  "elementType": "geometry",
+						  "stylers": {
+							"color": "#a2c4c9",
+							"weight": "1.1",
+							"lightness": 1
+						  }
+						},
+						{
+						  "featureType": "label",
+						  "elementType": "labels.text.fill",
+						  "stylers": {
+							"color": "#666666"
+						  }
+						},
+						{
+						  "featureType": "label",
+						  "elementType": "all",
+						  "stylers": {
+							"color": "#eeeeee",
+							"visibility": "off"
+						  }
+						}
+					  ]
+					}
+				  }
+				},
+				"advance": {
+				  "getfunction": "resourceUIService.statDeviceByStandardAddress",
+				  "category": "scatter",
+				  "condition": []
+				}
+			  }
+			],
+			"col": 10
+		  },
+		  {
+			"type": "column",
+			"children": [
+			  {
+				"label": "控制板1",
+				"type": "block",
+				"source": "BLOCK",
+				"children": [
+				  {
+					"type": "column",
+					"col": 12,
+					"children": [
+					  {
+						"label": "文字",
+						"type": "text",
+						"source": "TEXT",
+						"data": {
+						  "applied": false,
+						  "model": {
+							"id": 204
+						  },
+						  "resource": [
+							"rootCi"
+						  ],
+						  "text": {
+							"manual": "10",
+							"bind": "(function (source){\n  return source.getSeries();\n})"
+						  },
+						  "modelDisable": true,
+						  "series": {}
+						},
+						"style": {
+						  "margin": "5px auto",
+						  "padding": "0",
+						  "font-size": "80px",
+						  "font-weight": "bold",
+						  "color": "rgb(255, 255, 255)",
+						  "line-height": "160px",
+						  "text-align": "center"
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "ci",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"$index": [
+						  2,
+						  0
+						]
+					  },
+					  {
+						"label": "文字",
+						"type": "text",
+						"source": "TEXT",
+						"data": {
+						  "applied": false,
+						  "model": {
+							"id": 204
+						  },
+						  "resource": [
+							"rootCi"
+						  ],
+						  "text": {
+							"manual": "告警总数",
+							"bind": "(function (source){\n  return source.getSeries();\n})"
+						  },
+						  "modelDisable": true,
+						  "series": {}
+						},
+						"style": {
+						  "margin": "5px 20px",
+						  "padding": "0",
+						  "font-size": "14px",
+						  "font-weight": "bold",
+						  "color": "rgb(255, 255, 255)",
+						  "line-height": "20px",
+						  "text-align": "left"
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "ci",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"$index": [
+						  2,
+						  0
+						]
+					  }
+					]
+				  }
+				],
+				"style": {
+				  "margin": 0,
+				  "border": "0",
+				  "background-color": "#3c8dbc",
+				  "margin-bottom": "5px",
+				  "margin-left": "5px"
+				},
+				"data": {
+				  "series": {}
+				},
+				"$index": [
+				  1,
+				  0
+				]
+			  },
+			  {
+				"label": "控制板1",
+				"type": "block",
+				"source": "BLOCK",
+				"children": [
+				  {
+					"type": "column",
+					"col": 12,
+					"children": [
+					  {
+						"label": "文字",
+						"type": "text",
+						"source": "TEXT",
+						"data": {
+						  "applied": false,
+						  "model": {
+							"id": 204
+						  },
+						  "resource": [
+							"rootCi"
+						  ],
+						  "text": {
+							"manual": "6",
+							"bind": "(function (source){\n  return source.getSeries();\n})"
+						  },
+						  "modelDisable": true,
+						  "series": {}
+						},
+						"style": {
+						  "margin": "5px auto",
+						  "padding": "0",
+						  "font-size": "80px",
+						  "font-weight": "bold",
+						  "color": "rgb(255, 255, 255)",
+						  "line-height": "160px",
+						  "text-align": "center"
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "ci",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"$index": [
+						  2,
+						  0
+						]
+					  },
+					  {
+						"label": "文字",
+						"type": "text",
+						"source": "TEXT",
+						"data": {
+						  "applied": false,
+						  "model": {
+							"id": 204
+						  },
+						  "resource": [
+							"rootCi"
+						  ],
+						  "text": {
+							"manual": "工单总数",
+							"bind": "(function (source){\n  return source.getSeries();\n})"
+						  },
+						  "modelDisable": true,
+						  "series": {}
+						},
+						"style": {
+						  "margin": "5px 20px",
+						  "padding": "0",
+						  "font-size": "14px",
+						  "font-weight": "bold",
+						  "color": "rgb(255, 255, 255)",
+						  "line-height": "20px",
+						  "text-align": "left"
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "ci",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"$index": [
+						  2,
+						  0
+						]
+					  }
+					]
+				  }
+				],
+				"style": {
+				  "margin": 0,
+				  "border": "1px solid #aaa",
+				  "background-color": "#3c8dbc",
+				  "margin-bottom": "5px",
+				  "margin-left": "5px"
+				},
+				"data": {
+				  "series": {}
+				},
+				"$index": [
+				  1,
+				  0
+				]
+			  },
+			  {
+				"label": "控制板1",
+				"type": "block",
+				"source": "BLOCK",
+				"children": [
+				  {
+					"type": "column",
+					"col": 12,
+					"children": [
+					  {
+						"label": "文字",
+						"type": "text",
+						"source": "TEXT",
+						"data": {
+						  "applied": false,
+						  "model": {
+							"id": 204
+						  },
+						  "resource": [
+							"rootCi"
+						  ],
+						  "text": {
+							"manual": "98%",
+							"bind": "(function (source){\n  return source.getSeries();\n})"
+						  },
+						  "modelDisable": true,
+						  "series": {}
+						},
+						"style": {
+						  "margin": "5px auto",
+						  "padding": "0",
+						  "font-size": "80px",
+						  "font-weight": "bold",
+						  "color": "rgb(255, 255, 255)",
+						  "line-height": "160px",
+						  "text-align": "center"
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "ci",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"$index": [
+						  2,
+						  0
+						]
+					  },
+					  {
+						"label": "文字",
+						"type": "text",
+						"source": "TEXT",
+						"data": {
+						  "applied": false,
+						  "model": {
+							"id": 204
+						  },
+						  "resource": [
+							"rootCi"
+						  ],
+						  "text": {
+							"manual": "告警及时处理率",
+							"bind": "(function (source){\n  return source.getSeries();\n})"
+						  },
+						  "modelDisable": true,
+						  "series": {}
+						},
+						"style": {
+						  "margin": "5px 20px",
+						  "padding": "0",
+						  "font-size": "14px",
+						  "font-weight": "bold",
+						  "color": "rgb(255, 255, 255)",
+						  "line-height": "20px",
+						  "text-align": "left"
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "ci",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"$index": [
+						  2,
+						  0
+						]
+					  }
+					]
+				  }
+				],
+				"style": {
+				  "margin": 0,
+				  "border": "1px solid #aaa",
+				  "background-color": "#3c8dbc",
+				  "margin-bottom": "5px",
+				  "margin-left": "5px"
+				},
+				"data": {
+				  "series": {}
+				},
+				"$index": [
+				  1,
+				  0
+				]
+			  },
+			  {
+				"label": "控制板1",
+				"type": "block",
+				"source": "BLOCK",
+				"children": [
+				  {
+					"type": "column",
+					"col": 12,
+					"children": [
+					  {
+						"label": "文字",
+						"type": "text",
+						"source": "TEXT",
+						"data": {
+						  "applied": false,
+						  "model": {
+							"id": 204
+						  },
+						  "resource": [
+							"rootCi"
+						  ],
+						  "text": {
+							"manual": "96%",
+							"bind": "(function (source){\n  return source.getSeries();\n})"
+						  },
+						  "modelDisable": true,
+						  "series": {}
+						},
+						"style": {
+						  "margin": "5px auto",
+						  "padding": "0",
+						  "font-size": "80px",
+						  "font-weight": "bold",
+						  "color": "rgb(255, 255, 255)",
+						  "line-height": "160px",
+						  "text-align": "center"
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "ci",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"$index": [
+						  2,
+						  0
+						]
+					  },
+					  {
+						"label": "文字",
+						"type": "text",
+						"source": "TEXT",
+						"data": {
+						  "applied": false,
+						  "model": {
+							"id": 204
+						  },
+						  "resource": [
+							"rootCi"
+						  ],
+						  "text": {
+							"manual": "工单及时确定率",
+							"bind": "(function (source){\n  return source.getSeries();\n})"
+						  },
+						  "modelDisable": true,
+						  "series": {}
+						},
+						"style": {
+						  "margin": "5px 20px",
+						  "padding": "0",
+						  "font-size": "14px",
+						  "font-weight": "bold",
+						  "color": "rgb(255, 255, 255)",
+						  "line-height": "20px",
+						  "text-align": "left"
+						},
+						"advance": {
+						  "getfunction": "kpiDataService.getValueList",
+						  "category": "ci",
+						  "condition": [
+							"kpi",
+							"{object:kpiQueryModel}"
+						  ]
+						},
+						"$index": [
+						  2,
+						  0
+						]
+					  }
+					]
+				  }
+				],
+				"style": {
+				  "margin": 0,
+				  "border": "1px solid #aaa",
+				  "background-color": "#3c8dbc",
+				  "margin-bottom": "5px",
+				  "margin-left": "5px"
+				},
+				"data": {
+				  "series": {}
+				},
+				"$index": [
+				  1,
+				  0
+				]
+			  }
+			],
+			"col": 2
+		  }
+		]
+	  }
+	],
+	"col": 12
+  }
+}

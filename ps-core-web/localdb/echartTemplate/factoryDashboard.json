@@ -1,0 +1,3562 @@
+{
+  "version" : "V_2",
+  "title" : "通用工业模板（单页模板）",
+  "src" : "url(images/template3.jpg)",
+  "layout": {
+	"type": "column",
+	"children": [
+	  {
+		"type": "row",
+		"children": [
+		  {
+			"type": "column",
+			"children": [
+			  {
+				"label": "控制板2",
+				"type": "box",
+				"class": "box box-info",
+				"source": "BOX",
+				"children": [
+				  {
+					"class": "box-body",
+					"type": "box-body",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": [
+						  {
+							"type": "row",
+							"children": [
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "2400",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "kpi": [
+										3001,
+										3001
+									  ],
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "20px",
+									  "font-weight": "bold",
+									  "border-color": "#ea8ea4",
+									  "border-radius": "50%",
+									  "border-width": "10px",
+									  "border-style": "solid",
+									  "color": "#ea8ea4",
+									  "height": "100px",
+									  "width": "100px",
+									  "line-height": "80px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  },
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "总设备数",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "15px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(153, 153, 153)",
+									  "line-height": "2px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 4
+							  },
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "128",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "kpi": [
+										3014
+									  ],
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "20px",
+									  "font-weight": "bold",
+									  "border-color": "#55b0f1",
+									  "border-radius": "50%",
+									  "border-width": "10px",
+									  "border-style": "solid",
+									  "color": "#55b0f1",
+									  "height": "100px",
+									  "width": "100px",
+									  "line-height": "80px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  },
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "当前在线",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "15px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(153, 153, 153)",
+									  "line-height": "9px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 4
+							  },
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "30",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "kpi": [
+										3013
+									  ],
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "20px",
+									  "font-weight": "bold",
+									  "border-color": "rgb(32, 199, 202)",
+									  "border-radius": "50%",
+									  "border-width": "10px",
+									  "border-style": "solid",
+									  "color": "rgb(32, 199, 202)",
+									  "height": "100px",
+									  "width": "100px",
+									  "line-height": "80px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  },
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "月新增设备",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "15px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(153, 153, 153)",
+									  "line-height": "14px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 4
+							  }
+							]
+						  }
+						]
+					  }
+					]
+				  },
+				  {
+					"class": "box-footer",
+					"type": "box-footer",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": [
+						  {
+							"label": "文字",
+							"type": "text",
+							"source": "TEXT",
+							"data": {
+							  "applied": false,
+							  "model": {
+								"id": 204
+							  },
+							  "resource": [
+								"rootCi"
+							  ],
+							  "text": {
+								"manual": "设备服务增长趋势",
+								"bind": "(function (source){\n  return source.getSeries();\n})"
+							  },
+							  "modelDisable": false,
+							  "maxKpi": 1,
+							  "series": {}
+							},
+							"style": {
+							  "margin": "5px auto",
+							  "padding": "0",
+							  "font-size": "16px",
+							  "font-weight": "bold",
+							  "background-color": "rgb(238, 238, 238)",
+							  "border-color": "#93C47D",
+							  "border-width": "0px",
+							  "border-style": "solid",
+							  "color": "rgb(68, 68, 68)",
+							  "line-height": "40px",
+							  "text-align": "center"
+							},
+							"advance": {
+							  "getfunction": "kpiDataService.getValueList",
+							  "category": "ci",
+							  "condition": [
+								"kpi",
+								"{object:kpiQueryModel}"
+							  ]
+							}
+						  },
+						  {
+							"label": "线图",
+							"type": "echart",
+							"source": "LINECHART",
+							"data": {
+							  "applied": false,
+							  "model": {
+								"id": 204
+							  },
+							  "resource": [
+								"rootCi"
+							  ],
+							  "modelDisable": false,
+							  "timespan": {
+								"value": 168,
+								"unit": "hour"
+							  },
+							  "frequency": {
+								"value": 86400,
+								"unit": "second"
+							  },
+							  "format": "年月日",
+							  "legend": {
+								"manual": [
+								  "第一组",
+								  "第二组",
+								  "第三组"
+								],
+								"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+							  },
+							  "xAxisType": "category",
+							  "xAxis": {
+								"manual": [
+								  [
+									"2016/6/1",
+									"2016/6/2",
+									"2016/6/3",
+									"2016/6/4",
+									"2016/6/5",
+									"2016/6/6",
+									"2016/6/7",
+									"2016/6/8",
+									"2016/6/9",
+									"2016/6/10",
+									"2016/6/11",
+									"2016/6/12",
+									"2016/6/13",
+									"2016/6/14",
+									"2016/6/15",
+									"2016/6/16",
+									"2016/6/17"
+								  ]
+								],
+								"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+							  },
+							  "yAxisType": "value",
+							  "yAxis": {
+								"manual": [
+								  [
+									"第一个数据",
+									"第二个数据",
+									"第三个数据",
+									"第四个数据",
+									"第五个数据",
+									"第六个数据"
+								  ]
+								],
+								"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+							  },
+							  "series": {
+								"manual": {
+								  "0": {
+									"name": "新增加设备",
+									"data": [
+									  "0",
+									  "3",
+									  "2",
+									  "4",
+									  "4",
+									  "1",
+									  "2",
+									  "2",
+									  "2",
+									  "4",
+									  "8",
+									  "1",
+									  "5",
+									  "14",
+									  "2",
+									  "2",
+									  "4"
+									]
+								  },
+								  "1": {
+									"name": "设备总数",
+									"data": [
+									  "0",
+									  "3",
+									  "5",
+									  "9",
+									  "11",
+									  "15",
+									  "16",
+									  "18",
+									  "20",
+									  "24",
+									  "32",
+									  "33",
+									  "38",
+									  "52",
+									  "54",
+									  "56",
+									  "60"
+									]
+								  }
+								},
+								"bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+							  }
+							},
+							"advance": {
+							  "getfunction": "kpiDataService.getValueList",
+							  "category": "time",
+							  "condition": [
+								"kpi",
+								"{object:kpiQueryModel}"
+							  ]
+							},
+							"parameters": {
+							  "title": "",
+							  "subtitle": ""
+							},
+							"style": {
+							  "margin": "auto",
+							  "width": "100%",
+							  "height": "400px"
+							},
+							"echart": {
+							  "general": {},
+							  "title": {
+								"padding": 30,
+								"text": "草莓大棚温度变化",
+								"textStyle": {
+								  "fontWeight": "bold",
+								  "fontSize": 16
+								}
+							  },
+							  "tooltip": {
+								"trigger": "axis"
+							  },
+							  "legend": {
+								"data": [
+								  "数据1",
+								  "数据2",
+								  "数据3"
+								]
+							  },
+							  "grid": [
+								{}
+							  ],
+							  "xAxis": [
+								{
+								  "boundaryGap": false,
+								  "axisLine": {
+									"lineStyle": {
+									  "color": "#b0b0b0"
+									}
+								  }
+								}
+							  ],
+							  "yAxis": [
+								{
+								  "boundaryGap": false,
+								  "axisLine": {
+									"lineStyle": {
+									  "color": "#b0b0b0"
+									}
+								  }
+								}
+							  ],
+							  "series": [
+								{
+								  "type": "line",
+								  "name": "数据1",
+								  "lineStyle": {
+									"normal": {
+									  "color": "rgb(166, 77, 121)"
+									}
+								  },
+								  "markPoint": {
+									"data": []
+								  }
+								},
+								{
+								  "type": "bar",
+								  "itemStyle": {
+									"normal": {
+									  "color": "rgb(224, 102, 102)"
+									}
+								  },
+								  "markPoint": {
+									"data": []
+								  }
+								}
+							  ]
+							},
+							"$index": [
+							  4,
+							  7
+							]
+						  }
+						]
+					  }
+					]
+				  }
+				],
+				"parameters": {
+				  "title": "设备服务"
+				},
+				"style": {
+				  "font-size": "12px",
+				  "font-weight": "bold",
+				  "text-align": "left",
+				  "margin": "5px"
+				},
+				"data": {
+				  "series": {}
+				}
+			  }
+			],
+			"col": 4
+		  },
+		  {
+			"type": "column",
+			"children": [
+			  {
+				"label": "控制板2",
+				"type": "box",
+				"class": "box box-info",
+				"source": "BOX",
+				"children": [
+				  {
+					"class": "box-body",
+					"type": "box-body",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": [
+						  {
+							"type": "row",
+							"children": [
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "140",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "kpi": [
+										3003
+									  ],
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "20px",
+									  "font-weight": "bold",
+									  "background-color": "rgb(255, 185, 123)",
+									  "border-color": "rgb(255, 185, 123)",
+									  "border-radius": "50%",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(255, 255, 255)",
+									  "height": "100px",
+									  "width": "100px",
+									  "line-height": "100px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  },
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "待处理告警",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "15px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(153, 153, 153)",
+									  "line-height": "14px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 4
+							  },
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "32",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "kpi": [
+										3017
+									  ],
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "20px",
+									  "font-weight": "bold",
+									  "background-color": "rgb(182, 161, 224)",
+									  "border-color": "#93C47D",
+									  "border-radius": "50%",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(255, 255, 255)",
+									  "height": "100px",
+									  "width": "100px",
+									  "line-height": "100px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  },
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "总告警数",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "15px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(153, 153, 153)",
+									  "line-height": "14px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 4
+							  },
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "35",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "kpi": [
+										3026
+									  ],
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "20px",
+									  "font-weight": "bold",
+									  "background-color": "rgb(86, 176, 242)",
+									  "border-color": "rgb(61, 133, 198)",
+									  "border-radius": "50%",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(255, 255, 255)",
+									  "height": "100px",
+									  "width": "100px",
+									  "line-height": "100px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  },
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "日新增告警",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "15px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(153, 153, 153)",
+									  "line-height": "14px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 4
+							  }
+							]
+						  }
+						]
+					  }
+					]
+				  },
+				  {
+					"class": "box-footer",
+					"type": "box-footer",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": [
+						  {
+							"label": "文字",
+							"type": "text",
+							"source": "TEXT",
+							"data": {
+							  "applied": false,
+							  "model": {
+								"id": 204
+							  },
+							  "resource": [
+								"rootCi"
+							  ],
+							  "text": {
+								"manual": "设备故障类型分布",
+								"bind": "(function (source){\n  return source.getSeries();\n})"
+							  },
+							  "modelDisable": false,
+							  "maxKpi": 1,
+							  "series": {}
+							},
+							"style": {
+							  "margin": "5px auto",
+							  "padding": "0",
+							  "font-size": "16px",
+							  "font-weight": "bold",
+							  "background-color": "rgb(238, 238, 238)",
+							  "border-color": "#93C47D",
+							  "border-width": "0px",
+							  "border-style": "solid",
+							  "color": "rgb(68, 68, 68)",
+							  "line-height": "40px",
+							  "text-align": "center"
+							},
+							"advance": {
+							  "getfunction": "kpiDataService.getValueList",
+							  "category": "ci",
+							  "condition": [
+								"kpi",
+								"{object:kpiQueryModel}"
+							  ]
+							}
+						  },
+						  {
+							"label": "散点图",
+							"type": "echart",
+							"source": "SCATTERCHART",
+							"data": {
+							  "applied": false,
+							  "model": {
+								"id": 204
+							  },
+							  "resource": [
+								"rootCi"
+							  ],
+							  "modelDisable": true,
+							  "timespan": {
+								"value": 24,
+								"unit": "hour"
+							  },
+							  "frequency": {
+								"value": 30,
+								"unit": "minute"
+							  },
+							  "format": "年月日",
+							  "legend": {
+								"manual": [
+								  "故障类型"
+								],
+								"bind": "(function (source){\n  return source.time.getLegend();\n})"
+							  },
+							  "xAxisType": "value",
+							  "xAxis": {
+								"manual": [],
+								"bind": "(function (source){\n  return source.time.getxAxis();\n})"
+							  },
+							  "yAxisType": "value",
+							  "yAxis": {
+								"manual": [],
+								"bind": "(function (source){\n  return source.time.getxAxis();\n})"
+							  },
+							  "series": {
+								"manual": [
+								  {
+									"name": "故障类型",
+									"data": [
+									  [
+										66,
+										4.26
+									  ],
+									  [
+										45,
+										4.32
+									  ],
+									  [
+										6,
+										7.3
+									  ],
+									  [
+										71,
+										4.71
+									  ],
+									  [
+										17,
+										9.05
+									  ],
+									  [
+										59,
+										0.05
+									  ],
+									  [
+										5,
+										9.81
+									  ],
+									  [
+										64,
+										5.99
+									  ],
+									  [
+										92,
+										4.91
+									  ],
+									  [
+										59,
+										2.4
+									  ],
+									  [
+										32,
+										8.43
+									  ],
+									  [
+										87,
+										6.13
+									  ],
+									  [
+										57,
+										8.19
+									  ],
+									  [
+										1,
+										7.04
+									  ],
+									  [
+										9,
+										7.73
+									  ],
+									  [
+										24,
+										7.21
+									  ],
+									  [
+										83,
+										0.28
+									  ],
+									  [
+										80,
+										1.81
+									  ],
+									  [
+										92,
+										3.77
+									  ],
+									  [
+										45,
+										4.83
+									  ],
+									  [
+										56,
+										8.02
+									  ],
+									  [
+										79,
+										5.99
+									  ],
+									  [
+										74,
+										6.43
+									  ],
+									  [
+										59,
+										7.74
+									  ],
+									  [
+										95,
+										7.29
+									  ],
+									  [
+										52,
+										6.37
+									  ],
+									  [
+										43,
+										1.8
+									  ],
+									  [
+										25,
+										2.44
+									  ],
+									  [
+										100,
+										2.55
+									  ],
+									  [
+										98,
+										7.7
+									  ],
+									  [
+										45,
+										0.29
+									  ],
+									  [
+										16,
+										6.5
+									  ],
+									  [
+										29,
+										5.14
+									  ],
+									  [
+										46,
+										6.35
+									  ],
+									  [
+										9,
+										0.41
+									  ],
+									  [
+										18,
+										9.92
+									  ],
+									  [
+										25,
+										6.78
+									  ],
+									  [
+										46,
+										1.72
+									  ],
+									  [
+										1,
+										5.65
+									  ],
+									  [
+										56,
+										6.63
+									  ],
+									  [
+										91,
+										4.91
+									  ],
+									  [
+										71,
+										2.17
+									  ],
+									  [
+										60,
+										0.73
+									  ],
+									  [
+										63,
+										4.79
+									  ],
+									  [
+										49,
+										2.61
+									  ],
+									  [
+										45,
+										6.2
+									  ],
+									  [
+										56,
+										1.22
+									  ],
+									  [
+										44,
+										8.42
+									  ],
+									  [
+										52,
+										9.64
+									  ],
+									  [
+										73,
+										9.54
+									  ],
+									  [
+										47,
+										3.9
+									  ],
+									  [
+										7,
+										3.82
+									  ],
+									  [
+										23,
+										3.08
+									  ],
+									  [
+										1,
+										1.36
+									  ],
+									  [
+										43,
+										5.9
+									  ],
+									  [
+										49,
+										1.31
+									  ],
+									  [
+										77,
+										9.26
+									  ],
+									  [
+										85,
+										6.78
+									  ],
+									  [
+										70,
+										5.8
+									  ],
+									  [
+										38,
+										7.16
+									  ],
+									  [
+										64,
+										3.5
+									  ],
+									  [
+										88,
+										9.32
+									  ],
+									  [
+										1,
+										2.87
+									  ],
+									  [
+										33,
+										7.79
+									  ],
+									  [
+										84,
+										4.55
+									  ],
+									  [
+										57,
+										8.81
+									  ],
+									  [
+										84,
+										2.03
+									  ],
+									  [
+										23,
+										9.77
+									  ],
+									  [
+										17,
+										2.15
+									  ],
+									  [
+										27,
+										8.24
+									  ],
+									  [
+										57,
+										0.56
+									  ],
+									  [
+										70,
+										6.78
+									  ],
+									  [
+										44,
+										6.91
+									  ],
+									  [
+										96,
+										9.69
+									  ],
+									  [
+										36,
+										3.41
+									  ],
+									  [
+										3,
+										2.12
+									  ],
+									  [
+										78,
+										1.26
+									  ],
+									  [
+										36,
+										0.32
+									  ],
+									  [
+										77,
+										5.08
+									  ],
+									  [
+										78,
+										3.48
+									  ]
+									]
+								  }
+								],
+								"bind": "(function (source){\n  return source.time.getSeries();\n})"
+							  },
+							  "timeSpan": 3600
+							},
+							"general": {},
+							"advance": {
+							  "getfunction": "kpiDataService.getValueList",
+							  "category": "scatter",
+							  "condition": [
+								"kpi",
+								"{object:kpiQueryModel}"
+							  ]
+							},
+							"parameters": {
+							  "title": "",
+							  "subtitle": ""
+							},
+							"style": {
+							  "margin": "auto",
+							  "width": "100%",
+							  "height": "400px"
+							},
+							"echart": {
+							  "general": {},
+							  "title": "",
+							  "tooltip": {
+								"trigger": "axis"
+							  },
+							  "legend": {
+								"data": [
+								  "数据1",
+								  "数据2"
+								]
+							  },
+							  "grid": [
+								{}
+							  ],
+							  "xAxis": [
+								{
+								  "type": "value",
+								  "min": "auto",
+								  "max": "auto",
+								  "boundaryGap": false
+								}
+							  ],
+							  "yAxis": [
+								{
+								  "type": "value",
+								  "min": "auto",
+								  "max": "auto",
+								  "boundaryGap": false
+								}
+							  ],
+							  "series": [
+								{
+								  "name": "数据1",
+								  "type": "scatter",
+								  "symbolSize": "function(value){\n return value[1] * 2 > 20 ? 20 : value[1] * 2;\n}",
+								  "markPoint": {},
+								  "markLine": {
+									"lineStyle": {
+									  "normal": {
+										"width": 2,
+										"color": "#000",
+										"type": "solid"
+									  }
+									},
+									"data": [
+									  {
+										"name": "中心线",
+										"type": "average"
+									  },
+									  {
+										"xAxis": 50
+									  }
+									]
+								  }
+								},
+								{
+								  "name": "数据2",
+								  "type": "scatter",
+								  "symbolSize": 6,
+								  "markPoint": {
+									"data": [
+									  {
+										"name": "最大值",
+										"type": "max"
+									  },
+									  {
+										"name": "最小值",
+										"type": "min"
+									  }
+									]
+								  }
+								}
+							  ]
+							}
+						  }
+						]
+					  }
+					]
+				  }
+				],
+				"parameters": {
+				  "title": "故障告警"
+				},
+				"style": {
+				  "font-size": "12px",
+				  "font-weight": "bold",
+				  "text-align": "left",
+				  "margin": "5px"
+				},
+				"data": {
+				  "series": {}
+				}
+			  }
+			],
+			"col": 4
+		  },
+		  {
+			"type": "column",
+			"children": [
+			  {
+				"label": "控制板2",
+				"type": "box",
+				"class": "box box-info",
+				"source": "BOX",
+				"children": [
+				  {
+					"class": "box-body",
+					"type": "box-body",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": [
+						  {
+							"type": "row",
+							"children": [
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "98%",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "kpi": [
+										100004
+									  ],
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "20px",
+									  "font-weight": "bold",
+									  "border-color": "rgb(32, 199, 202)",
+									  "border-radius": "50%",
+									  "border-width": "10px",
+									  "border-style": "solid",
+									  "color": "rgb(32, 199, 202)",
+									  "height": "100px",
+									  "width": "100px",
+									  "line-height": "80px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  },
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "工单完成率",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "15px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(153, 153, 153)",
+									  "line-height": "14px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 4
+							  },
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "150",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "kpi": [
+										3004
+									  ],
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "20px",
+									  "font-weight": "bold",
+									  "border-color": "#ea8ea4",
+									  "border-radius": "50%",
+									  "border-width": "10px",
+									  "border-style": "solid",
+									  "color": "#ea8ea4",
+									  "height": "100px",
+									  "width": "100px",
+									  "line-height": "80px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  },
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "待处理工单",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": true,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "14px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(153, 153, 153)",
+									  "line-height": "14px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 4
+							  },
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "360",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "kpi": [
+										3022
+									  ],
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "20px",
+									  "font-weight": "bold",
+									  "background-color": "rgb(255, 185, 123)",
+									  "border-color": "rgb(255, 185, 123)",
+									  "border-radius": "50%",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(255, 255, 255)",
+									  "height": "100px",
+									  "width": "100px",
+									  "line-height": "100px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  },
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "服务客户数",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "15px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(153, 153, 153)",
+									  "line-height": "14px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 4
+							  }
+							]
+						  }
+						]
+					  }
+					]
+				  },
+				  {
+					"class": "box-footer",
+					"type": "box-footer",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": [
+						  {
+							"type": "row",
+							"children": [
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "工单分布状态",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "16px",
+									  "font-weight": "bold",
+									  "background-color": "rgb(238, 238, 238)",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(68, 68, 68)",
+									  "line-height": "40px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  },
+								  {
+									"label": "饼图",
+									"type": "echart",
+									"source": "PIECHART",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "legend": {
+										"manual": [
+										  "未确认",
+										  "处理中",
+										  "已完成"
+										],
+										"bind": "(function (source){\n console.log(source)\n return source.ci.getLegend();\n})"
+									  },
+									  "series": {
+										"manual": {
+										  "0": {
+											"data": [
+											  {
+												"name": "未确认",
+												"value": "2"
+											  },
+											  {
+												"name": "处理中",
+												"value": "6"
+											  },
+											  {
+												"name": "已完成",
+												"value": "3"
+											  }
+											]
+										  }
+										},
+										"bind": "(function (source){\n  return source.ci.getSeries();\n})"
+									  },
+									  "modelDisable": true,
+									  "timeSpan": 3600,
+									  "category": [
+										"ci"
+									  ]
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "time",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									},
+									"parameters": {
+									  "title": "基础饼图",
+									  "subtitle": ""
+									},
+									"style": {
+									  "margin": "auto",
+									  "width": "100%",
+									  "height": "400px"
+									},
+									"echart": {
+									  "general": {},
+									  "title": {
+										"show": false,
+										"textStyle": {
+										  "fontWeight": "bold",
+										  "fontSize": 16
+										},
+										"textAlign": "middle",
+										"padding": 30,
+										"left": "50%",
+										"text": "基础饼图",
+										"subtext": ""
+									  },
+									  "tooltip": {
+										"trigger": "item"
+									  },
+									  "legend": {
+										"left": "1%",
+										"top": "2%",
+										"orient": "vertical"
+									  },
+									  "series": [
+										{
+										  "name": "数据1",
+										  "center": [
+											"50%",
+											"50%"
+										  ],
+										  "radius": [
+											0,
+											"65%"
+										  ],
+										  "type": "pie"
+										},
+										{
+										  "name": "数据2",
+										  "center": [
+											"70%",
+											"50%"
+										  ],
+										  "radius": [
+											0,
+											"75%"
+										  ],
+										  "type": "pie"
+										}
+									  ]
+									}
+								  }
+								],
+								"col": 6
+							  },
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "客户满意度",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "16px",
+									  "font-weight": "bold",
+									  "background-color": "rgb(238, 238, 238)",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(68, 68, 68)",
+									  "line-height": "40px",
+									  "text-align": "center"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  },
+								  {
+									"label": "饼图",
+									"type": "echart",
+									"source": "PIECHART",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "legend": {
+										"manual": [
+										  "很满意",
+										  "满意",
+										  "一般",
+										  "不满意"
+										],
+										"bind": "(function (source){\n console.log(source)\n return source.ci.getLegend();\n})"
+									  },
+									  "series": {
+										"manual": {
+										  "0": {
+											"data": [
+											  {
+												"name": "很满意",
+												"value": "3"
+											  },
+											  {
+												"name": "满意",
+												"value": "8"
+											  },
+											  {
+												"name": "一般",
+												"value": "4"
+											  },
+											  {
+												"name": "不满意",
+												"value": "2"
+											  }
+											]
+										  }
+										},
+										"bind": "(function (source){\n  return source.ci.getSeries();\n})"
+									  },
+									  "modelDisable": true,
+									  "timeSpan": 3600,
+									  "category": [
+										"ci"
+									  ]
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "time",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									},
+									"parameters": {
+									  "title": "基础饼图",
+									  "subtitle": ""
+									},
+									"style": {
+									  "margin": "auto",
+									  "width": "100%",
+									  "height": "400px"
+									},
+									"echart": {
+									  "general": {},
+									  "title": {
+										"show": false,
+										"textStyle": {
+										  "fontWeight": "bold",
+										  "fontSize": 16
+										},
+										"textAlign": "middle",
+										"padding": 30,
+										"left": "50%",
+										"text": "基础饼图",
+										"subtext": ""
+									  },
+									  "tooltip": {
+										"trigger": "item"
+									  },
+									  "legend": {
+										"left": "1%",
+										"top": "2%",
+										"orient": "vertical"
+									  },
+									  "series": [
+										{
+										  "name": "数据1",
+										  "center": [
+											"50%",
+											"50%"
+										  ],
+										  "radius": [
+											0,
+											"65%"
+										  ],
+										  "type": "pie"
+										},
+										{
+										  "name": "数据2",
+										  "center": [
+											"70%",
+											"50%"
+										  ],
+										  "radius": [
+											0,
+											"75%"
+										  ],
+										  "type": "pie"
+										}
+									  ]
+									}
+								  }
+								],
+								"col": 6
+							  }
+							]
+						  }
+						]
+					  }
+					]
+				  }
+				],
+				"parameters": {
+				  "title": "客户工单"
+				},
+				"style": {
+				  "font-size": "12px",
+				  "font-weight": "bold",
+				  "text-align": "left",
+				  "margin": "5px"
+				},
+				"data": {
+				  "series": {}
+				}
+			  }
+			],
+			"col": 4
+		  }
+		]
+	  },
+	  {
+		"type": "box",
+		"source": "BOX",
+		"class": "box box-info",
+		"label": "控制板2",
+		"children": [
+		  {
+			"type": "box-body",
+			"children": [
+			  {
+				"type": "column",
+				"col": 7,
+				"children": [
+				  {
+					"type": "echart",
+					"data": {
+					  "applied": false,
+					  "resource": [],
+					  "modelDisable": true,
+					  "series": {
+						"manual": "(function(data,system){\n  var rs = [];\n  for(var i in system.mapJson.features){\n    rs.push({\n      name : system.mapJson.features[i].properties.name,\n      value : parseInt(Math.random() * 100)\n    })\n  }\n  return [{\n    data : rs\n  }];\n})",
+						"bind": "(function (source){\n  return source.time.getSeries();\n})"
+					  }
+					},
+					"children": [],
+					"source": "MAP",
+					"label": "地图分布",
+					"advance": {
+					  "getfunction": "resourceUIService.statDeviceByStandardAddress",
+					  "category": "scatter",
+					  "condition": [],
+					  "events": "function(){\n return {\n  click : function(event){\n    console.log(event);\n  }\n}\n}",
+					  "expression": "{\n  \"on\" : {\n    \"click\" : function(event){\n      var target = event.global.variable(\"productlist\");\n      var value = event.echart.value;\n      var number = Math.round(value / 20);\n      if(number > 10) {\n        number = 10;\n      } else if(number < 1) {\n        number = 1;\n      }\n      var result = [];\n      for(var j = 0; j < number; j++) {\n        var name = ''\n        if(j % 4 == 0) {\n          name = 'FH (' + event.echart.name + \")\";\n        } else if(j % 4 == 1) {\n          name = 'T系列(' + event.echart.name + \")\";\n        } else if(j % 4 == 2) {\n          name = 'EH系列(' + event.echart.name + \")\";\n        } else if(j % 4 == 3) {\n          name = 'SPZ-FK系列(' + event.echart.name + \")\";\n        }\n        result.push({\n          category : {\n            label : '产品分类',\n            value : name\n          },\n          product : {\n            label : '产品份额',\n            value : value + Math.round(Math.random() * 100),\n          },\n          malfunction : {\n            label : '平均故障',\n            value : Math.round(Math.random() * 100)\n          }\n        });\n      }\n      target.render(result);\n    }\n  }\n}"
+					},
+					"parameters": {
+					  "title": "产品地理分布",
+					  "subtitle": "产品地理分布"
+					},
+					"style": {
+					  "margin": "auto",
+					  "width": "100%",
+					  "height": "400px"
+					},
+					"echart": {
+					  "general": {
+						"backgroundColor": "#eee"
+					  },
+					  "title": {
+						"padding": 30,
+						"text": "地图",
+						"textStyle": {
+						  "fontWeight": "bold",
+						  "fontSize": 16
+						}
+					  },
+					  "tooltip": {
+						"trigger": "item"
+					  },
+					  "grid": [
+						{}
+					  ],
+					  "series": [
+						{
+						  "type": "map",
+						  "mapType": "china",
+						  "roam": true
+						}
+					  ],
+					  "geo": {
+						"map": "china",
+						"roam": true,
+						"itemStyle": {
+						  "normal": {
+							"color": "rgb(243, 243, 243)",
+							"borderColor": "",
+							"borderWidth": "0"
+						  }
+						}
+					  },
+					  "visualMap": [{
+						"type" : "continuous",
+						"orient": "vertical",
+						"left": "10",
+						"top": "center",
+						"min": 0,
+						"max": "100",
+						"inRange": "{\n  \"color\": [\n    \"#f2d1a1\",\n    \"#a8311d\"\n  ]\n}"
+					  }]
+					},
+					"": {
+					  "applied": false
+					},
+					"$index": [
+					  4,
+					  0
+					]
+				  }
+				]
+			  },
+			  {
+				"type": "column",
+				"col": 5,
+				"children": [
+				  {
+					"type": "list",
+					"data": {
+					  "applied": false,
+					  "resource": [],
+					  "series": {
+						"bind": "(function (source){\n  return source.getLegend();\n})"
+					  }
+					},
+					"source": "LIST",
+					"label": "列表",
+					"style": {
+					  "margin": "5px",
+					  "padding": "0",
+					  "font-size": "12px"
+					},
+					"advance": {
+					  "variable": "productlist",
+					  "getfunction": "kpiDataService.getValueList",
+					  "category": "ci",
+					  "condition": [
+						"kpi",
+						"{object:kpiQueryModel}"
+					  ],
+					  "expression": "{\n  \"on\" : {\n    \"ready\" : function(event){\n      event.target.render([\n        {\n          \"category\": {\n            \"label\": \"产品分类\",\n            \"value\": \"FH (台湾)\"\n          },\n          \"product\": {\n            \"label\": \"产品份额\",\n            \"value\": 113\n          },\n          \"malfunction\": {\n            \"label\": \"平均故障\",\n            \"value\": 63\n          }\n        },{\n          \"category\": {\n            \"label\": \"产品分类\",\n            \"value\": \"T系列(台湾)\"\n          },\n          \"product\": {\n            \"label\": \"产品份额\",\n            \"value\": 93\n          },\n          \"malfunction\": {\n            \"label\": \"平均故障\",\n            \"value\": 84\n          }\n        }\n      ])\n    }\n  }\n}"
+					},
+					"$index": [
+					  2,
+					  0
+					]
+				  }
+				]
+			  }
+			],
+			"class": "box-body"
+		  },
+		  {
+			"type": "box-footer",
+			"children": [
+			  {
+				"type": "row",
+				"children": []
+			  }
+			],
+			"class": "box-footer"
+		  }
+		],
+		"parameters": {
+		  "title": "设备分布"
+		},
+		"style": {
+		  "font-size": "12px",
+		  "font-weight": "bold",
+		  "text-align": "left",
+		  "margin": "5px"
+		},
+		"data": {
+		  "series": {}
+		}
+	  },
+	  {
+		"type": "row",
+		"children": [
+		  {
+			"type": "column",
+			"children": [
+			  {
+				"label": "控制板2",
+				"type": "box",
+				"class": "box box-info",
+				"source": "BOX",
+				"children": [
+				  {
+					"class": "box-body",
+					"type": "box-body",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": [
+						  {
+							"label": "线图",
+							"type": "echart",
+							"source": "LINECHART",
+							"data": {
+							  "applied": false,
+							  "model": {
+								"id": 204
+							  },
+							  "resource": [
+								"rootCi"
+							  ],
+							  "modelDisable": false,
+							  "timespan": {
+								"value": 168,
+								"unit": "hour"
+							  },
+							  "frequency": {
+								"value": 86400,
+								"unit": "second"
+							  },
+							  "format": "年月日",
+							  "legend": {
+								"manual": [
+								  "第一组",
+								  "第二组",
+								  "第三组"
+								],
+								"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+							  },
+							  "xAxisType": "category",
+							  "xAxis": {
+								"manual": [
+								  [
+									"2016/6/1",
+									"2016/6/2",
+									"2016/6/3",
+									"2016/6/4",
+									"2016/6/5",
+									"2016/6/6",
+									"2016/6/7",
+									"2016/6/8",
+									"2016/6/9",
+									"2016/6/10",
+									"2016/6/11",
+									"2016/6/12",
+									"2016/6/13",
+									"2016/6/14",
+									"2016/6/15",
+									"2016/6/16",
+									"2016/6/17"
+								  ]
+								],
+								"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+							  },
+							  "yAxisType": "value",
+							  "yAxis": {
+								"manual": [
+								  [
+									"第一个数据",
+									"第二个数据",
+									"第三个数据",
+									"第四个数据",
+									"第五个数据",
+									"第六个数据"
+								  ]
+								],
+								"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getxAxis(formatter);\n})"
+							  },
+							  "series": {
+								"manual": {
+								  "0": {
+									"name": "能耗",
+									"data": [
+									  "307",
+									  "332",
+									  "279",
+									  "268",
+									  "349",
+									  "457",
+									  "287",
+									  "312",
+									  "314",
+									  "298",
+									  "296",
+									  "306",
+									  "317"
+									]
+								  },
+								  "1": {
+									"name": "平均能耗",
+									"data": [
+									  "310",
+									  "315",
+									  "296",
+									  "314",
+									  "358",
+									  "314",
+									  "297",
+									  "305",
+									  "303",
+									  "310",
+									  "342",
+									  "278",
+									  "315"
+									]
+								  }
+								},
+								"bind": "(function (source){\n   var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.time.getSeries(formatter);\n})"
+							  }
+							},
+							"advance": {
+							  "getfunction": "kpiDataService.getValueList",
+							  "category": "time",
+							  "condition": [
+								"kpi",
+								"{object:kpiQueryModel}"
+							  ]
+							},
+							"parameters": {
+							  "title": "",
+							  "subtitle": ""
+							},
+							"style": {
+							  "margin": "auto",
+							  "width": "100%",
+							  "height": "400px"
+							},
+							"echart": {
+							  "general": {},
+							  "title": {
+								"padding": 30,
+								"text": "草莓大棚温度变化",
+								"textStyle": {
+								  "fontWeight": "bold",
+								  "fontSize": 16
+								}
+							  },
+							  "tooltip": {
+								"trigger": "axis"
+							  },
+							  "legend": {
+								"data": [
+								  "数据1",
+								  "数据2",
+								  "数据3"
+								]
+							  },
+							  "grid": [
+								{}
+							  ],
+							  "xAxis": [
+								{
+								  "axisLine": {
+									"lineStyle": {
+									  "color": "#b0b0b0"
+									}
+								  }
+								}
+							  ],
+							  "yAxis": [
+								{
+								  "boundaryGap": false,
+								  "axisLine": {
+									"lineStyle": {
+									  "color": "#b0b0b0"
+									}
+								  }
+								}
+							  ],
+							  "series": [
+								{
+								  "type": "line",
+								  "name": "数据1",
+								  "lineStyle": {
+									"normal": {
+									  "color": "rgb(166, 77, 121)"
+									}
+								  },
+								  "markPoint": {
+									"data": []
+								  }
+								},
+								{
+								  "type": "bar",
+								  "name": "数据2",
+								  "itemStyle": {
+									"normal": {
+									  "color": "rgb(224, 102, 102)"
+									}
+								  },
+								  "markPoint": {
+									"data": []
+								  }
+								},
+								{
+								  "type": "line",
+								  "name": "数据3",
+								  "markPoint": {
+									"data": [
+									  {
+										"name": "最大值",
+										"type": "max"
+									  },
+									  {
+										"name": "最小值",
+										"type": "min"
+									  }
+									]
+								  }
+								}
+							  ]
+							},
+							"$index": [
+							  4,
+							  7
+							]
+						  }
+						]
+					  }
+					]
+				  },
+				  {
+					"class": "box-footer",
+					"type": "box-footer",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": []
+					  }
+					]
+				  }
+				],
+				"parameters": {
+				  "title": "能耗统计"
+				},
+				"style": {
+				  "font-size": "12px",
+				  "font-weight": "bold",
+				  "text-align": "left",
+				  "margin": "5px"
+				},
+				"data": {
+				  "series": {}
+				}
+			  },
+			  {
+				"label": "控制板2",
+				"type": "box",
+				"class": "box box-info",
+				"source": "BOX",
+				"children": [
+				  {
+					"class": "box-body",
+					"type": "box-body",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": [
+						  {
+							"label": "数据统计标签",
+							"type": "totalItem",
+							"source": "TOTALITEM",
+							"data": {
+							  "applied": false,
+							  "resource": [
+								"rootCi"
+							  ],
+							  "modelDisable": true,
+							  "series": {
+								"manual": [
+								  {
+									"data": [
+									  {
+										"name": "本月累计碳排放数据",
+										"unit": "kg",
+										"value": "156749"
+									  }
+									]
+								  }
+								],
+								"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+							  },
+							  "model": {
+								"id": 204
+							  },
+							  "maxKpi": 1
+							},
+							"parameters": {
+							  "icon": {
+								"id": "29",
+								"perfix": "proudsmart",
+								"css": "ps-fan"
+							  }
+							},
+							"advance": {
+							  "getfunction": "kpiDataService.getValueList",
+							  "category": "ci",
+							  "condition": [
+								"kpi",
+								"{object:kpiQueryModel}"
+							  ],
+							  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+							},
+							"style": {
+							  "color": "#fff",
+							  "background-color": "rgb(246, 178, 107)",
+							  "margin": "5px"
+							}
+						  }
+						]
+					  }
+					]
+				  },
+				  {
+					"class": "box-footer",
+					"type": "box-footer",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": [
+						  {
+							"label": "数据统计标签",
+							"type": "totalItem",
+							"source": "TOTALITEM",
+							"data": {
+							  "applied": false,
+							  "resource": [
+								"rootCi"
+							  ],
+							  "modelDisable": true,
+							  "series": {
+								"manual": [
+								  {
+									"data": [
+									  {
+										"name": "本年累计碳排放数据",
+										"unit": "kg",
+										"value": "1543"
+									  }
+									]
+								  }
+								],
+								"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+							  },
+							  "model": {
+								"id": 204
+							  },
+							  "maxKpi": 1
+							},
+							"parameters": {
+							  "icon": {
+								"id": "29",
+								"perfix": "proudsmart",
+								"css": "ps-fan"
+							  }
+							},
+							"advance": {
+							  "getfunction": "kpiDataService.getValueList",
+							  "category": "ci",
+							  "condition": [
+								"kpi",
+								"{object:kpiQueryModel}"
+							  ],
+							  "expression": "{\n  click : function(event){\n    event.window.location.href='../../app-oc/index.html#/resource_type';\n  }\n}"
+							},
+							"style": {
+							  "color": "#fff",
+							  "background-color": "rgb(111, 168, 220)",
+							  "margin": "5px"
+							}
+						  }
+						]
+					  }
+					]
+				  }
+				],
+				"parameters": {
+				  "title": "累计节省碳排放"
+				},
+				"style": {
+				  "font-size": "12px",
+				  "font-weight": "bold",
+				  "text-align": "left",
+				  "margin": "5px"
+				},
+				"data": {
+				  "series": {}
+				}
+			  }
+			],
+			"col": 7
+		  },
+		  {
+			"type": "column",
+			"children": [
+			  {
+				"label": "控制板2",
+				"type": "box",
+				"class": "box box-info",
+				"source": "BOX",
+				"children": [
+				  {
+					"class": "box-body",
+					"type": "box-body",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": [
+						  {
+							"type": "row",
+							"children": [
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "设备1月能耗",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "14px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "#333",
+									  "line-height": "50px",
+									  "text-align": "left"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 6
+							  },
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "1200",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "14px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(61, 133, 198)",
+									  "line-height": "50px",
+									  "text-align": "left"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 6
+							  }
+							]
+						  },
+						  {
+							"type": "row",
+							"children": [
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "设备2月能耗",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "14px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "#333",
+									  "line-height": "50px",
+									  "text-align": "left"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 6
+							  },
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "1150",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "14px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(61, 133, 198)",
+									  "line-height": "50px",
+									  "text-align": "left"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 6
+							  }
+							]
+						  },
+						  {
+							"type": "row",
+							"children": [
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "设备3月能耗",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "14px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "#333",
+									  "line-height": "50px",
+									  "text-align": "left"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 6
+							  },
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "1125",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "14px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(61, 133, 198)",
+									  "line-height": "50px",
+									  "text-align": "left"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 6
+							  }
+							]
+						  },
+						  {
+							"type": "row",
+							"children": [
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "设备4月能耗",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "14px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "#333",
+									  "line-height": "50px",
+									  "text-align": "left"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 6
+							  },
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "1090",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "14px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(61, 133, 198)",
+									  "line-height": "50px",
+									  "text-align": "left"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 6
+							  }
+							]
+						  },
+						  {
+							"type": "row",
+							"children": [
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "设备5月能耗",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "14px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "#333",
+									  "line-height": "50px",
+									  "text-align": "left"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 6
+							  },
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "1102",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "14px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(61, 133, 198)",
+									  "line-height": "50px",
+									  "text-align": "left"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 6
+							  }
+							]
+						  },
+						  {
+							"type": "row",
+							"children": [
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "设备6月能耗",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "14px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "#333",
+									  "line-height": "50px",
+									  "text-align": "left"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 6
+							  },
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "980",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "14px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(61, 133, 198)",
+									  "line-height": "50px",
+									  "text-align": "left"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 6
+							  }
+							]
+						  },
+						  {
+							"type": "row",
+							"children": [
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "设备7月能耗",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "14px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "#333",
+									  "line-height": "50px",
+									  "text-align": "left"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 6
+							  },
+							  {
+								"type": "column",
+								"children": [
+								  {
+									"label": "文字",
+									"type": "text",
+									"source": "TEXT",
+									"data": {
+									  "applied": false,
+									  "model": {
+										"id": 204
+									  },
+									  "resource": [
+										"rootCi"
+									  ],
+									  "text": {
+										"manual": "945",
+										"bind": "(function (source){\n  return source.getSeries();\n})"
+									  },
+									  "modelDisable": false,
+									  "maxKpi": 1,
+									  "series": {}
+									},
+									"style": {
+									  "margin": "5px auto",
+									  "padding": "0",
+									  "font-size": "14px",
+									  "font-weight": "bold",
+									  "border-color": "#93C47D",
+									  "border-width": "0px",
+									  "border-style": "solid",
+									  "color": "rgb(61, 133, 198)",
+									  "line-height": "50px",
+									  "text-align": "left"
+									},
+									"advance": {
+									  "getfunction": "kpiDataService.getValueList",
+									  "category": "ci",
+									  "condition": [
+										"kpi",
+										"{object:kpiQueryModel}"
+									  ]
+									}
+								  }
+								],
+								"col": 6
+							  }
+							]
+						  }
+						]
+					  }
+					]
+				  },
+				  {
+					"class": "box-footer",
+					"type": "box-footer",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": []
+					  }
+					]
+				  }
+				],
+				"parameters": {
+				  "title": "月平均能耗"
+				},
+				"style": {
+				  "font-size": "12px",
+				  "font-weight": "bold",
+				  "text-align": "left",
+				  "margin": "5px"
+				},
+				"data": {
+				  "series": {}
+				}
+			  },
+			  {
+				"label": "控制板2",
+				"type": "box",
+				"class": "box box-info",
+				"source": "BOX",
+				"children": [
+				  {
+					"class": "box-body",
+					"type": "box-body",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": [
+						  {
+							"label": "百分比状态条",
+							"type": "progress",
+							"source": "PROGRESS",
+							"data": {
+							  "applied": false,
+							  "resource": [
+								"rootCi"
+							  ],
+							  "modelDisable": true,
+							  "series": {
+								"manual": [
+								  {
+									"data": [
+									  {
+										"name": "同比增长率",
+										"value": "77"
+									  }
+									]
+								  }
+								],
+								"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+							  },
+							  "model": {
+								"id": 204
+							  },
+							  "maxKpi": 1
+							},
+							"advance": {
+							  "category": "ci",
+							  "condition": [
+								"kpi",
+								"{object:kpiQueryModel}"
+							  ]
+							}
+						  },
+						  {
+							"label": "百分比状态条",
+							"type": "progress",
+							"source": "PROGRESS",
+							"data": {
+							  "applied": false,
+							  "resource": [
+								"rootCi"
+							  ],
+							  "modelDisable": true,
+							  "series": {
+								"manual": [
+								  {
+									"data": [
+									  {
+										"name": "环比增长率",
+										"value": "57"
+									  }
+									]
+								  }
+								],
+								"bind": "(function (source){\n  var formatter=function(elem){\n    return elem.kpi\n   }\n  return source.ci.getSeries(formatter);\n})"
+							  },
+							  "model": {
+								"id": 204
+							  },
+							  "maxKpi": 1
+							},
+							"advance": {
+							  "category": "ci",
+							  "condition": [
+								"kpi",
+								"{object:kpiQueryModel}"
+							  ]
+							}
+						  }
+						]
+					  }
+					]
+				  },
+				  {
+					"class": "box-footer",
+					"type": "box-footer",
+					"children": [
+					  {
+						"type": "column",
+						"col": 12,
+						"children": []
+					  }
+					]
+				  }
+				],
+				"parameters": {
+				  "title": "在线压缩机平均能耗"
+				},
+				"style": {
+				  "font-size": "12px",
+				  "font-weight": "bold",
+				  "text-align": "left",
+				  "margin": "5px"
+				},
+				"data": {
+				  "series": {}
+				}
+			  }
+			],
+			"col": 5
+		  }
+		]
+	  }
+	],
+	"col": 12
+  }
+}

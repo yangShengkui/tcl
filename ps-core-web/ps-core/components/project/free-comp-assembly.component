@@ -1,0 +1,362 @@
+<config injector="$q, kpiDataService, $interval"
+></config>
+<properties>
+    <script type="text/javascript">
+    function properties () {
+      return [{
+        label: "基本设定",
+        attributes: {
+          height: ["高度", "input", 300]
+        }
+      }]
+    }
+
+    export {properties}
+    </script>
+</properties>
+<template>
+    <div>
+        <div class="tab">
+            <ul class="tab_title">
+                <li ng-click="changeTab('ftq')" ng-class="{active: activeTab == 'ftq'}">
+                    <span>FTQ</span>
+                </li>
+                <li ng-click="changeTab('top')" ng-class="{active: activeTab == 'top'}">
+                    <span>问题工序TOP3</span>
+                </li>
+            </ul>
+            <div class="tab_body" id="assembly_chart">
+            </div>
+        </div>
+    </div>
+</template>
+<script type="text/javascript">
+export default function (q, kpiDataService, $interval) {
+  return {
+    scope: {
+      option: "="
+    },
+    link (scope, element, attr, ngModel) {
+      let chartEl = element.find('#assembly_chart')[0];
+      let myChart;
+      let barOption = {
+        "title": {
+          "text": "问题工序TOP3"
+        },
+        "legend": {
+          "show": false
+        },
+        "grid": {
+          "bottom": "10%",
+          "left": "15%",
+          "right": 0,
+          "top": "25%"
+        },
+        "xAxis": {
+          "type": "category",
+          "data": []
+        },
+        "yAxis": {
+          "type": "value",
+          "axisTick":
+            {
+              "show": false
+            },
+          "axisLabel":
+            {}
+        },
+        "series": []
+      };
+      let lineOption = {
+        "title": {
+          "text": "装配线FTQ"
+        },
+        "grid": {
+          "bottom": "10%",
+          "left": "15%",
+          "right": "5%",
+          top: '25%'
+        },
+        "xAxis": {
+          "type": "category",
+          "boundaryGap": true,
+          "data": []
+        },
+        "yAxis": {
+          "type": "value",
+          "axisTick": {
+            "show": false
+          },
+          "axisLabel": {}
+        },
+        "series": []
+      };
+      scope.tabInterval = null;
+      scope.activeTab = 'ftq';
+      scope.changeTab = function (value) {
+        scope.activeTab = value;
+        getValue(scope.activeTab).then(d => {
+          myChart.clear();
+          myChart.setOption(resolveData(d));
+        });
+      }
+
+      function extend (a, b) {
+        var rs = {};
+
+        function recursive (t, m) {
+          for (var i in m) {
+            if ({}.toString.call(m[i]) === "[object Object]") {
+              if ({}.toString.call(t[i]) === "[object Object]") {
+                recursive(t[i], m[i]);
+              } else {
+                recursive(t[i] = {}, m[i]);
+              }
+            } else {
+              t[i] = m[i]
+            }
+          }
+          return t
+        }
+
+        rs = recursive({}, a)
+        return recursive(rs, b);
+      }
+
+      function getValue (type) {
+        let nodeIds = [],
+          kpiCodes = [];
+        switch (type) {
+          case 'top':
+            nodeIds.push(403471445139640);
+            kpiCodes.push(136);
+            break;
+          default:
+            nodeIds.push(403471445139622);
+            kpiCodes.push(133);
+            break;
+        }
+        let defer = q.defer(),
+          now = new Date(),
+          endTime = new Date(now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + (now.getDate() + 1) + ' 00:00:00:000'),
+          startTime = new Date(endTime.getTime() - (type == 'top' ? 5 : 7) * 24 * 3600 * 1000);
+        kpiDataService.getValueList(['kpi', {
+          "isRealTimeData": false,
+          "nodeIds": nodeIds,
+          "kpiCodes": kpiCodes,
+          "includeInstance": true,
+          "endTime": endTime,
+          "startTime": startTime
+        }], ret => {
+          if (ret.code == 0) {
+            defer.resolve(ret.data);
+          }
+        });
+        return defer.promise;
+      }
+
+      function getEchart () {
+        var defer = q.defer();
+        if (typeof echarts == "undefined") {
+          window['require'](['echarts'], function (ec) {
+            defer.resolve(ec);
+          })
+        } else {
+          defer.resolve(echarts);
+        }
+        return defer.promise;
+      }
+
+      function getTheme () {
+        var defer = q.defer();
+        window['require']([`../toolkit/echart-theme/dark.js`], (th) => {
+          defer.resolve(th);
+        });
+        return defer.promise;
+      }
+
+      function getFontSize () {
+        var defer = q.defer();
+        window['require']([`../toolkit/echart-theme/fontsize.js`], (fn) => {
+          defer.resolve(fn);
+        });
+        return defer.promise;
+      }
+
+      function render () {
+        getValue(scope.activeTab).then(d => {
+          myChart.setOption(resolveData(d));
+        });
+      }
+
+      function renderAll () {
+        q.all([getEchart(), getTheme(), getFontSize()]).then(function (ret) {
+          let ec = ret[0], theme = ret[1], fn = ret[2];
+          let th = extend(theme, fn(40)('xsmall'));
+          myChart = ec.init(chartEl, th);
+          render();
+        });
+      }
+
+      function resolveData (d) {
+        let option = {};
+        switch (scope.activeTab) {
+          case 'ftq':
+            option = lineOption;
+            option.series[0] = {
+              "name": "FTQ",
+              "type": "line",
+              "symbolSize": 10,
+              "symbol": "circle",
+              data: d.map(item => {
+                let iDate = new Date(item.arisingTime);
+                return {
+                  name: (iDate.getMonth() + 1) + '-' + iDate.getDate(),
+                  value: item.value
+                };
+              }),
+              "itemStyle": {
+                "borderWidth": 3,
+                "borderColor": "#fff"
+              },
+              "emphasis": {
+                "label": {
+                  "show": true,
+                  "color": "#fff",
+                  "backgroundColor": "#333",
+                  "borderWidth": 2,
+                  "borderColor": "auto",
+                  "padding": [4, 6],
+                  "borderRadius": 3
+                }
+              }
+            }
+            break;
+          case 'top':
+            option = barOption;
+            let instance = {};
+            let arr = [];
+            try {
+              instance = JSON.parse(d[0].instance);
+            } catch (e) {
+            }
+            for (let key in instance) {
+              arr.push({
+                label: key,
+                value: instance[key]
+              });
+            }
+            option.series = arr.map(item => {
+              return {
+                "type": "bar",
+                label: {
+                  show: true,
+                  formatter: '{b}',
+                  position: 'top',
+                  color: '#fff'
+                },
+                data: d.map(aItem => {
+                  let itemIstance = {};
+                  try {
+                    itemIstance = JSON.parse(aItem.instance);
+                  } catch (e) {
+                  }
+
+                  return {
+                    name: item.label,
+                    value: itemIstance[item.label]
+                  };
+                })
+              }
+            });
+            break;
+        }
+        option.xAxis.data = d.map(item => {
+          let iDate = new Date(item.arisingTime);
+          return (iDate.getMonth() + 1) + '-' + iDate.getDate();
+        });
+        return option;
+      }
+
+      renderAll();
+
+      scope.tabInterval = $interval(function () {
+        let value = '';
+        value = scope.activeTab === 'top' ? 'ftq' : 'top';
+        scope.changeTab(value);
+      }, 30 * 1000);
+
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+.tab {
+    height: 450px;
+    position: relative;
+    .tab_title {
+        position: absolute;
+        right: 2%;
+        color: #4E689F;
+        border-bottom: 1px solid #3C5483;
+        font-size: 24px;
+        z-index: 1;
+        li {
+            width: auto;
+            cursor: pointer;
+            display: inline-block;
+            padding: 0 0 10px 0;
+            margin-right: 10px;
+            position: relative;
+            &:after {
+                display: none;
+                content: '';
+                width: 100%;
+                height: 4px;
+                position: absolute;
+                background: #3C5483;
+                left: 0;
+                bottom: -2px;
+            }
+            &.active {
+                color: #fff;
+                &:after {
+                    display: block;
+                }
+            }
+            &:hover {
+                span {
+                    color: #fff;
+                }
+                &:after {
+                    display: block;
+                }
+            }
+            
+            &:last-child {
+                margin-right: 0;
+            }
+            
+        }
+    }
+    .tab_body {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        span {
+            width: auto;
+            height: auto;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+</style>

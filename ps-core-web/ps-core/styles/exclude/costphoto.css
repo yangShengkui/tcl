@@ -1,0 +1,359 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#cost {
+    color : #fff;
+    width: 1820px;
+    height: 820px;
+    text-align : center;
+    /*width: 1000px;*/
+    /*height: 400px;*/
+    margin: 20px auto;
+}
+
+#cost #cost_title {
+    width: 100%;
+    height: 9%;
+    line-height: 9%;
+    margin-bottom: 2%;
+    font: 500 40px 'mircrosoft yahei';
+    color: #AAC3FF;
+    text-align: left;
+}
+
+#cost #cost_center {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#cost #cost_center #cost_left {
+    width: 12%;
+    position: absolute;
+    height: 80%;
+    left: 3%;
+    top: 8%;
+}
+
+#cost #cost_center #cost_left .cost_file {
+    position: relative;
+    width: 100%;
+    height: 25%;
+    margin-bottom: 34%;
+    background: url("../images/文件夹.png") no-repeat center center / contain;
+}
+
+#cost #cost_center #cost_left .cost_file div {
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    left: 0;
+    top: 45%;
+}
+
+#cost #cost_center #cost_left .cost_file div div {
+    color: #AAC3FF;
+}
+
+#cost #cost_center #cost_top {
+    width: 80%;
+    height: 40%;
+    position: absolute;
+    top: 8%;
+    left: 18%;
+}
+
+#cost #cost_center #cost_top .cost-tp {
+    height: 100%;
+    float: left;
+}
+
+#cost #cost_center #cost_top .cost-tp:first-child {
+    width: 10%;
+    position: relative;
+    margin-right: 1%;
+}
+
+#cost #cost_center #cost_top .cost-tp:first-child div {
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    left: 0;
+}
+
+#cost #cost_center #cost_top .cost-tp:first-child div:first-child {
+    top: 20%;
+}
+
+#cost #cost_center #cost_top .cost-tp:first-child div:last-child {
+    bottom: 20%;
+}
+
+#cost #cost_center #cost_top .cost-tp:first-child div label {
+    color: #AAC3FF;
+    display: inline-block;
+    height: 100%;
+    width: 20%;
+    line-height: 100%;
+    margin-top: 15%;
+    float: left;
+}
+
+#cost #cost_center #cost_top .cost-tp:first-child div span {
+    display: inline-block;
+    height: 100%;
+    width: 60%;
+    float: right;
+    background: url("../images/箭头1.png") no-repeat center center / contain;
+}
+
+#cost #cost_center #cost_top .cost-tp:nth-child(2) {
+    width: 12%;
+    height: 100%;
+    background: url("../images/机器人1.png") no-repeat center center / contain;
+}
+
+#cost #cost_center #cost_top .cost-tp:nth-child(3) {
+    width: 20%;
+    height: 100%;
+    position: relative;
+}
+
+#cost #cost_center #cost_top .cost-tp:nth-child(3) .cost-tp-total {
+    width: 100%;
+    height: 20%;
+    margin-top: 5%;
+}
+
+#cost #cost_center #cost_top .cost-tp:nth-child(3) .cost-tp-total div {
+    width: 100%;
+    height: 100%;
+}
+
+#cost #cost_center #cost_top .cost-tp:nth-child(3) .cost-tp-total div:first-child {
+    width: 60%;
+    margin-left: 10%;
+    float: left;
+    /* background: url("../images/文本框.svg") no-repeat center center / 100%;*/
+}
+
+#cost #cost_center #cost_top .cost-tp:nth-child(3) .cost-tp-total div:first-child span {
+    display: block;
+    width: 100%;
+    height: 50%;
+    margin-top: 10%;
+}
+
+#cost #cost_center #cost_top .cost-tp:nth-child(3) .cost-tp-total div:last-child {
+    width: 20%;
+    float: right;
+    background: url("../images/箭头2.png") no-repeat center center / contain;
+}
+
+#cost #cost_center #cost_top .cost-tp:nth-child(3) div {
+    width: 80%;
+}
+
+#cost #cost_center #cost_top .cost-tp:nth-child(4) {
+    width: 12%;
+    height: 100%;
+    margin: 0 1%;
+    background: url(../images/机器人2.png) no-repeat center center / contain;
+}
+
+#cost #cost_center #cost_top .cost-tp:nth-child(5) {
+    width: 10%;
+    height: 100%;
+    position: relative;
+}
+
+#cost #cost_center #cost_top .cost-tp:nth-child(5) div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 40%;
+}
+
+#cost #cost_center #cost_top .cost-tp:nth-child(5) div label {
+    color: #AAC3FF;
+    display: inline-block;
+    height: 20%;
+    width: 20%;
+    margin-top: 11%;
+    float: left;
+}
+
+#cost #cost_center #cost_top .cost-tp:nth-child(5) div span {
+    display: inline-block;
+    height: 20%;
+    width: 60%;
+    float: right;
+    background: url("../images/箭头1.png") no-repeat center center / contain;
+}
+
+#cost #cost_center #cost_top .cost-tp:nth-child(6) {
+    width: 12%;
+    height: 100%;
+    float: left;
+}
+
+#cost #cost_center #cost_top .cost-tp:nth-child(6) div {
+    width: 100%;
+    height: 80%;
+}
+
+#cost #cost_center #cost_top .cost-tp:nth-child(6) div span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 50%;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+#cost #cost_center #cost_top .cost-tp:nth-child(6) span {
+    width: 100%;
+    display: block;
+    margin-left: 2%;
+    margin-top: 51%;
+}
+
+#cost #cost_center #cost_top .cost-tp:nth-child(7) {
+    width: 5%;
+    height: 100%;
+    background: url(../images/箭头4.png) no-repeat right bottom / 100%;
+}
+
+#cost #cost_center #cost_top .cost-tp:last-child {
+    position: relative;
+    width: 15%;
+    height: 100%;
+    background: url(../images/文件夹.png) no-repeat center center / 80%;
+}
+
+#cost #cost_center #cost_top .cost-tp:last-child div {
+    width: 100%;
+    height: 25%;
+    position: absolute;
+    left: 0;
+    top: 45%;
+}
+
+#cost #cost_center #cost_top .cost-tp:last-child div div {
+    color: #AAC3FF;
+}
+
+#cost #cost_center #cost_bottom {
+    width: 72%;
+    height: 30%;
+    position: absolute;
+    bottom: 7%;
+    left: 18%;
+}
+
+#cost #cost_center #cost_bottom .cost_bot {
+    float: left;
+    width: 16.66%;
+    height: 100%;
+    position: relative;
+}
+
+#cost #cost_center #cost_bottom .cost_bot div {
+    width: 100%;
+    position: relative;
+}
+
+#cost #cost_center #cost_bottom .cost_bot .set_h {
+    height: 80%;
+    background: url("../images/房子-轮廓.svg") no-repeat center center;
+}
+
+#cost #cost_center #cost_bottom .cost_bot div span {
+    position: absolute;
+    left: 46%;
+    bottom: 50%;
+}
+
+#cost #cost_center #cost_bottom .cost_bot:first-child div {
+    width: 78%;
+    position: absolute;
+    top: -15%;
+    margin-left: 21%;
+}
+
+#cost #cost_center #cost_bottom .cost_bot:first-child span {
+    position: absolute;
+    right: 26%;
+    bottom: 1%;
+}
+
+#cost #cost_center #cost_bottom .cost_bot:first-child div:after {
+    background-image: url("../images/Rectangle 29 Copy 13.png");
+    top: 50%;
+}
+
+#cost #cost_center #cost_bottom .cost_bot:first-child div span {
+    left: 27%;
+    bottom: 34%;
+}
+
+#cost #cost_center #cost_bottom .cost_bot:nth-child(2) div {
+    background: url("../images/箭头5.png") no-repeat center center / 28%;
+}
+
+#cost #cost_center #cost_bottom .cost_bot:nth-child(3) div {
+    background-image: url("../images/总待成.png");
+    background-size: contain;
+}
+
+#cost #cost_center #cost_bottom .cost_bot:nth-child(4) div {
+    background: url("../images/箭头5.png") no-repeat center center / 28%;
+}
+
+#cost #cost_center #cost_bottom .cost_bot:nth-child(5) div {
+    background-image: url("../images/汽车.png");
+    background-size: contain;
+}
+
+#cost #cost_center #cost_bottom .cost_bot:nth-child(5) div span {
+    left: 50%;
+    bottom: 50%;
+}
+
+#cost #cost_center #cost_bottom .cost_bot:last-child div {
+    background: url("../images/箭头3.png") no-repeat center 33% / 36%;
+}
+
+#cost #cost_center #cost_right {
+    width: 9.5%;
+    position: absolute;
+    right: 4%;
+    top: 49%;
+}
+
+#cost #cost_center #cost_right div {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#cost #cost_center #cost_right div span {
+    position: absolute;
+    left: 40%;
+    bottom: 30%;
+}

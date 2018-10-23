@@ -1,0 +1,135 @@
+<div class="whole" ng-click="wholeClick()">
+    <div ipcam class="ipcam" data-ic="ipcam" ng-click="$event.stopPropagation();">
+        <div class="camWrap" ng-show="showCam()">
+            <div class="camHeader">
+                <button class="camBtn" ng-click="closeCam();$event.stopPropagation();">关闭</button>
+            </div>
+            <img id="videoDiv" class="cam" onerror="this.src = 'images/forbid.jpg'"/>
+        </div>
+    </div>
+    <div class="leftPart_tongji">
+        <div class="leftTop">
+            <div class="top_column">
+                <div class="inner">
+                    <table style="width : 100%; height : 100%;">
+                        <td class="des_t">健康状态：</td>
+                        <td class="value_t">
+                            <div class="health"></div>
+                            <div class="alert tg-blink" data-blk = "health" tg-blink></div></td>
+                    </table>
+                </div>
+            </div>
+            <div class="top_column">
+                <div class="inner">
+                    <table style="width : 100%; height : 100%;">
+                        <td class="des">开机率:</td>
+                        <td class="value">91%</td>
+                    </table>
+                </div>
+            </div>
+            <div class="top_column">
+                <div class="inner">
+                    <table style="width : 100%; height : 100%;">
+                        <td class="des">生产率:</td>
+                        <td class="value">75%</td>
+                    </table>
+                </div>
+            </div>
+            <div class="top_column">
+                <div class="inner">
+                    <table style="width : 100%; height : 100%;">
+                        <td class="des">完成率:</td>
+                        <td class="value">82%</td>
+                    </table>
+                </div>
+            </div>
+            <div class="top_column">
+                <div class="inner">
+                    <button ng-click="panelClick();$event.stopPropagation();" class="btn btn-default"><span class="setting"></span><span class="text">控制板</span></button>
+                </div>
+                <div class="dropdown" ng-class="{true : 'visible', false : ''}[panelShow]" ng-click="$event.stopPropagation();">
+                    <div ng-repeat = "elem in drawarea.list | filter : { type : 'open' }" class="dropIn">
+                        <div class="title">
+                            <table class="valTable">
+                                <td ng-bind="elem.resource.label"></td><td ng-bind="elem.value" class="val"></td>
+                            </table>
+                        </div>
+                        <div class="tg-scrollbar" data-control = 'elem'></div>
+                    </div>
+                    <div style="width : 80%; margin : 50px 10% 30px 10%; border-bottom : 1px solid #cfcfcf;"></div>
+                    <div ng-repeat = "elem in drawarea.list | filter : { type : 'switch' }" class="dropIn">
+                        <div class="title_small" ng-bind="elem.resource.label">
+                        </div>
+                        <div class="tg-toggle" data-tg = 'elem'></div>
+                        <div style = "height : 1px; clear : both;"></div>
+                    </div>
+                    <div style = "height : 50px;"></div>
+                </div>
+            </div>
+        </div>
+        <button ng-click="camClick();$event.stopPropagation();" class="camBtn" ng-class="{true : 'move', false : ''}[panelShow]" ng-if="!showCam()">
+            <span class="glyphicon glyphicon-facetime-video"></span>
+        </button>
+        <div class="leftMiddle">
+            <div class="image" tg-image ng-style="{'background-image' : 'url(' + drawarea.backgroundImage + ')'}">
+                <div ng-repeat = "element in drawarea.list"
+                     ng-style="drawPos(element)"
+                     ng-show="element.show"
+                     data-target="element"
+                     class="element"
+                     title = "{{element.resource.label}}"
+                        >
+                    <div ng-if="element.type == 'bar'" class="bar">
+                      <span ng-bind="element.value" class="innerText"></span>
+                        <div class="bar-inner"></div>
+                        <div class="bar-value" ng-style="{ height : element.value + '%'}"></div>
+                    </div>
+                    <div ng-if="element.type == 'open'" class="open">
+                        <div class="rotate_wrap">
+                            <div class="rotate_wrap_inner">
+                                <div class="rotate_value" ng-style="calcuRotation(element)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="element.type == 'blink'"
+                         ng-style="{'background-image' : 'url(' + element.bgBlinkImage + ')'}"
+                         class="blink"
+                         data-blk="element"
+                         tg-blink>
+                    </div>
+
+                    <div ng-if="element.type == 'switch'"
+                         class="switch"
+                         ng-style="{true : {'background-image' : 'url(' + element.bgimageOpen + ')'}, false : {'background-image' : 'url(' + element.bgimageClose + ')'}}[element.value > 0]"
+                         tg-switch>
+                    </div>
+                </div>
+                <button class="btn btn-info"
+                        ng-click="blinkClick()"
+                        ng-class="{true : '', false : 'alertBtn'}[!alertOn]">
+                    <span class="glyphicon glyphicon-alert"></span>
+                    <span ng-bind="'模拟告警' + ({true : '(关)', false : '(开)'}[!alertOn])"></span>
+                </button>
+                <div class="btnWrap">
+                    <button class="btn btn-default otherBtn" ng-click="overviewClick()"><span class="glyphicon glyphicon-globe"></span>运营概览</button>
+                    <button class="btn btn-default otherBtn" ng-click="malfunctionClick()"><span class="glyphicon glyphicon-wrench"></span>设备故障</button>
+                    <button class="btn btn-default otherBtn" ng-click="orderHandlerClick()"><span class="glyphicon glyphicon-calendar"></span>工单处理</button>
+                    <button class="btn btn-default otherBtn" ng-click="equipmentClick()"><span class="glyphicon glyphicon-briefcase"></span>设备资产</button>
+                    <button class="btn btn-default otherBtn" ng-click="chartClick()"><span class="glyphicon glyphicon-dashboard"></span>运营分析</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="leftBottom">
+
+        </div>
+    </div>
+    <div class="rightPart_tongji">
+        <div ng-attr-id="{{chart.id}}" ng-repeat="chart in charts.list">
+            <div ng-bind="chart.label" class="chartLabel"></div>
+            <div class="tg-echarts" data-chart="chart"></div>
+        </div>
+    </div>
+    <iframe name="action_zone" style="display: none;" ></iframe>
+</div>

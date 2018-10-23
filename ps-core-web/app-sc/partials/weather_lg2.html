@@ -1,0 +1,24 @@
+<div class='weather-layout js-weather-layout weather-flip'>
+  <div class='weather-widget'>
+    <div class='weather-widget-main col-lg-12'>
+      <div class='weather-loading' ng-show='loading'>
+        <i class='fa fa-spinner fa-pulse fa-3x'></i>
+      </div>
+      <i style="font-size: 64px;" class='icn-weather' data-weather-icn='{{item.results[0].weather_data[0].weather}}' ng-repeat='item in weathers'></i>
+      <span class='title-deg' ng-repeat='item in weathers'>
+				{{item.results[0].weather_data[0].temperature}}
+			</span>
+      <p class='title-weather' ng-repeat='item in weathers'>
+        {{item.results[0].weather_data[0].weather}} {{item.results[0].weather_data[0].wind}}
+      </p>
+      <p ng-repeat='item in weathers'>
+        {{item.results[0].weather_data[0].date}}
+      </p>
+
+      <div echarts3-dom name="weatherMain" style="height:100px"></div>
+      <p>
+        未来三天天气趋势
+      </p>
+    </div>
+  </div>
+</div>

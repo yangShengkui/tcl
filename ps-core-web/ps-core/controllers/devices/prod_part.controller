@@ -1,0 +1,60 @@
+<config injector="$scope,ajax,$location,$routeParams,psDialog" params="/:id?">
+</config>
+<template>
+    <proudsmart-base>
+        <ps-layout data-option="layout"></ps-layout>
+    </proudsmart-base>
+</template>
+<script type="text/javascript">
+    export default function (scope, ajax,location,routeParams,psDialog) {
+        scope.layout = {
+            label: "数据模板",
+            children: [{
+                label: "部位",
+                type: "panel",
+                children:[{
+                  type : "tree-view2",
+                  options : "resourceUIService.getDevicePartsTree",
+                  parameter : [routeParams.id, 0],
+                  parentId : "parentDevicePartId",
+                    buttons: [{
+                        label:"",
+                        class: "glyphicon glyphicon-trash",
+                        icon: "",
+                        tit: "删除",
+                        on: {
+                            click: function (row) {
+                                console.log(row)
+                            }
+                        }
+                    },{
+                        label:"",
+                        class: "proudsmart ps-edit",
+                        icon: "",
+                        tit: "编辑",
+                        on: {
+                            click: function (row) {
+                                console.log(row)
+                            }
+                        }
+                    },{
+                        label:"",
+                        class: "glyphicon glyphicon-plus",
+                        icon: "",
+                        tit: "添加",
+                        rootShow: true,
+                        on: {
+                            click: function (row) {
+                                console.log(row)
+                            }
+                        }
+                    }]
+                }]
+
+            }]
+        }
+
+    };
+</script>
+<style type="less">
+</style>

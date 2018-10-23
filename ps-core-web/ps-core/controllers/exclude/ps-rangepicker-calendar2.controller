@@ -1,0 +1,45 @@
+<config router="prod_psrangecalendar2"
+        injector="$scope,$q,$timeout,$filter,resourceUIService,viewFlexService,apiService"
+></config>
+<template>
+    <!--可以套用模板-->
+    <!--<asd>-->
+        <h1>ps-rangepicker-calendar2指令封装</h1>
+        <h2>技术：daterangepicker，2个输入框选日期范围 </h2>
+        <ol>
+            <li>日期范围加了校验，起始时间不能大于终止时间 网址:http://www.daterangepicker.com/#config</li>
+        </ol>
+        {{cal}}
+        <ps-rangepicker-calendar2 ng-model="cal"
+                     data-config="config">
+        </ps-rangepicker-calendar2>
+        <br>
+        {{cal1}}
+        <ps-rangepicker-calendar2 ng-model="cal1"
+                     data-config="config">
+        </ps-rangepicker-calendar2>
+    <!--</asd>-->
+</template>
+
+
+<script type="text/javascript">
+    export default function(scope,q,$timeout,$filter,resourceUIService,viewFlexService,api){
+//        var tems = [];
+//        tems.push("2017-08-17T03:27:12.000Z");
+//        tems.push("2017-08-18T03:27:12.000Z");
+//        scope.cal = tems;
+//        scope.cal1 = tems;
+        scope.cal = ["2017-08-17T03:27:12.000Z","2017-08-18T03:27:12.000Z"];
+        scope.cal1 = ["2017-08-17T03:27:12.000Z","2017-08-18T03:27:12.000Z"];
+    };
+
+</script>
+<style type="less" scoped="true">
+    .wrap{
+        margin : 5px;
+        padding : 10px;
+        color : #333;
+        background-color : #eee;
+        border : 1px solid #ddd;
+    }
+</style>

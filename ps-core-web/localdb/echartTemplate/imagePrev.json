@@ -1,0 +1,27 @@
+{
+  "layout": {
+    "type": "column",
+    "children": [
+      {
+        "label": "图片",
+        "type": "image",
+        "source": "IMAGE",
+        "parameters": {
+          "imgSrc": "../images/machine/machine2.png"
+        },
+        "style": {
+          "height": 300,
+          "margin": "5px",
+          "background-color": "rgba(0,0,0,.1)",
+          "border": "1px solid #ccc"
+        },
+        "advance": {
+          "expression": "expressioin = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            var data = target.getPopupData();\n            var file = data.file;\n            var url = data.url;\n            if(file){\n                target.readImageFile(file, function(url){\n                    target.setImage(url);\n                });\n            } else if(url){\n                target.setImage(url);\n            };\n        }\n    }\n}"
+        },
+        "url": "images/map/map1.png"
+      }
+    ],
+    "col": 12
+  },
+  "setting": "{\n  \"theme\": \"default\"\n}"
+}

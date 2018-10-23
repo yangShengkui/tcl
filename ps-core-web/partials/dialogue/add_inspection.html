@@ -1,0 +1,81 @@
+<!--创建采集组模态框-->
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">标准信息</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal" name="collForm">
+          <div class="form-group">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">标准名称：</span>
+            </label>
+            <div class="col-sm-6 padding-left-5 " >
+              <input type="text"  autocomplete="off" ng-model="inspectStandard.item"  maxlength="32" class="form-control dialog-inp-text input-sm "  required="required" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">设备模板：</span>
+            </label>
+            <div class="col-sm-6 padding-left-5">
+              <select select2 class="form-control dialog-inp-text select-sm " ng-model="inspectStandard.modelId" selectdata="allModels" ng-options="value.id as value.label for value in allModels" required>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">维保类型：</span>
+            </label>
+            <div class="col-sm-6 padding-left-5">
+              <!--<input type="text"  autocomplete="off" ng-model="inspectStandard.spotCheckCategory"  maxlength="32" class="form-control dialog-inp-text input-sm "  required="required" />-->
+              <select class="form-control dialog-inp-text input-sm" ng-model="inspectStandard.spotCheckCategory" ng-options="value.valueCode as value.label for value in myDicts['maintenanceType']"  required="required" >
+                  <option value="">请选择</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">方法：</span>
+            </label>
+            <div class="col-sm-6 padding-left-5">
+              <input type="text"  autocomplete="off" ng-model="inspectStandard.spotCheckMethod"  maxlength="32" class="form-control dialog-inp-text input-sm "  required="required" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">序号：</span>
+            </label>
+            <div class="col-sm-6 padding-left-5">
+              <input type="number"  autocomplete="off" ng-model="inspectStandard.serialNum"  maxlength="32" class="form-control dialog-inp-text input-sm  "  required="required" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="text-danger ng-binding">*</span> <span class="ng-binding">工具：</span>
+            </label>
+            <div class="col-sm-6 padding-left-5">
+              <input type="text"  autocomplete="off" ng-model="inspectStandard.spotCheckTool"  maxlength="32" class="form-control dialog-inp-text input-sm  "  required="required" />
+           </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h">
+              <span class="ng-binding">备注：</span>
+            </label>
+            <div class="col-sm-6 padding-left-5">
+              <textarea  ng-model="inspectStandard.standardContext"  style="height:50px;" maxlength="200" rows="3" class="form-control dialog-inp-text input-sm " name="Name"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="collForm.$invalid" ng-click="saveInspection()" disabled="disabled">
+          确定
+        </button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

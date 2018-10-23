@@ -1,0 +1,27 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-f2" ng-click="closeThisDialog()">
+                <a role="button" class="close" >×</a>
+                <h4 class="modal-title info-box-number">新建告警视图</h4>
+            </div>
+            <div class="modal-body clearfix row ">
+                <form role="form" class="form-horizontal" name="userForm" >
+                    <div class="form-group" ng-repeat="item in dialog.input">
+                        <label  class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+                            <span class="text-danger" ng-if="item.composory">*</span>
+                            <span ng-bind="item.label"></span>
+                        </label>
+                        <div class="col-sm-6 padding-left-5">
+                            <input class="form-control">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

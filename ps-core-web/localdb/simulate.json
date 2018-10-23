@@ -1,0 +1,24 @@
+{
+	"deno_energy" : [{
+      "agentId": "0",
+      "aggregatePeriod":null,
+      "aggregateStatus":null,
+      "aggregateType": null,
+      "arisingTime": "2017-02-23T01:41:19.955+0000",
+      "compressCount": 0,
+      "computeTaskId": 0,
+      "dataSerialNumber": 0,
+      "dataTime": null,
+      "insertTime": "2017-02-24T01:40:40.210+0000",
+      "instance": null,
+      "kpiCode": 144684185476494,
+      "nodeId" : 160289093576533,
+      "notes" : null,
+      "numberValue": 34,
+      "quality": 0,
+      "resourceId": 0,
+      "stringValue": null,
+      "value": 34,
+      "valueStr": "34.0"
+    }]
+}

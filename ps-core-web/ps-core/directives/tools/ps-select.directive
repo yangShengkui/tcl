@@ -1,0 +1,162 @@
+<config injector=""
+></config>
+<template>
+    <div class="wrap">
+        <select></select>
+        <span style="color: red;font-size: 12px; margin-left: 10px;"
+              ng-if="error"
+              ng-bind="error"></span>
+    </div>
+</template>
+<script type="text/javascript">
+import select2 from "select2";
+//同步如果require在这里引包，走的node.js打包机制，select2中的$和window下的$不一样
+export default function () {
+  return {
+    scope: {
+      ngModel: "=?",
+      config: "=?",
+      options: '@'  //= 赋值 @字符格式  & 回调  不写也可以
+    },
+    require: '?ngModel',
+    link (scope, element, attr, ngModel) {
+      function isTypeof (type) {
+        return function (obj) {
+          return toString.call(obj) === "[object " + type + "]";
+        }
+      }
+      var toString = Object.prototype.toString,
+        isArray = isTypeof("Array"),
+        isObject = isTypeof("Object"),
+        reg = /(?:(?:([\w\[\]\d\.\"\']+)\s+as\s+)?([\w\[\]\d\.\"\']+)\s+for\s+)?(\w+)\s+in\s+(?:([\w\[\]\d\.\"\']+))/g,
+        // reg = /(?:(?:([\w\[\]\d\.\"\']+)\s+as\s+)?([\w\[\]\d\.\"\']+)\s+for\s+)?(\w+)\s+in\s+(\w+)/g,
+        match = reg.exec(attr["options"]), s2,
+        options = match[4],
+        item = match[3],
+        value = match[2] || item,
+        key = match[1] || value,
+        $dom = element.find('select'),
+        dom = $dom[0],
+        $spa = element.find('span'),
+        dataOptions = getData(scope.$parent, options),
+        defaultConfig = {
+          placeholder: '---请选择---',
+          search: true,
+          multiple: false,
+          width: '100%',
+        };
+      scope.config = $.extend({}, defaultConfig, scope.config || {});
+      $dom.css({'width': scope.config.width, 'height': scope.config.height});
+      var fn = new Function("scope", "options", "callback",
+        "for(var i in options){\n\
+            var " + item + "=options[i];\n\
+                        callback(" + key + ", " + value + "," + item + ")\n\
+                    }"
+      );
+      scope.$parent.$watch(options, function (n, o, s) {
+        if (!n) {
+          return;
+        }
+        isArray(n) ? render(n, null) : null;
+      });
+
+      function getData(obj, attr){
+        var fn = new Function("obj", `return obj.${attr}`);
+        return (fn(obj));
+      }
+
+      function render (n, newValue) {
+        dataOptions = n;
+        try {
+          scope.error = null;
+          var str1 = '';
+          fn(scope, n, function (key, value, item) {//注意创建删除节点时候回流 改变属性的时候不会
+            str1 += `<option value=${key}>${value}</option>\n`;
+          });
+        } catch (e) {
+          scope.error = '*无效的表达式';
+          //$spa.text('*无效的表达式');
+        } finally {
+          var modelStrArr = attr.ngModel.split('.');//
+          var value;
+          modelStrArr.forEach(function (str) {
+            value = value ? value[str] : scope.$parent[str];
+          });
+          //require.js 异步动态插入js标签 就可以使用以下方法
+          window['require'](['select2'], () => {
+            $dom.select2(scope.config);
+            //默认选中几项
+            if (typeof newValue !== 'undefined') {
+              $dom.val(newValue);
+            } else {
+              $dom.val(value);
+            }
+            $dom.off("select2:select");
+            $dom.on("select2:select", function(e){
+              e.$render = function(d){
+                render(d, null);
+              }
+              e.$select = dataOptions.find((n) => {
+                return n[getItem(key)] == $dom.val()
+              })
+              e.$option = dataOptions;
+              scope.config.on && scope.config.on.select && scope.config.on.select(e);
+              ngModel.$setViewValue($dom.val());
+            });
+          });
+          $dom.html(str1);
+          $dom.css("display", "none");
+        }
+      }
+
+      function getItem(str){
+        return str.split(".").pop();
+      }
+      render(dataOptions);
+      Array.prototype.push.call(ngModel.$parsers, function (n, o) {
+        if (!n) {
+          return;
+        }
+        return n;
+      });
+      Array.prototype.push.call(ngModel.$formatters, function (n, o) {
+        /*if (typeof n === 'undefined') {
+          return;
+        }*/
+        window['require'](['select2'], (d) => {
+          $dom.select2(scope.config);
+        });
+        $dom.val(n);
+        ngModel.$setViewValue(n);
+        return n;
+      });
+      scope.$on('destroy', function () {
+        toString = null;
+        isArray = null;
+        isObject = null;
+        reg = null;
+        match = null;
+        s2 = null;
+        options = null;
+        item = null;
+        value = null;
+        key = null;
+        $dom = null;
+        dom = null;
+        dataOptions = null;
+        defaultConfig = null;
+        fn = null;
+      })
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+.wrap {
+    margin: 5px;
+    padding: 10px;
+    color: #333;
+    background-color: #eee;
+    border: 1px solid #ddd;
+}
+</style>

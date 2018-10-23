@@ -1,0 +1,103 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">{{menuitems['S13'].label ? menuitems['S13'].label : '项目'}}信息</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal row" name="projectForm">
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger">*</span> <span>{{menuitems['S12'].label?menuitems['S12'].label:'客户'}}归属：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input class="form-control input-sm" ng-if="projectInfo.id && projectInfo.id >0" ng-disabled="projectInfo.id && projectInfo.id >0" value="{{domainListDic[projectInfo.domainPath].name}}" />
+              <div ng-if="!projectInfo.id || projectInfo.id == -1" class="dropdowntree select-sm" placeholder="请选择..." autocomplete="off" ng-model="projectInfo.domainPath" change="" key="domainPath" options="domainListTree" mark="nodes" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">{{menuitems['S12'].label?menuitems['S12'].label:'客户'}}名称：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <select ng-model="projectInfo.customerId" class="form-control input-sm" selectdata="CustomerList" ng-options="value.id as value.text for value in CustomerList | filter:{ domainPath :  projectInfo.domainPath}" select2 required></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">{{menuitems['S13'].label ? menuitems['S13'].label : '项目'}}名称：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="text" class="form-control input-sm" ng-model="projectInfo.projectName" maxlength="32" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="ng-binding">{{menuitems['S13'].label ? menuitems['S13'].label : '项目'}}简称：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <input type="text" class="form-control input-sm" ng-model="projectInfo.label" maxlength="32">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span><span class="ng-binding">所在地：</span></label>
+            <div class="col-sm-4 padding-left-5">
+              <select class="form-control input-sm no-pad" style="display: inline;width: 32%" ng-options="value.id as value.label for value in provinces" ng-model="projectInfo.province" ng-change="projectInfo.values.standardAddress = ''">
+                <option value="">请选择...</option>
+              </select>
+              <select ng-disabled="!projectInfo.province" class="form-control input-sm no-pad" style="display: inline;width: 32%" ng-options="value.id as value.label for value in cityDics[projectInfo.province]" ng-model="projectInfo.city" ng-change="projectInfo.values.standardAddress = ''">
+                <option value="">请选择...</option>
+              </select>
+              <select ng-disabled="!projectInfo.city" class="form-control input-sm no-pad" style="display: inline;width: 32%" ng-options="value.id as value.label for value in districtDics[projectInfo.city]" ng-model="projectInfo.county" ng-change="projectInfo.values.standardAddress = projectInfo.county">
+                <option value="">请选择...</option>
+              </select>
+              <!--<select class="form-control input-sm" style="display: inline;width: 32%;padding-right: 0;padding-left: 0;" ng-change="provinceClick(projectInfo.province)" ng-model=" projectInfo.province" ng-options="value.id as value.label for value in provinces" required></select>
+            <select ng-disabled="!projectInfo.province" ng-model=" projectInfo.city" ng-change="cityClick(projectInfo.city)" class="form-control input-sm" style="display: inline;width: 32%; padding-right: 0;padding-left: 0;" ng-options="value.id as value.label for value in cityList"></select>
+            <select ng-disabled="!projectInfo.city" ng-model="projectInfo.county" class="form-control input-sm" style="display: inline;width: 32%; padding-right: 0;padding-left: 0;" ng-options="value.id as value.label for value in districtList"></select>-->
+            </div>
+          </div>
+          <div class="form-group">
+	          <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="ng-binding">详细地址：</span></label>
+	          <div class="col-sm-4 padding-left-5">
+	            <input type="text" class="form-control input-sm" ng-pattern="/^[\u4e00-\u9fa5_a-zA-Z0-9_-]{0,32}$/" ng-model="projectInfo.projectAddress" maxlength="32" name="address">
+	            <span ng-show="projectForm.address.$error.pattern" style="font-size: 12px; display: block;" class="text-danger  ng-binding">请输入中文、字母、数字_-，首字符不能是特殊符号。</span>
+	          </div>
+	        </div>
+          <div ng-if="extendTableColumns.length != 0" slim-scroll height="300">
+            <div class="form-group" ng-repeat="item in extendTableColumns">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="ng-binding">{{item.label}}：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <input type="text" class="form-control input-sm" ng-model="projectInfo.values[item.name]" maxlength="32">
+              </div>
+            </div>
+          </div>
+          <div ng-if="extendTableColumns.length ==0">
+            <div class="form-group" ng-if="menuitems['S46']">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="ng-binding"> 经销商名称：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <select ng-model="projectInfo.distributorId" placeholder="" class="form-control input-sm" ng-options="value.id as value.text for value in distributorList" selectdata="distributorList" select2>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">{{menuitems['S13'].label ? menuitems['S13'].label : '项目'}}安装时间：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <input type="text" class="form-control input-sm" style="background-color: #fff;" readonly='readonly' autocomplete="off" ng-model="projectInfo.installDate" date-time-picker required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">调试完成时间：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <input type="text" class="form-control input-sm" style="background-color: #fff;" readonly='readonly' autocomplete="off" ng-click="alertFun" ng-model="projectInfo.debugFinishDate" date-time-picker required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">质保截止时间：</span></label>
+              <div class="col-sm-4 padding-left-5">
+                <input type="text" class="form-control input-sm" style="background-color: #fff;" readonly='readonly' autocomplete="off" ng-model="projectInfo.qualityCloseDate" date-time-picker required>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button class="btn btn-primary" ng-disabled="projectForm.$invalid" ng-click="saveData()" disabled="disabled">确定</button>
+          <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

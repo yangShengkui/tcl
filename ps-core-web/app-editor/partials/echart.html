@@ -1,0 +1,435 @@
+<div style="height:1px; width : 100%; display : block; background-color: #2e6da4;"></div>
+<div class="preview_wrap" ng-show="domData">
+  <div class="wrap">
+    <button class="closeBtn" ng-click="previewClose()">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+    <div id="preview" class="preview">
+    </div>
+  </div>
+</div>
+<div class="bgcover" ng-if="domData"></div>
+
+<div id="page-setting" class="standard-window" ng-show="psetting">
+  <div class="handler">
+    <div id='page-setting-closeBtn' class='closeBtn' ng-click="psetting_close_click()">
+      <span class='glyphicon glyphicon-remove'></span>
+    </div>
+  </div>
+  <h4 class="text-center" style = "margin : 20px auto 10px auto;">页面设置</h4>
+  <table class="window-table">
+    <tr>
+      <td>页面宽度</td>
+      <td><div id="pageWidth" class="pageWidth"></div></td>
+      <td><span>100%</span></td>
+    </tr>
+    <tr>
+      <td>页面高度</td>
+      <td><div id="pageHeight"></div></td>
+      <td><span>100%</span></td>
+    </tr>
+    <tr>
+      <td>背景颜色</td>
+      <td colspan = '2'><input id="colorPicker_page" /></td>
+    </tr>
+    <tr>
+      <td colspan = '3'></td>
+    </tr>
+    <tr>
+      <td colspan = "3">
+        <button id="settingApply" class="btn btn-primary" ng-click="applyPage()">应用</button>
+        <button id="settingCancel" class="btn btn-default" style = "margin-right : 10px;" ng-click="pageCloseBtn()">取消</button>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="bgcover" ng-if="psetting"></div>
+<div class="openNewFile" ng-if="select">
+  <div class="wrap">
+    <button ng-click="newFileclose()" class="closeBtn">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+    <p>请选择要编辑的视图：</p>
+    <div ng-repeat="view in allMyView" class="viewItem" ng-click="openTo(view.viewId)">
+      <span ng-bind="view.viewTitle"></span>
+    </div>
+  </div>
+</div>
+<div class="bgcover" ng-if="select"></div>
+<div class="newOpen" ng-if="newopen">
+  <button class="btn btn-primary" ng-click="newfile()">新建</button>
+  <button class="btn btn-primary" ng-click="openfile()">打开</button>
+</div>
+<div class="bgcover_op" ng-if="newopen" ng-click="docClick()"></div>
+<div class="svloading_wrap" ng-if="saveloading">
+  <table>
+    <tr>
+      <td>
+        <div class="loading_inner loading">
+          <div class="loadingIcon"></div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="bgcover" ng-if="saveloading"></div>
+<div class="callbackmsg_wrap" ng-if="callbackmsg" ng-bind="callbackmsg"></div>
+<div class="msg_wrap" ng-if="msg">
+  <table>
+    <tr>
+      <td>
+        <div class="loading_inner">
+          <div class="wrap">
+            <div class="title" ng-bind="msg.title"></div>
+            <div class="content" ng-bind="msg.content"></div>
+          </div>
+          <div class="buttonWrap">
+            <button class="btn btn-default" ng-bind="btn.text" ng-click="btn.fn()" ng-repeat="btn in msg.btnlist"></button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="bgcover" ng-if="msg">
+</div>
+<div class="codemirror" ng-show="codeView">
+  <div class="wrap">
+    <div style="margin:15px; color : wheat;">编辑视图代码</div>
+    <codemirror></codemirror>
+    <div class="buttonpart">
+      <button ng-click="cancelDataChange()" class="btn btn-cancel">取消</button>
+      <button ng-click="submitDataChange()" class="btn btn-primary" style="margin-right : 10px;">修改</button>
+    </div>
+  </div>
+</div>
+<div class="bgcover" id="bg_codemirror" ng-if="codeView">
+</div>
+<div class="chartPop_wrap" ng-if="toolbarDetail != ''">
+  <div class="chartPop">
+    <button ng-click="chartPop_click()" class="closeBtn">
+      <span class="glyphicon glyphicon-remove"></span>
+    </button>
+    <h4 ng-bind="toolbarDetail.name"></h4>
+    <div class="item"
+         ng-click="toolDetailClick(toolbarDetail.type, item.option, item.dataType)"
+         ng-repeat="item in toolbarDetail.sub | filter : { show : true }">
+      <div class="imgWrap">
+        <img ng-src="{{'images/' + item.src + '.png'}}" />
+      </div>
+      <div ng-bind="item.title" class="title"></div>
+      <div ng-bind="item.context" class="context"></div>
+    </div>
+    <div style="height : 20px; clear : both;">
+    </div>
+  </div>
+</div>
+<div class="bgcover" ng-if="toolbarDetail!=''">
+</div>
+
+<div class="topInfo">
+  <div class="logoColor">
+    <img class="proudLogo" src="images/logo.svg" width="94" height="32" type="image/svg+xml"/>
+    <span>视图设计器</span>
+  </div>
+  <div class="userInfo">
+    <div class="title" ng-bind="userInfo.userName"></div><div class="icon"></div>
+  </div>
+</div>
+<div class="navbar top-navi-bar ">
+  <div class="navi-btn" style="margin-left: 20px;">
+    <button id="new-prof" class="btn btn-default" ng-click="newfile()">
+      <span class="proudsmart ps-add"></span>
+      新建
+    </button>
+  </div>
+  <div class="navi-btn">
+    <button id="p-set" class="btn btn-default" ng-click="previewClick()">
+      <span class="proudsmart ps-daily_output"></span>
+      预览
+    </button>
+  </div>
+  <div class="navi-btn">
+    <button id="saveBtn"
+            class="btn"
+            ng-class="{true:'btn-primary',false:'btn-default'}[dirty]"
+            ng-click="savefile()">
+      <span class="proudsmart ps-save"></span>
+      保存
+    </button>
+  </div>
+  <div class="navi-btn pull-right">
+    <button class="btn btn-default" ng-click="back()">
+      <span class="proudsmart ps-back"></span>返回</button>
+  </div>
+  <!--
+  <div class="navi-btn pull-right">
+    <button id="p-set" class="btn btn-default" ng-click="settingClick()">
+      <span class="glyphicon glyphicon-cog"></span>
+      设置
+    </button>
+  </div>
+  -->
+</div>
+
+<div id="modelPanel" class="standard-window modelPanel" ng-init="nodeKeyword=''; kpiKeyword=''; unitKeyword='all';">
+  <div class="modePlanel_closeBtn">
+    <span class="glyphicon glyphicon-remove"></span>
+  </div>
+  <div class="modePlanel_setting" ng-click="datasettingClick()">
+    <span class="glyphicon" ng-class="{true:'glyphicon-cog',false:'glyphicon-repeat'}[substep==0]"></span><span ng-bind="{true:'属性',false:'返回'}[substep==0]"></span>
+  </div>
+  <h4 class="text-center" style = "margin : 10px auto;">数据绑定</h4>
+
+  <div>
+    <div>
+      <div class="innerWrap">
+
+        <!-- ordinary module when solution ID is not provided; -->
+        <div ng-show="substep == 0 && solutionId==undefined" class="step">
+          <div class="separate">
+            <div class="instruction" ng-if="checkTab(sub_resources, dataType, oldNodeId)">
+              <span class="glyphicon glyphicon-warning-sign"></span><span ng-bind="{true:'设备 X ' + dataType.limit.ci,false: ''}[dataType.limit.ci!=undefind]"></span>
+            </div>
+            <div class="mtitle">选择设备</div>
+            <div class="content_in">
+              <div class="filter">
+                <div class="ttext">模型/域名称 :</div>
+                <!-- before 2016.3.15
+                <select class="form-control" ng-model="modelKeyword" ng-options="model.id as model.label for model in $parent.modelPanelData"></select>
+                -->
+                <div ng-model="modelKeyword"
+                     data-change="dropdownChange(value);"
+                     data-options="modelPanelData"
+                     class="dropdowntree">
+                </div>
+              </div>
+              <div class="filter sub">
+                <span class="glyphicon glyphicon-search" ng-if="nodeKeyword==''"></span>
+                <input class="form-control" ng-model="nodeKeyword" placeholder="设备名称"/>
+              </div>
+              <div class="scroll">
+                <div ng-repeat="resource in modelSelect.resources.getData()"
+                     class="modelClass"
+                     ng-click="resourceClick(resource)"
+                     ng-class="resourceClass(resource, resources, oldNodeId)">
+                  <!--
+                  <span class="glyphicon glyphicon-ok"></span>
+                  -->
+                  <div class="checkbox" ng-model="resource.checked" class="checkbox" data-disabled = "false" style="margin:3px 0 0 10px;"></div>
+                  <span ng-bind="resource.label" ng-class="{true:'active',false:''}[resource.checked]" class="text"></span>
+                </div>
+                <!-- before 2016.6.12
+                <div ng-repeat="sub_res in $parent.sub_resources | sub_resourcesfilter : dataType"
+                     ng-click="subresourceClick(sub_res)"
+                     class="modelClass" style="padding:0 5px;">
+                  <div class="checkbox" ng-model="sub_res.checked" class="checkbox" data-disabled = "false" style="margin : 3px 0;"></div>
+                  <span ng-bind="sub_res.label" ng-class="{true:'active',false:''}[sub_res.checked]" class="text"></span>
+                </div>
+                <div style="height:1px; clear : both;"></div>
+                -->
+              </div>
+            </div>
+          </div>
+          <div class="separate" style="background-color : rgb(53, 62, 70);">
+            <div style="width : 213px; overflow:hidden; position : relative; height : 100%;">
+              <div class="instruction" ng-if="checkKpiTab(modelSelect.kpis.getData(), dataType)">
+                <span class="glyphicon glyphicon-warning-sign"></span><span ng-bind="{true:'指标 X ' + dataType.limit.kpi,false: ''}[dataType.limit.kpi!=undefind]"></span>
+              </div>
+              <div class="mtitle" ng-bind="{true:'选择指标',false:'选择指标'}[dataType.limit.onlyDifferentKpi==true]" style="background-color:rgb(53, 62, 70);"></div>
+              <div class="filter">
+                <div class="ttext">指标单位 :</div>
+                <select class="form-control" ng-model="unitKeyword" ng-options="unit for unit in (modelSelect.kpis.getData() | listAllUnit)"></select>
+              </div>
+              <div class="filter sub">
+                <span class="glyphicon glyphicon-search" ng-if="kpiKeyword==''"></span>
+                <input class="form-control" ng-model="kpiKeyword" placeholder="指标名称"/>
+              </div>
+              <div class="scroll">
+                <div ng-repeat="kpi in modelSelect.kpis.getData() | kpifilter : kpiKeyword | unitfilter : unitKeyword"
+                     class="kpiClass"
+                     ng-click="kpiClick(kpi, dataType.limit.onlyDifferentKpi, modelSelect.modelId)">
+                  <div class="checkbox" ng-model="kpi.checked" class="checkbox" data-disabled = "false"></div>
+                  <span ng-bind="kpi.label + '(' + kpi.unit + ')'" ng-class="{true:'active',false:''}[kpi.checked]" class="text"></span>
+                </div>
+                <div style="height:1px; clear : both;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- edition module when solution ID is provided -->
+        <div ng-show="substep == 0 && solutionId" class="step">
+          <!--
+          <div class="separate" ng-class="{true:'',false:'full'}[$parent.modelSelect.kpis.getData().length > 0]">
+            <div class="instruction" ng-if="checkTab($parent.sub_resources, dataType, oldNodeId)">
+              <span class="glyphicon glyphicon-warning-sign"></span><span ng-bind="{true:'设备 X ' + dataType.limit.ci,false: ''}[dataType.limit.ci!=undefind]"></span>
+            </div>
+            <div class="mtitle">选择设备模板</div>
+            <div class="filter">
+              <div class="ttext">过滤模型名称 :</div>
+              <input class="form-control" ng-model="modelKeyword" placeholder="模型名称"/>
+            </div>
+            <div class="content_in">
+              <div class="scroll">
+                <div ng-repeat="model in $parent.modelPanelData.children.getData() | filter : {label : modelKeyword}"
+                     ng-class="{true : 'active', false : ''}[model.id == $parent.modelSelect.id]"
+                     class="modelClass"
+                     ng-click="modelClick(model)">
+                  <span class="glyphicon glyphicon-ok"></span>
+                  <span ng-bind="model.label" ng-class="{true:'active',false:''}[model.checked]" class="text"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          -->
+          <div class="separate full" style="background-color : rgb(53, 62, 70);">
+            <div style="width : 100%; overflow:hidden; position : relative; height : 100%;">
+              <div class="instruction" ng-if="checkKpiTab(modelSelect.kpis.getData(), dataType)">
+                <span class="glyphicon glyphicon-warning-sign"></span><span ng-bind="{true:'指标 X ' + dataType.limit.kpi,false: ''}[dataType.limit.kpi!=undefind]"></span>
+              </div>
+              <div class="mtitle" ng-bind="{true:'选择指标',false:'选择指标'}[dataType.limit.onlyDifferentKpi==true]" style="background-color:rgb(53, 62, 70);"></div>
+              <div class="filter">
+                <div class="ttext">指标单位 :</div>
+                <select class="form-control" ng-model="unitKeyword" ng-options="unit as unit for unit in (modelSelect.kpis.getData() | listAllUnit)"></select>
+              </div>
+              <div class="filter sub">
+                <span class="glyphicon glyphicon-search" ng-if="kpiKeyword==''"></span>
+                <input class="form-control" ng-model="kpiKeyword" placeholder="指标名称"/>
+              </div>
+              <div class="scroll">
+                <div ng-repeat="kpi in modelSelect.kpis.getData() | kpifilter : kpiKeyword | unitfilter : unitKeyword"
+                     class="kpiClass"
+                     ng-click="kpiClickByModel(kpi, dataType.limit.onlyDifferentKpi, modelSelect)">
+                  <div class="checkbox" ng-model="kpi.checked" class="checkbox" data-disabled = "false"></div>
+                  <span ng-bind="kpi.label + '(' + kpi.unit + ')'" ng-class="{true:'active',false:''}[kpi.checked]" class="text"></span>
+                </div>
+                <div style="height:1px; clear : both;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div ng-show="substep == 1">
+          <div class="mtitle" style="width:400px;">图表标题：</div>
+          <div class="innerWrap" style="height : auto; padding:10px;">
+            <div class="setupTitle">
+              <span>主标题</span><input ng-model="datasource.title.text" ng-change="refreshGraph();" class="form-control" ng-model-options="{ updateOn: 'blur' }"/>
+            </div>
+            <div class="setupTitle">
+              <span>副标题</span><input ng-model="datasource.title.subtext" ng-change="refreshGraph();" class="form-control" ng-model-options="{ updateOn: 'blur' }"/>
+            </div>
+          </div>
+
+          <div class="innerWrap" style="height : auto; padding:10px;">
+            <div class="mtitle" style="width:400px;">类目类型：</div>
+            <select ng-model="category"
+                    class="form-control"
+                    ng-options ="category.value as category.name for category in timeCat"
+                    ng-change="refreshGraph();">
+            </select>
+          </div>
+
+          <div class="innerWrap" style="height : auto; padding:10px;" ng-show="category == 'time'">
+            <div class="timespan" style="margin-top : 10px;">
+              <div style="height : 30px;">
+                <span class="timeSpan" style="margin-right : 33px;">显示</span>
+                <input ng-model="timespan" type="number"
+                       maxlength="7"
+                       ng-model-options="{ updateOn: 'blur' }"
+                       class="form-control" style="width:100px;display:inline-block;"
+                       ng-change="refreshGraph();"/>
+                <span class="timeSpan"><span style="font-weight:800;color:yellow;">分钟</span>之前到现在的数据</span>
+              </div>
+              <div style="margin-top:10px;">
+                <span class="timeSpan" style="float : left; line-height : 20px; margin : 10px 10px 0 0;">时间格式</span>
+                <select ng-model="timeformat"
+                        ng-change="refreshGraph();"
+                        class="form-control"
+                        style="width : 150px;"
+                        ng-options="format as format.name for format in timeformatList">
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--
+      <button ng-click="applyChart(resources)"
+              class="btn btn-primary applyBtn"
+              ng-disabled="checkEnabled(sub_resources, dataType)">绑定数据</button>
+              -->
+    </div>
+  </div>
+</div>
+
+<div id="chart-setting" class="standard-window">
+  <div class="chart-setting-closeBtn">
+    <span class="glyphicon glyphicon-remove"></span>
+  </div>
+  <div class="returnBtn" ng-click="returnBtnClick()" ng-if="chartTab=='DETAIL'">
+    返回
+  </div>
+  <h4 class="text-center" style = "margin : 10px auto;">图表属性设置</h4>
+  <div class="wrap" ng-show="chartTab=='MAIN'">
+    <div ng-repeat="curStyle in styleList"
+         ng-click="themeClick(curStyle.value)"
+         class="style-item"
+         ng-class="{true:'active',false:''}[curStyle.value == theme]">
+      <span ng-bind="curStyle.name"></span>
+    </div>
+  </div>
+  <div class="wrap" init="mt_ins=''" ng-show="chartTab=='DETAIL'">
+    <ul class="nav nav-tabs nav-justified">
+      <li role="presentation"
+          ng-repeat = "mt in optionEdit | filter : filterByType"
+          class="text-center"
+          ng-class="{
+					true : 'active',
+					false : ''
+				}[mainTitle==mt.id]"
+          ng-click="clickMainTitle(mt)"
+        ><a ng-bind="mt.name"></a>
+      </li>
+    </ul>
+    <div class="inner">
+      <ul class="nav nav-tabs nav-justified">
+        <li role="presentation"
+            ng-repeat="st in subList"
+            class="text-center"
+            ng-class="{
+						true : 'active',
+						false : ''
+					}[subTitle==st.id]"
+            ng-click="clickSubTitle(st)"
+          ><a ng-bind="st.name"></a></li>
+      </ul>
+      <div class="content">
+        <div ng-repeat = "con in content"
+             ng-model = "con"
+             data-target = "option"
+             class = "content-tr">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="grid_creator" class="tool-bar">
+  <div class="handler"></div>
+  <h4 style="font-size : 12px; color:#fff; text-align:center; margin:10px 0 4px 0;">选择图表</h4>
+  <ul class="leftBar_wrap">
+    <li ng-click="toolbarClick(toolbar);"
+        class="leftBar_btn"
+        ng-repeat="toolbar in toolBarList | filter : { show : true }">
+      <div class="tooltips" ng-bind="toolbar.name"></div>
+      <ul style="margin:0; padding:0;">
+        <li toolbar_id="{{'toolbar_'+ toolbar.id}}" class="toolBox" dataType="{{toolbar.sub[0].dataType}}" option="{{toolbar.sub[0].option}}">
+          <div ng-style="renderToolbarIcon(toolbar.image)" class="icon"></div>
+        </li>
+      </ul>
+      <div class="innerTitle" ng-bind="toolbar.shortname"></div>
+    </li>
+  </ul>
+</div>
+<div id="draw-area" class="drawing-area">
+</div>

@@ -1,0 +1,133 @@
+<config injector="$q,$timeout,$compile,ajax,psUltility,psEvent"
+></config>
+<template>
+    <div>
+    </div>
+</template>
+<script type="text/javascript">
+import {isString, isArray, isObject} from "ps-ultility";
+export default function (q, timeout, compile, ajax, psUltility,psEvent) {
+  return {
+    scope: {
+      option: `=`,
+    },
+    link (scope, element, attr) {
+      let dom, init = false;
+      const format = function (t) {
+        switch (t) {
+          case "tree":
+            return ['ng-model', 'data-config', 'data-options'];
+            break;
+          case "select" :
+            return ['ng-model', 'data-config', {
+              name: 'data-options',
+              formatter: function (str, option) {
+                let obj = option[str];
+                if (isArray(obj)) {
+                  if (isObject(obj[0])) {
+                    return `item.${option.format && option.format.id ? option.format.id : 'id'} as item.${option.format && option.format.label ? option.format.label : 'label'} for item in option.${str}`
+                  } else if (isArray(obj[0])) {
+                    return `item[0] as item[1] for item in option.${str}`
+                  } else {
+                    return `item in option['${str}']`
+                  }
+                } else if (isObject(obj)) {
+                  let fmt = obj.format;
+                  return `item.${fmt[0]} as item.${fmt[1]} for item in option['${str}']['value']`
+                } else {
+                  throw new Error("错误的FORMAT格式");
+                }
+              }
+            }];
+            break;
+          default :
+            return ['ng-model', 'data-config'];
+            break;
+        }
+      };
+      function extend(a , b){
+        for(var i in b){
+          a[i] = b[i];
+        }
+        return a;
+      }
+      function $append (target, dom) {
+        target[0].appendChild(dom);
+        compile(target[0])(scope);
+      }
+      function render (renderObj, option) {
+        let dom = document.createElement(`ps-${renderObj['type']}`),
+          fmt = format(renderObj['type']);
+        element[0].innerHTML = "";
+        for (let i = 0; i < fmt.length; i++) {
+          if (typeof fmt[i] == "object") {
+            dom.setAttribute(`${fmt[i].name}`, fmt[i].formatter(renderObj[fmt[i].name], option));
+          } else {
+            dom.setAttribute(`${fmt[i]}`, `option.${renderObj[fmt[i]]}`);
+          }
+        }
+        $append(element, dom);
+      }
+      function preparation(){
+        let defer = q.defer();
+        scope.option[psUltility.keyPattern(scope.option["key"])] =
+          typeof scope.option[psUltility.keyPattern(scope.option["key"])] !== "undefined"
+            ? scope.option[psUltility.keyPattern(scope.option["key"])]
+            : scope.option.value;
+        if(isString(scope.option.options)){
+          ajax.post(scope.option.options).then(function(d){
+            scope.option[psUltility.keyPattern("options")] = d;
+            defer.resolve("success");
+          })
+        } else {
+          scope.option[psUltility.keyPattern("options")] =scope.option.options
+          defer.resolve("success");
+        }
+        return defer.promise;
+      }
+      function setCustomWatch(watcher){
+        if(typeof watcher !== "object"){
+          return;
+        }
+        let name = watcher && watcher.name, handler = watcher && watcher.handler,
+          evt = psEvent(event),
+          _scope = name[0] === "$" ? psUltility.getRootScope(scope) : psUltility.getParentScope(scope);
+        name = name[0] === "$" ? name.substring(1) : name;
+        _scope.$watch(name, function(n, o, s){
+          if(typeof n !== "undefined") {
+            evt.$scope = scope;
+            evt.$value = n;
+            evt.registerCommand("update", function(d, data, next, freeze){
+              let dt = extend({}, scope.option);
+              scope.option = extend(dt, data);
+              preparation().then(()=>{
+                next(scope.option);
+              });
+            });
+            handler && handler(evt);
+          }
+        })
+      }
+      setCustomWatch(scope.option.watch);
+      scope.$on(`$destroy`, () => {
+        console.log(`destroy`);
+      });
+      scope.$watch(`option`, (n, o, s) => {
+        if (typeof n !== 'undefined') {
+          let renderObj = {};
+          renderObj['type'] = n['type'];
+          renderObj['ng-model'] = n['key'] ? psUltility.keyPattern(n["key"]) : n['__key'];
+          renderObj['data-config'] = 'config';
+          renderObj['data-options'] = psUltility.keyPattern("options");
+          preparation().then(()=>{
+            render(renderObj, n);
+          });
+        }
+      });
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+
+</style>

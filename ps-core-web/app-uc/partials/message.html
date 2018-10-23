@@ -1,0 +1,46 @@
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li ng-class="{ 'active' : activeListTab == 'tab1'}" name="tab1">
+                <a name="all" role="button" data-toggle="tab">全部消息</a>
+              </li>
+              <li ng-class="{ 'active' : activeListTab == 'tab2'}" name="tab2">
+                <a name="notice" role="button" data-toggle="tab">消息通知</a>
+              </li>
+              <li ng-class="{ 'active' : activeListTab == 'tab3'}" name="tab3">
+                <a name="order" role="button" data-toggle="tab">工单任务</a>
+              </li>
+              <li ng-class="{ 'active' : activeListTab == 'tab4'}" name="tab4">
+                <a name="bulletin" role="button" data-toggle="tab">系统公告</a>
+              </li>
+              <!-- <li ng-class="{ 'active' : activeListTab == 'tab5'}"  name="tab5">
+                <a name="maintenance" role="button" data-toggle="tab">维保通知</a>
+              </li>-->
+              <!--  <li ng-class="{ 'active' : activeListTab == 'tab6'}"  name="tab6">
+                <a name="payment" role="button" data-toggle="tab">缴费通知</a>
+              </li>-->
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+        <div class="box-body">
+          <button type="button" ng-show="statusMsg == 0" ng-click="deleteMsg(2);" class="btn btn-primary btn-sm"><i class="proudsmart ps-focus "></i><span class="hidden-sm"> 标记已读</span></button>
+
+          <div class="combined-query  pull-right">
+            筛选: <input class="form-control input-sm" ng-model="tableSearchValue" ng-change="publicTableSearch('message-table',tableSearchValue)" />
+          </div>
+        </div>
+        <div class="box-footer no-pad-top no-border">
+          <table width="100%" class="table table-hover" id="messagetable" name="message-table" message-table></table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

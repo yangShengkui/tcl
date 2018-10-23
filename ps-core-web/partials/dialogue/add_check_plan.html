@@ -1,0 +1,93 @@
+<!--添加点检计划议模态框-->
+
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog" style="width: 60%" id="checkPlanModel">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">点检计划</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <div class="form-group col-sm-4 ">
+          <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+            <span class="text-danger ng-binding">*</span> <span class="ng-binding">点检计划编号：</span>
+          </label>
+          <div class="col-sm-7">
+            <input ng-model="checkplanAddData.planNumber" ng-disabled="addcheckPlan.canEdit == false" class="form-control input-sm ng-pristine ng-valid ng-not-empty ng-touched" placeholder="">
+          </div>
+        </div>
+        <div class="form-group col-sm-4 ">
+          <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+            <span class="text-danger ng-binding">*</span> <span class="ng-binding">点检项目名称：</span>
+          </label>
+          <div class="col-sm-7">
+            <input ng-model="checkplanAddData.projectName" ng-disabled="addcheckPlan.canEdit == false" class="form-control input-sm ng-pristine ng-valid ng-not-empty ng-touched" placeholder="">
+          </div>
+        </div>
+        <div class="form-group col-sm-4 ">
+          <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+            <span class="text-danger ng-binding">*</span> <span class="ng-binding">点检区域：</span>
+          </label>
+          <div class="col-sm-7">
+            <select class="form-control ng-pristine ng-valid ng-empty ng-touched" ng-disabled="addcheckPlan.canEdit == false"  ng-change="queryCheckChange()" ng-model="checkplanAddData.checkAreaId" ng-options="value.id as value.name for value in LineBodyList" selectdata="LineBodyList"></select>
+          </div>
+        </div>
+        <div class="form-group col-sm-4 ">
+          <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+            <span class="text-danger ng-binding">*</span> <span class="ng-binding">周期单位：</span>
+          </label>
+          <div class="col-sm-7">
+            <select class="form-control input-sm ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" ng-model="checkplanAddData.periodicUnitName" ng-disabled="addcheckPlan.canEdit == false"  ng-change="cycleChang();" placeholder="请选择..." required="required" style="" ng-options="value.valueCode as value.label for value in myDicts['taskCycle']">
+              <option value="" class="">请选择</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-sm-4 ">
+          <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+            <span class="text-danger ng-binding">*</span> <span class="ng-binding">周期间隔：</span>
+          </label>
+          <div class="col-sm-7">
+            <input ng-model="checkplanAddData.periodicInterval" ng-disabled="addcheckPlan.canEdit == false" class="form-control input-sm ng-pristine ng-valid ng-not-empty ng-touched" placeholder="">
+          </div>
+        </div>
+        <div class="form-group col-sm-4 ">
+          <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+            <span class="text-danger ng-binding">*</span> <span class="ng-binding">开始日期：</span>
+          </label>
+          <div class="col-sm-7">
+            <input type="text" class="form-control input-sm ng-valid ng-isolate-scope ng-touched ng-not-empty ng-dirty ng-valid-parse" readonly="readonly" autocomplete="off" drops="down" ng-model="checkplanAddData.startDate" timepicker="false" date-time-picker="" style="">
+          </div>
+        </div>
+        <div class="form-group col-sm-4 ">
+          <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+            <span class="text-danger ng-binding">*</span> <span class="ng-binding">开始时间：</span>
+          </label>
+          <div class="col-sm-7">
+            <input type="text" class="ng-timepicker-input" ng-readonly="true" time-hours-picker="" ng-value="viewValue" ng-model="checkplanAddData.startTime" ng-focus="showTimepicker()">
+          </div>
+        </div>
+        <div class="form-group col-sm-4 ">
+          <label class="col-sm-5 dialog-control-label no-padding-right dialog-control-h">
+            <span class="text-danger ng-binding"></span> <span class="ng-binding">是否启用：</span>
+          </label>
+          <div class="col-sm-7">
+            <input ng-model="checkplanAddData.planStatus" ng-disabled="addcheckPlan.canEdit == false" type="checkbox" class="" placeholder="">
+          </div>
+        </div>
+        <div class="form-group col-sm-12">
+          <h4 class="pull-left" style="margin-left: 30px;font-weight: 700;">点检项次</h4>
+          <button class="btn btn-primary btn-sm pull-right" ng-disabled="addcheckPlan.canEdit == false" ng-click="addCheckNumber();" style="margin-right: 30px;">新增项次</button>
+        </div>
+        <div class="box-body col-sm-12  table-responsive margin-bottom-20 bg-write ">
+          <div class="box-footer margin-bottom-10">
+            <table width="100%" class="table table-hover" id="addCheckNumberTable" add-item-table></table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="addcheckPlan.canEdit == false" ng-click="saveCheckPlan();">确认</button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

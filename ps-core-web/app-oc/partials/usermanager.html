@@ -1,0 +1,128 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="nav-tabs-custom">
+            <!-- Tabs within a box -->
+            <ul class="nav nav-tabs pull-left">
+              <li class="active"><a href="#user-form" id="user" name="user" data-toggle="tab">用户管理</a></li>
+              <!--<li ><a href="#group-form"  id="group" name="group" data-toggle="tab">资源域</a></li>-->
+              <li><a href="#power-form" id="power" name="power" data-toggle="tab">角色管理</a></li>
+              <!-- <li class="pull-right">
+                <div class="col-sm-2">
+                  <a ng-click="addUser()" class="btn btn-default btn-sm">
+                    <i class="fa fa-plus"></i><span class="hidden-xs"> {{addUserName}}</span>
+                  </a>
+
+                </div>
+              </li> -->
+            </ul>
+            <div class="tab-content">
+              <!-- Morris chart - Sales -->
+              <form id="user-form" class="form-horizontal tab-pane active" role="form">
+                <div class="table-responsive">
+                  <table width="100%" class="table table-hover" id="usertable" user-table>
+                  </table>
+                </div>
+              </form>
+
+              <form id="power-form" class="form-horizontal tab-pane " role="form">
+                <div class="table-responsive">
+                  <table width="100%" class="table table-hover" id="powertable" current-table>
+                  </table>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- /.box-header -->
+      </div>
+      <div class="box" ng-show="functionRoleName == 1010">
+        <div class="box-header with-border">
+          <h3 class="box-title">功能分配</h3>
+          <div class="text-center pull-right">
+            <a class="btn btn-default btn-sm" ng-show="functionGridData.statusCheck == true" ng-click="userRoleOdd();">
+              <i class="fa fa-save"><span class="hidden-xs"> 保存</span></i>
+            </a>
+            <a class="btn btn-default btn-sm" ng-click="closeTable();">
+              <i class="fa fa-times"></i><span class="hidden-xs"> 取消</span>
+            </a>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <label>角色名称：{{userRoleName}}</label>
+          <!--<div treeview-Checkable> </div>-->
+          <ul  class="ztree" id="roleTree" ztreedata="treeData" ztree-checkable></ul>
+          <!-- /.box -->
+        </div>
+      </div>
+      <div class="box" ng-show="functionRoleName == 003">
+        <div class="box-header with-border">
+          <h3 class="box-title">域分配</h3>
+
+          <div class="text-center pull-right">
+            <a class="btn btn-default btn-sm" ng-click="userRoleOdd();">
+              <i class="fa fa-save"><span class="hidden-xs"> 保存</span></i>
+            </a>
+            <a class="btn btn-default btn-sm" ng-click="closeTable();">
+              <i class="fa fa-times"></i><span class="hidden-xs"> 取消</span>
+            </a>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <label>用户名称：{{userRoleName}}</label>
+          <div domaintree-checkable></div>
+          <!-- /.box -->
+        </div>
+      </div>
+      <div class="box" ng-show="functionRoleName == 001">
+        <div class="box-header with-border">
+          <h3 class="box-title">角色分配</h3>
+          <div class="text-center pull-right">
+            <a class="btn btn-default btn-sm" ng-click="userRoleOdd();">
+              <i class="fa fa-save"><span class="hidden-xs"> 保存</span></i>
+            </a>
+            <a class="btn btn-default btn-sm" ng-click="closeTable();">
+              <i class="fa fa-times"></i><span class="hidden-xs"> 取消</span>
+            </a>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body table-responsive">
+          <label>用户名称：{{userRoleName}}</label>
+          <table width="100%" id="roleUser" class="table table-hover" role-user-table></table>
+
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <div class="box" ng-show="functionRoleName == 002">
+        <div class="box-header with-border">
+          <h3 class="box-title">用户分配</h3>
+          <div class="text-center pull-right">
+            <a class="btn btn-default btn-sm" ng-click="userRoleOdd();">
+              <i class="fa fa-save"><span class="hidden-xs"> 保存</span></i>
+            </a>
+            <a class="btn btn-default btn-sm" ng-click="closeTable();">
+              <i class="fa fa-times"></i><span class="hidden-xs"> 取消</span>
+            </a>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body table-responsive">
+          <label>角色名称：{{userRoleName}}</label>
+          <table width="100%" id="userRole" class="table table-hover" user-role-table></table>
+
+        </div>
+        <!-- /.box -->
+      </div>
+
+    </div>
+    <!-- /.row -->
+</section>

@@ -1,0 +1,38 @@
+<!---->
+<div class="example-modal">
+  <div class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">选择一个设备模板</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="serviceView" class="col-sm-2 control-label"><span class="text-danger">*</span>模板</label>
+              <div class="col-sm-8">
+                <select select2 class="form-control"  ng-change="changeModel(deviceModel)" ng-model="deviceModel" ng-options="value.id as value.label for value in modelListSelect" selectdata="modelListSelect">
+                  <option value="">请选择...</option>
+                </select>
+                <!--<div class="dropdowntree" placeholder="请选择..." ng-model="deviceModel" change="changeModel" options="rootModel" mark="nodes"/>-->
+                <!--<input name='modelId'  model-Picker class='form-control domainClass' type='text' modelId='' model="deviceModel" userparent='true' value='请选择...'>-->
+            
+              </div>
+              <div class="col-sm-2">
+                <button type="button" class="btn btn-link btn-sm" ng-click="gotoResourceType()">新建模板</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" ng-click="confirm()">确认</button>
+          <button type="button" class="btn btn-default" ng-click="closeThisDialog();closeDialog()">取消</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+</div>
+<!-- /.example-modal -->

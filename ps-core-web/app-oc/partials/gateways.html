@@ -1,0 +1,58 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+
+<!-- Main content -->
+<section class="content">
+	<div class="row">
+		<div class="col-xs-12">
+			<!-- Application buttons -->
+			<div class="box">
+				<div class="box-header">
+					<ol class="breadcrumb">
+						<div class="text-center pull-right" style="display: inherit;">
+							<a ng-if="selectedGateitem" ng-click="qrCode()" class="btn btn-default btn-sm"><i class="fa fa-qrcode"></i><span class="hidden-xs"> 二维码</span></a>
+						</div>
+					</ol>
+				</div>
+
+				<div class="box-body slick-box-body">
+					<div variablesidth="true" dots="false" arrows="true" slidesToScroll="3" autorender="false" ng-model="gatewaysAry" slick>
+						<a class="btn btn-app slick-a" ng-class="{true: 'btn btn-app slick-a active active-ps', false: 'btn btn-app slick-a'}[selectedGateitem.id==item.id]" ng-click="click(item)" ng-repeat="item in gatewaysAry" on-finish-render-filters>
+							<span class="badge {{item.alertlv}}">{{item.count}}</span>
+							
+							<span class="badgeleft">
+								<i ng-class="{true:'fa fa-link',false:'fa fa-unlink'}[item.onlineStatus=='online']"></i>
+							</span>
+							<!--
+							<span class="badgecenter {{item.managedStatuslv}}">{{item.managedStatuslab}}</span>
+							-->
+							<i ng-class="{true:item.icon,false:'fa fa-ban fa-2x text-danger'}[item.managedStatus=='active']"></i>
+							{{item.label}}
+						</a>
+					</div>
+				</div>
+				<div class="box-footer">
+					<div class="nav-tabs-custom" >
+						<ul class="nav nav-tabs pull-left">
+							<li class="active" ng-class="{true:'active',false:''}[activeListTab == 'tab6']"><a name="tab6" href="#" data-toggle="tab"><i class="fa fa-list"></i><span class="hidden-xs"> 激活设备列表</span></a></li>
+
+							<li ng-class="{true:'active',false:''}[activeListTab == 'tab5']"><a name="tab5" href="#" data-toggle="tab"><i class="fa fa-list text-red"></i><span class="hidden-xs"> 未激活设备列表</span></a></li>
+						</ul>
+						<div class="tab-content" >
+							<div class="box-body no-padding" ng-show="activeListTab == 'tab6'">
+								<table width="100%" class="table table-hover" cmdb3-table></table>
+							</div>	
+							<div class="box-body no-padding" ng-show="activeListTab == 'tab5'">
+								<table width="100%" class="table table-hover" cmdb2-table></table>
+							</div>
+												
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+</section>
+<!-- /.content -->

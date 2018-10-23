@@ -1,0 +1,263 @@
+<config injector=""></config>
+<template>
+    <div>
+        <echarts-base class="echarts-base-wrap"></echarts-base>
+    </div>
+
+</template>
+<script type="text/javascript">
+export default function () {
+  return {
+    scope: {
+      option: '=?'
+    },
+    link (scope, element, attr) {
+      let sumArray = function (arr) {
+        let ret = 0;
+        arr.forEach(function (i) {
+          ret += i;
+        });
+        return ret;
+      }
+      let option = scope.option;
+      let barType = option.type ? option.type : 'CUSTOMER'
+      let chartOption = {};
+      switch (barType) {
+        case 'NORMAL':
+          chartOption = {
+            title: {
+              text: option.title || '',
+              left: '3%',
+              textStyle: {
+                color: option.titleFontColor || '#aac3ff',
+                fontSize: option.titleFontSize || 18
+              }
+            },
+            color: Array.isArray(option.color) ? option.color : ['#4689fa', '#73a4f8', '#bad3fd', '#ffffff'],
+            legend: {
+              show: true,
+              itemWidth: 12,
+              itemHeight: 21,
+              itemGap: 20,
+              textStyle: {
+                color: '#fff'
+              },
+              right: '4%'
+            },
+            grid: {
+              left: 'left',
+              right: '4%',
+              bottom: '3%',
+              containLabel: true,
+            },
+            xAxis: {
+              type: 'category',
+              axisLine: {
+                lineStyle: {
+                  color: '#35446a'
+                }
+              },
+              axisTick: {
+                show: false
+              },
+              axisLabel: {
+                color: '#e2e3e7'
+              },
+              splitLine: {
+                show: false
+              }
+            },
+            yAxis: {
+              type: 'value',
+              axisTick: {
+                show: false
+              },
+              axisLabel: {
+                color: '#e2e3e7',
+                margin: 40,
+                align: 'left',
+                formatter: function (a, b) {
+                  if (b === 0) {
+                    return a + ' (' + (option.yAxisUnit || '%') + ')';
+                  }
+                  return a;
+                }
+              },
+              splitLine: {
+                show: true,
+                lineStyle: {
+                  color: '#35446a'
+                }
+              },
+              axisLine: {
+                lineStyle: {
+                  color: '#35436b'
+                }
+              }
+            },
+            series: []
+          };
+          if (Array.isArray(option.data)) {
+            chartOption.legend.data = chartOption.legend.data || [];
+            chartOption.series = chartOption.series || [];
+            chartOption.xAxis.data = chartOption.xAxis.data || [];
+            let xAxisDataObj = {};
+            option.data.forEach(function (item) {
+              chartOption.legend.data.push({
+                name: item.name,
+                icon: 'path://M200,200 A100 100 0 1 1 200,201z M380,200 A80 80 0 1 0 380,201z'
+              });
+              chartOption.series.push({
+                type: 'bar',
+                name: item.name,
+                data: item.data,
+                barGap: 0,
+                barWidth: 10
+              });
+              item.data.forEach(function (itemName) {
+                xAxisDataObj[itemName.name] = itemName.name;
+              });
+
+            });
+            chartOption.xAxis.data = Object.keys(xAxisDataObj);
+          }
+          break;
+        case 'STACK':
+          chartOption = {
+            title: {
+              text: option.title || '',
+              left: '3%',
+              textStyle: {
+                color: option.titleFontColor || '#aac3ff',
+                fontSize: option.titleFontSize || 18
+              }
+            },
+            color: Array.isArray(option.color) ? option.color : ['#bd7bf8', '#5a97ff', '#64d2fb', '#75f2c2', '#c6f275', '#f2bb74'],
+            legend: {
+              show: true,
+              itemWidth: 12,
+              itemHeight: 21,
+              itemGap: 20,
+              textStyle: {
+                color: '#fff'
+              },
+              right: '4%'
+            },
+            grid: {
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+              containLabel: true,
+            },
+            xAxis: {
+              type: 'category',
+              axisLine: {
+                lineStyle: {
+                  color: '#35446a'
+                }
+              },
+              axisTick: {
+                show: false
+              },
+              axisLabel: {
+                color: '#e2e3e7'
+              },
+              splitLine: {
+                show: false
+              }
+            },
+            yAxis: {
+              type: 'value',
+              axisTick: {
+                show: false
+              },
+              axisLabel: {
+                color: '#e2e3e7',
+                margin: 40,
+                align: 'left',
+                formatter: function (a, b) {
+                  if (b === 0) {
+                    return a + ' (' + (option.yAxisUnit || '%') + ')';
+                  }
+                  return a
+                }
+              },
+              splitLine: {
+                show: true,
+                lineStyle: {
+                  color: '#35446a'
+                }
+              },
+              axisLine: {
+                lineStyle: {
+                  color: '#35436b'
+                }
+              }
+            },
+            series: []
+          };
+          if (Array.isArray(option.data)) {
+            chartOption.legend.data = chartOption.legend.data || [];
+            chartOption.series = chartOption.series || [];
+            chartOption.xAxis.data = chartOption.xAxis.data || [];
+            let xAxisDataObj = {},
+              max = 0,
+              maxName = '';
+            option.data.forEach(function (item) {
+              item.data.forEach(function (itemData) {
+                xAxisDataObj[itemData.name] = xAxisDataObj[itemData.name] || [];
+                xAxisDataObj[itemData.name].push(itemData.value);
+              });
+            });
+            Object.keys(xAxisDataObj).forEach(function (itemName) {
+              let maxNum = sumArray(xAxisDataObj[itemName]);
+              if (max < maxNum) {
+                max = maxNum;
+                maxName = itemName;
+              }
+            });
+            option.data.forEach(function (item, index) {
+              chartOption.legend.data.push({
+                name: item.name,
+                icon: 'path://M200,200 A100 100 0 1 1 200,201z M380,200 A80 80 0 1 0 380,201z'
+              });
+              item.data.forEach(function (itemD) {
+                if (itemD.name == maxName && index == option.data.length - 1) {
+                  itemD.label = {
+                    show: true,
+                    position: 'top',
+                    color: '#fff',
+                    formatter: function () {
+                      return max;
+                    }
+                  };
+                }
+              });
+              chartOption.series.push({
+                type: 'bar',
+                stack: 'BAR_STACK',
+                name: item.name,
+                data: item.data
+              });
+            });
+            chartOption.xAxis.data = Object.keys(xAxisDataObj);
+          }
+          break;
+        case 'CUSTOMER':
+          chartOption = option.chartOption;
+          break;
+      }
+      console.log(JSON.stringify(chartOption))
+      scope.$broadcast('ECHARTS_BASE_INIT', {
+        option: chartOption
+      });
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+.echarts-base-wrap {
+    width: 100%;
+    height: 100%;
+}
+</style>

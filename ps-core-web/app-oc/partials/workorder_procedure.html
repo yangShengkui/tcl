@@ -1,0 +1,62 @@
+<style type="text/css" media="screen">
+    .ms-container {
+        background: none;
+        width:500px;
+    }
+    .ms-container .ms-selectable,.ms-container .ms-selection{
+        width:42%;
+    }
+    .ms-container .ms-center {
+        width:16%;
+        text-align: center;
+    }
+    .ms-center a{
+        width:50px;
+    }
+    .procedure-bg-green{
+        background-color:rgb(7,212,132);
+    }
+    .procedure-bg-orange{
+        background-color:#FF9547;
+    }
+    #stepProcess td {
+        border:none;
+        padding-bottom: 0px;
+        padding-top: 2px;
+    }
+    #workordertype .nav-tabs-custom .active {
+        background-color: #f5f5f5;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+    }
+    #workordertype .nav-tabs-custom .tab-content {
+        border:1px solid #ccc;
+    }
+    #workordertype .nav-tabs-custom li.active > a {
+        background-color: #f5f5f5 !important;
+    }
+</style>
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <!-- <div class="box-feader">
+                    
+                </div> -->
+                <div class="box-footer">
+                    <div class="tab-content">
+                        <!-- 工单类型定义 -->
+                        <form id="workordertype" class="form-horizontal tab-pane active" role="form" data-toggle="tab"
+                              aria-expanded="true">
+                            <table width="100%" class="table table-hover" id="workOrderTable" work-order-type>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,109 @@
+{
+  "qualityIcon": [
+    {
+      "title": "通用设备",
+      "icon": "fa fa-archive",
+      "colour": "text-aqua"
+    },
+    {
+      "title": "制造装备",
+      "icon": "fa fa-cogs",
+      "colour": "text-blue"
+    },
+    {
+      "title": "环保设备",
+      "icon": "fa fa-leaf",
+      "colour": "text-green"
+    },
+    {
+      "title": "物流车辆",
+      "icon": "fa fa-truck",
+      "colour": "text-aqua"
+    },
+    {
+      "title": "水浸",
+      "icon": "proudsmart ps-water-yes",
+      "colour": "text-aqua"
+    },
+    {
+      "title": "烟感",
+      "icon": "proudsmart ps-smoke-yes",
+      "colour": "text-aqua"
+    },
+    {
+      "title": "温度",
+      "icon": "proudsmart ps-air-temperature",
+      "colour": "text-aqua"
+    },
+    {
+      "title": "湿度",
+      "icon": "proudsmart ps-air-humidity",
+      "colour": "text-aqua"
+    }],
+  "kpiIcon":[
+    {
+      "title": "二氧化碳",
+      "icon": "proudsmart ps-co2"
+    },
+    {
+      "title": "灌溉",
+      "icon": "proudsmart ps-irrigation"
+    },
+    {
+      "title": "空气湿度",
+      "icon": "proudsmart ps-air-humidity"
+    },
+    {
+      "title": "空气温度",
+      "icon": "proudsmart ps-air-temperature"
+    },
+    {
+      "title": "摄像头",
+      "icon": "proudsmart ps-video-camera"
+    },
+    {
+      "title": "水量",
+      "icon": "proudsmart ps-water"
+    },
+    {
+      "title": "日照",
+      "icon": "proudsmart ps-sunshine"
+    },
+    {
+      "title": "土壤湿度",
+      "icon": "proudsmart ps-soil-humidity"
+    },
+    {
+      "title": "土壤温度",
+      "icon": "proudsmart ps-soil-temperature"
+    },
+    {
+      "title": "卷帘",
+      "icon": "proudsmart ps-electric-motor"
+    },
+    {
+      "title": "卷膜",
+      "icon": "proudsmart ps-electric-motor02"
+    },
+    {
+      "title": "排风扇",
+      "icon": "proudsmart ps-fan"
+    },
+    {
+      "title": "喷淋",
+      "icon": "proudsmart ps-spraying"
+    },
+    {
+      "title": "相机",
+      "icon": "proudsmart ps-camera"
+    },
+    {
+      "title": "电量",
+      "icon": "proudsmart ps-battery"
+    },
+    {
+      "title": "粉尘",
+      "icon": "proudsmart ps-dust"
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="box-tools pull-left nav-tabs-header">
+            <ul class="nav nav-tabs" role="tablist">
+              <li ng-class="{ 'active' : activeListTab == '100'}" name="100">
+                <a role="button" data-toggle="tab">执行中</a>
+              </li>
+              <li ng-class="{ 'active' : activeListTab == '200'}" name="200">
+                <a role="button" data-toggle="tab">已完成</a>
+              </li>
+              <li ng-class="{ 'active' : activeListTab == '0'}" name="0">
+                <a role="button" data-toggle="tab">全部工单</a>
+              </li>
+              <li ng-class="{ 'active' : activeListTab == '10'}" name="10">
+                <a role="button" data-toggle="tab">未发布</a>
+              </li>
+            </ul>
+          </div>
+          <div class="box-tools pull-right">
+            <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回"
+              title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+          </div>
+        </div>
+  
+        <!-- 查询 -->
+        <div class="box-body no-padding-left no-pad-bottom">
+          <form role="form" name="alertForm" id="alert-form" >
+            <!-- 厂部 -->
+            <div class="form-group col-sm-2 height-50">
+              <label class="control-label">厂部：</label>
+              <select select2 class="form-control"  
+              ng-model="selectedAlertitem.domain" 
+              ng-change="customerChange();" 
+              ng-options="value.id as value.text for value in customersList" 
+              selectdata="customersList">
+                <option value="">请选择...</option>
+              </select>
+            </div>
+
+            <!-- ng-show="baseConfig.projectConfig.display && !userInfo.subDomain" -->
+            <!-- 车间 -->
+            <div class="form-group col-sm-2 height-50" >
+              <label class="control-label">车间：</label>
+              <select select2 class="form-control"  
+                ng-model="selectedAlertitem.plant"  
+                ng-change="projectChange();" 
+                ng-options="value.id as value.text for value in projectsList | filter:{ customerId :selectedAlertitem.domain}" 
+                selectdata="projectsList">
+                <option value="">请选择...</option>
+              </select>
+            </div>
+
+            <!-- 线体 -->
+            <div class="form-group col-sm-2 height-50"  ng-show="baseConfig.customerConfig.display && !userInfo.subDomain">
+              <label class="control-label">{{menuitems['S14'].label ? menuitems['S14'].label : '线体'}}：</label>
+              <select select2 class="form-control"  
+                ng-model="selectedAlertitem.line" 
+                ng-options="value.id as value.productionLineName for value in lineBodyList | filter:{ projectId :selectedAlertitem.plant}" 
+                selectdata="lineBodyList">
+                <option value="">请选择...</option>
+              </select>
+            </div>
+
+            <!-- 名称 -->
+            <div class="form-group col-sm-2 height-50">
+              <!-- <label class="control-label no-padding-left ">名称：</label>
+              <div class="multiselect-group">
+                <input type="text" class="form-control input-sm"   autocomplete="off" >
+              </div> -->
+              <label class="control-label full-width">设备名称：</label>
+              <select select2 class="form-control" 
+                  ng-model="selectedAlertitem.nodeIds" selectdata="nameDropDownList" 
+                  ng-disabled="nodeIdStatus > 0" 
+                  ng-options="value.id as value.label for value in nameDropDownList">
+                <option value="">请选择...</option>
+              </select>
+            </div>
+
+            <!-- 任务来源 -->
+            <div class="form-group col-sm-2 height-50 ">
+              <label class="control-label">任务来源：</label>
+              <!-- ng-model="selectedItem.modelId" 
+              ng-change="getDeviceByDeviceType(selectedItem.modelId);" 
+              ng-options="value.id as value.label for value in modelListSelect" 
+              selectdata="modelListSelect" -->
+              <select select2 class="form-control"
+                ng-model="selectedAlertitem.taskSource" 
+                ng-options="value.id as value.label for value in taskSourceList" 
+                selectdata="taskSourceList">
+                <option value="">请选择...</option>
+              </select>
+            </div>
+
+            <!-- 第一责任人 -->
+            <div class="form-group col-sm-2 height-50">
+              <label class="control-label">第一责任人：</label>
+              <div class="dropdowntree" 
+              placeholder="请选择..." 
+              ng-model="selectedAlertitem.firstPerson" 
+              change="selectedAlertitem.nodeType = '';selectedAlertitem.nodeIds = '';" 
+              key="domainPath" options="domainListTree" mark="nodes" />
+            </div>
+            <!-- 处理人 -->
+            <div class="form-group col-sm-2  height-50"  style="clear:both">
+              <label class="control-label">处理人：</label>
+              <!--<div ng-disabled="!shyj" class="dropdowntree" placeholder="请选择..." ng-model="selectedAlertitem.processingLiable" change="selectedAlertitem.nodeType = '';selectedAlertitem.nodeIds = '';" key="domainPath" options="domainListTree" mark="nodes" />-->
+                <!--<label class="col-sm-3 control-label">请选择用户：</label>-->
+              <div class="col-sm-12 no-padding-lr multiselect-group">
+                 <select class="form-control" buttonclass='btn btn-default full-width' ng-model="selectedAlertitem.handlePerson" numberdisplayed="6" multiple="multiple" bootstrap-multiselect nonselectedtext="所有用户" 
+                 ng-options="item.userID as item.userName for item in handlePersonList"  
+                 ng-model="handerConfsData[flowList.taskId].userIdsOfRole">
+                  </select>
+                  <!--<label style="color: #f56e00;" class="form-control no-border no-margin padding-left-20 light-label bg-transparent">(如果没有选用户默认所有用户)</label>-->
+                </div>
+            </div>
+
+            <!-- 是否超时 -->
+            <div class="form-group col-sm-2 height-50">
+             <label class="control-label">是否超时：</label>
+              <select class="form-control" buttonclass='btn btn-default full-width' 
+              ng-model="selectedAlertitem.isOverTime" 
+              ng-init="selectedAlertitem.alarmTimeOut=''">
+                <option value="" selected>请选择</option>
+                <option value="1" >超时</option>
+                <option value="0" >正常</option>
+                <option value="3" >逾期</option>
+              </select>
+            </div>
+            <!--angel strat ps-multiselect 2018/8/15-->
+            <!-- <div class="form-group col-sm-2 height-50">
+              <font color='red'>*</font>
+              <label class="control-label no-padding-left ">测点：</label>
+              <div class="multiselect-group">
+                <ps-multiselect
+                        class="mulsel"
+                        ng-model="selectedItem.kpiId"
+                        ng-change="getKpi(selectedItem.kpiId)"
+                        data-options="value.id as value.label for value in selectedDitem.kpis">
+                </ps-multiselect>
+              </div>
+            </div> -->
+            <div class="form-group col-sm-2 height-50">
+              <label class="control-label no-padding-left ">任务产生时间：</label>
+              <div class="multiselect-group">
+                  <!-- autocomplete="off" drops="down" 
+                  ng-model="selectedItem.startTime" 
+                  timepicker="true" date-time-picker  -->
+                <input type="text" class="form-control input-sm" autocomplete="off" 
+                  drops="down" 
+                  ng-model="selectedAlertitem.startTime" 
+                  timepicker="true" 
+                  date-time-picker
+                  readonly='readonly'>
+              </div>
+            </div>
+            <div class="form-group col-sm-2 height-50">
+              <label class="control-label no-padding-left">结束时间:</label>
+              <div class="multiselect-group">
+                <input type="text" class="form-control input-sm"  readonly='readonly' 
+                  autocomplete="off" 
+                  ng-model="selectedAlertitem.endTime" 
+                  timepicker="true" 
+                  date-time-picker
+                  drops="down">
+              </div>
+            </div>
+
+            <div class="form-group col-sm-4 height-50  no-padding-right" >
+              <label class=" control-label col-sm-12 font-white">操作：</label>
+              <div class="btn-group">
+                  <!-- ng-disabled="!selectedItem.kpiId || selectedItem.kpiId.length <= 0" -->
+                <button ng-click="selectAlertList.search = true;searchData()" type="button" class="btn btn-primary btn-sm"><i class="fa fa-search"></i>
+                  <span class="hidden-sm"> 查询</span>
+                </button>
+                <!-- ng-show="menuitems['A01_S07']"
+                  ng-click="exportClick()"
+                  ng-disabled="!selectedItem.startTime || !selectedItem.endTime || !selectedItem.nodeId"><i class=" fa fa-arrow-circle-o-down" -->
+                <!-- <button type="button" class="btn btn-primary btn-sm"></i>
+                  <span class="hidden-sm"> 导出</span>
+                </button> -->
+                <!-- ng-click="cancelRecords();" -->
+                <button type="button" ng-click="selectAlertList.search = false;clearSearch()" class="btn btn-default btn-sm"><i class="fa fa-close"></i>
+                  <span class="hidden-sm"> 清除</span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+
+        <div class="box-body" style="display:none;">
+          <button type="button" ng-show="menuitems['A03_S09']" ng-click="addWorkOrder();" class="btn btn-primary btn-sm"><i
+              class="fa fa-plus"></i><span class="hidden-sm"> 添加工单</span></button>
+
+          <div class="combined-query pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                {{queryDitem.statelabel?queryDitem.statelabel:'查询条件'}} <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a role="button" ng-click="queryDitem.state=1;queryDitem.statelabel='工单名称';queryDitem.attributeName='title';loaderValue = ''">工单名称</a>
+                </li>
+              </ul>
+            </div>
+            <input class="form-control input-sm" ng-model="loaderValue" ng-show="!queryDitem.state || queryDitem.state == 1"
+              maxlength="40" type="text" />
+
+            <button class="btn btn-primary btn-sm" ng-click="goSearch()" type="button"><i class="fa fa-search"></i><span
+                class="hidden-sm"> 查询</span></button>
+          </div>
+        </div>
+        <div ng-show="activeListTab != '10'" class="box-footer margin-bottom-10">
+          <table width="100%" class="table table-hover" work-order-table></table>
+        </div>
+        <div ng-show="activeListTab == '10'" class="box-footer margin-bottom-10">
+          <table width="100%" class="table table-hover" order-publish-table></table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

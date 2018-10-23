@@ -1,0 +1,69 @@
+<!-- Content Header (Page header) -->
+<section class="content-header" ng-include="'../partials/index_content_header.html'"></section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Application buttons -->
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">指令列表</h3>
+        </div>
+        <div class="box-body">
+          <a class="btn btn-app" ng-class="{true: 'btn btn-app active active-ps', false: 'btn btn-app'}[selectedDiritem==item]" ng-click="dirItemClick(item)" ng-repeat="item in modelsDirs">
+            <i class="fa fa-plus"></i> {{item.name}}
+          </a>
+
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+          <div class="text-center pull-right" ng-show="selectedDiritem.params">
+            <a class="btn btn-social-icon" ng-click="sendItemDir()"><i class="fa fa-send"></i></a>
+          </div>
+          <form class="form-horizontal tab-pane" role="form" name="myForm" novalidate>
+
+            <div ng-repeat="item in selectedDiritem.params">
+              <div class="col-sm-4 form-group">
+                <label class="col-sm-4 control-label">{{item.label}}
+								</label>
+
+                <div class="col-sm-8 no-padding">
+                  <input ng-model="itemDirValues[item.name]" class="form-control" type="text" placeholder="请输入参数" />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- /.box -->
+
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">{{itemlabel}}实时测点展示</h3>
+
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <form class="form-horizontal tab-pane" role="form">
+
+            <div ng-repeat="item in modelsKpis">
+              <div class="col-sm-3 form-group">
+                <label class="col-sm-8 control-label">{{item.label}}
+								</label>
+                <div class="col-sm-4 no-padding">
+                  <input ng-model="itemKpiValues[item.name]" class="form-control" type="text" placeholder="无" disabled/>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</section>
+<!-- /.content -->

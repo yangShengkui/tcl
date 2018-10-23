@@ -1,0 +1,95 @@
+<config injector="$q, $timeout, resourceUIService, kpiDataService, $interval"></config>
+<properties>
+    <script type="text/javascript">
+    function properties (q, timeout, resourceUIService) {
+      return [{
+        label: "基本设定",
+        attributes: {
+          title: ["标题", "input", "仪表盘标题"],
+          titlePosition: ["标题位置", "input", "30%"],
+          height: ["高度", "input", "200"],
+          unit: ["单位", "input", ""]
+        }
+      }, {
+        label: "数据",
+        attributes: {
+          nkId: ["详细指标", "input", ""]
+        }
+      }]
+    }
+
+    export {properties}
+    </script>
+</properties>
+<template>
+    <div style="width: 100%; height: 100%;">
+        <div class="wrap">
+            <p class="title" style="margin-top: {{titleTopPosition}}">{{title}}</p>
+            <p class="value">{{value}}</p>
+        </div>
+    </div>
+</template>
+<script type="text/javascript">
+export default function (q, timeout, resourceUIService, kpiDataService, $interval) {
+  return {
+    scope: {
+      option: '=?'
+    },
+    link (scope, element, attr) {
+
+      let getValue = (resourceId, kpiId) => {
+        let defer = q.defer();
+        if (resourceId && kpiId) {
+          kpiDataService.getRealTimeKpiData([resourceId], [kpiId], ret => {
+            if (ret.code == '0') {
+              defer.resolve(ret.data);
+            }
+          });
+        } else {
+          defer.resolve();
+        }
+        return defer.promise;
+      }
+
+      function render (n) {
+        let nkId = n.nkId.split(',');
+        let resourceId = nkId[0],
+          kpi = nkId[1];
+        getValue(resourceId * 1, kpi * 1).then(function (d) {
+          scope.title = n.title || '标题';
+          scope.value = d[0].value + n.unit;
+          scope.titleTopPosition = n.titlePosition;
+        });
+      }
+
+      scope.$watch(`option`, (n, o, s) => {
+        if (typeof n !== "undefined") {
+          element[0].style.height = n.attributes.height + 'px';
+          render(n.attributes);
+          $interval(function () {
+            render(n.attributes);
+          }, 3 * 60 * 1000);
+        }
+      });
+    }
+  }
+}
+</script>
+<style type="less" scoped="true">
+.wrap {
+    height: 100%;
+    background: url("../images/meter_bk.svg") no-repeat;
+    background-size: 90% 90%;
+    background-position: center;
+    .title {
+        color: #fff;
+        text-align: center;
+        font-size: 32px;
+    }
+    .value {
+        color: #87aafc;
+        text-align: center;
+        font-size: 72px;
+    }
+}
+</style>

@@ -1,0 +1,195 @@
+<div class="angular-dataTable">
+  <div class="angular-dataTable-header" ng-if="source.showheader != false" style="margin : 0px auto 5px auto">
+    <span ng-repeat="head in source.header">
+            <button ng-if="head.type=='button'"
+                    ng-disabled = "head.disabled(source.source) || wholeDisabled"
+                    ng-style = "head.style"
+                    ng-click="head.events.click(source.source | filter : { selected : true})" type="button" ng-class="head.class">
+              <i ng-class="head.icon"></i>
+              <span ng-class="hidden-sm" ng-bind="head.label"></span>
+    </button>
+    <span ng-if="head.type=='multiSelect'" data-id="head.id" data-mark="head.mark" data-submit="head.events.submit(data)" data-options="head.options" multi-select>
+            </span>
+    </span>
+    <div class="combined-query pull-right">
+      <div class="btn-group" ng-class="{true:'open', false:''}[open]" style="display:block; float:left; margin-top : 0;">
+        <button type="button" ng-disabled="wholeDisabled" class="btn btn-default btn-sm dropdown-toggle" ng-click="searchTypeClick();">
+          <span ng-bind="{true:'查询条件',false:querytype.label}[querytype==undefined]"></span><span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li>
+            <a role="button" ng-click="conditionClick(item);" ng-repeat="item in source.columnDefs | filter : { filterable : true }" ng-bind="item.label">
+            </a>
+          </li>
+        </ul>
+      </div>
+      <span ng-if="querytype.type=='text' || querytype == undefined" style="display:block; float:left; margin : 0 6px;">
+                 <input class="form-control input-sm"
+                        ng-model="$parent.$parent.keyinput"
+                        maxlength="40" type="text" />
+            </span>
+      <span ng-if="querytype.type=='select'" style="display:block; float:left; margin : 0 6px;">
+                 <select ng-model="$parent.$parent.keyinput"
+                         class="form-control"
+                         style="padding-top: 2px;"
+                         ng-options="item[querytype.filterFormat.value]
+                          as item[querytype.filterFormat.label]
+                          for item in querytype.options"><option value="">请选择...</option></select>
+            </span>
+      <span ng-if="querytype.type=='selectObj'" style="display:block; float:left; margin : 0 6px;">
+                 <select ng-model="$parent.$parent.keyinput"
+                         class="form-control"
+                         style="padding-top: 2px;"
+                         ng-options="item[querytype.filterFormat.label] for item in querytype.options"><option value="">请选择...</option></select>
+            </span>
+      <span ng-if="querytype.type=='tree'" style="display:block; float:left; margin : 0 10px;">
+                <div class="dropdowntree select-sm"
+                     placeholder="请选择..."
+                     showclear="true"
+                     ng-model="$parent.$parent.keyinput"
+                     dt-key="querytype.key"
+                     options="querytype.options"
+                     dt-mark="querytype.mark"></div>
+            </span>
+      <span ng-if="querytype.type=='status'" style="display:block; float:left; margin : 0 10px;">
+                 <select ng-model="$parent.$parent.keyinput"
+                         class="form-control"
+                         style="padding-top: 2px;"
+                         ng-options="item.value as item.label for item in [{label : '已启用', value : 0},{label : '未启用', value : -1}]"><option value="">请选择...</option></select>
+            </span>
+      <button class="btn btn-primary btn-sm" style="display:block; float:left;margin-top : 0;" ng-disabled="wholeDisabled" ng-click="goSearch()" type="button">
+        <i class="fa fa-search"></i>
+        <span class="hidden-sm">查询</span>
+      </button>
+    </div>
+  </div>
+  <!-- dataTable's body, include filter search etc.-->
+  <div class="angular-dataTable-body">
+    <div class="dataTables_wrapper dt-bootstrap no-footer">
+      <div class="dataTables_scroll">
+        <div class="dataTables" style="position: relative; overflow: visible; width: 100%;">
+          <table width="100%" class="table table-hover no-footer dataTable" rappid-views-dom="" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" style="width: 100%;">
+            <thead>
+              <tr role="row" style="height: 0px;">
+                <th style="width:14px;" ng-if="source.showSelector != false">
+                  <input type="checkbox" ng-model="$parent.allcheck" ng-disabled="wholeDisabled" ng-click="allClick()" />
+                </th>
+                <th ng-if="source.showIndex==true">序号</th>
+                <th ng-repeat="header in source.columnDefs" ng-click="sortClick(header)" ng-class="sorting(sortBy, header)" ng-class="{true : 'sorting', false : ''}[header.sortable]">
+                  <div class="dataTables_sizing" ng-bind="header.label"></div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <div ng-bind="">key = {{key}}</div>
+              <tr ng-if="(source.source | namefilter : querytype.data : key : source.columnDefs).length == 0">
+                <td colspan="{{source.columnDefs.length + 1}}" style="text-align: center;">
+                  没有符合条件的记录
+                </td>
+              </tr>
+              <tr role="row" style="cursor : pointer;" ng-if="source.source.length > 0" ng-class="trClass(row, source.rowclass)" ng-click="trClick(row);source.events.click(row);" ng-repeat="row in (source.source | orderBy : sortBy.value : sortBy.asc | namefilter : querytype.data : key : source.columnDefs | limitTo : size : page * size)">
+                <td ng-if="source.showSelector != false">
+                  <input type="checkbox" style="pointer-events: none" ng-model="row.selected" />
+                </td>
+                <td ng-bind="$index+1" ng-if="source.showIndex==true"></td>
+                <td ng-repeat="col in source.columnDefs" ng-click="colClick($event,col);" ng-style="{true : {width:col.width}, false : col.style(col)}[col.style == undefined]">
+                  <span ng-bind="row[col.data] | formatedate : col.format" ng-if="col.modes[{true : 'default', false : row.isEdit}[row.isEdit==undefined]].type=='date'"></span>
+                  <span ng-bind="row[col.data] | formatetext : col.format : row" ng-if="col.modes[{true : 'default', false : row.isEdit}[row.isEdit==undefined]].type=='text'"></span>
+                  <span ng-if="col.modes[{true : 'default', false : row.isEdit}[row.isEdit==undefined]].type=='input'">
+                    <input ng-model="row.cached[col.data]"
+                           ng-attr-placeholder="{{col.modes[{true : 'default', false : row.isEdit}[row.isEdit==undefined]].placeholder}}"
+                           class="form-control"
+                           ng-click="$event.stopPropagation()"
+                           style="width : 100%;"/>
+                  </span>
+                  <span ng-if="col.modes[{true : 'default', false : row.isEdit}[row.isEdit==undefined]].type=='tree'">
+                    <div class="dropdowntree"
+                         placeholder="请选择..."
+                         showclear="true"
+                         ng-model="row.cached[col.data]"
+                         dt-key="col.key"
+                         options="col.options"
+                         dt-mark="col.mark"></div>
+                  </span>
+                  <span class="label" ng-class="col.class(row)" ng-if="col.type=='status'" ng-bind="row[col.data] | formatetext : col.format : row">新产生</span>
+                  <span ng-if="col.type=='sethome'">
+                    <span ng-style="{true:{color:'#3c8dbc'}, false:{color:'#ddd'}}[row[col.data] == true]"
+                          class="glyphicon glyphicon-home"></span>
+                  <span class="hidden-xs"></span>
+                  </span>
+                  <div ng-if="col.type=='buttonGroup' && col['modes'][{true : 'default', false : row.isEdit}[row.isEdit==undefined]].options.length < 4" class="btn-group btn-group-sm">
+                    <button ng-repeat="op in col['modes'][{true : 'default', false : row.isEdit}[row.isEdit==undefined]].options" ng-disabled="op.disabled(row) || row.disabled" ng-class="renderClass(op.class, row)" ng-click="op.events.click(row, source.source);$event.stopPropagation();">
+                    <i class="fa fa-edit hidden-lg hidden-md hidden-sm"></i>
+                    <span class="hidden-xs" ng-bind="op.label"></span>
+                  </button>
+                  </div>
+                  <div ng-if="col.type=='buttonGroup' && col['modes'][{true : 'default', false : row.isEdit}[row.isEdit==undefined]].options.length >= 4" class="btn-group btn-group-sm" ng-class="{true:'open', false :''}[row.open]">
+                    <button ng-repeat="op in col['modes'][{true : 'default', false : row.isEdit}[row.isEdit==undefined]].options | limitTo : 2" ng-disabled="op.disabled(row) || row.disabled" ng-class="renderClass(op.class, row)" ng-click="op.events.click(row, source.source);$event.stopPropagation();">
+                    <i class="fa fa-edit hidden-lg hidden-md hidden-sm"></i>
+                    <span class="hidden-xs" ng-bind="op.label"></span>
+                  </button>
+                    <button type="button" class="btn btn-default dropdown-toggle" ng-disabled="row.disabled" ng-click="moreclick(row);$event.stopPropagation();">
+                    更多<span class="caret"></span>
+                  </button>
+                    <ul class="dropdown-menu" role="menu">
+                      <li ng-repeat="op in col['modes'][{true : 'default', false : row.isEdit}[row.isEdit==undefined]].options | limitTo : 10 : 2">
+                        <a role="button" ng-bind="op.label" ng-show="{true:true,false:op.visible(row)}[op.visible(row) == undefined]" ng-click="op.events.click(row, source.source);$event.stopPropagation();row.open=false;">
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row" ng-if="(source.source | namefilter : querytype.data : key : source.columnDefs).length > 0">
+        <div ng-class="{true:'col-sm-3', false : 'col-sm-2'}[source.miniSize == true]">
+          <div class="dataTables_length"><label>每页显示
+            <select class="form-control input-sm"
+                    ng-disabled="wholeDisabled != false && pageResize"
+                    ng-change="sizeChange()"
+                    ng-model="$parent.size" ng-options="size as size for size in [10,25,50,100]"></select> 项</label></div>
+        </div>
+        <div ng-class="{true:'col-sm-3', false : 'col-sm-4'}[source.miniSize == true]">
+          <div class="dataTables_info" aria-live="polite" ng-bind="'第 ' + from + ' 至 ' + to + ' 项，共 ' + total + ' 项'"></div>
+
+        </div>
+        <div class="col-sm-6">
+          <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+            <!--
+            page = {{page}}
+            pageLeft = {{({true : {true: page - 1 ,false: totalpageArr.length - 3}[page < totalpageArr.length - 3], false : 0}[page - 1 > 0])}}
+            -->
+
+            <ul class="pagination">
+              <li class="paginate_button previous" ng-class="{true : 'disabled', false :''}[$parent.page <= 0]" ng-click="pageChange(page-1)">
+                <a>上页</a>
+              </li>
+              <li class="paginate_button" ng-if="({true : {true: page - 1 ,false: totalpageArr.length - 3}[page < totalpageArr.length - 3], false : 0}[page - 1 > 0]) > 0" ng-click="pageChange(0)">
+                <a>1</a>
+              </li>
+              <li class="paginate_button disabled" ng-if="({true : {true: page - 1 ,false: totalpageArr.length - 3}[page < totalpageArr.length - 3], false : 0}[page - 1 > 0]) > 1">
+                <a>…</a>
+              </li>
+              <li class="paginate_button" ng-click="pageChange(pg-1)" ng-class="{true:'active',false:''}[page == pg - 1]" ng-repeat="pg in totalpageArr | limitTo : 3 : {true : {true: page - 1 ,false: totalpageArr.length - 3}[page < totalpageArr.length - 3], false : 0}[page - 1 > 0]">
+                <a ng-bind="pg"></a>
+              </li>
+              <li class="paginate_button disabled" ng-if="({true : {true: page - 1 ,false: totalpageArr.length - 3}[page < totalpageArr.length - 3], false : 0}[page - 1 > 0]) < totalpageArr.length - 4">
+                <a>…</a>
+              </li>
+              <li class="paginate_button" ng-if="({true : {true: page - 1 ,false: totalpageArr.length - 3}[page < totalpageArr.length - 3], false : 0}[page - 1 > 0]) <= totalpageArr.length - 4" ng-click="pageChange(totalpageArr.length - 1)">
+                <a ng-bind="totalpageArr.length"></a>
+              </li>
+              <li class="paginate_button next" ng-class="{true : 'disabled', false :''}[page >= totalpage - 1]" ng-click="pageChange(page+1)">
+                <a>下页</a>
+              </li>
+              <!-- ssa = {{(viewfilter.length / size | number : 0)}} -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

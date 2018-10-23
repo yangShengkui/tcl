@@ -1,0 +1,59 @@
+{
+  "version": "V_2",
+  "groups": [
+    {
+      "id": 0,
+      "label": "导入JSON",
+      "path": "index",
+      "layout": {
+        "type": "column",
+        "children": [
+          {
+            "label": "控件组",
+            "type": "ctrlgroup",
+            "source": "CTRLGROUP",
+            "advance": {
+              "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var global = event.global;\n      var ctrlGroups = [\n       [{\n         value : \"组件名称\", \n         class : \"col-md-1\",\n         type : \"label\"\n       },{\n          type : \"input\",\n          value : \"\",\n          class : \"col-md-11\",\n          on : {\n            change : function(elem){\n                target.setValue(\"importCode/title\", elem.value);\n            }\n          }\n        }]\n      ];\n      event.target.render(ctrlGroups);\n    }\n  }\n}"
+            },
+            "style": {
+              "margin": "5px",
+              "font-size": "12px"
+            },
+            "help": "../pdf/ctrlgroup.pdf"
+          },
+          {
+            "label": "代码编辑器",
+            "type": "aceeditor",
+            "source": "ACEEDITOR",
+            "style": {
+              "margin": "5px",
+              "padding": "0",
+              "height": "80vh"
+            },
+            "advance": {
+              "expression": "expression = {\n    on : {\n        init : function(event){\n            var target = event.target;\n            target.render();\n            target.setValue(\"importCode/code\", \"\");\n        },\n        change : function(event){\n            var target = event.target;\n            var global = event.global;\n            target.setValue(\"importCode/code\", event.value);\n        }\n    }\n}"
+            },
+            "parameters": {}
+          },
+          {
+            "label": "控件组",
+            "type": "ctrlgroup",
+            "source": "CTRLGROUP",
+            "advance": {
+              "expression": "expression = {\n  on : {\n    init : function(event){\n      var target = event.target;\n      var render = function(str){\n          var ctrlGroups = [\n            [{\n              type : \"button\",\n              value : \"导入JSON\",\n              icon : \"glyphicon glyphicon-save\",\n              btnclass : \"btn btn-primary\",\n              class : \"col-md-12\",\n              clipboardText : str,\n              on : {\n                click : function(){\n                  target.submit(target.getValue(\"importCode\"));\n                }\n              }\n            }]\n          ];\n          target.render(ctrlGroups);\n      };\n      render(\"\")\n    }\n  }\n}"
+            },
+            "style": {
+              "margin": "5px",
+              "font-size": "12px"
+            },
+            "help": "../pdf/ctrlgroup.pdf",
+            "parameters": {}
+          }
+        ],
+        "col": 12
+      },
+      "$$hashKey": "object:1294"
+    }
+  ],
+  "setting": "{\n  \"theme\": \"default\"\n}"
+}

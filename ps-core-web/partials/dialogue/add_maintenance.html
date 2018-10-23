@@ -1,0 +1,112 @@
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">计划信息</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        <form role="form" class="form-horizontal row" name="mainForm">
+          <div class="form-group col-sm-6">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger">*</span> <span>计划名称：</span></label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control input-sm"  autocomplete="off"  ng-model="objMain.name" name="Name" maxlength="32" required>
+            </div>
+          </div>
+          <div class="form-group col-sm-6">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">维保类型：</span></label>
+
+            <div class="col-sm-8">
+              <select class="form-control input-sm"  ng-model="objMain.ticketCategoryId" ng-options="x.id as x.name  for x in processType" placeholder="请选择..."  required="required">
+                <option value="">请选择</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group col-sm-6" ng-show="baseConfig.customerConfig.display">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger" ng-if="baseConfig.customerConfig.check">*</span> <span class="ng-binding">客户：</span></label>
+            <div class="col-sm-8">
+              <select select2 class="form-control "   ng-model="objMain.customerId" selectdata="customersList" ng-options="value.id as value.text for value in customersList " >
+              </select>
+            </div>
+          </div>
+          <div class="form-group col-sm-6" ng-show="baseConfig.projectConfig.display">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger" ng-if="baseConfig.projectConfig.check">*</span> <span class="ng-binding"> {{menuitems['S13'].label?menuitems['S13'].label:'项目'}}：</span></label>
+            <div class="col-sm-8">
+              <select select2 class="form-control "  ng-model="objMain.projectId" ng-options="value.id as value.text for value in projectsList | filter:{ customerId :objMain.customerId}" selectdata="projectsList" >
+              </select>
+            </div>
+          </div>
+          <div class="form-group col-sm-6">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">维保设备：</span></label>
+            <div class="col-sm-8">
+              <select select2 class="form-control "  ng-model="objMain.deviceId" ng-options="value.id as value.label for value in devicesList " selectdata="devicesList" required="required">
+              </select>
+            </div>
+          </div>
+          <div class="form-group col-sm-6">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">时间周期：</span></label>
+            <div class="col-sm-8">
+              <select class="form-control input-sm"  ng-model="objMain.executionCycle"   ng-options="value.valueCode as value.label for value in myDicts['taskCycle']" ng-change="cycleChang();" placeholder="请选择..."  required="required">
+                <option value="">请选择</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group col-sm-6">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">执行次数：</span></label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control input-sm"  autocomplete="off" ng-disabled="!objMain.executionCycle || objMain.executionCycle == 'disposable'" ng-model="objMain.cycleNum"  maxlength="2" required>
+            </div>
+          </div>
+          <div ng-show="objMain.id > 0"  class="form-group col-sm-6">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h"> <span class="ng-binding">运行状态：</span></label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control input-sm" disabled  readonly='readonly' autocomplete="off" ng-model="objMain.operationName" >
+            </div>
+          </div>
+          <div  class="form-group col-sm-6"  ng-show="objMain.id <= 0">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">首次日期：</span></label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control input-sm" style="background-color: #fff;" readonly='readonly' autocomplete="off" drops="down" ng-model="objMain.firstExecutionTime" timepicker="true" date-time-picker >
+            </div>
+          </div>
+          <div class="form-group col-sm-6">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">派单提醒：</span></label>
+            <div class="col-sm-2 no-padding-right"><label class="dialog-control-label dataTables_length no-padding-right ">提前</label></div>
+            <div class="col-sm-5 no-padding-left">
+              <input type="number" min="0"  oninput="if( !/^[0-9]*$/.test(this.value)){this.value='';}" class="form-control input-sm"  autocomplete="off"  ng-model="objMain.remindDays"  maxlength="2" required>
+            </div>
+            <div class="col-sm-1 no-padding-lr"><label class="dialog-control-label dataTables_length no-padding-right ">天</label></div>
+          </div>
+          <div  class="form-group col-sm-6"  ng-show="objMain.id > 0">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h"><span class="text-danger ng-binding">*</span> <span class="ng-binding">下次日期：</span></label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control input-sm" style="background-color: #fff;" readonly='readonly' autocomplete="off" drops="down" timepicker="true" ng-model="objMain.nextExecutionTime" date-time-picker >
+            </div>
+          </div>
+          <div  class="form-group col-sm-6">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h"> <span class="ng-binding">服务类别：</span></label>
+            <div class="col-sm-8">
+              <select class="form-control input-sm"  ng-model="objMain.serviceType"  placeholder="请选择..." >
+                <option value="">请选择</option>
+                <option value="0">保内</option>
+                <option value="1">保外</option>
+              </select>
+            </div>
+          </div>
+          <div  class="form-group col-sm-6">
+            <label class="col-sm-4 dialog-control-label no-padding-right dialog-control-h"> <span class="ng-binding">任务执行人：</span></label>
+            <div class="col-sm-8">
+              <select class="form-control input-sm"  ng-model="objMain.nextExecutioner"  ng-options="x.userID  as x.userName for x in enterpriseList" placeholder="请选择..." >
+                <option value="">请选择</option>
+              </select>
+            </div>
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button class="btn btn-primary" ng-disabled="mainForm.$invalid || isLoading|| !objMain.firstExecutionTime" ng-click="doAction('save')" disabled="disabled">确定</button>
+          <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

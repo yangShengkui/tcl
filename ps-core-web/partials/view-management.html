@@ -1,0 +1,67 @@
+
+<!-- Content Header (Page header) --><section class="content-header">
+  <h1>分析视图<small></small></h1>
+  <ol class="breadcrumb">
+    <li><a href="#dashboard2"><i class="proudsmart ps-center"></i> 运营中心</a></li>
+    <li>统计分析</li>
+    <li class="active">分析视图</li>
+  </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Application buttons -->
+      <div class="box">
+        <div class="box-header">
+            <div class="box-tools pull-left nav-tabs-header">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active">
+                        <a ng-bind="{true:'分析视图',false:mainlabel}[mainlabel==undefined]"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="box-tools pull-right">
+                <span class="history-btn" role="button" ng-show="menuitems['#'+treeviewIndex] == null" data-toggle="返回" title="" data-original-title="返回" onclick="window.history.back();"><i class="proudsmart ps-back-01"></i></span>
+            </div>
+            <!--
+          <h3 class="box-title">视图列表</h3>
+          <div class="text-center pull-right">
+            <a ng-click="addDesignView()" class="btn btn-default btn-sm"><i class="fa fa-plus"></i><span class="hidden-xs"> 新建视图</span></a>
+            <a ng-show="currentSelect" ng-click="currentSelect.edit()" class="btn btn-default btn-sm"><i class="fa fa-edit"></i><span class="hidden-xs"> 编辑视图</span></a>
+            <a ng-show="currentSelect" ng-click="currentSelect.delete()" class="btn btn-default btn-sm"><i class="fa fa-minus"></i><span class="hidden-xs"> 删除视图</span></a>
+          </div>
+          -->
+        </div>
+        <div class="box-body" style="padding:0">
+            <div class="nav-tabs-custom" style="margin-bottom:0;" ng-hide="hideNaviBar==true;">
+                <ul class="nav nav-tabs pull-left">
+                    <li ng-class="{true: 'active', false: ''}[currentSelect.viewId == item.viewId]"
+                        ng-repeat="item in designViews"
+                        style="cursor:pointer;"
+                        ng-click="item.click()">
+                        <a ng-bind="item.viewTitle"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="row whole" style="padding:10px; min-height : 500px;">
+                    <div id="free-board"
+                         instance = "instance"
+                         f-board
+                         class="col-md-12"></div>
+                </div>
+            </div>
+        </div>
+        <div class="box-footer">
+
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</section>
+<!-- /.content -->

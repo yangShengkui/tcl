@@ -1,0 +1,39 @@
+<div class="advance-tab">
+    <div class="btn-group">
+        <button ng-click="toolbarHandler(toolbar.id,toolbar.name)" type="button" class="btn btn-default"
+                ng-repeat="toolbar in toolbars">{{toolbar.name}}
+        </button>
+    </div>
+
+    <hr>
+    <!-- Tab 标签 -->
+    <div>
+        <div class="btn-group" ng-repeat="tabLabelList in tabLabelLists">
+            <button ng-click="selecItemTab(tabLabelList.id,$index)" type="button" class="btn btn-info">
+                {{tabLabelList.name}}
+            </button>
+
+            <button ng-if="tabLabelList.id==0" type="button" class="btn btn-info">
+                <span class="glyphicon glyphicon-flag"></span>
+            </button>
+            <button ng-if="tabLabelList.id!=0" type="button" class="btn btn-info"
+                    ng-click="deleteItemTab($index,tabLabelList.name)">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </div>
+    </div>
+
+    <!--tab内容-->
+    <div>
+        <div ng-if="isShowContent==0" class="content">
+            主页
+            <br>
+            <button class="btn btn-primary" ng-click="toolbarHandler(1,'工具1')">跳到工具一页面</button>
+        </div>
+
+        <div ng-if="isShowContent==item.id" class="content" ng-repeat="item in toolbars">
+            {{item.name}}
+        </div>
+    </div>
+    <!--组件-->
+</div>

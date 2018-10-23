@@ -1,0 +1,176 @@
+<config injector="$scope,ajax,$location,psDialog"
+        params="/:id?">
+</config>
+<template>
+  <proudsmart-base>
+    <ps-layout data-option="layout"></ps-layout>
+  </proudsmart-base>
+</template>
+<script type="text/javascript">
+  export default function (scope, ajax, location, psDialog) {
+    let td = [];
+    scope.layout = {
+      label : "备件",
+      children : [{
+        label : "备件",
+        type : "panel",
+        children : [{
+          type : "form-inline",
+          children : [{
+            scope : "sel",
+            type : "select",
+            __key : "a",
+            options : "sparePartUIService.getAllSpareParts",
+            config : {
+              on : {
+                select : function(e){
+                  scope.sel.option.options = e.$option.filter((n)=>{
+                    return e.$select !== n;
+                  });
+                  scope.add.option.config.grid.options = scope.add.option.config.grid.options.concat([e.$select]);
+                }
+              }
+            }
+          }]
+        },{
+          type : "table",
+          scope : "add",
+          config : {
+            tabs : [{
+              id : 0,
+              label : "备件",
+              active : true
+            }],
+            attributes: {
+              "name": ["备件编码", "text"],
+              "label": ["备件名称", "text"],
+              "deviceModelId": ["备件类型","text"],
+              "specification": ["规格型号","text"],
+              "manufacturer": ["生产厂家","text"],
+              "lifespan": ["使用寿命","text"],
+              "createTime": ["开始使用时间","text"],
+              "imageUrl": ["附件","text"],
+            },
+            grid: {
+              body: ["name","label","deviceModelId","specification","manufacturer","lifespan","createTime","imageUrl"],
+              buttons: {
+                // outGrid: [{
+                //     label: "添加备件",
+                //     class: "primary",
+                //     icon: "fa fa-plus",
+                //     on: {
+                //         click : function(){
+                //             psDialog.modal({
+                //                 label : "添加备件",
+                //                 type : "layout",
+                //                 children : [{
+                //                     type : "form-dialog",
+                //                     data : null,
+                //                     children : [{
+                //                         type : "input",
+                //                         label : "备件编码",
+                //                         composory : true,
+                //                         __key : "name"
+                //                     },{
+                //                         type : "input",
+                //                         label : "备件名称",
+                //                         composory : true,
+                //                         __key : "label"
+                //                     },{
+                //                         type : "select",
+                //                         label : "备件类型",
+                //                         __key : "deviceModelId",
+                //                         options : [{
+                //                             id : 0,
+                //                             label : "a"
+                //                         },{
+                //                             id : 1,
+                //                             label : "b"
+                //                         }]
+                //                     },{
+                //                         type : "select",
+                //                         label : "规格型号",
+                //                         __key : "specification",
+                //                         options : [{
+                //                             id : 0,
+                //                             label : "a"
+                //                         },{
+                //                             id : 1,
+                //                             label : "b"
+                //                         }]
+                //                     },{
+                //                         type : "select",
+                //                         label : "生产厂家",
+                //                         __key : "manufacturer",
+                //                         options : [{
+                //                             id : 0,
+                //                             label : "a"
+                //                         },{
+                //                             id : 1,
+                //                             label : "b"
+                //                         }]
+                //                     },{
+                //                         type : "input",
+                //                         label : "使用寿命",
+                //                         composory : false,
+                //                         __key : "lifespan"
+                //                     },{
+                //                         type : "input",
+                //                         label : "开始使用时间",
+                //                         composory : false,
+                //                         __key : "createTime"
+                //                     },{
+                //                         type : "input",
+                //                         label : "附件",
+                //                         composory : false,
+                //                         __key : "imgUrl"
+                //                     }]
+                //                 }],
+                //                 buttons : [{
+                //                     label : "确定",
+                //                     class : "btn btn-primary",
+                //                     click : function(){
+                //
+                //                         this.close();
+                //                     }
+                //                 },{
+                //                     label : "取消",
+                //                     click : function(){
+                //                         this.close();
+                //                     }
+                //                 }]
+                //             });
+                //         }
+                //     }
+                // }],
+                inGrid: [/**{
+                                    label: "编辑",
+                                    class: "btn btn-primary"
+                                },**/
+                {
+                  label: "删除",
+                  class: "btn btn-default",
+                  on : {
+                    click : function(row, i){
+                      scope.sel.option.options = scope.sel.option.options.concat([row]);
+                      this.remove(i);
+                    }
+                  }
+                }]
+              },
+              config: {
+                parameter: "",
+                showIndex: false,
+                showSelector: false,
+                showSearch: false
+              },
+              options: td
+            }
+          }
+        }]
+      }]
+    }
+  };
+</script>
+<style type="less">
+</style>

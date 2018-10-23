@@ -1,0 +1,241 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1 ng-if="!currentRes">
+    服务概览
+    <small ng-show="selectView==undefined">
+      <a class="al-normal" ><i class="fa fa-square "></i>正常状态</a>
+      <a class="al-warning" ><i class="fa fa-square"></i>告警状态</a>
+      <a class="al-minor" ><i class="fa fa-square"></i>次要告警</a>
+      <a class="al-major" ><i class="fa fa-square"></i>重要告警</a>
+      <a class="al-critical" ><i class="fa fa-square"></i>严重告警</a>
+    </small>
+    <small ng-show="selectView!=undefined">
+      <a class="al-normal" ><i class="fa fa-square "></i>正常状态</a>
+      <a class="al-warning" ><i class="fa fa-square"></i>告警状态</a>
+      <a class="al-minor" ><i class="fa fa-square"></i>次要告警</a>
+      <a class="al-major" ><i class="fa fa-square"></i>重要告警</a>
+      <a class="al-critical" ><i class="fa fa-square"></i>严重告警</a>
+    </small>
+  </h1>
+  <h1 ng-if="currentRes">
+    <button ng-click="closeBtn()" class="proudsmart ps-back backbtn"></button>
+    详细资料
+  </h1>
+  <ol class="breadcrumb">
+    <li><a ng-click="closeBtn()" style="cursor : pointer;"><i class="sidebar-toggle2 proudsmart ps-server"></i> 服务中心</a></li>
+    <li class="active" ng-show="selectView==undefined">服务概览</li>
+    <li ng-show="selectView!=undefined" style="cursor : pointer" ng-click="backMainPage()">服务概览</li>
+    <li class="active" ng-show="selectView!=undefined">{{selectView.viewTitle}}</li>
+  </ol>
+</section>
+<div ng-if="resources.length == 0 || resources == undefined || resources == null" class="noResourceInstruction">
+  <p>抱歉你没有添加设备，请先添加设备<a ng-click="gotoNewResource()">添加设备</a></p>
+</div>
+<!-- Main content -->
+<section class="content" style="padding : 0;" auto-height-adjustment>
+  <div class="row" ng-if="!currentRes" style="padding : 10px;">
+    <div style="display : none;">{{resources}}</div>
+    <div ng-repeat="resource in resources | orderBy : 'label'"
+         class="col-sm-12 col-md-6 col-lg-3 wrap"
+         ng-class="'level' + resource.alertStatus"
+         ng-if="resource.loaded == true && resource.show == true"
+         ng-click="resource.onClick()">
+      <!-- <div ng-bind="resource.customerNo" style="display : none;"></div> -->
+      <div class="resources">
+        <div class="line"></div>
+        <div class="label" ng-bind="resource.label + resource.preview.showTitle"></div>
+        <div>
+          <div class="icon" ng-style="{'background-image' :  'url(' + resource.preview.icon + ')' }"></div>
+          <table class="text">
+            <tr ng-repeat = "item in resource.preview.list">
+              <td>
+                <span class="textInfo" ng-bind="item.label"></span>
+              </td>
+              <td>
+                <span ng-bind="item.value"></span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ng-if="currentRes" class="detailWrap-mobile visible-xs visible-sm" >
+    <div class="col-md-12" style="margin : 0; padding : 0;">
+      <div class="inner-content">
+        <div class="titleWrap">
+          <span class="headerTxt" ng-bind="{true:'未命名设备',false:currentRes.label}[currentRes.label==undefined||currentRes.label=='']"></span>
+          <small>
+            <span class="al-normal" ng-if="currentRes.alertStatus == 0"><i class="fa fa-square "></i>正常状态</span>
+            <span class="al-warning" ng-if="currentRes.alertStatus == 1"><i class="fa fa-square "></i>告警状态</span>
+            <span class="al-minor" ng-if="currentRes.alertStatus == 2"><i class="fa fa-square "></i>次要告警</span>
+            <span class="al-major" ng-if="currentRes.alertStatus == 3"><i class="fa fa-square "></i>重要告警</span>
+            <span class="al-critical" ng-if="currentRes.alertStatus == 4"><i class="fa fa-square "></i>严重告警</span>
+          </small>
+        </div>
+        <div style="clear : both"></div>
+      </div>
+    </div>
+    <div class="col-md-12 right-column" style="margin : 0; padding : 0;">
+      <div style="padding-bottom : 20px;">
+        <div class="header">
+          <span class="headerTxt" ng-bind="currentRes.rightBar.title"></span>
+        </div>
+        <div class="inner-content"
+             ng-click="item.onClick()"
+             ng-repeat = "item in currentRes.rightBar.list">
+          <p class="des" ng-bind="item.name"></p>
+          <table class="info">
+            <tr>
+              <td class="left">
+                <span ng-class="item.icon" class="icon proudsmart"></span>
+              </td>
+              <td class="right">
+                <p class="value" ng-bind="item.value"></p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 left-column">
+      <div>
+        <div class="header"><span class="headerTxt" ng-bind="currentRes.leftBar.title"></span></div>
+        <div class="midBody">
+          <div class="row" style="margin : 0; padding : 0;">
+            <div class="col-md-6" ng-repeat="item in currentRes.leftBar.columnA.list" style="margin : 0; padding : 0;">
+              <div class="row" style="margin : 0; padding : 0;">
+                <div class="col-md-6" ng-bind="item.label" style="margin : 0; padding : 0;"></div>
+                <div class="col-md-6" ng-bind="item.value" style="margin : 0; padding : 0;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+          <ul class="inner-ul">
+            <li ng-repeat="item in currentRes.leftBar.columnB.list">
+              <div class="row">
+                <div class="col-md-1">
+                  <span class="innerbox"></span>
+                </div>
+                <div class="col-md-10">
+                  <span class="innertext" ng-bind='item.label'></span>
+                  <span class="innertext" ng-bind='item.value'></span>
+                </div>
+              </div>
+
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div ng-repeat="bar in currentRes.leftBar.columnC.list" style="border-top : 1px solid #ababab" ng-hide="roleID == 1000">
+        <div class="header">
+          <span ng-bind="bar.label" class="headerTxt"></span>
+        </div>
+        <div class="inner-content epuipment-echart" epuipment-echart data-chart="bar.option">
+          <div class="inner"></div>
+        </div>
+      </div>
+    </div>
+    <div style="clear : both;"></div>
+  </div>
+  <div ng-if="currentRes" class="detailWrap hidden-xs hidden-sm" >
+    <div class="col-md-3 left-column">
+      <div>
+        <div class="header"><span class="headerTxt" ng-bind="currentRes.leftBar.title"></span></div>
+        <div class="midBody">
+          <div class="row" style="margin : 0; padding : 0;">
+            <div class="col-md-6" ng-repeat="item in currentRes.leftBar.columnA.list" style="margin : 0; padding : 0;">
+              <div class="row" style="margin : 0; padding : 0;">
+                <div class="col-md-6" ng-bind="item.label" style="margin : 0; padding : 0;"></div>
+                <div class="col-md-6" ng-bind="item.value" style="margin : 0; padding : 0;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+          <ul class="inner-ul">
+            <li ng-repeat="item in currentRes.leftBar.columnB.list">
+              <div class="row">
+                <div class="col-md-1">
+                  <span class="innerbox"></span>
+                </div>
+                <div class="col-md-10">
+                  <span class="innertext" ng-bind='item.label'></span>
+                  <span class="innertext" ng-bind='item.value'></span>
+                </div>
+              </div>
+
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div ng-repeat="bar in currentRes.leftBar.columnC.list" style="border-top : 1px solid #ababab" ng-hide="roleID == 1000">
+        <div class="header">
+          <span ng-bind="bar.label" class="headerTxt"></span>
+        </div>
+        <div class="inner-content epuipment-echart" epuipment-echart data-chart="bar.option">
+          <div class="inner"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6" style="margin : 0; padding : 0;">
+      <div class="inner-content">
+        <div class="titleWrap" ng-click="alertButtonClick(roleID == '1000');">
+          <span class="headerTxt" ng-bind="{true:'未命名设备',false:currentRes.label}[currentRes.label==undefined||currentRes.label=='']"></span>
+          <small>
+            <span class="al-normal" ng-if="currentRes.alertStatus == 0"><i class="fa fa-square "></i>正常状态</span>
+            <span class="al-warning" ng-if="currentRes.alertStatus == 1"><i class="fa fa-square "></i>告警状态</span>
+            <span class="al-minor" ng-if="currentRes.alertStatus == 2"><i class="fa fa-square "></i>次要告警</span>
+            <span class="al-major" ng-if="currentRes.alertStatus == 3"><i class="fa fa-square "></i>重要告警</span>
+            <span class="al-critical" ng-if="currentRes.alertStatus == 4"><i class="fa fa-square "></i>严重告警</span>
+          </small>
+        </div>
+        <div style="clear : both"></div>
+      </div>
+      <div class="innerInfo" ng-hide="currentRes.midBar.list.length == 0">
+        <div class="row">
+          <div class="col-md-6" ng-repeat="item in currentRes.midBar.list">
+            <div class="row">
+              <div class="col-md-6" ng-bind="item.label" style="line-height : 30px; font-size : 15px; font-weight : bold;">
+              </div>
+              <div class="col-md-6" ng-bind="item.value" style="line-height : 30px; font-size : 15px; color : #777;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="drawingArea" ng-style="{'background-image' :  'url(' + backgroundImage + ')'}">
+
+      </div>
+    </div>
+    <div class="col-md-3 right-column" style="margin : 0; padding : 0;">
+      <div style="padding-bottom : 20px;">
+        <div class="header">
+          <span class="headerTxt" ng-bind="currentRes.rightBar.title"></span>
+        </div>
+        <div class="inner-content" ng-repeat = "item in currentRes.rightBar.list"
+             ng-class="{true : 'link', false : ''}[item.linkage != '' && item.linkage != undefined]"
+             ng-show="(roleID != '1000')|| item.showWhenCustomerA == true"
+             ng-click="item.onClick()"
+             ng-style="{true:{},false:{'cursor':'pointer'}}[item.onClick==undefined]">
+          <p class="des" ng-bind="item.label"></p>
+          <table class="info">
+            <tr>
+              <td class="left">
+                <span ng-class="item.icon" class="icon proudsmart"></span>
+              </td>
+              <td class="right">
+                <p class="value" ng-bind="item.value"></p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div style="clear : both;"></div>
+  </div>
+</section>
+<!-- /.content -->

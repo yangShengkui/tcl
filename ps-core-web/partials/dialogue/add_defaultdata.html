@@ -1,0 +1,51 @@
+<!--添加数据项模态框-->
+<div class="modal bootstrap-dialog type-primary fade size-normal in" style="display : block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-f2">
+        <a role="button" ng-click="closeDialog();" class="close">×</a>
+        <h4 class="modal-title info-box-number">存储配置</h4>
+      </div>
+      <div class="modal-body clearfix row ">
+        
+        <form role="form" class="form-horizontal" name="dataForm">
+          <div class="form-group">
+            <div class="col-sm-3 margin-left-30 no-padding-right checkbox">
+              <label><input type="checkbox" ng-disabled="addDataObj.displayMode" ng-model="addDataObj.compress">启用压缩存储</label>
+            </div>
+            <div class="col-sm-8 no-padding-right no-padding-left checkbox">
+              <span>数据每采集<input type="number"  ng-disabled="!addDataObj.compress || addDataObj.displayMode"  min="0"  max="32767" oninput="if( !/[0-9\.]/.test(this.value)){this.value='0';}else if(value>32767){value=32767}"  ng-model="addDataObj.compressTime" class=" width-50 no-padding-right padding-left-5 margin-right-5 margin-left-15">次内无变化不记录，</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-3 margin-left-30 no-padding-right  checkbox">
+              <!--<label><input type="checkbox" ng-disabled="!addDataObj.compress" ng-model="addDataObj.deadZone">启用死区设置</label>-->
+            </div>
+            <div class="col-sm-8 no-padding-right no-padding-left checkbox">
+              <span>数据波动在<b style="font-size: 15px;">±</b><input type="number" min="0" oninput="if( !/[0-9\.]/.test(this.value)){this.value='0';}else if(value.length>9)value=value.slice(0,9)" ng-disabled="!addDataObj.compress || addDataObj.displayMode"  ng-model="addDataObj.deadZoneRange" class=" width-50 no-padding-right padding-left-5 margin-right-5 margin-left-5"> 范围内不会进行上报。</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-3 margin-left-30 no-padding-right  checkbox">
+              <label><input ng-disabled="addDataObj.displayMode"  ng-change="checkChang();" ng-model="addDataObj.interval" type="checkbox"> 启用存储间隔</label>
+            </div>
+            <div class="col-sm-8 no-padding-right no-padding-left checkbox">
+              <span>数据每采集<input type="number"  ng-disabled="!addDataObj.interval || addDataObj.displayMode"  min="0"  max="32767" oninput="if( !/[0-9\.]/ .test(this.value)){this.value='0';} else if(value>32767)value=32767"   ng-model="addDataObj.intervalTime" class=" width-50 no-padding-right padding-left-5 margin-right-5 margin-left-15"> 次后存储一条历史记录。</span>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="dataForm.$invalid  || isLoading" ng-click="saveDefaultKpis(0)" disabled="disabled">
+          应用到未配置
+        </button>
+        <button class="btn btn-primary" ng-disabled="dataForm.$invalid  || isLoading" ng-click="saveDefaultKpis(1)" disabled="disabled">
+          应用到全部
+        </button>
+        <button class="btn btn-default" ng-click="closeDialog();">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
